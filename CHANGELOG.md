@@ -2,4 +2,5 @@
 
 ## 0.0.1
 
-- init
+- add `new` command
+- add `add` command

@@ -23,10 +23,6 @@ module.exports = [
         desc: 'Do production tasks, then sync files to remote.'
     },
     {
-        name: 'server',
-        desc: 'Start local server for debug.'
-    },
-    {
         name: 'mock-express',
         desc: 'Start local express mock server for debug.'
     },

@@ -27,9 +27,9 @@ var projectConfig = require('../project_config');
 // project html file path
 var htmlFilePath = projectConfig.basePaths.buildRoot + '/dev/html/' + moduleName + '.html';
 // project js file path
-var jsFilePath =  projectConfig.basePaths.buildRoot + '/dev/js/' + moduleName + '.js';
+var jsFilePath =  projectConfig.basePaths.buildRoot + '/src/js/' + moduleName + '.js';
 // project css file path
-var cssFilePath = projectConfig.basePaths.buildRoot + '/dev/css/' + moduleName + '.css';
+var cssFilePath = projectConfig.basePaths.buildRoot + '/src/css/' + moduleName + '.css';
 
 // source html file path
 var sourceHtmlFilePath = vars.lilaRoot + '/project_files/demo/base.html';
@@ -72,7 +72,11 @@ if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath) || fs.existsSync(cs
 // make css file
 fsExtra.outputFileSync(cssFilePath, fsExtra.readFileSync(sourceCssFilePath, 'utf8'));
 // make js file
-fsExtra.outputFileSync(jsFilePath, fsExtra.readFileSync(sourceJsFilePath, 'utf8'));
+var jsTmpContent = fsExtra.readFileSync(sourceJsFilePath, 'utf8');
+_.forEach(data, (value, key) => {
+    jsTmpContent = jsTmpContent.replace(new RegExp('{{' + key + '}}', 'g'), value);
+});
+fsExtra.outputFileSync(jsFilePath, jsTmpContent);
 // make html file
 var htmlTmpContent = fsExtra.readFileSync(sourceHtmlFilePath, 'utf8');
 _.forEach(data, (value, key) => {

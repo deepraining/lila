@@ -9,7 +9,6 @@ var defaultsBase = require('./defaults/base');
 
 var handleBase = require('./handle/base');
 var handleDirectoriesToSync = require('./handle/directories_to_sync');
-var handleDirectoriesToBuild = require('./handle/directories_to_build');
 var handleBuildOptions = require('./handle/build_options');
 var handleHtml = require('./handle/html');
 var handleModuleGroup = require('./handle/module_group');
@@ -32,13 +31,8 @@ var handle = (config) => {
     handleBase(config);
     handleHtml(config);
     handleDirectoriesToSync(config);
-    handleDirectoriesToBuild(config);
     handleModuleGroup(config);
     handleModule(config);
-    handleConcat(config);
-    handleInCssConfig(config);
-    handleRequireJsConfig(config);
-    handleInCssModules(config);
     handleFilesMap(config);
     handleDoc(config);
     handleWebpack(config);
