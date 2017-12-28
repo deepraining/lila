@@ -7,9 +7,9 @@ commands to manage server side production files.
 ### `archive/arc`: archive files of dist directory into a zip package 
 
 ```
-lilacs archive
+lila archive
 # or
-lilacs arc
+lila arc
 ```
 
 * current working directory should be the parent directory of dist.
@@ -18,7 +18,7 @@ lilacs arc
 ### `clean`: clean redundant hash-code-suffix files which created by revision, and are not used anymore.  
 
 ```
-lilacs clean
+lila clean
 ```
 
 * current working directory should be the parent directory of dist.
@@ -28,15 +28,15 @@ lilacs clean
 ### `init-clean`: initialize config file which command `clean` needed.
 
 ```
-lilacs init-clean
+lila init-clean
 ```
 
-* this command will generate a `lilacs.clean.config.js` in current working directory, and you can modify it as you want.
+* this command will generate a `lila.clean.config.js` in current working directory, and you can modify it as you want.
 
 ### `revert`: revert dist directory to last state.
 
 ```
-lilacs revert [-i,--index(1,2,3)]
+lila revert [-i,--index(1,2,3)]
 ```
 
 * current working directory should be the parent directory of dist.

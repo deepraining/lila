@@ -9,7 +9,7 @@
 module.exports = (cmd) => {
     var cmdArray = cmd.split(' ');
 
-    // remove `lilacs` in the first place
+    // remove `lila` in the first place
     cmdArray.shift();
 
     cmdArray.forEach(function (item) {

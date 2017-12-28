@@ -12,7 +12,7 @@ var moduleName = vars.argv.module;
 if (!moduleName) {
     logger.error('Missing module name for command: dist.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs dist <name>');
+    logger.log('lila dist <name>');
     process.exit(0);
 }
 

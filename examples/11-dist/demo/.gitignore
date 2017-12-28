@@ -1,8 +1,0 @@
-
-lilacs_*
-dist
-
-/manifests
-/manifests_bak
-
-lilacs.server.config.js

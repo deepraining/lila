@@ -10,7 +10,7 @@ var changeCwd = require('../util/change_cwd');
 if (!vars.argv.globModule) {
     logger.error('Missing module name for command: dist-js.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs dist-js <name>');
+    logger.log('lila dist-js <name>');
     process.exit(0);
 }
 

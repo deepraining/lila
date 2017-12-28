@@ -12,7 +12,7 @@ var vars = require('../../data/vars');
  */
 var getPaths = (root, dir, addLilacsPrefix) => {
 
-    var dirName = (addLilacsPrefix ? 'lilacs_' : '') + dir;
+    var dirName = (addLilacsPrefix ? 'lila_' : '') + dir;
 
     return {
         dirName: dirName,
@@ -43,7 +43,7 @@ module.exports = (config) => {
         distStore: getPaths(config.basePaths.buildRoot, 'dist_store', !0),
         // doc temporary directory
         doc_tmp: {
-            dir: config.basePaths.buildRoot + '/lilacs_doc'
+            dir: config.basePaths.buildRoot + '/lila_doc'
         },
         // doc dist directory
         doc: {

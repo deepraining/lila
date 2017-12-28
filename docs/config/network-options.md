@@ -71,5 +71,5 @@ if you are using distributed servers, or just want to make html and other resour
 
 ### note
 
-* if you want to keep servers private, not in git control, you can define servers config in `lilacs.server.config.js`, and import it to `lilacs.config.js`.
+* if you want to keep servers private, not in git control, you can define servers config in `lila.server.config.js`, and import it to `lila.config.js`.
         

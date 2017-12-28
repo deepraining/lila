@@ -25,13 +25,4 @@ module.exports = (config) => {
             config[key] = value;
         });
     }
-
-    // extra js entry modules despite the main entry module
-    if (config.useRequireJs && json.extraJsEntryModules) {
-        // ensure it is an array
-        !Array.isArray(json.extraJsEntryModules) && (json.extraJsEntryModules = [json.extraJsEntryModules]);
-
-        config.hasExtraJsEntryModules = !0;
-        config.extraJsEntryModules = json.extraJsEntryModules;
-    }
 };

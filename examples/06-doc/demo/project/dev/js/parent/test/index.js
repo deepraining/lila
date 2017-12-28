@@ -1,4 +1,0 @@
-
-/**
- * @module parent/test/index
- */

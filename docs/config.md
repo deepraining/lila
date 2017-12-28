@@ -10,85 +10,6 @@
 * `desc`: environment index, used to get current `buildOption`, `networkOption`, `filesMap`, `dirsMap` ..., can and always be specified from command line.
 * `default`: `0`
 
-## useRequireJs
-
-* `desc`: whether use [require js](https://github.com/requirejs/requirejs) to build project.
-* `default`: `false`
-
-## requireJsConfigPath
-
-* `desc`: requireJs config file path
-* `default`: `/dev/js/common/require_js_config.js`
-* `note`: 
-    - it should be an absolute path, and relative to `basePaths.webRoot`
-    - it will take effect when `useRequireJs` is `true`
-
-## requireJsToTagLoad
-
-* `desc`: convert js async load to sync tag load
-* `default`: `false`
-* `note`: it will take effect when `useRequireJs` is `true`
-* `example`: 
-    
-```
-// origin
-require(['jquery', 'underscore'])
-
-// result
-<script src="path/to/jquery"></script>
-<script src="path/to/underscore"></script>
-require(['jquery', 'underscore'])
-```
-
-## requireJsConfigTagSelector
-
-* `desc`: requireJs config file tag selector in html
-* `default`: `[data-require-js-config-tag]`
-
-## useInCss
-
-* `desc`: whether use [in-css](https://github.com/senntyou/in-css) to build project
-* `default`: `false`
-
-## inCssConfigPath
-
-* `desc`: InCss config file path
-* `default`: `/dev/js/common/in_css_config.js`
-* `note`:
-    - it should be an absolute path, and relative to `basePaths.webRoot`
-    - it will take effect when useInCss is true
-
-## inCssToTagLoad
-
-* `desc`: convert css async load to sync tag load
-* `default`: `false`
-* `note`: it will take effect when `useInCss` is `true`
-* `example`: 
-
-```
-// origin
-InCss.use('bootstrap', 'common')
-
-// result
-<link rel="stylesheet" href="path/to/bootstrap">
-<link rel="stylesheet" href="path/to/common">
-```
-
-## inCssTagSelector
-
-* `desc`: all InCss tag selector in html
-* `default`: `[data-in-css-tag]`
-
-## inCssConfigTagSelector
-
-* `desc`: InCss config file tag selector in html
-* `default`: `[data-in-css-config-tag]`
-
-## inCssLoadTagSelector
-
-* `desc`: InCss load tag selector in html
-* `default`: `[data-in-css-load-tag]`
-
 ## networkOptions
 
 see [Project config - networkOptions](./config/network-options.md)
@@ -254,14 +175,14 @@ if you want to split it into many files, see [Project config - concatPriority](.
 * `desc`: whether merge js files
 * `default`: `false`
 * `detail`: `true` / `false`
-* `extra`: if you want some scripts not merged, you can add `data-lilacs-no-concat="1"` attribute to avoid it.
+* `extra`: if you want some scripts not merged, you can add `data-lila-no-concat="1"` attribute to avoid it.
 
 ## concatCss
 
 * `desc`: whether merge css files
 * `default`: `false`
 * `detail`: `true` / `false`
-* `extra`: if you want some scripts not merged, you can add `data-lilacs-no-concat="1"` attribute to avoid it.
+* `extra`: if you want some scripts not merged, you can add `data-lila-no-concat="1"` attribute to avoid it.
 
 ## recordFileChanges
 

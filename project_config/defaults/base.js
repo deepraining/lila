@@ -12,55 +12,6 @@ var defaults = {
      *          ...
      */
     env: 0,
-    // whether use requireJs to build project
-    useRequireJs: false,
-    /**
-     * requireJs config file path
-     *
-     * note: 1. it should be an absolute path, and relative to basePaths.webRoot
-     *       2. it will take effect when useRequireJs is true
-     */
-    requireJsConfigPath: '/dev/js/common/require_js_config.js',
-    /**
-     * convert js async load to sync tag load
-     *
-     * example: require(['jquery', 'underscore'])
-     *
-     * result: <script src="path/to/jquery"></script>
-     *         <script src="path/to/underscore"></script>
-     *         require(['jquery', 'underscore'])
-     *
-     * note: it will take effect when useRequireJs is true
-     */
-    requireJsToTagLoad: false,
-    // requireJs config file tag selector in html
-    requireJsConfigTagSelector: '[data-require-js-config-tag]',
-    // whether use InCss to build project
-    useInCss: false,
-    /**
-     * InCss config file path
-     *
-     * note: 1. it should be an absolute path, and relative to basePaths.webRoot
-     *       2. it will take effect when useInCss is true
-     */
-    inCssConfigPath: '/dev/js/common/in_css_config.js',
-    /**
-     * convert css async load to sync tag load
-     *
-     * example: InCss.use('bootstrap', 'common')
-     *
-     * result: <link rel="stylesheet" href="path/to/bootstrap">
-     *         <link rel="stylesheet" href="path/to/common">
-     *
-     * note: it will take effect when useInCss is true
-     */
-    inCssToTagLoad: false,
-    // all InCss tag selector in html
-    inCssTagSelector: '[data-in-css-tag]',
-    // InCss config file tag selector in html
-    inCssConfigTagSelector: '[data-in-css-config-tag]',
-    // InCss load tag selector in html
-    inCssLoadTagSelector: '[data-in-css-load-tag]',
     // local server port
     serverPort: 8090,
     // express data mock server port

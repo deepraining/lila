@@ -11,7 +11,7 @@ npm-debug.log
 #
 # building temporary directories
 #
-lilacs_*
+lila_*
 dist
 
 #
@@ -21,6 +21,6 @@ dist
 /manifests_bak
 
 #
-# lilacs server config
+# lila server config
 #
-lilacs.server.config.js
+lila.server.config.js

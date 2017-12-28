@@ -1,7 +1,7 @@
 # command line
 
 ```
-lilacs <command> [args]
+lila <command> [args]
 ```
 
 ## detail commands
@@ -9,37 +9,37 @@ lilacs <command> [args]
 ### `new`: new a project
 
 ```
-lilacs new projectName
+lila new projectName
 ```
 
 ### `add`: add a module to current directory
 
 ```
-lilacs add moduleName
+lila add moduleName
 ```
 
 ### `watch`: watch files' changes, and compile files from `src` to `dev`
 
 ```
-lilacs watch
+lila watch
 ```
 
 ### `server`: start a local server for debug
 
 ```
-lilacs server moduleName
+lila server moduleName
 ```
 
 ### `dev`: watch files' changes, and compile files from `src` to `dev`, and start a local server for debug
 
 ```
-lilacs dev moduleName
+lila dev moduleName
 ```
 
 ### `dist`: do production task.
 
 ```
-lilacs dist moduleName [-e 0(1,2)] 
+lila dist moduleName [-e 0(1,2)] 
 ```
 
 * can take with argument env/e
@@ -47,7 +47,7 @@ lilacs dist moduleName [-e 0(1,2)]
 ### `sync`: upload production files to server
 
 ```
-lilacs sync moduleName [-e 0(1,2)] 
+lila sync moduleName [-e 0(1,2)] 
 ```
 
 * can take with argument env/e
@@ -55,9 +55,9 @@ lilacs sync moduleName [-e 0(1,2)]
 ### `compile/cp`: compile files from `src` to `dev` manually
 
 ```
-lilacs compile module
+lila compile module
 # or
-lilacs cp module
+lila cp module
 ```
 
 * `module`: moduleName + fileExtensionName(if fileExtensionName is not provided, default is js), example: `test/index.js`, `test/index.less`
@@ -66,7 +66,7 @@ lilacs cp module
 ### `mock-express`: use [express](https://github.com/expressjs/express) to provide data mock
 
 ```
-lilacs mock-express
+lila mock-express
 ```
 
 detail: [mock-express](./express.md)
@@ -74,7 +74,7 @@ detail: [mock-express](./express.md)
 ### `forever`: do with [forever](https://github.com/foreverjs/forever)
 
 ```
-lilacs forever <forever command name> [forever command args]
+lila forever <forever command name> [forever command args]
 ```
 
 detail: [do with forever](./forever.md)
@@ -82,7 +82,7 @@ detail: [do with forever](./forever.md)
 ### `doc`: generate `js` documents
 
 ```
-lilacs doc
+lila doc
 ```
 
 * documents will be in `docs` of project root directory(if exists, it'll be overridden').
@@ -90,7 +90,7 @@ lilacs doc
 ### `dist-js`: make javascript files as main module, and do production task.
 
 ```
-lilacs dist-js module [-e 0(1,2)] 
+lila dist-js module [-e 0(1,2)] 
 ```
 
 * `module`: js module name
@@ -101,7 +101,7 @@ lilacs dist-js module [-e 0(1,2)]
 ### `sync-js`: make javascript files as main module, and do production task, then sync files to remote.
 
 ```
-lilacs sync-js module [-e 0(1,2)] 
+lila sync-js module [-e 0(1,2)] 
 ```
 
 * `module`: js module name
@@ -111,7 +111,7 @@ lilacs sync-js module [-e 0(1,2)]
 ### `dist-css`: make css files as main module, and do production task.
 
 ```
-lilacs dist-css module [-e 0(1,2)] 
+lila dist-css module [-e 0(1,2)] 
 ```
 
 * `module`: css module name
@@ -122,7 +122,7 @@ lilacs dist-css module [-e 0(1,2)]
 ### `sync-css`: make css files as main module, and do production task, then sync files to remote.
 
 ```
-lilacs sync-css module [-e 0(1,2)] 
+lila sync-css module [-e 0(1,2)] 
 ```
 
 * `module`: css module name

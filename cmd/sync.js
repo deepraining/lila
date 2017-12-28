@@ -12,7 +12,7 @@ var moduleName = vars.argv.module;
 if (!moduleName) {
     logger.error('Missing module name for command: sync.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs sync <name>');
+    logger.log('lila sync <name>');
     process.exit(0);
 }
 

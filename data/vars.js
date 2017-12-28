@@ -5,15 +5,15 @@ var path = require('path');
 var minimist = require('minimist');
 
 var vars = {
-    // lilacs root directory
-    lilacsRoot: path.join(__dirname, '../'),
+    // lila root directory
+    lilaRoot: path.join(__dirname, '../'),
     // project root directory
     projectRoot: process.cwd(),
     argv: minimist(process.argv.slice(2)),
     // config file
-    configFile: 'lilacs.config.js',
+    configFile: 'lila.config.js',
     // clean config file
-    cleanConfigFile: 'lilacs.clean.config.js'
+    cleanConfigFile: 'lila.clean.config.js'
 };
 
 // file changes record manifests dir path

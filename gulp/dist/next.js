@@ -54,24 +54,5 @@ module.exports = {
                 distData.currentConfig.processingData.concatCssIndex = 0
             );
         }
-    },
-
-    // used for importing files in css file by mark @import
-    inCssModule: () => {
-        if (distData.currentConfig.useInCss) {
-            typeof distData.currentConfig.processingData.inCssModuleIndex == 'undefined' && (
-                distData.currentConfig.processingData.inCssModuleIndex = 0
-            );
-
-            distData.currentConfig.processingData.inCssModule =
-                distData.currentConfig.inCssAllModules[distData.currentConfig.processingData.inCssModuleIndex];
-
-            distData.currentConfig.processingData.inCssModuleIndex += 1;
-
-            // reset to 0 if needed
-            distData.currentConfig.processingData.inCssModuleIndex >= distData.currentConfig.inCssAllModules.length && (
-                distData.currentConfig.processingData.inCssModuleIndex = 0
-            );
-        }
     }
 };

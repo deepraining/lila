@@ -11,7 +11,7 @@
 // url: /data/test/index/demo
 
 module.exports = (req, res) => {
-    return res.json({success: !0, message: 'hello lilacs'});
+    return res.json({success: !0, message: 'hello lila'});
 };
 ```
 

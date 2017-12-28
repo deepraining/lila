@@ -16,14 +16,8 @@ var handleModuleGroup = require('./handle/module_group');
 var handleModule = require('./handle/module');
 var handleFilesMap = require('./handle/files_map');
 var handleCustomConfig = require('./handle/custom_config');
-var handleConcat = require('./handle/concat');
-var handleInCssConfig = require('./handle/in_css_config');
-var handleRequireJsConfig = require('./handle/require_js_config');
-var handleInCssModules = require('./handle/in_css_modules');
 var handleDoc = require('./handle/doc');
 var handleWebpack = require('./handle/webpack');
-
-var handleEnsurePath = require('./handle/ensure_path');
 
 var handle = (config) => {
     defaultsBasePaths(config);
@@ -48,9 +42,6 @@ var handle = (config) => {
     handleFilesMap(config);
     handleDoc(config);
     handleWebpack(config);
-
-    // this must be the last step, because after this, requireJsConfigPath and inCssConfigPath will be changed.
-    handleEnsurePath(config);
 
     return config;
 };

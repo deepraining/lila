@@ -15,6 +15,6 @@ if (fs.existsSync(cleanConfigPath)) {
 }
 
 // copy config file
-fsExtra.copySync(path.join(vars.lilacsRoot, 'project_files/config' + '/' + vars.cleanConfigFile), cleanConfigPath);
+fsExtra.copySync(path.join(vars.lilaRoot, 'project_files/config' + '/' + vars.cleanConfigFile), cleanConfigPath);
 
 logger.success('Lilacs init clean successful!');

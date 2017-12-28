@@ -9,7 +9,7 @@ var vars = require('../data/vars');
 if (!vars.argv.globModule) {
     logger.error('Missing module for command: cp.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs cp <name>');
+    logger.log('lila cp <name>');
     process.exit(0);
 }
 

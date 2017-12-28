@@ -13,7 +13,7 @@ module.exports = () => {
     // must in here, for ensuring -h/--help used by yargs
     var yargs = require('yargs');
 
-    var yargsInstance = yargs.usage('\nUsage: lilacs <command> [args]');
+    var yargsInstance = yargs.usage('\nUsage: lila <command> [args]');
 
     commands.forEach((cmd) => {
         yargsInstance.command(cmd.name, cmd.desc);

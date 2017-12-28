@@ -1,8 +1,8 @@
 {
-  "name": "lilacs",
-  "version": "0.5.5",
+  "name": "lila",
+  "version": "0.0.1",
   "main": "index.js",
-  "bin": "bin/lilacs.js",
+  "bin": "bin/lila.js",
   "dependencies": {
     "acorn": "^0.9.0",
     "amd-optimize": "^0.6.1",
@@ -68,7 +68,7 @@
   "description": "A web frontend building tool for teamwork, with automaticly compiling, merging, minifying, syncing files to server, supporting distributed servers, ensuring css or html files' inline reference with correct absolute path, and more.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/senntyou/lilacs"
+    "url": "https://github.com/senntyou/lila"
   },
   "keywords": [
     "web",
@@ -81,8 +81,8 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/senntyou/lilacs/issues"
+    "url": "https://github.com/senntyou/lila/issues"
   },
-  "homepage": "https://github.com/senntyou/lilacs",
+  "homepage": "https://github.com/senntyou/lila",
   "readmeFilename": "README.md"
 }

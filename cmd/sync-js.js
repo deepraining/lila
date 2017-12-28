@@ -10,7 +10,7 @@ var changeCwd = require('../util/change_cwd');
 if (!vars.argv.globModule) {
     logger.error('Missing module name for command: sync-js.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs sync-js <name>');
+    logger.log('lila sync-js <name>');
     process.exit(0);
 }
 

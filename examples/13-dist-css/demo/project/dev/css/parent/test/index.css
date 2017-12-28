@@ -1,8 +1,0 @@
-
-@import "inner/index.css";
-
-/* start here */
-.parent-test-index {
-    color: red;
-    background-image: url("../../../../images/common/test.png");
-}

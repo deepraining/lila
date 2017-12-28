@@ -1,6 +1,6 @@
 # Files&directories mapping
 
-defined in `lilacs.config.js` of project, and handle `dev` directory.
+defined in `lila.config.js` of project, and handle `dev` directory.
 
 ## files mapping
 
@@ -51,7 +51,3 @@ dirsMap: [
 * key&value: dirType + dir, dirType can be one of html/js/css.
 * key: actually existed directory, and will be replaced when building.
 * value: to replace other directory when building.
-
-### note
-
-* it's recommended not use directory mapping to html, when you use `requireJs`.

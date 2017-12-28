@@ -60,7 +60,7 @@ module.exports = [
     },
     {
         name: 'init-clean',
-        desc: 'Init clean task by generate a config file \'lilacs.clean.config.js\' in current directory.'
+        desc: 'Init clean task by generate a config file \'lila.clean.config.js\' in current directory.'
     },
     {
         name: 'revert',

@@ -9,7 +9,7 @@ var vars = require('../data/vars');
 if (!vars.argv.globModule) {
     logger.error('Missing module for command: compile.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs compile <name>');
+    logger.log('lila compile <name>');
     process.exit(0);
 }
 

@@ -15,7 +15,7 @@ var moduleName = vars.argv._[1];
 if (!moduleName) {
     logger.error('Missing module name for command: add.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs add <name>');
+    logger.log('lila add <name>');
     process.exit(0);
 }
 
@@ -32,11 +32,11 @@ var jsFilePath =  projectConfig.basePaths.buildRoot + '/dev/js/' + moduleName + 
 var cssFilePath = projectConfig.basePaths.buildRoot + '/dev/css/' + moduleName + '.css';
 
 // source html file path
-var sourceHtmlFilePath = vars.lilacsRoot + '/project_files/demo/base.html';
+var sourceHtmlFilePath = vars.lilaRoot + '/project_files/demo/base.html';
 // source js file path
-var sourceJsFilePath = vars.lilacsRoot + '/project_files/demo/base.js';
+var sourceJsFilePath = vars.lilaRoot + '/project_files/demo/base.js';
 // source css file path
-var sourceCssFilePath = vars.lilacsRoot + '/project_files/demo/base.css';
+var sourceCssFilePath = vars.lilaRoot + '/project_files/demo/base.css';
 
 /**
  * module directory level

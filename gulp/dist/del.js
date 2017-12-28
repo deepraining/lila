@@ -26,13 +26,5 @@ module.exports = {
     // delete extract
     delExtract: () =>  {
         return del([projectConfig.buildPaths.extract.dir], {force: !0});
-    },
-    // delete extract require js
-    delExtractJs: () =>  {
-        return del([projectConfig.buildPaths.extractJs.dir], {force: !0});
-    },
-    // delete extract css by InCss
-    delExtractCss: () =>  {
-        return del([projectConfig.buildPaths.extractCss.dir], {force: !0});
     }
 };

@@ -19,7 +19,7 @@ global.logger = logger;
 // command name
 var command = vars.argv._ && vars.argv._[0];
 // file path corresponding to command
-var commandPath = vars.lilacsRoot + '/cmd/' + command + '.js';
+var commandPath = vars.lilaRoot + '/cmd/' + command + '.js';
 
 // has command
 if (command && fs.existsSync(commandPath)) {

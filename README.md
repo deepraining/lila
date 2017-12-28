@@ -1,4 +1,4 @@
-# lilacs
+# lila
 
 A web frontend building tool for teamwork, with many amazing functionalities:
 
@@ -14,22 +14,22 @@ A web frontend building tool for teamwork, with many amazing functionalities:
 
 ## Quick start
 
-Install lilacs: 
+Install lila: 
 
 ```
-npm install lilacs -g
+npm install lila -g
 ```
 
 or in China, you can use [cnpm](https://github.com/cnpm/cnpm):
 
 ```
-cnpm install lilacs -g
+cnpm install lila -g
 ```
 
 New project
 
 ```
-lilacs new lilacs-demo
+lila new lila-demo
 ```
 
 ## Documents

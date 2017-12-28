@@ -1,3 +1,3 @@
-# lilacs-demo
+# lila-demo
 
-a [lilacs](https://github.com/senntyou/lilacs) project
+a [lila](https://github.com/senntyou/lila) project

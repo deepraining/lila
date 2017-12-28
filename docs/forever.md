@@ -3,7 +3,7 @@
 start servers, and not keep command line always being active.
 
 ```
-lilacs forever <forever command name> [server type] [forever command args]
+lila forever <forever command name> [server type] [forever command args]
 ```
 
 ### arguments
@@ -16,9 +16,9 @@ lilacs forever <forever command name> [server type] [forever command args]
 
 ### example
 
-* `lilacs forever start` : forever start local server 
-* `lilacs forever stop` : forever stop local server 
-* `lilacs forever restart` : forever restart local server
-* `lilacs forever start default`: the same with `lilacs forever start`
-* `lilacs forever start mock-express`: forever start express data mock server
+* `lila forever start` : forever start local server 
+* `lila forever stop` : forever stop local server 
+* `lila forever restart` : forever restart local server
+* `lila forever start default`: the same with `lila forever start`
+* `lila forever start mock-express`: forever start express data mock server
 

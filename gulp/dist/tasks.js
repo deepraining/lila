@@ -77,10 +77,7 @@ module.exports = (gulp) => {
                 copyDirectoriesToBuild,
                 copyJs,
                 copyCss,
-                copyDirectoriesToBuildForInCss
-            ],
-            _.fill(new Array(distData.currentConfig.useInCss ? distData.currentConfig.inCssAllModules.length : 0), concatCssForImport),
-            [
+                copyDirectoriesToBuildForInCss,
                 adjustHtmlForRequireJsToTagLoad,
                 adjustHtmlForInCssToTagLoad,
                 extractResourcesToConcat

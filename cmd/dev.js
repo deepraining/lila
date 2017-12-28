@@ -15,7 +15,7 @@ var moduleName = vars.argv.module;
 if (!moduleName) {
     logger.error('Missing module name for command: dev.\n');
     logger.log('You can use this command like follows:');
-    logger.log('lilacs dev <name>');
+    logger.log('lila dev <name>');
     process.exit(0);
 }
 

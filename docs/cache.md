@@ -2,7 +2,7 @@
 
 default only html/js/css can disable cache through revision.
 if you want all resources can disable cache, just put other resources(images, fonts, media, ...) into `dev` directory,
-and also you should mark the directories added in `lilacs.config.js`.
+and also you should mark the directories added in `lila.config.js`.
 
 ```
 directoriesToBuild: [
