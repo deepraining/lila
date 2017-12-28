@@ -223,38 +223,27 @@ see [Project config - doc](./config/doc.md)
 
 see [group of modules](./group.md)
 
-## useWebpack
-
-* `desc`: whether use [webpack](https://github.com/webpack/webpack) to build project.
-* `default`: `false`
-* `detail`: see [use webpack to build](./webpack.md)
-
 ## resolveAlias
 
 * `desc`: see [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
 * `default`: empty
 * `detail`: the base directory is `src/js`, and this only do to js files.
-* `note`: it will take effect when `useWebpack` is `true`
 
 ## packCssSeparately
 
 * `bg`: normally, all js and css files will be built into one file.
 * `desc`: whether to pack css separately into a single css file when use [webpack](https://github.com/webpack/webpack) to build project.
 * `default`: `false`
-* `note`: it will take effect when `useWebpack` is `true`
 
 ##  splitJs
 
 * `bg`: normally, all js files will be built into one file.
 * `desc`: whether to split one big js file into many smaller js files when use [webpack](https://github.com/webpack/webpack) to build project.
 * `default`: `false`
-* `note`: it will take effect when `useWebpack` is `true`
 
 ##  splitJsMap
 
 * `desc`: indicates how to split js file.
 * `default`: empty
 * `detail`: see [use webpack to build](./webpack.md)
-* `note`:
-    - this always be configured in custom config of current module. 
-    - it will take effect when `useWebpack` is `true`
+* `note`: this always be configured in custom config of current module.

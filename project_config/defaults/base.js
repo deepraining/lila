@@ -38,8 +38,6 @@ var defaults = {
     skipNotExistingFiles: false,
     // whether auto add vendor prefixes to rules of css
     cssAutoPrefix: true,
-    // whether use webpack to build project
-    useWebpack: false,
     // whether to pack css separately into a single css file
     packCssSeparately: false,
     // whether to split one big js file into many smaller js files

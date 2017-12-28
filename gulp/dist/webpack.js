@@ -4,11 +4,6 @@ var webpack = require('webpack');
 var distData = require('./data');
 
 var webpackBuild = (cb) => {
-    if (!distData.currentConfig.useWebpack) {
-        cb();
-        return;
-    }
-
     webpack(distData.currentConfig.webpackBuildConfig, (err, stats) => {
         if (err) {
             logger.error(err.stack || err);

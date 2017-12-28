@@ -75,28 +75,16 @@ module.exports = (config) => {
      * @type {Array}
      */
     var formattedModules = [];
-    /**
-     * modules after removing module which be mapped
-     *
-     * @type {Array}
-     */
-    var modulesWithoutMappedFile = [];
 
     // handle comma
     if (hasCommaMark) modules = module.split(',');
     else modules = [module];
 
-
     modules.forEach((item) => {
         formattedModules = _.concat(formattedModules, getModules(item, config));
     });
-    formattedModules.forEach((item) => {
-        config.processingData.mappedFiles.indexOf(item) === -1 && modulesWithoutMappedFile.push(
-            item.slice(-5) == '.html' ? item.slice(0, -5) : item
-        );
-    });
 
-    config.modules = modulesWithoutMappedFile;
+    config.modules = formattedModules;
     config.multiModules = !0;
     config.module = config.modules[config.processingData.moduleIndex];
     fillModuleFields(config);
