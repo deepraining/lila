@@ -22,7 +22,7 @@ rd.eachFileFilterSync('${info.dataPath}', (file) => {
 });
 
 app.listen(${info.port}, () => {
-    console.log('\\nLilacs listening on port ${info.port} successfully!\\n');
+    console.log('\\nLila listening on port ${info.port} successfully!\\n');
 });
     `
 };

@@ -7,9 +7,9 @@ var cmdName = process.argv[2];
 var moduleName = process.argv[3];
 
 // commands needs module argument
-var needsModule = {dev: !0, dist: !0, sync: !0, server: !0};
+var needsModule = {dev: !0, dist: !0, sync: !0, 'dist-js': !0, 'sync-js': !0};
 // commands needs glob module argument
-var needsGlobModule = {compile: !0, cp: !0, 'dist-js': !0, 'sync-js': !0, 'dist-css': !0, 'sync-css': !0};
+var needsGlobModule = {'dist-css': !0, 'sync-css': !0};
 
 // convert moduleName to argument
 if ((needsModule[cmdName] || needsGlobModule[cmdName]) && moduleName && moduleName.slice(0, 1) != '-') {

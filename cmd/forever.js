@@ -75,8 +75,8 @@ if (existContent != newContent) {
 
 var shellResult = shell.exec('forever ' + process.argv[3] + ' ' + serverFilePath + ' ' +  process.argv.slice(specifiedServerType ? 5 : 4).join(' '));
 if (shellResult.code !== 0) {
-    shell.echo(`Lilacs handle server failed for action [${process.argv[3]}], please try again`);
+    shell.echo(`Lila handle server failed for action [${process.argv[3]}], please try again`);
     shell.exit(1);
 }
 
-logger.success(`Lilacs ${process.argv[3]} ${serverType} server success for port[${serverPort}]`);
+logger.success(`Lila ${process.argv[3]} ${serverType} server success for port[${serverPort}]`);

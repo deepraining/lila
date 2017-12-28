@@ -25,8 +25,8 @@ module.exports = {
     /**
      * build options, do following works:
      *     1. whether minify html/css/js files
-     *     2. whether merge html/css/js files
-     *     3. whether make async load to sync
+     *     2. whether split js file
+     *     3. whether pack css into a single file
      *     ...
      */
     buildOptions: [

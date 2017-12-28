@@ -80,4 +80,4 @@ _.forEach(data, (value, key) => {
 });
 fsExtra.outputFileSync(htmlFilePath, htmlTmpContent);
 
-logger.success('Lilacs add module ' + moduleName + ' successful!');
+logger.success('Lila add module ' + moduleName + ' successful!');

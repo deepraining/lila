@@ -59,4 +59,4 @@ fsExtra.outputFileSync(
     fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/README.md', 'utf8')
 );
 
-logger.success('Lilacs new project ' + projectName + ' successfully!');
+logger.success('Lila new project ' + projectName + ' successfully!');

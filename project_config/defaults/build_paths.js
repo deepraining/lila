@@ -7,12 +7,12 @@ var vars = require('../../data/vars');
  * get paths
  * @param root
  * @param dir
- * @param addLilacsPrefix
+ * @param addLilaPrefix
  * @returns {{dir: string, js: string, less: string, html: string}}
  */
-var getPaths = (root, dir, addLilacsPrefix) => {
+var getPaths = (root, dir, addLilaPrefix) => {
 
-    var dirName = (addLilacsPrefix ? 'lila_' : '') + dir;
+    var dirName = (addLilaPrefix ? 'lila_' : '') + dir;
 
     return {
         dirName: dirName,
