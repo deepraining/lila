@@ -52,17 +52,6 @@ lila sync moduleName [-e 0(1,2)]
 
 * can take with argument env/e
 
-### `compile/cp`: compile files from `src` to `dev` manually
-
-```
-lila compile module
-# or
-lila cp module
-```
-
-* `module`: moduleName + fileExtensionName(if fileExtensionName is not provided, default is js), example: `test/index.js`, `test/index.less`
-* support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*.js`, `test/**/*`, `test/*.less`
-
 ### `mock-express`: use [express](https://github.com/expressjs/express) to provide data mock
 
 ```

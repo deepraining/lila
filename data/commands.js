@@ -23,20 +23,8 @@ module.exports = [
         desc: 'Do production tasks, then sync files to remote.'
     },
     {
-        name: 'watch',
-        desc: 'Watch files\' changes for compiling.'
-    },
-    {
         name: 'server',
         desc: 'Start local server for debug.'
-    },
-    {
-        name: 'compile',
-        desc: 'Compile files from src to dev manually.'
-    },
-    {
-        name: 'cp',
-        desc: 'Alias of command compile.'
     },
     {
         name: 'mock-express',

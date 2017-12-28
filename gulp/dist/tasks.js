@@ -5,15 +5,12 @@ var projectConfig = require('../../project_config');
 var distDel = require('./del');
 var distCopy = require('./copy');
 var distExtract = require('./extract');
-var distConcat = require('./concat');
 var distChange = require('./change');
-var distAdjust = require('./adjust');
 var distAdjustBase = require('./adjust_base');
 var distRevision = require('./revision');
 var distNextBase = require('./next_base');
 var distMin = require('../dist/min');
 var distHtml = require('../dist/html');
-var distFind = require('../dist/find');
 var webpackBuild = require('../dist/webpack');
 var distData = require('./data');
 
@@ -38,17 +35,6 @@ module.exports = (gulp) => {
     var findChangedBase = distChange.findChangedBase(gulp);
     var findChangedJs = distChange.findChangedJs(gulp);
     var findChangedCss = distChange.findChangedCss(gulp);
-
-    var concatJs = distConcat.concatJs(gulp);
-    var concatCss = distConcat.concatCss(gulp);
-    var concatCssForImport = distConcat.concatCssForImport(gulp);
-
-    var adjustHtmlForConcatJs = distAdjust.adjustHtmlForConcatJs;
-    var adjustHtmlForConcatCss = distAdjust.adjustHtmlForConcatCss;
-    var adjustHtmlForRequireJs = distAdjust.adjustHtmlForRequireJs;
-    var adjustHtmlForInCss = distAdjust.adjustHtmlForInCss;
-    var adjustHtmlForInCssToTagLoad = distAdjust.adjustHtmlForInCssToTagLoad;
-    var adjustHtmlForRequireJsToTagLoad = distAdjust.adjustHtmlForRequireJsToTagLoad;
 
     var adjustCss = distAdjustBase.adjustCss(gulp);
     var adjustHtml = distAdjustBase.adjustHtml(gulp);
@@ -78,21 +64,10 @@ module.exports = (gulp) => {
                 copyJs,
                 copyCss,
                 copyDirectoriesToBuildForInCss,
-                adjustHtmlForRequireJsToTagLoad,
-                adjustHtmlForInCssToTagLoad,
-                extractResourcesToConcat
-            ],
-            _.fill(new Array(distData.currentConfig.needConcatJs ? _.keys(distData.currentConfig.concatJsPriority).length : 0), concatJs),
-            _.fill(new Array(distData.currentConfig.needConcatCss ? _.keys(distData.currentConfig.concatCssPriority).length : 0), concatCss),
-            _.fill(new Array(distData.currentConfig.hasExtraJsEntryModules ? distData.currentConfig.extraJsEntryModules.length : 0), copyExtraJs),
-            [
-                adjustHtmlForConcatJs,
-                adjustHtmlForConcatCss,
+                extractResourcesToConcat,
                 revisionJs,
-                adjustHtmlForRequireJs,
                 findChangedJs,
                 revisionCss,
-                adjustHtmlForInCss,
                 findChangedCss,
                 revisionBase,
                 findChangedBase,

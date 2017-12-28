@@ -38,15 +38,6 @@ module.exports = {
         // format: key -> path
         images: "images", // images' directory, relative to basePaths.webRoot
         fonts: "fonts" // fonts' directory, relative to basePaths.webRoot
-    },
-    /**
-     * extra directories to build.
-     * default, build directories is only html/js/css under 'project/dev'.
-     * if you want extra directories to build, add it here.
-     */
-    directoriesToBuild: [
-        //"images", // image directory
-        //"fonts" // font directory
-    ]
+    }
 };
 

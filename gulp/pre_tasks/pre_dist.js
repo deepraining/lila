@@ -19,8 +19,6 @@ module.exports = (gulp) => {
     var copyManifests = distCopyBase.copyManifests;
     var copyDistStore = distCopyBase.copyDistStore;
 
-    var filesMap = distMisc.filesMap;
-    var dirsMap = distMisc.dirsMap;
     var logFirstModule = distMisc.logFirstModule;
 
     var findChangedDirectoriesToSync = distChangeBase.directoriesToSync;
@@ -38,8 +36,6 @@ module.exports = (gulp) => {
             delDist,
             copyDev,
             copyManifests,
-            dirsMap,
-            filesMap,
             logFirstModule
         ],
             distTasks(gulp),

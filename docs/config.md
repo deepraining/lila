@@ -7,7 +7,7 @@
 
 ## env
 
-* `desc`: environment index, used to get current `buildOption`, `networkOption`, `filesMap`, `dirsMap` ..., can and always be specified from command line.
+* `desc`: environment index, used to get current `buildOption`, `networkOption` ..., can and always be specified from command line.
 * `default`: `0`
 
 ## networkOptions
@@ -102,10 +102,6 @@ see [Project config - networkOptions](./config/network-options.md)
 }
 ```
 
-## directoriesToBuild
-
-see [all resources can disable cache](./cache.md)
-
 ## htmlReplace
 
 * `desc`: html replacement
@@ -140,18 +136,6 @@ see [all resources can disable cache](./cache.md)
 * `default`: empty
 * `detail`: `jsp`, `php` ...
 
-## concatJsPriority
-
-acquiescently, all js files will be merged into one single js file of the same name of module.
-
-if you want to split it into many files, see [Project config - concatPriority](./config/concat-priority.md)
-
-## concatCssPriority
-
-acquiescently, all css files will be merged into one single css file of the same name of module.
-
-if you want to split it into many files, see [Project config - concatPriority](./config/concat-priority.md)
-
 ## minJs
 
 * `desc`: whether mini js files
@@ -169,20 +153,6 @@ if you want to split it into many files, see [Project config - concatPriority](.
 * `desc`: whether mini html files
 * `default`: `false`
 * `detail`: `true` / `false`
-
-## concatJs
-
-* `desc`: whether merge js files
-* `default`: `false`
-* `detail`: `true` / `false`
-* `extra`: if you want some scripts not merged, you can add `data-lila-no-concat="1"` attribute to avoid it.
-
-## concatCss
-
-* `desc`: whether merge css files
-* `default`: `false`
-* `detail`: `true` / `false`
-* `extra`: if you want some scripts not merged, you can add `data-lila-no-concat="1"` attribute to avoid it.
 
 ## recordFileChanges
 
@@ -243,14 +213,6 @@ if you want to split it into many files, see [Project config - concatPriority](.
 ## doc
 
 see [Project config - doc](./config/doc.md)
-
-## filesMap
-
-see [files&directories mapping](./mapping.md)
-
-## dirsMap
-
-see [files&directories mapping](./mapping.md)
 
 ## moduleGroup
 
