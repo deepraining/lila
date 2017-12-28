@@ -14,7 +14,7 @@ checkConfigFile();
 var projectConfig = require('../project_config');
 var serverPath = projectConfig.basePaths.buildRoot + '/data';
 var webRootPath = projectConfig.basePaths.webRoot;
-var serverPort = projectConfig.mockExpressPort;
+var serverPort = projectConfig.mockExpressServerPort;
 
 changeCwd();
 

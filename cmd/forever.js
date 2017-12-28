@@ -10,7 +10,7 @@ var vars = require('../data/vars');
 var pathUtil = require('../util/path');
 var checkConfigFile = require('../util/check_config_file');
 var changeCwd = require('../util/change_cwd');
-var createServerFile = require('../util/create_server_file');
+var createStaticFile = require('../util/create_static_file');
 var createMockExpressFile = require('../util/create_mock_express_file');
 
 // forever command name
@@ -49,7 +49,7 @@ var webRootPath = pathUtil.replaceBackSlash(projectConfig.basePaths.webRoot);
 // build root
 var buildRoot = pathUtil.replaceBackSlash(projectConfig.basePaths.buildRoot);
 // server port
-var serverPort = [projectConfig.serverPort, projectConfig.mockExpressPort][serverTypeIndex];
+var serverPort = [projectConfig.staticServerPort, projectConfig.mockExpressServerPort][serverTypeIndex];
 
 changeCwd();
 
@@ -64,7 +64,7 @@ if (serverTypeIndex === 1) {
     newContent = createMockExpressFile({dataPath: buildRoot + '/data', webRootPath: webRootPath, port: serverPort});
 }
 else {
-    newContent = createServerFile({path: webRootPath, port: serverPort});
+    newContent = createStaticFile({path: webRootPath, port: serverPort});
 }
 
 // make server file

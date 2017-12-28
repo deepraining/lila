@@ -14,15 +14,20 @@
 
 see [Project config - networkOptions](./config/network-options.md)
 
-## serverPort
+## devServerPort
 
-* `desc`: local server port
+* `desc`: dev server port
 * `default`: 8090
 
-## mockExpressPort
+## mockExpressServerPort
 
 * `desc`: express data mock server port
 * `default`: 8190
+
+## staticServerPort
+
+* `desc`: static server port
+* `default`: 8290
 
 ## buildOptions
 

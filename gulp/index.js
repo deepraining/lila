@@ -24,13 +24,4 @@ module.exports = (gulp) => {
         // register task
         registerTask(gulp);
     });
-
-    // tasks in post_tasks directory
-    var postTasksDir = __dirname + '/post_tasks';
-    fs.readdirSync(postTasksDir).filter((file) => {
-        var registerTask = require(path.join(postTasksDir, file));
-
-        // register post task
-        registerTask(gulp);
-    });
 };

@@ -12,10 +12,12 @@ var defaults = {
      *          ...
      */
     env: 0,
-    // local server port
-    serverPort: 8090,
+    // dev server port
+    devServerPort: 8090,
     // express data mock server port
-    mockExpressPort: 8190,
+    mockExpressServerPort: 8190,
+    // static server port
+    staticServerPort: 8290,
     // whether mini js files
     minJs: false,
     // whether mini css files
