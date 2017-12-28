@@ -1,0 +1,17 @@
+
+/* start here */
+.test-index {
+    color: red;
+    background-image: url("../../../images/common/test.png");
+}
+.test-index2 {
+    background-image: url("../../images/test/index.png");
+}
+.test-index3 {
+    background-image: url("../../fonts/index.font");
+    transition: all .5s;
+    transform: translateY(100%);
+}
+.test-index3.active {
+    transform: translateY(0);
+}

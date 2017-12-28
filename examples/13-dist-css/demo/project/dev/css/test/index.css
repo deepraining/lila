@@ -1,0 +1,13 @@
+
+@import "inner/index.css";
+
+/* start here */
+.test-index {
+    color: red;
+    background-image: url("../../../images/common/test.png");
+    transition: all .5s;
+    transform: translateY(100%);
+}
+.test-index.active {
+    transform: translateY(0);
+}

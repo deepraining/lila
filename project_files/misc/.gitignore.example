@@ -1,0 +1,26 @@
+
+#
+# common ignores
+#
+.DS_Store
+node_modules
+bower_components
+npm-debug.log
+.idea
+
+#
+# building temporary directories
+#
+lilacs_*
+dist
+
+#
+# manifests directories
+#
+/manifests
+/manifests_bak
+
+#
+# lilacs server config
+#
+lilacs.server.config.js

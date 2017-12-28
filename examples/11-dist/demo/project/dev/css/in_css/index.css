@@ -1,0 +1,11 @@
+
+@import "index/index.css";
+
+/* start here */
+.in-css-index {
+    color: red;
+    background-image: url("../../../images/common/test.png");
+}
+.in-css-index2 {
+    background-image: url("../../images/test/index.png");
+}
