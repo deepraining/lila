@@ -3,7 +3,6 @@ var _ = require('lodash');
 
 var projectConfig = require('../../project_config');
 var distDel = require('./del');
-var distCopy = require('./copy');
 var distExtract = require('./extract');
 var distChange = require('./change');
 var distAdjustBase = require('./adjust_base');
@@ -16,25 +15,11 @@ var distData = require('./data');
 
 module.exports = (gulp) => {
 
-    var findRequireJsModules = distFind.findRequireJsModules;
-
-    var copyJs = distCopy.copyJs(gulp);
-    var copyCss = distCopy.copyCss(gulp);
-    var copyExtraJs = distCopy.copyExtraJs(gulp);
-    var copyDirectoriesToBuild = distCopy.copyDirectoriesToBuild(gulp);
-    var copyDirectoriesToBuildForInCss = distCopy.copyDirectoriesToBuildForInCss(gulp);
-    var copyDirectoriesOfBuildAfterDist = distCopy.copyDirectoriesOfBuildAfterDist(gulp);
-
     var extractResources = distExtract.extractResources(gulp);
-    var extractResourcesToConcat = distExtract.extractResourcesToConcat;
 
     var revisionBase = distRevision.revisionBase(gulp);
-    var revisionJs = distRevision.revisionJs(gulp);
-    var revisionCss = distRevision.revisionCss(gulp);
 
     var findChangedBase = distChange.findChangedBase(gulp);
-    var findChangedJs = distChange.findChangedJs(gulp);
-    var findChangedCss = distChange.findChangedCss(gulp);
 
     var adjustCss = distAdjustBase.adjustCss(gulp);
     var adjustHtml = distAdjustBase.adjustHtml(gulp);
@@ -49,8 +34,7 @@ module.exports = (gulp) => {
     var nextModule = distNextBase.nextModule;
 
     var delTasks = [
-        distDel.delExtract, distDel.delExtractJs, distDel.delExtractCss,
-        distDel.delDist, distDel.delDistTmp, distDel.delDistHandleHtml
+        distDel.delExtract, distDel.delDist, distDel.delDistTmp, distDel.delDistHandleHtml
     ];
 
     var getTask = () => {
@@ -58,24 +42,13 @@ module.exports = (gulp) => {
             delTasks,
             [
                 webpackBuild,
-                findRequireJsModules,
                 extractResources,
-                copyDirectoriesToBuild,
-                copyJs,
-                copyCss,
-                copyDirectoriesToBuildForInCss,
-                extractResourcesToConcat,
-                revisionJs,
-                findChangedJs,
-                revisionCss,
-                findChangedCss,
                 revisionBase,
                 findChangedBase,
                 adjustCss,
                 minCss,
                 minJs,
                 adjustHtml,
-                copyDirectoriesOfBuildAfterDist,
                 minHtml,
                 htmlHandle,
                 nextModule

@@ -12,19 +12,8 @@ module.exports = (gulp) => {
 
     var copyFiles = (cb) => {
 
-        // copy dev/js
-        fsExtra.copySync(projectConfig.buildPaths.dev.js, projectConfig.buildPaths.doc_tmp.dir);
-
         // copy src/js
         fsExtra.copySync(projectConfig.buildPaths.src.js, projectConfig.buildPaths.doc_tmp.dir);
-
-        // delete lib
-        var libPath = projectConfig.buildPaths.doc_tmp.dir + '/lib';
-        fs.existsSync(libPath) && fsExtra.removeSync(libPath);
-
-        // delete lib_extra
-        var libExtraPath = projectConfig.buildPaths.doc_tmp.dir + '/lib_extra';
-        fs.existsSync(libExtraPath) && fsExtra.removeSync(libExtraPath);
 
         // delete directories defined in projectConfig.doc.exclude
         if (projectConfig.doc && projectConfig.doc.exclude) {

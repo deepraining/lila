@@ -6,3 +6,5 @@
 - add `add` command
 - add `dev` command
 - add `mock-express` command
+- add `forever` command
+- add `doc` command
