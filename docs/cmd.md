@@ -97,27 +97,6 @@ lila sync-js module [-e 0(1,2)]
 * support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*`, `test/**/*`, `test/*`
 * can take with argument env/e
 
-### `dist-css`: make css files as main module, and do production task.
-
-```
-lila dist-css module [-e 0(1,2)] 
-```
-
-* `module`: css module name
-* support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*`, `test/**/*`, `test/*`
-* can take with argument env/e
-
-
-### `sync-css`: make css files as main module, and do production task, then sync files to remote.
-
-```
-lila sync-css module [-e 0(1,2)] 
-```
-
-* `module`: css module name
-* support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*`, `test/**/*`, `test/*`
-* can take with argument env/e
-
 ## arguments
 
 ### `env/e`: 

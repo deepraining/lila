@@ -8,17 +8,15 @@ var moduleName = process.argv[3];
 
 // commands needs module argument
 var needsModule = {dev: !0, dist: !0, sync: !0, 'dist-js': !0, 'sync-js': !0};
-// commands needs glob module argument
-var needsGlobModule = {'dist-css': !0, 'sync-css': !0};
 
 // convert moduleName to argument
-if ((needsModule[cmdName] || needsGlobModule[cmdName]) && moduleName && moduleName.slice(0, 1) != '-') {
+if (needsModule[cmdName] && moduleName && moduleName.slice(0, 1) != '-') {
 
     // remove origin moduleName
     process.argv.splice(3, 1);
 
-    // add module/globModule argument
-    process.argv.push('--' + (needsModule[cmdName] ? 'module' : 'globModule'));
+    // add module argument
+    process.argv.push('--' + 'module');
     process.argv.push(moduleName);
 }
 

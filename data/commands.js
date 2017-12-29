@@ -61,13 +61,5 @@ module.exports = [
     {
         name: 'sync-js',
         desc: 'Make javascript files as main module, and do production task, then sync files to remote.'
-    },
-    {
-        name: 'dist-css',
-        desc: 'Make css files as main module, and do production task.'
-    },
-    {
-        name: 'sync-css',
-        desc: 'Make css files as main module, and do production task, then sync files to remote.'
     }
 ];
