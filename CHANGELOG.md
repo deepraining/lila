@@ -14,3 +14,4 @@
 - add `clean` command
 - add `revert` command
 - add `dist` command
+- add `sync` command
