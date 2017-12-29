@@ -1,6 +1,6 @@
 # lila
 
----------- if you are using [requireJs](https://github.com/requirejs/requirejs), please go to [lilacs](https://github.com/senntyou/lilacs) ----------
+========== if you are using [requireJs](https://github.com/requirejs/requirejs), please go to [lilacs](https://github.com/senntyou/lilacs) ==========
 
 A web frontend building tool for teamwork, with many amazing functionalities:
 
