@@ -1,10 +1,6 @@
-# use webpack to build
+# Config webpack
 
-## coding requirements
-
-1. here must have a `js` file which name is the same as html.
-2. `html` file is located in `dev/html`; source `js` file is located in `src/js`; built `js` file is located in `dev/js`.
-3. `js` in `html` should load as follows: 
+## coding
 
 * in developing, all js and css files will be built into a single js file, whose name is the same as the html.
    
@@ -72,3 +68,4 @@ example(current module is `test/index`):
 ## note
 
 1. other resources like images, fonts, and more, should use absolute path to reference it.
+2. `splitJsMap` should be defined in custom config.

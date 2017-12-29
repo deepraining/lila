@@ -7,7 +7,7 @@
 
 ## env
 
-* `desc`: environment index, used to get current `buildOption`, `networkOption` ..., can and always be specified from command line.
+* `desc`: environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
 * `default`: `0`
 
 ## networkOptions

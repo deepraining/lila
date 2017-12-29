@@ -12,7 +12,7 @@ module.exports = [
     },
     {
         name: 'dev',
-        desc: 'Watch files\' changes for compiling, and start server to load current module.'
+        desc: 'Watch files\' changes, with hot replacing and reloading, and start a local server for debug.'
     },
     {
         name: 'dist',

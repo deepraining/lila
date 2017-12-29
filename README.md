@@ -34,13 +34,13 @@ lila new lila-demo
 ## Documents
 
 1. [directory specification](./docs/dir.md)
-2. [writing code](./docs/code.md)
-3. [command line](./docs/cmd.md)
-4. [server side command line](./docs/cmd-server.md)
-5. [project config](./docs/config.md)
+2. [module files](./docs/file.md)
+3. [project config](./docs/config.md)
+4. [command line](./docs/cmd.md)
+5. [server side command line](./docs/cmd-server.md)
 6. [group of modules](./docs/group.md)
 7. [custom config for every module](./docs/custom.md)
 8. [use express to mock data](./docs/express.md)
 9. [with forever](./docs/forever.md)
-10. [use webpack to build](./docs/webpack.md)
+10. [config webpack](./docs/webpack.md)
 11. [use react](./docs/react.md)

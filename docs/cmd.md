@@ -12,25 +12,13 @@ lila <command> [args]
 lila new projectName
 ```
 
-### `add`: add a module to current directory
+### `add`: add a module
 
 ```
 lila add moduleName
 ```
 
-### `watch`: watch files' changes, and compile files from `src` to `dev`
-
-```
-lila watch
-```
-
-### `server`: start a local server for debug
-
-```
-lila server moduleName
-```
-
-### `dev`: watch files' changes, and compile files from `src` to `dev`, and start a local server for debug
+### `dev`: watch files' changes, with hot replacing and reloading, and start a local server for debug
 
 ```
 lila dev moduleName
