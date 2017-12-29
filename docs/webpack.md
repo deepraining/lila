@@ -2,10 +2,10 @@
 
 ## coding
 
-* in developing, all js and css files will be built into a single js file, whose name is the same as the html.
+* in developing, all js and css files will be built into a single js file, into `dev/js` directory, whose name is the same as the html.
    
 ```
-<!-- if current html is test/index -->
+<!-- if current module is test/index -->
 
 <script src="../../js/test/index.js"></script>
 ```
@@ -13,9 +13,10 @@
 * in production, if `packCssSeparately` is `true`, code should be written as follows:
 
 ```
-<!-- if current html is test/index -->
+<!-- if current module is test/index -->
 
-<link rel="stylesheet" href="../../js/test/index.js">
+<link rel="stylesheet" href="../../css/test/index.css">
+
 <script src="../../js/test/index.js"></script>
 ```
 
@@ -30,9 +31,10 @@ splitJsMap: {
 }
 
 # html file
-<!-- if current html is test/index -->
+<!-- if current module is test/index -->
 
-<link rel="stylesheet" href="../../js/test/index.js">
+<link rel="stylesheet" href="../../css/test/index.css">
+
 <script src="../../js/test/index_lib.js"></script>
 <script src="../../js/test/index_common.js"></script>
 <script src="../../js/test/index_base.js"></script>
@@ -63,7 +65,7 @@ example(current module is `test/index`):
     - `dev/js/test/index_common.js`
     - `dev/js/test/index_base.js`
     
-* `value`: a array, modules collection. indicates which modules to pack.
+* `value`: a array, js modules collection. indicates which js modules to pack.
 
 ## note
 

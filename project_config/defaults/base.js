@@ -37,7 +37,7 @@ var defaults = {
     // whether skip not existing files when build
     skipNotExistingFiles: false,
     // whether auto add vendor prefixes to rules of css
-    cssAutoPrefix: true,
+    cssAutoPrefix: false,
     // whether to pack css separately into a single css file
     packCssSeparately: false,
     // whether to split one big js file into many smaller js files

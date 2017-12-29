@@ -207,7 +207,7 @@ see [Project config - networkOptions](./config/network-options.md)
 ## cssAutoPrefix
 
 * `desc`: whether auto add vendor prefixes to rules of css, such as `-webkit-, -moz-, -o-, -ms-`.
-* `default`: `true`
+* `default`: `false`
 * `detail`: `true` / `false`
 
 ## autoPrefixOption
