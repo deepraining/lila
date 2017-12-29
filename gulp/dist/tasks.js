@@ -15,9 +15,9 @@ var distData = require('./data');
 
 module.exports = (gulp) => {
 
-    var extractResources = distExtract.extractResources(gulp);
+    var extract = distExtract(gulp);
 
-    var revisionBase = distRevision.revisionBase(gulp);
+    var revision = distRevision(gulp);
 
     var findChangedBase = distChange.findChangedBase(gulp);
 
@@ -29,7 +29,7 @@ module.exports = (gulp) => {
     var minJs = distMin.minJs(gulp);
     var minHtml = distMin.minHtml(gulp);
 
-    var htmlHandle = distHtml.htmlHandle(gulp);
+    var htmlHandle = distHtml(gulp);
 
     var nextModule = distNext.nextModule;
 
@@ -42,8 +42,8 @@ module.exports = (gulp) => {
             delTasks,
             [
                 webpackBuild,
-                extractResources,
-                revisionBase,
+                extract,
+                revision,
                 findChangedBase,
                 adjustCss,
                 minCss,

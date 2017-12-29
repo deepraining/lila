@@ -29,29 +29,27 @@ var htmlToSpecifiedExt = (stream) => {
     stream.pipe(rename({extname: "." + distData.currentConfig.htmlToSpecifiedExt}));
 };
 
-module.exports = {
-    /**
-     * 1. replacement
-     * 2. insertion
-     * 3. converting
-     *
-     * all the 3 steps must do in one time
-     */
-    htmlHandle: (gulp) => {
-        return function htmlHandle() {
-            var stream;
+/**
+ * 1. replacement
+ * 2. insertion
+ * 3. converting
+ *
+ * all the 3 steps must do in one time
+ */
+module.exports = (gulp) => {
+    return function htmlHandle() {
+        var stream;
 
-            stream = gulp.src(distData.currentConfig.buildPaths.distHandleHtml.html + '/**/*.html');
-            if (distData.currentConfig.hasHtmlReplace)
-                htmlReplace(stream);
-            if (distData.currentConfig.hasHtmlInsert)
-                htmlInsert(stream);
-            if (distData.currentConfig.hasHtmlToSpecifiedExt)
-                htmlToSpecifiedExt(stream);
+        stream = gulp.src(distData.currentConfig.buildPaths.distHandleHtml.html + '/**/*.html');
+        if (distData.currentConfig.hasHtmlReplace)
+            htmlReplace(stream);
+        if (distData.currentConfig.hasHtmlInsert)
+            htmlInsert(stream);
+        if (distData.currentConfig.hasHtmlToSpecifiedExt)
+            htmlToSpecifiedExt(stream);
 
-            stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.html));
+        stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.html));
 
-            return stream;
-        }
+        return stream;
     }
 };

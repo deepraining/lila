@@ -21,8 +21,6 @@ rd.eachFileFilterSync('${info.dataPath}', (file) => {
     app.all('/' + url, require(file));
 });
 
-app.listen(${info.port}, () => {
-    console.log('\\nLila listening on port ${info.port} successfully!\\n');
-});
+app.listen(${info.port});
     `
 };

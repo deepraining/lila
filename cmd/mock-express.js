@@ -51,7 +51,5 @@ rd.eachFileFilterSync(serverPath, (file) => {
 });
 
 app.listen(serverPort, () => {
-    logger.success('');
     logger.success(`Lila start express mock server on port ${serverPort} successfully!`);
-    logger.success('');
 });

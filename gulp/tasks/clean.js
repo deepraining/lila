@@ -42,8 +42,7 @@ module.exports = (gulp) => {
         // js directory
         doDelete(vars.projectRoot + '/dist/js');
 
-        deletedFilesCount && logger.log('');
-        logger.success(`${deletedFilesCount} redundant files are deleted successfully.`);
+        logger.success(`${deletedFilesCount} redundant files are deleted successfully.`, !0, !0);
 
         cb();
     };

@@ -17,7 +17,7 @@ var createMockExpressFile = require('../util/create_mock_express_file');
 var foreverCmdName = vars.argv._[1];
 
 if (!foreverCmdName) {
-    logger.error('Missing forever command name for lila command: forever.\n');
+    logger.error('Missing forever command name for lila command: forever.', !0, !0);
     logger.log('You can use this command like follows:');
     logger.log('lila forever <forever command name>');
     process.exit(0);

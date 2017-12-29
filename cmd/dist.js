@@ -10,7 +10,7 @@ var changeCwd = require('../util/change_cwd');
 var moduleName = vars.argv.module;
 
 if (!moduleName) {
-    logger.error('Missing module name for command: dist.\n');
+    logger.error('Missing module name for command: dist.', !0, !0);
     logger.log('You can use this command like follows:');
     logger.log('lila dist <name>');
     process.exit(0);

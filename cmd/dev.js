@@ -11,7 +11,7 @@ var vars = require('../data/vars');
 var moduleName = vars.argv.module;
 
 if (!moduleName) {
-    logger.error('Missing module name for command: dev.\n');
+    logger.error('Missing module name for command: dev.', !0, !0);
     logger.log('You can use this command like follows:');
     logger.log('lila dev <name>');
     process.exit(0);

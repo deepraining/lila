@@ -5,20 +5,31 @@ var chalk = require('chalk');
 
 var prefix = '| ';
 
+/**
+ *
+ * @param str
+ * @param pre Pre next line
+ * @param post Post next line
+ * @returns {string}
+ */
+var getString = (str, pre, post) => {
+    return (pre ? '\n' : '') + prefix + str + (post ? '\n' : '');
+};
+
 module.exports = {
-    log: (str) => {
-        console.log(prefix + str);
+    log: (str, pre, post) => {
+        console.log(getString(str, pre, post));
     },
-    info: (str) => {
-        console.info(chalk.blue(prefix + str));
+    info: (str, pre, post) => {
+        console.info(getString(str, pre, post));
     },
-    warn: (str) => {
-        console.warn(chalk.yellow(prefix + str));
+    warn: (str, pre, post) => {
+        console.warn(getString(str, pre, post));
     },
-    error: (str) => {
-        console.error(chalk.red(prefix + str));
+    error: (str, pre, post) => {
+        console.error(getString(str, pre, post));
     },
-    success: (str) => {
-        console.log(chalk.green(prefix + str));
+    success: (str, pre, post) => {
+        console.log(getString(str, pre, post));
     }
 };

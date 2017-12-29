@@ -13,7 +13,7 @@ var projectName = vars.argv._[1];
 
 // no project name
 if (!projectName) {
-    logger.error('Missing project name for command: new.\n');
+    logger.error('Missing project name for command: new.', !0, !0);
     logger.log('You can use this command like follows:');
     logger.log('lila new <name>');
     process.exit(0);
