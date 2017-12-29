@@ -10,3 +10,4 @@
 - add `doc` command
 - add `archive` command
 - add `arc` command
+- add `init-clean` command
