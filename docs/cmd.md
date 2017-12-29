@@ -4,7 +4,6 @@
 lila <command> [args]
 ```
 
-## detail commands
 
 ### `new`: new a project
 
@@ -30,15 +29,15 @@ lila dev moduleName
 lila dist moduleName [-e 0(1,2)] 
 ```
 
-* can take with argument env/e
+* can take with argument `env/e`
 
-### `sync`: upload production files to server
+### `sync`: do production task, then upload production files to server
 
 ```
 lila sync moduleName [-e 0(1,2)] 
 ```
 
-* can take with argument env/e
+* can take with argument `env/e`
 
 ### `mock-express`: use [express](https://github.com/expressjs/express) to provide data mock
 
@@ -68,7 +67,7 @@ lila doc
 
 ### `env/e`: 
 
-* specify current environment through command line, example:  `-e 0` or `-e test`, `-e 1`, or `-e prod`.
+* specify current environment through command line, example:  `-e 0`, `-e 1`.
 * if env is string, default is `test=0, prod/production=1`, or you can config it in envAlias of [project config](./config.md);
 * if env is not provided, default is 0
 

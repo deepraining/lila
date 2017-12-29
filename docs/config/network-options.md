@@ -65,8 +65,8 @@ empty
 
 if you are using distributed servers, or just want to make html and other resources separately, and upload to different servers, here is what you are looking for.
 
-* `web` means where to upload html files to. if `serverType: "web"`, html files will uploaded, relative to `dist` directory. 
-* `static` means where to upload all resources to. if `serverType: "web"`, all built files will uploaded, relative to `config.webRoot` directory.
+* `web` means where to upload html files to. if `serverType: "web"`, html files will upload to it, relative to `dist` directory. 
+* `static` means where to upload all resources to. if `serverType: "static"`, all built files will upload to it, relative to `config.webRoot` directory.
 * you can use multi web servers and multi static servers, no upper limit.
 
 ### note

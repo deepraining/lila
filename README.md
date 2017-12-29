@@ -2,10 +2,10 @@
 
 ========== if you are using [requireJs](https://github.com/requirejs/requirejs), please go to [lilacs](https://github.com/senntyou/lilacs) ==========
 
-A web frontend building tool for teamwork, with many amazing functionalities:
+A web building tool for teamwork, with many amazing functionalities:
 
 * do everything with command line.
-* automatically building, and sync to server.
+* automatically building, and then uploading to server.
 * multi environment, multi servers, web/static separated servers.
 * hash code revision to disabled client cache.
 * absolute css/html inline resource reference.

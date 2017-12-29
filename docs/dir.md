@@ -15,8 +15,8 @@
     | - ...
 ```
 
-* `src`: Source directory. Source codes directory, like `css, less, js(es6)` 
-* `dev`: Develop directory. All files in this directory are used to debug in browser. 
+* `src`: Source directory. Source codes directory, like `css, less, js)` 
+* `dev`: Developing directory. Directory to debug in browser. 
 * `dist`: Production directory. Generated after building. 
 
 

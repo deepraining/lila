@@ -2,7 +2,6 @@
 
 commands to manage server side production files.
 
-## detail commands 
 
 ### `archive/arc`: archive files of dist directory into a zip package 
 
@@ -33,12 +32,12 @@ lila init-clean
 
 * this command will generate a `lila.clean.config.js` in current working directory, and you can modify it as you want.
 
-### `revert`: revert dist directory to last state.
+### `revert`: revert dist directory to latest previous state.
 
 ```
 lila revert [-i,--index(1,2,3)]
 ```
 
 * current working directory should be the parent directory of dist.
-* this command will be used after done `clean` command, and you want to restore it.
-* can take with argument `index(i)`, to specify revert to last nth state, default is `1`
+* this command should be used after done `clean` command, and you want to restore it.
+* can take with argument `index(i)`, to specify revert to latest nth state, default is `1`

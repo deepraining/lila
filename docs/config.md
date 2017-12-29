@@ -31,7 +31,7 @@ see [Project config - networkOptions](./config/network-options.md)
 
 ## buildOptions
 
-* `desc`: build option of current environment can override config root attribute
+* `desc`: build option of current environment. it can override config root attribute
 * `default`: empty
 * `detail`: 
 
@@ -232,18 +232,18 @@ see [group of modules](./group.md)
 ## packCssSeparately
 
 * `bg`: normally, all js and css files will be built into one file.
-* `desc`: whether to pack css separately into a single css file when use [webpack](https://github.com/webpack/webpack) to build project.
+* `desc`: whether to pack css separately into a single css file.
 * `default`: `false`
 
 ##  splitJs
 
 * `bg`: normally, all js files will be built into one file.
-* `desc`: whether to split one big js file into many smaller js files when use [webpack](https://github.com/webpack/webpack) to build project.
+* `desc`: whether to split one big js file into many smaller js files.
 * `default`: `false`
 
 ##  splitJsMap
 
 * `desc`: indicates how to split js file.
 * `default`: empty
-* `detail`: see [use webpack to build](./webpack.md)
-* `note`: this always be configured in custom config of current module.
+* `detail`: see [config webpack](./webpack.md)
+* `note`: this always be configured in custom config of each module.

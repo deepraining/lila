@@ -21,7 +21,6 @@ checkConfigFile();
 
 var projectConfig = require('../project_config');
 
-// use webpack
 var compiler = webpack(projectConfig.webpackDevConfig);
 var browserSyncConfig = {
     server: {

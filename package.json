@@ -58,7 +58,7 @@
     "webpack-hot-middleware": "^2.18.2",
     "yargs": "^8.0.1"
   },
-  "description": "A web frontend building tool for teamwork, with automaticly building, syncing files to server, supporting distributed servers, ensuring css or html files' inline reference with correct absolute path, and more.",
+  "description": "A web building tool for teamwork, with command line building, uploading files to server, absolute css/html inline reference path, and more.",
   "repository": {
     "type": "git",
     "url": "https://github.com/senntyou/lila"
