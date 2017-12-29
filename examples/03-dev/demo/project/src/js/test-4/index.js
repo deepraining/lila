@@ -1,6 +1,3 @@
-/**
- * Created by senntyou on 2017/12/14.
- */
 
 require('../../css/test/index.css');
 require('../../css/test/index2.css');

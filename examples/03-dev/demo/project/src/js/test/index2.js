@@ -1,6 +1,3 @@
-/**
- * Created by senntyou on 2017/12/14.
- */
 
 var $ = require('jquery');
 var _ = require('underscore');

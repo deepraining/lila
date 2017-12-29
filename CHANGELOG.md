@@ -8,3 +8,5 @@
 - add `mock-express` command
 - add `forever` command
 - add `doc` command
+- add `archive` command
+- add `arc` command
