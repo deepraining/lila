@@ -4,3 +4,11 @@
     height: 200px;
     background-image: url("../../../fonts/test.font");
 }
+
+.test-index-2-3 {
+    transition: all .5s;
+    transform: translateY(100%);
+}
+.test-index-2-3.active {
+    transform: translateY(0);
+}

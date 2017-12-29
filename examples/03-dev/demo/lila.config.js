@@ -7,23 +7,26 @@ module.exports = {
         common: 'alias/common'
     },
     htmlAbsoluteAndCdnPath: !1,
+    skipNotExistingFiles: !0,
     buildOptions: [
         // 0
+        {},
+        // 1
         {
             minJs: !0,
             minCss: !0,
             minHtml: !0,
             revisionHashLength: 12
         },
-        // 1
+        // 2
         {
             cssAbsolutePath: !1,
-            htmlAbsoluteAndCdnPath: !0,
+            htmlAbsoluteAndCdnPath: !1,
             recordFileChanges: !1,
             revisionFiles: !1,
             skipNotExistingFiles: !0
         },
-        // 2
+        // 3
         {
             htmlReplace: {
                 DOCTYPE: 'doctype'
@@ -41,11 +44,10 @@ module.exports = {
     },
     moduleGroup: {
         test: [
-            'test/index',
-            'test/index-2'
+            'test-3/index',
+            'test-4/index'
         ]
     },
-    skipNotExistingFiles: !0,
     autoPrefixOption: {
         browsers: [
             "last 2 version",
