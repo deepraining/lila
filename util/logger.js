@@ -21,15 +21,15 @@ module.exports = {
         console.log(getString(str, pre, post));
     },
     info: (str, pre, post) => {
-        console.info(getString(str, pre, post));
+        console.info(chalk.blue(getString(str, pre, post)));
     },
     warn: (str, pre, post) => {
-        console.warn(getString(str, pre, post));
+        console.warn(chalk.yellow(getString(str, pre, post)));
     },
     error: (str, pre, post) => {
-        console.error(getString(str, pre, post));
+        console.error(chalk.red(getString(str, pre, post)));
     },
     success: (str, pre, post) => {
-        console.log(getString(str, pre, post));
+        console.log(chalk.green(getString(str, pre, post)));
     }
 };
