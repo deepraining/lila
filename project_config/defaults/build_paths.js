@@ -33,8 +33,6 @@ module.exports = (config) => {
         copiedDev: getPaths(config.basePaths.buildRoot, 'copied_dev', !0),
         // extracted directory
         extract: getPaths(config.basePaths.buildRoot, 'extract', !0),
-        extractJs: getPaths(config.basePaths.buildRoot, 'extract_js', !0),
-        extractCss: getPaths(config.basePaths.buildRoot, 'extract_css', !0),
         // dist temporary directory
         distTmp: getPaths(config.basePaths.buildRoot, 'dist_tmp', !0),
         // dist temporary directory to handle html

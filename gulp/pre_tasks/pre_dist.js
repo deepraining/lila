@@ -3,9 +3,9 @@ var _ = require('lodash');
 
 var projectConfig = require('../../project_config');
 var distDel = require('../dist/del');
-var distCopyBase = require('../dist/copy_base');
+var distCopy = require('../dist/copy');
 var distMisc = require('../dist/misc');
-var distChangeBase = require('../dist/change_base');
+var distChangeExtra = require('../dist/change_extra');
 var distBackup = require('../dist/backup');
 var distTasks = require('../dist/tasks');
 
@@ -15,13 +15,13 @@ module.exports = (gulp) => {
     var delCopiedDev = distDel.delCopiedDev;
     var delDistStore = distDel.delDistStore;
 
-    var copyDev = distCopyBase.copyDev;
-    var copyManifests = distCopyBase.copyManifests;
-    var copyDistStore = distCopyBase.copyDistStore;
+    var copyDev = distCopy.copyDev;
+    var copyManifests = distCopy.copyManifests;
+    var copyDistStore = distCopy.copyDistStore;
 
     var logFirstModule = distMisc.logFirstModule;
 
-    var findChangedDirectoriesToSync = distChangeBase.directoriesToSync;
+    var findChangedDirectoriesToSync = distChangeExtra.directoriesToSync;
 
     var backupHtml = distBackup.backupHtml;
 

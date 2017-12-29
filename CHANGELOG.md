@@ -13,3 +13,4 @@
 - add `init-clean` command
 - add `clean` command
 - add `revert` command
+- add `dist` command

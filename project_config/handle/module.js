@@ -84,7 +84,16 @@ module.exports = (config) => {
         formattedModules = _.concat(formattedModules, getModules(item, config));
     });
 
-    config.modules = formattedModules;
+    /**
+     * ultimate modules
+     * @type {Array}
+     */
+    var ultimateModules = [];
+    formattedModules.forEach((item) => {
+        ultimateModules.push(item.slice(-5) == '.html' ? item.slice(0, -5) : item);
+    });
+
+    config.modules = ultimateModules;
     config.multiModules = !0;
     config.module = config.modules[config.processingData.moduleIndex];
     fillModuleFields(config);
