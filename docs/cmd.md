@@ -76,27 +76,6 @@ lila doc
 
 * documents will be in `docs` of project root directory(if exists, it'll be overridden').
 
-### `dist-js`: make javascript files as main module, and do production task.
-
-```
-lila dist-js module [-e 0(1,2)] 
-```
-
-* `module`: js module name
-* support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*`, `test/**/*`, `test/*`
-* can take with argument env/e
-
-
-### `sync-js`: make javascript files as main module, and do production task, then sync files to remote.
-
-```
-lila sync-js module [-e 0(1,2)] 
-```
-
-* `module`: js module name
-* support [glob](https://github.com/isaacs/node-glob) semantics, example: `**/*`, `test/**/*`, `test/*`
-* can take with argument env/e
-
 ## arguments
 
 ### `env/e`: 

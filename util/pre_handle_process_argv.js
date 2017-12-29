@@ -7,7 +7,7 @@ var cmdName = process.argv[2];
 var moduleName = process.argv[3];
 
 // commands needs module argument
-var needsModule = {dev: !0, dist: !0, sync: !0, 'dist-js': !0, 'sync-js': !0};
+var needsModule = {dev: !0, dist: !0, sync: !0};
 
 // convert moduleName to argument
 if (needsModule[cmdName] && moduleName && moduleName.slice(0, 1) != '-') {

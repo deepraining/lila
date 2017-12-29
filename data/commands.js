@@ -53,13 +53,5 @@ module.exports = [
     {
         name: 'doc',
         desc: 'Generate javascript documents.'
-    },
-    {
-        name: 'dist-js',
-        desc: 'Make javascript files as main module, and do production task.'
-    },
-    {
-        name: 'sync-js',
-        desc: 'Make javascript files as main module, and do production task, then sync files to remote.'
     }
 ];
