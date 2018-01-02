@@ -43,4 +43,5 @@ lila new lila-demo
 8. [use express to mock data](./docs/express.md)
 9. [with forever](./docs/forever.md)
 10. [config webpack](./docs/webpack.md)
-11. [use react](./docs/react.md)
+11. [use less](./docs/less.md)
+12. [use react](./docs/react.md)
