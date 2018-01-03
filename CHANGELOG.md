@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.0.2
+
+- add two js entry module support: `test/inner.js`, `test/inner/index.js` (module: `test/inner`)
+
 ## 0.0.1
 
 - add `new` command

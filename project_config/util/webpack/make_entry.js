@@ -1,6 +1,9 @@
 
 'use strict';
 
+var getJsEntryPath = require('../get_js_entry_path');
+
+
 /**
  * make entry of webpack.config
  *
@@ -27,7 +30,7 @@ module.exports = (config) => {
 
     var entry = {};
 
-    entry[config.moduleName] = config.buildPaths.src.js + '/' + config.module + '.js';
+    entry[config.moduleName] = getJsEntryPath(config);
 
     config.splitJsMapKeys && config.splitJsMapKeys.forEach((key) => {
         entry[key] = config.splitJsChunks[key];
