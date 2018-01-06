@@ -31,6 +31,12 @@ New project
 lila new lila-demo
 ```
 
+Install local lila
+
+```
+cd lila-demo && npm install lila --save-dev
+```
+
 ## Documents
 
 1. [directory specification](./docs/dir.md)
