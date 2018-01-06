@@ -16,8 +16,6 @@ var defaults = {
     devServerPort: 8090,
     // express data mock server port
     mockExpressServerPort: 8190,
-    // static server port
-    staticServerPort: 8290,
     // whether mini js files
     minJs: false,
     // whether mini css files

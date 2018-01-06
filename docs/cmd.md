@@ -47,14 +47,6 @@ lila mock-express
 
 detail: [mock-express](./express.md)
 
-### `forever`: do with [forever](https://github.com/foreverjs/forever)
-
-```
-lila forever <forever command name> [forever command args]
-```
-
-detail: [do with forever](./forever.md)
-
 ### `doc`: generate `js` documents
 
 ```

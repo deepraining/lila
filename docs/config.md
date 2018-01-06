@@ -24,11 +24,6 @@ see [Project config - networkOptions](./config/network-options.md)
 * `desc`: express data mock server port
 * `default`: 8190
 
-## staticServerPort
-
-* `desc`: static server port
-* `default`: 8290
-
 ## buildOptions
 
 * `desc`: build option of current environment. it can override config root attribute

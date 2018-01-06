@@ -4,6 +4,7 @@
 
 - add two js entry module support: `test/inner.js`, `test/inner/index.js` (module: `test/inner`)
 - fixed fatal bugs by add `local lila`
+- remove `forever` related, for non-using
 
 ## 0.0.1
 

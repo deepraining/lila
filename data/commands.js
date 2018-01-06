@@ -27,10 +27,6 @@ module.exports = [
         desc: 'Start local express mock server for debug.'
     },
     {
-        name: 'forever',
-        desc: 'Run forever command in current directory.'
-    },
-    {
         name: 'archive',
         desc: 'Archive dist directory on server side.'
     },
