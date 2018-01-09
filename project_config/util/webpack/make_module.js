@@ -1,6 +1,8 @@
 
 'use strict';
 
+var _ = require('lodash');
+
 var babelLoader = require('../../../webpack/loaders/babel_loader');
 var cssLoader = require('../../../webpack/loaders/css_loader');
 var lessLoader = require('../../../webpack/loaders/less_loader');
@@ -10,8 +12,12 @@ var extractLessLoader = require('../../../webpack/loaders/extract_less_loader');
 
 module.exports = (config) => {
 
+    var newBabelLoader = _.cloneDeep(babelLoader);
+
+    if (!config.ignoreNodeModules) delete newBabelLoader.exclude;
+
     var module = {};
-    var rules = [babelLoader];
+    var rules = [newBabelLoader];
 
     if (config.packCssSeparately) {
         rules.push(extractCssLoader);

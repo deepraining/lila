@@ -229,12 +229,14 @@ see [group of modules](./group.md)
 * `bg`: normally, all js and css files will be built into one file.
 * `desc`: whether to pack css separately into a single css file.
 * `default`: `false`
+* `detail`: `true` / `false`
 
 ##  splitJs
 
 * `bg`: normally, all js files will be built into one file.
 * `desc`: whether to split one big js file into many smaller js files.
 * `default`: `false`
+* `detail`: `true` / `false`
 
 ##  splitJsMap
 
@@ -242,3 +244,9 @@ see [group of modules](./group.md)
 * `default`: empty
 * `detail`: see [config webpack](./webpack.md)
 * `note`: this always be configured in custom config of each module.
+
+## ignoreNodeModules
+
+* `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
+* `default`: `true`
+* `detail`: `true` / `false`

@@ -10,3 +10,6 @@ require('base')();
 require('common')();
 
 console.log('test/index');
+
+// test ignoreNodeModules
+var Swiper = require('swiper');

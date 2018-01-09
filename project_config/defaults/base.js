@@ -39,7 +39,9 @@ var defaults = {
     // whether to pack css separately into a single css file
     packCssSeparately: false,
     // whether to split one big js file into many smaller js files
-    splitJs: false
+    splitJs: false,
+    // whether to ignore files under node_modules directory when transform es6 to es5
+    ignoreNodeModules: true
 };
 
 var _ = require('lodash');

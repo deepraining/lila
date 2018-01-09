@@ -2,7 +2,7 @@
 'use strict';
 
 var webpack = require('webpack');
-var fs = require('fs');
+var _ = require('lodash');
 
 var getJsEntryPath = require('./get_js_entry_path');
 var makeResolve = require('./webpack/make_resolve');
@@ -12,6 +12,10 @@ var lessLoader = require('../../webpack/loaders/less_loader');
 var urlLoader = require('../../webpack/loaders/url_loader');
 
 module.exports = (config) => {
+
+    var newBabelLoader = _.cloneDeep(babelLoader);
+
+    if (!config.ignoreNodeModules) delete newBabelLoader.exclude;
 
     var devConfig = {
         entry: [
@@ -27,7 +31,7 @@ module.exports = (config) => {
             new webpack.HotModuleReplacementPlugin()
         ],
         module: {
-            rules: [babelLoader, cssLoader, lessLoader, urlLoader]
+            rules: [newBabelLoader, cssLoader, lessLoader, urlLoader]
         },
         resolve: makeResolve(config)
     };

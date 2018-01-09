@@ -1,6 +1,6 @@
 
 var $ = require('jquery');
-var _ = require('underscore');
+//var _ = require('underscore');
 
 module.exports = () => {
     var h1 = document.createElement('h1');
@@ -24,7 +24,7 @@ module.exports = () => {
 
     console.log('test/index2');
 
-    _.forEach(arr, (item) => {
+    arr.forEach((item) => {
         console.log(item);
     });
 
