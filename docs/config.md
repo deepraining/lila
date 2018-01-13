@@ -26,7 +26,7 @@ see [Project config - network](./config/network.md)
 
 ## buildOptions
 
-* `desc`: build option of current environment. it can override config root attribute
+* `desc`: build option of different environments. you can override config root attribute according to different environment, such as `minJs, minCss, minHtml ...`
 * `default`: empty
 * `detail`: 
 
@@ -34,7 +34,7 @@ see [Project config - network](./config/network.md)
 [
     // env == 0
     {
-        // some option
+        // root option
     }
     // ...
 ]
