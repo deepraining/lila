@@ -1,6 +1,6 @@
 # lila changelog
 
-## 
+## 0.0.3
 
 - make `network` instead of `networkOptions`
 
