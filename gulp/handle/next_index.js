@@ -26,14 +26,14 @@ module.exports = {
      * next webServer index
      */
     webServer: () => {
-        if (projectConfig.currentNetworkOption.webServers && projectConfig.currentNetworkOption.webServers.length) {
+        if (projectConfig.currentNetwork.webServers && projectConfig.currentNetwork.webServers.length) {
             if (typeof projectConfig.processingData.webServerIndex == 'undefined') {
                 projectConfig.processingData.webServerIndex = 0
             }
             else {
                 projectConfig.processingData.webServerIndex += 1;
 
-                if (projectConfig.processingData.webServerIndex >= projectConfig.currentNetworkOption.webServers.length)
+                if (projectConfig.processingData.webServerIndex >= projectConfig.currentNetwork.webServers.length)
                     projectConfig.processingData.webServerIndex = 0;
             }
         }
@@ -44,14 +44,14 @@ module.exports = {
      * @param cb
      */
     staticServer: (cb) => {
-        if (projectConfig.currentNetworkOption.staticServers && projectConfig.currentNetworkOption.staticServers.length) {
+        if (projectConfig.currentNetwork.staticServers && projectConfig.currentNetwork.staticServers.length) {
             if (typeof projectConfig.processingData.staticServerIndex == 'undefined') {
                 projectConfig.processingData.staticServerIndex = 0
             }
             else {
                 projectConfig.processingData.staticServerIndex += 1;
 
-                if (projectConfig.processingData.staticServerIndex >= projectConfig.currentNetworkOption.staticServers.length)
+                if (projectConfig.processingData.staticServerIndex >= projectConfig.currentNetwork.staticServers.length)
                     projectConfig.processingData.staticServerIndex = 0;
             }
         }

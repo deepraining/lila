@@ -4,7 +4,7 @@ var defaultsBuildPaths = require('./defaults/build_paths');
 var defaultsCmdAlias = require('./defaults/cmd_alias');
 var defaultsEnvAlias = require('./defaults/env_alias');
 var defaultsCmdValues = require('./defaults/cmd_values');
-var defaultsNetworkOptions = require('./defaults/network_options');
+var defaultsNetwork = require('./defaults/network');
 var defaultsBase = require('./defaults/base');
 
 var handleBase = require('./handle/base');
@@ -23,7 +23,7 @@ var handle = (config) => {
     defaultsCmdAlias(config);
     defaultsEnvAlias(config);
     defaultsCmdValues(config);
-    defaultsNetworkOptions(config);
+    defaultsNetwork(config);
     config = defaultsBase(config);
     handleBuildOptions(config);
     handleCustomConfig(config);

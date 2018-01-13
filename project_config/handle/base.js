@@ -11,6 +11,6 @@ module.exports = (config) => {
      */
     config.processingData = {};
 
-    // network option of current environment
-    config.currentNetworkOption = config.networkOptions && config.networkOptions[config.env]  || {};
+    // network of current environment
+    config.currentNetwork = config.network && config.network[config.env]  || {};
 };

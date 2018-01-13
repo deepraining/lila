@@ -3,13 +3,13 @@
 
 module.exports = {
     /**
-     * network options, do following works:
+     * network, do following works:
      *     1. how many machines
      *     2. whether use distributed servers
      *     3. how to ensure html/css inline reference
      *     ...
      */
-    networkOptions: [
+    network: [
         {
             servers: [
                 {

@@ -1,5 +1,9 @@
 # lila changelog
 
+## 
+
+- make `network` instead of `networkOptions`
+
 ## 0.0.2
 
 - add two js entry module support: `test/inner.js`, `test/inner/index.js` (module: `test/inner`)

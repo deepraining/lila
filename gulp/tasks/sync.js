@@ -5,7 +5,7 @@ var ftp = require('gulp-ftp');
 var sftp = require('gulp-sftp');
 
 var projectConfig = require('../../project_config');
-var defaultSyncFn = projectConfig.currentNetworkOption.useSsh ? sftp : ftp;
+var defaultSyncFn = projectConfig.currentNetwork.useSsh ? sftp : ftp;
 var nextIndex = require('../handle/next_index');
 
 module.exports = (gulp) => {
@@ -18,7 +18,7 @@ module.exports = (gulp) => {
 
         nextIndex.staticServer();
 
-        var syncConfig = projectConfig.currentNetworkOption.staticServers[projectConfig.processingData.staticServerIndex];
+        var syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
         var syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
@@ -31,7 +31,7 @@ module.exports = (gulp) => {
 
         nextIndex.webServer();
 
-        var syncConfig = projectConfig.currentNetworkOption.webServers[projectConfig.processingData.webServerIndex];
+        var syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processingData.webServerIndex];
         var syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
@@ -43,7 +43,7 @@ module.exports = (gulp) => {
     var syncExtraDirectory = (cb) => {
         nextIndex.directoriesToSync();
 
-        var syncConfig = projectConfig.currentNetworkOption.staticServers[projectConfig.processingData.staticServerIndex];
+        var syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
         var syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
@@ -56,15 +56,15 @@ module.exports = (gulp) => {
         else cb();
     };
 
-    var syncStaticTasks = _.fill(new Array(projectConfig.currentNetworkOption.staticServers && projectConfig.currentNetworkOption.staticServers.length || 0), syncStatic);
-    var syncWebTasks = _.fill(new Array(projectConfig.currentNetworkOption.webServers && projectConfig.currentNetworkOption.webServers.length || 0), syncHtml);
+    var syncStaticTasks = _.fill(new Array(projectConfig.currentNetwork.staticServers && projectConfig.currentNetwork.staticServers.length || 0), syncStatic);
+    var syncWebTasks = _.fill(new Array(projectConfig.currentNetwork.webServers && projectConfig.currentNetwork.webServers.length || 0), syncHtml);
 
     var syncExtraDirectoryTasks = [];
-    projectConfig.currentNetworkOption.staticServers &&
-    projectConfig.currentNetworkOption.staticServers.length &&
+    projectConfig.currentNetwork.staticServers &&
+    projectConfig.currentNetwork.staticServers.length &&
     projectConfig.processingData.directoriesToSyncKeys &&
     projectConfig.processingData.directoriesToSyncKeys.length &&
-    projectConfig.currentNetworkOption.staticServers.forEach(() => {
+    projectConfig.currentNetwork.staticServers.forEach(() => {
         syncExtraDirectoryTasks.push(nextIndex.staticServer);
         projectConfig.processingData.directoriesToSyncKeys.forEach(() => {
             syncExtraDirectoryTasks.push(syncExtraDirectory);

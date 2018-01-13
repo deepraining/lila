@@ -23,9 +23,9 @@ module.exports = {
                     root: distData.currentConfig.basePaths.webRoot
                 }));
 
-            if (distData.currentConfig.currentNetworkOption.cssAbsolutePathPrefix)
+            if (distData.currentConfig.currentNetwork.cssAbsolutePathPrefix)
                 stream.pipe(cssUrlPrefix(
-                    distData.currentConfig.currentNetworkOption.cssAbsolutePathPrefix, '\/'
+                    distData.currentConfig.currentNetwork.cssAbsolutePathPrefix, '\/'
                 ));
 
             /**
@@ -50,7 +50,7 @@ module.exports = {
                 return gulp.src(distData.currentConfig.buildPaths.dist.html + '/**/*.html')
                     .pipe(cdnAbsolutePath({
                         asset: distData.currentConfig.basePaths.webRoot,
-                        cdn: distData.currentConfig.currentNetworkOption.staticDomain || ''
+                        cdn: distData.currentConfig.currentNetwork.staticDomain || ''
                     }))
                     .pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.html));
             else

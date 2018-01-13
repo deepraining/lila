@@ -10,9 +10,9 @@
 * `desc`: environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
 * `default`: `0`
 
-## networkOptions
+## network
 
-see [Project config - networkOptions](./config/network-options.md)
+see [Project config - network](./config/network.md)
 
 ## devServerPort
 

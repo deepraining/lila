@@ -17,7 +17,7 @@ module.exports = {
      * @param cb
      */
     backupHtml: (cb) =>  {
-        if (distData.currentConfig.currentNetworkOption.backupHtml){
+        if (distData.currentConfig.currentNetwork.backupHtml){
             var suffix = moment().format('YYYY-MM-DD-HH-mm-ss');
 
             rd.eachFileFilterSync(distData.currentConfig.buildPaths.dist.html, (file) => {

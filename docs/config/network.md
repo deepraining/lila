@@ -1,4 +1,4 @@
-# Project config - networkOptions
+# Project config - network
 
 ### `desc`: 
 

@@ -5,8 +5,8 @@ var servers = require('./servers');
 
 var projectConfig = require('./demo/lila.config');
 projectConfig.htmlAbsoluteAndCdnPath = !0;
-projectConfig.networkOptions = [];
-projectConfig.networkOptions[100] = {
+projectConfig.network = [];
+projectConfig.network[100] = {
     useSsh: !0,
     staticDomain: 'http://www.baidu.com/lila',
     cssAbsolutePathPrefix: '/lila',
