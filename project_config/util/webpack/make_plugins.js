@@ -41,5 +41,8 @@ module.exports = (config) => {
         });
     }
 
+    // ProvidePlugin
+    if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
+
     return plugins;
 };

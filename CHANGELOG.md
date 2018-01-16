@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.0.4
+
+- add `provide` config option
+
 ## 0.0.3
 
 - make `network` instead of `networkOptions`

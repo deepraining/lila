@@ -17,6 +17,13 @@ module.exports = (config) => {
 
     if (!config.ignoreNodeModules) delete newBabelLoader.exclude;
 
+    var plugins = [
+        new webpack.HotModuleReplacementPlugin()
+    ];
+
+    // ProvidePlugin
+    if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
+
     var devConfig = {
         entry: [
             'webpack-hot-middleware/client?reload=true',
@@ -27,9 +34,7 @@ module.exports = (config) => {
             filename: config.moduleName + '.js',
             publicPath: config.basePaths.webPrefix + '/dev/js/' + config.moduleDir
         },
-        plugins: [
-            new webpack.HotModuleReplacementPlugin()
-        ],
+        plugins: plugins,
         module: {
             rules: [newBabelLoader, cssLoader, lessLoader, urlLoader]
         },

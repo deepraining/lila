@@ -13,3 +13,4 @@ console.log('test/index');
 
 // test ignoreNodeModules
 var Swiper = require('swiper');
+require('bootstrap');

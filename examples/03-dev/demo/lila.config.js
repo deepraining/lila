@@ -53,6 +53,9 @@ module.exports = {
             "last 2 version",
             "ie 9"
         ]
+    },
+    provide: {
+        jQuery: 'jquery'
     }
 };
 

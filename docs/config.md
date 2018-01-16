@@ -220,7 +220,8 @@ see [group of modules](./group.md)
 
 ## resolveAlias
 
-* `desc`: see [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
+* `desc`: Create aliases to import or require certain modules more easily.
+* `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
 * `default`: empty
 * `detail`: the base directory is `src/js`, and this only do to js files.
 
@@ -250,3 +251,17 @@ see [group of modules](./group.md)
 * `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
 * `default`: `true`
 * `detail`: `true` / `false`
+
+## provide
+
+* `desc`: Automatically load modules instead of having to import or require them everywhere.
+* `see`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
+* `default`: empty
+* `example`: 
+
+```
+{
+    $: 'jquery',
+    jQuery: 'jquery'
+}
+```
