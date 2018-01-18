@@ -18,18 +18,13 @@ module.exports = {
         return function adjustCss() {
             var stream = gulp.src(distData.currentConfig.buildPaths.dist.css + '/**/*.css');
 
-            if (distData.currentConfig.cssAbsolutePath)
-                stream.pipe(cssUrlToAbsolute({
-                    root: distData.currentConfig.basePaths.webRoot
-                }));
-
             if (distData.currentConfig.currentNetwork.cssAbsolutePathPrefix)
                 stream.pipe(cssUrlPrefix(
                     distData.currentConfig.currentNetwork.cssAbsolutePathPrefix, '\/'
                 ));
 
             /**
-             * this handle should be done at the last, or the `cssAbsolutePath` and `cssAbsolutePathPrefix` will not take effect
+             * this handle should be done at the last, or the `cssAbsolutePathPrefix` will not take effect
              *
              * todo: find the reason
              */

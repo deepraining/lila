@@ -174,12 +174,6 @@ see [Project config - network](./config/network.md)
 * `default`: `8`
 * `detail`: `int`
 
-## cssAbsolutePath
-
-* `desc`: whether convert relative path to absolute path in css
-* `default`: `true`
-* `detail`: `true` / `false`
-
 ## htmlAbsoluteAndCdnPath
 
 * `desc`: whether convert relative path to absolute path and add cdn prefix in html

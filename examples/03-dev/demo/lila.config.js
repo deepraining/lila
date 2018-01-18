@@ -20,7 +20,6 @@ module.exports = {
         },
         // 2
         {
-            cssAbsolutePath: !1,
             htmlAbsoluteAndCdnPath: !1,
             recordFileChanges: !1,
             revisionFiles: !1,

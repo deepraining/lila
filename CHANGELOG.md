@@ -4,6 +4,7 @@
 
 - add `provide` config option
 - add `fileLoaderSuffixes` config option
+- remove `cssAbsolutePath` config option
 
 ## 0.0.3
 

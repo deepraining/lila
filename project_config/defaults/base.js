@@ -28,8 +28,6 @@ var defaults = {
     revisionFiles: true,
     // revision hash code length
     revisionHashLength: 8,
-    // whether convert relative path to absolute path in css
-    cssAbsolutePath: true,
     // whether convert relative path to absolute path and add cdn prefix in html
     htmlAbsoluteAndCdnPath: true,
     // whether skip not existing files when build
