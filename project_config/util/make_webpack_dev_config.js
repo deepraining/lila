@@ -16,7 +16,7 @@ module.exports = (config) => {
     var babelLoader = makeBabelLoader(config);
     var cssLoader = makeCssLoader();
     var lessLoader = makeLessLoader();
-    var urlLoader = makeUrlLoader();
+    var urlLoader = makeUrlLoader(config);
 
     var plugins = [
         new webpack.HotModuleReplacementPlugin()
@@ -31,9 +31,9 @@ module.exports = (config) => {
             getJsEntryPath(config)
         ],
         output: {
-            path: config.buildPaths.dev.js + '/' + config.moduleDir,
+            path: config.buildPaths.dev.js + '/' + (config.moduleDir ? config.moduleDir + '/' : ''),
             filename: config.moduleName + '.js',
-            publicPath: config.basePaths.webPrefix + '/dev/js/' + config.moduleDir
+            publicPath: config.basePaths.webPrefix + '/dev/js/' + (config.moduleDir ? config.moduleDir + '/' : '')
         },
         plugins: plugins,
         module: {

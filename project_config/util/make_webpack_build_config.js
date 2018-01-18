@@ -16,9 +16,9 @@ module.exports = (config) => {
     var buildConfig = {
         entry: makeEntry(config),
         output: {
-            path: config.buildPaths.copiedDev.js + '/' + config.moduleDir,
+            path: config.buildPaths.copiedDev.js + '/' + (config.moduleDir ? config.moduleDir + '/' : ''),
             filename: config.moduleName + '.js',
-            publicPath: config.basePaths.webPrefix + '/' + config.buildPaths.copiedDev.dirName + '/js/' + config.moduleDir
+            publicPath: config.basePaths.webPrefix + '/' + config.buildPaths.copiedDev.dirName + '/js/' + (config.moduleDir ? config.moduleDir + '/' : '')
         },
         plugins: makePlugins(config),
         module: makeModule(config),

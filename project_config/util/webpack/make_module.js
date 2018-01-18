@@ -15,7 +15,7 @@ module.exports = (config) => {
     var babelLoader = makeBabelLoader(config);
     var cssLoader = makeCssLoader();
     var lessLoader = makeLessLoader();
-    var urlLoader = makeUrlLoader();
+    var urlLoader = makeUrlLoader(config, !0);
     var extractCssLoader = makeExtractCssLoader();
     var extractLessLoader = makeExtractLessLoader();
 

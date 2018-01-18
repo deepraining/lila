@@ -46,6 +46,11 @@ module.exports = (config) => {
         // doc dist directory
         doc: {
             dir: vars.projectRoot + '/docs'
+        },
+        // resources of building, like images, fonts
+        resources: {
+            buildDir: config.basePaths.buildRoot + '/lila_build_resources',
+            targetDir: config.basePaths.buildRoot + '/dist/resources'
         }
     };
 };

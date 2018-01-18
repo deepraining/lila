@@ -31,7 +31,7 @@ module.exports = {
                         .pipe(gulp.dest(distData.currentConfig.buildPaths.dist.dir));
 
                 } else {
-                    logger.log('Base nothing changed!');
+                    logger.info('Base nothing changed!');
                     cb();
                 }
             }

@@ -102,6 +102,8 @@ see [Project config - network](./config/network.md)
 }
 ```
 
+* `note`: `base, common, resources` is system reserved keyword, so you should not use one of them.
+
 ## htmlReplace
 
 * `desc`: html replacement
@@ -265,3 +267,10 @@ see [group of modules](./group.md)
     jQuery: 'jquery'
 }
 ```
+
+## fileLoaderSuffixes
+
+* `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
+* `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
+* `type`: `array`
+* `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`

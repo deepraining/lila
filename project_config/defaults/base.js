@@ -41,7 +41,9 @@ var defaults = {
     // whether to split one big js file into many smaller js files
     splitJs: false,
     // whether to ignore files under node_modules directory when transform es6 to es5
-    ignoreNodeModules: true
+    ignoreNodeModules: true,
+    // indicates which files to load
+    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']
 };
 
 var _ = require('lodash');

@@ -6,6 +6,7 @@ var distDel = require('./del');
 var distExtract = require('./extract');
 var distChange = require('./change');
 var distAdjust = require('./adjust');
+var copyExtra = require('./copy_extra');
 var distRevision = require('./revision');
 var distNext = require('./next');
 var distMin = require('../dist/min');
@@ -24,6 +25,7 @@ module.exports = (gulp) => {
     var adjustCss = distAdjust.adjustCss(gulp);
     var adjustHtml = distAdjust.adjustHtml(gulp);
 
+    var copyBuildResources = copyExtra.copyBuildResources(gulp);
 
     var minCss = distMin.minCss(gulp);
     var minJs = distMin.minJs(gulp);
@@ -42,6 +44,7 @@ module.exports = (gulp) => {
             delTasks,
             [
                 webpackBuild,
+                copyBuildResources,
                 extract,
                 revision,
                 findChangedBase,

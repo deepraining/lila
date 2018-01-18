@@ -2,7 +2,8 @@
 var makeManifest = require('../util/make_manifest');
 var projectConfig = require('../project_config');
 var manifests = {
-    base: makeManifest('base', projectConfig.env)
+    base: makeManifest('base', projectConfig.env),
+    resources: makeManifest('resources', projectConfig.env)
 };
 
 // directoriesToSync keys

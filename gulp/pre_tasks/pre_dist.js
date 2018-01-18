@@ -14,6 +14,7 @@ module.exports = (gulp) => {
     var delDist = distDel.delDist;
     var delCopiedDev = distDel.delCopiedDev;
     var delDistStore = distDel.delDistStore;
+    var delBuildResources = distDel.delBuildResources;
 
     var copyDev = distCopy.copyDev;
     var copyManifests = distCopy.copyManifests;
@@ -22,6 +23,7 @@ module.exports = (gulp) => {
     var logFirstModule = distMisc.logFirstModule;
 
     var findChangedDirectoriesToSync = distChangeExtra.directoriesToSync;
+    var findChangedBuildResources = distChangeExtra.findChangedBuildResources(gulp);
 
     var backupHtml = distBackup.backupHtml;
 
@@ -39,10 +41,14 @@ module.exports = (gulp) => {
             logFirstModule
         ],
             distTasks(gulp),
+        [
+            findChangedBuildResources
+        ],
             findChangedDirectoriesToSyncTasks,
         [
             copyDistStore,
             backupHtml,
+            delBuildResources,
             delCopiedDev,
             delDistStore
         ]);

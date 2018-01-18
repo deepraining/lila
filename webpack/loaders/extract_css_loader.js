@@ -10,8 +10,7 @@ module.exports = () => {
             fallback: 'style-loader',
             use: [
                 {
-                    loader: 'css-loader',
-                    options: {url: false}
+                    loader: 'css-loader'
                 }
             ]
         })

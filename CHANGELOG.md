@@ -3,6 +3,7 @@
 ## 0.0.4
 
 - add `provide` config option
+- add `fileLoaderSuffixes` config option
 
 ## 0.0.3
 

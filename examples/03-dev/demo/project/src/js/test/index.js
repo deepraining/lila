@@ -1,4 +1,5 @@
 
+require('bootstrap/dist/css/bootstrap.css');
 require('../../css/test/index.css');
 require('../../css/test/index2.css');
 require('../../css/test/index.less');

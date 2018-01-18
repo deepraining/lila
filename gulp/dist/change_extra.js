@@ -1,5 +1,6 @@
 
 var _ = require('lodash');
+var fs = require('fs');
 var projectConfig = require('../../project_config');
 var findChangedFiles = require('../handle/find_changed_files');
 var nextIndex = require('../handle/next_index');
@@ -41,5 +42,38 @@ module.exports = {
 
         cb();
 
+    },
+    findChangedBuildResources: (gulp) => {
+        return function findChangedBuildResources(cb) {
+
+            // do not record files' changes
+            if (!projectConfig.recordFileChanges) {
+                return gulp.src(projectConfig.buildPaths.resources.buildDir + '/**/*')
+                    .pipe(gulp.dest(projectConfig.buildPaths.resources.targetDir));
+            }
+            // record files' changes
+            else if (fs.existsSync(projectConfig.buildPaths.resources.buildDir)) {
+                // get changed files
+                var changedFiles = findChangedFiles(projectConfig.buildPaths.resources.buildDir, 'resources');
+                var completeChangedFiles = [];
+
+                if (!_.isEmpty(changedFiles)) {
+
+                    _.forEach(changedFiles, (value, key) => {
+                        completeChangedFiles.push(projectConfig.buildPaths.resources.buildDir + '/' + key);
+                        logger.info('changed: ' + key);
+                    });
+
+                    return gulp.src(completeChangedFiles, {base: projectConfig.buildPaths.resources.buildDir})
+                        .pipe(gulp.dest(projectConfig.buildPaths.resources.targetDir));
+
+                } else {
+                    logger.info('Resources nothing changed!');
+                    cb();
+                }
+            }
+            else cb();
+
+        }
     }
 };

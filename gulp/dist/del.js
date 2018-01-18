@@ -26,5 +26,9 @@ module.exports = {
     // delete extract
     delExtract: () =>  {
         return del([projectConfig.buildPaths.extract.dir], {force: !0});
+    },
+    // delete build resources
+    delBuildResources: () =>  {
+        return del([projectConfig.buildPaths.resources.buildDir], {force: !0});
     }
 };

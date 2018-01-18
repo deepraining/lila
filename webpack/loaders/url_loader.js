@@ -1,7 +1,17 @@
 
-module.exports = () => {
+module.exports = (config, isBuild) => {
+
+    var options = {
+        limit: 8192
+    };
+
+    if (isBuild) {
+        options.publicPath = config.basePaths.webPrefix + '/dist/resources/'
+    }
+
     return {
-        loader: 'url-loader?limit=8192',
-        test: /\.(png|jpg|jpeg|gif)$/
+        loader: 'url-loader',
+        options: options,
+        test: new RegExp(`\.(${config.fileLoaderSuffixes.join('|')})$`)
     }
 };
