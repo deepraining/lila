@@ -69,5 +69,5 @@ example(current module is `test/index`):
 
 ## note
 
-1. other resources like images, fonts, and more, should use absolute path to reference it.
+1. other resources like images, fonts, if use relative reference, they will be packed into `/dist/resources` directory, if use absolute, will not.
 2. `splitJsMap` should be defined in custom config.
