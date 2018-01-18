@@ -30,5 +30,9 @@ module.exports = {
     // delete build resources
     delBuildResources: () =>  {
         return del([projectConfig.buildPaths.resources.buildDir], {force: !0});
+    },
+    // delete build resources js redundant files
+    delBuildResourcesJs: () =>  {
+        return del([projectConfig.buildPaths.resources.buildDir + '/**/*.js'], {force: !0});
     }
 };

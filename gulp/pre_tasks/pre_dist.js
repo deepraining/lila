@@ -15,6 +15,7 @@ module.exports = (gulp) => {
     var delCopiedDev = distDel.delCopiedDev;
     var delDistStore = distDel.delDistStore;
     var delBuildResources = distDel.delBuildResources;
+    var delBuildResourcesJs = distDel.delBuildResourcesJs;
 
     var copyDev = distCopy.copyDev;
     var copyManifests = distCopy.copyManifests;
@@ -42,6 +43,7 @@ module.exports = (gulp) => {
         ],
             distTasks(gulp),
         [
+            delBuildResourcesJs,
             findChangedBuildResources
         ],
             findChangedDirectoriesToSyncTasks,

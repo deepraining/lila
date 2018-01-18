@@ -10,7 +10,7 @@ module.exports = {
         return function copyBuildResources() {
             var dir = distData.currentConfig.buildPaths.copiedDev.js +
                 (distData.currentConfig.moduleDir ? '/' + distData.currentConfig.moduleDir : '');
-            return gulp.src([dir + '/**/*', '!**/*.js'])
+            return gulp.src(dir + '/**/*')
                 .pipe(gulp.dest(distData.currentConfig.buildPaths.resources.buildDir));
         }
     }
