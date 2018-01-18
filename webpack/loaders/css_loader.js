@@ -1,5 +1,7 @@
 
-module.exports = {
-    loader: 'style-loader!css-loader',
-    test: /\.css$/
+module.exports = () => {
+    return {
+        loader: 'style-loader!css-loader',
+        test: /\.css$/
+    }
 };

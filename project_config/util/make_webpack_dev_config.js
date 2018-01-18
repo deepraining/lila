@@ -6,16 +6,17 @@ var _ = require('lodash');
 
 var getJsEntryPath = require('./get_js_entry_path');
 var makeResolve = require('./webpack/make_resolve');
-var babelLoader = require('../../webpack/loaders/babel_loader');
-var cssLoader = require('../../webpack/loaders/css_loader');
-var lessLoader = require('../../webpack/loaders/less_loader');
-var urlLoader = require('../../webpack/loaders/url_loader');
+var makeBabelLoader = require('../../webpack/loaders/babel_loader');
+var makeCssLoader = require('../../webpack/loaders/css_loader');
+var makeLessLoader = require('../../webpack/loaders/less_loader');
+var makeUrlLoader = require('../../webpack/loaders/url_loader');
 
 module.exports = (config) => {
 
-    var newBabelLoader = _.cloneDeep(babelLoader);
-
-    if (!config.ignoreNodeModules) delete newBabelLoader.exclude;
+    var babelLoader = makeBabelLoader(config);
+    var cssLoader = makeCssLoader();
+    var lessLoader = makeLessLoader();
+    var urlLoader = makeUrlLoader();
 
     var plugins = [
         new webpack.HotModuleReplacementPlugin()
@@ -36,7 +37,7 @@ module.exports = (config) => {
         },
         plugins: plugins,
         module: {
-            rules: [newBabelLoader, cssLoader, lessLoader, urlLoader]
+            rules: [babelLoader, cssLoader, lessLoader, urlLoader]
         },
         resolve: makeResolve(config)
     };

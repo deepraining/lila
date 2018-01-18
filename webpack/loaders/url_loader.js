@@ -1,5 +1,7 @@
 
-module.exports = {
-    loader: 'url-loader?limit=8192',
-    test: /\.(png|jpg|jpeg|gif)$/
+module.exports = () => {
+    return {
+        loader: 'url-loader?limit=8192',
+        test: /\.(png|jpg|jpeg|gif)$/
+    }
 };
