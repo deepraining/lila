@@ -45,7 +45,8 @@ module.exports = {
                 return gulp.src(distData.currentConfig.buildPaths.dist.html + '/**/*.html')
                     .pipe(cdnAbsolutePath({
                         asset: distData.currentConfig.basePaths.webRoot,
-                        cdn: distData.currentConfig.currentNetwork.staticDomain || ''
+                        cdn: distData.currentConfig.currentNetwork.staticDomain || '',
+                        exts: distData.currentConfig.htmlAbsoluteSuffixes
                     }))
                     .pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.html));
             else

@@ -180,6 +180,12 @@ see [Project config - network](./config/network.md)
 * `default`: `true`
 * `detail`: `true` / `false`
 
+## htmlAbsoluteSuffixes
+
+* `desc`: Indicates which reference extensions to absolute, like `jpg, gif, png, ico, ...`
+* `type`: `array`
+* `default`: `['jpg', 'jpeg', 'png', 'gif', 'js', 'css', 'ico', 'cur']`
+
 ## skipNotExistingFiles
 
 * `desc`: whether skip not existing files when extract css and js from html

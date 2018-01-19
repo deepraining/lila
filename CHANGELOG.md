@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.0.5
+
+- add `htmlAbsoluteSuffixes` config option
+
 ## 0.0.4
 
 - add `provide` config option

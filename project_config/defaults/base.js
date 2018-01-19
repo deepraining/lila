@@ -30,6 +30,14 @@ var defaults = {
     revisionHashLength: 8,
     // whether convert relative path to absolute path and add cdn prefix in html
     htmlAbsoluteAndCdnPath: true,
+
+    /**
+     * Indicates which reference extensions to absolute, like `jpg, gif, png, ico, ...`
+     *
+     * https://github.com/senntyou/gulp-cdn-absolute-path/blob/master/index.js#L12
+     */
+    // htmlAbsoluteSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'js', 'css', 'ico', 'cur'],
+
     // whether skip not existing files when build
     skipNotExistingFiles: false,
     // whether auto add vendor prefixes to rules of css
