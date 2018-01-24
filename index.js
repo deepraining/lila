@@ -7,8 +7,6 @@ require('./util/pre_handle_process_argv');
 var fs = require('fs');
 
 var vars = require('./data/vars');
-var packageJson = require('./data/package_json');
-var version = packageJson.version;
 
 var showHelp = require('./util/show_help');
 var logger = require('./util/logger');
@@ -27,16 +25,6 @@ if (command && fs.existsSync(commandPath)) {
 }
 // no command or not exist
 else {
-    // -v --version
-    if (vars.argv.v || vars.argv.version) {
-        logger.log(version);
-    }
-    // -h --help
-    else if (vars.argv.h || vars.argv.help) {
-        showHelp();
-    }
-    else {
-        showHelp();
-    }
+    showHelp();
     process.exit(0);
 }
