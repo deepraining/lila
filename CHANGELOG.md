@@ -3,6 +3,8 @@
 ## 0.0.5
 
 - add `htmlAbsoluteSuffixes` config option
+- fix `-v, -h` not working bug
+- force minify css remove all comments
 
 ## 0.0.4
 

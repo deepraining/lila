@@ -10,7 +10,7 @@ module.exports = {
         return function minCss() {
             if (distData.currentConfig.minCss)
                 return gulp.src(distData.currentConfig.buildPaths.distTmp.css + '/**/*.css')
-                    .pipe(csso())
+                    .pipe(csso({comments: !1}))
                     .pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.css));
             else
                 return gulp.src(distData.currentConfig.buildPaths.distTmp.css + '/**/*.css')
