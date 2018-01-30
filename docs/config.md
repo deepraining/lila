@@ -274,3 +274,19 @@ see [group of modules](./group.md)
 * `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
 * `type`: `array`
 * `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
+
+
+## renameHtmlMap
+
+* `desc`: rename html after building.
+* `bg`: sometimes, some html have to be renamed, include path, when the server side requires another different html file.
+* `type`: `map`
+* `default`: empty
+* `example`: 
+
+```
+{
+    // origin: dist/html/test/index.html -> ultimate: dist/html/other/inner/index.html 
+    'test/index': 'other/inner/index'
+}
+```

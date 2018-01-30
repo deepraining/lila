@@ -7,6 +7,7 @@ var distCopy = require('../dist/copy');
 var distMisc = require('../dist/misc');
 var distChangeExtra = require('../dist/change_extra');
 var distBackup = require('../dist/backup');
+var distRename = require('../dist/rename');
 var distTasks = require('../dist/tasks');
 
 module.exports = (gulp) => {
@@ -27,6 +28,8 @@ module.exports = (gulp) => {
     var findChangedBuildResources = distChangeExtra.findChangedBuildResources(gulp);
 
     var backupHtml = distBackup.backupHtml;
+
+    var renameHtml = distRename.renameHtml;
 
     var findChangedDirectoriesToSyncTasks = _.fill(
         new Array(projectConfig.processingData.directoriesToSyncKeys && projectConfig.processingData.directoriesToSyncKeys.length || 0),
@@ -49,6 +52,7 @@ module.exports = (gulp) => {
             findChangedDirectoriesToSyncTasks,
         [
             copyDistStore,
+            renameHtml,
             backupHtml,
             delBuildResources,
             delCopiedDev,

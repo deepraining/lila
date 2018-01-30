@@ -35,6 +35,15 @@ module.exports = {
                 end: '<!-- end -->'
             },
             htmlToSpecifiedExt: 'jsp'
+        },
+        // 4
+        {
+            renameHtmlMap: {
+                'test/index': 'parent/inner/index',
+                'test-2/index': 'parent/inner/index-2',
+                'test-3/index': 'parent/inner/index-3',
+                'test-5/index': 'parent/inner/index-5'
+            }
         }
     ],
     directoriesToSync: {

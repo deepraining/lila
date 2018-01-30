@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.0.6
+
+- add `renameHtmlMap` config option
+
 ## 0.0.5
 
 - add `htmlAbsoluteSuffixes` config option
