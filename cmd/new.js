@@ -41,7 +41,7 @@ fsExtra.outputFileSync(
 // make package.json file
 fsExtra.outputFileSync(
     projectPath + '/package.json',
-    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/package.json.example', 'utf8')
+    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/package.json.example', 'utf8').replace('{{projectName}}', projectName)
 );
 // make lila.config.js file
 fsExtra.outputFileSync(
@@ -56,7 +56,7 @@ fsExtra.outputFileSync(
 // make README.md file
 fsExtra.outputFileSync(
     projectPath + '/README.md',
-    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/README.md', 'utf8')
+    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/README.md', 'utf8').replace('{{projectName}}', projectName)
 );
 
 logger.success('Lila new project ' + projectName + ' successfully!');

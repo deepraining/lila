@@ -3,6 +3,7 @@
 ## 0.1.0
 
 - remove `splitJsMap` config, leave `splitJs`
+- remake directory structure
 
 ## 0.0.6
 
