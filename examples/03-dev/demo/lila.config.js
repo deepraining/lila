@@ -56,12 +56,6 @@ module.exports = {
             'test-4/index'
         ]
     },
-    autoPrefixOption: {
-        browsers: [
-            "last 2 version",
-            "ie 9"
-        ]
-    },
     provide: {
         jQuery: 'jquery'
     }

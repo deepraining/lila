@@ -1,5 +1,63 @@
 # Project config
 
+## minJs
+
+* `desc`: whether mini js files
+* `default`: `false`
+* `detail`: `true` / `false`
+
+## minCss
+
+* `desc`: whether mini css files
+* `default`: `false`
+* `detail`: `true` / `false`
+
+## minHtml
+
+* `desc`: whether mini html files
+* `default`: `false`
+* `detail`: `true` / `false`
+
+## htmlReplace
+
+* `desc`: html replacement
+* `default`: empty
+* `detail`: 
+
+```
+{
+    // string/regexp -> replacement
+}
+```
+
+## htmlInsert
+
+* `desc`: html insertion
+* `default`: empty
+* `detail`: 
+
+```
+{
+    // start of document
+    // start: "",
+    
+    // end of document
+    // end: ""
+}
+```
+
+## htmlExtension
+
+* `desc`: convert html other extension file, such as `jsp, php, asp` 
+* `type`: `string`
+* `default`: empty
+
+## recordFileChanges
+
+* `desc`: whether record file changes, thus next time only handle changed file
+* `default`: `true`
+* `detail`: `true` / `false`
+
 ## network
 
 see [Project config - network](./config/network.md)
@@ -93,75 +151,6 @@ see [Project config - network](./config/network.md)
 ```
 
 * `note`: `base, common, res` is system reserved keyword, so you should not use one of them.
-
-## htmlReplace
-
-* `desc`: html replacement
-* `default`: empty
-* `detail`: 
-
-```
-{
-    // string/regexp -> replacement
-}
-```
-
-## htmlInsert
-
-* `desc`: html insertion
-* `default`: empty
-* `detail`: 
-
-```
-{
-    // start of document
-    // start: "",
-    
-    // end of document
-    // end: ""
-}
-```
-
-## htmlExtension
-
-* `desc`: convert html other extension file, such as `jsp, php, asp` 
-* `type`: `string`
-* `default`: empty
-
-## minJs
-
-* `desc`: whether mini js files
-* `default`: `false`
-* `detail`: `true` / `false`
-
-## minCss
-
-* `desc`: whether mini css files
-* `default`: `false`
-* `detail`: `true` / `false`
-
-## minHtml
-
-* `desc`: whether mini html files
-* `default`: `false`
-* `detail`: `true` / `false`
-
-## recordFileChanges
-
-* `desc`: whether record file changes, thus next time only handle changed file
-* `default`: `true`
-* `detail`: `true` / `false`
-
-## cssAutoPrefix
-
-* `desc`: whether auto add vendor prefixes to rules of css, such as `-webkit-, -moz-, -o-, -ms-`.
-* `default`: `false`
-* `detail`: `true` / `false`
-
-## autoPrefixOption
-
-* `desc`: option for `cssAutoPrefix`, more to see [autoprefixer](https://github.com/postcss/autoprefixer#options)
-* `default`: empty
 
 ## moduleGroup
 

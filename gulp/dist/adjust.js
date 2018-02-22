@@ -1,8 +1,6 @@
 
-var cssUrlToAbsolute = require('gulp-css-url-to-absolute');
 var cdnAbsolutePath = require('gulp-cdn-absolute-path');
 var cssUrlPrefix = require('gulp-css-url-prefix');
-var autoPrefixer = require('gulp-autoprefixer');
 
 var distData = require('./data');
 
@@ -22,14 +20,6 @@ module.exports = {
                 stream.pipe(cssUrlPrefix(
                     distData.currentConfig.currentNetwork.cssAbsolutePathPrefix, '\/'
                 ));
-
-            /**
-             * this handle should be done at the last, or the `cssAbsolutePathPrefix` will not take effect
-             *
-             * todo: find the reason
-             */
-            if (distData.currentConfig.cssAutoPrefix)
-                stream.pipe(autoPrefixer(distData.currentConfig.autoPrefixOption || {}));
 
             return stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.css));
         }
