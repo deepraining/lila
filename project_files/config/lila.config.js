@@ -32,12 +32,6 @@ module.exports = {
     buildOptions: [
         {}
         // ...
-    ],
-    // extra directories to sync to remote, like images, fonts.
-    directoriesToSync: {
-        // format: key -> path
-        images: "images", // images' directory, relative to basePaths.webRoot
-        fonts: "fonts" // fonts' directory, relative to basePaths.webRoot
-    }
+    ]
 };
 

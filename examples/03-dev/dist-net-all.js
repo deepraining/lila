@@ -12,7 +12,7 @@ projectConfig.network[100] = {
 
 projectConfig.buildOptions = [];
 projectConfig.buildOptions[100] = {
-    renameHtmlMap: {
+    renameHtml: {
         'test/index': 'parent/inner/index',
         'test-2/index': 'parent/inner/index-2',
         'test-3/index': 'parent/inner/index-3',

@@ -1,8 +1,12 @@
 # lila changelog
 
+## 0.1.0
+
+- remove `splitJsMap` config, leave `splitJs`
+
 ## 0.0.6
 
-- add `renameHtmlMap` config option
+- add `renameHtml` config option
 
 ## 0.0.5
 

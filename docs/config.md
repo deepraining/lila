@@ -1,15 +1,5 @@
 # Project config
 
-## module
-
-* `desc`: current handling module name, can and always be specified from command line. 
-* `default`: `test/index`
-
-## env
-
-* `desc`: environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
-* `default`: `0`
-
 ## network
 
 see [Project config - network](./config/network.md)
@@ -237,16 +227,10 @@ see [group of modules](./group.md)
 ##  splitJs
 
 * `bg`: normally, all js files will be built into one file.
-* `desc`: whether to split one big js file into many smaller js files.
-* `default`: `false`
-* `detail`: `true` / `false`
-
-##  splitJsMap
-
-* `desc`: indicates how to split js file.
+* `desc`: indicates how to split one big js file into many smaller js files.
 * `default`: empty
 * `detail`: see [config webpack](./webpack.md)
-* `note`: this always be configured in custom config of each module.
+* `note`: normally, this always be configured in custom config of each module.
 
 ## ignoreNodeModules
 
@@ -276,7 +260,7 @@ see [group of modules](./group.md)
 * `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
 
-## renameHtmlMap
+## renameHtml
 
 * `desc`: rename html after building.
 * `bg`: sometimes, some html have to be renamed, include path, when the server side requires another different html file.

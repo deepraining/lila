@@ -8,12 +8,12 @@ var projectConfig = require('../../project_config');
 module.exports = {
     // rename html after building
     renameHtml: (cb) =>  {
-        if (!projectConfig.renameHtmlMap) {
+        if (!projectConfig.renameHtml) {
             cb();
             return;
         }
 
-        _.forEach(projectConfig.renameHtmlMap, (targetModule, sourceModule) => {
+        _.forEach(projectConfig.renameHtml, (targetModule, sourceModule) => {
             var targetPath = projectConfig.buildPaths.dist.html + '/' + targetModule + '.html';
             var sourcePath = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.html';
 

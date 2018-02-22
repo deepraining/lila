@@ -12,6 +12,7 @@ npm-debug.log
 # building temporary directories
 #
 lila_*
+dev
 dist
 
 #

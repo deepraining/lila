@@ -38,7 +38,7 @@ module.exports = {
         },
         // 4
         {
-            renameHtmlMap: {
+            renameHtml: {
                 'test/index': 'parent/inner/index',
                 'test-2/index': 'parent/inner/index-2',
                 'test-3/index': 'parent/inner/index-3',

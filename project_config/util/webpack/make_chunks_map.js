@@ -8,7 +8,7 @@ var _ = require('lodash');
  *
  * example:
  *
- * splitJsMap: {
+ * splitJs: {
  *     vendor: ['jquery', 'underscore'],
  *     vendor2: ['react', 'react-dom'],
  *     common: ['alias/base', 'alias/common']
@@ -23,23 +23,23 @@ var _ = require('lodash');
  * @param config
  */
 module.exports = (config) => {
-    if (!config.splitJsMap) return;
+    if (!config.splitJs) return;
 
     config.splitJsChunks = {};
 
-    var splitJsMapKeys = _.keys(config.splitJsMap);
+    var splitJsKeys = _.keys(config.splitJs);
 
-    splitJsMapKeys.forEach((key, index) => {
+    splitJsKeys.forEach((key, index) => {
         var i = index, tmpKey, chunks = [];
 
         config.splitJsChunks[key] = {};
         for (; i > -1; i--) {
-            tmpKey = splitJsMapKeys[i];
-            chunks = _.concat(chunks, config.splitJsMap[tmpKey]);
+            tmpKey = splitJsKeys[i];
+            chunks = _.concat(chunks, config.splitJs[tmpKey]);
         }
 
         config.splitJsChunks[key] = chunks;
     });
 
-    config.splitJsMapKeys = splitJsMapKeys;
+    config.splitJsKeys = splitJsKeys;
 };

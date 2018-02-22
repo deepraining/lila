@@ -11,7 +11,7 @@ var getJsEntryPath = require('../get_js_entry_path');
  *
  * current module: test/index
  *
- * current splitJsMap: {
+ * current splitJs: {
  *     vendor: ['jquery', 'underscore'],
  *     vendor2: ['react', 'react-dom'],
  *     common: ['alias/base', 'alias/common']
@@ -32,7 +32,7 @@ module.exports = (config) => {
 
     entry[config.moduleName] = getJsEntryPath(config);
 
-    config.splitJsMapKeys && config.splitJsMapKeys.forEach((key) => {
+    config.splitJsKeys && config.splitJsKeys.forEach((key) => {
         entry[key] = config.splitJsChunks[key];
     });
 

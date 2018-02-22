@@ -22,14 +22,14 @@ module.exports = (config) => {
     }
 
     // common chunks
-    if (config.splitJsMapKeys) {
-        var keysLength = config.splitJsMapKeys.length;
+    if (config.splitJsKeys) {
+        var keysLength = config.splitJsKeys.length;
 
-        config.splitJsMapKeys.forEach((key, index) => {
+        config.splitJsKeys.forEach((key, index) => {
             var i = index, chunks = [config.moduleName];
 
             for (; i < keysLength; i++) {
-                chunks.push(config.splitJsMapKeys[i]);
+                chunks.push(config.splitJsKeys[i]);
             }
 
             plugins.push(new webpack.optimize.CommonsChunkPlugin({
