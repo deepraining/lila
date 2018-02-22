@@ -23,11 +23,7 @@ module.exports = {
         // ...
     ],
     /**
-     * build options, do following works:
-     *     1. whether minify html/css/js files
-     *     2. whether split js file
-     *     3. whether pack css into a single file
-     *     ...
+     * build option of different environments
      */
     envOptions: [
         {}
