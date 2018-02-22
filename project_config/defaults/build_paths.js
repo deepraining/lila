@@ -39,14 +39,6 @@ module.exports = (config) => {
         distHandleHtml: getPaths(config.basePaths.buildRoot, 'dist_handle_html', !0),
         // dist temporary directory to store files
         distStore: getPaths(config.basePaths.buildRoot, 'dist_store', !0),
-        // doc temporary directory
-        doc_tmp: {
-            dir: config.basePaths.buildRoot + '/lila_doc'
-        },
-        // doc dist directory
-        doc: {
-            dir: vars.projectRoot + '/docs'
-        },
         // resources of building, like images, fonts
         resources: {
             buildDir: config.basePaths.buildRoot + '/lila_build_resources',

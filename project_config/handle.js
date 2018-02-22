@@ -14,7 +14,6 @@ var handleHtml = require('./handle/html');
 var handleModuleGroup = require('./handle/module_group');
 var handleModule = require('./handle/module');
 var handleCustomConfig = require('./handle/custom_config');
-var handleDoc = require('./handle/doc');
 var handleWebpack = require('./handle/webpack');
 
 var handle = (config) => {
@@ -32,7 +31,6 @@ var handle = (config) => {
     handleDirectoriesToSync(config);
     handleModuleGroup(config);
     handleModule(config);
-    handleDoc(config);
     handleWebpack(config);
 
     return config;

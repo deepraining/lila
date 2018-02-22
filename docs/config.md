@@ -163,10 +163,6 @@ see [Project config - network](./config/network.md)
 * `desc`: option for `cssAutoPrefix`, more to see [autoprefixer](https://github.com/postcss/autoprefixer#options)
 * `default`: empty
 
-## doc
-
-see [Project config - doc](./config/doc.md)
-
 ## moduleGroup
 
 see [group of modules](./group.md)

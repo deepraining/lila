@@ -47,14 +47,6 @@ lila mock-express
 
 detail: [mock-express](./express.md)
 
-### `doc`: generate `js` documents
-
-```
-lila doc
-```
-
-* documents will be in `docs` of project root directory(if exists, it'll be overridden').
-
 ## arguments
 
 ### `env/e`: 

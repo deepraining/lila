@@ -41,9 +41,5 @@ module.exports = [
     {
         name: 'revert',
         desc: 'Revert current dist directory to last archive state.'
-    },
-    {
-        name: 'doc',
-        desc: 'Generate javascript documents.'
     }
 ];

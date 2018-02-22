@@ -5,7 +5,8 @@
 - remove `splitJsMap` config, leave `splitJs`
 - remake directory structure
 - rename `buildOptions` to `envOptions`
-- remove `init-clean` commands
+- remove `init-clean` command
+- remove `doc` command
 
 ## 0.0.6
 
