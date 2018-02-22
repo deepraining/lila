@@ -5,12 +5,12 @@
 
 
 require('bootstrap/dist/css/bootstrap.css');
-require('../../css/test/index.css');
-require('../../css/test/index2.css');
-require('../../css/test/index.less');
+require('./css/index.css');
+require('./css/index2.css');
+require('./css/index.less');
 
-require('./index2')();
-require('./index3.jsx');
+require('./js/index2')();
+require('./js/index3.jsx');
 
 require('base')();
 require('common')();

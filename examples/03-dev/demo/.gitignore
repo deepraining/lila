@@ -5,6 +5,7 @@ npm-debug.log
 .idea
 
 lila_*
+dev
 dist
 
 /manifests

@@ -6,8 +6,6 @@ module.exports = {
         base: 'alias/base',
         common: 'alias/common'
     },
-    htmlAbsoluteAndCdnPath: !1,
-    skipNotExistingFiles: !0,
     envOptions: [
         // 0
         {},
@@ -15,15 +13,11 @@ module.exports = {
         {
             minJs: !0,
             minCss: !0,
-            minHtml: !0,
-            revisionHashLength: 12
+            minHtml: !0
         },
         // 2
         {
-            htmlAbsoluteAndCdnPath: !1,
-            recordFileChanges: !1,
-            revisionFiles: !1,
-            skipNotExistingFiles: !0
+            recordFileChanges: !1
         },
         // 3
         {

@@ -3,7 +3,5 @@
  */
 
 module.exports = {
-    config: {
-        ignoreNodeModules: !1
-    }
+    ignoreNodeModules: !1
 };
