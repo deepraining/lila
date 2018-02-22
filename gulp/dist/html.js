@@ -25,8 +25,8 @@ var htmlInsert = (stream) => {
 /**
  * convert html to other kind of file
  */
-var htmlToSpecifiedExt = (stream) => {
-    stream.pipe(rename({extname: "." + distData.currentConfig.htmlToSpecifiedExt}));
+var htmlExtension = (stream) => {
+    stream.pipe(rename({extname: "." + distData.currentConfig.htmlExtension}));
 };
 
 /**
@@ -46,7 +46,7 @@ module.exports = (gulp) => {
         if (distData.currentConfig.hasHtmlInsert)
             htmlInsert(stream);
         if (distData.currentConfig.hasHtmlToSpecifiedExt)
-            htmlToSpecifiedExt(stream);
+            htmlExtension(stream);
 
         stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.html));
 

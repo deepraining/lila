@@ -14,7 +14,7 @@ see [Project config - network](./config/network.md)
 * `desc`: express data mock server port
 * `default`: 8190
 
-## buildOptions
+## envOptions
 
 * `desc`: build option of different environments. you can override config root attribute according to different environment, such as `minJs, minCss, minHtml ...`
 * `default`: empty
@@ -92,7 +92,7 @@ see [Project config - network](./config/network.md)
 }
 ```
 
-* `note`: `base, common, resources` is system reserved keyword, so you should not use one of them.
+* `note`: `base, common, res` is system reserved keyword, so you should not use one of them.
 
 ## htmlReplace
 
@@ -122,11 +122,11 @@ see [Project config - network](./config/network.md)
 }
 ```
 
-## htmlToSpecifiedExt
+## htmlExtension
 
-* `desc`: convert html other extension file, such as jsp, php, asp 
+* `desc`: convert html other extension file, such as `jsp, php, asp` 
+* `type`: `string`
 * `default`: empty
-* `detail`: `jsp`, `php` ...
 
 ## minJs
 
@@ -152,45 +152,6 @@ see [Project config - network](./config/network.md)
 * `default`: `true`
 * `detail`: `true` / `false`
 
-## revisionFiles
-
-* `desc`: whether rename js/css file by appending hash code to file name
-* `default`: `true`
-* `detail`: `true` / `false`
-
-## revisionHashLength
-
-* `desc`: revision hash code length
-* `default`: `8`
-* `detail`: `int`
-
-## htmlAbsoluteAndCdnPath
-
-* `desc`: whether convert relative path to absolute path and add cdn prefix in html
-* `default`: `true`
-* `detail`: `true` / `false`
-
-## htmlAbsoluteSuffixes
-
-* `desc`: Indicates which reference extensions to absolute, like `jpg, gif, png, ico, ...`
-* `type`: `array`
-* `default`: `['jpg', 'jpeg', 'png', 'gif', 'js', 'css', 'ico', 'cur']`
-
-## skipNotExistingFiles
-
-* `desc`: whether skip not existing files when extract css and js from html
-* `default`: `false`
-* `detail`: `true` / `false`
-* `example`: 
-
-```
-<!-- outer css file, not in local project -->
-<link rel="stylesheet" href="outer/css/file">
-
-<!-- outer js file, not in local project -->
-<script src="outer/js/file"></script>
-```
-
 ## cssAutoPrefix
 
 * `desc`: whether auto add vendor prefixes to rules of css, such as `-webkit-, -moz-, -o-, -ms-`.
@@ -215,7 +176,7 @@ see [group of modules](./group.md)
 * `desc`: Create aliases to import or require certain modules more easily.
 * `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
 * `default`: empty
-* `detail`: the base directory is `src/js`, and this only do to js files.
+* `detail`: the base directory is `src`.
 
 ## packCssSeparately
 

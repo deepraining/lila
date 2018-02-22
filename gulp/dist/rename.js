@@ -21,9 +21,9 @@ module.exports = {
                 fsExtra.moveSync(sourcePath, targetPath, {overwrite: !0});
 
             // html to jsp, php ...
-            if (projectConfig.htmlToSpecifiedExt) {
-                var targetPath2 = projectConfig.buildPaths.dist.html + '/' + targetModule + '.' + projectConfig.htmlToSpecifiedExt;
-                var sourcePath2 = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.' + projectConfig.htmlToSpecifiedExt;
+            if (projectConfig.htmlExtension) {
+                var targetPath2 = projectConfig.buildPaths.dist.html + '/' + targetModule + '.' + projectConfig.htmlExtension;
+                var sourcePath2 = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.' + projectConfig.htmlExtension;
 
                 if (fs.existsSync(sourcePath2) && !fs.existsSync(targetPath2))
                     fsExtra.moveSync(sourcePath2, targetPath2, {overwrite: !0});

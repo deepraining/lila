@@ -8,7 +8,7 @@ module.exports = {
     },
     htmlAbsoluteAndCdnPath: !1,
     skipNotExistingFiles: !0,
-    buildOptions: [
+    envOptions: [
         // 0
         {},
         // 1
@@ -34,7 +34,7 @@ module.exports = {
                 start: '<!-- start -->',
                 end: '<!-- end -->'
             },
-            htmlToSpecifiedExt: 'jsp'
+            htmlExtension: 'jsp'
         },
         // 4
         {

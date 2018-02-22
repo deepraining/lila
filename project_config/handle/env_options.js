@@ -5,12 +5,12 @@ var _ = require('lodash');
 
 module.exports = (config) => {
 
-    var buildOption = config.buildOptions && config.buildOptions[config.env];
+    var envOption = config.envOptions && config.envOptions[config.env];
     /**
      * build option of current environment can override config root attribute
      */
-    if (buildOption) {
-        _.forEach(buildOption, (value, key) => {
+    if (envOption) {
+        _.forEach(envOption, (value, key) => {
             config[key] = value;
         });
     }

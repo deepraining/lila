@@ -10,8 +10,8 @@ projectConfig.network[100] = {
     backupHtml: !0
 };
 
-projectConfig.buildOptions = [];
-projectConfig.buildOptions[100] = {
+projectConfig.envOptions = [];
+projectConfig.envOptions[100] = {
     renameHtml: {
         'test/index': 'parent/inner/index',
         'test-2/index': 'parent/inner/index-2',

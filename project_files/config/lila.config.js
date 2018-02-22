@@ -29,7 +29,7 @@ module.exports = {
      *     3. whether pack css into a single file
      *     ...
      */
-    buildOptions: [
+    envOptions: [
         {}
         // ...
     ]
