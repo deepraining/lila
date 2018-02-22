@@ -1,10 +1,8 @@
-# Directory specification
-
-## base structure
+# Directory
 
 ```
 | - / (root)
-    | - src (source)
+    | - src (source, required)
     | - dev (develop)
     | - dist (production)
     | - images (image files)
@@ -15,16 +13,6 @@
     | - ...
 ```
 
-* `src`: Source directory. Source codes directory, like `css, less, js)` 
+* `src`: Source directory. Source codes directory, like `html, css, less, js` 
 * `dev`: Developing directory. Directory to debug in browser. 
 * `dist`: Production directory. Generated after building. 
-
-
-## `src, dev, dist` directory structure
-
-```
-| - src/dev/dist
-    | - js
-    | - css
-    | - html
-```

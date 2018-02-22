@@ -1,24 +1,30 @@
 # Module files
 
-* `html`: html should be in `dev/html`   
-* `js`: js should be in `src/js`
-* `css/less`: css should be in `src/css`
+## workspace
 
-normally, a module(example: `test/inner`) contains following files:
+every module has a workspace in `src` directory, for example, if current module is `test/inner`, the workspace is `src/test/inner` directory.
+
+## files
+
+every module must have a `html` file and a `js` file, and paths is liking follows(module: `test/inner`):
  
-* a html file: `dev/html/test/inner.html` (required)
-* a js file: `src/js/test/inner.js` or `src/js/test/inner/index.js` (required)
-* a css file: `src/css/test/inner.css`
+* html: `src/test/inner/index.html`
+* js: `src/test/inner/index.js`
+* css/less: you import `css/less` files in `js` file whatever you like.
 
-if you want a single js module(no html), you can add an empty html file, and a custom config file, and make config like following:
+## recommended workspace structure
 
 ```
-module.exports = {
-    config: {
-        // disable renaming js/css file
-        revisionFiles: !1
-    }
-};
+| - workspace
+    | - index.html (required)
+    | - index.js (required)
+    | - index.less/index.css (stylesheet)
+    | - js (directory: more js files)
+    | - css/less (directory: more stylesheet files)
+    | - images (directory: image files)
+    | - ...
 ```
 
-if you want a single css module(no html/js), you can add an empty html and js file, and a custom config file, and make config like former.
+## note
+
+the html in production is not the same as `src`. for example, in `src`, the path is `src/test/inner/index.html`, in `dist` of production, the path is `dist/test/inner.html`  
