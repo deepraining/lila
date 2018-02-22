@@ -1,5 +1,15 @@
 # Project config
 
+## module
+
+* `desc`: current handling module name, can and always be specified from command line. 
+* `default`: `test/index`
+
+## env
+
+* `desc`: environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
+* `default`: `0`
+
 ## minJs
 
 * `desc`: whether mini js files
@@ -57,6 +67,73 @@
 * `desc`: whether record file changes, thus next time only handle changed file
 * `default`: `true`
 * `detail`: `true` / `false`
+
+## resolveAlias
+
+* `desc`: Create aliases to import or require certain modules more easily.
+* `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
+* `default`: empty
+* `detail`: the base directory is `src`.
+
+## packCssSeparately
+
+* `bg`: normally, all js and css files will be built into one file.
+* `desc`: whether to pack css separately into a single css file.
+* `default`: `false`
+* `detail`: `true` / `false`
+
+##  splitJs
+
+* `bg`: normally, all js files will be built into one file.
+* `desc`: indicates how to split one big js file into many smaller js files.
+* `default`: empty
+* `example`: 
+
+```
+{
+    lib: ['jquery', 'react', 'react-dom'],
+    common: ['common/file1', 'common/file2'],
+    base: ['base/file1', 'base/file2']
+}
+```
+
+above will generate extra 3 js files from main js file, thus html will like:
+
+```
+<script src="/path/to/lib.js"></script>
+<script src="/path/to/common.js"></script>
+<script src="/path/to/base.js"></script>
+<script src="/path/to/main.js"></script>
+```
+
+* `note`: normally, this always be configured in custom config of each module.
+
+## ignoreNodeModules
+
+* `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
+* `default`: `true`
+* `detail`: `true` / `false`
+
+## provide
+
+* `desc`: Automatically load modules instead of having to import or require them everywhere.
+* `see`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
+* `default`: empty
+* `example`: 
+
+```
+{
+    $: 'jquery',
+    jQuery: 'jquery'
+}
+```
+
+## fileLoaderSuffixes
+
+* `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
+* `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
+* `type`: `array`
+* `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
 ## network
 
@@ -155,55 +232,6 @@ see [Project config - network](./config/network.md)
 ## moduleGroup
 
 see [group of modules](./group.md)
-
-## resolveAlias
-
-* `desc`: Create aliases to import or require certain modules more easily.
-* `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
-* `default`: empty
-* `detail`: the base directory is `src`.
-
-## packCssSeparately
-
-* `bg`: normally, all js and css files will be built into one file.
-* `desc`: whether to pack css separately into a single css file.
-* `default`: `false`
-* `detail`: `true` / `false`
-
-##  splitJs
-
-* `bg`: normally, all js files will be built into one file.
-* `desc`: indicates how to split one big js file into many smaller js files.
-* `default`: empty
-* `detail`: see [config webpack](./webpack.md)
-* `note`: normally, this always be configured in custom config of each module.
-
-## ignoreNodeModules
-
-* `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
-* `default`: `true`
-* `detail`: `true` / `false`
-
-## provide
-
-* `desc`: Automatically load modules instead of having to import or require them everywhere.
-* `see`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
-* `default`: empty
-* `example`: 
-
-```
-{
-    $: 'jquery',
-    jQuery: 'jquery'
-}
-```
-
-## fileLoaderSuffixes
-
-* `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
-* `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
-* `type`: `array`
-* `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
 
 ## renameHtml

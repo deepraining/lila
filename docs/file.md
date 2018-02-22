@@ -18,6 +18,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
 | - workspace
     | - index.html (required)
     | - index.js (required)
+    | - config.js (custom config file, system reserved)
     | - index.less/index.css (stylesheet)
     | - js (directory: more js files)
     | - css/less (directory: more stylesheet files)

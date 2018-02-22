@@ -40,6 +40,5 @@ cd lila-demo && npm install lila --save-dev
 6. [group of modules](./docs/group.md)
 7. [custom config for every module](./docs/custom.md)
 8. [use express to mock data](./docs/express.md)
-9. [config webpack](./docs/webpack.md)
-10. [use less](./docs/less.md)
-11. [use react](./docs/react.md)
+9. [use less](./docs/less.md)
+10. [use react](./docs/react.md)

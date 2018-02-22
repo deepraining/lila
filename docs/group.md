@@ -3,7 +3,7 @@
 defined in `lila.config.js` of project.
 
 if you always handle the same multi modules, you can make those modules as a group, 
-and next time when build just input the groupName instead of multi modules. 
+and next time just input the groupName instead of multi modules when build. 
 
 ### example
 
