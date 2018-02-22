@@ -24,14 +24,6 @@ lila clean
 * before execute this command, `archive` will be automaticly executed once.
 * after executing this command, you should remove `manifests` directory in root of project. 
 
-### `init-clean`: initialize config file which command `clean` needed.
-
-```
-lila init-clean
-```
-
-* this command will generate a `lila.clean.config.js` in current working directory, and you can modify it as you want.
-
 ### `revert`: revert dist directory to latest previous state.
 
 ```

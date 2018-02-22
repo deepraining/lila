@@ -39,10 +39,6 @@ module.exports = [
         desc: 'Clean redundant files caused by revision.'
     },
     {
-        name: 'init-clean',
-        desc: 'Init clean task by generate a config file \'lila.clean.config.js\' in current directory.'
-    },
-    {
         name: 'revert',
         desc: 'Revert current dist directory to last archive state.'
     },
