@@ -30,7 +30,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
 
 ## html file
 
-you can split one html file into pieces, and use [webpack require] import pieces into the main html file.
+you can split one html file into pieces, and use [webpack require](https://webpack.js.org/loaders/html-loader/) import pieces into the main html file.
 
 example
 ```

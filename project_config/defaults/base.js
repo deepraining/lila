@@ -35,7 +35,7 @@ var defaults = {
     // whether to ignore files under node_modules directory when transform es6 to es5
     ignoreNodeModules: true,
     // indicates which files to load
-    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']
+    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']
 };
 
 var _ = require('lodash');

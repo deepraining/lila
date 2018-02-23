@@ -9,7 +9,7 @@ module.exports = (config) => {
     if (resolve) return resolve;
 
     resolve = {
-        modules: [config.buildPaths.src.js, vars.projectRoot + '/node_modules', "node_modules"]
+        modules: [config.buildPaths.src.dir, vars.projectRoot + '/node_modules', "node_modules"]
     };
 
     config.resolveAlias && (resolve.alias = _.cloneDeep(config.resolveAlias));

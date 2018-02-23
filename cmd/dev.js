@@ -27,7 +27,7 @@ var browserSyncConfig = {
         baseDir: projectConfig.basePaths.webRoot
     },
     port: projectConfig.devServerPort,
-    startPath: projectConfig.basePaths.webPrefix + '/src/' + projectConfig.module + '/index.html'
+    startPath: projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html'
 };
 
 browserSyncConfig.middleware = [

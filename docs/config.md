@@ -133,7 +133,7 @@ above will generate extra 3 js files from main js file, thus html will like:
 * `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
 * `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
 * `type`: `array`
-* `default`: `['jpg', 'jpeg', 'png', 'gif', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
+* `default`: `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
 ## network
 
