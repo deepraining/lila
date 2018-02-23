@@ -12,28 +12,22 @@ var defaults = {
      *          ...
      */
     env: 0,
-    // dev server port
-    devServerPort: 8090,
     // whether mini js files
-    minJs: false,
+    minJs: !1,
     // whether mini css files
-    minCss: false,
+    minCss: !1,
     // whether mini html files
-    minHtml: false,
+    minHtml: !1,
     // whether record file changes, thus next time only handle changed file
-    recordFileChanges: true,
-    // whether rename js/css file by appending hash code to file name
-    revisionFiles: true,
-    // revision hash code length
-    revisionHashLength: 8,
-    // whether convert relative path to absolute path and add cdn prefix in html
-    htmlAbsoluteAndCdnPath: true,
+    recordFileChanges: !0,
     // whether to pack css separately into a single css file
-    packCssSeparately: false,
+    packCssSeparately: !1,
     // whether to ignore files under node_modules directory when transform es6 to es5
-    ignoreNodeModules: true,
+    ignoreNodeModules: !0,
     // indicates which files to load
-    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']
+    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
+    // dev server port
+    devServerPort: 8090
 };
 
 var _ = require('lodash');

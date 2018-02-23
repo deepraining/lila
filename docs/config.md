@@ -7,7 +7,7 @@
 
 ## env
 
-* `desc`: environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
+* `desc`: current environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
 * `default`: `0`
 
 ## minJs
@@ -58,7 +58,7 @@
 
 ## htmlExtension
 
-* `desc`: convert html other extension file, such as `jsp, php, asp` 
+* `desc`: convert html file to other extension file, such as `jsp, php, asp` 
 * `type`: `string`
 * `default`: empty
 
@@ -70,7 +70,7 @@
 
 ## resolveAlias
 
-* `desc`: Create aliases to import or require certain modules more easily.
+* `desc`: create aliases to import or require certain modules more easily.
 * `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
 * `default`: empty
 * `detail`: the base directory is `src`.

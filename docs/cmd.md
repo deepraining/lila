@@ -44,7 +44,7 @@ lila sync moduleName [-e 0(1,2)]
 ### `env/e`: 
 
 * specify current environment through command line, example:  `-e 0`, `-e 1`.
-* if env is string, default is `test=0, prod/production=1`, or you can config it in envAlias of [project config](./config.md);
+* if env is string, default is `test=0, prod/production=1`, or you can config it in `envAlias` of [project config](./config.md);
 * if env is not provided, default is 0
 
 ### `moduleName`

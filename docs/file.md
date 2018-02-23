@@ -10,7 +10,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
  
 * html: `src/test/inner/index.html`
 * js: `src/test/inner/index.js`
-* css/less: you import `css/less` files in `js` file whatever you like.
+* css/less: you can import `css/less` files into `js` file whatever you like.
 
 ## recommended workspace structure
 
@@ -30,7 +30,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
 
 ## html file
 
-you can split one html file into pieces, and use [webpack require](https://webpack.js.org/loaders/html-loader/) import pieces into the main html file.
+you can split one html file into pieces, and use [webpack require](https://webpack.js.org/loaders/html-loader/) to import pieces into the main html file.
 
 example
 ```

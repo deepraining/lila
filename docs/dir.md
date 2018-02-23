@@ -1,10 +1,10 @@
 # Directory
 
 ```
-| - / (root)
+| - / (project)
     | - src (source, required)
-    | - dev (develop)
-    | - dist (production)
+    | - dev (develop, system reserved)
+    | - dist (production, system reserved)
     | - images (common image files)
     | - fonts (common font files)
     | - data (common api-mock json files)

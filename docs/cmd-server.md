@@ -14,7 +14,7 @@ lila arc
 * current working directory should be the parent directory of `dist`.
 * this command just do with dist directory, if you want to archive the whole project, please use your own way.
 
-### `clean`: clean redundant hash-code-suffix files which created by revision, and are not used anymore.  
+### `clean`: clean redundant `hash-code` files which created by revision, and are not used anymore.  
 
 ```
 lila clean
