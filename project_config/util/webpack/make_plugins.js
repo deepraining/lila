@@ -5,20 +5,17 @@ var _ = require('lodash');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var getConcatFileName = require('../../../util/get_concat_file_name');
+var makeHtmlPlugin = require('./make_html_plugin');
 
 module.exports = (config) => {
 
-    var plugins = [];
+    var plugins = [
+        makeHtmlPlugin(config)
+    ];
 
     // pack css alone
     if (config.packCssSeparately) {
-        /**
-         * example:
-         *     current module is: test/index
-         *     result is: ../../css/test/index.css
-         */
-        plugins.push(new ExtractTextPlugin(_.repeat('../', config.module.split('/').length) + 'css/' + config.module + '.css'));
+        plugins.push(new ExtractTextPlugin('[contenthash].css'));
     }
 
     // common chunks
@@ -34,7 +31,7 @@ module.exports = (config) => {
 
             plugins.push(new webpack.optimize.CommonsChunkPlugin({
                 name: key,
-                filename: getConcatFileName(config.moduleName, key) + '.js',
+                filename: '[chunkhash].js',
                 chunks: chunks,
                 minChunks: Infinity
             }));

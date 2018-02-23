@@ -7,6 +7,8 @@ module.exports = {
     findChangedBase: (gulp) => {
         return function findChangedBase(cb) {
 
+            process.exit(1);
+
             // do not record files' changes
             if (!distData.currentConfig.recordFileChanges) {
                 return gulp.src(distData.currentConfig.buildPaths.extract.dir + '/**/*', {

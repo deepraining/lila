@@ -3,11 +3,8 @@ var _ = require('lodash');
 
 var projectConfig = require('../../project_config');
 var distDel = require('./del');
-var distExtract = require('./extract');
 var distChange = require('./change');
 var distAdjust = require('./adjust');
-var copyExtra = require('./copy_extra');
-var distRevision = require('./revision');
 var distNext = require('./next');
 var distMin = require('../dist/min');
 var distHtml = require('../dist/html');
@@ -16,16 +13,10 @@ var distData = require('./data');
 
 module.exports = (gulp) => {
 
-    var extract = distExtract(gulp);
-
-    var revision = distRevision(gulp);
-
     var findChangedBase = distChange.findChangedBase(gulp);
 
     var adjustCss = distAdjust.adjustCss(gulp);
     var adjustHtml = distAdjust.adjustHtml(gulp);
-
-    var copyBuildResources = copyExtra.copyBuildResources(gulp);
 
     var minCss = distMin.minCss(gulp);
     var minJs = distMin.minJs(gulp);
@@ -36,7 +27,7 @@ module.exports = (gulp) => {
     var nextModule = distNext.nextModule;
 
     var delTasks = [
-        distDel.delExtract, distDel.delDist, distDel.delDistTmp, distDel.delDistHandleHtml
+        distDel.delDist, distDel.delDistTmp, distDel.delDistHandleHtml
     ];
 
     var getTask = () => {
@@ -44,9 +35,6 @@ module.exports = (gulp) => {
             delTasks,
             [
                 webpackBuild,
-                copyBuildResources,
-                extract,
-                revision,
                 findChangedBase,
                 adjustCss,
                 minCss,

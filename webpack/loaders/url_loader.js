@@ -6,7 +6,7 @@ module.exports = (config, isBuild) => {
     };
 
     if (isBuild) {
-        options.publicPath = config.basePaths.webPrefix + '/dist/resources/'
+        options.publicPath = config.basePaths.webPrefix + '/dist/'
     }
 
     return {

@@ -13,12 +13,8 @@ var distTasks = require('../dist/tasks');
 module.exports = (gulp) => {
 
     var delDist = distDel.delDist;
-    var delCopiedDev = distDel.delCopiedDev;
     var delDistStore = distDel.delDistStore;
-    var delBuildResources = distDel.delBuildResources;
-    var delBuildResourcesJs = distDel.delBuildResourcesJs;
 
-    var copyDev = distCopy.copyDev;
     var copyManifests = distCopy.copyManifests;
     var copyDistStore = distCopy.copyDistStore;
 
@@ -38,15 +34,12 @@ module.exports = (gulp) => {
 
     var tasks = _.concat([],
         [
-            delCopiedDev,
             delDist,
-            copyDev,
             copyManifests,
             logFirstModule
         ],
             distTasks(gulp),
         [
-            delBuildResourcesJs,
             findChangedBuildResources
         ],
             findChangedDirectoriesToSyncTasks,
@@ -54,8 +47,6 @@ module.exports = (gulp) => {
             copyDistStore,
             renameHtml,
             backupHtml,
-            delBuildResources,
-            delCopiedDev,
             delDistStore
         ]);
 
