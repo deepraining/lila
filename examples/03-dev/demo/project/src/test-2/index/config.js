@@ -1,5 +1,5 @@
 
 module.exports = {
-    packCssSeparately: !0,
-    ignoreNodeModules: !1
+    ignoreNodeModules: !1,
+    packCssSeparately: !0
 };

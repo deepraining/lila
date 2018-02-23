@@ -13,15 +13,14 @@ var distTasks = require('../dist/tasks');
 module.exports = (gulp) => {
 
     var delDist = distDel.delDist;
-    var delDistStore = distDel.delDistStore;
+    var delStore = distDel.delStore;
 
     var copyManifests = distCopy.copyManifests;
-    var copyDistStore = distCopy.copyDistStore;
+    var copyToDist = distCopy.copyToDist;
 
     var logFirstModule = distMisc.logFirstModule;
 
-    var findChangedDirectoriesToSync = distChangeExtra.directoriesToSync;
-    var findChangedBuildResources = distChangeExtra.findChangedBuildResources(gulp);
+    var findChangedDirectoriesToSync = distChangeExtra.findChangedDirectoriesToSync;
 
     var backupHtml = distBackup.backupHtml;
 
@@ -39,15 +38,12 @@ module.exports = (gulp) => {
             logFirstModule
         ],
             distTasks(gulp),
-        [
-            findChangedBuildResources
-        ],
             findChangedDirectoriesToSyncTasks,
         [
-            copyDistStore,
+            copyToDist,
             renameHtml,
             backupHtml,
-            delDistStore
+            delStore
         ]);
 
     // register task

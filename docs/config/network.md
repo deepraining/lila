@@ -15,9 +15,6 @@ empty
     // env == 0
     {
         useSsh: false,
-        staticDomain: "",
-        cssAbsolutePathPrefix: "",
-        backupHtml: false,
         servers: [
             {
                 host: "xx.xx.xx.xx",
@@ -38,17 +35,6 @@ empty
 ### `explanation`
 
 * `useSsh`: whether use sftp to upload files, default is ftp
-    - `default`: `false`
-* `staticDomain`: static server domain.
-    - `default`: `""`
-    - `example`:  
-        - http://www.example.com, 
-        - http://www.example.com/sub_dir, 
-        - http://www.example.com/sub_dir/sub_sub_dir
-* `cssAbsolutePathPrefix`: prefix to be prepended to absolute path in css files.
-    - `default`: `""`
-    - `where to use`: if the staticDomain is not a totally root server, but a sub directory, like http://www.example.com/sub_dir, and thus, absolute reference in css will not work correctly, here is to solve this problem.
-* `backupHtml`: whether backup html or converted file from html after each building.
     - `default`: `false`
 
 ### `server explanation`

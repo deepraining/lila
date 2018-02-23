@@ -3,6 +3,7 @@ var _ = require('lodash');
 
 var projectConfig = require('../../project_config');
 var distDel = require('./del');
+var distCopy = require('./copy');
 var distChange = require('./change');
 var distAdjust = require('./adjust');
 var distNext = require('./next');
@@ -13,6 +14,8 @@ var name = require('./name');
 var distData = require('./data');
 
 module.exports = (gulp) => {
+
+    var copyToStore = distCopy.copyToStore;
 
     var findChangedBase = distChange.findChangedBase(gulp);
 
@@ -30,7 +33,7 @@ module.exports = (gulp) => {
     var nextModule = distNext.nextModule;
 
     var delTasks = [
-        distDel.delDist, distDel.delDistTmp, distDel.delDistHandleHtml
+        distDel.delDist, distDel.delTmp
     ];
 
     var getTask = () => {
@@ -45,6 +48,7 @@ module.exports = (gulp) => {
                 minJs,
                 adjustHtml,
                 minHtml,
+                copyToStore,
                 htmlHandle,
                 nextModule
             ]);

@@ -40,7 +40,7 @@ module.exports = (gulp) => {
     return function htmlHandle() {
         var stream;
 
-        stream = gulp.src(distData.currentConfig.buildPaths.distHandleHtml.html + '/**/*.html');
+        stream = gulp.src(distData.currentConfig.buildPaths.tmp.html + '/**/*.html');
         if (distData.currentConfig.hasHtmlReplace)
             htmlReplace(stream);
         if (distData.currentConfig.hasHtmlInsert)
@@ -48,7 +48,7 @@ module.exports = (gulp) => {
         if (distData.currentConfig.hasHtmlToSpecifiedExt)
             htmlExtension(stream);
 
-        stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.html));
+        stream.pipe(gulp.dest(distData.currentConfig.buildPaths.store.html));
 
         return stream;
     }

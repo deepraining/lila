@@ -27,16 +27,22 @@ var getModules = (module, config) => {
     var modules = [];
 
     // all module
-    if (module == '*') dir = config.buildPaths.dev.html;
+    if (module == '*') dir = config.buildPaths.src.dir;
     // test/*
-    else if (module.slice(-2) == '/*') dir = config.buildPaths.dev.html + '/' + module.slice(0, -2);
+    else if (module.slice(-2) == '/*') dir = config.buildPaths.src.dir + '/' + module.slice(0, -2);
     // other
-    else throw new Error('can not resolve module ' + module);
+    else logger.throw('can not resolve module ' + module);
 
     // get all modules
-    rd.eachFileFilterSync(dir, (file) => {
-        var index = path.relative(config.buildPaths.dev.html, file);
-        index.slice(-5) == '.html' && modules.push(pathUtil.replaceBackSlash(index));
+    rd.readDirFilterSync(dir, (dirPath) => {
+        var htmlFile = dirPath + '/index.html';
+        var jsFile = dirPath + '/index.js';
+
+        // both `index.html` and `index.js` exist, announcing this is a module
+        if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
+            var index = path.relative(config.buildPaths.src.dir, dirPath);
+            modules.push(pathUtil.replaceBackSlash(index));
+        }
     });
 
     return modules;
@@ -74,26 +80,17 @@ module.exports = (config) => {
      *
      * @type {Array}
      */
-    var formattedModules = [];
+    var allModules = [];
 
     // handle comma
     if (hasCommaMark) modules = module.split(',');
     else modules = [module];
 
     modules.forEach((item) => {
-        formattedModules = _.concat(formattedModules, getModules(item, config));
+        allModules = _.concat(allModules, getModules(item, config));
     });
 
-    /**
-     * ultimate modules
-     * @type {Array}
-     */
-    var ultimateModules = [];
-    formattedModules.forEach((item) => {
-        ultimateModules.push(item.slice(-5) == '.html' ? item.slice(0, -5) : item);
-    });
-
-    config.modules = ultimateModules;
+    config.modules = allModules;
     config.multiModules = !0;
     config.module = config.modules[config.processingData.moduleIndex];
     fillModuleFields(config);

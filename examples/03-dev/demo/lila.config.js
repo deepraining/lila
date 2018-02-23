@@ -6,40 +6,6 @@ module.exports = {
         base: 'alias/base',
         common: 'alias/common'
     },
-    envOptions: [
-        // 0
-        {},
-        // 1
-        {
-            minJs: !0,
-            minCss: !0,
-            minHtml: !0
-        },
-        // 2
-        {
-            recordFileChanges: !1
-        },
-        // 3
-        {
-            htmlReplace: {
-                DOCTYPE: 'doctype'
-            },
-            htmlInsert: {
-                start: '<!-- start -->',
-                end: '<!-- end -->'
-            },
-            htmlExtension: 'jsp'
-        },
-        // 4
-        {
-            renameHtml: {
-                'test/index': 'parent/inner/index',
-                'test-2/index': 'parent/inner/index-2',
-                'test-3/index': 'parent/inner/index-3',
-                'test-5/index': 'parent/inner/index-5'
-            }
-        }
-    ],
     directoriesToSync: {
         images: 'images',
         fonts: 'fonts'
@@ -52,6 +18,34 @@ module.exports = {
     },
     provide: {
         jQuery: 'jquery'
-    }
+    },
+    cssAbsolutePathPrefix: '/lila',
+    htmlAbsolutePathPrefix: 'http://www.example.com/lila',
+    minJs: !0,
+    minCss: !0,
+    minHtml: !0,
+    backupHtml: !0,
+    htmlReplace: {
+        DOCTYPE: 'doctype'
+    },
+    htmlInsert: {
+        start: '<!-- start -->',
+        end: '<!-- end -->'
+    },
+    htmlExtension: 'jsp',
+    envOptions: [
+        // 0
+        {},
+        // 1
+        {
+            recordFileChanges: !1,
+            renameHtml: {
+                'test/index': 'parent/inner/index',
+                'test-2/index': 'parent/inner/index-2',
+                'test-3/index': 'parent/inner/index-3',
+                'test-5/index': 'parent/inner/index-5'
+            }
+        }
+    ]
 };
 

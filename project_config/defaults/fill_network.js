@@ -2,27 +2,7 @@
 // default network option item
 var defaults = {
     // whether use sftp to upload files, default is ftp
-    useSsh: false,
-    /**
-     * static server domain
-     *
-     * example: http://www.example.com, http://www.example.com/sub_dir, http://www.example.com/sub_dir/sub_sub_dir
-     *
-     */
-    staticDomain: '',
-    /**
-     *
-     * prefix to be prepended to absolute path in css files.
-     *
-     * if the staticDomain is not a totally root server, but a sub directory, like http://www.example.com/sub_dir,
-     * and thus, absolute reference in css will not work correctly, here is to solve this problem.
-     *
-     */
-    cssAbsolutePathPrefix: '',
-    /**
-     * whether backup html or converted file from html after each building.
-     */
-    backupHtml: false
+    useSsh: false
 };
 
 var _ = require('lodash');

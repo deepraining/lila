@@ -7,10 +7,17 @@ var vars = require('../../data/vars');
 var filesCount = require('../../util/files_count');
 
 module.exports = {
-    // copy dist_store to dist
-    copyDistStore: (cb) =>  {
-        fs.existsSync(projectConfig.buildPaths.distStore.dir) &&
-        fsExtra.copySync(projectConfig.buildPaths.distStore.dir, projectConfig.buildPaths.dist.dir);
+    // copy tmp to store
+    copyToStore: (cb) =>  {
+        fs.existsSync(projectConfig.buildPaths.tmp.dir) &&
+        fsExtra.copySync(projectConfig.buildPaths.tmp.dir, projectConfig.buildPaths.store.dir);
+
+        cb();
+    },
+    // copy store to dist
+    copyToDist: (cb) =>  {
+        fs.existsSync(projectConfig.buildPaths.store.dir) &&
+        fsExtra.copySync(projectConfig.buildPaths.store.dir, projectConfig.buildPaths.dist.dir);
 
         cb();
     },

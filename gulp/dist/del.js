@@ -7,16 +7,12 @@ module.exports = {
     delDist: () =>  {
         return del([projectConfig.buildPaths.dist.dir], {force: !0});
     },
-    // delete dist tmp
-    delDistTmp: () =>  {
-        return del([projectConfig.buildPaths.distTmp.dir], {force: !0});
+    // delete tmp
+    delTmp: () =>  {
+        return del([projectConfig.buildPaths.tmp.dir], {force: !0});
     },
-    // delete dist handle html
-    delDistHandleHtml: () =>  {
-        return del([projectConfig.buildPaths.distHandleHtml.dir], {force: !0});
-    },
-    // delete dist store
-    delDistStore: () =>  {
-        return del([projectConfig.buildPaths.distStore.dir], {force: !0});
+    // delete store
+    delStore: () =>  {
+        return del([projectConfig.buildPaths.store.dir], {force: !0});
     }
 };

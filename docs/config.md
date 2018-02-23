@@ -135,6 +135,22 @@ above will generate extra 3 js files from main js file, thus html will like:
 * `type`: `array`
 * `default`: `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
+## htmlAbsolutePathPrefix
+
+* `desc`: prefix to be prepended to absolute path in html files.
+* `default`: empty
+
+## cssAbsolutePathPrefix
+
+* `desc`: prefix to be prepended to absolute path in css files.
+* `default`: empty
+
+## backupHtml
+
+* `desc`: whether backup html(or converted file from html) after each building.
+* `default`: `false`
+* `detail`: `true` / `false`
+
 ## network
 
 see [Project config - network](./config/network.md)

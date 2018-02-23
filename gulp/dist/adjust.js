@@ -6,42 +6,34 @@ var distData = require('./data');
 
 module.exports = {
     /**
-     * 1. add vendor css prefix
-     *
-     * 2. relative to absolute
-     *
-     * 3. add cssAbsolutePathPrefix
+     * 1. add cssAbsolutePathPrefix
      */
     adjustCss: (gulp) => {
-        return function adjustCss() {
-            var stream = gulp.src(distData.currentConfig.buildPaths.dist.css + '/**/*.css');
+        return function adjustCss(cb) {
+            if (distData.currentConfig.cssAbsolutePathPrefix)
+                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.css')
+                    .pipe(cssUrlPrefix(
+                        distData.currentConfig.cssAbsolutePathPrefix, '\/'
+                    ))
+                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
 
-            if (distData.currentConfig.currentNetwork.cssAbsolutePathPrefix)
-                stream.pipe(cssUrlPrefix(
-                    distData.currentConfig.currentNetwork.cssAbsolutePathPrefix, '\/'
-                ));
-
-            return stream.pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.css));
+            else cb();
         }
     },
     /**
-     * 1. relative to absolute
-     *
-     * 2. add cdn
+     * 1. add htmlAbsolutePathPrefix
      */
     adjustHtml: (gulp) => {
-        return function adjustHtml() {
-            if (distData.currentConfig.htmlAbsoluteAndCdnPath)
-                return gulp.src(distData.currentConfig.buildPaths.dist.html + '/**/*.html')
+        return function adjustHtml(cb) {
+            if (distData.currentConfig.htmlAbsolutePathPrefix)
+                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.html')
                     .pipe(cdnAbsolutePath({
                         asset: distData.currentConfig.basePaths.webRoot,
-                        cdn: distData.currentConfig.currentNetwork.staticDomain || '',
+                        cdn: distData.currentConfig.htmlAbsolutePathPrefix || '',
                         exts: distData.currentConfig.htmlAbsoluteSuffixes
                     }))
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.html));
-            else
-                return gulp.src(distData.currentConfig.buildPaths.dist.html + '/**/*.html')
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distTmp.html));
+                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+            else cb();
         }
     }
 };

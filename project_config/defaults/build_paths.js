@@ -29,11 +29,9 @@ module.exports = (config) => {
         src: getPaths(config.basePaths.buildRoot, 'src', !1),
         dev: getPaths(config.basePaths.buildRoot, 'dev', !1),
         dist: getPaths(config.basePaths.buildRoot, 'dist', !1),
-        // dist temporary directory
-        distTmp: getPaths(config.basePaths.buildRoot, 'dist_tmp', !0),
-        // dist temporary directory to handle html
-        distHandleHtml: getPaths(config.basePaths.buildRoot, 'dist_handle_html', !0),
+        // temporary directory
+        tmp: getPaths(config.basePaths.buildRoot, 'tmp', !0),
         // dist temporary directory to store files
-        distStore: getPaths(config.basePaths.buildRoot, 'dist_store', !0)
+        store: getPaths(config.basePaths.buildRoot, 'store', !0)
     };
 };

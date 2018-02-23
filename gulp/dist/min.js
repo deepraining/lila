@@ -7,31 +7,27 @@ var distData = require('./data');
 
 module.exports = {
     minCss: (gulp) => {
-        return function minCss() {
+        return function minCss(cb) {
             if (distData.currentConfig.minCss)
-                return gulp.src(distData.currentConfig.buildPaths.distTmp.css + '/**/*.css')
+                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.css')
                     .pipe(csso({comments: !1}))
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.css));
-            else
-                return gulp.src(distData.currentConfig.buildPaths.distTmp.css + '/**/*.css')
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.css));
+                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+            else cb();
         }
     },
     minJs: (gulp) => {
-        return function minJs() {
+        return function minJs(cb) {
             if (distData.currentConfig.minJs)
-                return gulp.src(distData.currentConfig.buildPaths.dist.js + '/**/*.js')
+                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.js')
                     .pipe(uglify())
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.js));
-            else
-                return gulp.src(distData.currentConfig.buildPaths.dist.js + '/**/*.js')
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distStore.js));
+                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+            else cb();
         }
     },
     minHtml: (gulp) => {
-        return function minHtml() {
+        return function minHtml(cb) {
             if (distData.currentConfig.minHtml)
-                return gulp.src(distData.currentConfig.buildPaths.distTmp.html + '/**/*.html')
+                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.html')
                     .pipe(htmlmin({
                         removeComments: !0,
                         collapseWhitespace: !0,
@@ -42,10 +38,8 @@ module.exports = {
                         minifyJS: !1,
                         minifyCSS: !0
                     }))
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distHandleHtml.html));
-            else
-                return gulp.src(distData.currentConfig.buildPaths.distTmp.html + '/**/*.html')
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.distHandleHtml.html));
+                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+            else cb();
 
         }
     }
