@@ -227,7 +227,7 @@ see [Project config - network](./config/network.md)
 }
 ```
 
-* `note`: `base, common, res` is system reserved keyword, so you should not use one of them.
+* `note`: `base, common` is system reserved keyword, so you should not use one of them.
 
 ## moduleGroup
 

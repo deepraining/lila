@@ -9,6 +9,7 @@ var distNext = require('./next');
 var distMin = require('../dist/min');
 var distHtml = require('../dist/html');
 var webpackBuild = require('../dist/webpack');
+var name = require('./name');
 var distData = require('./data');
 
 module.exports = (gulp) => {
@@ -24,6 +25,8 @@ module.exports = (gulp) => {
 
     var htmlHandle = distHtml(gulp);
 
+    var nameHtml = name.nameHtml;
+
     var nextModule = distNext.nextModule;
 
     var delTasks = [
@@ -35,6 +38,7 @@ module.exports = (gulp) => {
             delTasks,
             [
                 webpackBuild,
+                nameHtml,
                 findChangedBase,
                 adjustCss,
                 minCss,
