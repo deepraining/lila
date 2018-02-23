@@ -17,19 +17,21 @@ if (vars.argv.v || vars.argv.version) {
     logger.log(version);
     process.exit(0);
 }
-// -h --help
-else if (vars.argv.h || vars.argv.help) {
-    showHelp();
-    process.exit(0);
-}
 
 var cwd = process.cwd();
 
 var localLilaPath = path.join(cwd, 'node_modules/lila');
 var localLilaPkgPath = path.join(localLilaPath, 'package.json');
+var hasLocalLila = fs.existsSync(localLilaPkgPath);
 
-if (!fs.existsSync(localLilaPkgPath)) {
-    logger.error('missing local lila package', !0, !0);
+// -h --help (if has local lila, show local lila's help info)
+if ((vars.argv.h || vars.argv.help) && !hasLocalLila) {
+    showHelp();
+    process.exit(0);
+}
+
+if (!hasLocalLila) {
+    logger.error('missing local lila', !0, !0);
     logger.log('please install local lila before next running:');
     logger.log('npm install lila --save-dev');
     process.exit(0);

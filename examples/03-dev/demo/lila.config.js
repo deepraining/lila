@@ -46,6 +46,7 @@ module.exports = {
                 'test-5/index': 'parent/inner/index-5'
             }
         }
-    ]
+    ],
+    devServerPort: 8091
 };
 

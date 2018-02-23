@@ -45,7 +45,7 @@ module.exports = (gulp) => {
             htmlReplace(stream);
         if (distData.currentConfig.hasHtmlInsert)
             htmlInsert(stream);
-        if (distData.currentConfig.hasHtmlToSpecifiedExt)
+        if (distData.currentConfig.hasHtmlExtension)
             htmlExtension(stream);
 
         stream.pipe(gulp.dest(distData.currentConfig.buildPaths.store.html));

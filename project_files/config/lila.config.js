@@ -6,7 +6,6 @@ module.exports = {
      * network, do following works:
      *     1. how many machines
      *     2. whether use distributed servers
-     *     3. how to ensure html/css inline reference
      *     ...
      */
     network: [
