@@ -6,7 +6,7 @@ var rd = require('rd');
 var vars = require('../data/vars');
 var cleanMatches = require('./clean_matches');
 
-module.exports = (hashLength) => {
+module.exports = () => {
 
     var hashCodes = [];
 
@@ -17,7 +17,7 @@ module.exports = (hashLength) => {
         // file content
         var content = fs.readFileSync(file);
 
-        var regExp = cleanMatches.newContent(hashLength);
+        var regExp = cleanMatches.newContent(32);
         var result;
         while(result = regExp.exec(content)) {
             hashCodes.push(result[1]);

@@ -5,7 +5,6 @@ var rd = require('rd');
 var vars = require('../../data/vars');
 var pathUtil = require('../../util/path');
 var extractHashCodes = require('../../util/extract_hash_codes');
-var cleanData = require('../../data/clean');
 var cleanMatches = require('../../util/clean_matches');
 
 module.exports = (gulp) => {
@@ -14,33 +13,26 @@ module.exports = (gulp) => {
     var doClean = (cb) => {
 
         // all hash codes
-        var hashCodes = _.uniq(extractHashCodes(cleanData.config.hashLength));
+        var hashCodes = _.uniq(extractHashCodes());
         var deletedFilesCount = 0;
 
-        var doDelete = (dir) => {
-            rd.eachFileFilterSync(dir, (file) => {
-                // file path
-                var filePath = pathUtil.replaceBackSlash(file);
-                var lastSlashIndex = filePath.lastIndexOf('/');
-                var fileName = lastSlashIndex == -1 ? filePath: filePath.slice(lastSlashIndex + 1);
+        rd.eachFileFilterSync(vars.projectRoot + '/dist', (file) => {
+            // file path
+            var filePath = pathUtil.replaceBackSlash(file);
+            var lastSlashIndex = filePath.lastIndexOf('/');
+            var fileName = lastSlashIndex == -1 ? filePath: filePath.slice(lastSlashIndex + 1);
 
-                var regExp = cleanMatches.newFileName(cleanData.config.hashLength);
-                var result = regExp.exec(fileName);
-                if (!result) return;
+            var regExp = cleanMatches.newFileName(32);
+            var result = regExp.exec(fileName);
+            if (!result) return;
 
-                // not in use, remove it
-                if (hashCodes.indexOf(result[1]) < 0) {
-                    fsExtra.removeSync(file);
-                    logger.info('deleted file: ' + file);
-                    deletedFilesCount += 1;
-                }
-            });
-        };
-
-        // css directory
-        doDelete(vars.projectRoot + '/dist/css');
-        // js directory
-        doDelete(vars.projectRoot + '/dist/js');
+            // not in use, remove it
+            if (hashCodes.indexOf(result[1]) < 0) {
+                fsExtra.removeSync(file);
+                logger.info('deleted file: ' + file);
+                deletedFilesCount += 1;
+            }
+        });
 
         logger.success(`${deletedFilesCount} redundant files are deleted successfully.`, !0, !0);
 
