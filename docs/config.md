@@ -160,11 +160,6 @@ see [Project config - network](./config/network.md)
 * `desc`: dev server port
 * `default`: 8090
 
-## mockExpressServerPort
-
-* `desc`: express data mock server port
-* `default`: 8190
-
 ## envOptions
 
 * `desc`: build option of different environments. you can override config root attribute according to different environment, such as `minJs, minCss, minHtml ...`

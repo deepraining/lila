@@ -24,7 +24,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
     | - js (directory: more js files)
     | - css/less (directory: more stylesheet files)
     | - images (directory: image files)
-    | - data (directory: api-mock files)
+    | - data (directory: api-mock json files)
     | - ...
 ```
 

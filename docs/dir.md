@@ -7,7 +7,7 @@
     | - dist (production)
     | - images (common image files)
     | - fonts (common font files)
-    | - data (common api-mock files)
+    | - data (common api-mock json files)
     | - media (common audio, video, ...)
     | - resources (other)
     | - ...

@@ -39,14 +39,6 @@ lila sync moduleName [-e 0(1,2)]
 
 * can take with argument `env/e`
 
-### `mock-express`: use [express](https://github.com/expressjs/express) to provide data mock
-
-```
-lila mock-express
-```
-
-detail: [mock-express](./express.md)
-
 ## arguments
 
 ### `env/e`: 

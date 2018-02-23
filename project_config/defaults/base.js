@@ -14,8 +14,6 @@ var defaults = {
     env: 0,
     // dev server port
     devServerPort: 8090,
-    // express data mock server port
-    mockExpressServerPort: 8190,
     // whether mini js files
     minJs: false,
     // whether mini css files

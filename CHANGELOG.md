@@ -7,6 +7,7 @@
 - rename `buildOptions` to `envOptions`
 - remove `init-clean` command
 - remove `doc` command
+- remove `mock-express` command
 
 ## 0.0.6
 
