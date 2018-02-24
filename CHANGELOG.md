@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.1.1
+
+- fix bug of `clean` cmd will remove `jpg, png, ...` resource files.
+
 ## 0.1.0
 
 - remove `splitJsMap` config, leave `splitJs`

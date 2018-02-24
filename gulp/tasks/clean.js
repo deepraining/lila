@@ -17,6 +17,9 @@ module.exports = (gulp) => {
         var deletedFilesCount = 0;
 
         rd.eachFileFilterSync(vars.projectRoot + '/dist', (file) => {
+            // only clean js and css file
+            if (file.slice(-3) != '.js' && file.slice(-4) != '.css') return;
+
             // file path
             var filePath = pathUtil.replaceBackSlash(file);
             var lastSlashIndex = filePath.lastIndexOf('/');
