@@ -14,12 +14,6 @@ var logger = require('./util/logger');
 // register global logger
 global.logger = logger;
 
-// -h --help (local lila)
-if (vars.argv.h || vars.argv.help) {
-    showHelp();
-    process.exit(0);
-}
-
 // command name
 var command = vars.argv._ && vars.argv._[0];
 // file path corresponding to command

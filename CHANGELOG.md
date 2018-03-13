@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.1.2
+
+- fix bug of all commands needing local `lila`.
+
 ## 0.1.1
 
 - fix bug of `clean` cmd will remove `jpg, png, ...` resource files.
