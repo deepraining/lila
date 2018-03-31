@@ -27,7 +27,9 @@ var defaults = {
     // indicates which files to load
     fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
     // dev server port
-    devServerPort: 8090
+    devServerPort: 8090,
+    // treat all methods as `get` method, thus all methods can access to static file
+    treatAllMethodsAsGet: !1
 };
 
 var _ = require('lodash');

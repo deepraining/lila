@@ -259,3 +259,16 @@ see [group of modules](./group.md)
     'test/index': 'other/inner/index'
 }
 ```
+
+## treatAllMethodsAsGet
+
+* `bg`: normally, only `get` method can access to static file, but `post, put, delete...` will cause 404.
+* `desc`: treat all methods as `get` method, thus all methods can access to static file.
+* `default`: `false`
+* `detail`: `true` / `false`
+
+## browserSync
+
+* `desc`: custom `browser-sync` config
+* `see`: [browser-sync](https://github.com/BrowserSync/browser-sync)
+* `default`: empty

@@ -7,6 +7,7 @@ var hotMiddleWare = require('webpack-hot-middleware');
 var browserSync = require('browser-sync');
 
 var checkConfigFile = require('../util/check_config_file');
+var treatAllMethodsAsGet = require('../util/treat_all_methods_as_get');
 var vars = require('../data/vars');
 var moduleName = vars.argv.module;
 
@@ -22,20 +23,22 @@ checkConfigFile();
 var projectConfig = require('../project_config');
 
 var compiler = webpack(projectConfig.webpackDevConfig);
-var browserSyncConfig = {
-    server: {
-        baseDir: projectConfig.basePaths.webRoot
-    },
-    port: projectConfig.devServerPort,
-    startPath: projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html'
+let browserSyncConfig = projectConfig.browserSync || {};
+browserSyncConfig.server = {
+    baseDir: projectConfig.basePaths.webRoot
 };
+browserSyncConfig.port = projectConfig.devServerPort;
+browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
 
-browserSyncConfig.middleware = [
-    devMiddleWare(compiler, {
-        stats: 'errors-only',
-        publicPath: projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module
-    }),
-    hotMiddleWare(compiler)
-];
+!browserSyncConfig.middleware && (browserSyncConfig.middleware = []);
+
+// this must in the first place
+projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.push(treatAllMethodsAsGet);
+
+browserSyncConfig.middleware.push(devMiddleWare(compiler, {
+    stats: 'errors-only',
+    publicPath: projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module
+}));
+browserSyncConfig.middleware.push(hotMiddleWare(compiler));
 
 browserSync.init(browserSyncConfig);

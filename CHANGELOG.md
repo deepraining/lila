@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.1.3
+
+- add `treatAllMethodsAsGet, browserSync` config option.
+
 ## 0.1.2
 
 - fix bug of all commands needing local `lila`.
