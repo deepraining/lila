@@ -33,7 +33,7 @@ browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + proj
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);
 
 // this must in the first place
-projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.push(treatAllMethodsAsGet);
+projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
 
 browserSyncConfig.middleware.push(devMiddleWare(compiler, {
     stats: 'errors-only',
