@@ -47,6 +47,7 @@ module.exports = {
             }
         }
     ],
-    devServerPort: 8091
+    devServerPort: 8091,
+    analyzerPort: 8191
 };
 

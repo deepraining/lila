@@ -23,6 +23,14 @@ module.exports = [
         desc: 'Do production tasks, then sync files to remote.'
     },
     {
+        name: 'analyze',
+        desc: 'Visualize size of webpack output files with an interactive zoomable treemap.'
+    },
+    {
+        name: 'ana',
+        desc: 'Alias of command analyze.'
+    },
+    {
         name: 'archive',
         desc: 'Archive dist directory on server side.'
     },

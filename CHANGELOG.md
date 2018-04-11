@@ -1,5 +1,10 @@
 # lila changelog
 
+## 0.1.4
+
+- add `analyze, ana` cmd
+- add `analyzerPort` config option
+
 ## 0.1.3
 
 - add `treatAllMethodsAsGet, browserSync` config option.

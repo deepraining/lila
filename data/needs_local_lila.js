@@ -3,4 +3,4 @@
  *
  * @type {Array}
  */
-module.exports = ['dev', 'dist', 'sync'];
+module.exports = ['dev', 'dist', 'sync', 'analyze', 'ana'];

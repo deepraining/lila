@@ -160,6 +160,11 @@ see [Project config - network](./config/network.md)
 * `desc`: dev server port
 * `default`: 8090
 
+## analyzerPort
+
+* `desc`: server port for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+* `default`: 8190
+
 ## envOptions
 
 * `desc`: build option of different environments. you can override config root attribute according to different environment, such as `minJs, minCss, minHtml ...`

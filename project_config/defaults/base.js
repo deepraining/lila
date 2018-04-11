@@ -28,6 +28,8 @@ var defaults = {
     fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
     // dev server port
     devServerPort: 8090,
+    // server port for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
+    analyzerPort: 8190,
     // treat all methods as `get` method, thus all methods can access to static file
     treatAllMethodsAsGet: !1
 };

@@ -39,6 +39,14 @@ lila sync moduleName [-e 0(1,2)]
 
 * can take with argument `env/e`
 
+### `analyze/ana`: visualize size of webpack output files with an interactive zoomable treemap
+
+```
+lila analyze moduleName
+# or
+lila ana moduleName
+```
+
 ## arguments
 
 ### `env/e`: 
