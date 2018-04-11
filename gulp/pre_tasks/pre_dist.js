@@ -12,6 +12,7 @@ var distTasks = require('../dist/tasks');
 
 module.exports = (gulp) => {
 
+    var delDev = distDel.delDev;
     var delDist = distDel.delDist;
     var delStore = distDel.delStore;
 
@@ -33,6 +34,7 @@ module.exports = (gulp) => {
 
     var tasks = _.concat([],
         [
+            delDev,
             delDist,
             copyManifests,
             logFirstModule

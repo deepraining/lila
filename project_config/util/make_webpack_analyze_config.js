@@ -35,9 +35,9 @@ module.exports = (config) => {
             getJsEntryPath(config)
         ],
         output: {
-            path: config.buildPaths.dev.dir + '/' + config.module + '/',
+            path: config.buildPaths.dev.dir + '/',
             filename: 'index.js',
-            publicPath: config.basePaths.webPrefix + '/dev/' + config.module + '/'
+            publicPath: config.basePaths.webPrefix + '/dev/'
         },
         plugins: plugins,
         module: {

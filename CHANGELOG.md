@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.1.5
+
+- add `delete dev` for analyze command
+
 ## 0.1.4
 
 - add `analyze, ana` cmd
