@@ -61,4 +61,4 @@ lila ana moduleName
 * `test/index,test/index2`: multi module
 * `test/*` : wildcard, means all modules in directory `test`
 * `test/index,test2/*` : multi modes
-* `*` : specially, indicates all modules in current project
+* `*` or `all` : specially, indicates all modules in current project(in linux or mac, you should use `all`, and `*` will not work)

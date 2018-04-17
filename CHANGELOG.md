@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.1.6
+
+- add `all` special module.
+
 ## 0.1.5
 
 - add `delete dev` for analyze command

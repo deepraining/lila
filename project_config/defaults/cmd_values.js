@@ -10,6 +10,9 @@ module.exports = (config) => {
         // -e test, --env prod
         if (realKey == 'env' && config.envAlias && typeof config.envAlias[value] != 'undefined')
             config[realKey] = config.envAlias[value];
+        // `--module all` means `--module *`
+        else if (realKey === 'module' && value === 'all')
+            config[realKey] = '*';
         else
         // normal occasion
             config[realKey] = value;
