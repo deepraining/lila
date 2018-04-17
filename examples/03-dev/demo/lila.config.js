@@ -20,19 +20,19 @@ module.exports = {
         jQuery: 'jquery'
     },
     cssAbsolutePathPrefix: '/lila',
-    htmlAbsolutePathPrefix: 'http://www.example.com/lila',
-    minJs: !0,
-    minCss: !0,
-    minHtml: !0,
-    backupHtml: !0,
-    htmlReplace: {
-        DOCTYPE: 'doctype'
-    },
-    htmlInsert: {
-        start: '<!-- start -->',
-        end: '<!-- end -->'
-    },
-    htmlExtension: 'jsp',
+    htmlAbsolutePathPrefix: 'http://www.example.com',
+    // minJs: !0,
+    // minCss: !0,
+    // minHtml: !0,
+    // backupHtml: !0,
+    // htmlReplace: {
+    //     DOCTYPE: 'doctype'
+    // },
+    // htmlInsert: {
+    //     start: '<!-- start -->',
+    //     end: '<!-- end -->'
+    // },
+    // htmlExtension: 'jsp',
     envOptions: [
         // 0
         {},

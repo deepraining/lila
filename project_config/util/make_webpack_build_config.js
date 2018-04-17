@@ -19,7 +19,7 @@ module.exports = (config) => {
             path: config.buildPaths.dist.dir + '/',
             filename: '[chunkhash].js',
             hashDigestLength: 32,
-            publicPath: config.basePaths.webPrefix + '/dist/'
+            publicPath: config.cssAbsolutePathPrefix + config.basePaths.webPrefix + '/dist/'
         },
         plugins: makePlugins(config),
         module: makeModule(config),

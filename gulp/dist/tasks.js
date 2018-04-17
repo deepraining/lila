@@ -19,7 +19,6 @@ module.exports = (gulp) => {
 
     var findChangedBase = distChange.findChangedBase(gulp);
 
-    var adjustCss = distAdjust.adjustCss(gulp);
     var adjustHtml = distAdjust.adjustHtml(gulp);
 
     var minCss = distMin.minCss(gulp);
@@ -43,7 +42,6 @@ module.exports = (gulp) => {
                 webpackBuild,
                 nameHtml,
                 findChangedBase,
-                adjustCss,
                 minCss,
                 minJs,
                 adjustHtml,
