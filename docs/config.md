@@ -135,15 +135,14 @@ above will generate extra 3 js files from main js file, thus html will like:
 * `type`: `array`
 * `default`: `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
-## htmlAbsolutePathPrefix
+## staticServerUrl
 
-* `desc`: prefix to be prepended to absolute path in html files.
+* `desc`: base static server url when place static files elsewhere.
 * `default`: empty
-
-## cssAbsolutePathPrefix
-
-* `desc`: prefix to be prepended to absolute path in css files.
-* `default`: empty
+* `example`:
+    - `/sub_dir`: the same server with `web`, but in a `sub_dir`
+    - `http://www.static.com`: standalone static server
+    - `https://www.static.com/sub_dir`: sub dir of standalone static server
 
 ## backupHtml
 

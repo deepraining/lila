@@ -1,8 +1,9 @@
 # lila changelog
 
-## 0.1.6
+## 0.2.0
 
 - add `all` special module.
+- remove
 
 ## 0.1.5
 

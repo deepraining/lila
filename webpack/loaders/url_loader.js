@@ -6,7 +6,7 @@ module.exports = (config, isBuild) => {
     };
 
     if (isBuild) {
-        options.publicPath = config.cssAbsolutePathPrefix + config.basePaths.webPrefix + '/dist/'
+        options.publicPath = config.staticServerDir + config.basePaths.webPrefix + '/dist/'
     }
 
     return {
