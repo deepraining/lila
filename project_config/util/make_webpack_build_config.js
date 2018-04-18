@@ -9,6 +9,8 @@ var makeEntry = require('./webpack/make_entry');
 var makePlugins = require('./webpack/make_plugins');
 var makeModule = require('./webpack/make_module');
 
+const data = require('../../data');
+
 module.exports = (config) => {
 
     makeChunksMap(config);
@@ -18,7 +20,7 @@ module.exports = (config) => {
         output: {
             path: config.buildPaths.dist.dir + '/',
             filename: '[chunkhash].js',
-            hashDigestLength: 32,
+            hashDigestLength: data.hashDigestLength,
             publicPath: config.staticServerDir + config.basePaths.webPrefix + '/dist/'
         },
         plugins: makePlugins(config),
