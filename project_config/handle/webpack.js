@@ -1,6 +1,8 @@
 
 'use strict';
 
+const _ = require('lodash');
+
 const makeWebpackDevConfig = require('../util/make_webpack_dev_config');
 const makeWebpackBuildConfig = require('../util/make_webpack_build_config');
 const makeWebpackAnalyzeConfig = require('../util/make_webpack_analyze_config');

@@ -14,7 +14,7 @@ module.exports = {
                     .pipe(cdnAbsolutePath({
                         asset: distData.currentConfig.basePaths.webRoot,
                         cdn: distData.currentConfig.staticServerDomain || '',
-                        exts: distData.currentConfig.fileLoaderSuffixes
+                        exts: distData.currentConfig.htmlCdnExtensions
                     }))
                     .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
             else cb();

@@ -19,8 +19,10 @@ module.exports = {
     provide: {
         jQuery: 'jquery'
     },
-    cssAbsolutePathPrefix: '/lila',
-    htmlAbsolutePathPrefix: 'http://www.example.com',
+    // staticServerUrl: '/sub',
+    // staticServerUrl: 'http://www.example.com',
+    // staticServerUrl: 'https://www.example.com/sub',
+    // staticServerUrl: '//www.example.com/sub/subSub',
     // minJs: !0,
     // minCss: !0,
     // minHtml: !0,

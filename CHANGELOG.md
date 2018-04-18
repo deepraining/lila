@@ -3,7 +3,8 @@
 ## 0.2.0
 
 - add `all` special module.
-- remove
+- remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option
+- add `staticServerUrl` config option
 
 ## 0.1.5
 

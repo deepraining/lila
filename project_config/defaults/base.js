@@ -39,5 +39,9 @@ var _ = require('lodash');
 module.exports = (config) => {
     config = _.defaults(config, _.cloneDeep(defaults));
 
+    // htmlCdnExtensions
+    config.htmlCdnExtensions = _.cloneDeep(config.fileLoaderSuffixes);
+    config.htmlCdnExtensions.push('js', 'css');
+
     return config;
 };
