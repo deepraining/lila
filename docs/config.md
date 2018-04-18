@@ -143,6 +143,7 @@ above will generate extra 3 js files from main js file, thus html will like:
     - `/sub_dir`: the same server with `web`, but in a `sub_dir`
     - `http://www.static.com`: standalone static server
     - `https://www.static.com/sub_dir`: sub dir of standalone static server
+    - `//www.static.com/sub_dir/sub_sub_dir`: another sub dir of standalone static server
 
 ## backupHtml
 

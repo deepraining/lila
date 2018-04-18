@@ -71,6 +71,24 @@ require('../../test/index2.css');
 require('../../test/index.less');
 ```
 
+## Dynamically load modules
+
+you can use `require.ensure()` or `import()` to load modules dynamically.
+
+example:
+```
+import('your/module').then(yourModule => {
+    // do something
+});
+
+require.ensure([], require => {
+    let yourModule = require('your/module');
+    // do something
+});
+```
+
+more to: [require.ensure](https://webpack.js.org/api/module-methods/#require-ensure), [import](https://webpack.js.org/api/module-methods/#import-)
+
 ## note
 
 the html in production is not the same as `src`. for example, in `src`, the path is `src/test/inner/index.html`, in `dist` of production, the path is `dist/test/inner.html`  

@@ -5,6 +5,7 @@
 - add `all` special module.
 - remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option
 - add `staticServerUrl` config option
+- add `require.ensure(), import()` support.
 
 ## 0.1.5
 
