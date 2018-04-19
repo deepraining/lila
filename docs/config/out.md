@@ -41,8 +41,8 @@ follows is how to do it:
 
 ```
 {
-    "@company/component1": "component1/dist/component1.js", // real path is depends on you
-    "@company/component1/dist/component1.css": "component1/dist/component1.css" // if have
+    "@company/component1": "component1/dist/component1.js", // real path depends on you
+    "@company/component1/dist/component1.css": "component1/dist/component1.css" // if has
 }
 ```
 
