@@ -1,7 +1,8 @@
 
 // cmdAlias defaults
 var defaults = {
-    e: "env" // environment
+    e: 'env', // environment
+    l: 'local' // local value
 };
 
 var _ = require('lodash');

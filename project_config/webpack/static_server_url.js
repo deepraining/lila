@@ -1,3 +1,6 @@
+
+const _ = require('lodash');
+
 /**
  * handle staticServerUrl
  *

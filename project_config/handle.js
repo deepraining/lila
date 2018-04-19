@@ -9,6 +9,7 @@ var defaultsBase = require('./defaults/base');
 
 var handleBase = require('./handle/base');
 var handleDirectoriesToSync = require('./handle/directories_to_sync');
+var handleLocalOptions = require('./handle/local_options');
 var handleEnvOptions = require('./handle/env_options');
 var handleHtml = require('./handle/html');
 var handleModuleGroup = require('./handle/module_group');
@@ -24,6 +25,7 @@ var handle = (config) => {
     defaultsCmdValues(config);
     defaultsNetwork(config);
     config = defaultsBase(config);
+    handleLocalOptions(config);
     handleEnvOptions(config);
     handleCustomConfig(config);
     handleBase(config);

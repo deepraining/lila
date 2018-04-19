@@ -7,6 +7,7 @@
 - add `staticServerUrl` config option
 - add `require.ensure(), import()` support.
 - add `resolveModules` config option
+- add `local, localOptions` config option
 
 ## 0.1.5
 

@@ -226,7 +226,8 @@ see [Project config - network](./config/network.md)
 ```
 {
     // alias -> real name
-    e: "env" // environment
+    e: 'env', // environment
+    l: 'local', // local value
 }
 ```
 
@@ -320,3 +321,23 @@ see [group of modules](./group.md)
 * `see`: [browser-sync](https://github.com/BrowserSync/browser-sync)
 * `type`: `map`
 * `default`: empty
+
+## local
+
+* `desc`: current local value, used to get `local option`, can and always be specified from command line.
+* `type`: `string`
+* `default`: empty
+
+## localOptions
+
+* `desc`: build option of different locals. you can override config root attribute according to different local value.
+* `type`: `map`
+* `default`: empty
+* `detail`:
+
+```
+{
+    person1: {...},
+    person2: {...}
+}
+```

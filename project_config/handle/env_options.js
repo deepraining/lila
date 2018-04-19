@@ -1,11 +1,11 @@
 
 "use strict";
 
-var _ = require('lodash');
+const _ = require('lodash');
 
-module.exports = (config) => {
+module.exports = config => {
 
-    var envOption = config.envOptions && config.envOptions[config.env];
+    let envOption = config.envOptions && config.envOptions[config.env];
     /**
      * build option of current environment can override config root attribute
      */

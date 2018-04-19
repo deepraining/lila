@@ -53,6 +53,11 @@ module.exports = {
         }
     ],
     devServerPort: 8091,
-    analyzerPort: 8191
+    analyzerPort: 8191,
+    localOptions: {
+        senn: {
+            staticServerUrl: 'https//github.com/senntyou/lila'
+        }
+    }
 };
 
