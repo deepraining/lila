@@ -1,4 +1,4 @@
-#
+# use out resolve alias temporarily
 
 the same as `resolveAlias`, but mainly for below occasions:
 
