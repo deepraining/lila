@@ -10,5 +10,10 @@ module.exports = {
         alias: 'l',
         type: 'string',
         desc: 'Specify current local value. '
+    },
+    out: {
+        alias: 'o',
+        type: 'bool',
+        desc: 'Whether use out resolve alias. '
     }
 };

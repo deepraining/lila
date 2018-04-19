@@ -1,4 +1,7 @@
 
+require('bootstrap/dist/css/bootstrap.css');
+require('bootstrap');
+
 require('base')();
 require('common')();
 

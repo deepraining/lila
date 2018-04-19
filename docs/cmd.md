@@ -23,7 +23,7 @@ lila add moduleName
 lila dev moduleName
 ```
 
-* can take with argument `local/l`
+* can take with argument `local/l`, `out/o`
 
 ### `dist`: do production task.
 
@@ -31,7 +31,7 @@ lila dev moduleName
 lila dist moduleName [-e 0(1,2)] 
 ```
 
-* can take with argument `env/e`, `local/l`
+* can take with argument `env/e`, `local/l`, `out/o`
 
 ### `sync`: do production task, then upload production files to server
 
@@ -39,7 +39,7 @@ lila dist moduleName [-e 0(1,2)]
 lila sync moduleName [-e 0(1,2)] 
 ```
 
-* can take with argument `env/e`, `local/l`
+* can take with argument `env/e`, `local/l`, `out/o`
 
 ### `analyze/ana`: visualize size of webpack output files with an interactive zoomable treemap
 
@@ -60,6 +60,10 @@ lila ana moduleName
 ### `local/l`
 
 * specify current local value through command line
+
+### `out/o`
+
+* specify whether use out resolve alias
 
 ### `moduleName`
 

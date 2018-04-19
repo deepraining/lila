@@ -2,7 +2,8 @@
 // cmdAlias defaults
 var defaults = {
     e: 'env', // environment
-    l: 'local' // local value
+    l: 'local', // local value
+    o: 'out' // whether use out resolve alias
 };
 
 var _ = require('lodash');

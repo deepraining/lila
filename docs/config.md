@@ -228,6 +228,7 @@ see [Project config - network](./config/network.md)
     // alias -> real name
     e: 'env', // environment
     l: 'local', // local value
+    o: 'out' // whether use out resolve alias
 }
 ```
 
@@ -341,3 +342,13 @@ see [group of modules](./group.md)
     person2: {...}
 }
 ```
+
+## out
+
+* `desc`: whether use `outResolveAlias`, can and always be specified from command line.
+* `type`: `bool`
+* `default`: `false`
+
+## outResolveAlias
+
+[use out resolve alias temporarily](./config/out.md)

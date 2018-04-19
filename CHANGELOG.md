@@ -8,6 +8,7 @@
 - add `require.ensure(), import()` support.
 - add `resolveModules` config option
 - add `local, localOptions` config option
+- add `out, outResolveAlias` config option
 
 ## 0.1.5
 
