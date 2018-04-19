@@ -1,4 +1,4 @@
-# use out resolve alias temporarily
+# Project config - outResolveAlias
 
 the same as `resolveAlias`, but mainly for below occasions:
 
@@ -36,7 +36,7 @@ instead of `[project1 root]/node_modules/component1/[package.json main]` tempora
 
 follows is how to do it:
 
-1. put component root directory to `resoleModules`
+1. put component root directory to `resolveModules`
 2. fill `outResolveAlias` like this:
 
 ```
