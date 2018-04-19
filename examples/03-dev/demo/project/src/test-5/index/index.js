@@ -2,8 +2,12 @@
 require('base')();
 require('common')();
 
-console.log('test-4/index');
+// require('../../test/index/js/index2')();
+// require('../../test/index/js/index3.jsx');
+
+console.log('test-5/index');
 // require('./js/b')();
+require('out')();
 
 document.body.addEventListener('click', e => {
 

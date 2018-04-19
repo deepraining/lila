@@ -3,11 +3,11 @@
 
 var webpack = require('webpack');
 
-var makeResolve = require('./webpack/make_resolve');
-var makeChunksMap = require('./webpack/make_chunks_map');
-var makeEntry = require('./webpack/make_entry');
-var makePlugins = require('./webpack/make_plugins');
-var makeModule = require('./webpack/make_module');
+var makeResolve = require('./util/make_resolve');
+var makeChunksMap = require('./util/make_chunks_map');
+var makeEntry = require('./util/make_entry');
+var makePlugins = require('./util/make_plugins');
+var makeModule = require('./util/make_module');
 
 const data = require('../../data');
 

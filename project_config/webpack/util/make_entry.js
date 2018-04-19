@@ -1,7 +1,7 @@
 
 'use strict';
 
-var getJsEntryPath = require('../get_js_entry_path');
+var getJsEntryPath = require('./get_js_entry_path');
 
 
 /**

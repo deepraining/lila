@@ -6,6 +6,9 @@ module.exports = {
         base: 'alias/base',
         common: 'alias/common'
     },
+    resolveModules: [
+        '../modules'
+    ],
     directoriesToSync: {
         images: 'images',
         fonts: 'fonts'

@@ -1,15 +1,13 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
-var vars = require('../../../data/vars');
-
-var resolve;
+let resolve;
 
 module.exports = (config) => {
     if (resolve) return resolve;
 
     resolve = {
-        modules: [config.buildPaths.src.dir, vars.projectRoot + '/node_modules', "node_modules"]
+        modules: _.cloneDeep(config.resolveModules)
     };
 
     config.resolveAlias && (resolve.alias = _.cloneDeep(config.resolveAlias));

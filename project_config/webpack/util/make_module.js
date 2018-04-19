@@ -3,13 +3,13 @@
 
 var _ = require('lodash');
 
-var makeBabelLoader = require('../../../webpack/loaders/babel_loader');
-var makeCssLoader = require('../../../webpack/loaders/css_loader');
-var makeLessLoader = require('../../../webpack/loaders/less_loader');
-var makeUrlLoader = require('../../../webpack/loaders/url_loader');
-var makeHtmlLoader = require('../../../webpack/loaders/html_loader');
-var makeExtractCssLoader = require('../../../webpack/loaders/extract_css_loader');
-var makeExtractLessLoader = require('../../../webpack/loaders/extract_less_loader');
+var makeBabelLoader = require('../loaders/babel_loader');
+var makeCssLoader = require('../loaders/css_loader');
+var makeLessLoader = require('../loaders/less_loader');
+var makeUrlLoader = require('../loaders/url_loader');
+var makeHtmlLoader = require('../loaders/html_loader');
+var makeExtractCssLoader = require('../loaders/extract_css_loader');
+var makeExtractLessLoader = require('../loaders/extract_less_loader');
 
 module.exports = (config) => {
 

@@ -6,6 +6,7 @@
 - remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option
 - add `staticServerUrl` config option
 - add `require.ensure(), import()` support.
+- add `resolveModules` config option
 
 ## 0.1.5
 
