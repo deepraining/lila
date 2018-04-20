@@ -41,9 +41,13 @@ follows is how to do it:
 
 ```
 {
-    "@company/component1": "component1/dist/component1.js", // real path depends on you
-    "@company/component1/dist/component1.css": "component1/dist/component1.css" // if has
+    "@company/component1/dist/component1.css": "component1/dist/component1.css", // if has
+    "@company/component1": "component1/dist/component1.js" // real path depends on you
 }
 ```
+
+here is a note: the css module must be defined before js module, or css module will not work.
+
+the reason is: if you define js module before css module, the css module file path will be `component1/dist/component1.js/dist/component1.css`
 
 3. run command with argument `o/out`: `-o`, `--out`

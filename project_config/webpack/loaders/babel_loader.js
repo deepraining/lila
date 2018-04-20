@@ -1,10 +1,12 @@
 
+const TransformReactJsx = require("babel-plugin-transform-react-jsx");
+
 module.exports = (config) => {
     var loader = {
         loader: 'babel-loader',
         options: {
             presets: ['es2015', 'stage-1'],
-            plugins: ["transform-react-jsx"]
+            plugins: [TransformReactJsx]
         },
         test: /\.(js|jsx)$/
     };
