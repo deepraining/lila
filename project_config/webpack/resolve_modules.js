@@ -19,11 +19,11 @@ module.exports = config => {
         realResolveModules.push(path.join(vars.projectRoot, dirPath));
     });
 
+    // vars.projectRoot + '/node_modules'
+    realResolveModules.unshift(vars.projectRoot + '/node_modules');
+
     // config.buildPaths.src.dir
     realResolveModules.unshift(config.buildPaths.src.dir);
-
-    // vars.projectRoot + '/node_modules'
-    realResolveModules.push(vars.projectRoot + '/node_modules');
 
     // 'node_modules'
     realResolveModules.push('node_modules');

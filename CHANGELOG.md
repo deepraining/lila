@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.2.1
+
+- modify `resolveModules` sequence.
+
 ## 0.2.0
 
 - add `all` special module.

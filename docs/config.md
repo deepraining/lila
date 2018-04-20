@@ -94,6 +94,11 @@
 * `default`: empty
 * `detail`: here is for you to provide extra directories when resolving modules.
 by default, there are three levels of directories: `src` in project, `node_modules` in project root, `node_modules` of webpack's default.
+* the new sequence of resolving modules will be:
+    1. `src` in project
+    2. `node_modules` in project root
+    3. `resolveModules` defined in `lila.config.js`
+    4. `node_modules` of webpack's default.
 * `example`: all paths defined here should relative to project root.
 
 ```
