@@ -4,10 +4,10 @@
 
 
 
-require('bootstrap/dist/css/bootstrap.css');
+// require('bootstrap/dist/css/bootstrap.css');
+require('./css/index.less');
 require('./css/index.css');
 require('./css/index2.css');
-require('./css/index.less');
 
 require('./js/index2')();
 require('./js/index3.jsx');
