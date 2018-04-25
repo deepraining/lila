@@ -5,6 +5,7 @@
 - modify `resolveModules` sequence.
 - announcing that the css module must be defined before js module in `resolveModules, outResolveAlias`.
 - use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`
+- add `import` config option
 
 ## 0.2.0
 

@@ -15,6 +15,9 @@ require('./js/index3.jsx');
 require('base')();
 require('common')();
 
+require('out')();
+require('out-2')();
+
 console.log('test/index');
 
 // test ignoreNodeModules

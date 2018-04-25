@@ -7,7 +7,8 @@ module.exports = {
         common: 'alias/common'
     },
     resolveModules: [
-        '../modules'
+        '../modules',
+        '../../../../modules-2'
     ],
     directoriesToSync: {
         images: 'images',
@@ -58,11 +59,12 @@ module.exports = {
         senn: {
             staticServerUrl: 'https//github.com/senntyou/lila',
             outResolveAlias: {
-                'bootstrap/dist/css/bootstrap.css': 'out_bootstrap/index.css',
-                bootstrap: 'out_bootstrap/index.js'
+                // 'bootstrap/dist/css/bootstrap.css': 'out_bootstrap/index.css',
+                // bootstrap: 'out_bootstrap/index.js'
 
             }
         }
-    }
+    },
+    import: [{ "libraryName": "antd", style: "css" }]
 };
 

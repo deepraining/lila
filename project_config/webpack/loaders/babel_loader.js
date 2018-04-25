@@ -1,12 +1,19 @@
 
-const TransformReactJsx = require("babel-plugin-transform-react-jsx");
+const es2015Preset = require("babel-preset-es2015");
+const stage0Preset = require("babel-preset-stage-0");
+const transformReactJsx = require("babel-plugin-transform-react-jsx");
+const importPlugin = require("babel-plugin-import");
 
 module.exports = (config) => {
+
+    let plugins = [transformReactJsx];
+    config.import && plugins.push([importPlugin.default, config.import]);
+
     var loader = {
         loader: 'babel-loader',
         options: {
-            presets: ['es2015', 'stage-1'],
-            plugins: [TransformReactJsx]
+            presets: [es2015Preset, stage0Preset],
+            plugins: plugins
         },
         test: /\.(js|jsx)$/
     };

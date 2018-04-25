@@ -357,3 +357,9 @@ see [group of modules](./group.md)
 ## outResolveAlias
 
 [use out resolve alias temporarily](./config/out.md)
+
+## import
+
+* `desc`: option for [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
+* `type`: `map/array`
+* `default`: empty
