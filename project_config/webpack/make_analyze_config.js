@@ -3,7 +3,8 @@
 
 var webpack = require('webpack');
 var _ = require('lodash');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 var getJsEntryPath = require('./util/get_js_entry_path');
 var makeResolve = require('./util/make_resolve');
@@ -24,7 +25,8 @@ module.exports = (config) => {
     var plugins = [
         new BundleAnalyzerPlugin({
             analyzerPort: config.analyzerPort
-        })
+        }),
+        new FriendlyErrorsWebpackPlugin()
     ];
 
     // ProvidePlugin

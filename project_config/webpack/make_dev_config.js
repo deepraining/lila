@@ -3,6 +3,7 @@
 
 var webpack = require('webpack');
 var _ = require('lodash');
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 var getJsEntryPath = require('./util/get_js_entry_path');
 var makeResolve = require('./util/make_resolve');
@@ -23,7 +24,8 @@ module.exports = (config) => {
 
     var plugins = [
         new webpack.HotModuleReplacementPlugin(),
-        makeHtmlPlugin(config)
+        makeHtmlPlugin(config),
+        new FriendlyErrorsWebpackPlugin()
     ];
 
     // ProvidePlugin

@@ -6,6 +6,7 @@
 - announcing that the css module must be defined before js module in `resolveModules, outResolveAlias`.
 - use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`
 - add `import` config option
+- add `friendly-errors-webpack-plugin`
 
 ## 0.2.0
 

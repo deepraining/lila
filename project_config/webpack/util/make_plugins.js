@@ -4,6 +4,7 @@
 var _ = require('lodash');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 var makeHtmlPlugin = require('./make_html_plugin');
 
@@ -40,6 +41,8 @@ module.exports = (config) => {
 
     // ProvidePlugin
     if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
+
+    plugins.push(new FriendlyErrorsWebpackPlugin());
 
     return plugins;
 };
