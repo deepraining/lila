@@ -7,6 +7,7 @@
 - use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`
 - add `import` config option
 - add `friendly-errors-webpack-plugin`
+- add `enableCssModules` config option and [css modules](https://github.com/css-modules/css-modules) support
 
 ## 0.2.0
 

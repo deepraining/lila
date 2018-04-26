@@ -1,7 +1,23 @@
 
-module.exports = () => {
+module.exports = config => {
     return {
-        loader: 'style-loader!css-loader!less-loader',
-        test: /\.less$/
+        test: /\.less$/,
+        use: [
+            {
+                loader: 'style-loader'
+            },
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: !!config.enableCssModules
+                }
+            },
+            {
+                loader: 'less-loader',
+                options: {
+                    modules: !!config.enableCssModules
+                }
+            }
+        ]
     }
 };

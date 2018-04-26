@@ -35,7 +35,7 @@
 * `desc`: html replacement
 * `type`: `map`
 * `default`: empty
-* `detail`: 
+* `detail`:
 
 ```
 {
@@ -48,13 +48,13 @@
 * `desc`: html insertion
 * `type`: `map`
 * `default`: empty
-* `detail`: 
+* `detail`:
 
 ```
 {
     // start of document
     // start: "",
-    
+
     // end of document
     // end: ""
 }
@@ -62,7 +62,7 @@
 
 ## htmlExtension
 
-* `desc`: convert html file to other extension file, such as `jsp, php, asp` 
+* `desc`: convert html file to other extension file, such as `jsp, php, asp`
 * `type`: `string`
 * `default`: empty
 
@@ -123,7 +123,7 @@ by default, there are three levels of directories: `src` in project, `node_modul
 * `desc`: indicates how to split one big js file into many smaller js files.
 * `type`: `map`
 * `default`: empty
-* `example`: 
+* `example`:
 
 ```
 {
@@ -156,7 +156,7 @@ above will generate extra 3 js files from main js file, thus html will like:
 * `see`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
 * `type`: `map`
 * `default`: empty
-* `example`: 
+* `example`:
 
 ```
 {
@@ -210,7 +210,7 @@ see [Project config - network](./config/network.md)
 * `desc`: build option of different environments. you can override config root attribute according to different environment, such as `minJs, minCss, minHtml ...`
 * `type`: `array`
 * `default`: empty
-* `detail`: 
+* `detail`:
 
 ```
 [
@@ -226,7 +226,7 @@ see [Project config - network](./config/network.md)
 
 * `desc`: custom command line argument alias
 * `type`: `map`
-* `default`: 
+* `default`:
 
 ```
 {
@@ -241,7 +241,7 @@ see [Project config - network](./config/network.md)
 
 * `desc`: environment alias, semantic environment argument values
 * `type`: `map`
-* `default`: 
+* `default`:
 
 ```
 {
@@ -256,7 +256,7 @@ see [Project config - network](./config/network.md)
 
 * `desc`: base paths of project
 * `type`: `map`
-* `default`: 
+* `default`:
 
 ```
 {
@@ -282,7 +282,7 @@ see [Project config - network](./config/network.md)
 * `desc`: other directories to sync to server
 * `type`: `map`
 * `default`: empty
-* `detail`: 
+* `detail`:
 
 ```
 {
@@ -305,11 +305,11 @@ see [group of modules](./group.md)
 * `bg`: sometimes, some html have to be renamed, include path, when the server side requires another different html file.
 * `type`: `map`
 * `default`: empty
-* `example`: 
+* `example`:
 
 ```
 {
-    // origin: dist/html/test/index.html -> ultimate: dist/html/other/inner/index.html 
+    // origin: dist/html/test/index.html -> ultimate: dist/html/other/inner/index.html
     'test/index': 'other/inner/index'
 }
 ```
@@ -363,3 +363,9 @@ see [group of modules](./group.md)
 * `desc`: option for [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
 * `type`: `map/array`
 * `default`: empty
+
+## enableCssModules
+
+* `desc`: whether to use [css modules](https://github.com/css-modules/css-modules)
+* `type`: `bool`
+* `default`: `false`

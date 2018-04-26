@@ -14,12 +14,12 @@ var makeExtractLessLoader = require('../loaders/extract_less_loader');
 module.exports = (config) => {
 
     var babelLoader = makeBabelLoader(config);
-    var cssLoader = makeCssLoader();
-    var lessLoader = makeLessLoader();
+    var cssLoader = makeCssLoader(config);
+    var lessLoader = makeLessLoader(config);
     var urlLoader = makeUrlLoader(config, !0);
-    var htmlLoader = makeHtmlLoader();
-    var extractCssLoader = makeExtractCssLoader();
-    var extractLessLoader = makeExtractLessLoader();
+    var htmlLoader = makeHtmlLoader(config);
+    var extractCssLoader = makeExtractCssLoader(config);
+    var extractLessLoader = makeExtractLessLoader(config);
 
     var module = {};
     var rules = [babelLoader, htmlLoader];

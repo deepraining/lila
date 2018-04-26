@@ -17,10 +17,10 @@ var makeHtmlLoader = require('./loaders/html_loader');
 module.exports = (config) => {
 
     var babelLoader = makeBabelLoader(config);
-    var cssLoader = makeCssLoader();
-    var lessLoader = makeLessLoader();
+    var cssLoader = makeCssLoader(config);
+    var lessLoader = makeLessLoader(config);
     var urlLoader = makeUrlLoader(config);
-    var htmlLoader = makeHtmlLoader();
+    var htmlLoader = makeHtmlLoader(config);
 
     var plugins = [
         new webpack.HotModuleReplacementPlugin(),

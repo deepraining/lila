@@ -1,7 +1,17 @@
 
-module.exports = () => {
+module.exports = config => {
     return {
-        loader: 'style-loader!css-loader',
-        test: /\.css$/
+        test: /\.css$/,
+        use: [
+            {
+                loader: 'style-loader'
+            },
+            {
+                loader: 'css-loader',
+                options: {
+                    modules: !!config.enableCssModules
+                }
+            }
+        ]
     }
 };
