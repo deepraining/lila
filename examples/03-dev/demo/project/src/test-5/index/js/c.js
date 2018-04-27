@@ -1,4 +1,6 @@
 
+require('../css/index2.less');
+
 let b = require('./b');
 
 module.exports = _ => {
