@@ -66,6 +66,7 @@ module.exports = {
         }
     },
     import: [{ "libraryName": "antd", style: "css" }],
-    enableCssModules: !0
+    enableCssModules: !0,
+    excludeCssNodeModules: !1
 };
 

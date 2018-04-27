@@ -369,3 +369,9 @@ see [group of modules](./group.md)
 * `desc`: whether to use [css modules](https://github.com/css-modules/css-modules)
 * `type`: `bool`
 * `default`: `false`
+
+## excludeCssNodeModules
+
+* `desc`: whether to exclude `node_modules` when transform `css-modules`
+* `type`: `bool`
+* `default`: `true`

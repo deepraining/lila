@@ -32,12 +32,18 @@ module.exports = (config) => {
 
     let rules = [babelLoader];
 
-    if (config.enableCssModules) {
+    if (config.enableCssModules && config.excludeCssNodeModules) {
         rules.push(
             makeCssLoader(!1, !0, !1),
             makeCssLoader(!0, !1, !0),
             makeLessLoader(!1, !0, !1),
             makeLessLoader(!0, !1, !0)
+        );
+    }
+    else if (config.enableCssModules) {
+        rules.push(
+            makeCssLoader(!0, !1, !1),
+            makeLessLoader(!0, !1, !1)
         );
     }
     else {

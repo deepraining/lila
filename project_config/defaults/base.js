@@ -31,7 +31,11 @@ var defaults = {
     // server port for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
     analyzerPort: 8190,
     // treat all methods as `get` method, thus all methods can access to static file
-    treatAllMethodsAsGet: !1
+    treatAllMethodsAsGet: !1,
+    // whether to use [css modules](https://github.com/css-modules/css-modules)
+    enableCssModules: !1,
+    // whether to exclude `node_modules` when transform `css-modules`
+    excludeCssNodeModules: !0
 };
 
 var _ = require('lodash');

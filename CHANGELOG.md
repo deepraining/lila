@@ -1,5 +1,9 @@
 # lila changelog
 
+## 0.2.2
+
+- add `excludeCssNodeModules` config option
+
 ## 0.2.1
 
 - modify `resolveModules` sequence.
