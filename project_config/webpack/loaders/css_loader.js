@@ -1,6 +1,14 @@
+/**
+ * make css loader
+ *
+ * @param useCssModules
+ * @param includeNodeModules
+ * @param excludeNodeModules
+ * @returns {{test: RegExp, use: *[]}}
+ */
+module.exports = (useCssModules = !1, includeNodeModules = !1, excludeNodeModules = !1) => {
 
-module.exports = config => {
-    return {
+    let loader = {
         test: /\.css$/,
         use: [
             {
@@ -9,9 +17,13 @@ module.exports = config => {
             {
                 loader: 'css-loader',
                 options: {
-                    modules: !!config.enableCssModules
+                    modules: useCssModules
                 }
             }
         ]
-    }
+    };
+    includeNodeModules && (loader.include = /node_modules/);
+    excludeNodeModules && (loader.exclude = /node_modules/);
+
+    return loader;
 };

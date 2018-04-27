@@ -14,23 +14,43 @@ var makeExtractLessLoader = require('../loaders/extract_less_loader');
 module.exports = (config) => {
 
     var babelLoader = makeBabelLoader(config);
-    var cssLoader = makeCssLoader(config);
-    var lessLoader = makeLessLoader(config);
     var urlLoader = makeUrlLoader(config, !0);
     var htmlLoader = makeHtmlLoader(config);
-    var extractCssLoader = makeExtractCssLoader(config);
-    var extractLessLoader = makeExtractLessLoader(config);
 
     var module = {};
     var rules = [babelLoader, htmlLoader];
 
     if (config.packCssSeparately) {
-        rules.push(extractCssLoader);
-        rules.push(extractLessLoader);
+        if (config.enableCssModules) {
+            rules.push(
+                makeExtractCssLoader(!1, !0, !1),
+                makeExtractCssLoader(!0, !1, !0),
+                makeExtractLessLoader(!1, !0, !1),
+                makeExtractLessLoader(!0, !1, !0)
+            );
+        }
+        else {
+            rules.push(
+                makeExtractCssLoader(),
+                makeExtractLessLoader()
+            );
+        }
     }
     else {
-        rules.push(cssLoader);
-        rules.push(lessLoader);
+        if (config.enableCssModules) {
+            rules.push(
+                makeCssLoader(!1, !0, !1),
+                makeCssLoader(!0, !1, !0),
+                makeLessLoader(!1, !0, !1),
+                makeLessLoader(!0, !1, !0)
+            );
+        }
+        else {
+            rules.push(
+                makeCssLoader(),
+                makeLessLoader()
+            );
+        }
     }
 
     rules.push(urlLoader);

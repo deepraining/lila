@@ -17,8 +17,6 @@ var makeHtmlLoader = require('./loaders/html_loader');
 module.exports = (config) => {
 
     var babelLoader = makeBabelLoader(config);
-    var cssLoader = makeCssLoader(config);
-    var lessLoader = makeLessLoader(config);
     var urlLoader = makeUrlLoader(config);
     var htmlLoader = makeHtmlLoader(config);
 
@@ -32,6 +30,28 @@ module.exports = (config) => {
     // ProvidePlugin
     if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
 
+    let rules = [babelLoader];
+
+    if (config.enableCssModules) {
+        rules.push(
+            makeCssLoader(!1, !0, !1),
+            makeCssLoader(!0, !1, !0),
+            makeLessLoader(!1, !0, !1),
+            makeLessLoader(!0, !1, !0)
+        );
+    }
+    else {
+        rules.push(
+            makeCssLoader(),
+            makeLessLoader()
+        );
+    }
+
+    rules.push(
+        urlLoader,
+        htmlLoader
+    );
+
     var devConfig = {
         entry: [
             getJsEntryPath(config)
@@ -43,7 +63,7 @@ module.exports = (config) => {
         },
         plugins: plugins,
         module: {
-            rules: [babelLoader, cssLoader, lessLoader, urlLoader, htmlLoader]
+            rules: rules
         },
         resolve: makeResolve(config)
     };
