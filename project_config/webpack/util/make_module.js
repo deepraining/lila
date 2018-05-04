@@ -21,18 +21,18 @@ module.exports = (config) => {
     var rules = [babelLoader, htmlLoader];
 
     if (config.packCssSeparately) {
-        if (config.enableCssModules && config.excludeCssNodeModules) {
+        if (config.enableCssModules && config.cssModulesExclude) {
             rules.push(
-                makeExtractCssLoader(!1, !0, !1),
-                makeExtractCssLoader(!0, !1, !0),
-                makeExtractLessLoader(!1, !0, !1),
-                makeExtractLessLoader(!0, !1, !0)
+                makeExtractCssLoader(!1, config.cssModulesExclude, !0, !1),
+                makeExtractCssLoader(!0, config.cssModulesExclude, !1, !0),
+                makeExtractLessLoader(!1, config.cssModulesExclude, !0, !1),
+                makeExtractLessLoader(!0, config.cssModulesExclude, !1, !0)
             );
         }
         else if (config.enableCssModules) {
             rules.push(
-                makeExtractCssLoader(!0, !1, !1),
-                makeExtractLessLoader(!0, !1, !1)
+                makeExtractCssLoader(!0, config.cssModulesExclude, !1, !1),
+                makeExtractLessLoader(!0, config.cssModulesExclude, !1, !1)
             );
         }
         else {
@@ -43,18 +43,18 @@ module.exports = (config) => {
         }
     }
     else {
-        if (config.enableCssModules && config.excludeCssNodeModules) {
+        if (config.enableCssModules && config.cssModulesExclude) {
             rules.push(
-                makeCssLoader(!1, !0, !1),
-                makeCssLoader(!0, !1, !0),
-                makeLessLoader(!1, !0, !1),
-                makeLessLoader(!0, !1, !0)
+                makeCssLoader(!1, config.cssModulesExclude, !0, !1),
+                makeCssLoader(!0, config.cssModulesExclude, !1, !0),
+                makeLessLoader(!1, config.cssModulesExclude, !0, !1),
+                makeLessLoader(!0, config.cssModulesExclude, !1, !0)
             );
         }
         else if (config.enableCssModules) {
             rules.push(
-                makeCssLoader(!0, !1, !1),
-                makeLessLoader(!0, !1, !1)
+                makeCssLoader(!0, config.cssModulesExclude, !1, !1),
+                makeLessLoader(!0, config.cssModulesExclude, !1, !1)
             );
         }
         else {
