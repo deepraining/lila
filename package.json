@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.2.2",
+  "version": "0.2.2-alpha",
   "main": "index.js",
   "bin": "bin/lila.js",
   "dependencies": {
