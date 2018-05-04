@@ -31,18 +31,19 @@ module.exports = (config) => {
 
     let rules = [babelLoader];
 
-    if (config.enableCssModules && config.cssModulesExclude) {
+    let excludeMatches = config.cssModulesExclude;
+    if (config.enableCssModules && excludeMatches) {
         rules.push(
-            makeCssLoader(!1, config.cssModulesExclude, !0, !1),
-            makeCssLoader(!0, config.cssModulesExclude, !1, !0),
-            makeLessLoader(!1, config.cssModulesExclude, !0, !1),
-            makeLessLoader(!0, config.cssModulesExclude, !1, !0)
+            makeCssLoader(!1, excludeMatches, !0, !1),
+            makeCssLoader(!0, excludeMatches, !1, !0),
+            makeLessLoader(!1, excludeMatches, !0, !1),
+            makeLessLoader(!0, excludeMatches, !1, !0)
         );
     }
     else if (config.enableCssModules) {
         rules.push(
-            makeCssLoader(!0, config.cssModulesExclude, !1, !1),
-            makeLessLoader(!0, config.cssModulesExclude, !1, !1)
+            makeCssLoader(!0, excludeMatches, !1, !1),
+            makeLessLoader(!0, excludeMatches, !1, !1)
         );
     }
     else {

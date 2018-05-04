@@ -2,7 +2,7 @@
 
 ## 0.2.2
 
-- add `cssModulesExclude` config option
+- add `cssModulesExclude` config option(default is `[/node_modules/]`)
 
 ## 0.2.1
 

@@ -374,7 +374,5 @@ see [group of modules](./group.md)
 
 * `desc`: how to exclude files when transform `css-modules`. [more to see](https://webpack.js.org/configuration/module/#condition)
 * `type`: `array`
-* `default`: empty
-* `example`:
-    1. exclude files under `node_modules`: `[/node_modules/]`
-    2. exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`
+* `default`: `[/node_modules/]`
+* `example`: exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`

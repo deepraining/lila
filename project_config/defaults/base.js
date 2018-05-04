@@ -33,7 +33,9 @@ var defaults = {
     // treat all methods as `get` method, thus all methods can access to static file
     treatAllMethodsAsGet: !1,
     // whether to use [css modules](https://github.com/css-modules/css-modules)
-    enableCssModules: !1
+    enableCssModules: !1,
+    // how to exclude files when transform `css-modules`
+    cssModulesExclude: [/node_modules/]
 };
 
 var _ = require('lodash');
