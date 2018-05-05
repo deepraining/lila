@@ -36,12 +36,12 @@ fsExtra.copySync(path.join(vars.lilaRoot, 'project_files/project_dir'), projectS
 // make .gitignore file
 fsExtra.outputFileSync(
     projectPath + '/.gitignore',
-    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/.gitignore.example', 'utf8')
+    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/_.gitignore', 'utf8')
 );
 // make package.json file
 fsExtra.outputFileSync(
     projectPath + '/package.json',
-    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/package.json.example', 'utf8').replace('{{projectName}}', projectName)
+    fsExtra.readFileSync(vars.lilaRoot + '/project_files/misc/_package.json', 'utf8').replace('{{projectName}}', projectName)
 );
 // make lila.config.js file
 fsExtra.outputFileSync(
