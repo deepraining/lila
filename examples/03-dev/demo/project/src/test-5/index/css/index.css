@@ -1,3 +1,5 @@
-.dynamic-import-css {
+.dynamicImportCss {
     color: red;
+    display: flex;
+    flex: 1;
 }

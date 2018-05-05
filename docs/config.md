@@ -376,3 +376,10 @@ see [group of modules](./group.md)
 * `type`: `array`
 * `default`: `[/node_modules/]`
 * `example`: exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`
+
+## browsers
+
+* `desc`: `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options)
+* `type`: `array`
+* `default`: `[]`
+* `example`: `['> 1%', 'iOS 7']`

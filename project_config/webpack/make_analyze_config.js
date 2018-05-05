@@ -33,24 +33,25 @@ module.exports = (config) => {
     let rules = [babelLoader];
 
     let excludeMatches = config.cssModulesExclude;
+    let browsers = config.browsers;
     if (config.enableCssModules && excludeMatches) {
         rules.push(
-            makeCssLoader(!1, excludeMatches, !0, !1),
-            makeCssLoader(!0, excludeMatches, !1, !0),
-            makeLessLoader(!1, excludeMatches, !0, !1),
-            makeLessLoader(!0, excludeMatches, !1, !0)
+            makeCssLoader(!1, excludeMatches, !0, !1, browsers),
+            makeCssLoader(!0, excludeMatches, !1, !0, browsers),
+            makeLessLoader(!1, excludeMatches, !0, !1, browsers),
+            makeLessLoader(!0, excludeMatches, !1, !0, browsers)
         );
     }
     else if (config.enableCssModules) {
         rules.push(
-            makeCssLoader(!0, excludeMatches, !1, !1),
-            makeLessLoader(!0, excludeMatches, !1, !1)
+            makeCssLoader(!0, excludeMatches, !1, !1, browsers),
+            makeLessLoader(!0, excludeMatches, !1, !1, browsers)
         );
     }
     else {
         rules.push(
-            makeCssLoader(),
-            makeLessLoader()
+            makeCssLoader(!1, [], !1, !1, browsers),
+            makeLessLoader(!1, [], !1, !1, browsers)
         );
     }
 

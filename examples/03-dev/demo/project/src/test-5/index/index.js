@@ -16,6 +16,14 @@ console.log('test-5/index');
 // require('./js/b')();
 require('out')();
 
+import styles from './css/index.css';
+import styles2 from './css/index2.less';
+
+const $ = require('jquery');
+let $body = $('body');
+$body.append(`<div class="${styles.dynamicImportCss}">dynamicImportCss</div>`);
+$body.append(`<div class="${styles2.dynamicImportLess}">dynamicImportLess</div>`);
+
 document.body.addEventListener('click', e => {
 
     require.ensure([], require => {

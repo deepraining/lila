@@ -35,7 +35,9 @@ var defaults = {
     // whether to use [css modules](https://github.com/css-modules/css-modules)
     enableCssModules: !1,
     // how to exclude files when transform `css-modules`
-    cssModulesExclude: [/node_modules/]
+    cssModulesExclude: [/node_modules/],
+    // `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options)
+    browsers: []
 };
 
 var _ = require('lodash');
