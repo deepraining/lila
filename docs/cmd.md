@@ -11,11 +11,15 @@ lila <command> [args]
 lila new projectName
 ```
 
+* `since`: `v0.0.1`
+
 ### `add`: add a module
 
 ```
 lila add moduleName
 ```
+
+* `since`: `v0.0.1`
 
 ### `dev`: watch files' changes, with hot replacing and reloading, and start a local server for debug
 
@@ -24,22 +28,25 @@ lila dev moduleName
 ```
 
 * can take with argument `local/l`, `out/o`
+* `since`: `v0.0.1`
 
 ### `dist`: do production task.
 
 ```
-lila dist moduleName [-e 0(1,2)] 
+lila dist moduleName [-e 0(1,2)]
 ```
 
 * can take with argument `env/e`, `local/l`, `out/o`
+* `since`: `v0.0.1`
 
 ### `sync`: do production task, then upload production files to server
 
 ```
-lila sync moduleName [-e 0(1,2)] 
+lila sync moduleName [-e 0(1,2)]
 ```
 
 * can take with argument `env/e`, `local/l`, `out/o`
+* `since`: `v0.0.1`
 
 ### `analyze/ana`: visualize size of webpack output files with an interactive zoomable treemap
 
@@ -49,9 +56,11 @@ lila analyze moduleName
 lila ana moduleName
 ```
 
+* `since`: `v0.1.4`
+
 ## arguments
 
-### `env/e`: 
+### `env/e`:
 
 * specify current environment through command line, example:  `-e 0`, `-e 1`.
 * if env is string, default is `test=0, prod/production=1`, or you can config it in `envAlias` of [project config](./config.md);
