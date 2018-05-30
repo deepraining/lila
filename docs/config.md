@@ -425,3 +425,19 @@ see [group of modules](./group.md)
 * `default`: `[]`
 * `example`: `['> 1%', 'iOS 7']`
 * `since`: `v0.2.2`
+
+## define
+
+* `desc`: Allow you to create global constants which can be configured at compile time.
+* `see`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)
+* `type`: `map`
+* `default`: empty
+* `since`: `v0.2.2`
+* `example`:
+
+```
+{
+    PRODUCTION: JSON.stringify(true),
+    VERSION: JSON.stringify("5fa3b9")
+}
+```

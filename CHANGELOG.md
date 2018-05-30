@@ -2,6 +2,7 @@
 
 ## 0.2.2
 
+- add `define` option
 - add `cssModulesExclude` config option(default is `[/node_modules/]`)
 - add `autoprefixer` support & `browsers` option
 

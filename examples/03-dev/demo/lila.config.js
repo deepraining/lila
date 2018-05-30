@@ -23,6 +23,9 @@ module.exports = {
     provide: {
         jQuery: 'jquery'
     },
+    define: {
+        globalDefine: JSON.stringify('hello')
+    },
     // staticServerUrl: '/sub',
     // staticServerUrl: 'http://www.example.com',
     // staticServerUrl: 'https://www.example.com/sub',

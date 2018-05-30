@@ -29,6 +29,9 @@ module.exports = (config) => {
     // ProvidePlugin
     if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
 
+    // DefinePlugin
+    if (config.define) plugins.push(new webpack.DefinePlugin(config.define));
+
     let rules = [babelLoader];
 
     let excludeMatches = config.cssModulesExclude;

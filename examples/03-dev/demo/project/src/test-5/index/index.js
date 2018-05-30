@@ -16,6 +16,8 @@ console.log('test-5/index');
 // require('./js/b')();
 require('out')();
 
+console.log(`globalDefine: ${globalDefine}`);
+
 import styles from './css/index.css';
 import styles2 from './css/index2.less';
 
