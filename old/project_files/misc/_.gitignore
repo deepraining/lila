@@ -7,6 +7,7 @@ node_modules
 bower_components
 npm-debug.log
 .idea
+package-lock.json
 
 #
 # building temporary directories
