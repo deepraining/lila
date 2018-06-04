@@ -23,9 +23,6 @@ module.exports = {
     provide: {
         jQuery: 'jquery'
     },
-    define: {
-        globalDefine: JSON.stringify('hello')
-    },
     // staticServerUrl: '/sub',
     // staticServerUrl: 'http://www.example.com',
     // staticServerUrl: 'https://www.example.com/sub',
@@ -71,6 +68,26 @@ module.exports = {
     import: [{ "libraryName": "antd", style: "css" }],
     enableCssModules: !0,
     cssModulesExclude: [/node_modules/, /src\/less/],
-    browsers: ['> 1%', 'iOS 7']
+    browsers: ['> 1%', 'iOS 7'],
+    define: {
+        globalDefine: JSON.stringify('hello')
+    },
+    commandOptions: {
+        dev: {
+            define: {
+                globalDefine: JSON.stringify('dev')
+            }
+        },
+        dist: {
+            define: {
+                globalDefine: JSON.stringify('dist')
+            }
+        },
+        sync: {
+            define: {
+                globalDefine: JSON.stringify('sync')
+            }
+        }
+    }
 };
 

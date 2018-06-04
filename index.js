@@ -16,6 +16,9 @@ global.logger = logger;
 
 // command name
 var command = vars.argv._ && vars.argv._[0];
+
+vars.command = command;
+
 // file path corresponding to command
 var commandPath = vars.lilaRoot + '/cmd/' + command + '.js';
 

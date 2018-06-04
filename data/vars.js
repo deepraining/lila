@@ -13,7 +13,9 @@ var vars = {
     // config file
     configFile: 'lila.config.js',
     // clean config file
-    cleanConfigFile: 'lila.clean.config.js'
+    cleanConfigFile: 'lila.clean.config.js',
+    // current command name
+    command: ''
 };
 
 // file changes record manifests dir path

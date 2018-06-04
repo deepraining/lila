@@ -441,3 +441,22 @@ see [group of modules](./group.md)
     VERSION: JSON.stringify("5fa3b9")
 }
 ```
+
+## commandOptions
+
+* `desc`: options of a command. you can override config root attribute according to different commands, such as `dev, dist, sync ...`
+* `type`: `map`
+* `default`: empty
+* `since`: `v0.2.2`
+* `detail`:
+
+```
+{
+    // for dev command
+    dev: {...},
+    // for dist command
+    dist: {...},
+    // for sync command
+    sync: {...}
+}
+```
