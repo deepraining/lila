@@ -2,5 +2,5 @@
   "name": "{{projectName}}",
   "private": true,
   "version": "0.0.1",
-  "description": "a lila project"
+  "description": "A lila project."
 }

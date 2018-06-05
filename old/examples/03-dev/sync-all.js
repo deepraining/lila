@@ -1,5 +1,5 @@
 
-require('../../util/change_cwd_to')(__dirname + '/demo');
+require('../../util/change_cwd')(__dirname + '/demo');
 
 var servers = require('./servers');
 

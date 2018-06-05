@@ -12,7 +12,7 @@ module.exports = {
 }
 ```
 
-Also, you can make different configs according to different environment, like following.
+Also, you can make different configs according to different environment, as follow.
 
 ```
 module.exports = [

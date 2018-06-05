@@ -15,12 +15,7 @@ package-lock.json
 lila_*
 dev
 dist
-
-#
-# manifests directories
-#
-/manifests
-/manifests_bak
+/.lila
 
 #
 # lila server config

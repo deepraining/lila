@@ -12,7 +12,7 @@ var moduleName = vars.argv._[1];
 // missing module name
 if (!moduleName) {
     logger.error('Missing module name for command: add.', !0, !0);
-    logger.log('You can use this command like follows:');
+    logger.log('You can use this command as follow:');
     logger.log('lila add <name>');
     process.exit(0);
 }

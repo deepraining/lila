@@ -4,7 +4,6 @@ var gulpCli = require('gulp-cli');
 
 var vars = require('../data/vars');
 var revertData = require('../data/revert');
-var changeCwd = require('../util/change_cwd');
 
 revertData.archivePackages = glob.sync('dist-*.zip');
 
@@ -20,7 +19,5 @@ if (index > revertData.archivePackages.length) {
 }
 
 revertData.index = index || 1;
-
-changeCwd();
 
 gulpCli();
