@@ -1,6 +1,4 @@
 
-'use strict';
-
 var webpack = require('webpack');
 var _ = require('lodash');
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');

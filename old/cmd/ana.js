@@ -1,6 +1,4 @@
 
-'use strict';
-
 var webpack = require('webpack');
 
 var checkConfigFile = require('../util/check_config_file');

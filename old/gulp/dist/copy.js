@@ -27,11 +27,11 @@ module.exports = {
          * no .keep file in manifests directory,
          * saying it's the first time to build
          */
-        if (!fs.existsSync(vars.manifestsDirDotKeepFile)) {
+        if (!fs.existsSync(vars.manifestsDirKeepFile)) {
             // create manifests directory
-            fsExtra.ensureFileSync(vars.manifestsDirDotKeepFile);
+            fsExtra.ensureFileSync(vars.manifestsDirKeepFile);
             // create manifests_bak directory
-            fsExtra.ensureFileSync(vars.manifestsDirBakDotKeepFile);
+            fsExtra.ensureFileSync(vars.manifestsBakDirKeepFile);
         }
         /**
          * has manifests directory, and has other files despite .keep file under manifests directory,
@@ -43,13 +43,13 @@ module.exports = {
              * has manifests_bak directory, saying that last building encountered an error, and program exit improperly.
              * (if only exist .keep file, saying that last building is the first time, otherwise is N times.)
              */
-            if (fs.existsSync(vars.manifestsDirBakDotKeepFile)) {
+            if (fs.existsSync(vars.manifestsBakDirKeepFile)) {
                 fsExtra.removeSync(vars.manifestsDir);
-                fsExtra.copySync(vars.manifestsDirBak, vars.manifestsDir);
+                fsExtra.copySync(vars.manifestsBakDir, vars.manifestsDir);
             }
             // normal state
             else {
-                fsExtra.copySync(vars.manifestsDir, vars.manifestsDirBak);
+                fsExtra.copySync(vars.manifestsDir, vars.manifestsBakDir);
             }
         }
 

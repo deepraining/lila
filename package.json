@@ -23,5 +23,10 @@
     "url": "https://github.com/senntyou/lila/issues"
   },
   "homepage": "https://github.com/senntyou/lila",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "minimist": "^1.2.0",
+    "yargs": "^11.0.0"
+  }
 }

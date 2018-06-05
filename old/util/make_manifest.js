@@ -1,6 +1,4 @@
 
-"use strict";
-
 /**
  * make a manifest
  *

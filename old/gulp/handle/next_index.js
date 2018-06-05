@@ -1,6 +1,4 @@
 
-"use strict";
-
 var projectConfig = require('../../project_config');
 
 module.exports = {

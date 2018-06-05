@@ -149,8 +149,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
 
 __webpack_require__(1)();
 __webpack_require__(2)();
@@ -175,8 +173,6 @@ document.body.addEventListener('click', function (e) {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
 
 module.exports = function () {
     console.log('alias/base');
@@ -185,8 +181,6 @@ module.exports = function () {
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
 
 
 module.exports = function () {

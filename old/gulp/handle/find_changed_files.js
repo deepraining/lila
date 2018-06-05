@@ -1,6 +1,4 @@
 
-"use strict";
-
 var md5 = require('crypto-md5');
 var path = require('path');
 var rd = require('rd');

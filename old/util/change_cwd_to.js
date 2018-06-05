@@ -1,6 +1,4 @@
 
-"use strict";
-
 /**
  * change current directory to specified dir
  *

@@ -1,6 +1,4 @@
 
-'use strict';
-
 var gulpCli = require('gulp-cli');
 
 var vars = require('../data/vars');

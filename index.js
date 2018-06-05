@@ -1,33 +1,26 @@
 
-'use strict';
+const fs = require('fs');
 
-// pre handle process.argv
-require('./util/pre_handle_process_argv');
-
-var fs = require('fs');
-
-var vars = require('./data/vars');
-
-var showHelp = require('./util/show_help');
-var logger = require('./util/logger');
-
-// register global logger
-global.logger = logger;
+const argv = require('./data/argv');
+const cliInfo = require('./data/cli_info');
+const pathInfo = require('./data/path_info');
+const help = require('./util/help');
 
 // command name
-var command = vars.argv._ && vars.argv._[0];
+const commandName = argv._[0];
 
-vars.command = command;
+// Record current command name.
+cliInfo.command = commandName;
 
-// file path corresponding to command
-var commandPath = vars.lilaRoot + '/cmd/' + command + '.js';
+// File path corresponding to command.
+let commandPath = pathInfo.lilaRoot + '/cmd/' + commandName + '.js';
 
 // has command
-if (command && fs.existsSync(commandPath)) {
+if (commandName && fs.existsSync(commandPath)) {
     require(commandPath);
 }
 // no command or not exist
 else {
-    showHelp();
+    help();
     process.exit(0);
 }

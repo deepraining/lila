@@ -1,6 +1,4 @@
 
-'use strict';
-
 var fsExtra = require('fs-extra');
 var decompress = require('gulp-decompress');
 var vars = require('../../data/vars');

@@ -1,6 +1,4 @@
 
-"use strict";
-
 var fillNetwork = require('./fill_network');
 
 module.exports = (config) => {

@@ -1,6 +1,4 @@
 
-"use strict";
-
 module.exports = {
     resolveAlias: {
         base: 'alias/base',

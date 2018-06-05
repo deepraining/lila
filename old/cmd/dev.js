@@ -1,6 +1,4 @@
 
-'use strict';
-
 var webpack = require('webpack');
 var devMiddleWare = require('webpack-dev-middleware');
 var hotMiddleWare = require('webpack-hot-middleware');

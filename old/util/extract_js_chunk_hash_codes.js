@@ -1,6 +1,4 @@
 
-'use strict';
-
 const fs = require('fs');
 const rd = require('rd');
 const vars = require('../data/vars');

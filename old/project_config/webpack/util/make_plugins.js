@@ -1,6 +1,4 @@
 
-'use strict';
-
 var _ = require('lodash');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');

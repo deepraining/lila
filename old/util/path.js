@@ -1,6 +1,4 @@
 
-"use strict";
-
 var pathUtil = {
     /**
      * get pure module name of a module

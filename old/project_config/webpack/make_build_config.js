@@ -1,6 +1,4 @@
 
-'use strict';
-
 var webpack = require('webpack');
 
 var makeResolve = require('./util/make_resolve');

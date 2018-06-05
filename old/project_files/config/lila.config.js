@@ -1,6 +1,4 @@
 
-"use strict";
-
 module.exports = {
     /**
      * network, do following works:

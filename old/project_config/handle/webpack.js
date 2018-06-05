@@ -1,6 +1,4 @@
 
-'use strict';
-
 const _ = require('lodash');
 
 const staticServerUrl = require('../webpack/static_server_url');

@@ -1,6 +1,4 @@
 
-'use strict';
-
 var zip = require('gulp-zip');
 var moment = require('moment');
 var vars = require('../../data/vars');

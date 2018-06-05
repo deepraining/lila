@@ -1,6 +1,4 @@
 
-"use strict";
-
 var pathUtil = require('./path');
 
 module.exports = (config) => {

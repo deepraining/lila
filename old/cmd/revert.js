@@ -1,6 +1,4 @@
 
-'use strict';
-
 var glob = require('glob');
 var gulpCli = require('gulp-cli');
 

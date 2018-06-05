@@ -1,6 +1,4 @@
 
-"use strict";
-
 var vars = require('../../data/vars');
 
 /**

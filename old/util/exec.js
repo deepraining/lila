@@ -1,6 +1,4 @@
 
-"use strict";
-
 /**
  * execute a command, just like in command line
  *
