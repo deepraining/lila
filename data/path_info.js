@@ -11,7 +11,7 @@ const pathInfo = {
 };
 
 // Config file path.
-pathInfo.configFile = path.join(pathInfo.projectRoot, pathInfo.configFile);
+pathInfo.configFilePath = path.join(pathInfo.projectRoot, pathInfo.configFile);
 
 // Lila workspace of project is in `.lila` directory of project root.
 pathInfo.lilaWorkspace = path.join(pathInfo.projectRoot, '.lila');

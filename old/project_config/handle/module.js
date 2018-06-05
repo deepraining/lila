@@ -53,13 +53,13 @@ module.exports = (config) => {
     var hasCommaMark = commaMarkRegExp.test(module);
     var hasAsteriskMark = asteriskMarkRegExp.test(module);
 
-    config.multiModules = !1;
+    config.multiple = !1;
     config.processingData.moduleIndex = 0;
-    config.modules = [];
+    config.allModules = [];
 
     // single module, no comma, no asterisk
     if (!hasCommaMark && !hasAsteriskMark) {
-        config.modules.push(module);
+        config.allModules.push(module);
         fillModuleFields(config);
 
         return;
@@ -90,8 +90,8 @@ module.exports = (config) => {
         allModules = _.concat(allModules, getModules(item, config));
     });
 
-    config.modules = allModules;
-    config.multiModules = !0;
-    config.module = config.modules[config.processingData.moduleIndex];
+    config.allModules = allModules;
+    config.multiple = !0;
+    config.module = config.allModules[config.processingData.moduleIndex];
     fillModuleFields(config);
 };

@@ -10,7 +10,7 @@ const makeAnalyzeConfig = require('../webpack/make_analyze_config');
 
 module.exports = (config) => {
     // if is multi modules, no more handling
-    if (config.multiModules) return;
+    if (config.multiple) return;
 
     staticServerUrl(config);
     resolveModules(config);

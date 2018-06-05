@@ -55,11 +55,11 @@ module.exports = (gulp) => {
     var moduleTasks = [],
         tasks;
 
-    if (!projectConfig.multiModules) {
+    if (!projectConfig.multiple) {
         moduleTasks.push(getTask());
     }
     else {
-        for (var i = 0, il = projectConfig.modules.length; i < il; i++) {
+        for (var i = 0, il = projectConfig.allModules.length; i < il; i++) {
             moduleTasks.push(getTask());
             distData.nextModule();
         }

@@ -8,7 +8,7 @@ var projectConfig = require('../../project_config');
 module.exports = {
     // log first module start
     logFirstModule: (cb) => {
-        projectConfig.multiModules && logger.info('start first module task: ' + projectConfig.modules[0]);
+        projectConfig.multiple && logger.info('start first module task: ' + projectConfig.allModules[0]);
         cb();
     }
 };

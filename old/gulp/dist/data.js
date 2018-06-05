@@ -11,15 +11,15 @@ var data = {
 
 // next module
 data.nextModule = (log) => {
-    if (!projectConfig.multiModules) return;
+    if (!projectConfig.multiple) return;
 
-    log && logger.success('task for module ' + projectConfig.modules[data.currentModuleIndex] + ' finished');
+    log && logger.success('task for module ' + projectConfig.allModules[data.currentModuleIndex] + ' finished');
 
     data.currentModuleIndex += 1;
 
-    data.currentModuleIndex >= projectConfig.modules.length && (data.currentModuleIndex = 0);
+    data.currentModuleIndex >= projectConfig.allModules.length && (data.currentModuleIndex = 0);
 
-    log && data.currentModuleIndex > 0 && logger.info('change current module to: ' + projectConfig.modules[data.currentModuleIndex]);
+    log && data.currentModuleIndex > 0 && logger.info('change current module to: ' + projectConfig.allModules[data.currentModuleIndex]);
 
     data.currentConfig = projectConfigs[data.currentModuleIndex];
 };

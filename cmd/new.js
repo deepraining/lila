@@ -17,7 +17,7 @@ if (!projectName) {
     Missing project name for command: new.
     `);
     logger.log(`
-    You can use this command as follow:
+    You can use this command as follows:
     
     lila new <name>
     `);
@@ -30,7 +30,7 @@ let projectSubPath = path.join(projectPath, 'project');
 // Project has been created.
 if (fs.existsSync(projectPath)) {
     logger.error(`
-    Project ${projectName} has already been created.
+    Project '${projectName}' has already been created.
     `);
     process.exit(0);
 }
@@ -72,5 +72,5 @@ fsExtra.outputFileSync(
 );
 
 logger.success(`
-    Lila new project ${projectName} successfully!
+    Lila new project '${projectName}' successfully!
 `);

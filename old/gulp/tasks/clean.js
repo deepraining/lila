@@ -51,7 +51,7 @@ module.exports = (gulp) => {
      * common js file: ([0-9a-f]{32}).js
      * chunk js file: ([0-9]{1,}).([0-9a-f]{32}).js
      *
-     * and in common file, load chunk file as follow:
+     * and in common file, load chunk file as follows:
      *     script.src = __webpack_require__.p + "" + chunkId + "." + {"0":"7b7c4210539c2c41354207f419ec0249","1":"721ea8e8a5ae693fd7ed70b501c7d28c","2":"e2025f09faac9dd460cbac6913cfbda6"}[chunkId] + ".js";
      *
      * @param cb

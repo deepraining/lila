@@ -2,7 +2,7 @@
 
 the same as `resolveAlias`, but mainly for below occasions:
 
-* your project is built by `components` with `npm`, so your directory structure may be as follow:
+* your project is built by `components` with `npm`, so your directory structure may be as follows:
 
 ```
 | - / (project root)
@@ -17,7 +17,7 @@ the same as `resolveAlias`, but mainly for below occasions:
 
 ```
 
-* `project1` relies on `component1`, and `component1` relies on `project1` too, and code is as follow:
+* `project1` relies on `component1`, and `component1` relies on `project1` too, and code is as follows:
 
 ```
 # package.json of project1
