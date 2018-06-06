@@ -1,6 +1,6 @@
 
 const fsExtra = require('fs-extra');
-const decompress = require('gulp-decompress');
+const decompress = require('decompress');
 
 const pathInfo = require('../../data/path_info');
 const revertShare = require('../../share/revert');
@@ -12,7 +12,7 @@ const revertShare = require('../../share/revert');
  */
 module.exports = gulp => {
 
-    gulp.task('revert', () => {
+    gulp.task('revert', cb => {
         let distPath = pathInfo.projectRoot + '/dist';
 
         // Remove old `dist` directory.
@@ -25,8 +25,8 @@ module.exports = gulp => {
          */
         revertShare.revertZip = revertShare.packages[revertShare.packages.length - revertShare.index];
 
-        return gulp.src(pathInfo.projectRoot + '/' + revertShare.revertZip)
-            .pipe(decompress())
-            .pipe(gulp.dest(distPath));
+        decompress(pathInfo.projectRoot + '/' + revertShare.revertZip, distPath).then(files => {
+            cb();
+        });
     });
 };

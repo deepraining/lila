@@ -27,7 +27,7 @@ const index = parseInt(argv.i) || parseInt(argv.index) || 0;
 // Index is greater than total length.
 if (index > revertShare.packages.length) {
     logger.error(`
-    Index '${index}' is greater than packages' length '${revertShare.packages.length}'.
+    Index "${index}" is greater than packages' length "${revertShare.packages.length}".
     `);
     process.exit(0);
 }
@@ -40,7 +40,7 @@ registerTasks(gulp);
 // Execute task.
 gulp.series('revert', cb => {
     logger.success(`
-    Revert 'dist' directory by last ${revertShare.index}${sequenceSuffix(revertShare.index)} archive,
+    Revert 'dist' directory by last ${revertShare.index}${sequenceSuffix(revertShare.index)} archive state,
     with filename of '${revertShare.revertZip}'.
     `);
 
