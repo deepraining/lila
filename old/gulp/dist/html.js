@@ -1,14 +1,14 @@
 
-var _ = require('lodash');
-var rename = require('gulp-rename');
-var replace = require('gulp-replace');
-var gap = require('gulp-append-prepend');
-var distData = require('./data');
+const _ = require('lodash');
+const rename = require('gulp-rename');
+const replace = require('gulp-replace');
+const gap = require('gulp-append-prepend');
+const distData = require('./data');
 
 /**
  * html replacement
  */
-var htmlReplace = (stream) => {
+const htmlReplace = (stream) => {
     _.forEach(distData.currentConfig.htmlReplace, (value, key) => {
         stream.pipe(replace(new RegExp(key, 'g'), value));
     });
@@ -17,7 +17,7 @@ var htmlReplace = (stream) => {
 /**
  * prepend or append string to html
  */
-var htmlInsert = (stream) => {
+const htmlInsert = (stream) => {
     distData.currentConfig.htmlInsert.start && stream.pipe(gap.prependText(distData.currentConfig.htmlInsert.start));
     distData.currentConfig.htmlInsert.end && stream.pipe(gap.appendText(distData.currentConfig.htmlInsert.end));
 };
@@ -25,7 +25,7 @@ var htmlInsert = (stream) => {
 /**
  * convert html to other kind of file
  */
-var htmlExtension = (stream) => {
+const htmlExtension = (stream) => {
     stream.pipe(rename({extname: "." + distData.currentConfig.htmlExtension}));
 };
 
@@ -38,7 +38,7 @@ var htmlExtension = (stream) => {
  */
 module.exports = (gulp) => {
     return function htmlHandle() {
-        var stream;
+        const stream;
 
         stream = gulp.src(distData.currentConfig.buildPaths.tmp.html + '/**/*.html');
         if (distData.currentConfig.hasHtmlReplace)

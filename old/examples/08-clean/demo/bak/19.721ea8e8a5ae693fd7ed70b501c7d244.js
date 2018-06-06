@@ -15,7 +15,7 @@ module.exports = function (_) {
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var b = __webpack_require__(3);
+const b = __webpack_require__(3);
 
 module.exports = function (_) {
     console.log('test-5/index/js/a');

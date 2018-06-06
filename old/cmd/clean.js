@@ -1,9 +1,9 @@
 
-var fs = require('fs');
-var gulpCli = require('gulp-cli');
-var _ = require('lodash');
+const fs = require('fs');
+const gulpCli = require('gulp-cli');
+const _ = require('lodash');
 
-var vars = require('../data/vars');
+const vars = require('../data/vars');
 
 if (!fs.existsSync(vars.projectRoot + '/dist')) {
     logger.error('Missing `dist` directory for command: clean.');

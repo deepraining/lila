@@ -9,7 +9,7 @@ module.exports = (config) => {
     let plugins = [transformReactJsx];
     config.import && plugins.push([importPlugin.default, config.import]);
 
-    var loader = {
+    const loader = {
         loader: 'babel-loader',
         options: {
             presets: [es2015Preset, stage0Preset],

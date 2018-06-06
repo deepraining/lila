@@ -1,9 +1,9 @@
 
-var rd = require('rd');
-var fsExtra = require('fs-extra');
-var moment = require('moment');
-var pathUtil = require('../../util/path');
-var distData = require('./data');
+const rd = require('rd');
+const fsExtra = require('fs-extra');
+const moment = require('moment');
+const pathUtil = require('../../util/path');
+const distData = require('./data');
 
 module.exports = {
     /**
@@ -18,21 +18,21 @@ module.exports = {
      */
     backupHtml: (cb) =>  {
         if (distData.currentConfig.backupHtml){
-            var suffix = moment().format('YYYY-MM-DD-HH-mm-ss');
+            const suffix = moment().format('YYYY-MM-DD-HH-mm-ss');
 
             rd.eachFileFilterSync(distData.currentConfig.buildPaths.dist.html, (file) => {
                 // source file path
-                var sourcePath = pathUtil.replaceBackSlash(file);
+                const sourcePath = pathUtil.replaceBackSlash(file);
 
-                var lastSlashIndex = sourcePath.lastIndexOf('/');
-                var dir = sourcePath.slice(0, lastSlashIndex);
-                var fileName = sourcePath.slice(lastSlashIndex + 1);
+                const lastSlashIndex = sourcePath.lastIndexOf('/');
+                const dir = sourcePath.slice(0, lastSlashIndex);
+                const fileName = sourcePath.slice(lastSlashIndex + 1);
 
-                var lastDotIndex = fileName.lastIndexOf('.');
-                var baseFileName = fileName.slice(0, lastDotIndex);
-                var extName = fileName.slice(lastDotIndex + 1);
+                const lastDotIndex = fileName.lastIndexOf('.');
+                const baseFileName = fileName.slice(0, lastDotIndex);
+                const extName = fileName.slice(lastDotIndex + 1);
 
-                var targetPath = dir + '/' + baseFileName + '-' + suffix + '.' + extName;
+                const targetPath = dir + '/' + baseFileName + '-' + suffix + '.' + extName;
 
                 fsExtra.copySync(sourcePath, targetPath);
             });

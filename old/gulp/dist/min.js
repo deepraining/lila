@@ -1,9 +1,9 @@
 
-var csso = require('gulp-csso');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-htmlmin');
+const csso = require('gulp-csso');
+const uglify = require('gulp-uglify');
+const htmlmin = require('gulp-htmlmin');
 
-var distData = require('./data');
+const distData = require('./data');
 
 module.exports = {
     minCss: (gulp) => {

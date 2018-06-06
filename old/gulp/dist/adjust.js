@@ -1,7 +1,7 @@
 
-var cdnAbsolutePath = require('gulp-cdn-absolute-path');
+const cdnAbsolutePath = require('gulp-cdn-absolute-path');
 
-var distData = require('./data');
+const distData = require('./data');
 
 module.exports = {
     /**

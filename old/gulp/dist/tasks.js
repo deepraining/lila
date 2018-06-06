@@ -1,41 +1,41 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
-var projectConfig = require('../../project_config');
-var distDel = require('./del');
-var distCopy = require('./copy');
-var distChange = require('./change');
-var distAdjust = require('./adjust');
-var distNext = require('./next');
-var distMin = require('../dist/min');
-var distHtml = require('../dist/html');
-var webpackBuild = require('../dist/webpack');
-var name = require('./name');
-var distData = require('./data');
+const projectConfig = require('../../project_config');
+const distDel = require('./del');
+const distCopy = require('./copy');
+const distChange = require('./change');
+const distAdjust = require('./adjust');
+const distNext = require('./next');
+const distMin = require('../dist/min');
+const distHtml = require('../dist/html');
+const webpackBuild = require('../dist/webpack');
+const name = require('./name');
+const distData = require('./data');
 
 module.exports = (gulp) => {
 
-    var copyToStore = distCopy.copyToStore;
+    const copyToStore = distCopy.copyToStore;
 
-    var findChangedBase = distChange.findChangedBase(gulp);
+    const findChangedBase = distChange.findChangedBase(gulp);
 
-    var adjustHtml = distAdjust.adjustHtml(gulp);
+    const adjustHtml = distAdjust.adjustHtml(gulp);
 
-    var minCss = distMin.minCss(gulp);
-    var minJs = distMin.minJs(gulp);
-    var minHtml = distMin.minHtml(gulp);
+    const minCss = distMin.minCss(gulp);
+    const minJs = distMin.minJs(gulp);
+    const minHtml = distMin.minHtml(gulp);
 
-    var htmlHandle = distHtml(gulp);
+    const htmlHandle = distHtml(gulp);
 
-    var nameHtml = name.nameHtml;
+    const nameHtml = name.nameHtml;
 
-    var nextModule = distNext.nextModule;
+    const nextModule = distNext.nextModule;
 
-    var delTasks = [
+    const delTasks = [
         distDel.delDist, distDel.delTmp
     ];
 
-    var getTask = () => {
+    const getTask = () => {
         return _.concat([],
             delTasks,
             [
@@ -52,14 +52,14 @@ module.exports = (gulp) => {
             ]);
     };
 
-    var moduleTasks = [],
+    const moduleTasks = [],
         tasks;
 
     if (!projectConfig.multiple) {
         moduleTasks.push(getTask());
     }
     else {
-        for (var i = 0, il = projectConfig.allModules.length; i < il; i++) {
+        for (const i = 0, il = projectConfig.allModules.length; i < il; i++) {
             moduleTasks.push(getTask());
             distData.nextModule();
         }

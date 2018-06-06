@@ -1,6 +1,6 @@
 
 // default config root attributes
-var defaults = {
+const defaults = {
     // current handling module name
     module: 'test/index',
     /**
@@ -40,7 +40,7 @@ var defaults = {
     browsers: []
 };
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 module.exports = (config) => {
     config = _.defaults(config, _.cloneDeep(defaults));

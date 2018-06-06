@@ -1,5 +1,5 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 /**
  * make splitJsChunks
@@ -25,10 +25,10 @@ module.exports = (config) => {
 
     config.splitJsChunks = {};
 
-    var splitJsKeys = _.keys(config.splitJs);
+    const splitJsKeys = _.keys(config.splitJs);
 
     splitJsKeys.forEach((key, index) => {
-        var i = index, tmpKey, chunks = [];
+        const i = index, tmpKey, chunks = [];
 
         config.splitJsChunks[key] = {};
         for (; i > -1; i--) {

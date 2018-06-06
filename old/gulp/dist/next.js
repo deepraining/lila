@@ -1,5 +1,5 @@
 
-var distData = require('./data');
+const distData = require('./data');
 
 module.exports = {
     nextModule: (cb) => {

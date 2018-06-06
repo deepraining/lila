@@ -1,10 +1,10 @@
 
-var fs = require('fs');
-var fsExtra = require('fs-extra');
+const fs = require('fs');
+const fsExtra = require('fs-extra');
 
-var projectConfig = require('../../project_config');
-var vars = require('../../data/vars');
-var filesCount = require('../../util/files_count');
+const projectConfig = require('../../project_config');
+const vars = require('../../data/vars');
+const filesCount = require('../../util/files_count');
 
 module.exports = {
     // copy tmp to store

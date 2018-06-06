@@ -1,23 +1,23 @@
 
-var _ = require('lodash');
-var fs = require('fs');
-var projectConfig = require('../../project_config');
-var findChangedFiles = require('../handle/find_changed_files');
-var nextIndex = require('../handle/next_index');
+const _ = require('lodash');
+const fs = require('fs');
+const projectConfig = require('../../project_config');
+const findChangedFiles = require('../handle/find_changed_files');
+const nextIndex = require('../handle/next_index');
 
 module.exports = {
     findChangedDirectoriesToSync: (cb) => {
         nextIndex.directoriesToSync();
 
-        var currentKey = projectConfig.processingData.directoriesToSyncKey;
-        var currentItem = projectConfig.processingData.directoriesToSyncItems[currentKey];
-        var dirPath = currentItem.path;
+        const currentKey = projectConfig.processingData.directoriesToSyncKey;
+        const currentItem = projectConfig.processingData.directoriesToSyncItems[currentKey];
+        const dirPath = currentItem.path;
 
         // enable recording file's changes
         if (projectConfig.recordFileChanges) {
             // get changed files
-            var changedFiles = findChangedFiles(dirPath, currentKey);
-            var completeChangedFiles = [];
+            const changedFiles = findChangedFiles(dirPath, currentKey);
+            const completeChangedFiles = [];
 
             // not empty
             if (!_.isEmpty(changedFiles)) {

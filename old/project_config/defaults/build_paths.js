@@ -1,5 +1,5 @@
 
-var vars = require('../../data/vars');
+const vars = require('../../data/vars');
 
 /**
  * get paths
@@ -8,9 +8,9 @@ var vars = require('../../data/vars');
  * @param addLilaPrefix
  * @returns {{dir: string, js: string, less: string, html: string}}
  */
-var getPaths = (root, dir, addLilaPrefix) => {
+const getPaths = (root, dir, addLilaPrefix) => {
 
-    var dirName = (addLilaPrefix ? 'lila_' : '') + dir;
+    const dirName = (addLilaPrefix ? 'lila_' : '') + dir;
 
     return {
         dirName: dirName,

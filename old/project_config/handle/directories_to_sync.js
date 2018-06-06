@@ -1,5 +1,5 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 module.exports = (config) => {
     // no directories
@@ -11,10 +11,10 @@ module.exports = (config) => {
 
     config.processingData.directoriesToSyncKeys.forEach((key) => {
         // absolute path
-        var path = config.basePaths.webRoot + '/' + config.directoriesToSync[key];
+        const path = config.basePaths.webRoot + '/' + config.directoriesToSync[key];
         // last slash index
-        var lastSlashIndex = path.lastIndexOf('/');
-        var item = {
+        const lastSlashIndex = path.lastIndexOf('/');
+        const item = {
             path: path
         };
 

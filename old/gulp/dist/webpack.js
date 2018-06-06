@@ -1,9 +1,9 @@
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var distData = require('./data');
+const distData = require('./data');
 
-var webpackBuild = (cb) => {
+const webpackBuild = (cb) => {
     webpack(distData.currentConfig.webpackBuildConfig, (err, stats) => {
         if (err) {
             logger.error(err.stack || err);

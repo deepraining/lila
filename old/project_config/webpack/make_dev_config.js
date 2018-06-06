@@ -1,24 +1,24 @@
 
-var webpack = require('webpack');
-var _ = require('lodash');
-var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack');
+const _ = require('lodash');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-var getJsEntryPath = require('./util/get_js_entry_path');
-var makeResolve = require('./util/make_resolve');
-var makeHtmlPlugin = require('./util/make_html_plugin');
-var makeBabelLoader = require('./loaders/babel_loader');
-var makeCssLoader = require('./loaders/css_loader');
-var makeLessLoader = require('./loaders/less_loader');
-var makeUrlLoader = require('./loaders/url_loader');
-var makeHtmlLoader = require('./loaders/html_loader');
+const getJsEntryPath = require('./util/get_js_entry_path');
+const makeResolve = require('./util/make_resolve');
+const makeHtmlPlugin = require('./util/make_html_plugin');
+const makeBabelLoader = require('./loaders/babel_loader');
+const makeCssLoader = require('./loaders/css_loader');
+const makeLessLoader = require('./loaders/less_loader');
+const makeUrlLoader = require('./loaders/url_loader');
+const makeHtmlLoader = require('./loaders/html_loader');
 
 module.exports = (config) => {
 
-    var babelLoader = makeBabelLoader(config);
-    var urlLoader = makeUrlLoader(config);
-    var htmlLoader = makeHtmlLoader(config);
+    const babelLoader = makeBabelLoader(config);
+    const urlLoader = makeUrlLoader(config);
+    const htmlLoader = makeHtmlLoader(config);
 
-    var plugins = [
+    const plugins = [
         new webpack.HotModuleReplacementPlugin(),
         makeHtmlPlugin(config),
         new FriendlyErrorsWebpackPlugin()
@@ -60,7 +60,7 @@ module.exports = (config) => {
         htmlLoader
     );
 
-    var devConfig = {
+    const devConfig = {
         entry: [
             'webpack-hot-middleware/client?reload=true',
             getJsEntryPath(config)

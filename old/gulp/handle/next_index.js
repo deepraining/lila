@@ -1,5 +1,5 @@
 
-var projectConfig = require('../../project_config');
+const projectConfig = require('../../project_config');
 
 module.exports = {
     /**

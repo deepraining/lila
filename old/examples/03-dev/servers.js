@@ -1,5 +1,5 @@
 
-var serverConfig = require('./demo/lila.server.config');
+const serverConfig = require('./demo/lila.server.config');
 
 module.exports = [
     {

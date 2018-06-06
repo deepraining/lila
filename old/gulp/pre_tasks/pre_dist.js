@@ -1,38 +1,38 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
-var projectConfig = require('../../project_config');
-var distDel = require('../dist/del');
-var distCopy = require('../dist/copy');
-var distMisc = require('../dist/misc');
-var distChangeExtra = require('../dist/change_extra');
-var distBackup = require('../dist/backup');
-var distRename = require('../dist/rename');
-var distTasks = require('../dist/tasks');
+const projectConfig = require('../../project_config');
+const distDel = require('../dist/del');
+const distCopy = require('../dist/copy');
+const distMisc = require('../dist/misc');
+const distChangeExtra = require('../dist/change_extra');
+const distBackup = require('../dist/backup');
+const distRename = require('../dist/rename');
+const distTasks = require('../dist/tasks');
 
 module.exports = (gulp) => {
 
-    var delDev = distDel.delDev;
-    var delDist = distDel.delDist;
-    var delStore = distDel.delStore;
+    const delDev = distDel.delDev;
+    const delDist = distDel.delDist;
+    const delStore = distDel.delStore;
 
-    var copyManifests = distCopy.copyManifests;
-    var copyToDist = distCopy.copyToDist;
+    const copyManifests = distCopy.copyManifests;
+    const copyToDist = distCopy.copyToDist;
 
-    var logFirstModule = distMisc.logFirstModule;
+    const logFirstModule = distMisc.logFirstModule;
 
-    var findChangedDirectoriesToSync = distChangeExtra.findChangedDirectoriesToSync;
+    const findChangedDirectoriesToSync = distChangeExtra.findChangedDirectoriesToSync;
 
-    var backupHtml = distBackup.backupHtml;
+    const backupHtml = distBackup.backupHtml;
 
-    var renameHtml = distRename.renameHtml;
+    const renameHtml = distRename.renameHtml;
 
-    var findChangedDirectoriesToSyncTasks = _.fill(
+    const findChangedDirectoriesToSyncTasks = _.fill(
         new Array(projectConfig.processingData.directoriesToSyncKeys && projectConfig.processingData.directoriesToSyncKeys.length || 0),
         findChangedDirectoriesToSync
     );
 
-    var tasks = _.concat([],
+    const tasks = _.concat([],
         [
             delDev,
             delDist,

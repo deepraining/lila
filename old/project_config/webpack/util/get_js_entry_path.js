@@ -2,7 +2,7 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-var fs = require('fs');
+const fs = require('fs');
 
 /**
  * get js entry path

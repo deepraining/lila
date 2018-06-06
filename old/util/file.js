@@ -1,7 +1,7 @@
 
-var fs = require('fs');
+const fs = require('fs');
 
-var fileUtil = {
+const fileUtil = {
     /**
      * check directory is exist
      *
@@ -10,7 +10,7 @@ var fileUtil = {
      */
     dirExist: (dirPath) => {
         try {
-            var stat = fs.statSync(dirPath);
+            const stat = fs.statSync(dirPath);
 
             return stat.isDirectory();
         } catch (err) {
@@ -27,7 +27,7 @@ var fileUtil = {
      */
     fileExist: (filePath) => {
         try {
-            var stat = fs.statSync(filePath);
+            const stat = fs.statSync(filePath);
 
             return stat.isFile();
         } catch (err) {

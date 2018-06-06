@@ -1,9 +1,9 @@
 
-var webpack = require('webpack');
+const webpack = require('webpack');
 
-var checkConfigFile = require('../util/check_config_file');
-var vars = require('../data/vars');
-var moduleName = vars.argv.module;
+const checkConfigFile = require('../util/check_config_file');
+const vars = require('../data/vars');
+const moduleName = vars.argv.module;
 
 if (!moduleName) {
     logger.error('Missing module name for command: analyze.', !0, !0);
@@ -14,7 +14,7 @@ if (!moduleName) {
 
 checkConfigFile();
 
-var projectConfig = require('../project_config');
+const projectConfig = require('../project_config');
 
 webpack(projectConfig.webpackAnalyzeConfig, (err, stats) => {
     if (err) {

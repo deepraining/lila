@@ -1,15 +1,15 @@
 
-var fs = require('fs');
-var path = require('path');
-var _ = require('lodash');
-var rd = require('rd');
-var pathUtil = require('../../util/path');
-var fillModuleFields = require('../../util/fill_module_fields');
+const fs = require('fs');
+const path = require('path');
+const _ = require('lodash');
+const rd = require('rd');
+const pathUtil = require('../../util/path');
+const fillModuleFields = require('../../util/fill_module_fields');
 
 // comma match
-var commaMarkRegExp = /,/;
+const commaMarkRegExp = /,/;
 // asterisk match
-var asteriskMarkRegExp = /\*/;
+const asteriskMarkRegExp = /\*/;
 
 /**
  * get modules of a asterisk module
@@ -20,11 +20,11 @@ var asteriskMarkRegExp = /\*/;
  * @param config
  * @returns {*}
  */
-var getModules = (module, config) => {
+const getModules = (module, config) => {
     if (!asteriskMarkRegExp.test(module)) return [module];
 
-    var dir;
-    var modules = [];
+    const dir;
+    const modules = [];
 
     // all module
     if (module == '*') dir = config.buildPaths.src.dir;
@@ -35,12 +35,12 @@ var getModules = (module, config) => {
 
     // get all modules
     rd.readDirFilterSync(dir, (dirPath) => {
-        var htmlFile = dirPath + '/index.html';
-        var jsFile = dirPath + '/index.js';
+        const htmlFile = dirPath + '/index.html';
+        const jsFile = dirPath + '/index.js';
 
         // both `index.html` and `index.js` exist, announcing this is a module
         if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
-            var index = path.relative(config.buildPaths.src.dir, dirPath);
+            const index = path.relative(config.buildPaths.src.dir, dirPath);
             modules.push(pathUtil.replaceBackSlash(index));
         }
     });
@@ -49,9 +49,9 @@ var getModules = (module, config) => {
 };
 
 module.exports = (config) => {
-    var module = config.module;
-    var hasCommaMark = commaMarkRegExp.test(module);
-    var hasAsteriskMark = asteriskMarkRegExp.test(module);
+    const module = config.module;
+    const hasCommaMark = commaMarkRegExp.test(module);
+    const hasAsteriskMark = asteriskMarkRegExp.test(module);
 
     config.multiple = !1;
     config.processingData.moduleIndex = 0;
@@ -72,7 +72,7 @@ module.exports = (config) => {
      *
      * @type {Array}
      */
-    var modules = [];
+    const modules = [];
     /**
      * formatted module array(make all asterisk module to real module)
      *
@@ -80,7 +80,7 @@ module.exports = (config) => {
      *
      * @type {Array}
      */
-    var allModules = [];
+    const allModules = [];
 
     // handle comma
     if (hasCommaMark) modules = module.split(',');

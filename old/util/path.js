@@ -1,5 +1,5 @@
 
-var pathUtil = {
+const pathUtil = {
     /**
      * get pure module name of a module
      *
@@ -12,7 +12,7 @@ var pathUtil = {
      * @returns {string}
      */
     getModuleName: (module) => {
-        var lastSlashIndex = module.lastIndexOf('/');
+        const lastSlashIndex = module.lastIndexOf('/');
 
         return lastSlashIndex == -1 ? module : module.slice(lastSlashIndex + 1);
     },
@@ -28,7 +28,7 @@ var pathUtil = {
      * @returns {string}
      */
     getModuleDir: (module) => {
-        var lastSlashIndex = module.lastIndexOf('/');
+        const lastSlashIndex = module.lastIndexOf('/');
 
         return lastSlashIndex == -1 ? '' : module.slice(0, lastSlashIndex);
     },

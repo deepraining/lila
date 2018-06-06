@@ -2,7 +2,7 @@
  * @author senntyou <jiangjinbelief@163.com>
  */
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = (config) => {
     return new HtmlWebpackPlugin({

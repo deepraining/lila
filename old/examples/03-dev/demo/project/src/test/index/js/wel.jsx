@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import styles from './wel.css';
 import styles2 from './wel2.less';
 
-var React = require('react');
+const React = require('react');
 
 console.log(styles);
 console.log(styles2);

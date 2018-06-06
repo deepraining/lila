@@ -1,6 +1,6 @@
 
-var vars = require('../../data/vars');
-var del = require('del');
+const vars = require('../../data/vars');
+const del = require('del');
 
 module.exports = (gulp) => {
 

@@ -21,5 +21,5 @@ require('out-2')();
 console.log('test/index');
 
 // test ignoreNodeModules
-var Swiper = require('swiper');
+const Swiper = require('swiper');
 require('bootstrap');

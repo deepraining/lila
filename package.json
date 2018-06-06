@@ -27,9 +27,12 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "fs-extra": "^6.0.1",
+    "gulp": "^4.0.0",
+    "gulp-zip": "^4.1.0",
     "lodash": "^4.17.10",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
+    "moment": "^2.22.2",
     "yargs": "^8.0.2"
   }
 }

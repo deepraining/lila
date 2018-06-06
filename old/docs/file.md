@@ -9,7 +9,7 @@ every module has a workspace in `src` directory, for example, if current module 
 every module must have a `html` file and a `js` file, and paths is liking follows(module: `test/inner`):
  
 * html: `src/test/inner/index.html`
-* js: `src/test/inner/index.js`
+* js: `src/test/inner/register.js`
 * css/less: you can import `css/less` files into `js` file whatever you like.
 
 ## recommended workspace structure
@@ -17,7 +17,7 @@ every module must have a `html` file and a `js` file, and paths is liking follow
 ```
 | - workspace
     | - index.html (main html file, required)
-    | - index.js (main js file, required)
+    | - register.js (main js file, required)
     | - config.js (custom config file, system reserved)
     | - index.less/index.css (main stylesheet file)
     | - html (directory: more html segments files)

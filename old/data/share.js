@@ -4,6 +4,6 @@
  *
  * @type {{}}
  */
-var share = {};
+const share = {};
 
 module.exports = share;

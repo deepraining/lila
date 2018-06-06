@@ -1,9 +1,9 @@
 
-var rd = require('rd');
+const rd = require('rd');
 
 module.exports = (dir) => {
 
-    var count = 0;
+    const count = 0;
 
     rd.eachFileFilterSync(dir, () => {
         count += 1;

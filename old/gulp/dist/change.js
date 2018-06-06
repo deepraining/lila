@@ -1,7 +1,7 @@
 
-var _ = require('lodash');
-var distData = require('./data');
-var findChangedFiles = require('../handle/find_changed_files');
+const _ = require('lodash');
+const distData = require('./data');
+const findChangedFiles = require('../handle/find_changed_files');
 
 module.exports = {
     findChangedBase: (gulp) => {
@@ -17,8 +17,8 @@ module.exports = {
             // record files' changes
             else {
                 // get changed files
-                var changedFiles = findChangedFiles(distData.currentConfig.buildPaths.dist.dir, 'base');
-                var completeChangedFiles = [];
+                const changedFiles = findChangedFiles(distData.currentConfig.buildPaths.dist.dir, 'base');
+                const completeChangedFiles = [];
 
                 if (!_.isEmpty(changedFiles)) {
 

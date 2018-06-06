@@ -1,9 +1,9 @@
 
-var $ = require('jquery');
-//var _ = require('underscore');
+const $ = require('jquery');
+//const _ = require('underscore');
 
 module.exports = () => {
-    var h1 = document.createElement('h1');
+    const h1 = document.createElement('h1');
     h1.innerText = 'Hello China!';
     document.body.appendChild(h1);
 

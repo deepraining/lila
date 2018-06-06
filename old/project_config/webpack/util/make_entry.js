@@ -1,5 +1,5 @@
 
-var getJsEntryPath = require('./get_js_entry_path');
+const getJsEntryPath = require('./get_js_entry_path');
 
 
 /**
@@ -26,7 +26,7 @@ var getJsEntryPath = require('./get_js_entry_path');
  */
 module.exports = (config) => {
 
-    var entry = {};
+    const entry = {};
 
     entry[config.moduleName] = getJsEntryPath(config);
 

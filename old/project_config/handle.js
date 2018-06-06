@@ -1,23 +1,23 @@
 
-var defaultsBuildPaths = require('./defaults/build_paths');
-var defaultsCmdAlias = require('./defaults/cmd_alias');
-var defaultsEnvAlias = require('./defaults/env_alias');
-var defaultsCmdValues = require('./defaults/cmd_values');
-var defaultsNetwork = require('./defaults/network');
-var defaultsBase = require('./defaults/base');
+const defaultsBuildPaths = require('./defaults/build_paths');
+const defaultsCmdAlias = require('./defaults/cmd_alias');
+const defaultsEnvAlias = require('./defaults/env_alias');
+const defaultsCmdValues = require('./defaults/cmd_values');
+const defaultsNetwork = require('./defaults/network');
+const defaultsBase = require('./defaults/base');
 
-var handleBase = require('./handle/base');
-var handleDirectoriesToSync = require('./handle/directories_to_sync');
-var handleLocalOptions = require('./handle/local_options');
-var handleEnvOptions = require('./handle/env_options');
-var handleCommandOptions = require('./handle/command_options');
-var handleHtml = require('./handle/html');
-var handleModuleGroup = require('./handle/module_group');
-var handleModule = require('./handle/module');
-var handleCustomConfig = require('./handle/custom_config');
-var handleWebpack = require('./handle/webpack');
+const handleBase = require('./handle/base');
+const handleDirectoriesToSync = require('./handle/directories_to_sync');
+const handleLocalOptions = require('./handle/local_options');
+const handleEnvOptions = require('./handle/env_options');
+const handleCommandOptions = require('./handle/command_options');
+const handleHtml = require('./handle/html');
+const handleModuleGroup = require('./handle/module_group');
+const handleModule = require('./handle/module');
+const handleCustomConfig = require('./handle/custom_config');
+const handleWebpack = require('./handle/webpack');
 
-var handle = (config) => {
+const handle = (config) => {
     defaultsBuildPaths(config);
     defaultsCmdAlias(config);
     defaultsEnvAlias(config);

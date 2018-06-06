@@ -1,6 +1,6 @@
 
-var del = require('del');
-var projectConfig = require('../../project_config');
+const del = require('del');
+const projectConfig = require('../../project_config');
 
 module.exports = {
     // delete dev

@@ -1,5 +1,5 @@
 
-var pathUtil = require('./path');
+const pathUtil = require('./path');
 
 module.exports = (config) => {
     config.moduleDir = pathUtil.getModuleDir(config.module);

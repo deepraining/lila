@@ -1,5 +1,5 @@
 
-var data = {
+const data = {
     // existed archived packages
     archivePackages: [],
     // index to revert

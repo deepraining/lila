@@ -1,25 +1,25 @@
 
-var _ = require('lodash');
-var del = require('del');
-var ftp = require('gulp-ftp');
-var sftp = require('gulp-sftp');
+const _ = require('lodash');
+const del = require('del');
+const ftp = require('gulp-ftp');
+const sftp = require('gulp-sftp');
 
-var projectConfig = require('../../project_config');
-var defaultSyncFn = projectConfig.currentNetwork.useSsh ? sftp : ftp;
-var nextIndex = require('../handle/next_index');
+const projectConfig = require('../../project_config');
+const defaultSyncFn = projectConfig.currentNetwork.useSsh ? sftp : ftp;
+const nextIndex = require('../handle/next_index');
 
 module.exports = (gulp) => {
 
-    var delDist = () => {
+    const delDist = () => {
         return del([projectConfig.buildPaths.dist.dir], {force: !0});
     };
 
-    var syncStatic = () => {
+    const syncStatic = () => {
 
         nextIndex.staticServer();
 
-        var syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
-        var syncFn = defaultSyncFn;
+        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
+        const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
@@ -27,12 +27,12 @@ module.exports = (gulp) => {
             .pipe(syncFn(syncConfig));
     };
 
-    var syncHtml = () => {
+    const syncHtml = () => {
 
         nextIndex.webServer();
 
-        var syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processingData.webServerIndex];
-        var syncFn = defaultSyncFn;
+        const syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processingData.webServerIndex];
+        const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
@@ -40,15 +40,15 @@ module.exports = (gulp) => {
             .pipe(syncFn(syncConfig));
     };
 
-    var syncExtraDirectory = (cb) => {
+    const syncExtraDirectory = (cb) => {
         nextIndex.directoriesToSync();
 
-        var syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
-        var syncFn = defaultSyncFn;
+        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
+        const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
-        var changedFiles = projectConfig.processingData.directoriesToSyncItems[projectConfig.processingData.directoriesToSyncKey].changedFiles;
+        const changedFiles = projectConfig.processingData.directoriesToSyncItems[projectConfig.processingData.directoriesToSyncKey].changedFiles;
 
         if (changedFiles && (typeof changedFiles == 'string' || changedFiles.length))
             return gulp.src(changedFiles, {base: projectConfig.basePaths.webRoot})
@@ -56,10 +56,10 @@ module.exports = (gulp) => {
         else cb();
     };
 
-    var syncStaticTasks = _.fill(new Array(projectConfig.currentNetwork.staticServers && projectConfig.currentNetwork.staticServers.length || 0), syncStatic);
-    var syncWebTasks = _.fill(new Array(projectConfig.currentNetwork.webServers && projectConfig.currentNetwork.webServers.length || 0), syncHtml);
+    const syncStaticTasks = _.fill(new Array(projectConfig.currentNetwork.staticServers && projectConfig.currentNetwork.staticServers.length || 0), syncStatic);
+    const syncWebTasks = _.fill(new Array(projectConfig.currentNetwork.webServers && projectConfig.currentNetwork.webServers.length || 0), syncHtml);
 
-    var syncExtraDirectoryTasks = [];
+    const syncExtraDirectoryTasks = [];
     projectConfig.currentNetwork.staticServers &&
     projectConfig.currentNetwork.staticServers.length &&
     projectConfig.processingData.directoriesToSyncKeys &&
@@ -71,7 +71,7 @@ module.exports = (gulp) => {
         });
     });
 
-    var tasks = _.concat([], [
+    const tasks = _.concat([], [
         'pre_dist'
     ],
         syncStaticTasks,

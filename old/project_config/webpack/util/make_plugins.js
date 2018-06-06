@@ -1,14 +1,14 @@
 
-var _ = require('lodash');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const _ = require('lodash');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-var makeHtmlPlugin = require('./make_html_plugin');
+const makeHtmlPlugin = require('./make_html_plugin');
 
 module.exports = (config) => {
 
-    var plugins = [
+    const plugins = [
         makeHtmlPlugin(config)
     ];
 
@@ -19,10 +19,10 @@ module.exports = (config) => {
 
     // common chunks
     if (config.splitJsKeys) {
-        var keysLength = config.splitJsKeys.length;
+        const keysLength = config.splitJsKeys.length;
 
         config.splitJsKeys.forEach((key, index) => {
-            var i = index, chunks = [config.moduleName];
+            const i = index, chunks = [config.moduleName];
 
             for (; i < keysLength; i++) {
                 chunks.push(config.splitJsKeys[i]);

@@ -1,22 +1,22 @@
 
-var _ = require('lodash');
+const _ = require('lodash');
 
-var makeBabelLoader = require('../loaders/babel_loader');
-var makeCssLoader = require('../loaders/css_loader');
-var makeLessLoader = require('../loaders/less_loader');
-var makeUrlLoader = require('../loaders/url_loader');
-var makeHtmlLoader = require('../loaders/html_loader');
-var makeExtractCssLoader = require('../loaders/extract_css_loader');
-var makeExtractLessLoader = require('../loaders/extract_less_loader');
+const makeBabelLoader = require('../loaders/babel_loader');
+const makeCssLoader = require('../loaders/css_loader');
+const makeLessLoader = require('../loaders/less_loader');
+const makeUrlLoader = require('../loaders/url_loader');
+const makeHtmlLoader = require('../loaders/html_loader');
+const makeExtractCssLoader = require('../loaders/extract_css_loader');
+const makeExtractLessLoader = require('../loaders/extract_less_loader');
 
 module.exports = (config) => {
 
-    var babelLoader = makeBabelLoader(config);
-    var urlLoader = makeUrlLoader(config, !0);
-    var htmlLoader = makeHtmlLoader(config);
+    const babelLoader = makeBabelLoader(config);
+    const urlLoader = makeUrlLoader(config, !0);
+    const htmlLoader = makeHtmlLoader(config);
 
-    var module = {};
-    var rules = [babelLoader, htmlLoader];
+    const module = {};
+    const rules = [babelLoader, htmlLoader];
 
     let excludeMatches = config.cssModulesExclude;
     let browsers = config.browsers;

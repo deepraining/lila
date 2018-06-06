@@ -1,18 +1,18 @@
 
 // default network option item
-var defaults = {
+const defaults = {
     // whether use sftp to upload files, default is ftp
     useSsh: false
 };
 
-var _ = require('lodash');
+const _ = require('lodash');
 
 module.exports = (option) => {
     option = _.defaults(option, _.cloneDeep(defaults));
 
     if (!option.servers) return option;
 
-    var servers = option.servers;
+    const servers = option.servers;
     // all servers
     option.servers = [];
     // all web servers

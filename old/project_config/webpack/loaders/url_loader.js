@@ -1,7 +1,7 @@
 
 module.exports = (config, isBuild) => {
 
-    var options = {
+    const options = {
         limit: 8192
     };
 

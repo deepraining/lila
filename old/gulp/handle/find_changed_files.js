@@ -1,13 +1,13 @@
 
-var md5 = require('crypto-md5');
-var path = require('path');
-var rd = require('rd');
-var fs = require('fs');
-var _ = require('lodash');
+const md5 = require('crypto-md5');
+const path = require('path');
+const rd = require('rd');
+const fs = require('fs');
+const _ = require('lodash');
 
-var manifests = require('../../data/manifests');
-var vars = require('../../data/vars');
-var isManifest = require('../../util/is_manifest');
+const manifests = require('../../data/manifests');
+const vars = require('../../data/vars');
+const isManifest = require('../../util/is_manifest');
 
 /**
  * find changed files
@@ -19,20 +19,20 @@ var isManifest = require('../../util/is_manifest');
 module.exports = (dir, name) => {
 
     // manifest file
-    var manifestFile = manifests[name || 'base'];
+    const manifestFile = manifests[name || 'base'];
 
     // manifests directory
-    var manifestsDirectory = vars.projectRoot + '/manifests';
+    const manifestsDirectory = vars.projectRoot + '/manifests';
 
     // manifest file path
-    var manifestPath = path.resolve(manifestsDirectory + '/' + manifestFile);
+    const manifestPath = path.resolve(manifestsDirectory + '/' + manifestFile);
 
     // new manifest
-    var newManifest = {};
+    const newManifest = {};
     // old manifest
-    var originManifest = {};
+    const originManifest = {};
     // changed files
-    var changedFiles = {};
+    const changedFiles = {};
 
     // if manifests directory is not exist, create it
     if (!fs.existsSync(manifestsDirectory)) fs.mkdirSync(manifestsDirectory);
@@ -43,10 +43,10 @@ module.exports = (dir, name) => {
     // read all files under dir
     rd.eachFileFilterSync(dir, (file) => {
 
-        var filePath = path.relative(dir, file);
+        const filePath = path.relative(dir, file);
 
         if (!isManifest(filePath)) {
-            var fileContent = fs.readFileSync(file);
+            const fileContent = fs.readFileSync(file);
             // record in newManifest
             fileContent && (newManifest[filePath] = md5(fileContent, 'hex'));
         }

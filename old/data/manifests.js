@@ -1,7 +1,7 @@
 
-var makeManifest = require('../util/make_manifest');
-var projectConfig = require('../project_config');
-var manifests = {
+const makeManifest = require('../util/make_manifest');
+const projectConfig = require('../project_config');
+const manifests = {
     base: makeManifest('base', projectConfig.env)
 };
 

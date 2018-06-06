@@ -1,8 +1,8 @@
 
-var projectConfig = require('../../project_config');
-var projectConfigs = require('../../project_config/configs');
+const projectConfig = require('../../project_config');
+const projectConfigs = require('../../project_config/configs');
 
-var data = {
+const data = {
     // current module index
     currentModuleIndex: 0,
     // current config

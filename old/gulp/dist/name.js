@@ -1,8 +1,8 @@
 
-var fsExtra = require('fs-extra');
+const fsExtra = require('fs-extra');
 
-var projectConfig = require('../../project_config');
-var distData = require('./data');
+const projectConfig = require('../../project_config');
+const distData = require('./data');
 
 module.exports = {
     // name html after webpack build
