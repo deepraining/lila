@@ -40,7 +40,7 @@ registerTasks(gulp);
 // Execute task.
 gulp.series('revert', cb => {
     logger.success(`
-    Revert 'dist' directory by last ${revertShare.index}${sequenceSuffix(revertShare.index)} archive state,
+    Revert 'dist' directory to last ${revertShare.index}${sequenceSuffix(revertShare.index)} archive state successfully,
     with filename of '${revertShare.revertZip}'.
     `);
 
