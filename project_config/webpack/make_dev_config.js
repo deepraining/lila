@@ -1,12 +1,13 @@
 
 const webpack = require('webpack');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 const emptyOrArray = require('../../util/empty_or_array');
 const pathInfo = require('../../data/path_info');
 
 const getJsEntryPath = require('./util/get_js_entry_path');
+const commonPlugins = require('./util/common_plugins');
 const makeResolve = require('./util/make_resolve');
+
 const makeHtmlPlugin = require('./util/make_html_plugin');
 const makeBabelLoader = require('./loaders/babel_loader');
 const makeCssLoader = require('./loaders/css_loader');
@@ -72,16 +73,10 @@ module.exports = config => {
 
     config.webpack.plugins.push(
         new webpack.HotModuleReplacementPlugin(),
-        makeHtmlPlugin(config),
-        new FriendlyErrorsWebpackPlugin()
+        makeHtmlPlugin(config)
     );
 
-    // ProvidePlugin
-    if (config.provide) config.webpack.plugins.push(new webpack.ProvidePlugin(config.provide));
-
-    // DefinePlugin
-    if (config.define) config.webpack.plugins.push(new webpack.DefinePlugin(config.define));
-
+    commonPlugins(config);
 
     /**
      * Webpack module config.

@@ -29,7 +29,24 @@ const defaultValue = {
     // How to exclude files when transform `css-modules`.
     cssModulesExclude: [/node_modules/],
     // `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options).
-    browsers: []
+    browsers: [],
+    // `babel-loader` default option.
+    babelLoader: {
+        exclude: /node_modules/
+    },
+    // `url-loader` default option.
+    urlLoader: {
+        options: {
+            limit: 0
+        }
+    },
+    // `html-loader` default option.
+    htmlLoader: {
+        options: {
+            attrs: ['img:src', 'link:href'],
+            interpolate: 'require'
+        }
+    }
 };
 
 

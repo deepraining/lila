@@ -511,4 +511,46 @@ by default, there are three levels of directories: `src` in project, `node_modul
 ## babelLoader
 
 * `desc`: extra [babel-loader](https://github.com/babel/babel-loader) config options
+* `type`: `map`
+* `default`: 
+
+```
+{
+    exclude: /node_modules/
+}
+```
+
+* `since`: `v0.3.0`
+
+## urlLoader
+
+* `desc`: extra [url-loader](https://github.com/webpack-contrib/url-loader) config options
+* `type`: `map`
+* `default`: 
+
+```
+{
+    options: {
+        limit: 0
+    }
+}
+```
+
+* `since`: `v0.3.0`
+
+## htmlLoader
+
+* `desc`: extra [html-loader](https://github.com/webpack-contrib/html-loader) config options
+* `type`: `map`
+* `default`: 
+
+```
+{
+    options: {
+        attrs: ['img:src', 'link:href'],
+        interpolate: 'require'
+    }
+}
+```
+
 * `since`: `v0.3.0`

@@ -28,7 +28,7 @@ module.exports = (config) => {
     const splitJsKeys = _.keys(config.splitJs);
 
     splitJsKeys.forEach((key, index) => {
-        const i = index, tmpKey, chunks = [];
+        let i = index, tmpKey, chunks = [];
 
         config.splitJsChunks[key] = {};
         for (; i > -1; i--) {
