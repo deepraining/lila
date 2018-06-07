@@ -7,17 +7,17 @@ module.exports = {
      */
     directoriesToSync: () => {
         // has directories to sync
-        if (projectConfig.processing.directoriesToSyncKeys) {
-            if (typeof projectConfig.processing.directoriesToSyncIndex == 'undefined')
-                projectConfig.processing.directoriesToSyncIndex = 0;
+        if (projectConfig.processing.syncDirKeys) {
+            if (typeof projectConfig.processing.syncDirIndex == 'undefined')
+                projectConfig.processing.syncDirIndex = 0;
 
-            projectConfig.processing.directoriesToSyncKey =
-                projectConfig.processing.directoriesToSyncKeys[projectConfig.processing.directoriesToSyncIndex];
+            projectConfig.processing.syncDirKey =
+                projectConfig.processing.syncDirKeys[projectConfig.processing.syncDirIndex];
 
-            projectConfig.processing.directoriesToSyncIndex += 1;
+            projectConfig.processing.syncDirIndex += 1;
 
-            if (projectConfig.processing.directoriesToSyncIndex >= projectConfig.processing.directoriesToSyncKeys.length)
-                projectConfig.processing.directoriesToSyncIndex = 0;
+            if (projectConfig.processing.syncDirIndex >= projectConfig.processing.syncDirKeys.length)
+                projectConfig.processing.syncDirIndex = 0;
         }
     },
     /**

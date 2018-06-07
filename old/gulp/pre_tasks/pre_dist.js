@@ -28,7 +28,7 @@ module.exports = (gulp) => {
     const renameHtml = distRename.renameHtml;
 
     const findChangedDirectoriesToSyncTasks = _.fill(
-        new Array(projectConfig.processing.directoriesToSyncKeys && projectConfig.processing.directoriesToSyncKeys.length || 0),
+        new Array(projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length || 0),
         findChangedDirectoriesToSync
     );
 

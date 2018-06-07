@@ -13,6 +13,14 @@ const commandOptions = require('./command_options');
 
 const fill = require('./fill');
 
+const processing = require('./processing');
+const moduleGroup = require('./module_group');
+const module = require('./module');
+const html = require('./html');
+const directoriesToSync = require('./directories_to_sync');
+const servers = require('./servers');
+const webpack = require('./webpack');
+
 /**
  * Format import config to a new one which lila needed.
  *
@@ -38,6 +46,15 @@ module.exports = config => {
 
     // Fill default value to config.
     fill(config);
+
+    // More handling.
+    processing(config);
+    moduleGroup(config);
+    module(config);
+    html(config);
+    directoriesToSync(config);
+    servers(config);
+    webpack(config);
 
     return config;
 };

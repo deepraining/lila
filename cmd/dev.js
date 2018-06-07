@@ -31,7 +31,7 @@ const projectConfig = require('../project_config');
 
 // todo: to be continued.
 
-const compiler = webpack(projectConfig.webpackDevConfig);
+const compiler = webpack(projectConfig.webpack);
 let browserSyncConfig = projectConfig.browserSync || {};
 browserSyncConfig.server = {
     baseDir: projectConfig.basePaths.webRoot

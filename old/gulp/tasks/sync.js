@@ -48,7 +48,7 @@ module.exports = (gulp) => {
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
-        const changedFiles = projectConfig.processing.directoriesToSyncItems[projectConfig.processing.directoriesToSyncKey].changedFiles;
+        const changedFiles = projectConfig.processing.syncDirItems[projectConfig.processing.syncDirKey].changedFiles;
 
         if (changedFiles && (typeof changedFiles == 'string' || changedFiles.length))
             return gulp.src(changedFiles, {base: projectConfig.basePaths.webRoot})
@@ -62,11 +62,11 @@ module.exports = (gulp) => {
     const syncExtraDirectoryTasks = [];
     projectConfig.currentNetwork.staticServers &&
     projectConfig.currentNetwork.staticServers.length &&
-    projectConfig.processing.directoriesToSyncKeys &&
-    projectConfig.processing.directoriesToSyncKeys.length &&
+    projectConfig.processing.syncDirKeys &&
+    projectConfig.processing.syncDirKeys.length &&
     projectConfig.currentNetwork.staticServers.forEach(() => {
         syncExtraDirectoryTasks.push(nextIndex.staticServer);
-        projectConfig.processing.directoriesToSyncKeys.forEach(() => {
+        projectConfig.processing.syncDirKeys.forEach(() => {
             syncExtraDirectoryTasks.push(syncExtraDirectory);
         });
     });

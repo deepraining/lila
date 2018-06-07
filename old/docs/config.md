@@ -10,7 +10,7 @@
 
 ## env
 
-* `desc`: current environment index, used to get current `build option`, `network option` ..., can and always be specified from command line.
+* `desc`: current environment index, can and always be specified from command line.
 * `type`: `number`
 * `default`: `0`
 * `since`: `v0.0.1`
@@ -82,46 +82,6 @@
 * `type`: `bool`
 * `default`: `true`
 * `since`: `v0.0.1`
-
-## resolveAlias
-
-* `desc`: create aliases to import or require certain modules more easily.
-* `type`: `map`
-* `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
-* `default`: empty
-* `since`: `v0.0.1`
-* `example`:
-
-```
-{
-    handlebars: 'handlebars/dist/handlebars.js'
-}
-```
-
-## resolveModules
-
-* `desc`: tell webpack what directories should be searched when resolving modules.
-* `see`: [resolve-modules](https://webpack.js.org/configuration/resolve/#resolve-modules)
-* `type`: `array`
-* `default`: empty
-* `since`: `v0.2.0`
-* `detail`: here is for you to provide extra directories when resolving modules.
-by default, there are three levels of directories: `src` in project, `node_modules` in project root, `node_modules` of webpack's default.
-* the new sequence of resolving modules will be:
-    1. `src` in project
-    2. `node_modules` in project root
-    3. `resolveModules` defined in `lila.config.js`
-    4. `node_modules` of webpack's default.
-* `example`: all paths defined here should relative to project root.
-
-```
-[
-    '../dir',
-    '../../dir2/'
-
-    ...
-]
-```
 
 ## packCssSeparately
 
@@ -209,11 +169,11 @@ above will generate extra 3 js files from main js file, thus html will like:
 * `default`: `false`
 * `since`: `v0.0.1`
 
-## network
+## servers
 
-see [Project config - network](./config/network.md)
+see [Project config - servers](./config/servers.md)
 
-* `since`: `v0.0.1`
+* `since`: `v0.3.0`
 
 ## devServerPort
 
@@ -471,3 +431,84 @@ see [group of modules](./group.md)
     sync: {...}
 }
 ```
+
+## webpack
+
+* `desc`: custom `webpack` config
+* `see`: [webpack](https://webpack.js.org/)
+* `type`: `map`
+* `default`: empty
+* `since`: `v0.3.0`
+
+## plugins
+
+* `desc`: extra webpack plugins
+* `see`: [Builtin plugins & loaders](./builtin.md)
+* `type`: `array`
+* `default`: empty
+* `since`: `v0.3.0`
+* `note`: if you have defined extra webpack plugins here, you should not defined more plugins in `webpack.plugins` config attribute.
+
+## rules
+
+* `desc`: extra webpack module rules
+* `see`: [Builtin plugins & loaders](./builtin.md)
+* `type`: `array`
+* `default`: empty
+* `since`: `v0.3.0`
+* `note`: if you have defined extra webpack module rules here, you should not defined more module rules in `webpack.module.rules` config attribute.
+
+## resolveAlias
+
+* `desc`: create aliases to import or require certain modules more easily.
+* `type`: `map`
+* `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
+* `default`: empty
+* `since`: `v0.0.1`
+* `example`:
+
+```
+{
+    handlebars: 'handlebars/dist/handlebars.js'
+}
+```
+
+* `note`: if you have defined webpack resolve alias here, you should not defined more resolve alias in `webpack.resolve.alias` config attribute.
+
+## resolveModules
+
+* `desc`: tell webpack what directories should be searched when resolving modules.
+* `see`: [resolve-modules](https://webpack.js.org/configuration/resolve/#resolve-modules)
+* `type`: `array`
+* `default`: empty
+* `since`: `v0.2.0`
+* `detail`: here is for you to provide extra directories when resolving modules.
+by default, there are three levels of directories: `src` in project, `node_modules` in project root, `node_modules` of webpack's default.
+* the new sequence of resolving modules will be:
+    1. `src` in project
+    2. `node_modules` in project root
+    3. `resolveModules` defined in `lila.config.js`
+    4. `node_modules` of webpack's default.
+* `example`: all paths defined here should relative to project root.
+
+```
+[
+    '../dir',
+    '../../dir2/'
+
+    ...
+]
+```
+* `note`: if you have defined webpack resolve modules here, you should not defined more resolve modules in `webpack.resolve.modules` config attribute.
+
+## htmlWebpackPlugin
+
+* `desc`: extra [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) config options
+* `type`: `map`
+* `default`: empty
+* `since`: `v0.3.0`
+
+## babelLoader
+
+* `desc`: extra [babel-loader](https://github.com/babel/babel-loader) config options
+* `since`: `v0.3.0`

@@ -16,7 +16,7 @@ checkConfigFile();
 
 const projectConfig = require('../project_config');
 
-webpack(projectConfig.webpackAnalyzeConfig, (err, stats) => {
+webpack(projectConfig.webpack, (err, stats) => {
     if (err) {
         logger.error(err.stack || err);
         if (err.details) {

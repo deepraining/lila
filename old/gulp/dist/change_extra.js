@@ -9,8 +9,8 @@ module.exports = {
     findChangedDirectoriesToSync: (cb) => {
         nextIndex.directoriesToSync();
 
-        const currentKey = projectConfig.processing.directoriesToSyncKey;
-        const currentItem = projectConfig.processing.directoriesToSyncItems[currentKey];
+        const currentKey = projectConfig.processing.syncDirKey;
+        const currentItem = projectConfig.processing.syncDirItems[currentKey];
         const dirPath = currentItem.path;
 
         // enable recording file's changes

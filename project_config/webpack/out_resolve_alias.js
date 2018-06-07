@@ -1,8 +1,8 @@
 
-const _ = require('lodash');
+const forEach = require('lodash/forEach');
 
 /**
- * handle outResolveAlias
+ * Handle `outResolveAlias`.
  *
  * @param config
  */
@@ -10,7 +10,7 @@ module.exports = config => {
     if (config.outResolveAlias && config.out) {
         !config.resolveAlias && (config.resolveAlias = {});
 
-        _.forEach(config.outResolveAlias, (value, key) => {
+        forEach(config.outResolveAlias, (value, key) => {
             config.resolveAlias[key] = value;
         });
     }

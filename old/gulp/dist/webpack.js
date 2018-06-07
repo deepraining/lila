@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const distData = require('./data');
 
 const webpackBuild = (cb) => {
-    webpack(distData.currentConfig.webpackBuildConfig, (err, stats) => {
+    webpack(distData.currentConfig.webpack, (err, stats) => {
         if (err) {
             logger.error(err.stack || err);
             if (err.details) {

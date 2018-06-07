@@ -4,7 +4,14 @@ const stage0Preset = require("babel-preset-stage-0");
 const transformReactJsx = require("babel-plugin-transform-react-jsx");
 const importPlugin = require("babel-plugin-import");
 
-module.exports = (config) => {
+
+/**
+ * Make babel loader.
+ *
+ * @param config
+ * @returns {{loader: string, options: {presets: *[], plugins: *[]}, test: RegExp}}
+ */
+module.exports = config => {
 
     let plugins = [transformReactJsx];
     config.import && plugins.push([importPlugin.default, config.import]);
