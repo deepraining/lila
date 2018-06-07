@@ -68,7 +68,7 @@ lila ana moduleName
 
 ### `local/l`
 
-* specify current local value through command line
+* specify current local name through command line
 
 ### `out/o`
 

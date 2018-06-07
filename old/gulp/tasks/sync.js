@@ -18,7 +18,7 @@ module.exports = (gulp) => {
 
         nextIndex.staticServer();
 
-        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
+        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processing.staticServerIndex];
         const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
@@ -31,7 +31,7 @@ module.exports = (gulp) => {
 
         nextIndex.webServer();
 
-        const syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processingData.webServerIndex];
+        const syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processing.webServerIndex];
         const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
@@ -43,12 +43,12 @@ module.exports = (gulp) => {
     const syncExtraDirectory = (cb) => {
         nextIndex.directoriesToSync();
 
-        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processingData.staticServerIndex];
+        const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processing.staticServerIndex];
         const syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
-        const changedFiles = projectConfig.processingData.directoriesToSyncItems[projectConfig.processingData.directoriesToSyncKey].changedFiles;
+        const changedFiles = projectConfig.processing.directoriesToSyncItems[projectConfig.processing.directoriesToSyncKey].changedFiles;
 
         if (changedFiles && (typeof changedFiles == 'string' || changedFiles.length))
             return gulp.src(changedFiles, {base: projectConfig.basePaths.webRoot})
@@ -62,11 +62,11 @@ module.exports = (gulp) => {
     const syncExtraDirectoryTasks = [];
     projectConfig.currentNetwork.staticServers &&
     projectConfig.currentNetwork.staticServers.length &&
-    projectConfig.processingData.directoriesToSyncKeys &&
-    projectConfig.processingData.directoriesToSyncKeys.length &&
+    projectConfig.processing.directoriesToSyncKeys &&
+    projectConfig.processing.directoriesToSyncKeys.length &&
     projectConfig.currentNetwork.staticServers.forEach(() => {
         syncExtraDirectoryTasks.push(nextIndex.staticServer);
-        projectConfig.processingData.directoriesToSyncKeys.forEach(() => {
+        projectConfig.processing.directoriesToSyncKeys.forEach(() => {
             syncExtraDirectoryTasks.push(syncExtraDirectory);
         });
     });

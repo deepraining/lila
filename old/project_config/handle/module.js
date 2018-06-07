@@ -54,7 +54,7 @@ module.exports = (config) => {
     const hasAsteriskMark = asteriskMarkRegExp.test(module);
 
     config.multiple = !1;
-    config.processingData.moduleIndex = 0;
+    config.processing.moduleIndex = 0;
     config.allModules = [];
 
     // single module, no comma, no asterisk
@@ -92,6 +92,6 @@ module.exports = (config) => {
 
     config.allModules = allModules;
     config.multiple = !0;
-    config.module = config.allModules[config.processingData.moduleIndex];
+    config.module = config.allModules[config.processing.moduleIndex];
     fillModuleFields(config);
 };

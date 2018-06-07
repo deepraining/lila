@@ -6,6 +6,7 @@
 * `type`: `string`
 * `default`: `test/index`
 * `since`: `v0.0.1`
+* `note`: this should only either be defined in `lila.config.js` file or be specified from command line.
 
 ## env
 
@@ -13,6 +14,7 @@
 * `type`: `number`
 * `default`: `0`
 * `since`: `v0.0.1`
+* `note`: this should only either be defined in `lila.config.js` file or be specified from command line.
 
 ## minJs
 
@@ -151,7 +153,7 @@ above will generate extra 3 js files from main js file, thus html will like:
 ```
 <script src="/path/to/lib.js"></script>
 <script src="/path/to/common.js"></script>
-<script src="/path/to/base.js"></script>
+<script src="/path/to/fill.js"></script>
 <script src="/path/to/main.js"></script>
 ```
 
@@ -256,10 +258,12 @@ see [Project config - network](./config/network.md)
 {
     // alias -> real name
     e: 'env', // environment
-    l: 'local', // local value
+    l: 'local', // local name
     o: 'out' // whether use out resolve alias
 }
 ```
+
+* `note`: this should only be defined in `lila.config.js` file.
 
 ## envAlias
 
@@ -277,6 +281,8 @@ see [Project config - network](./config/network.md)
 }
 ```
 
+* `note`: this should only be defined in `lila.config.js` file.
+
 ## basePaths
 
 * `desc`: base paths of project
@@ -290,6 +296,8 @@ see [Project config - network](./config/network.md)
     webRoot: "./project"
 }
 ```
+
+* `note`: this should only be defined in `lila.config.js` file.
 
 ## basePaths.buildRoot
 
@@ -363,14 +371,15 @@ see [group of modules](./group.md)
 
 ## local
 
-* `desc`: current local value, used to get `local option`, can and always be specified from command line.
+* `desc`: current local name, used to get `local option`, can and always be specified from command line.
 * `type`: `string`
 * `default`: empty
 * `since`: `v0.2.0`
+* `note`: this should only either be defined in `lila.config.js` file or be specified from command line.
 
 ## localOptions
 
-* `desc`: build option of different locals. you can override config root attribute according to different local value.
+* `desc`: build option of different locals. you can override config root attribute according to different local name.
 * `type`: `map`
 * `default`: empty
 * `since`: `v0.2.0`
@@ -382,6 +391,8 @@ see [group of modules](./group.md)
     person2: {...}
 }
 ```
+
+* `note`: this should only be defined in `lila.config.js` file.
 
 ## out
 

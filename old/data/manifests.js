@@ -6,9 +6,9 @@ const manifests = {
 };
 
 // directoriesToSync keys
-projectConfig.processingData.directoriesToSyncKeys &&
-projectConfig.processingData.directoriesToSyncKeys.length &&
-projectConfig.processingData.directoriesToSyncKeys.forEach((key) => {
+projectConfig.processing.directoriesToSyncKeys &&
+projectConfig.processing.directoriesToSyncKeys.length &&
+projectConfig.processing.directoriesToSyncKeys.forEach((key) => {
     manifests[key] = makeManifest(key, projectConfig.env)
 });
 

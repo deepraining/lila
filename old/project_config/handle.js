@@ -1,4 +1,5 @@
 
+const defaultsBasePaths = require('./defaults/base_paths');
 const defaultsBuildPaths = require('./defaults/build_paths');
 const defaultsCmdAlias = require('./defaults/cmd_alias');
 const defaultsEnvAlias = require('./defaults/env_alias');
@@ -18,6 +19,7 @@ const handleCustomConfig = require('./handle/custom_config');
 const handleWebpack = require('./handle/webpack');
 
 const handle = (config) => {
+    defaultsBasePaths(config);
     defaultsBuildPaths(config);
     defaultsCmdAlias(config);
     defaultsEnvAlias(config);

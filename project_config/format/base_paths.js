@@ -17,6 +17,8 @@ const defaultValue = {
 /**
  * Make `basePaths`.
  *
+ * And this should only be defined in `lila.config.js`
+ *
  * @param config
  */
 module.exports = config => {

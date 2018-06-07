@@ -5,11 +5,11 @@ module.exports = (config) => {
     // no directories
     if (!config.directoriesToSync || !_.keys(config.directoriesToSync).length) return;
 
-    config.processingData.directoriesToSyncKeys = _.keys(config.directoriesToSync);
+    config.processing.directoriesToSyncKeys = _.keys(config.directoriesToSync);
 
-    config.processingData.directoriesToSyncItems = {};
+    config.processing.directoriesToSyncItems = {};
 
-    config.processingData.directoriesToSyncKeys.forEach((key) => {
+    config.processing.directoriesToSyncKeys.forEach((key) => {
         // absolute path
         const path = config.basePaths.webRoot + '/' + config.directoriesToSync[key];
         // last slash index
@@ -28,6 +28,6 @@ module.exports = (config) => {
         }
 
         // add an item
-        config.processingData.directoriesToSyncItems[key] = item;
+        config.processing.directoriesToSyncItems[key] = item;
     });
 };

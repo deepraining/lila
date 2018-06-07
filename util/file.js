@@ -1,14 +1,22 @@
 
 const fs = require('fs');
 
-const fileUtil = {
+/**
+ * File utils.
+ *
+ * @type {{
+ *     dirExist: function(*=),
+ *     fileExist: function(*=)
+ * }}
+ */
+module.exports = {
     /**
-     * check directory is exist
+     * Check directory if exists.
      *
      * @param dirPath
      * @returns {boolean}
      */
-    dirExist: (dirPath) => {
+    dirExist: dirPath => {
         try {
             const stat = fs.statSync(dirPath);
 
@@ -20,12 +28,12 @@ const fileUtil = {
         }
     },
     /**
-     * check file is exist
+     * Check file if exists.
      *
      * @param filePath
      * @returns {boolean}
      */
-    fileExist: (filePath) => {
+    fileExist: filePath => {
         try {
             const stat = fs.statSync(filePath);
 
@@ -37,5 +45,3 @@ const fileUtil = {
         }
     }
 };
-
-module.exports = fileUtil;

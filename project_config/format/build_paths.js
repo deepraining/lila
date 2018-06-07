@@ -1,8 +1,9 @@
 
-const vars = require('../../data/vars');
-
 /**
- * get paths
+ * Get paths.
+ *
+ * todo: whether can remove `addLilaPrefix`.
+ *
  * @param root
  * @param dir
  * @param addLilaPrefix
@@ -21,15 +22,24 @@ const getPaths = (root, dir, addLilaPrefix) => {
     }
 };
 
-module.exports = (config) => {
-
+/**
+ * Make `buildPaths`.
+ *
+ * @param config
+ */
+module.exports = config => {
     config.buildPaths = {
+        // Source.
         src: getPaths(config.basePaths.buildRoot, 'src', !1),
+        // Development.
         dev: getPaths(config.basePaths.buildRoot, 'dev', !1),
+        // Distribution.
         dist: getPaths(config.basePaths.buildRoot, 'dist', !1),
-        // temporary directory
+        // Temporary.
+        // todo: whether this directory can place in `.lila` of root.
         tmp: getPaths(config.basePaths.buildRoot, 'tmp', !0),
-        // dist temporary directory to store files
+        // Temporary directory to store distribution files.
+        // todo: whether this directory can place in `.lila` of root.
         store: getPaths(config.basePaths.buildRoot, 'store', !0)
     };
 };

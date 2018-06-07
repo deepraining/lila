@@ -7,17 +7,17 @@ module.exports = {
      */
     directoriesToSync: () => {
         // has directories to sync
-        if (projectConfig.processingData.directoriesToSyncKeys) {
-            if (typeof projectConfig.processingData.directoriesToSyncIndex == 'undefined')
-                projectConfig.processingData.directoriesToSyncIndex = 0;
+        if (projectConfig.processing.directoriesToSyncKeys) {
+            if (typeof projectConfig.processing.directoriesToSyncIndex == 'undefined')
+                projectConfig.processing.directoriesToSyncIndex = 0;
 
-            projectConfig.processingData.directoriesToSyncKey =
-                projectConfig.processingData.directoriesToSyncKeys[projectConfig.processingData.directoriesToSyncIndex];
+            projectConfig.processing.directoriesToSyncKey =
+                projectConfig.processing.directoriesToSyncKeys[projectConfig.processing.directoriesToSyncIndex];
 
-            projectConfig.processingData.directoriesToSyncIndex += 1;
+            projectConfig.processing.directoriesToSyncIndex += 1;
 
-            if (projectConfig.processingData.directoriesToSyncIndex >= projectConfig.processingData.directoriesToSyncKeys.length)
-                projectConfig.processingData.directoriesToSyncIndex = 0;
+            if (projectConfig.processing.directoriesToSyncIndex >= projectConfig.processing.directoriesToSyncKeys.length)
+                projectConfig.processing.directoriesToSyncIndex = 0;
         }
     },
     /**
@@ -25,14 +25,14 @@ module.exports = {
      */
     webServer: () => {
         if (projectConfig.currentNetwork.webServers && projectConfig.currentNetwork.webServers.length) {
-            if (typeof projectConfig.processingData.webServerIndex == 'undefined') {
-                projectConfig.processingData.webServerIndex = 0
+            if (typeof projectConfig.processing.webServerIndex == 'undefined') {
+                projectConfig.processing.webServerIndex = 0
             }
             else {
-                projectConfig.processingData.webServerIndex += 1;
+                projectConfig.processing.webServerIndex += 1;
 
-                if (projectConfig.processingData.webServerIndex >= projectConfig.currentNetwork.webServers.length)
-                    projectConfig.processingData.webServerIndex = 0;
+                if (projectConfig.processing.webServerIndex >= projectConfig.currentNetwork.webServers.length)
+                    projectConfig.processing.webServerIndex = 0;
             }
         }
     },
@@ -43,14 +43,14 @@ module.exports = {
      */
     staticServer: (cb) => {
         if (projectConfig.currentNetwork.staticServers && projectConfig.currentNetwork.staticServers.length) {
-            if (typeof projectConfig.processingData.staticServerIndex == 'undefined') {
-                projectConfig.processingData.staticServerIndex = 0
+            if (typeof projectConfig.processing.staticServerIndex == 'undefined') {
+                projectConfig.processing.staticServerIndex = 0
             }
             else {
-                projectConfig.processingData.staticServerIndex += 1;
+                projectConfig.processing.staticServerIndex += 1;
 
-                if (projectConfig.processingData.staticServerIndex >= projectConfig.currentNetwork.staticServers.length)
-                    projectConfig.processingData.staticServerIndex = 0;
+                if (projectConfig.processing.staticServerIndex >= projectConfig.currentNetwork.staticServers.length)
+                    projectConfig.processing.staticServerIndex = 0;
             }
         }
 
