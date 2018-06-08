@@ -1,30 +1,37 @@
 
-const webpack = require('webpack');
-
 const share = require('../../share');
 
-const makeResolve = require('./util/make_resolve');
-const makeChunksMap = require('./util/make_chunks_map');
-const makeEntry = require('./util/make_entry');
-const makePlugins = require('./util/make_plugins');
-const makeModule = require('./util/make_module');
+const makeResolve = require('./common/make_resolve');
+const makeChunks = require('./build/make_chunks');
+const makeEntry = require('./build/make_entry');
+const makePlugins = require('./build/make_plugins');
+const makeModule = require('./build/make_module');
 
-module.exports = (config) => {
 
-    makeChunksMap(config);
+/**
+ * Make `build config` of webpack.
+ *
+ * @param config
+ */
+module.exports = config => {
 
-    const buildConfig = {
-        entry: makeEntry(config),
-        output: {
-            path: config.buildPaths.dist.dir + '/',
-            filename: '[chunkhash].js',
-            hashDigestLength: share.hashDigestLength,
-            publicPath: config.staticServerDir + config.basePaths.webPrefix + '/dist/'
-        },
-        plugins: makePlugins(config),
-        module: makeModule(config),
-        resolve: makeResolve(config)
-    };
+    /**
+     * Make `splitJsChunks`.
+     */
+    makeChunks(config);
 
-    return buildConfig;
+    makeEntry(config);
+
+    /**
+     * Webpack output config.
+     */
+    !config.webpack.output && (config.webpack.output = {});
+    config.webpack.output.path = config.buildPaths.dist.dir + '/';
+    config.webpack.output.filename = '[chunkhash].js';
+    config.webpack.output.hashDigestLength = share.hashDigestLength;
+    config.webpack.output.publicPath = config.staticServerDir + config.basePaths.webPrefix + '/dist/';
+
+    makePlugins(config);
+    makeModule(config);
+    makeResolve(config);
 };

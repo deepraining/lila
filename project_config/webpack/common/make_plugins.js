@@ -4,7 +4,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 
 /**
- * Append some common plugins
+ * Append some common plugins.
  *
  * @param config
  */

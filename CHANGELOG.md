@@ -3,6 +3,7 @@
 ## 0.3.0
 
 - Rewrite core code. 
+- Remove `network` config option. 
 
 ## 0.2.2
 

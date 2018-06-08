@@ -1,11 +1,13 @@
 
-const _ = require('lodash');
+const keys = require('lodash/keys');
+const concat = require('lodash/concat');
 
 /**
- * make splitJsChunks
+ * Make `splitJsChunks`.
  *
- * example:
+ * @example
  *
+ * ```
  * splitJs: {
  *     vendor: ['jquery', 'underscore'],
  *     vendor2: ['react', 'react-dom'],
@@ -17,15 +19,16 @@ const _ = require('lodash');
  *     vendor2: ['react', 'react-dom', 'jquery', 'underscore'],
  *     common: ['alias/base', 'alias/common', 'react', 'react-dom', 'jquery', 'underscore']
  * }
+ * ```
  *
  * @param config
  */
-module.exports = (config) => {
+module.exports = config => {
     if (!config.splitJs) return;
 
     config.splitJsChunks = {};
 
-    const splitJsKeys = _.keys(config.splitJs);
+    const splitJsKeys = keys(config.splitJs);
 
     splitJsKeys.forEach((key, index) => {
         let i = index, tmpKey, chunks = [];
@@ -33,7 +36,7 @@ module.exports = (config) => {
         config.splitJsChunks[key] = {};
         for (; i > -1; i--) {
             tmpKey = splitJsKeys[i];
-            chunks = _.concat(chunks, config.splitJs[tmpKey]);
+            chunks = concat(chunks, config.splitJs[tmpKey]);
         }
 
         config.splitJsChunks[key] = chunks;

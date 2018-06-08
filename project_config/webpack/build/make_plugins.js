@@ -1,34 +1,44 @@
 
-const _ = require('lodash');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-const makeHtmlPlugin = require('./make_html_plugin');
+const checkPlugins = require('../common/check_plugins');
+const makeHtmlPlugin = require('../common/make_html_plugin');
+const makePlugins = require('../common/make_plugins');
 
-module.exports = (config) => {
+module.exports = config => {
 
-    const plugins = [
-        makeHtmlPlugin(config)
-    ];
+    checkPlugins(config);
 
-    // pack css alone
+    config.webpack.plugins.push(makeHtmlPlugin(config));
+
+    // Pack css alone.
     if (config.packCssSeparately) {
-        plugins.push(new ExtractTextPlugin('[contenthash].css'));
+        config.webpack.plugins.push(new ExtractTextPlugin('[contenthash].css'));
     }
 
-    // common chunks
+    /**
+     * Common chunks.
+     *
+     * ```
+     * [
+     *   CommonsChunkPlugin({chunks: ['index', 'vendor', 'vendor2', 'common']}),
+     *   CommonsChunkPlugin({chunks: ['index', 'vendor2', 'common']}),
+     *   CommonsChunkPlugin({chunks: ['index', 'common']})
+     * ]
+     * ```
+     */
     if (config.splitJsKeys) {
-        const keysLength = config.splitJsKeys.length;
+        let keysLength = config.splitJsKeys.length;
 
         config.splitJsKeys.forEach((key, index) => {
-            const i = index, chunks = [config.moduleName];
+            let i = index, chunks = [config.moduleName];
 
             for (; i < keysLength; i++) {
                 chunks.push(config.splitJsKeys[i]);
             }
 
-            plugins.push(new webpack.optimize.CommonsChunkPlugin({
+            config.webpack.plugins.push(new webpack.optimize.CommonsChunkPlugin({
                 name: key,
                 filename: '[chunkhash].js',
                 chunks: chunks,
@@ -37,13 +47,5 @@ module.exports = (config) => {
         });
     }
 
-    // ProvidePlugin
-    if (config.provide) plugins.push(new webpack.ProvidePlugin(config.provide));
-
-    // DefinePlugin
-    if (config.define) plugins.push(new webpack.DefinePlugin(config.define));
-
-    plugins.push(new FriendlyErrorsWebpackPlugin());
-
-    return plugins;
+    makePlugins(config);
 };

@@ -1,5 +1,5 @@
 
-const _ = require('lodash');
+const checkRules = require('../common/check_rules');
 
 const makeBabelLoader = require('../loaders/babel_loader');
 const makeCssLoader = require('../loaders/css_loader');
@@ -9,20 +9,26 @@ const makeHtmlLoader = require('../loaders/html_loader');
 const makeExtractCssLoader = require('../loaders/extract_css_loader');
 const makeExtractLessLoader = require('../loaders/extract_less_loader');
 
-module.exports = (config) => {
+/**
+ * Make `webpack.module` for build.
+ *
+ * @param config
+ */
+module.exports = config => {
 
-    const babelLoader = makeBabelLoader(config);
-    const urlLoader = makeUrlLoader(config, !0);
-    const htmlLoader = makeHtmlLoader(config);
+    checkRules(config);
 
-    const module = {};
-    const rules = [babelLoader, htmlLoader];
+    config.webpack.module.rules.push(
+        makeBabelLoader(config),
+        makeUrlLoader(config, !0),
+        makeHtmlLoader(config)
+    );
 
     let excludeMatches = config.cssModulesExclude;
     let browsers = config.browsers;
     if (config.packCssSeparately) {
         if (config.enableCssModules && excludeMatches) {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeExtractCssLoader(!1, excludeMatches, !0, !1, browsers),
                 makeExtractCssLoader(!0, excludeMatches, !1, !0, browsers),
                 makeExtractLessLoader(!1, excludeMatches, !0, !1, browsers),
@@ -30,13 +36,13 @@ module.exports = (config) => {
             );
         }
         else if (config.enableCssModules) {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeExtractCssLoader(!0, excludeMatches, !1, !1, browsers),
                 makeExtractLessLoader(!0, excludeMatches, !1, !1, browsers)
             );
         }
         else {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeExtractCssLoader(!1, [], !1, !1, browsers),
                 makeExtractLessLoader(!1, [], !1, !1, browsers)
             );
@@ -44,7 +50,7 @@ module.exports = (config) => {
     }
     else {
         if (config.enableCssModules && excludeMatches) {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeCssLoader(!1, excludeMatches, !0, !1, browsers),
                 makeCssLoader(!0, excludeMatches, !1, !0, browsers),
                 makeLessLoader(!1, excludeMatches, !0, !1, browsers),
@@ -52,21 +58,16 @@ module.exports = (config) => {
             );
         }
         else if (config.enableCssModules) {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeCssLoader(!0, excludeMatches, !1, !1, browsers),
                 makeLessLoader(!0, excludeMatches, !1, !1, browsers)
             );
         }
         else {
-            rules.push(
+            config.webpack.module.rules.push(
                 makeCssLoader(!1, [], !1, !1, browsers),
                 makeLessLoader(!1, [], !1, !1, browsers)
             );
         }
     }
-
-    rules.push(urlLoader);
-    module.rules = rules;
-
-    return module;
 };
