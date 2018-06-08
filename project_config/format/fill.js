@@ -14,8 +14,6 @@ const defaultValue = {
     recordFileChanges: !0,
     // Whether pack css into a single css file separately.
     packCssSeparately: !1,
-    // Whether to ignore files under node_modules directory when transform es6 to es5.
-    ignoreNodeModules: !0,
     // Indicates which files to load.
     fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
     // Dev server port.
@@ -30,23 +28,8 @@ const defaultValue = {
     cssModulesExclude: [/node_modules/],
     // `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options).
     browsers: [],
-    // `babel-loader` default option.
-    babelLoader: {
-        exclude: /node_modules/
-    },
-    // `url-loader` default option.
-    urlLoader: {
-        options: {
-            limit: 0
-        }
-    },
-    // `html-loader` default option.
-    htmlLoader: {
-        options: {
-            attrs: ['img:src', 'link:href'],
-            interpolate: 'require'
-        }
-    }
+    //  How to exclude files when transform from es6 to es5.
+    babelLoaderExclude: [/node_modules/]
 };
 
 
@@ -58,7 +41,8 @@ const defaultValue = {
 module.exports = config => {
 
     forEach(defaultValue, (value, key) => {
-        if (typeof config[key] === 'undefined') config[key] = value;
+        if (typeof config[key] === 'undefined')
+            config[key] = typeof value === 'object' ? cloneDeep(value) : value;
     });
 
     // htmlCdnExtensions

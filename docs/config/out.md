@@ -5,14 +5,14 @@ the same as `resolveAlias`, but mainly for below occasions:
 * your project is built by `components` with `npm`, so your directory structure may be as follows:
 
 ```
-| - / (project root)
-    | - project1 (a standalone git project)
-    | - project2 (a standalone git project)
+|-- / (project root)
+    |-- project1 (a standalone git project)
+    |-- project2 (a standalone git project)
     ...
 
-| - / (component root)
-    | - component1 (a standalone git project)
-    | - component2 (a standalone git project)
+|-- / (component root)
+    |-- component1 (a standalone git project)
+    |-- component2 (a standalone git project)
     ...
 
 ```

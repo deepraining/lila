@@ -4,6 +4,7 @@
 
 - Rewrite core code. 
 - Remove `network` config option. 
+- Rename `ignoreNodeModules` to `babelLoaderExclude`. 
 
 ## 0.2.2
 

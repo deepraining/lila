@@ -119,12 +119,12 @@ above will generate extra 3 js files from main js file, thus html will like:
 
 * `note`: normally, this always be configured in custom config of each module.
 
-## ignoreNodeModules
+## babelLoaderExclude
 
 * `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
 * `type`: `bool`
 * `default`: `true`
-* `since`: `v0.0.2`
+* `since`: `v0.3.0`
 
 ## provide
 
@@ -553,4 +553,10 @@ by default, there are three levels of directories: `src` in project, `node_modul
 }
 ```
 
+* `since`: `v0.3.0`
+
+## builtin
+
+* `desc`: webpack's builtin loaders, you can override it with your own loaders.
+* `see`: [builtin](./builtin.md)
 * `since`: `v0.3.0`
