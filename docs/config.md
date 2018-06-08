@@ -151,7 +151,7 @@
 ## plugins
 
 * `desc`: Extra webpack plugins.
-* `see`: [Builtin plugins & loaders](./builtin.md)
+* `see`: [Builtin loaders & plugins](./builtin.md)
 * `type`: `array`
 * `default`: Empty
 * `since`: `v0.3.0`
@@ -160,7 +160,7 @@
 ## rules
 
 * `desc`: Extra webpack module rules.
-* `see`: [Builtin plugins & loaders](./builtin.md)
+* `see`: [Builtin loaders & plugins](./builtin.md)
 * `type`: `array`
 * `default`: Empty
 * `since`: `v0.3.0`
