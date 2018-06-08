@@ -18,11 +18,7 @@ module.exports = config => {
 
     if (!customConfig) return;
 
-    const customEnvConfig = Array.isArray(customConfig) ? customConfig[config.env || 0] : customConfig;
-
-    if (!customEnvConfig) return;
-
-    forEach(customEnvConfig, (value, key) => {
+    forEach(customConfig, (value, key) => {
         config[key] = value;
     });
 };

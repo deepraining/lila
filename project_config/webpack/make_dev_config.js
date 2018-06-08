@@ -44,7 +44,7 @@ module.exports = config => {
     checkPlugins(config);
 
     config.webpack.plugins.push(
-        new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(config.hotModuleReplacement || {}),
         makeHtmlPlugin(config)
     );
 

@@ -25,48 +25,47 @@ module.exports = config => {
     );
 
     let excludeMatches = config.cssModulesExclude;
-    let browsers = config.browsers;
     if (config.packCssSeparately) {
         if (config.enableCssModules && excludeMatches) {
             config.webpack.module.rules.push(
-                makeExtractCssLoader(!1, excludeMatches, !0, !1, browsers),
-                makeExtractCssLoader(!0, excludeMatches, !1, !0, browsers),
-                makeExtractLessLoader(!1, excludeMatches, !0, !1, browsers),
-                makeExtractLessLoader(!0, excludeMatches, !1, !0, browsers)
+                makeExtractCssLoader(!1, excludeMatches, !0, !1),
+                makeExtractCssLoader(!0, excludeMatches, !1, !0),
+                makeExtractLessLoader(!1, excludeMatches, !0, !1),
+                makeExtractLessLoader(!0, excludeMatches, !1, !0)
             );
         }
         else if (config.enableCssModules) {
             config.webpack.module.rules.push(
-                makeExtractCssLoader(!0, excludeMatches, !1, !1, browsers),
-                makeExtractLessLoader(!0, excludeMatches, !1, !1, browsers)
+                makeExtractCssLoader(!0, excludeMatches, !1, !1),
+                makeExtractLessLoader(!0, excludeMatches, !1, !1)
             );
         }
         else {
             config.webpack.module.rules.push(
-                makeExtractCssLoader(!1, [], !1, !1, browsers),
-                makeExtractLessLoader(!1, [], !1, !1, browsers)
+                makeExtractCssLoader(!1, [], !1, !1),
+                makeExtractLessLoader(!1, [], !1, !1)
             );
         }
     }
     else {
         if (config.enableCssModules && excludeMatches) {
             config.webpack.module.rules.push(
-                makeCssLoader(!1, excludeMatches, !0, !1, browsers),
-                makeCssLoader(!0, excludeMatches, !1, !0, browsers),
-                makeLessLoader(!1, excludeMatches, !0, !1, browsers),
-                makeLessLoader(!0, excludeMatches, !1, !0, browsers)
+                makeCssLoader(!1, excludeMatches, !0, !1),
+                makeCssLoader(!0, excludeMatches, !1, !0),
+                makeLessLoader(!1, excludeMatches, !0, !1),
+                makeLessLoader(!0, excludeMatches, !1, !0)
             );
         }
         else if (config.enableCssModules) {
             config.webpack.module.rules.push(
-                makeCssLoader(!0, excludeMatches, !1, !1, browsers),
-                makeLessLoader(!0, excludeMatches, !1, !1, browsers)
+                makeCssLoader(!0, excludeMatches, !1, !1),
+                makeLessLoader(!0, excludeMatches, !1, !1)
             );
         }
         else {
             config.webpack.module.rules.push(
-                makeCssLoader(!1, [], !1, !1, browsers),
-                makeLessLoader(!1, [], !1, !1, browsers)
+                makeCssLoader(!1, [], !1, !1),
+                makeLessLoader(!1, [], !1, !1)
             );
         }
     }

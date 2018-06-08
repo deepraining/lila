@@ -41,9 +41,7 @@ module.exports = config => {
     checkPlugins(config);
 
     config.webpack.plugins.push(
-        new BundleAnalyzerPlugin({
-            analyzerPort: config.analyzerPort
-        })
+        new BundleAnalyzerPlugin(config.bundleAnalyzer || {analyzerPort: 8190})
     );
 
     /**

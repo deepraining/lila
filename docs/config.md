@@ -148,75 +148,41 @@
 * `default`: Empty
 * `since`: `v0.3.0`
 
-## plugins
-
-* `desc`: Extra webpack plugins.
-* `see`: [Builtin loaders & plugins](./builtin.md)
-* `type`: `array`
-* `default`: Empty
-* `since`: `v0.3.0`
-* `note`: If you have defined extra webpack plugins here, you should not define more plugins in `webpack.plugins` config attribute.
-
 ## rules
 
 * `desc`: Extra webpack module rules.
-* `see`: [Builtin loaders & plugins](./builtin.md)
+* `see`: [Builtin rules(loaders)](./builtin_rules.md)
 * `type`: `array`
 * `default`: Empty
 * `since`: `v0.3.0`
 * `note`: If you have defined extra webpack module rules here, you should not define more module rules in `webpack.module.rules` config attribute.
 
+## plugins
 
+* `desc`: Extra webpack plugins.
+* `see`: [Builtin plugins](./builtin_plugins.md)
+* `type`: `array`
+* `default`: Empty
+* `since`: `v0.3.0`
+* `note`: If you have defined extra webpack plugins here, you should not define more plugins in `webpack.plugins` config attribute.
 
+## hotModuleReplacement
 
+* `desc`: Options for [HotModuleReplacementPlugin](https://webpack.js.org/plugins/hot-module-replacement-plugin/).
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.0`
 
+## htmlWebpack
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## babelLoaderExclude
-
-* `desc`: whether to ignore files under `node_modules` directory when transform `es6` to `es5`
-* `type`: `bool`
-* `default`: `true`
+* `desc`: Options for [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin).
+* `type`: `map`
+* `default`: `{}`
 * `since`: `v0.3.0`
 
 ## provide
 
-* `desc`: Automatically load modules instead of having to import or require them everywhere.
-* `see`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/)
+* `desc`: Options for [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/).
 * `type`: `map`
 * `default`: Empty
 * `since`: `v0.0.1`
@@ -229,15 +195,88 @@
 }
 ```
 
+## define
+
+* `desc`: Options for [DefinePlugin](https://webpack.js.org/plugins/define-plugin/).
+* `type`: `map`
+* `default`: Empty
+* `since`: `v0.2.2`
+* `example`:
+
+```
+{
+    PRODUCTION: JSON.stringify(true),
+    VERSION: JSON.stringify("5fa3b9")
+}
+```
+
+## bundleAnalyzer
+
+* `desc`: Options for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
+* `type`: `map`
+* `default`: `{analyzerPort: 8190}`
+* `since`: `v0.3.0`
+
+## builtinRules
+
+* `desc`: Webpack's builtin rules(loaders), you can override it with your own rules(loaders).
+* `see`: [Builtin rules(loaders)](./builtin_rules.md)
+* `since`: `v0.3.0`
+
+## babelLoaderExclude
+
+* `desc`: How to exclude files when use [babel-loader](https://github.com/babel/babel-loader).
+* `type`: `array`
+* `default`: `[/node_modules/]`
+* `example`: Exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`.
+* `since`: `v0.3.0`
+
+## import
+
+* `desc`: Options for [babel-plugin-import](https://github.com/ant-design/babel-plugin-import).
+* `type`: `map/array`
+* `default`: `[]`
+* `since`: `v0.2.1`
+
+## enableCssModules
+
+* `desc`: Whether to use [css modules](https://github.com/css-modules/css-modules).
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.2.1`
+
+## cssModulesExclude
+
+* `desc`: How to exclude files when transform `css-modules`. [More to see](https://webpack.js.org/configuration/module/#condition).
+* `type`: `array`
+* `default`: `[/node_modules/]`
+* `example`: Exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`.
+* `since`: `v0.2.2`
 
 
 
-## analyzerPort
 
-* `desc`: server port for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer)
-* `type`: `number`
-* `default`: 8190
-* `since`: `v0.1.4`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -265,51 +304,9 @@
 
 * `since`: `v0.2.0`
 
-## import
 
-* `desc`: option for [babel-plugin-import](https://github.com/ant-design/babel-plugin-import)
-* `type`: `map/array`
-* `default`: Empty
-* `since`: `v0.2.1`
 
-## enableCssModules
 
-* `desc`: whether to use [css modules](https://github.com/css-modules/css-modules)
-* `type`: `bool`
-* `default`: `false`
-* `since`: `v0.2.1`
-
-## cssModulesExclude
-
-* `desc`: how to exclude files when transform `css-modules`. [more to see](https://webpack.js.org/configuration/module/#condition)
-* `type`: `array`
-* `default`: `[/node_modules/]`
-* `example`: exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`
-* `since`: `v0.2.2`
-
-## browsers
-
-* `desc`: `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options)
-* `type`: `array`
-* `default`: `[]`
-* `example`: `['> 1%', 'iOS 7']`
-* `since`: `v0.2.2`
-
-## define
-
-* `desc`: Allow you to create global constants which can be configured at compile time.
-* `see`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)
-* `type`: `map`
-* `default`: Empty
-* `since`: `v0.2.2`
-* `example`:
-
-```
-{
-    PRODUCTION: JSON.stringify(true),
-    VERSION: JSON.stringify("5fa3b9")
-}
-```
 
 
 
@@ -356,62 +353,5 @@ by default, there are three levels of directories: `src` in project, `node_modul
 ```
 * `note`: if you have defined webpack resolve modules here, you should not defined more resolve modules in `webpack.resolve.modules` config attribute.
 
-## htmlWebpackPlugin
 
-* `desc`: extra [html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin) config options
-* `type`: `map`
-* `default`: Empty
-* `since`: `v0.3.0`
 
-## babelLoader
-
-* `desc`: extra [babel-loader](https://github.com/babel/babel-loader) config options
-* `type`: `map`
-* `default`: 
-
-```
-{
-    exclude: /node_modules/
-}
-```
-
-* `since`: `v0.3.0`
-
-## urlLoader
-
-* `desc`: extra [url-loader](https://github.com/webpack-contrib/url-loader) config options
-* `type`: `map`
-* `default`: 
-
-```
-{
-    options: {
-        limit: 0
-    }
-}
-```
-
-* `since`: `v0.3.0`
-
-## htmlLoader
-
-* `desc`: extra [html-loader](https://github.com/webpack-contrib/html-loader) config options
-* `type`: `map`
-* `default`: 
-
-```
-{
-    options: {
-        attrs: ['img:src', 'link:href'],
-        interpolate: 'require'
-    }
-}
-```
-
-* `since`: `v0.3.0`
-
-## builtin
-
-* `desc`: webpack's builtin loaders, you can override it with your own loaders.
-* `see`: [builtin](./builtin.md)
-* `since`: `v0.3.0`

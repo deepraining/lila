@@ -1,6 +1,5 @@
 
 const webpack = require('webpack');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
 
 /**
@@ -9,9 +8,6 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
  * @param config
  */
 module.exports = config => {
-
-    // FriendlyErrorsWebpackPlugin
-    config.webpack.plugins.push(new FriendlyErrorsWebpackPlugin());
 
     // ProvidePlugin
     if (config.provide) config.webpack.plugins.push(new webpack.ProvidePlugin(config.provide));

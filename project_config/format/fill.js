@@ -4,6 +4,15 @@ const forEach = require('lodash/forEach');
 
 // Default config root attributes.
 const defaultValue = {
+    // How to exclude files when use [babel-loader](https://github.com/babel/babel-loader).
+    babelLoaderExclude: [/node_modules/],
+    // Whether to use [css modules](https://github.com/css-modules/css-modules).
+    enableCssModules: !1,
+    // How to exclude files when transform `css-modules`.
+    cssModulesExclude: [/node_modules/],
+
+
+
     // Whether mini js files.
     minJs: !1,
     // Whether mini css files.
@@ -18,18 +27,9 @@ const defaultValue = {
     fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
     // Dev server port.
     devServerPort: 8090,
-    // Server port for [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer).
-    analyzerPort: 8190,
     // Treat all methods as `get` method, thus all methods can access to static file.
-    treatAllMethodsAsGet: !1,
-    // Whether to use [css modules](https://github.com/css-modules/css-modules).
-    enableCssModules: !1,
-    // How to exclude files when transform `css-modules`.
-    cssModulesExclude: [/node_modules/],
-    // `browsers` option for [autoprefixer](https://github.com/postcss/autoprefixer#options).
-    browsers: [],
-    //  How to exclude files when transform from es6 to es5.
-    babelLoaderExclude: [/node_modules/]
+    treatAllMethodsAsGet: !1
+
 };
 
 

@@ -1,6 +1,4 @@
 
-const autoprefixer = require('autoprefixer');
-
 /**
  * make css loader
  *
@@ -8,10 +6,9 @@ const autoprefixer = require('autoprefixer');
  * @param excludeMatches
  * @param include
  * @param exclude
- * @param browsers
  * @returns {{test: RegExp, use: *[]}}
  */
-module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1, browsers = []) => {
+module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1) => {
 
     let loader = {
         test: /\.css$/,
@@ -23,14 +20,6 @@ module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude
                 loader: 'css-loader',
                 options: {
                     modules: useCssModules
-                }
-            },
-            {
-                loader: 'postcss-loader',
-                options: {
-                    plugins: [
-                        autoprefixer({browsers})
-                    ]
                 }
             }
         ]

@@ -25,7 +25,6 @@
   "homepage": "https://github.com/senntyou/lila",
   "readmeFilename": "README.md",
   "dependencies": {
-    "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-import": "^1.7.0",
@@ -41,7 +40,6 @@
     "del": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
-    "friendly-errors-webpack-plugin": "^1.7.0",
     "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
@@ -53,7 +51,6 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.22.2",
-    "postcss-loader": "^2.1.5",
     "rd": "^1.1.2",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",

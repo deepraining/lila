@@ -329,22 +329,6 @@ module.exports = {
 }
 ```
 
-Also, you can make different configs according to different environments, as follows:
-
-```
-module.exports = [
-    // env == 0
-    {
-        // some config
-    },
-    // env == 1
-    {
-        // some config
-    }
-    // ...
-]
-```
-
 ### 5.3 Custom config for different environment.
 
 You can make different configs according to different environments. See [Project config - envOptions](./docs/config.md#envOptions).
@@ -364,6 +348,14 @@ lila dev test/index --devServerPort 9999
 ```
 
 Now, the `devServerPort` config option become `9999`.
+
+### 5.6 Custom config loading sequences.
+
+```
+locaOptions -> customConfig -> envOptions -> commandOptions -> cmdValues
+```
+
+The later loaded config values will override the former loaded config values.
 
 ## 6. Examples
 

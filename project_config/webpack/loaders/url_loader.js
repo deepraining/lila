@@ -1,6 +1,4 @@
 
-const cloneDeep = require('lodash/cloneDeep');
-
 /**
  * Make `url-loader`.
  *
@@ -10,7 +8,7 @@ const cloneDeep = require('lodash/cloneDeep');
  */
 module.exports = (config, isBuild) => {
     let options = {
-        limit: 8192
+        limit: 0
     };
 
     if (isBuild) {

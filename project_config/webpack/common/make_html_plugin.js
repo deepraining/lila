@@ -7,9 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  * @param config
  */
 module.exports = config => {
-    !config.htmlWebpackPlugin && (config.htmlWebpackPlugin = {});
+    !config.htmlWebpack && (config.htmlWebpack = {});
 
-    config.htmlWebpackPlugin.template = config.buildPaths.src.dir + '/' + config.module + '/index.html';
+    config.htmlWebpack.template = config.buildPaths.src.dir + '/' + config.module + '/index.html';
 
-    return new HtmlWebpackPlugin(config.htmlWebpackPlugin);
+    return new HtmlWebpackPlugin(config.htmlWebpack);
 };

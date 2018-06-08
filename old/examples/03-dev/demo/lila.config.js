@@ -66,7 +66,6 @@ module.exports = {
     import: [{ "libraryName": "antd", style: "css" }],
     enableCssModules: !0,
     cssModulesExclude: [/node_modules/, /src\/less/],
-    browsers: ['> 1%', 'iOS 7'],
     define: {
         globalDefine: JSON.stringify('hello')
     },
