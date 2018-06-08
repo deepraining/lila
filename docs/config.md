@@ -33,7 +33,7 @@
 * `since`: `v0.2.0`
 * `note`: This should only either be defined in `lila.config.js` file or be specified from command line.
 
-## localOptions
+## <a name="localOptions">localOptions</a>
 
 * `desc`: Config options for different local developers. You can override config root attributes according to different local name.
 * `type`: `map`
@@ -49,7 +49,7 @@
 }
 ```
 
-## commandOptions
+## <a name="commandOptions">commandOptions</a>
 
 * `desc`: Config options for different commands. You can override config root attributes according to different commands, such as `dev`, `dist`, `sync`, etc.
 * `type`: `map`
@@ -93,7 +93,7 @@
 }
 ```
 
-## envOptions
+## <a name="envOptions">envOptions</a>
 
 * `desc`: Config options for different environments. You can override config root attributes according to different environment, such as `minJs`, `minCss`, `minHtml`, etc.
 * `type`: `array`
