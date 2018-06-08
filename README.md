@@ -39,17 +39,17 @@ cd demo && npm install lila --save-dev
 
 ## 2. Module files.
 
-### Module
+### 2.1 Module
 
 A module means a package with a `html` entry file and a `js` entry file, which can start a local server to debug. 
 
-### Workspace
+### 2.2 Workspace
 
 Each module has a workspace under `src` directory.
  
 For example, if current module is `test/inner`, the workspace is `src/test/inner` directory.
 
-### Files
+### 2.3 Files
 
 Each module must have a `html` file and a `js` file, and paths are as follows(module: `test/inner`):
 
@@ -68,7 +68,7 @@ Each module must have a `html` file and a `js` file, and paths are as follows(mo
 
 Here isn't a `css/less` entry file, for style files are loaded by `javascript`.
 
-### Recommended workspace structure.
+### 2.4 Recommended workspace structure.
 
 ```
 |-- src/
@@ -88,7 +88,7 @@ Here isn't a `css/less` entry file, for style files are loaded by `javascript`.
             |-- ...
 ```
 
-### Html file
+### 2.5 Html file
 
 You can split one single html file into pieces, and use [webpack require](https://webpack.js.org/loaders/html-loader/) to import pieces into the main html file.
 
@@ -142,7 +142,7 @@ ${require('./html/piece-2.html')}
 </html>
 ```
 
-### Js file
+### 2.6 Js file
 
 You can import all other files into js files, including `css/less/images...` files.
 
@@ -157,7 +157,7 @@ require('../../test/index.less');
 let img = require('../path/to/an/image');
 ```
 
-### Dynamically load modules.
+### 2.7 Dynamically load modules.
 
 You can use `require.ensure()` or `import()` to load modules dynamically.
 
@@ -176,7 +176,7 @@ require.ensure([], require => {
 
 More to see: [require.ensure](https://webpack.js.org/api/module-methods/#require-ensure), [import](https://webpack.js.org/api/module-methods/#import-)
 
-### note
+### 2.8 note
 
 The html file in production is not the same as `src`. 
 
@@ -188,7 +188,7 @@ For example, in `src`, html file path is `src/test/inner/index.html`, in `dist` 
 lila <command> [args]
 ```
 
-### `new`: New a project.
+### 3.1 `new`: New a project.
 
 ```
 lila new projectName
@@ -196,7 +196,7 @@ lila new projectName
 
 * `since`: `v0.0.1`
 
-### `add`: Add a module.
+### 3.2 `add`: Add a module.
 
 ```
 lila add moduleName
@@ -204,7 +204,7 @@ lila add moduleName
 
 * `since`: `v0.0.1`
 
-### `dev`: Watch files' changes, with hot replacing and reloading, and start a local server for debug.
+### 3.3 `dev`: Watch files' changes, with hot replacing and reloading, and start a local server for debug.
 
 ```
 lila dev moduleName
@@ -213,7 +213,7 @@ lila dev moduleName
 * Can take with arguments: `local/l`, `out/o`.
 * `since`: `v0.0.1`
 
-### `dist`: Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.
+### 3.4 `dist`: Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.
 
 ```
 lila dist moduleName [-e 0(1,2)]
@@ -222,7 +222,7 @@ lila dist moduleName [-e 0(1,2)]
 * Can take with arguments: `env/e`, `local/l`, `out/o`.
 * `since`: `v0.0.1`
 
-### `sync`: Firstly do production tasks, and then sync production files to remote.
+### 3.5 `sync`: Firstly do production tasks, and then sync production files to remote.
 
 ```
 lila sync moduleName [-e 0(1,2)]
@@ -231,7 +231,7 @@ lila sync moduleName [-e 0(1,2)]
 * Can take with arguments: `env/e`, `local/l`, `out/o`.
 * `since`: `v0.0.1`
 
-### `analyze/ana`: Visualize size of webpack output files with an interactive zoomable treemap.
+### 3.6 `analyze/ana`: Visualize size of webpack output files with an interactive zoomable treemap.
 
 ```
 lila analyze moduleName
@@ -242,15 +242,15 @@ lila ana moduleName
 
 * `since`: `v0.1.4`
 
-### Arguments.
+### 3.7 Arguments.
 
-#### `env/e`:
+#### 3.7.1 `env/e`:
 
 * Specify current environment through command line, example: `-e 0`, `-e 1`;
 * If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
 * If env is not provided, default is `0`.
 
-#### `local/l`
+#### 3.7.2 `local/l`
 
 * Specify current local name through command line.
 
@@ -258,7 +258,7 @@ lila ana moduleName
 
 * Specify whether to use `outResolveAlias`.
 
-#### `moduleName`
+#### 3.7.3 `moduleName`
 
 * `test/index`: A single file module.
 * `test/index,test/index2`: Multiple modules.
@@ -271,7 +271,7 @@ lila ana moduleName
 
 Commands to manage production files on server side.
 
-### `archive/arc`: Archive files of dist directory into a zip package.
+### 4.1 `archive/arc`: Archive files of dist directory into a zip package.
 
 ```
 lila archive
@@ -284,7 +284,7 @@ lila arc
 * This command just do with `dist` directory, if you want to archive the whole project, please use your own way.
 * `since`: `v0.0.1`
 
-### `clean`: Clean redundant `hash-coded` files which created by revision, and are not used anymore.
+### 4.2 `clean`: Clean redundant `hash-coded` files which created by revision, and are not used anymore.
 
 ```
 lila clean
@@ -295,7 +295,7 @@ lila clean
 * After executing this command, you should remove `.lila` directory in root of project.
 * `since`: `v0.0.1`
 
-### `revert`: Revert `dist` directory to last archive state.
+### 4.3 `revert`: Revert `dist` directory to last archive state.
 
 ```
 lila revert [-i,--index(1,2,3)]
@@ -310,11 +310,11 @@ lila revert [-i,--index(1,2,3)]
 
 Project config is defined in `lila.config.js`. See [Detail project config](./docs/config.md).
 
-### Custom config for each developer.
+### 5.1 Custom config for each developer.
 
-Each developer can have his/her own private config. See [Detail project config - localOptions](./docs/config.md#localOptions).
+Each developer can have his/her own private config. See [Project config - localOptions](./docs/config.md#localOptions).
 
-### Custom config for each module.
+### 5.2 Custom config for each module.
 
 Each module can have its own private config.
 
@@ -345,15 +345,15 @@ module.exports = [
 ]
 ```
 
-### Custom config for different environment.
+### 5.3 Custom config for different environment.
 
-You can make different configs according to different environments. See [Detail project config - envOptions](./docs/config.md#envOptions).
+You can make different configs according to different environments. See [Project config - envOptions](./docs/config.md#envOptions).
 
-### Custom config for each command.
+### 5.4 Custom config for each command.
 
-Each command can have its own private config. See [Detail project config - commandOptions](./docs/config.md#commandOptions).
+Each command can have its own private config. See [Project config - commandOptions](./docs/config.md#commandOptions).
 
-### More custom config from command line.
+### 5.5 More custom config from command line.
 
 You can override config by pass arguments from command line.
 
@@ -364,3 +364,7 @@ lila dev test/index --devServerPort 9999
 ```
 
 Now, the `devServerPort` config option become `9999`.
+
+## 6. Examples
+
+See [lila examples](./examples).

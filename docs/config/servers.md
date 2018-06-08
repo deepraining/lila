@@ -6,7 +6,7 @@ servers options
 
 ### `default`: 
 
-empty
+Empty
 
 ### `example`
 
