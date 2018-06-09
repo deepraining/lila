@@ -17,7 +17,12 @@ const options = {
     out: {
         alias: 'o',
         type: 'bool',
-        desc: 'Whether use out resolve alias.'
+        desc: 'Whether to use out resolve alias.'
+    },
+    onlyWebpack: {
+        alias: 'w',
+        type: 'bool',
+        desc: 'Only run webpack task, without gulp, for dist and sync command.'
     }
 };
 

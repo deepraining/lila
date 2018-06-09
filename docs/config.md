@@ -21,13 +21,14 @@
     // alias -> real name
     e: 'env', // environment
     l: 'local', // local name
-    o: 'out' // whether use outResolveAlias.
+    o: 'out', // Whether to use outResolveAlias.
+    w: 'onlyWebpack' // Only run webpack task, without gulp, for dist and sync command.
 }
 ```
 
 ## local
 
-* `desc`: Current local name, used to get `local option`, can and always be specified from command line.
+* `desc`: Current local name, used to get `local option`, can and always be specified from command line by `-l`.
 * `type`: `string`
 * `default`: Empty
 * `since`: `v0.2.0`
@@ -70,7 +71,7 @@
 
 ## env
 
-* `desc`: Current environment index, can and always be specified from command line.
+* `desc`: Current environment index, can and always be specified from command line by `-e`.
 * `type`: `number`
 * `default`: `0`
 * `since`: `v0.0.1`
@@ -316,7 +317,7 @@
 
 ## out
 
-* `desc`: Whether to use `outResolveAlias`, can and always be specified from command line.
+* `desc`: Whether to use `outResolveAlias`, can and always be specified from command line by `-o`.
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.2.0`
@@ -350,4 +351,10 @@ See [Use extra `resolveAlias` temporarily](./out.md).
 * `default`: `false`
 * `since`: `v0.1.3`
 
+## onlyWebpack
 
+* `bg`: Gulp will catch all error, including webpack's, thus if webpack has error when building, we can't see it. 
+* `desc`: Run webpack task without gulp, so if webpack throw errors, we can see it in command line. Additionally, it always be specified from command line by `-w`.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.0`

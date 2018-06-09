@@ -6,7 +6,8 @@ const defaults = require('lodash/defaults');
 const defaultValue = {
     e: 'env', // Environment.
     l: 'local', // Local name
-    o: 'out' // Whether use out resolve alias.
+    o: 'out', // Whether to use out resolve alias.
+    w: 'onlyWebpack' // Only run webpack task, without gulp, for dist and sync command.
 };
 
 /**
