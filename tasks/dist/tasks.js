@@ -1,17 +1,24 @@
 
-const _ = require('lodash');
+const concat = require('lodash/concat');
+const flatten = require('lodash/flatten');
 
 const projectConfig = require('../../project_config');
-const distDel = require('./del');
+
+const delDist = require('./del/dist');
+const delTmp = require('./del/tmp');
+
+const webpack = require('../dist/misc/webpack');
+const renameHtml = require('../dist/misc/rename_html');
+
 const distCopy = require('./copy');
 const distChange = require('./change');
 const distAdjust = require('./adjust');
 const distNext = require('./next');
 const distMin = require('../dist/min');
 const distHtml = require('../dist/html');
-const webpackBuild = require('../dist/webpack');
-const name = require('./name');
-const distData = require('./data');
+const data = require('./current');
+
+const delTasks = [delDist, delTmp];
 
 module.exports = (gulp) => {
 
@@ -27,20 +34,14 @@ module.exports = (gulp) => {
 
     const htmlHandle = distHtml(gulp);
 
-    const nameHtml = name.nameHtml;
-
     const nextModule = distNext.nextModule;
 
-    const delTasks = [
-        distDel.delDist, distDel.delTmp
-    ];
-
     const getTask = () => {
-        return _.concat([],
+        return concat([],
             delTasks,
             [
-                webpackBuild,
-                nameHtml,
+                webpack,
+                renameHtml,
                 findChangedBase,
                 minCss,
                 minJs,
@@ -52,21 +53,19 @@ module.exports = (gulp) => {
             ]);
     };
 
-    const moduleTasks = [],
-        tasks;
+    const tasks = [];
 
     if (!projectConfig.multiple) {
-        moduleTasks.push(getTask());
+        tasks.push(getTask());
     }
     else {
-        for (const i = 0, il = projectConfig.allModules.length; i < il; i++) {
-            moduleTasks.push(getTask());
-            distData.nextModule();
+        for (let i = 0, il = projectConfig.allModules.length; i < il; i++) {
+            tasks.push(getTask());
+            data.nextModule();
         }
     }
 
-    moduleTasks.push(delTasks);
-    tasks = _.flatten(moduleTasks);
+    tasks.push(delTasks);
 
-    return tasks;
+    return flatten(tasks);
 };

@@ -3,31 +3,31 @@ const csso = require('gulp-csso');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 
-const distData = require('./data');
+const data = require('./data');
 
 module.exports = {
     minCss: (gulp) => {
         return function minCss(cb) {
-            if (distData.currentConfig.minCss)
-                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.css')
+            if (current.config.minCss)
+                return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.css')
                     .pipe(csso({comments: !1}))
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+                    .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
             else cb();
         }
     },
     minJs: (gulp) => {
         return function minJs(cb) {
-            if (distData.currentConfig.minJs)
-                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.js')
+            if (current.config.minJs)
+                return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.js')
                     .pipe(uglify())
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+                    .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
             else cb();
         }
     },
     minHtml: (gulp) => {
         return function minHtml(cb) {
-            if (distData.currentConfig.minHtml)
-                return gulp.src(distData.currentConfig.buildPaths.tmp.dir + '/**/*.html')
+            if (current.config.minHtml)
+                return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.html')
                     .pipe(htmlmin({
                         removeComments: !0,
                         collapseWhitespace: !0,
@@ -38,7 +38,7 @@ module.exports = {
                         minifyJS: !1,
                         minifyCSS: !0
                     }))
-                    .pipe(gulp.dest(distData.currentConfig.buildPaths.tmp.dir));
+                    .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
             else cb();
 
         }

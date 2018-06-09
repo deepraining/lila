@@ -1,9 +1,9 @@
 
-const distData = require('./data');
+const data = require('./data');
 
 module.exports = {
     nextModule: (cb) => {
-        distData.nextModule(!0);
+        data.nextModule(!0);
         cb();
     }
 };

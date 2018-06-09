@@ -41,7 +41,7 @@ const commands = [
     },
     {
         name: 'sync',
-        desc: 'Firstly do production tasks, and then sync production files to remote.'
+        desc: 'Firstly do production tasks, and then sync production files to remote servers.'
     },
     {
         name: 'analyze',

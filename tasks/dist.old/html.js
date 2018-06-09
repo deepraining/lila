@@ -3,13 +3,13 @@ const _ = require('lodash');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const gap = require('gulp-append-prepend');
-const distData = require('./data');
+const data = require('./data');
 
 /**
  * html replacement
  */
 const htmlReplace = (stream) => {
-    _.forEach(distData.currentConfig.htmlReplace, (value, key) => {
+    _.forEach(current.config.htmlReplace, (value, key) => {
         stream.pipe(replace(new RegExp(key, 'g'), value));
     });
 };
@@ -18,15 +18,15 @@ const htmlReplace = (stream) => {
  * prepend or append string to html
  */
 const htmlInsert = (stream) => {
-    distData.currentConfig.htmlInsert.start && stream.pipe(gap.prependText(distData.currentConfig.htmlInsert.start));
-    distData.currentConfig.htmlInsert.end && stream.pipe(gap.appendText(distData.currentConfig.htmlInsert.end));
+    current.config.htmlInsert.start && stream.pipe(gap.prependText(current.config.htmlInsert.start));
+    current.config.htmlInsert.end && stream.pipe(gap.appendText(current.config.htmlInsert.end));
 };
 
 /**
  * convert html to other kind of file
  */
 const htmlExtension = (stream) => {
-    stream.pipe(rename({extname: "." + distData.currentConfig.htmlExtension}));
+    stream.pipe(rename({extname: "." + current.config.htmlExtension}));
 };
 
 /**
@@ -40,15 +40,15 @@ module.exports = (gulp) => {
     return function htmlHandle() {
         const stream;
 
-        stream = gulp.src(distData.currentConfig.buildPaths.tmp.html + '/**/*.html');
-        if (distData.currentConfig.hasHtmlReplace)
+        stream = gulp.src(current.config.buildPaths.tmp.html + '/**/*.html');
+        if (current.config.hasHtmlReplace)
             htmlReplace(stream);
-        if (distData.currentConfig.hasHtmlInsert)
+        if (current.config.hasHtmlInsert)
             htmlInsert(stream);
-        if (distData.currentConfig.hasHtmlExtension)
+        if (current.config.hasHtmlExtension)
             htmlExtension(stream);
 
-        stream.pipe(gulp.dest(distData.currentConfig.buildPaths.store.html));
+        stream.pipe(gulp.dest(current.config.buildPaths.store.html));
 
         return stream;
     }

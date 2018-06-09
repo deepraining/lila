@@ -222,7 +222,7 @@ lila dist moduleName [-e 0(1,2)]
 * Can take with arguments: `env/e`, `local/l`, `out/o`.
 * `since`: `v0.0.1`
 
-### 3.5 `sync`: Firstly do production tasks, and then sync production files to remote.
+### 3.5 `sync`: Firstly do production tasks, and then sync production files to remote servers.
 
 ```
 lila sync moduleName [-e 0(1,2)]

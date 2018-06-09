@@ -1,10 +1,12 @@
 
 const webpack = require('webpack');
 
-const distData = require('./data');
+const logger = require('../../../util/logger');
 
-const webpackBuild = (cb) => {
-    webpack(distData.currentConfig.webpack, (err, stats) => {
+const current = require('../current');
+
+module.exports = cb => {
+    webpack(current.config.webpack, (err, stats) => {
         if (err) {
             logger.error(err.stack || err);
             if (err.details) {
@@ -31,5 +33,3 @@ const webpackBuild = (cb) => {
         cb();
     });
 };
-
-module.exports = webpackBuild;
