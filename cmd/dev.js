@@ -29,19 +29,22 @@ checkConfigFile();
 // Project config.
 const projectConfig = require('../project_config');
 
-// todo: to be continued.
-
+// Make a compiler.
 const compiler = webpack(projectConfig.webpack);
-let browserSyncConfig = projectConfig.browserSync || {};
+
+// Browser-sync config.
+const browserSyncConfig = projectConfig.browserSync || {};
+
 browserSyncConfig.server = {
     baseDir: projectConfig.basePaths.webRoot
 };
 browserSyncConfig.port = projectConfig.devServerPort;
 browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
 
+// Middleware.
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);
 
-// this must in the first place
+// This must be in the first place.
 projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
 
 browserSyncConfig.middleware.push(devMiddleWare(compiler, {

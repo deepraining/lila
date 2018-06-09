@@ -15,10 +15,11 @@ const fill = require('./fill');
 
 const processing = require('./processing');
 const moduleGroup = require('./module_group');
-const module = require('./module');
+const formatModule = require('./module');
 const html = require('./html');
 const directoriesToSync = require('./directories_to_sync');
 const servers = require('./servers');
+const builtinRules = require('./builtin_rules');
 const webpack = require('./webpack');
 
 /**
@@ -50,10 +51,11 @@ module.exports = config => {
     // More handling.
     processing(config);
     moduleGroup(config);
-    module(config);
+    formatModule(config);
     html(config);
     directoriesToSync(config);
     servers(config);
+    builtinRules(config);
     webpack(config);
 
     return config;

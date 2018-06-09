@@ -16,7 +16,7 @@ let moduleName = argv._[1];
  *
  * `lila dev test/index` -> `lila dev --module test/index`
  */
-if (commandName && moduleName && commandsNeedModuleArg[commandName]) {
+if (commandName && moduleName && commandsNeedModuleArg.indexOf(commandName) > -1) {
     argv.module = moduleName;
 }
 

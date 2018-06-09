@@ -17,30 +17,40 @@ module.exports = config => {
 
     checkRules(config);
 
-    config.webpack.module.rules.push(
-        makeBabelLoader(config),
-        makeUrlLoader(config),
+    !config.disableBabelLoader && config.webpack.module.rules.push(
+        makeBabelLoader(config)
+    );
+    !config.disableUrlLoader && config.webpack.module.rules.push(
+        makeUrlLoader(config)
+    );
+    !config.disableHtmlLoader && config.webpack.module.rules.push(
         makeHtmlLoader(config)
     );
 
     let excludeMatches = config.cssModulesExclude;
     if (config.enableCssModules && excludeMatches) {
-        config.webpack.module.rules.push(
+        !config.disableCssLoader && config.webpack.module.rules.push(
             makeCssLoader(!1, excludeMatches, !0, !1),
-            makeCssLoader(!0, excludeMatches, !1, !0),
+            makeCssLoader(!0, excludeMatches, !1, !0)
+        );
+        !config.disableLessLoader && config.webpack.module.rules.push(
             makeLessLoader(!1, excludeMatches, !0, !1),
             makeLessLoader(!0, excludeMatches, !1, !0)
         );
     }
     else if (config.enableCssModules) {
-        config.webpack.module.rules.push(
-            makeCssLoader(!0, excludeMatches, !1, !1),
+        !config.disableCssLoader && config.webpack.module.rules.push(
+            makeCssLoader(!0, excludeMatches, !1, !1)
+        );
+        !config.disableLessLoader && config.webpack.module.rules.push(
             makeLessLoader(!0, excludeMatches, !1, !1)
         );
     }
     else {
-        config.webpack.module.rules.push(
-            makeCssLoader(!1, [], !1, !1),
+        !config.disableCssLoader && config.webpack.module.rules.push(
+            makeCssLoader(!1, [], !1, !1)
+        );
+        !config.disableLessLoader && config.webpack.module.rules.push(
             makeLessLoader(!1, [], !1, !1)
         );
     }

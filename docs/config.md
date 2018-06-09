@@ -253,70 +253,30 @@
 * `example`: Exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`.
 * `since`: `v0.2.2`
 
+## packCssSeparately
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## out
-
-* `desc`: whether use `outResolveAlias`, can and always be specified from command line.
+* `bg`: Normally, all js and css files will be built into one big `js` file.
+* `desc`: Whether to pack css separately into a single css file.
 * `type`: `bool`
 * `default`: `false`
-* `since`: `v0.2.0`
+* `since`: `v0.0.1`
 
-## outResolveAlias
+## fileLoaderSuffixes
 
-[use out resolve alias temporarily](./config/out.md)
-
-* `since`: `v0.2.0`
-
-
-
-
-
-
+* `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
+* `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
+* `type`: `array`
+* `default`: `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
+* `since`: `v0.0.4`
 
 ## resolveAlias
 
-* `desc`: create aliases to import or require certain modules more easily.
+* `desc`: Create aliases to import or require certain modules more easily.
 * `type`: `map`
 * `see`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias)
 * `default`: Empty
 * `since`: `v0.0.1`
+* `note`: If you have defined webpack resolve alias here, you should not define more resolve alias in `webpack.resolve.alias` config attribute.
 * `example`:
 
 ```
@@ -325,23 +285,25 @@
 }
 ```
 
-* `note`: if you have defined webpack resolve alias here, you should not defined more resolve alias in `webpack.resolve.alias` config attribute.
-
 ## resolveModules
 
-* `desc`: tell webpack what directories should be searched when resolving modules.
+* `desc`: Tell webpack what directories should be searched when resolving modules.
 * `see`: [resolve-modules](https://webpack.js.org/configuration/resolve/#resolve-modules)
 * `type`: `array`
 * `default`: Empty
 * `since`: `v0.2.0`
-* `example`: here is for you to provide extra directories when resolving modules.
-by default, there are three levels of directories: `src` in project, `node_modules` in project root, `node_modules` of webpack's default.
-* the new sequence of resolving modules will be:
-    1. `src` in project
-    2. `node_modules` in project root
-    3. `resolveModules` defined in `lila.config.js`
-    4. `node_modules` of webpack's default.
-* `example`: all paths defined here should relative to project root.
+* `note`: You should only define more webpack resolve modules here, not in `webpack.resolve.modules` config attribute.
+* `detail`: Here is for you to provide extra directories when resolving modules.
+    * By default, there are three levels of directories: 
+        1. `src` in project.
+        2. `node_modules` in project root.
+        3. `node_modules` of webpack's default.
+    * The new sequences if defined `resolveModules` will be:
+        1. `src` in project.
+        2. `node_modules` in project root.
+        3. `resolveModules` defined in `lila.config.js`.
+        4. `node_modules` of webpack's default.
+* `example`: All paths defined here should be relative to project root.
 
 ```
 [
@@ -351,7 +313,41 @@ by default, there are three levels of directories: `src` in project, `node_modul
     ...
 ]
 ```
-* `note`: if you have defined webpack resolve modules here, you should not defined more resolve modules in `webpack.resolve.modules` config attribute.
 
+## out
+
+* `desc`: Whether to use `outResolveAlias`, can and always be specified from command line.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.2.0`
+
+## outResolveAlias
+
+See [Use extra `resolveAlias` temporarily](./out.md).
+
+* `since`: `v0.2.0`
+
+## browserSync
+
+* `desc`: Custom `browser-sync` config options.
+* `see`: [browser-sync](https://github.com/BrowserSync/browser-sync)
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.1.3`
+
+## devServerPort
+
+* `desc`: Dev server port.
+* `type`: `number`
+* `default`: 8090
+* `since`: `v0.0.1`
+
+## treatAllMethodsAsGet
+
+* `bg`: Normally, only `get` method can access to static file, and `post, put, delete...` will cause `404`.
+* `desc`: Treat all methods as `get` method, thus all methods can access to static file.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.1.3`
 
 

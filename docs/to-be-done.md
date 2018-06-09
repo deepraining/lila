@@ -118,21 +118,7 @@ moduleGroup: {
 }
 ```
 
-## treatAllMethodsAsGet
 
-* `bg`: Normally, only `get` method can access to static file, and `post, put, delete...` will cause `404`.
-* `desc`: Treat all methods as `get` method, thus all methods can access to static file.
-* `type`: `bool`
-* `default`: `false`
-* `since`: `v0.1.3`
-
-## browserSync
-
-* `desc`: Custom `browser-sync` config options.
-* `see`: [browser-sync](https://github.com/BrowserSync/browser-sync)
-* `type`: `map`
-* `default`: Empty
-* `since`: `v0.1.3`
 
 ## backupHtml
 
@@ -152,29 +138,6 @@ moduleGroup: {
     - `http://www.static.com`: Standalone static server.
     - `https://www.static.com/sub_dir`: Sub dir of a standalone static server.
     - `//www.static.com/sub_dir/sub_sub_dir`: Another sub dir of a standalone static server.
-
-## fileLoaderSuffixes
-
-* `desc`: Indicates which files to load, like `jpg, gif, png, ttf, svg, ...`
-* `see`: [file-loader](https://webpack.js.org/loaders/file-loader/)
-* `type`: `array`
-* `default`: `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
-* `since`: `v0.0.4`
-
-## devServerPort
-
-* `desc`: Dev server port.
-* `type`: `number`
-* `default`: 8090
-* `since`: `v0.0.1`
-
-## packCssSeparately
-
-* `bg`: Normally, all js and css files will be built into one big `js` file.
-* `desc`: Whether to pack css separately into a single css file.
-* `type`: `bool`
-* `default`: `false`
-* `since`: `v0.0.1`
 
 ##  splitJs
 
@@ -207,6 +170,6 @@ Above will generate extra 3 js files apart from main js file, thus html will lik
 
 Remote servers config.
 
-See [Project config - servers](./config/servers.md).
+See [Project config - servers](./servers.md).
 
 * `since`: `v0.3.0`

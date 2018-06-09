@@ -10,6 +10,16 @@ const defaultValue = {
     enableCssModules: !1,
     // How to exclude files when transform `css-modules`.
     cssModulesExclude: [/node_modules/],
+    // Whether pack css into a single css file separately.
+    packCssSeparately: !1,
+    // Indicates which files to load.
+    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
+    // Dev server port.
+    devServerPort: 8090,
+    // Treat all methods as `get` method, thus all methods can access to static file.
+    treatAllMethodsAsGet: !1,
+
+
 
 
 
@@ -20,15 +30,7 @@ const defaultValue = {
     // Whether mini html files.
     minHtml: !1,
     // Whether record file changes, thus next building only handle changed file.
-    recordFileChanges: !0,
-    // Whether pack css into a single css file separately.
-    packCssSeparately: !1,
-    // Indicates which files to load.
-    fileLoaderSuffixes: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2'],
-    // Dev server port.
-    devServerPort: 8090,
-    // Treat all methods as `get` method, thus all methods can access to static file.
-    treatAllMethodsAsGet: !1
+    recordFileChanges: !0
 
 };
 

@@ -1,6 +1,5 @@
 
 module.exports = {
-    ignoreNodeModules: !1,
     packCssSeparately: !0,
     splitJs: {
         vendor: ['jquery', 'underscore'],

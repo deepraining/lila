@@ -17,6 +17,5 @@ require('common')();
 
 console.log('test-2/index');
 
-// test ignoreNodeModules
 const Swiper = require('swiper');
 require('bootstrap');

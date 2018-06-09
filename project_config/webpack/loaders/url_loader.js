@@ -8,7 +8,8 @@
  */
 module.exports = (config, isBuild) => {
     let options = {
-        limit: 0
+        // 0 means infinite, put 1 here to disable base64.
+        limit: 1
     };
 
     if (isBuild) {
