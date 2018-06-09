@@ -3,24 +3,6 @@ const projectConfig = require('../../project_config');
 
 module.exports = {
     /**
-     * next directoriesToSync index
-     */
-    directoriesToSync: () => {
-        // has directories to sync
-        if (projectConfig.processing.syncDirKeys) {
-            if (typeof projectConfig.processing.syncDirIndex == 'undefined')
-                projectConfig.processing.syncDirIndex = 0;
-
-            projectConfig.processing.syncDirKey =
-                projectConfig.processing.syncDirKeys[projectConfig.processing.syncDirIndex];
-
-            projectConfig.processing.syncDirIndex += 1;
-
-            if (projectConfig.processing.syncDirIndex >= projectConfig.processing.syncDirKeys.length)
-                projectConfig.processing.syncDirIndex = 0;
-        }
-    },
-    /**
      * next webServer index
      */
     webServer: () => {

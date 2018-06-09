@@ -6,7 +6,7 @@ const current = require('../current');
 
 
 /**
- * Rename html after webpack build.
+ * Place html in the correct position after webpack build.
  *
  * @param cb
  */

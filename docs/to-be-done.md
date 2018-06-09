@@ -5,6 +5,14 @@
 * `default`: `false`
 * `since`: `v0.0.1`
 
+## minJsOptions
+
+* `desc`: Options to min js files.
+* `see`: [gulp-uglify](https://github.com/terinjokes/gulp-uglify)
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.0`
+
 ## minCss
 
 * `desc`: Whether mini css files.
@@ -12,12 +20,41 @@
 * `default`: `false`
 * `since`: `v0.0.1`
 
+## minCssOptions
+
+* `desc`: Options to min css files.
+* `see`: [gulp-csso](https://github.com/ben-eb/gulp-csso)
+* `type`: `map`
+* `default`: `{comments: false}`
+* `since`: `v0.3.0`
+
 ## minHtml
 
 * `desc`: Whether mini html files.
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.0.1`
+
+## minHtmlOptions
+
+* `desc`: Options to min html files.
+* `see`: [gulp-htmlmin](https://github.com/jonschlinkert/gulp-htmlmin)
+* `type`: `map`
+* `since`: `v0.3.0`
+* `default`: 
+
+```
+{
+    removeComments: true,
+    collapseWhitespace: true,
+    collapseBooleanAttributes: true,
+    removeEmptyAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    minifyJS: false,
+    minifyCSS: true
+}
+```
 
 ## htmlReplace
 

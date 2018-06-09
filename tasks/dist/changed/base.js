@@ -1,34 +1,49 @@
 
-const changedFiles = require('../util/changed_files');
+const isEmpty = require('lodash/isEmpty');
+const forEach = require('lodash/forEach');
 
+const logger = require('../../../util/logger');
+
+const current = require('../current');
+const findChangedFiles = require('../util/changed_files');
+
+
+/**
+ * Make a function.
+ *
+ * @param gulp
+ * @returns {changedBase}
+ */
 module.exports = gulp => {
-    return function findChangedBase(cb) {
+    return function changedBase(cb) {
 
-        // do not record files' changes
+        // Don't record files' changes.
         if (!current.config.recordFileChanges) {
             return gulp.src(current.config.buildPaths.dist.dir + '/**/*', {
-                base: current.config.buildPaths.dist.dir
-            })
+                    base: current.config.buildPaths.dist.dir
+                })
                 .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
         }
-        // record files' changes
+        // Record files' changes.
         else {
-            // get changed files
-            const changedFiles = changedFiles(current.config.buildPaths.dist.dir, 'base');
-            const completeChangedFiles = [];
+            // Get changed files.
+            const changedFiles = findChangedFiles(current.config.buildPaths.dist.dir, 'base');
+            const changedFilesPaths = [];
 
-            if (!_.isEmpty(changedFiles)) {
+            if (!isEmpty(changedFiles)) {
 
-                _.forEach(changedFiles, (value, key) => {
-                    completeChangedFiles.push(current.config.buildPaths.dist.dir + '/' + key);
-                    logger.info('changed: ' + key);
+                forEach(changedFiles, (value, key) => {
+                    changedFilesPaths.push(current.config.buildPaths.dist.dir + '/' + key);
+                    logger.info(`    File changed: ${key}.`);
                 });
 
-                return gulp.src(completeChangedFiles, {base: current.config.buildPaths.dist.dir})
+                return gulp.src(changedFilesPaths, {base: current.config.buildPaths.dist.dir})
                     .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
 
             } else {
-                logger.info('Base nothing changed!');
+                logger.info(`
+    Nothing changed after webpack's building.            
+                `);
                 cb();
             }
         }

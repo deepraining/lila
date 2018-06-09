@@ -19,7 +19,7 @@ module.exports = (gulp) => {
         nextIndex.staticServer();
 
         const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processing.staticServerIndex];
-        const syncFn = defaultSyncFn;
+        let syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
@@ -32,7 +32,7 @@ module.exports = (gulp) => {
         nextIndex.webServer();
 
         const syncConfig = projectConfig.currentNetwork.webServers[projectConfig.processing.webServerIndex];
-        const syncFn = defaultSyncFn;
+        let syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 
@@ -44,7 +44,7 @@ module.exports = (gulp) => {
         nextIndex.directoriesToSync();
 
         const syncConfig = projectConfig.currentNetwork.staticServers[projectConfig.processing.staticServerIndex];
-        const syncFn = defaultSyncFn;
+        let syncFn = defaultSyncFn;
 
         typeof syncConfig.useSsh != 'undefined' && (syncFn = syncConfig.useSsh ? sftp : ftp);
 

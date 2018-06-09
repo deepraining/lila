@@ -12,18 +12,17 @@ const copyManifests = require('../dist/copy/manifests');
 const copyToDist = require('../dist/copy/to_dist');
 
 const logFirstModule = require('../dist/misc/log_first_module');
-const renameHtml = require('../dist/misc/rename_html');
-const backupHtml = require('../dist/misc/backup_html');
+const renameHtml = require('../dist/html/rename');
+const backupHtml = require('../dist/html/backup');
 
-const distChangeExtra = require('../dist/change_extra');
+const syncDirChanged = require('../dist/changed/sync_dir');
 const distTasks = require('../dist/tasks');
 
 module.exports = (gulp) => {
-    const findChangedDirectoriesToSync = distChangeExtra.findChangedDirectoriesToSync;
 
-    const findChangedDirectoriesToSyncTasks = fill(
+    const syncDirChangedTasks = fill(
         new Array(projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length || 0),
-        findChangedDirectoriesToSync
+        syncDirChanged
     );
 
     const tasks = concat([],
@@ -34,7 +33,7 @@ module.exports = (gulp) => {
             logFirstModule
         ],
             distTasks(gulp),
-            findChangedDirectoriesToSyncTasks,
+            syncDirChangedTasks,
         [
             copyToDist,
             renameHtml,
