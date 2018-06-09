@@ -1,6 +1,7 @@
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
+const pathInfo = require('../../data/path_info');
 const getJsEntryPath = require('./util/get_js_entry_path');
 const makeResolve = require('./common/make_resolve');
 
@@ -33,9 +34,8 @@ module.exports = config => {
      * Webpack output config.
      */
     !config.webpack.output && (config.webpack.output = {});
-    config.webpack.output.path = config.buildPaths.dev.dir + '/';
+    config.webpack.output.path = pathInfo.analyzeWorkspace;
     config.webpack.output.filename = 'index.js';
-    config.webpack.output.publicPath = config.basePaths.webPrefix + '/dev/';
 
 
     checkPlugins(config);

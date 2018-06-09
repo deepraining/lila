@@ -3,6 +3,7 @@ const del = require('del');
 const projectConfig = require('../../project_config');
 
 module.exports = {
+    // todo: change to delAnalyze
     // delete dev
     delDev: () =>  {
         return del([projectConfig.buildPaths.dev.dir], {force: !0});

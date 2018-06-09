@@ -52,7 +52,9 @@ module.exports = {
         }
     ],
     devServerPort: 8091,
-    analyzerPort: 8191,
+    bundleAnalyzer: {
+        analyzerPort: 8191
+    },
     localOptions: {
         senn: {
             staticServerUrl: 'https//github.com/senntyou/lila',
@@ -85,6 +87,9 @@ module.exports = {
                 globalDefine: JSON.stringify('sync')
             }
         }
+    },
+    webpack: {
+        mode: 'development'
     }
 };
 

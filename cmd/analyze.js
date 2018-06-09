@@ -2,13 +2,19 @@
 const webpack = require('webpack');
 
 const checkConfigFile = require('../util/check_config_file');
-const vars = require('../data/vars');
-const moduleName = vars.argv.module;
+const logger = require('../util/logger');
+const argv = require('../data/argv');
+const moduleName = argv.module;
 
 if (!moduleName) {
-    logger.error('Missing module name for command: analyze.', !0, !0);
-    logger.log('You can use this command as follows:');
-    logger.log('lila analyze <name>');
+    logger.error(`
+    Missing module name for command: analyze.
+    `);
+    logger.log(`
+    You can use this command as follows:
+    
+    lila analyze <name>
+    `);
     process.exit(0);
 }
 

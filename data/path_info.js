@@ -28,6 +28,9 @@ pathInfo.manifestsBakDir = path.join(pathInfo.lilaWorkspace, 'manifests_bak');
 // `.keep` file of backup manifests directory.
 pathInfo.manifestsBakDirKeepFile = path.join(pathInfo.manifestsBakDir, '.keep');
 
+// Analyze command workspace is `.lila/analyze` directory of project root.
+pathInfo.analyzeWorkspace = path.join(pathInfo.lilaWorkspace, 'analyze');
+
 /**
  * Some path information.
  *
