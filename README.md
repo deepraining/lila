@@ -357,6 +357,11 @@ locaOptions -> customConfig -> envOptions -> commandOptions -> cmdValues
 
 The later loaded config values will override the former loaded config values.
 
-## 6. Examples
+## 6. Packages
+
+* [webpack](https://webpack.js.org): 3.12.0
+* [gulp](https://github.com/gulpjs/gulp): 4.0.0
+
+## 7. Examples
 
 See [lila examples](./examples).

@@ -64,7 +64,7 @@ module.exports = options => {
             return cb();
         }
 
-        let contents = file.contents.toString().replace(matchFiles, function(content, filePath){
+        let contents = file.contents.toString().replace(matchFiles, (content, filePath) => {
             // If is url, keep it.
             if (isUrl(filePath)) return content;
 

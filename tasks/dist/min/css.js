@@ -1,16 +1,20 @@
 
 const csso = require('gulp-csso');
 
+const logger = require('../../../util/logger');
+
 const current = require('../current');
 
 /**
  * Make a function.
  *
  * @param gulp
- * @returns {minCss}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function minCss(cb) {
+    return cb => {
+        logger.log('Start minimizing css files.');
+
         if (current.config.minCss)
             return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.css')
                 .pipe(csso(current.config.minCssOptions || {comments: !1}))

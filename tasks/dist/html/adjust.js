@@ -1,4 +1,6 @@
 
+const logger = require('../../../util/logger');
+
 const current = require('../current');
 const addCdn = require('../util/add_cdn');
 
@@ -6,10 +8,12 @@ const addCdn = require('../util/add_cdn');
  * Make a function.
  *
  * @param gulp
- * @returns {adjustHtml}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function adjustHtml(cb) {
+    return cb => {
+        logger.log('Start adjusting html files.');
+
         if (!current.config.staticServerUrl) return cb();
 
         let options = {

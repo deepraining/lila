@@ -3,6 +3,8 @@ const fsExtra = require('fs-extra');
 const moment = require('moment');
 const rd = require('rd');
 
+const logger = require('../../../util/logger');
+
 const projectConfig = require('../../../project_config');
 const pathUtil = require('../../../util/path');
 const current = require('../current');
@@ -20,6 +22,8 @@ const current = require('../current');
  * @param cb
  */
 module.exports = cb => {
+    logger.log('Start backing up html files.');
+
     if (current.config.backupHtml){
         const suffix = moment().format('YYYY-MM-DD-HH-mm-ss');
 

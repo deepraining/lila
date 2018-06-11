@@ -11,7 +11,7 @@ const webpack = require('../dist/misc/webpack');
 const placeHtml = require('./html/place');
 const getAdjustHtml = require('../dist/html/adjust');
 
-const changedBase = require('../dist/changed/base');
+const getChangedBase = require('../dist/changed/base');
 
 const getMinJs = require('../dist/min/js');
 const getMinCss = require('../dist/min/css');
@@ -30,6 +30,8 @@ const delTasks = [delDist, delTmp];
 module.exports = (gulp) => {
 
     const adjustHtml = getAdjustHtml(gulp);
+
+    const changedBase = getChangedBase(gulp);
 
     const minCss = getMinCss(gulp);
     const minJs = getMinJs(gulp);

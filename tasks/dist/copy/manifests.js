@@ -2,6 +2,8 @@
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 
+const logger = require('../../../util/logger');
+
 const pathInfo = require('../../../data/path_info');
 const filesCount = require('../../../util/files_count');
 
@@ -11,6 +13,8 @@ const filesCount = require('../../../util/files_count');
  * @param cb
  */
 module.exports = cb => {
+    logger.log('Start backing up manifests.');
+
     /**
      * No `.keep` file in `manifests` directory, saying it's the first time to build.
      */

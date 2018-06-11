@@ -21,22 +21,22 @@ module.exports = {
     provide: {
         jQuery: 'jquery'
     },
-    // staticServerUrl: '/sub',
+    staticServerUrl: '/sub',
     // staticServerUrl: 'http://www.example.com',
     // staticServerUrl: 'https://www.example.com/sub',
     // staticServerUrl: '//www.example.com/sub/subSub',
-    // minJs: !0,
-    // minCss: !0,
-    // minHtml: !0,
-    // backupHtml: !0,
-    // htmlReplace: {
-    //     DOCTYPE: 'doctype'
-    // },
-    // htmlInsert: {
-    //     start: '<!-- start -->',
-    //     end: '<!-- end -->'
-    // },
-    // htmlExtension: 'jsp',
+    minJs: !0,
+    minCss: !0,
+    minHtml: !0,
+    backupHtml: !0,
+    htmlReplace: {
+        DOCTYPE: 'doctype'
+    },
+    htmlInsert: {
+        start: '<!-- start -->',
+        end: '<!-- end -->'
+    },
+    htmlExtension: 'jsp',
     envOptions: [
         // 0
         {},

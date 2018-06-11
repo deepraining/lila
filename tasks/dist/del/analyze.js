@@ -1,6 +1,8 @@
 
 const del = require('del');
 
+const logger = require('../../../util/logger');
+
 const pathInfo = require('../../../data/path_info');
 
 /**
@@ -9,6 +11,7 @@ const pathInfo = require('../../../data/path_info');
  * @returns {*}
  */
 module.exports = () => {
+    logger.log('Start deleting analyze workspace.');
 
     return del([pathInfo.analyzeWorkspace], {force: !0});
 };

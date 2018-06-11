@@ -1,16 +1,20 @@
 
 const uglify = require('gulp-uglify');
 
+const logger = require('../../../util/logger');
+
 const current = require('../current');
 
 /**
  * Make a function.
  *
  * @param gulp
- * @returns {minJs}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function minJs(cb) {
+    return cb => {
+        logger.log('Start minimizing js files.');
+
         if (current.config.minJs)
             return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.js')
                 .pipe(uglify(current.config.minJsOptions || {}))

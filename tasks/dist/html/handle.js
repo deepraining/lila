@@ -4,6 +4,8 @@ const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const gap = require('gulp-append-prepend');
 
+const logger = require('../../../util/logger');
+
 const current = require('../current');
 
 /**
@@ -40,10 +42,12 @@ const htmlExtension = stream => {
  * All the 3 steps must do in one time.
  *
  * @param gulp
- * @returns {handleHtml}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function handleHtml(cb) {
+    return cb => {
+        logger.log('Start handling html files.');
+
         if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension)
             return cb();
 

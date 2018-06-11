@@ -12,10 +12,11 @@ const findChangedFiles = require('../util/changed_files');
  * Make a function.
  *
  * @param gulp
- * @returns {changedBase}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function changedBase(cb) {
+    return cb => {
+        logger.log('Start finding changed files.');
 
         // Don't record files' changes.
         if (!current.config.recordFileChanges) {

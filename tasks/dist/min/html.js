@@ -1,16 +1,20 @@
 
 const htmlmin = require('gulp-htmlmin');
 
+const logger = require('../../../util/logger');
+
 const current = require('../current');
 
 /**
  * Make a function.
  *
  * @param gulp
- * @returns {minHtml}
+ * @returns {function}
  */
 module.exports = gulp => {
-    return function minHtml(cb) {
+    return cb => {
+        logger.log('Start minimizing html files.');
+
         if (current.config.minHtml){
             let options = current.config.minHtmlOptions || {
                 removeComments: !0,

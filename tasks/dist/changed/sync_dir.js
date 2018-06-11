@@ -21,6 +21,8 @@ module.exports = cb => {
     const currentItem = projectConfig.processing.syncDirItems[currentKey];
     const dirPath = currentItem.path;
 
+    logger.log(`Start finding changed files of '${currentKey}'.`);
+
     // Enabled.
     if (projectConfig.recordFileChanges) {
         // Get changed files.

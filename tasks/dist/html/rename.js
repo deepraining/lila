@@ -3,6 +3,8 @@ const forEach = require('lodash/forEach');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
 
+const logger = require('../../../util/logger');
+
 const projectConfig = require('../../../project_config');
 
 
@@ -12,6 +14,8 @@ const projectConfig = require('../../../project_config');
  * @param cb
  */
 module.exports = cb => {
+    logger.log('Start renaming html files.');
+
     if (!projectConfig.renameHtml) {
         return cb();
     }

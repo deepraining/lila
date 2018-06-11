@@ -6,6 +6,8 @@ const logger = require('../../../util/logger');
 const current = require('../current');
 
 module.exports = cb => {
+    logger.log('Start webpack building.');
+
     webpack(current.config.webpack, (err, stats) => {
         if (err) {
             logger.error(err.stack || err);
@@ -18,18 +20,19 @@ module.exports = cb => {
         const info = stats.toJson();
 
         if (stats.hasErrors()) {
-            info.errors.forEach((error) => {
+            info.errors.forEach(error => {
                 logger.error(error);
             });
             process.exit(0);
         }
 
         if (stats.hasWarnings()) {
-            info.warnings.forEach(function (warning) {
+            info.warnings.forEach(warning => {
                 logger.warn(warning);
             });
         }
 
+        logger.log('Finish webpack building.');
         cb();
     });
 };

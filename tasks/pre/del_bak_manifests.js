@@ -1,5 +1,5 @@
 
-const argv = require('../../data/argv');
+const pathInfo = require('../../data/path_info');
 const del = require('del');
 
 /**
@@ -10,6 +10,6 @@ module.exports = gulp => {
 
     gulp.task('del_bak_manifests', () => {
 
-        return del([argv.manifestsBakDir], {force: !0});
+        return del([pathInfo.manifestsBakDir], {force: !0});
     });
 };
