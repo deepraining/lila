@@ -10,20 +10,23 @@ module.exports = function webpackBuild(cb) {
 
     webpack(current.config.webpack, (err, stats) => {
         if (err) {
-            logger.error(err.stack || err);
-            if (err.details) {
-                logger.error(err.details);
-            }
-            process.exit(0);
+            // logger.error(err.stack || err);
+            // if (err.details) {
+            //     logger.error(err.details);
+            // }
+            // process.exit(0);
+            throw err;
         }
 
         const info = stats.toJson();
 
         if (stats.hasErrors()) {
             info.errors.forEach(error => {
-                logger.error(error);
+                // logger.error(error);
+
+                throw error;
             });
-            process.exit(0);
+            // process.exit(0);
         }
 
         if (stats.hasWarnings()) {

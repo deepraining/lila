@@ -353,8 +353,7 @@ See [Use extra `resolveAlias` temporarily](./out.md).
 
 ## onlyWebpack
 
-* `bg`: Gulp will catch all error, including webpack's, thus if webpack has error when building, we can't see it. 
-* `desc`: Run webpack task without gulp, so if webpack throw errors, we can see it in command line. Additionally, it always be specified from command line by `-w`.
+* `desc`: Sometimes, we just want to run webpack task, without gulp. Additionally, it always be specified from command line by `-w`.
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.3.0`

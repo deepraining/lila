@@ -2,7 +2,6 @@
 const argv = require('../data/argv');
 const logger = require('../util/logger');
 const checkConfigFile = require('../util/check_config_file');
-const registerTasks = require('../tasks/register');
 
 const moduleName = argv.module;
 
@@ -26,33 +25,31 @@ const projectConfig = require('../project_config');
 const share = require('../share');
 const pathInfo = require('../data/path_info');
 
-// Modify `process.argv` for `gulp-cli`.
-process.argv = [
-    share.originalProcessArgv[0],
-    share.originalProcessArgv[1],
-    'dist',
-    '--gulpfile',
-    pathInfo.gulpFile
-];
+if (projectConfig.onlyWebpack) {
+    require('./util/webpack');
+}
+else {
+    // Modify `process.argv` for `gulp-cli`.
+    process.argv = [
+        share.originalProcessArgv[0],
+        share.originalProcessArgv[1],
+        'dist',
+        '--gulpfile',
+        pathInfo.gulpFile
+    ];
 
-require('gulp-cli')();
-
-// if (projectConfig.onlyWebpack) {
-//     require('./util/webpack');
-// }
-// else {
-//     const gulp = require('gulp');
-//
-//     // Register gulp tasks.
-//     registerTasks(gulp);
-//
-//     // Execute task.
-//     gulp.series('dist', cb => {
-//         logger.success(`
-//     Pack source codes and static files into production successfully.
-//     `);
-//
-//         cb();
-//     })();
-// }
+    require('gulp-cli')(err => {
+        if (err) {
+            logger.error(`
+Error occurred when lila build modules, you should resolve those errors, and try again.
+    `);
+            logger.error(err.stack || err);
+        }
+        else {
+            logger.success(`
+    Pack source codes and static files into production successfully.
+    `);
+        }
+    });
+}
 

@@ -44,7 +44,7 @@
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
     "gulp-append-prepend": "^1.0.4",
-    "gulp-cli": "^2.0.1",
+    "gulp-cli": "git://github.com/senntyou/gulp-cli.git#6f9e0ef",
     "gulp-csso": "^3.0.1",
     "gulp-htmlmin": "^4.0.0",
     "gulp-rename": "^1.2.3",
