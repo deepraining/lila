@@ -5,7 +5,7 @@ const projectConfig = require('../../../project_config');
 /**
  * Next `staticServer` index.
  */
-module.exports = cb => {
+module.exports = function nextStaticServer(cb) {
     if (!projectConfig.staticServers || !projectConfig.staticServers.length) return cb();
 
     if (typeof projectConfig.processing.staticServerIndex === 'undefined') {

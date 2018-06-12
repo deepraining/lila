@@ -1,7 +1,7 @@
 
 const fill = require('lodash/fill');
 const concat = require('lodash/concat');
-const sftp = require('gulp-sftp');
+const SSH = require('gulp-ssh');
 
 const projectConfig = require('../../project_config');
 const delDist = require('../dist/del/dist');
@@ -20,18 +20,20 @@ module.exports = gulp => {
         nextStaticServer();
 
         const server = projectConfig.staticServers[projectConfig.processing.staticServerIndex];
+        const connect = new SSH(server.options);
 
         return gulp.src(projectConfig.buildPaths.dist.dir + '/**/*', {base: projectConfig.basePaths.webRoot})
-            .pipe(sftp(server.options));
+            .pipe(connect.dest(server.remotePath));
     };
 
     const syncHtml = () => {
         nextWebServer();
 
         const server = projectConfig.webServers[projectConfig.processing.webServerIndex];
+        const connect = new SSH(server.options);
 
         return gulp.src(projectConfig.buildPaths.dist.html + '/**/*', {base: projectConfig.buildPaths.dist.html})
-            .pipe(sftp(server.options));
+            .pipe(connect.dest(server.remotePath));
     };
 
     const syncDir = cb => {
@@ -41,9 +43,11 @@ module.exports = gulp => {
 
         const changedFiles = projectConfig.processing.syncDirItems[projectConfig.processing.syncDirKey].changedFiles;
 
-        if (changedFiles && (typeof changedFiles === 'string' || changedFiles.length))
+        if (changedFiles && (typeof changedFiles === 'string' || changedFiles.length)) {
+            const connect = new SSH(server.options);
             return gulp.src(changedFiles, {base: projectConfig.basePaths.webRoot})
-                .pipe(sftp(server.options));
+                .pipe(connect.dest(server.remotePath));
+        }
         else cb();
     };
 
