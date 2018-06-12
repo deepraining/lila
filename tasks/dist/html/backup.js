@@ -1,4 +1,5 @@
 
+const fs = require('fs');
 const fsExtra = require('fs-extra');
 const moment = require('moment');
 const rd = require('rd');
@@ -21,10 +22,10 @@ const current = require('../current');
  *
  * @param cb
  */
-module.exports = cb => {
-    logger.log('Start backing up html files.');
+module.exports = function backupHtml(cb) {
+    logger.log('Backing up html files.', {prefix: !0, preLn: !0, postLn: !0});
 
-    if (current.config.backupHtml){
+    if (current.config.backupHtml && fs.existsSync(projectConfig.buildPaths.dist.html)){
         const suffix = moment().format('YYYY-MM-DD-HH-mm-ss');
 
         rd.eachFileFilterSync(projectConfig.buildPaths.dist.html, file => {

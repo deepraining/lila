@@ -14,14 +14,14 @@ const next = require('../next/sync_dir');
  *
  * @param cb
  */
-module.exports = cb => {
+module.exports = function changedDirFiles(cb) {
     next();
 
     const currentKey = projectConfig.processing.syncDirKey;
     const currentItem = projectConfig.processing.syncDirItems[currentKey];
     const dirPath = currentItem.path;
 
-    logger.log(`Start finding changed files of '${currentKey}'.`);
+    logger.log(`Finding changed files of '${currentKey}'.`, {prefix: !0, preLn: !0, postLn: !0});
 
     // Enabled.
     if (projectConfig.recordFileChanges) {
@@ -32,18 +32,18 @@ module.exports = cb => {
         // Not empty.
         if (!isEmpty(changedFiles)) {
 
+            logger.info('');
             forEach(changedFiles, (value, key) => {
                 changedFilesPaths.push(dirPath + '/' + key);
-                logger.info(`    File changed: ${key}.`);
+                logger.info(`File changed: ${key}.`, {prefix: !0});
             });
+            logger.info('');
 
             currentItem.changedFiles = changedFilesPaths;
 
         }
         else {
-            logger.info(`
-    ${capitalize(currentKey)} nothing changed.            
-            `);
+            logger.info(`${capitalize(currentKey)} nothing changed.`, {prefix: !0, preLn: !0, postLn: !0});
         }
     }
     // Disabled.

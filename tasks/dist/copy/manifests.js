@@ -12,8 +12,8 @@ const filesCount = require('../../../util/files_count');
  *
  * @param cb
  */
-module.exports = cb => {
-    logger.log('Start backing up manifests.');
+module.exports = function copyManifests(cb) {
+    logger.log('Backing up \'manifests\' directory.', {prefix: !0, preLn: !0, postLn: !0});
 
     /**
      * No `.keep` file in `manifests` directory, saying it's the first time to build.

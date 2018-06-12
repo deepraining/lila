@@ -13,8 +13,8 @@ const projectConfig = require('../../../project_config');
  *
  * @param cb
  */
-module.exports = cb => {
-    logger.log('Start renaming html files.');
+module.exports = function renameHtml(cb) {
+    logger.log('Renaming html files.', {prefix: !0, preLn: !0, postLn: !0});
 
     if (!projectConfig.renameHtml) {
         return cb();

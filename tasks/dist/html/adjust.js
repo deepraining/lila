@@ -11,8 +11,8 @@ const addCdn = require('../util/add_cdn');
  * @returns {function}
  */
 module.exports = gulp => {
-    return cb => {
-        logger.log('Start adjusting html files.');
+    return function adjustHtml(cb) {
+        logger.log('Adjusting html files.', {prefix: !0, preLn: !0, postLn: !0});
 
         if (!current.config.staticServerUrl) return cb();
 

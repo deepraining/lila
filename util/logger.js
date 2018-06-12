@@ -2,6 +2,33 @@
 const chalk = require('chalk');
 
 /**
+ * 11 spaces.
+ *
+ * @type {string}
+ */
+const prefixSpaces = '           ';
+
+/**
+ * Get string to display.
+ *
+ * @param str
+ * @param options
+ * @returns {*}
+ */
+const getStr = (str, options) => {
+    // prefix.
+    options.prefix && (str = prefixSpaces + str);
+
+    // Prepend ln.
+    options.preLn && (str = '\n' + str);
+
+    // Append ln.
+    options.postLn && (str += '\n');
+
+    return str;
+};
+
+/**
  * global logger
  *
  * @type {{
@@ -13,19 +40,49 @@ const chalk = require('chalk');
  * }
  */
 module.exports = {
-    log: str => {
-        console.log(str);
+    /**
+     * Log.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    log: (str, options = {}) => {
+        console.log(getStr(str, options));
     },
-    info: str => {
-        console.info(chalk.blue(str));
+    /**
+     * Info.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    info: (str, options = {}) => {
+        console.info(chalk.blue(getStr(str, options)));
     },
-    warn: str => {
-        console.warn(chalk.yellow(str));
+    /**
+     * Warn.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    warn: (str, options = {}) => {
+        console.warn(chalk.yellow(getStr(str, options)));
     },
-    error: str => {
-        console.error(chalk.red(str));
+    /**
+     * Error.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    error: (str, options = {}) => {
+        console.error(chalk.red(getStr(str, options)));
     },
-    success: str => {
-        console.log(chalk.green(str));
+    /**
+     * Success.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    success: (str, options = {}) => {
+        console.log(chalk.green(getStr(str, options)));
     }
 };

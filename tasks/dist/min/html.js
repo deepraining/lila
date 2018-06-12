@@ -12,8 +12,8 @@ const current = require('../current');
  * @returns {function}
  */
 module.exports = gulp => {
-    return cb => {
-        logger.log('Start minimizing html files.');
+    return function minHtml(cb) {
+        logger.log('Minimizing html files.', {prefix: !0, preLn: !0, postLn: !0});
 
         if (current.config.minHtml){
             let options = current.config.minHtmlOptions || {

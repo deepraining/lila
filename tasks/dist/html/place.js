@@ -12,8 +12,8 @@ const current = require('../current');
  *
  * @param cb
  */
-module.exports = cb => {
-    logger.log('Start placing html files into correct place.');
+module.exports = function placeHtml(cb) {
+    logger.log('Placing html files into correct place.', {prefix: !0, preLn: !0, postLn: !0});
 
     fsExtra.moveSync(
         projectConfig.buildPaths.dist.dir + '/index.html',

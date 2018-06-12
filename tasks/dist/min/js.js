@@ -12,8 +12,8 @@ const current = require('../current');
  * @returns {function}
  */
 module.exports = gulp => {
-    return cb => {
-        logger.log('Start minimizing js files.');
+    return function minJs(cb) {
+        logger.log('Minimizing js files.', {prefix: !0, preLn: !0, postLn: !0});
 
         if (current.config.minJs)
             return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.js')

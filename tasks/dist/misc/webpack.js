@@ -5,8 +5,8 @@ const logger = require('../../../util/logger');
 
 const current = require('../current');
 
-module.exports = cb => {
-    logger.log('Start webpack building.');
+module.exports = function webpackBuild(cb) {
+    logger.log('Start webpack building.', {prefix: !0, preLn: !0, postLn: !0});
 
     webpack(current.config.webpack, (err, stats) => {
         if (err) {
@@ -32,7 +32,7 @@ module.exports = cb => {
             });
         }
 
-        logger.log('Finish webpack building.');
+        logger.log('Finish webpack building.', {prefix: !0, preLn: !0, postLn: !0});
         cb();
     });
 };

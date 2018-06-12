@@ -45,8 +45,8 @@ const htmlExtension = stream => {
  * @returns {function}
  */
 module.exports = gulp => {
-    return cb => {
-        logger.log('Start handling html files.');
+    return function handleHtml(cb) {
+        logger.log('Handling html files.', {prefix: !0, preLn: !0, postLn: !0});
 
         if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension)
             return cb();

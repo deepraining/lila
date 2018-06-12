@@ -12,11 +12,11 @@ const findChangedFiles = require('../util/changed_files');
  * Make a function.
  *
  * @param gulp
- * @returns {function}
+ * @returns {changedFiles}
  */
 module.exports = gulp => {
-    return cb => {
-        logger.log('Start finding changed files.');
+    return function changedFiles(cb) {
+        logger.log('Finding changed files.', {prefix: !0, preLn: !0, postLn: !0});
 
         // Don't record files' changes.
         if (!current.config.recordFileChanges) {
@@ -33,18 +33,18 @@ module.exports = gulp => {
 
             if (!isEmpty(changedFiles)) {
 
+                logger.info('');
                 forEach(changedFiles, (value, key) => {
                     changedFilesPaths.push(current.config.buildPaths.dist.dir + '/' + key);
-                    logger.info(`    File changed: ${key}.`);
+                    logger.info(`File changed: ${key}.`, {prefix: !0});
                 });
+                logger.info('');
 
                 return gulp.src(changedFilesPaths, {base: current.config.buildPaths.dist.dir})
                     .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
 
             } else {
-                logger.info(`
-    Nothing changed after webpack's building.            
-                `);
+                logger.info(`Nothing changed after webpack's building.`, {prefix: !0, preLn: !0, postLn: !0});
                 cb();
             }
         }

@@ -8,8 +8,8 @@ const next = require('../util/next');
  *
  * @param cb
  */
-module.exports = cb => {
-    logger.log('Start changing next module.');
+module.exports = function nextModule(cb) {
+    logger.log('Changing to next module.', {prefix: !0, preLn: !0, postLn: !0});
 
     next(!0);
     cb();

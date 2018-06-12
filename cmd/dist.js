@@ -22,22 +22,37 @@ checkConfigFile();
 
 const projectConfig = require('../project_config');
 
-if (projectConfig.onlyWebpack) {
-    require('./util/webpack');
-}
-else {
-    const gulp = require('gulp');
+// Guarantee `share.originalProcessArgv` has been loaded.
+const share = require('../share');
+const pathInfo = require('../data/path_info');
 
-    // Register gulp tasks.
-    registerTasks(gulp);
+// Modify `process.argv` for `gulp-cli`.
+process.argv = [
+    share.originalProcessArgv[0],
+    share.originalProcessArgv[1],
+    'dist',
+    '--gulpfile',
+    pathInfo.gulpFile
+];
 
-    // Execute task.
-    gulp.series('dist', cb => {
-        logger.success(`
-    Pack source codes and static files into production successfully.
-    `);
+require('gulp-cli')();
 
-        cb();
-    })();
-}
+// if (projectConfig.onlyWebpack) {
+//     require('./util/webpack');
+// }
+// else {
+//     const gulp = require('gulp');
+//
+//     // Register gulp tasks.
+//     registerTasks(gulp);
+//
+//     // Execute task.
+//     gulp.series('dist', cb => {
+//         logger.success(`
+//     Pack source codes and static files into production successfully.
+//     `);
+//
+//         cb();
+//     })();
+// }
 

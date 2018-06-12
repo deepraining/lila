@@ -31,6 +31,9 @@ pathInfo.manifestsBakDirKeepFile = path.join(pathInfo.manifestsBakDir, '.keep');
 // Analyze command workspace is `.lila/analyze` directory of project root.
 pathInfo.analyzeWorkspace = path.join(pathInfo.lilaWorkspace, 'analyze');
 
+// gulpfile.js
+pathInfo.gulpFile = path.join(pathInfo.lilaRoot, 'gulpfile.js');
+
 /**
  * Some path information.
  *
