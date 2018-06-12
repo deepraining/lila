@@ -16,7 +16,7 @@ if (config.multiple) {
         // Change current config's module attribute to `moduleName`.
         clonedConfig.module = moduleName;
 
-        allConfigs.push(format(clonedConfig));
+        allConfigs.push(format(clonedConfig, !0));
     });
 }
 // Single module.

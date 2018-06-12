@@ -15,14 +15,18 @@ const preFields = ['env', 'module', 'local'];
  *
  * @param config
  * @param pre Whether just load `preFields`.
+ * @param custom Whether is custom config.
  */
-module.exports = (config, pre) => {
+module.exports = (config, pre, custom) => {
     forEach(argv, (value, key) => {
         // Get real key, for some key has alias.
         let realKey = config.cmdAlias[key] ? config.cmdAlias[key] : key;
 
         if (pre && preFields.indexOf(realKey) < 0) return;
         if (!pre && preFields.indexOf(realKey) > -1) return;
+
+        // If is custom config, should not modify `config.module`.
+        if (custom && realKey === 'module') return;
 
         // -e test, --env prod
         if (realKey === 'env' && config.envAlias && typeof config.envAlias[value] !== 'undefined')

@@ -51,9 +51,7 @@ module.exports = gulp => {
         if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension)
             return cb();
 
-        let stream;
-
-        stream = gulp.src(current.config.buildPaths.buildTmp.html + '/**/*.html');
+        let stream = gulp.src(current.config.buildPaths.buildTmp.html + '/**/*.html');
         if (current.config.hasHtmlReplace)
             htmlReplace(stream);
         if (current.config.hasHtmlInsert)

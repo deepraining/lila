@@ -26,8 +26,9 @@ const webpack = require('./webpack');
  * Format import config to a new one which lila needed.
  *
  * @param config
+ * @param custom Whether is custom config.
  */
-module.exports = config => {
+module.exports = (config, custom) => {
     // paths
     basePaths(config);
     buildPaths(config);
@@ -36,7 +37,7 @@ module.exports = config => {
     cmdAlias(config);
     envAlias(config);
     // Here only pre load some required arguments.
-    cmdValues(config, !0);
+    cmdValues(config, !0, custom);
 
     // Options to override config root attribute.
     localOptions(config);
