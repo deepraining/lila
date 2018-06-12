@@ -53,7 +53,7 @@ module.exports = gulp => {
 
         let stream;
 
-        stream = gulp.src(current.config.buildPaths.tmp.html + '/**/*.html');
+        stream = gulp.src(current.config.buildPaths.buildTmp.html + '/**/*.html');
         if (current.config.hasHtmlReplace)
             htmlReplace(stream);
         if (current.config.hasHtmlInsert)
@@ -61,7 +61,7 @@ module.exports = gulp => {
         if (current.config.hasHtmlExtension)
             htmlExtension(stream);
 
-        stream.pipe(gulp.dest(current.config.buildPaths.store.html));
+        stream.pipe(gulp.dest(current.config.buildPaths.buildStore.html));
 
         return stream;
     }

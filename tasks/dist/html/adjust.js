@@ -47,8 +47,8 @@ module.exports = gulp => {
             });
         }
 
-        return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.html')
+        return gulp.src(current.config.buildPaths.buildTmp.dir + '/**/*.html')
             .pipe(addCdn(options))
-            .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
+            .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
     }
 };

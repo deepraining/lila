@@ -14,8 +14,8 @@ const projectConfig = require('../../../project_config');
 module.exports = function copyToStore(cb) {
     logger.log('Backing up production files.', {prefix: !0, preLn: !0, postLn: !0});
 
-    if (fs.existsSync(projectConfig.buildPaths.tmp.dir))
-        fsExtra.copySync(projectConfig.buildPaths.tmp.dir, projectConfig.buildPaths.store.dir);
+    if (fs.existsSync(projectConfig.buildPaths.buildTmp.dir))
+        fsExtra.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);
 
     cb();
 };

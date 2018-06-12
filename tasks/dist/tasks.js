@@ -4,7 +4,7 @@ const flatten = require('lodash/flatten');
 
 const projectConfig = require('../../project_config');
 
-const delDist = require('./del/dist');
+const delBuild = require('./del/build');
 const delTmp = require('./del/tmp');
 
 const webpack = require('../dist/misc/webpack');
@@ -25,7 +25,7 @@ const nextModule = require('./misc/next_module');
 
 const next = require('./util/next');
 
-const delTasks = [delDist, delTmp];
+const delTasks = [delBuild, delTmp];
 
 module.exports = (gulp) => {
 

@@ -27,9 +27,9 @@ module.exports = gulp => {
                 minifyCSS: !0
             };
 
-            return gulp.src(current.config.buildPaths.tmp.dir + '/**/*.html')
+            return gulp.src(current.config.buildPaths.buildTmp.dir + '/**/*.html')
                 .pipe(htmlmin(options))
-                .pipe(gulp.dest(current.config.buildPaths.tmp.dir));
+                .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
         }
         else cb();
 

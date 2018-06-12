@@ -16,8 +16,8 @@ module.exports = function placeHtml(cb) {
     logger.log('Placing html files into correct place.', {prefix: !0, preLn: !0, postLn: !0});
 
     fsExtra.moveSync(
-        projectConfig.buildPaths.dist.dir + '/index.html',
-        projectConfig.buildPaths.dist.dir + '/html/' + current.config.module + '.html'
+        projectConfig.buildPaths.build.dir + '/index.html',
+        projectConfig.buildPaths.build.dir + '/html/' + current.config.module + '.html'
     );
 
     cb();

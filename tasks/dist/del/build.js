@@ -6,12 +6,12 @@ const logger = require('../../../util/logger');
 const projectConfig = require('../../../project_config');
 
 /**
- * Delete `build_tmp` directory.
+ * Delete `build` directory.
  *
  * @returns {*}
  */
 module.exports = function delTmp() {
-    logger.log('Deleting \'build_tmp\' directory.', {prefix: !0, preLn: !0, postLn: !0});
+    logger.log('Deleting \'build\' directory.', {prefix: !0, preLn: !0, postLn: !0});
 
-    return del([projectConfig.buildPaths.buildTmp.dir], {force: !0});
+    return del([projectConfig.buildPaths.build.dir], {force: !0});
 };

@@ -1,24 +1,20 @@
 
+const pathInfo = require('../../data/path_info');
+
 /**
  * Get paths.
  *
- * todo: whether can remove `addLilaPrefix`.
- *
  * @param root
  * @param dir
- * @param addLilaPrefix
  * @returns {{dir: string, js: string, less: string, html: string}}
  */
-const getPaths = (root, dir, addLilaPrefix) => {
-
-    const dirName = (addLilaPrefix ? 'lila_' : '') + dir;
-
+const getPaths = (root, dir) => {
     return {
-        dirName: dirName,
-        dir: root + '/' + dirName,
-        js: root + '/' + dirName + '/js',
-        css: root + '/' + dirName + '/css',
-        html: root + '/' + dirName + '/html'
+        dirName: dir,
+        dir: root + '/' + dir,
+        js: root + '/' + dir + '/js',
+        css: root + '/' + dir + '/css',
+        html: root + '/' + dir + '/html'
     }
 };
 
@@ -30,16 +26,16 @@ const getPaths = (root, dir, addLilaPrefix) => {
 module.exports = config => {
     config.buildPaths = {
         // Source.
-        src: getPaths(config.basePaths.buildRoot, 'src', !1),
+        src: getPaths(config.basePaths.buildRoot, 'src'),
         // Development.
-        dev: getPaths(config.basePaths.buildRoot, 'dev', !1),
+        dev: getPaths(config.basePaths.buildRoot, 'dev'),
         // Distribution.
-        dist: getPaths(config.basePaths.buildRoot, 'dist', !1),
-        // Temporary.
-        // todo: whether this directory can place in `.lila` of root.
-        tmp: getPaths(config.basePaths.buildRoot, 'tmp', !0),
-        // Temporary directory to store distribution files.
-        // todo: whether this directory can place in `.lila` of root.
-        store: getPaths(config.basePaths.buildRoot, 'store', !0)
+        dist: getPaths(config.basePaths.buildRoot, 'dist'),
+        // Build.
+        build: getPaths(pathInfo.lilaWorkspace, 'build'),
+        // Build tmp.
+        buildTmp: getPaths(pathInfo.lilaWorkspace, 'build_tmp'),
+        // Build store.
+        buildStore: getPaths(pathInfo.lilaWorkspace, 'build_store')
     };
 };

@@ -14,8 +14,8 @@ const projectConfig = require('../../../project_config');
 module.exports = function copyToDist(cb) {
     logger.log('Moving production files to \'dist\'.', {prefix: !0, preLn: !0, postLn: !0});
 
-    if (fs.existsSync(projectConfig.buildPaths.store.dir))
-        fsExtra.copySync(projectConfig.buildPaths.store.dir, projectConfig.buildPaths.dist.dir);
+    if (fs.existsSync(projectConfig.buildPaths.buildStore.dir))
+        fsExtra.copySync(projectConfig.buildPaths.buildStore.dir, projectConfig.buildPaths.dist.dir);
 
     cb();
 };
