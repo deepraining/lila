@@ -14,15 +14,15 @@ Empty
 [
     {
         type: "web/static"
-        option: {...}
+        options: {...}
     }
     // ...
 ]
 ```
 
-### `option`
+### `options`
 
-Option to initialize sync component.
+Options to initialize sync component.
 
 ### what is serverType `static/web` means?
 

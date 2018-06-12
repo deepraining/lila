@@ -3,39 +3,39 @@ const serverConfig = require('./demo/lila.server.config');
 
 module.exports = [
     {
-        option: {
+        options: {
             host: serverConfig.host,
             user: serverConfig.user,
             pass: serverConfig.pass,
-            remotePath: '/home/senntyou/lila-test/static'
+            remotePath: '/home/senntyou/space/www/sftp/static'
         }
     },
     {
-        option: {
+        options: {
             host: serverConfig.host,
             user: serverConfig.user,
             pass: serverConfig.pass,
-            remotePath: '/home/senntyou/lila-test/static-2',
+            remotePath: '/home/senntyou/space/www/sftp/static-2',
         },
         type: 'static'
     },
     {
-        option: {
+        options: {
             host: serverConfig.host,
             user: serverConfig.user,
             pass: serverConfig.pass,
-            remotePath: '/home/senntyou/lila-test/web',
+            remotePath: '/home/senntyou/space/www/sftp/web',
         },
         type: 'web'
     },
     {
-        option: {
+        options: {
             host: serverConfig.host,
             user: serverConfig.user,
             pass: serverConfig.pass,
-            remotePath: '/home/senntyou/lila-test/web-2',
+            remotePath: '/home/senntyou/space/www/sftp/web-2',
         },
-        serverType: 'web'
+        type: 'web'
     }
 ];
 
