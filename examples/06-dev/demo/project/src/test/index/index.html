@@ -7,6 +7,14 @@
     <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico">
 </head>
 <body>
+{{#if haha}}
+<div>vfd</div>
+{{/if}}
+
+{{#each list}}
+<h4>{{this.title}}</h4>
+{{/each}}
+
 ${require('./html/piece-1.html')}
 ${require('./html/piece-2.html')}
 <div class="box">China</div>
