@@ -1,4 +1,6 @@
 
+const argv = require('../../data/argv');
+
 const basePaths = require('./base_paths');
 const buildPaths = require('./build_paths');
 
@@ -45,6 +47,9 @@ module.exports = (config, custom) => {
     envOptions(config);
     commandOptions(config);
     cmdValues(config);
+
+    // `beforeFormatConfig` callback
+    config.beforeFormatConfig && config.beforeFormatConfig(config, argv);
 
     // Fill default value to config.
     fill(config);

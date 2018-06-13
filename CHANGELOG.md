@@ -1,10 +1,14 @@
 # Changelog
 
-## 0.3.0
+## 0.3.0 [2018-06-13]
 
 - Rewrite core code. 
-- Remove `network` config option. 
+- Rewrite documents. 
+- Remove `ignoreNodeModules, network, analyzerPort, browsers` config option. 
+- Add `webpack, rules, plugins, hotModuleReplacement, htmlWebpack, bundleAnalyzer, builtinRules, babelLoaderPresets, babelLoaderPlugins, babelLoaderExclude, onlyWebpack, minJsOptions, minCssOptions, minHtmlOptions, servers, beforeFormatConfig` config option. 
 - Use `babelLoaderExclude` to replace `ignoreNodeModules`. 
+- Use `servers` to replace `network`. 
+- Use `bundleAnalyzer` to replace `analyzerPort`. 
 
 ## 0.2.2
 

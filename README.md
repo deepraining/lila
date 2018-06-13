@@ -349,6 +349,25 @@ lila dev test/index --devServerPort 9999
 
 Now, the `devServerPort` config option become `9999`.
 
+Also, you can put any extra configs through command line.
+
+```
+lila dev test/index --extraArg1 extraValu1 --extraArg2 extraValu2 --extraArg3
+```
+
+In your project config from `lila.config.js`, there will be 3 more fields.
+
+```
+{
+  ... // Original existed options.
+  extraArg1: extraValu1,
+  extraArg2: extraValu2,
+  extraArg1: true
+}
+```
+
+Relative reference: [minimist](https://github.com/substack/minimist).
+
 ### 5.6 Custom config loading sequences.
 
 ```

@@ -88,6 +88,13 @@ module.exports = {
             }
         }
     },
-    webpack: {}
+    webpack: {},
+    beforeFormatConfig: (config, argv) => {
+        if (argv.formatConfig) {
+            config.define = {
+                globalDefine: JSON.stringify('formatConfig')
+            };
+        }
+    }
 };
 

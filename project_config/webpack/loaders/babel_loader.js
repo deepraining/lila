@@ -11,21 +11,23 @@ const importPlugin = require("babel-plugin-import");
  * @returns {{loader: string, options: {presets: *[], plugins: *[]}, test: RegExp}}
  */
 module.exports = config => {
+    let presets = config.babelLoaderPresets || [];
+    presets.unshift(stage0Preset);
+    presets.unshift(es2015Preset);
+
+    let plugins = config.babelLoaderPlugins || [];
+    plugins.unshift([
+        importPlugin.default,
+        config.import || []
+    ]);
+    plugins.unshift(transformReactJsx);
+
     let loader = {
         loader: 'babel-loader',
         test: /\.(js|jsx)$/,
         options: {
-            presets: [
-                es2015Preset,
-                stage0Preset
-            ],
-            plugins: [
-                transformReactJsx,
-                [
-                    importPlugin.default,
-                    config.import || []
-                ]
-            ]
+            presets,
+            plugins
         }
     };
 
