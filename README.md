@@ -386,6 +386,10 @@ The later loaded config values will override the former loaded config values.
 
 More to see [package.json](./package.json).
 
-## 7. Examples
+## 7. Update to new version from old versions.
+
+See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
+
+## 8. Examples
 
 See [lila examples](./examples).

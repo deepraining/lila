@@ -96,8 +96,6 @@ module.exports = {
             };
         }
     },
-    webpackDev: {
-        writeToDisk: !0
-    }
+    // writeFile: !0
 };
 

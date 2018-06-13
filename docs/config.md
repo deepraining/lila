@@ -195,6 +195,13 @@
 * `default`: `{}`
 * `since`: `v0.3.0`
 
+## writeFile
+
+* `desc`: When in `dev` mode, whether write bundle files to the file system.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.0`
+
 ## provide
 
 * `desc`: Options for [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/).

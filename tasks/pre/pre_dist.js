@@ -7,6 +7,7 @@ const projectConfig = require('../../project_config');
 const delDist = require('../dist/del/dist');
 const delStore = require('../dist/del/store');
 const delAnalyze = require('../dist/del/analyze');
+const delDev = require('../dist/del/dev');
 
 const copyManifests = require('../dist/copy/manifests');
 const copyToDist = require('../dist/copy/to_dist');
@@ -28,6 +29,7 @@ module.exports = (gulp) => {
     const tasks = concat([],
         [
             delAnalyze,
+            delDev,
             delDist,
             copyManifests,
             logFirstModule

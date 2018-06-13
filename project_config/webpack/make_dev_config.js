@@ -1,5 +1,6 @@
 
 const webpack = require('webpack');
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 const getJsEntryPath = require('./util/get_js_entry_path');
 const makeResolve = require('./common/make_resolve');
@@ -47,6 +48,13 @@ module.exports = config => {
         new webpack.HotModuleReplacementPlugin(config.hotModuleReplacement || {}),
         makeHtmlPlugin(config)
     );
+
+    /**
+     * Whether write bundle files to the file system.
+     *
+     * In webpack 4, webpack-dev-middleware 3, use `writeToDisk` instead.
+     */
+    config.writeFile && config.webpack.plugins.push(new WriteFilePlugin());
 
     /**
      * Common plugins
