@@ -47,10 +47,11 @@ browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + proj
 // This must be in the first place.
 projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
 
-browserSyncConfig.middleware.push(devMiddleWare(compiler, {
-    stats: 'errors-only',
-    publicPath: projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module
-}));
-browserSyncConfig.middleware.push(hotMiddleWare(compiler));
+let devOptions = projectConfig.webpackDev || {};
+devOptions.stats = 'errors-only';
+devOptions.publicPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module;
+
+browserSyncConfig.middleware.push(devMiddleWare(compiler, devOptions));
+browserSyncConfig.middleware.push(hotMiddleWare(compiler, projectConfig.webpackHot || {}));
 
 browserSync.init(browserSyncConfig);

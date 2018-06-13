@@ -95,6 +95,9 @@ module.exports = {
                 globalDefine: JSON.stringify('formatConfig')
             };
         }
+    },
+    webpackDev: {
+        writeToDisk: !0
     }
 };
 

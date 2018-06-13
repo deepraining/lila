@@ -379,7 +379,12 @@ The later loaded config values will override the former loaded config values.
 ## 6. Packages
 
 * [webpack](https://webpack.js.org): 3.12.0
+* [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): 2.0.6
+* [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware): 2.22.2
+* [browser-sync](https://github.com/BrowserSync/browser-sync): 2.24.4
 * [gulp](https://github.com/gulpjs/gulp): 4.0.0
+
+More to see [package.json](./package.json).
 
 ## 7. Examples
 

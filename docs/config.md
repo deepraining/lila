@@ -181,6 +181,20 @@
 * `default`: `{}`
 * `since`: `v0.3.0`
 
+## webpackDev
+
+* `desc`: Options for [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware), and only for `dev` command.
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.0`
+
+## webpackHot
+
+* `desc`: Options for [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware), and only for `dev` command.
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.0`
+
 ## provide
 
 * `desc`: Options for [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/).
