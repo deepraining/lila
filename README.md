@@ -393,3 +393,11 @@ See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
 ## 8. Examples
 
 See [lila examples](./examples).
+
+## 9. Develop with distributed intermediate layer node.js application.
+
+When develop node.js application, [nodemon](https://github.com/remy/nodemon) is recommended. It provides a functionality which similar with lila's hot reloading: monitoring for any changes in node.js application and automatically restart the server.
+
+When use node.js application as distributed intermediate layer, we can unite `nodemon`'s automatically restarting the server with `lila`'s hot reloading. Thus we can both modify node.js application and lila web project at the same time, and those changes will both apply to developing environment(browsers and command line).
+
+Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application。](./examples/07-node). 
