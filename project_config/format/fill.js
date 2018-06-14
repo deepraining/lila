@@ -18,11 +18,6 @@ const defaultValue = {
     devServerPort: 8090,
     // Treat all methods as `get` method, thus all methods can access to static file.
     treatAllMethodsAsGet: !1,
-
-
-
-
-
     // Whether mini js files.
     minJs: !1,
     // Whether mini css files.
@@ -31,7 +26,6 @@ const defaultValue = {
     minHtml: !1,
     // Whether record file changes, thus next building only handle changed file.
     recordFileChanges: !0
-
 };
 
 
