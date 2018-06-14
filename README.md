@@ -10,13 +10,13 @@ Install lila:
 npm install lila -g
 ```
 
-New project
+New project:
 
 ```
 lila new demo
 ```
 
-Install local lila
+Install local lila:
 
 ```
 cd demo && npm install lila --save-dev
@@ -33,7 +33,7 @@ cd demo && npm install lila --save-dev
     |-- ...
 ```
 
-* `src`: Source directory, where to place all source codes, like `html, css, less, js, images...` 
+* `src`: Source directory, where to place all source codes, like `html, css, less, js, images...`.
 * `dev`: Development directory, system reserved temporary directory to debug in browser. 
 * `dist`: Production directory, system reserved temporary directory, generated after building. 
 
