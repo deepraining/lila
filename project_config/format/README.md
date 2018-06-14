@@ -3,5 +3,5 @@
 ## Options sequence.
 
 ```
-locaOptions -> customConfig -> envOptions -> commandOptions -> cmdValues 
+localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues 
 ```

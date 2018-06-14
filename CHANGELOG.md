@@ -5,10 +5,11 @@
 - Rewrite core code. 
 - Rewrite documents. 
 - Remove `ignoreNodeModules, network, analyzerPort, browsers` config option. 
-- Add `webpack, rules, plugins, hotModuleReplacement, htmlWebpack, bundleAnalyzer, builtinRules, babelLoaderPresets, babelLoaderPlugins, babelLoaderExclude, onlyWebpack, minJsOptions, minCssOptions, minHtmlOptions, servers, beforeFormatConfig, webpackDev, webpackHot, writeFile` config option. 
+- Add `webpack, rules, plugins, hotModuleReplacement, htmlWebpack, bundleAnalyzer, builtinRules, babelLoaderPresets, babelLoaderPlugins, babelLoaderExclude, onlyWebpack, minJsOptions, minCssOptions, minHtmlOptions, servers, beforeFormatConfig, webpackDev, webpackHot, writeFile, moduleOptions` config option. 
 - Use `babelLoaderExclude` to replace `ignoreNodeModules`. 
 - Use `servers` to replace `network`. 
 - Use `bundleAnalyzer` to replace `analyzerPort`. 
+- Use `moduleOptions` to replace `config.js` of each module's custom config.
 
 ## 0.2.2
 

@@ -76,7 +76,6 @@ Here isn't a `css/less` entry file, for style files are loaded by `javascript`.
         |-- inner/ Workspace of `test/inner` module.
             |-- index.html Html entry file(required).
             |-- register.js Js entry file(required).
-            |-- config.js Custom config file(system reserved).
             |-- index.less
             |-- index.css Main stylesheet file.
             |-- html/ To place more html segments files.
@@ -316,18 +315,7 @@ Each developer can have his/her own private config. See [Project config - localO
 
 ### 5.2 Custom config for each module.
 
-Each module can have its own private config.
-
-1. Defined in a `config.js` file under its workspace. For example, if current module is `test/index`, the config js file is `src/test/index/config.js`;
-2. It can override project config value defined in `lila.config.js`.
-
-##### Example:
-
-```
-module.exports = {
-    // some config
-}
-```
+Each module can have its own private config. See [Project config - moduleOptions](./docs/config.md#moduleOptions).
 
 ### 5.3 Custom config for different environment.
 
@@ -371,7 +359,7 @@ Relative reference: [minimist](https://github.com/substack/minimist).
 ### 5.6 Custom config loading sequences.
 
 ```
-locaOptions -> customConfig -> envOptions -> commandOptions -> cmdValues
+localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues
 ```
 
 The later loaded config values will override the former loaded config values.

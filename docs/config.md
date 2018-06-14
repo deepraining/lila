@@ -8,6 +8,23 @@
 * `since`: `v0.0.1`
 * `note`: This should only either be defined in `lila.config.js` file or be specified from command line.
 
+## <a name="moduleOptions">moduleOptions</a>
+
+* `desc`: Config options for special module. You can override config root attributes according to different module.
+* `type`: `map`
+* `default`: Empty
+* `since`: `v0.3.0`
+* `note`: This should only be defined in `lila.config.js` file.
+* `example`:
+
+```
+{
+    'test/index': {...},
+    'test-2/index': {...},
+    ...
+}
+```
+
 ## cmdAlias
 
 * `desc`: Custom command line arguments alias.
@@ -580,7 +597,7 @@ moduleGroup: {
 * `type`: `map`
 * `default`: Empty
 * `since`: `v0.1.0`
-* `note`: Normally, this always be configured in `custom config`(`config.js` under workspace) of each module.
+* `note`: Normally, this always be configured in `moduleOptions` of each module.
 * `example`:
 
 ```

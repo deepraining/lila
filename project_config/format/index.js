@@ -9,7 +9,7 @@ const envAlias = require('./env_alias');
 const cmdValues = require('./cmd_values');
 
 const localOptions = require('./local_options');
-const customConfig = require('./custom_config');
+const moduleOptions = require('./module_options');
 const envOptions = require('./env_options');
 const commandOptions = require('./command_options');
 
@@ -43,7 +43,7 @@ module.exports = (config, custom) => {
 
     // Options to override config root attribute.
     localOptions(config);
-    customConfig(config);
+    moduleOptions(config);
     envOptions(config);
     commandOptions(config);
     cmdValues(config);
