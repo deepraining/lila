@@ -1,47 +1,56 @@
 
-'use strict';
+const fs = require('fs');
+const fsExtra = require('fs-extra');
 
-var fs = require('fs');
-var _ = require('lodash');
-var fsExtra = require('fs-extra');
-var path = require('path');
-var vars = require('../data/vars');
-var checkConfigFile = require('../util/check_config_file');
+const argv = require('../data/argv');
+const pathInfo = require('../data/path_info');
+const checkConfigFile = require('../util/check_config_file');
+const logger = require('../util/logger');
 
-// module name
-var moduleName = vars.argv._[1];
+// Module name.
+let moduleName = argv._[1];
 
-// missing module name
+// Missing module name.
 if (!moduleName) {
-    logger.error('Missing module name for command: add.', !0, !0);
-    logger.log('You can use this command like follows:');
-    logger.log('lila add <name>');
+    logger.error(`
+    Missing module name for command: add.
+    `);
+    logger.log(`
+    You can use this command as follows:
+    
+    lila add <name>
+    `);
     process.exit(0);
 }
 
-// check if project config file exists
+// Check if project config file exists.
 checkConfigFile();
 
-var projectConfig = require('../project_config');
+// Project config.
+const projectConfig = require('../project_config');
 
-// project html file path
-var htmlFilePath = projectConfig.basePaths.buildRoot + '/src/' + moduleName + '/index.html';
-// project js file path
-var jsFilePath =  projectConfig.basePaths.buildRoot + '/src/' + moduleName + '/index.js';
+// Html file path to be created.
+let htmlFilePath = projectConfig.basePaths.buildRoot + '/src/' + moduleName + '/index.html';
+// Js file path to be created.
+let jsFilePath =  projectConfig.basePaths.buildRoot + '/src/' + moduleName + '/index.js';
 
-// source html file path
-var sourceHtmlFilePath = vars.lilaRoot + '/project_files/demo/base.html';
-// source js file path
-var sourceJsFilePath = vars.lilaRoot + '/project_files/demo/base.js';
+// Html source file path.
+let sourceHtmlFilePath = pathInfo.lilaRoot + '/project_files/demo/base.html';
+// Js source file path.
+let sourceJsFilePath = pathInfo.lilaRoot + '/project_files/demo/base.js';
 
 if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
-    logger.error('Module ' + moduleName + ' has already been added.');
+    logger.error(`
+    Module '${moduleName}' has already been added.
+    `);
     process.exit(0);
 }
 
-// make js file
+// Make js file.
 fsExtra.outputFileSync(jsFilePath, fsExtra.readFileSync(sourceJsFilePath, 'utf8'));
-// make html file
+// Make html file.
 fsExtra.outputFileSync(htmlFilePath, fsExtra.readFileSync(sourceHtmlFilePath, 'utf8'));
 
-logger.success('Lila add module ' + moduleName + ' successful!');
+logger.success(`
+    Lila add module '${moduleName}' successfully!
+`);

@@ -1,6 +1,4 @@
 
-"use strict";
+const gulp = require('gulp');
 
-var gulp = require('gulp');
-
-require('./gulp')(gulp);
+require('./tasks/register')(gulp);

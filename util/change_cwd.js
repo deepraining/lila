@@ -1,9 +1,9 @@
 
-"use strict";
-
-var vars = require('../data/vars');
-
-module.exports = () => {
-    // change current working directory
-    process.chdir(vars.lilaRoot);
+/**
+ * Change current working directory to specified dir.
+ *
+ * @param dir
+ */
+module.exports = dir => {
+    process.chdir(dir);
 };

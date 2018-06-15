@@ -1,96 +1,51 @@
-# lila changelog
+# Changelog
+
+## 0.3.0 [2018-06-13]
+
+- Rewrite core code. 
+- Rewrite documents. 
+- Remove `ignoreNodeModules, network, analyzerPort, browsers` config option. 
+- Add `webpack, rules, plugins, hotModuleReplacement, htmlWebpack, bundleAnalyzer, builtinRules, babelLoaderPresets, babelLoaderPlugins, babelLoaderExclude, onlyWebpack, minJsOptions, minCssOptions, minHtmlOptions, servers, beforeFormatConfig, webpackDev, webpackHot, writeFile, moduleOptions` config option. 
+- Use `babelLoaderExclude` to replace `ignoreNodeModules`. 
+- Use `servers` to replace `network`. 
+- Use `bundleAnalyzer` to replace `analyzerPort`. 
+- Use `moduleOptions` to replace `config.js` of each module's custom config.
 
 ## 0.2.2
 
-- add `excludeCssNodeModules` config option
+- Add `commandOptions` option.
+- Add `define` option.
+- Add `cssModulesExclude` config option(default is `[/node_modules/]`).
+- Add `autoprefixer` support & `browsers` option.
 
 ## 0.2.1
 
-- modify `resolveModules` sequence.
-- announcing that the css module must be defined before js module in `resolveModules, outResolveAlias`.
-- use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`
-- add `import` config option
-- add `friendly-errors-webpack-plugin`
-- add `enableCssModules` config option and [css modules](https://github.com/css-modules/css-modules) support
+- Modify `resolveModules` sequence.
+- Announcing that the css module must be defined before js module in `resolveModules, outResolveAlias`.
+- Use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`.
+- Add `import` config option.
+- Add `friendly-errors-webpack-plugin`.
+- Add `enableCssModules` config option and [css modules](https://github.com/css-modules/css-modules) support.
 
 ## 0.2.0
 
-- add `all` special module.
-- remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option
-- add `staticServerUrl` config option
-- add `require.ensure(), import()` support.
-- add `resolveModules` config option
-- add `local, localOptions` config option
-- add `out, outResolveAlias` config option
+- Add `all` special module.
+- Remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option.
+- Add `staticServerUrl` config option.
+- Add `require.ensure(), import()` support.
+- Add `resolveModules` config option.
+- Add `local, localOptions` config option.
+- Add `out, outResolveAlias` config option.
 
 ## 0.1.5
 
-- add `delete dev` for analyze command
+- Add `delete dev` for analyze command.
 
 ## 0.1.4
 
-- add `analyze, ana` cmd
-- add `analyzerPort` config option
+- Add `analyze, ana` cmd.
+- Add `analyzerPort` config option.
 
 ## 0.1.3
 
-- add `treatAllMethodsAsGet, browserSync` config option.
-
-## 0.1.2
-
-- fix bug of all commands needing local `lila`.
-
-## 0.1.1
-
-- fix bug of `clean` cmd will remove `jpg, png, ...` resource files.
-
-## 0.1.0
-
-- remove `splitJsMap` config, leave `splitJs`
-- redefine directory structure
-- rename `buildOptions` to `envOptions`
-- remove `init-clean` command
-- remove `doc` command
-- remove `mock-express` command
-
-## 0.0.6
-
-- add `renameHtml` config option
-
-## 0.0.5
-
-- add `htmlAbsoluteSuffixes` config option
-- fix `-v, -h` not working bug
-- force minify css remove all comments
-
-## 0.0.4
-
-- add `provide` config option
-- add `fileLoaderSuffixes` config option
-- remove `cssAbsolutePath` config option
-
-## 0.0.3
-
-- make `network` instead of `networkOptions`
-
-## 0.0.2
-
-- add two js entry module support: `test/inner.js`, `test/inner/index.js` (module: `test/inner`)
-- fixed fatal bugs by add `local lila`
-- remove `forever` related, for non-using
-- add `ignoreNodeModules` config option
-
-## 0.0.1
-
-- add `new` command
-- add `add` command
-- add `dev` command
-- add `mock-express` command
-- add `forever` command
-- add `doc` command
-- add `archive/arc` command
-- add `init-clean` command
-- add `clean` command
-- add `revert` command
-- add `dist` command
-- add `sync` command
+- Add `treatAllMethodsAsGet, browserSync` config option.

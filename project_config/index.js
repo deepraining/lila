@@ -1,7 +1,14 @@
 
-var _ = require('lodash');
-var handle = require('./handle');
-var originConfig = require('./origin');
-var config = handle(_.cloneDeep(originConfig));
+const cloneDeep = require('lodash/cloneDeep');
 
+const origin = require('./origin');
+const format = require('./format');
+
+const config = format(cloneDeep(origin));
+
+/**
+ *
+ * Indexing project config.
+ *
+ */
 module.exports = config;

@@ -1,24 +1,28 @@
 
-'use strict';
+const webpack = require('webpack');
 
-var webpack = require('webpack');
-
-var checkConfigFile = require('../util/check_config_file');
-var vars = require('../data/vars');
-var moduleName = vars.argv.module;
+const checkConfigFile = require('../util/check_config_file');
+const logger = require('../util/logger');
+const argv = require('../data/argv');
+const moduleName = argv.module;
 
 if (!moduleName) {
-    logger.error('Missing module name for command: analyze.', !0, !0);
-    logger.log('You can use this command like follows:');
-    logger.log('lila analyze <name>');
+    logger.error(`
+    Missing module name for command: analyze.
+    `);
+    logger.log(`
+    You can use this command as follows:
+    
+    lila analyze <name>
+    `);
     process.exit(0);
 }
 
 checkConfigFile();
 
-var projectConfig = require('../project_config');
+const projectConfig = require('../project_config');
 
-webpack(projectConfig.webpackAnalyzeConfig, (err, stats) => {
+webpack(projectConfig.webpack, (err, stats) => {
     if (err) {
         logger.error(err.stack || err);
         if (err.details) {

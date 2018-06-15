@@ -1,18 +1,16 @@
-/**
- * @author senntyou <jiangjinbelief@163.com>
- */
 
-var fs = require('fs');
+const fs = require('fs');
 
 /**
- * get js entry path
+ * Get js entry path.
  *
- * if current module is `test/inner`
- *     find `src/test/inner/index.js`
+ * @example
+ *
+ * If current module is `test/inner`, the result is `/path/to/src/test/inner/index.js`.
  *
  * @param config
  */
-module.exports = (config) => {
+module.exports = config => {
 
     return config.buildPaths.src.dir + '/' + config.module + '/index.js';
 };

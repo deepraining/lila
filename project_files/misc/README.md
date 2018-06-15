@@ -1,3 +1,3 @@
 # {{projectName}}
 
-a [lila](https://github.com/senntyou/lila) project
+A [lila](https://github.com/senntyou/lila) project.

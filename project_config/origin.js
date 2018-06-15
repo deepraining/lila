@@ -1,10 +1,13 @@
 
-"use strict";
+const fs = require('fs');
 
-var fs = require('fs');
+const pathInfo = require('../data/path_info');
 
-var vars = require('../data/vars');
-var configPath = vars.projectRoot + '/' + vars.configFile;
-var config = fs.existsSync(configPath) ? require(configPath) : {};
+const config = fs.existsSync(pathInfo.configFilePath) ? require(pathInfo.configFilePath) : {};
 
+/**
+ *
+ * Original project config.
+ *
+ */
 module.exports = config;

@@ -4,23 +4,34 @@ const stage0Preset = require("babel-preset-stage-0");
 const transformReactJsx = require("babel-plugin-transform-react-jsx");
 const importPlugin = require("babel-plugin-import");
 
-module.exports = (config) => {
+/**
+ * Make `babel-loader`.
+ *
+ * @param config
+ * @returns {{loader: string, options: {presets: *[], plugins: *[]}, test: RegExp}}
+ */
+module.exports = config => {
+    let presets = config.babelLoaderPresets || [];
+    presets.unshift(stage0Preset);
+    presets.unshift(es2015Preset);
 
-    let plugins = [transformReactJsx];
-    config.import && plugins.push([importPlugin.default, config.import]);
+    let plugins = config.babelLoaderPlugins || [];
+    plugins.unshift([
+        importPlugin.default,
+        config.import || []
+    ]);
+    plugins.unshift(transformReactJsx);
 
-    var loader = {
+    let loader = {
         loader: 'babel-loader',
+        test: /\.(js|jsx)$/,
         options: {
-            presets: [es2015Preset, stage0Preset],
-            plugins: plugins
-        },
-        test: /\.(js|jsx)$/
+            presets,
+            plugins
+        }
     };
 
-    if (config.ignoreNodeModules) {
-        loader.exclude = /node_modules/
-    }
+    config.babelLoaderExclude && (loader.exclude = config.babelLoaderExclude);
 
     return loader;
 };

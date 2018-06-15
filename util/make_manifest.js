@@ -1,15 +1,12 @@
 
-"use strict";
-
 /**
- * make a manifest
+ * Make a manifest file.
  *
- * @param mark Manifest mark
+ * @param mark Manifest mark.
  * @param env
  * @returns {string}
  */
-module.exports = (mark, env) => {
-    !mark && (mark = 'base');
-    typeof env == 'undefined' && (env = 0);
-    return 'manifest_' + mark + '_' + env + '.json';
+module.exports = (mark = 'base', env = 0) => {
+
+    return 'manifest-' + mark + '-' + env + '.json';
 };

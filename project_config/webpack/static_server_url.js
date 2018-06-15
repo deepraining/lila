@@ -1,43 +1,53 @@
 
-const _ = require('lodash');
+const startsWith = require('lodash/startsWith');
 
 /**
- * handle staticServerUrl
+ * Handle `staticServerUrl`.
  *
  * @param config
  */
 module.exports = config => {
-    // ''
+    // empty or ''
     if (!config.staticServerUrl) {
         config.staticServerDomain = '';
         config.staticServerDir = '';
-    }
-    else {
-        // http://
-        let hasHttp = _.startsWith(config.staticServerUrl, 'http://');
-        // https://
-        let hasHttps = _.startsWith(config.staticServerUrl, 'https://');
-        // //
-        let hasDoubleSlashes = _.startsWith(config.staticServerUrl, '//');
-        let prefixLength = 0;
 
-        if (hasHttp || hasHttps || hasDoubleSlashes) {
-            hasHttp && (prefixLength = 7);
-            hasHttps && (prefixLength = 8);
-            hasDoubleSlashes && (prefixLength = 2);
-            let threeSlashIndex = config.staticServerUrl.indexOf('/', prefixLength);
-            if (threeSlashIndex < 0) {
-                config.staticServerDomain = config.staticServerUrl;
-                config.staticServerDir = '';
-            }
-            else {
-                config.staticServerDomain = config.staticServerUrl.slice(0, threeSlashIndex);
-                config.staticServerDir = config.staticServerUrl.slice(threeSlashIndex);
-            }
-        }
-        else {
-            config.staticServerDomain = '';
-            config.staticServerDir = config.staticServerUrl;
-        }
+        return;
+    }
+
+    // http://
+    let hasHttp = startsWith(config.staticServerUrl, 'http://');
+    // https://
+    let hasHttps = startsWith(config.staticServerUrl, 'https://');
+    // //
+    let hasDoubleSlashes = startsWith(config.staticServerUrl, '//');
+
+    // No domain, just directory.
+    if (!hasHttp && !hasHttps && !hasDoubleSlashes) {
+        config.staticServerDomain = '';
+        config.staticServerDir = config.staticServerUrl;
+
+        return;
+    }
+
+
+    let prefixLength = 0;
+
+    if (hasHttp) prefixLength = 7;
+    else if (hasHttps) prefixLength = 8;
+    else if (hasDoubleSlashes) prefixLength = 2;
+
+    // Three slash index(match directory).
+    let threeSlashIndex = config.staticServerUrl.indexOf('/', prefixLength);
+
+    // Only domain, no directory.
+    if (threeSlashIndex < 0) {
+        config.staticServerDomain = config.staticServerUrl;
+        config.staticServerDir = '';
+    }
+    // Have both.
+    else {
+        config.staticServerDomain = config.staticServerUrl.slice(0, threeSlashIndex);
+        config.staticServerDir = config.staticServerUrl.slice(threeSlashIndex);
     }
 };

@@ -1,12 +1,14 @@
+
 /**
  * make less loader
  *
  * @param useCssModules
- * @param includeNodeModules
- * @param excludeNodeModules
+ * @param excludeMatches
+ * @param include
+ * @param exclude
  * @returns {{test: RegExp, use: *[]}}
  */
-module.exports = (useCssModules = !1, includeNodeModules = !1, excludeNodeModules = !1) => {
+module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1) => {
     let loader = {
         test: /\.less$/,
         use: [
@@ -28,8 +30,8 @@ module.exports = (useCssModules = !1, includeNodeModules = !1, excludeNodeModule
         ]
     };
 
-    includeNodeModules && (loader.include = /node_modules/);
-    excludeNodeModules && (loader.exclude = /node_modules/);
+    include && (loader.include = excludeMatches);
+    exclude && (loader.exclude = excludeMatches);
 
     return loader;
 };

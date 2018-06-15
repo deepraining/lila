@@ -1,18 +1,16 @@
 
-"use strict";
-
 /**
- * execute a command, just like in command line
+ * Execute a command, just like in command line.
  *
  * @param cmd
  */
-module.exports = (cmd) => {
-    var cmdArray = cmd.split(' ');
+module.exports = cmd => {
+    let cmdArray = cmd.split(/\s+/);
 
-    // remove `lila` in the first place
+    // Remove `lila`(the first element).
     cmdArray.shift();
 
-    cmdArray.forEach(function (item) {
+    cmdArray.forEach(item => {
         item && process.argv.push(item);
     });
 

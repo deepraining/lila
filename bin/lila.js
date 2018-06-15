@@ -1,53 +1,62 @@
 #!/usr/bin/env node
 
-'use strict';
+const fs = require('fs');
+const path = require('path');
 
-var fs = require('fs');
-var path = require('path');
+const argv = require('../data/argv');
+const pathInfo = require('../data/path_info');
+const packageJson = require('../package.json');
+const logger = require('../util/logger');
+const help = require('../util/help');
 
-var vars = require('../data/vars');
+// Commands not need to go to local to execute.
+const notToLocalToExec = ['new', 'add', 'archive', 'arc', 'clean', 'revert'];
+
 // command name
-var command = vars.argv._ && vars.argv._[0];
-var commandsNeedsLocalLila = require('../data/needs_local_lila');
-var packageJson = require('../data/package_json');
-var version = packageJson.version;
-// here must require manually, for logger is not a global variable
-var logger = require('../util/logger');
-var showHelp = require('../util/show_help');
+let command = argv._[0];
+// package version
+let version = packageJson.version;
 
 // -v --version
-if (vars.argv.v || vars.argv.version) {
+if (argv.v || argv.version) {
     logger.log(version);
     process.exit(0);
 }
 // -h --help
-if (vars.argv.h || vars.argv.help) {
-    showHelp();
+if (argv.h || argv.help) {
+    help();
     process.exit(0);
 }
 
-var cwd = process.cwd();
+// no command
+if (!command) {
+    help();
+    process.exit(0);
+}
 
-var localLilaPath = path.join(cwd, 'node_modules/lila');
-var localLilaPkgPath = path.join(localLilaPath, 'package.json');
-var hasLocalLila = fs.existsSync(localLilaPkgPath);
-var needLocalLila = command && commandsNeedsLocalLila.indexOf(command) > -1;
+// Do not need go to local.
+if (notToLocalToExec.indexOf(command) > -1) {
+    require('../index');
+}
+// Need to go to local to execute.
+else {
+    let localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
+    if (!fs.existsSync(localPkgPath)) {
+        logger.error(`
+    Missing local lila.    
+        `);
+        logger.log(`
+    Please install local lila before next running:
+    
+    npm install lila --save-dev
+        `);
 
-// need local lila
-if (needLocalLila) {
-    if (!hasLocalLila) {
-        logger.error('missing local lila', !0, !0);
-        logger.log('please install local lila before next running:');
-        logger.log('npm install lila --save-dev');
         process.exit(0);
     }
-    else {
-        var localLilaPkg = require(localLilaPkgPath);
-        var localLilaIndexPath = path.join(localLilaPath, localLilaPkg.main);
 
-        require(localLilaIndexPath);
-    }
-}
-else {
-    require('../index');
+    let localPkg = require(localPkgPath);
+
+    // Get package.json main attribute.
+    let localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
+    require(localPkgIndexPath);
 }

@@ -1,17 +1,26 @@
-'use strict';
 
-var fs = require('fs');
-var gulpCli = require('gulp-cli');
-var _ = require('lodash');
+const fs = require('fs');
+const gulp = require('gulp');
 
-var changeCwd = require('../util/change_cwd');
-var vars = require('../data/vars');
+const pathInfo = require('../data/path_info');
+const logger = require('../util/logger');
+const registerTasks = require('../tasks/register');
 
-if (!fs.existsSync(vars.projectRoot + '/dist')) {
-    logger.error('Missing `dist` directory for command: clean.');
+if (!fs.existsSync(pathInfo.projectRoot + '/dist')) {
+    logger.error(`
+    Missing 'dist' directory for command: clean.
+    `);
     process.exit(0);
 }
 
-changeCwd();
+// Register gulp tasks.
+registerTasks(gulp);
 
-gulpCli();
+// Execute task.
+gulp.series('clean', cb => {
+    logger.success(`
+    Clean 'dist' directory successfully.
+    `);
+
+    cb();
+})();

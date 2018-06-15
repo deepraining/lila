@@ -1,35 +1,88 @@
 
-"use strict";
-
-var chalk = require('chalk');
-
-var prefix = '| ';
+const chalk = require('chalk');
 
 /**
+ * 11 spaces.
+ *
+ * @type {string}
+ */
+const prefixSpaces = '           ';
+
+/**
+ * Get string to display.
  *
  * @param str
- * @param pre Pre next line
- * @param post Post next line
- * @returns {string}
+ * @param options
+ * @returns {*}
  */
-var getString = (str, pre, post) => {
-    return (pre ? '\n' : '') + prefix + str + (post ? '\n' : '');
+const getStr = (str, options) => {
+    // prefix.
+    options.prefix && (str = prefixSpaces + str);
+
+    // Prepend ln.
+    options.preLn && (str = '\n' + str);
+
+    // Append ln.
+    options.postLn && (str += '\n');
+
+    return str;
 };
 
+/**
+ * global logger
+ *
+ * @type {{
+ *   log: function(*=),
+ *   info: function(*=),
+ *   warn: function(*=),
+ *   error: function(*=),
+ *   success: function(*=)}
+ * }
+ */
 module.exports = {
-    log: (str, pre, post) => {
-        console.log(getString(str, pre, post));
+    /**
+     * Log.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    log: (str, options = {}) => {
+        console.log(getStr(str, options));
     },
-    info: (str, pre, post) => {
-        console.info(chalk.blue(getString(str, pre, post)));
+    /**
+     * Info.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    info: (str, options = {}) => {
+        console.info(chalk.blue(getStr(str, options)));
     },
-    warn: (str, pre, post) => {
-        console.warn(chalk.yellow(getString(str, pre, post)));
+    /**
+     * Warn.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    warn: (str, options = {}) => {
+        console.warn(chalk.yellow(getStr(str, options)));
     },
-    error: (str, pre, post) => {
-        console.error(chalk.red(getString(str, pre, post)));
+    /**
+     * Error.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    error: (str, options = {}) => {
+        console.error(chalk.red(getStr(str, options)));
     },
-    success: (str, pre, post) => {
-        console.log(chalk.green(getString(str, pre, post)));
+    /**
+     * Success.
+     *
+     * @param str
+     * @param options Whether add prefix.
+     */
+    success: (str, options = {}) => {
+        console.log(chalk.green(getStr(str, options)));
     }
 };

@@ -1,9 +1,14 @@
 
-var rd = require('rd');
+const rd = require('rd');
 
-module.exports = (dir) => {
-
-    var count = 0;
+/**
+ * Get all files count of a directory.
+ *
+ * @param dir
+ * @returns {number}
+ */
+module.exports = dir => {
+    let count = 0;
 
     rd.eachFileFilterSync(dir, () => {
         count += 1;

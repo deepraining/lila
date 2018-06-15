@@ -1,18 +1,24 @@
 
-"use strict";
+const fs = require('fs');
 
-var fs = require('fs');
-
-var fileUtil = {
+/**
+ * File utils.
+ *
+ * @type {{
+ *     dirExist: function(*=),
+ *     fileExist: function(*=)
+ * }}
+ */
+module.exports = {
     /**
-     * check directory is exist
+     * Check directory if exists.
      *
      * @param dirPath
      * @returns {boolean}
      */
-    dirExist: (dirPath) => {
+    dirExist: dirPath => {
         try {
-            var stat = fs.statSync(dirPath);
+            const stat = fs.statSync(dirPath);
 
             return stat.isDirectory();
         } catch (err) {
@@ -22,14 +28,14 @@ var fileUtil = {
         }
     },
     /**
-     * check file is exist
+     * Check file if exists.
      *
      * @param filePath
      * @returns {boolean}
      */
-    fileExist: (filePath) => {
+    fileExist: filePath => {
         try {
-            var stat = fs.statSync(filePath);
+            const stat = fs.statSync(filePath);
 
             return stat.isFile();
         } catch (err) {
@@ -39,5 +45,3 @@ var fileUtil = {
         }
     }
 };
-
-module.exports = fileUtil;
