@@ -8,9 +8,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
  * @param excludeMatches
  * @param include
  * @param exclude
+ * @param localIdentName
  * @returns {{test: RegExp, use: *}}
  */
-module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1) => {
+module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1, localIdentName) => {
     let loader = {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -19,7 +20,8 @@ module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude
                 {
                     loader: 'css-loader',
                     options: {
-                        modules: useCssModules
+                        modules: useCssModules,
+                        localIdentName
                     }
                 }
             ]

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1 [2018-06-21]
+
+- Add `cssModulesName` config option.
+
 ## 0.3.0 [2018-06-13]
 
 - Rewrite core code. 

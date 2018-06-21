@@ -308,6 +308,14 @@
 * `example`: Exclude files under `src/common` & `node_modules`: `[/src\/common/, /node_modules/]`.
 * `since`: `v0.2.2`
 
+## cssModulesName
+
+* `desc`: How to rename css class name when transform `css-modules`. [More to see](https://github.com/webpack-contrib/css-loader#localidentname).
+* `type`: `string`
+* `default`: `[hash:base64]`
+* `example`: `[path][name]__[local]--[hash:base64:5]`.
+* `since`: `v0.3.1`
+
 ## packCssSeparately
 
 * `bg`: Normally, all js and css files will be built into one big `js` file.

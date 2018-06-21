@@ -29,59 +29,60 @@ module.exports = config => {
     );
 
     let excludeMatches = config.cssModulesExclude;
+    let localIdentName = config.cssModulesName;
     if (config.packCssSeparately) {
         if (config.enableCssModules && excludeMatches) {
             !config.disableExtractCssLoader && config.webpack.module.rules.push(
-                makeExtractCssLoader(!1, excludeMatches, !0, !1),
-                makeExtractCssLoader(!0, excludeMatches, !1, !0)
+                makeExtractCssLoader(!1, excludeMatches, !0, !1, localIdentName),
+                makeExtractCssLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
             !config.disableExtractLessLoader && config.webpack.module.rules.push(
-                makeExtractLessLoader(!1, excludeMatches, !0, !1),
-                makeExtractLessLoader(!0, excludeMatches, !1, !0)
+                makeExtractLessLoader(!1, excludeMatches, !0, !1, localIdentName),
+                makeExtractLessLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
         }
         else if (config.enableCssModules) {
             !config.disableExtractCssLoader && config.webpack.module.rules.push(
-                makeExtractCssLoader(!0, excludeMatches, !1, !1)
+                makeExtractCssLoader(!0, excludeMatches, !1, !1, localIdentName)
             );
             !config.disableExtractLessLoader && config.webpack.module.rules.push(
-                makeExtractLessLoader(!0, excludeMatches, !1, !1)
+                makeExtractLessLoader(!0, excludeMatches, !1, !1, localIdentName)
             );
         }
         else {
             !config.disableExtractCssLoader && config.webpack.module.rules.push(
-                makeExtractCssLoader(!1, [], !1, !1)
+                makeExtractCssLoader(!1, [], !1, !1, localIdentName)
             );
             !config.disableExtractLessLoader && config.webpack.module.rules.push(
-                makeExtractLessLoader(!1, [], !1, !1)
+                makeExtractLessLoader(!1, [], !1, !1, localIdentName)
             );
         }
     }
     else {
         if (config.enableCssModules && excludeMatches) {
             !config.disableCssLoader && config.webpack.module.rules.push(
-                makeCssLoader(!1, excludeMatches, !0, !1),
-                makeCssLoader(!0, excludeMatches, !1, !0)
+                makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
+                makeCssLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
             !config.disableLessLoader && config.webpack.module.rules.push(
-                makeLessLoader(!1, excludeMatches, !0, !1),
-                makeLessLoader(!0, excludeMatches, !1, !0)
+                makeLessLoader(!1, excludeMatches, !0, !1, localIdentName),
+                makeLessLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
         }
         else if (config.enableCssModules) {
             !config.disableCssLoader && config.webpack.module.rules.push(
-                makeCssLoader(!0, excludeMatches, !1, !1)
+                makeCssLoader(!0, excludeMatches, !1, !1, localIdentName)
             );
             !config.disableLessLoader && config.webpack.module.rules.push(
-                makeLessLoader(!0, excludeMatches, !1, !1)
+                makeLessLoader(!0, excludeMatches, !1, !1, localIdentName)
             );
         }
         else {
             !config.disableCssLoader && config.webpack.module.rules.push(
-                makeCssLoader(!1, [], !1, !1)
+                makeCssLoader(!1, [], !1, !1, localIdentName)
             );
             !config.disableLessLoader && config.webpack.module.rules.push(
-                makeLessLoader(!1, [], !1, !1)
+                makeLessLoader(!1, [], !1, !1, localIdentName)
             );
         }
     }

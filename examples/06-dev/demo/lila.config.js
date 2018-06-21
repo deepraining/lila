@@ -75,7 +75,8 @@ module.exports = {
         dev: {
             define: {
                 globalDefine: JSON.stringify('dev')
-            }
+            },
+            cssModulesName: '[path][name]__[local]--[hash:base64:5]'
         },
         dist: {
             define: {
