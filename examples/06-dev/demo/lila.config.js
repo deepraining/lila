@@ -99,7 +99,7 @@ module.exports = {
     },
     // writeFile: !0,
     moduleOptions: {
-        'test/index': {
+        'test/index,test-3/index': {
             packCssSeparately: !0,
             splitJs: {
                 vendor: ['jquery', 'underscore'],
@@ -107,25 +107,14 @@ module.exports = {
                 common: ['alias/base', 'alias/common']
             }
         },
-        'test-2/index': {
+        'test-2/index,test-5/*': {
             packCssSeparately: !0
-        },
-        'test-3/index': {
-            packCssSeparately: !0,
-            splitJs: {
-                vendor: ['jquery', 'underscore'],
-                vendor2: ['react', 'react-dom'],
-                common: ['alias/base', 'alias/common']
-            }
         },
         'test-4/index': {
             packCssSeparately: !0,
             splitJs: {
                 vendor: ['jquery', 'underscore', 'react', 'react-dom']
             }
-        },
-        'test-5/index': {
-            packCssSeparately: !0
         }
     }
 };

@@ -2,6 +2,7 @@
 
 ## 0.3.1 [2018-06-21]
 
+- `moduleOptions` add multiple modules support.
 - Add `cssModulesName` config option.
 
 ## 0.3.0 [2018-06-13]

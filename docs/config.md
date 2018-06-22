@@ -19,8 +19,10 @@
 
 ```
 {
-    'test/index': {...},
-    'test-2/index': {...},
+    'test/index': {...}, // One module
+    'test-2/index,test-3/index': {...}, // Multiple modules
+    'test-4/*': {...}, // All modules under `test-4` directory
+    'test-5/index,test-6/*': {...}, // Multiple modes
     ...
 }
 ```
