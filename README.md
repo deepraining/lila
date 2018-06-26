@@ -364,7 +364,7 @@ localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues
 
 The later loaded config values will override the former loaded config values.
 
-## 6. Use mock data im developing.
+## 6. Use mock data in developing.
 
 When in developing, using mock data to debug locally is recommended. There are two ways:
 
@@ -379,7 +379,7 @@ You can put all your `json` files into `data` directory(`data` is recommended, n
     |-- ...
 ``` 
 
-Now, you can access to those files through `/src/one/module/data/file1.json, /src/one/module/data/file2.json...`.
+Now, you can access to those files through `/src/one/module/data/file1.json, /src/one/module/data/file2.json, ...`.
 
 ### 6.2 Use `js` files.
 
@@ -392,7 +392,7 @@ Using `json` files has a big disadvantage, that we could not make a `if`, `loop`
     |-- ...
 ``` 
 
-Now, you can access to those files through `/src/one/module/data/file1, /src/one/module/data/file2...`.
+Now, you can access to those files through `/src/one/module/data/file1, /src/one/module/data/file2, ...`.
 
 Normally, a `js` file should be written like this:
 
@@ -406,7 +406,7 @@ Arguments `req, res` refer to [Node Http](https://nodejs.org/dist/latest-v8.x/do
 
 ##### Note.
 
-* The js file name could not has `.` character, or it will not take effect. 
+* The js file name should not have `.` character, or it will not take effectively. 
 * You can disable this by set `mock: false` in `lila.config.js`. 
 
 ### 6.3 Your own ways.
@@ -415,7 +415,7 @@ Also, you can use your own way to make it, like [mock.js](https://github.com/nuy
 
 ### 6.4 With [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch).
 
-You can use with [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch) to develop more efficient.
+You can use [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch) to develop more efficient.
 
 ## 7. Develop with distributed intermediate layer node.js application.
 
