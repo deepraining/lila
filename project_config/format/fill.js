@@ -7,7 +7,7 @@ const defaultValue = {
     // How to exclude files when use [babel-loader](https://github.com/babel/babel-loader).
     babelLoaderExclude: [/node_modules/],
     // Whether to use [css modules](https://github.com/css-modules/css-modules).
-    enableCssModules: !1,
+    cssModules: !1,
     // How to exclude files when transform `css-modules`.
     cssModulesExclude: [/node_modules/],
     // Whether pack css into a single css file separately.
@@ -25,7 +25,9 @@ const defaultValue = {
     // Whether mini html files.
     minHtml: !1,
     // Whether record file changes, thus next building only handle changed file.
-    recordFileChanges: !0
+    recordFileChanges: !0,
+    // Whether to use mock data in developing.
+    mock: !0
 };
 
 

@@ -364,7 +364,68 @@ localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues
 
 The later loaded config values will override the former loaded config values.
 
-## 6. Packages
+## 6. Use mock data im developing.
+
+When in developing, using mock data to debug locally is recommended. There are two ways:
+
+### 6.1 Use `json` files.
+
+You can put all your `json` files into `data` directory(`data` is recommended, not required) of one module's workspace, like this:
+
+```
+|-- /src/one/module/data/ Mock data files directory
+    |-- file1.json
+    |-- file2.json
+    |-- ...
+``` 
+
+Now, you can access to those files through `/src/one/module/data/file1.json, /src/one/module/data/file2.json...`.
+
+### 6.2 Use `js` files.
+
+Using `json` files has a big disadvantage, that we could not make a `if`, `loop` etc, to dynamically get response data. Thus, we can use `js` files to avoid this.
+
+```
+|-- /src/one/module/data/ Mock data files directory
+    |-- file1.js
+    |-- file2.js
+    |-- ...
+``` 
+
+Now, you can access to those files through `/src/one/module/data/file1, /src/one/module/data/file2...`.
+
+Normally, a `js` file should be written like this:
+
+```
+module.exports = (req, res) => {
+    // Do everything you want.
+};
+```
+
+Arguments `req, res` refer to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html).
+
+##### Note.
+
+* The js file name could not has `.` character, or it will not take effect. 
+* You can disable this by set `mock: false` in `lila.config.js`. 
+
+### 6.3 Your own ways.
+
+Also, you can use your own way to make it, like [mock.js](https://github.com/nuysoft/Mock).
+
+### 6.4 With [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch).
+
+You can use with [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch) to develop more efficient.
+
+## 7. Develop with distributed intermediate layer node.js application.
+
+When develop node.js application, [nodemon](https://github.com/remy/nodemon) is recommended. It provides a functionality which is similar with lila's hot reloading: monitor for any changes in node.js application and automatically restart the server.
+
+When use node.js application as distributed intermediate layer, we can unite `nodemon`'s automatically restarting the server with `lila`'s hot reloading. Thus we can both modify node.js application and lila web project at the same time, and those changes will both apply to developing environment(browsers and command line).
+
+Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/07-node). 
+
+## 8. Packages
 
 * [webpack](https://webpack.js.org): 3.12.0
 * [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): 2.0.6
@@ -374,18 +435,11 @@ The later loaded config values will override the former loaded config values.
 
 More to see [package.json](./package.json).
 
-## 7. Update to new version from old versions.
+## 9. Update to new version from old versions.
 
 See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
 
-## 8. Examples
+## 10. Examples
 
 See [lila examples](./examples).
 
-## 9. Develop with distributed intermediate layer node.js application.
-
-When develop node.js application, [nodemon](https://github.com/remy/nodemon) is recommended. It provides a functionality which is similar with lila's hot reloading: monitor for any changes in node.js application and automatically restart the server.
-
-When use node.js application as distributed intermediate layer, we can unite `nodemon`'s automatically restarting the server with `lila`'s hot reloading. Thus we can both modify node.js application and lila web project at the same time, and those changes will both apply to developing environment(browsers and command line).
-
-Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/07-node). 

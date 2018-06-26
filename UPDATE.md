@@ -1,6 +1,10 @@
 # How to update.
 
-## `0.2` -> `0.3`
+## `0.3.0` -> `0.3.1`
+
+- Use `cssModules` to replace `enableCssModules`. 
+
+## `0.2` -> `0.3.0`
 
 - Use `babelLoaderExclude` to replace `ignoreNodeModules`. 
 - Use `servers` to replace `network`. 

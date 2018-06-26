@@ -2,6 +2,8 @@
 
 ## 0.3.1 [2018-06-21]
 
+- Add `mock` config option and `js` mock files support.
+- Use `cssModules` to replace `enableCssModules`. 
 - `moduleOptions` add multiple modules support.
 - Add `cssModulesName` config option.
 

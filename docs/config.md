@@ -14,7 +14,7 @@
 * `type`: `map`
 * `default`: Empty
 * `since`: `v0.3.0`
-* `note`: This should only be defined in `lila.config.js` file.
+* `note`: This should only be defined in config's root attribute.
 * `example`:
 
 ```
@@ -32,7 +32,7 @@
 * `desc`: Custom command line arguments alias.
 * `type`: `map`
 * `since`: `v0.0.1`
-* `note`: This should only be defined in `lila.config.js` file.
+* `note`: This should only be defined in config's root attribute.
 * `default`:
 
 ```
@@ -59,7 +59,7 @@
 * `type`: `map`
 * `default`: Empty
 * `since`: `v0.2.0`
-* `note`: This should only be defined in `lila.config.js` file.
+* `note`: This should only be defined in config's root attribute.
 * `example`:
 
 ```
@@ -101,7 +101,7 @@
 * `desc`: Environment alias, semantically specify current environment from command line.
 * `type`: `map`
 * `since`: `v0.0.1`
-* `note`: This should only be defined in `lila.config.js` file.
+* `note`: This should only be defined in config's root attribute.
 * `default`:
 
 ```
@@ -136,7 +136,7 @@
 * `desc`: Base paths of project.
 * `type`: `map`
 * `since`: `v0.0.1`
-* `note`: This should only be defined in `lila.config.js` file.
+* `note`: This should only be defined in config's root attribute.
 * `default`:
 
 ```
@@ -295,7 +295,7 @@
 * `default`: `[]`
 * `since`: `v0.2.1`
 
-## enableCssModules
+## cssModules
 
 * `desc`: Whether to use [css modules](https://github.com/css-modules/css-modules).
 * `type`: `bool`
@@ -579,8 +579,6 @@ moduleGroup: {
 }
 ```
 
-
-
 ## backupHtml
 
 * `desc`: Whether backup html(or converted files from html) after each building.
@@ -634,6 +632,13 @@ Remote servers config.
 See [Project config - servers](./servers.md).
 
 * `since`: `v0.3.0`
+
+## mock
+
+* `desc`: Whether to use `js` files mock data in developing. 
+* `type`: `bool`
+* `default`: `true`
+* `since`: `v0.3.1`
 
 ## beforeFormatConfig
 

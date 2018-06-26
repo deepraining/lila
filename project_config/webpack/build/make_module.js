@@ -31,7 +31,7 @@ module.exports = config => {
     let excludeMatches = config.cssModulesExclude;
     let localIdentName = config.cssModulesName;
     if (config.packCssSeparately) {
-        if (config.enableCssModules && excludeMatches) {
+        if (config.cssModules && excludeMatches) {
             !config.disableExtractCssLoader && config.webpack.module.rules.push(
                 makeExtractCssLoader(!1, excludeMatches, !0, !1, localIdentName),
                 makeExtractCssLoader(!0, excludeMatches, !1, !0, localIdentName)
@@ -41,7 +41,7 @@ module.exports = config => {
                 makeExtractLessLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
         }
-        else if (config.enableCssModules) {
+        else if (config.cssModules) {
             !config.disableExtractCssLoader && config.webpack.module.rules.push(
                 makeExtractCssLoader(!0, excludeMatches, !1, !1, localIdentName)
             );
@@ -59,7 +59,7 @@ module.exports = config => {
         }
     }
     else {
-        if (config.enableCssModules && excludeMatches) {
+        if (config.cssModules && excludeMatches) {
             !config.disableCssLoader && config.webpack.module.rules.push(
                 makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
                 makeCssLoader(!0, excludeMatches, !1, !0, localIdentName)
@@ -69,7 +69,7 @@ module.exports = config => {
                 makeLessLoader(!0, excludeMatches, !1, !0, localIdentName)
             );
         }
-        else if (config.enableCssModules) {
+        else if (config.cssModules) {
             !config.disableCssLoader && config.webpack.module.rules.push(
                 makeCssLoader(!0, excludeMatches, !1, !1, localIdentName)
             );

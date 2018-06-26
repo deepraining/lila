@@ -29,7 +29,7 @@ module.exports = config => {
 
     let excludeMatches = config.cssModulesExclude;
     let localIdentName = config.cssModulesName;
-    if (config.enableCssModules && excludeMatches) {
+    if (config.cssModules && excludeMatches) {
         !config.disableCssLoader && config.webpack.module.rules.push(
             makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
             makeCssLoader(!0, excludeMatches, !1, !0, localIdentName)
@@ -39,7 +39,7 @@ module.exports = config => {
             makeLessLoader(!0, excludeMatches, !1, !0, localIdentName)
         );
     }
-    else if (config.enableCssModules) {
+    else if (config.cssModules) {
         !config.disableCssLoader && config.webpack.module.rules.push(
             makeCssLoader(!0, excludeMatches, !1, !1, localIdentName)
         );

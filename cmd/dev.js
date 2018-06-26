@@ -28,6 +28,8 @@ checkConfigFile();
 
 // Project config.
 const projectConfig = require('../project_config');
+// Imported after check project config.
+const tryMock = require('../util/try_mock');
 
 // Make a compiler.
 const compiler = webpack(projectConfig.webpack);
@@ -46,6 +48,7 @@ browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + proj
 
 // This must be in the first place.
 projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
+projectConfig.mock && browserSyncConfig.middleware.unshift(tryMock);
 
 let devOptions = projectConfig.webpackDev || {};
 devOptions.stats = 'errors-only';
