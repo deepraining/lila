@@ -1,6 +1,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const trimEnd = require('lodash/trimEnd');
 
 const logger = require('../util/logger');
 const projectConfig = require('../project_config');
@@ -14,6 +15,11 @@ const projectConfig = require('../project_config');
  */
 module.exports = (req, res, next) => {
     let { url, method } = req;
+
+    // url?key1=value1
+    url = url.split('?')[0];
+    // path/to/index/
+    url = trimEnd(url, '/');
 
     let urls = url.split('/');
     let filename = urls[urls.length - 1];
