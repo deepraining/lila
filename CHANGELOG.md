@@ -4,7 +4,7 @@
 
 - Add `mock` config option and `js` mock files support.
 - Use `cssModules` to replace `enableCssModules`. 
-- `moduleOptions` add multiple modules support.
+- `moduleOptions` add multiple modules `test-1/*,test-2/name` support.
 - Add `cssModulesName` config option.
 
 ## 0.3.0 [2018-06-13]
