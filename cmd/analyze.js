@@ -28,7 +28,7 @@ webpack(projectConfig.webpack, (err, stats) => {
         if (err.details) {
             logger.error(err.details);
         }
-        process.exit(0);
+        process.exit(1);
     }
 
     const info = stats.toJson();
@@ -37,7 +37,7 @@ webpack(projectConfig.webpack, (err, stats) => {
         info.errors.forEach((error) => {
             logger.error(error);
         });
-        process.exit(0);
+        process.exit(1);
     }
 
     if (stats.hasWarnings()) {

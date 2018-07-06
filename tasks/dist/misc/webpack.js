@@ -14,7 +14,7 @@ module.exports = function webpackBuild(cb) {
             // if (err.details) {
             //     logger.error(err.details);
             // }
-            // process.exit(0);
+            // process.exit(1);
             throw err;
         }
 
@@ -26,7 +26,7 @@ module.exports = function webpackBuild(cb) {
 
                 throw error;
             });
-            // process.exit(0);
+            // process.exit(1);
         }
 
         if (stats.hasWarnings()) {

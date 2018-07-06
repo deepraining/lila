@@ -13,6 +13,6 @@ module.exports = () => {
         logger.error(`
     'Missing config file '${pathInfo.configFile}' in project root directory, and it's required by lila.'    
         `);
-        process.exit(0);
+        process.exit(1);
     }
 };
