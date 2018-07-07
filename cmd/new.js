@@ -46,6 +46,24 @@ copyRootFile(projectPath, '.npmrc', !0);
 // Make `.editorconfig` file.
 copyRootFile(projectPath, '.editorconfig', !0);
 
+// Make `.eslintrc` file.
+copyRootFile(projectPath, '.eslintrc', !0);
+
+// Make `.eslintignore` file.
+copyRootFile(projectPath, '.eslintignore', !0);
+
+// Make `.stylelintrc` file.
+copyRootFile(projectPath, '.stylelintrc', !0);
+
+// Make `.stylelintignore` file.
+copyRootFile(projectPath, '.stylelintignore', !0);
+
+// Make `.prettierrc` file.
+copyRootFile(projectPath, '.prettierrc', !0);
+
+// Make `.prettierignore` file.
+copyRootFile(projectPath, '.prettierignore', !0);
+
 // Make `package.json` file.
 copyRootFile(projectPath, 'package.json', !0, '{{projectName}}', projectName);
 
