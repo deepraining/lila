@@ -655,3 +655,19 @@ See [Project config - servers](./servers.md).
 ```
 * `config`: Project config.
 * `argv`: Arguments from command line. See [minimist](https://github.com/substack/minimist). 
+
+## esLintOptions
+
+* `desc`: Options to initialize [eslint](https://github.com/eslint/eslint) CLIEngine.
+* `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.1`
+
+## esLintFix
+
+* `desc`: Whether to try to fix errors and warnings when use [eslint](https://github.com/eslint/eslint) CLIEngine.
+* `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.1`

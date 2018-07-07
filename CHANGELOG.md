@@ -2,6 +2,8 @@
 
 ## 0.3.1 [2018-06-21]
 
+- Add `esLintOptions, esLintFix` option.
+- Add `eslint` command.
 - Add `mock` config option and `js` mock files support.
 - Use `cssModules` to replace `enableCssModules`. 
 - `moduleOptions` add multiple modules `test-1/*,test-2/name` support.
