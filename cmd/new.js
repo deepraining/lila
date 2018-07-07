@@ -40,6 +40,12 @@ fsExtra.ensureFileSync(path.join(projectPath, 'project/src/.gitkeep'));
 // Make `.gitignore` file.
 copyRootFile(projectPath, '.gitignore', !0);
 
+// Make `.npmrc` file.
+copyRootFile(projectPath, '.npmrc', !0);
+
+// Make `.editorconfig` file.
+copyRootFile(projectPath, '.editorconfig', !0);
+
 // Make `package.json` file.
 copyRootFile(projectPath, 'package.json', !0, '{{projectName}}', projectName);
 
