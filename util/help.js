@@ -74,6 +74,10 @@ const commands = [
   {
     name: 'eslint',
     desc: 'Identify and report on patterns in JavaScript.'
+  },
+  {
+    name: 'stylelint',
+    desc: 'Check errors and enforce consistent conventions in stylesheets.'
   }
 ];
 

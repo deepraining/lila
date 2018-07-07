@@ -2,6 +2,8 @@
 
 ## 0.3.1 [2018-06-21]
 
+- Add `styleLintOptions, styleLintFix` option.
+- Add `stylelint` command.
 - Add `esLintOptions, esLintFix` option.
 - Add `eslint` command.
 - Add `mock` config option and `js` mock files support.

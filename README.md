@@ -249,15 +249,23 @@ lila eslint moduleName
 
 * `since`: `v0.3.1`
 
-### 3.8 Arguments.
+### 3.8 `stylelint`: Check errors and enforce consistent conventions in stylesheets.
 
-#### 3.8.1 `env/e`:
+```
+lila stylelint moduleName
+```
+
+* `since`: `v0.3.1`
+
+### 3.9 Arguments.
+
+#### 3.9.1 `env/e`:
 
 * Specify current environment through command line, example: `-e 0`, `-e 1`;
 * If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
 * If env is not provided, default is `0`.
 
-#### 3.8.2 `local/l`
+#### 3.9.2 `local/l`
 
 * Specify current local name through command line.
 
@@ -265,7 +273,7 @@ lila eslint moduleName
 
 * Specify whether to use `outResolveAlias`.
 
-#### 3.8.3 `moduleName`
+#### 3.9.3 `moduleName`
 
 * `test/index`: A single file module.
 * `test/index,test/index2`: Multiple modules.

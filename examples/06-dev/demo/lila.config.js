@@ -116,6 +116,7 @@ module.exports = {
       }
     }
   },
-  esLintFix: !0
+  esLintFix: !0,
+  styleLintFix: !0,
 };
 

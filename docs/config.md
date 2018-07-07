@@ -666,8 +666,24 @@ See [Project config - servers](./servers.md).
 
 ## esLintFix
 
-* `desc`: Whether to try to fix errors and warnings when use [eslint](https://github.com/eslint/eslint) CLIEngine.
+* `desc`: Whether to try to fix errors and warnings when use [eslint](https://github.com/eslint/eslint).
 * `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.1`
+
+## styleLintOptions
+
+* `desc`: Options to initialize [stylelint](https://github.com/stylelint/stylelint).
+* `see`: [stylelint - Node.js API - options](https://stylelint.io/user-guide/node-api/#options)
+* `type`: `map`
+* `default`: `{}`
+* `since`: `v0.3.1`
+
+## styleLintFix
+
+* `desc`: Whether to try to fix errors and warnings when use [stylelint](https://github.com/stylelint/stylelint).
+* `see`: [stylelint - Node.js API - options](https://stylelint.io/user-guide/node-api/#options)
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.3.1`
