@@ -7,12 +7,13 @@ const projectConfig = require('../../../project_config');
  * @param cb
  */
 module.exports = function logFirstModule(cb) {
-  if (projectConfig.multiple)
-  {logger.info(`Start building module '${projectConfig.allModules[0]}'.`, {
-    prefix: !0,
-    preLn: !0,
-    postLn: !0,
-  });}
+  if (projectConfig.multiple) {
+    logger.info(`Start building module '${projectConfig.allModules[0]}'.`, {
+      prefix: !0,
+      preLn: !0,
+      postLn: !0,
+    });
+  }
 
   cb();
 };

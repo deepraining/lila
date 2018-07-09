@@ -10,10 +10,10 @@ const pathInfo = require('../../data/path_info');
 const getPaths = (root, dir) => {
   return {
     dirName: dir,
-    dir: `${root  }/${  dir}`,
-    js: `${root  }/${  dir  }/js`,
-    css: `${root  }/${  dir  }/css`,
-    html: `${root  }/${  dir  }/html`,
+    dir: `${root}/${dir}`,
+    js: `${root}/${dir}/js`,
+    css: `${root}/${dir}/css`,
+    html: `${root}/${dir}/html`,
   };
 };
 

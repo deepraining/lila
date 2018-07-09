@@ -7,8 +7,12 @@ const webpack = require('webpack');
  */
 module.exports = config => {
   // ProvidePlugin
-  if (config.provide) {config.webpack.plugins.push(new webpack.ProvidePlugin(config.provide));}
+  if (config.provide) {
+    config.webpack.plugins.push(new webpack.ProvidePlugin(config.provide));
+  }
 
   // DefinePlugin
-  if (config.define) {config.webpack.plugins.push(new webpack.DefinePlugin(config.define));}
+  if (config.define) {
+    config.webpack.plugins.push(new webpack.DefinePlugin(config.define));
+  }
 };

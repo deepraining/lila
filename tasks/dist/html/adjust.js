@@ -13,7 +13,9 @@ module.exports = gulp => {
   return function adjustHtml(cb) {
     logger.log('Adjusting html files.', { prefix: !0, preLn: !0, postLn: !0 });
 
-    if (!current.config.staticServerUrl) {return cb();}
+    if (!current.config.staticServerUrl) {
+      return cb();
+    }
 
     const options = {
       extensions: current.config.htmlCdnExtensions,
@@ -50,7 +52,7 @@ module.exports = gulp => {
     }
 
     return gulp
-      .src(`${current.config.buildPaths.buildTmp.dir  }/**/*.html`)
+      .src(`${current.config.buildPaths.buildTmp.dir}/**/*.html`)
       .pipe(addCdn(options))
       .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
   };

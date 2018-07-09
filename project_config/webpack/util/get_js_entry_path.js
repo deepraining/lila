@@ -8,5 +8,5 @@
  * @param config
  */
 module.exports = config => {
-  return `${config.buildPaths.src.dir  }/${  config.module  }/index.js`;
+  return `${config.buildPaths.src.dir}/${config.module}/index.js`;
 };

@@ -26,7 +26,7 @@ module.exports = (req, res, next) => {
 
   // Don't have `.`
   if (filename.indexOf('.') < 0) {
-    const filePath = path.join(projectConfig.basePaths.webRoot, `${ url }.js`);
+    const filePath = path.join(projectConfig.basePaths.webRoot, `${url}.js`);
     if (fs.existsSync(filePath)) {
       logger.success(`
 Mock[${method}] ${url}

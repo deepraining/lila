@@ -23,9 +23,11 @@ module.exports = gulp => {
     const hashCodes = uniq(extractHashCodes());
     let deletedFilesCount = 0;
 
-    rd.eachFileFilterSync(`${pathInfo.projectRoot  }/dist`, file => {
+    rd.eachFileFilterSync(`${pathInfo.projectRoot}/dist`, file => {
       // Only clean js and css files.
-      if (file.slice(-3) !== '.js' && file.slice(-4) !== '.css') {return;}
+      if (file.slice(-3) !== '.js' && file.slice(-4) !== '.css') {
+        return;
+      }
 
       /**
        * File path.
@@ -44,7 +46,9 @@ module.exports = gulp => {
       // Match `js|css` file.
       const regExp = makeRegExp.matchFileName(share.hashDigestLength);
       const result = regExp.exec(fileName);
-      if (!result) {return;}
+      if (!result) {
+        return;
+      }
 
       // Not in use, remove it.
       if (hashCodes.indexOf(result[1]) < 0) {
@@ -79,10 +83,12 @@ module.exports = gulp => {
     const testRegExp = makeRegExp.matchJsChunkFileName(share.hashDigestLength);
     let deletedFilesCount = 0;
 
-    rd.eachFileFilterSync(`${pathInfo.projectRoot  }/dist`, file => {
+    rd.eachFileFilterSync(`${pathInfo.projectRoot}/dist`, file => {
       // File path.
       const filePath = pathUtil.replaceBackSlash(file);
-      if (!testRegExp.test(filePath)) {return;}
+      if (!testRegExp.test(filePath)) {
+        return;
+      }
 
       const lastSlashIndex = filePath.lastIndexOf('/');
       const fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);

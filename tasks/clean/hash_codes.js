@@ -13,7 +13,7 @@ const makeRegExp = require('./reg_exp');
 module.exports = () => {
   const hashCodes = [];
 
-  const htmlDirectory = `${pathInfo.projectRoot  }/dist/html`;
+  const htmlDirectory = `${pathInfo.projectRoot}/dist/html`;
 
   // Find all files and extract hash codes.
   fs.existsSync(htmlDirectory) &&

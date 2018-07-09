@@ -10,7 +10,9 @@ const forEach = require('lodash/forEach');
 module.exports = config => {
   const option = config.local && config.localOptions && config.localOptions[config.local];
 
-  if (!option) {return;}
+  if (!option) {
+    return;
+  }
 
   forEach(option, (value, key) => {
     config[key] = value;

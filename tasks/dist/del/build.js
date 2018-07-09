@@ -10,7 +10,7 @@ const projectConfig = require('../../../project_config');
  * @returns {*}
  */
 module.exports = function delTmp() {
-  logger.log('Deleting \'build\' directory.', {
+  logger.log("Deleting 'build' directory.", {
     prefix: !0,
     preLn: !0,
     postLn: !0,

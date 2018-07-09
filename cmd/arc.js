@@ -6,7 +6,7 @@ const archiveShare = require('../share/archive');
 const logger = require('../util/logger');
 const registerTasks = require('../tasks/register');
 
-if (!fs.existsSync(`${pathInfo.projectRoot  }/dist`)) {
+if (!fs.existsSync(`${pathInfo.projectRoot}/dist`)) {
   logger.error(`
   Missing 'dist' directory for command: arc.
   `);

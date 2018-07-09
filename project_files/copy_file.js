@@ -12,12 +12,14 @@ const fsExtra = require('fs-extra');
  * @param replacement What to replace content.
  */
 module.exports = (subDir, targetDir, fileName, hasPrefix, replaceTarget, replacement) => {
-  const filePath = path.join(__dirname, subDir, hasPrefix ? `_${  fileName}` : fileName);
+  const filePath = path.join(__dirname, subDir, hasPrefix ? `_${fileName}` : fileName);
   const targetFilePath = path.join(targetDir, fileName);
 
   let content = fsExtra.readFileSync(filePath, 'utf8');
 
-  if (replaceTarget && replacement) {content = content.replace(replaceTarget, replacement);}
+  if (replaceTarget && replacement) {
+    content = content.replace(replaceTarget, replacement);
+  }
 
   fsExtra.outputFileSync(targetFilePath, content);
 };

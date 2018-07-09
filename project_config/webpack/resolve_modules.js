@@ -25,7 +25,7 @@ module.exports = config => {
   });
 
   // pathInfo.projectRoot + '/node_modules'
-  realResolveModules.unshift(`${pathInfo.projectRoot  }/node_modules`);
+  realResolveModules.unshift(`${pathInfo.projectRoot}/node_modules`);
 
   // config.buildPaths.src.dir
   realResolveModules.unshift(config.buildPaths.src.dir);

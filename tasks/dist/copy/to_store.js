@@ -16,8 +16,9 @@ module.exports = function copyToStore(cb) {
     postLn: !0,
   });
 
-  if (fs.existsSync(projectConfig.buildPaths.buildTmp.dir))
-  {fsExtra.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);}
+  if (fs.existsSync(projectConfig.buildPaths.buildTmp.dir)) {
+    fsExtra.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);
+  }
 
   cb();
 };

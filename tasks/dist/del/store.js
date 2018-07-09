@@ -10,7 +10,7 @@ const projectConfig = require('../../../project_config');
  * @returns {*}
  */
 module.exports = function delStore() {
-  logger.log('Deleting \'build_store\' directory.', {
+  logger.log("Deleting 'build_store' directory.", {
     prefix: !0,
     preLn: !0,
     postLn: !0,

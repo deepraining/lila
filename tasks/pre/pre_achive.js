@@ -11,12 +11,12 @@ const archiveShare = require('../../share/archive');
  */
 module.exports = gulp => {
   gulp.task('pre_archive', () => {
-    const fileName = `dist-${  moment().format('YYYY-MM-DD-HH-mm-ss')  }.zip`;
+    const fileName = `dist-${moment().format('YYYY-MM-DD-HH-mm-ss')}.zip`;
 
     archiveShare.zipFileName = fileName;
 
     return gulp
-      .src(`${pathInfo.projectRoot  }/dist/**/*`)
+      .src(`${pathInfo.projectRoot}/dist/**/*`)
       .pipe(zip(fileName))
       .pipe(gulp.dest(pathInfo.projectRoot));
   });

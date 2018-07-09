@@ -27,15 +27,21 @@ const asteriskRegExp = /\*/;
  */
 const getModules = (module, config) => {
   // No asterisk.
-  if (!asteriskRegExp.test(module)) {return [module];}
+  if (!asteriskRegExp.test(module)) {
+    return [module];
+  }
 
   let dir;
   const modules = [];
 
   // All modules in current project.
-  if (module === '*') {dir = config.buildPaths.src.dir;}
+  if (module === '*') {
+    dir = config.buildPaths.src.dir;
+  }
   // test/*
-  else if (module.slice(-2) === '/*') {dir = `${config.buildPaths.src.dir  }/${  module.slice(0, -2)}`;}
+  else if (module.slice(-2) === '/*') {
+    dir = `${config.buildPaths.src.dir}/${module.slice(0, -2)}`;
+  }
   // The rest.
   else {
     logger.error(`
@@ -46,8 +52,8 @@ const getModules = (module, config) => {
 
   // Get all modules.
   rd.readDirFilterSync(dir, dirPath => {
-    const htmlFile = `${dirPath  }/index.html`;
-    const jsFile = `${dirPath  }/index.js`;
+    const htmlFile = `${dirPath}/index.html`;
+    const jsFile = `${dirPath}/index.js`;
 
     // Both `index.html` and `index.js` exist, means this directory is a module's workspace.
     if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
@@ -109,8 +115,11 @@ module.exports = config => {
   let allModules = [];
 
   // Split by comma.
-  if (hasComma) {modules = currentModule.split(',');}
-  else {modules = [currentModule];}
+  if (hasComma) {
+    modules = currentModule.split(',');
+  } else {
+    modules = [currentModule];
+  }
 
   modules.forEach(item => {
     allModules = concat(allModules, getModules(item, config));

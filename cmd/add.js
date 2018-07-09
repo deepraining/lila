@@ -27,12 +27,12 @@ checkConfigFile();
 // Project config.
 const projectConfig = require('../project_config');
 
-const moduleDirPath = `${projectConfig.basePaths.buildRoot  }/src/${  moduleName}`;
+const moduleDirPath = `${projectConfig.basePaths.buildRoot}/src/${moduleName}`;
 
 // Html file path to be created.
-const htmlFilePath = `${moduleDirPath  }/index.html`;
+const htmlFilePath = `${moduleDirPath}/index.html`;
 // Js file path to be created.
-const jsFilePath = `${moduleDirPath  }/index.js`;
+const jsFilePath = `${moduleDirPath}/index.js`;
 
 if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
   logger.error(`

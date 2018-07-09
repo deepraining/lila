@@ -43,7 +43,7 @@ module.exports = config => {
    *     }
    */
   const webPrefix = path.relative(config.basePaths.webRoot, config.basePaths.buildRoot);
-  config.basePaths.webPrefix = webPrefix ? `/${  webPrefix}` : '';
+  config.basePaths.webPrefix = webPrefix ? `/${webPrefix}` : '';
 
   // Make absolute path.
   config.basePaths.buildRoot = path.join(pathInfo.projectRoot, config.basePaths.buildRoot);

@@ -21,7 +21,6 @@ checkConfigFile();
 const projectConfig = require('../project_config');
 
 require('./util/lint')(() => {
-
   // Guarantee `share.originalProcessArgv` has been loaded.
   const share = require('../share');
   const pathInfo = require('../data/path_info');

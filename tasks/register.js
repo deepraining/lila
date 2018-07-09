@@ -8,7 +8,7 @@ const path = require('path');
  */
 module.exports = gulp => {
   // Tasks in pre directory.
-  const preDir = `${__dirname  }/pre`;
+  const preDir = `${__dirname}/pre`;
   fs.readdirSync(preDir).filter(file => {
     const registerTask = require(path.join(preDir, file));
 
@@ -17,7 +17,7 @@ module.exports = gulp => {
   });
 
   // Tasks in main directory.
-  const mainDir = `${__dirname  }/main`;
+  const mainDir = `${__dirname}/main`;
   fs.readdirSync(mainDir).filter(file => {
     const registerTask = require(path.join(mainDir, file));
 

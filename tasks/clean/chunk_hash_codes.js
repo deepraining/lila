@@ -14,7 +14,7 @@ const makeRegExp = require('./reg_exp');
 module.exports = () => {
   const hashCodes = [];
 
-  const dir = `${pathInfo.projectRoot  }/dist`;
+  const dir = `${pathInfo.projectRoot}/dist`;
   const testRegExp = makeRegExp.matchJsFileName(share.hashDigestLength);
 
   // Find all files and extract hash codes.
@@ -22,7 +22,9 @@ module.exports = () => {
     rd.eachFileFilterSync(dir, file => {
       // File path.
       const filePath = pathUtil.replaceBackSlash(file);
-      if (!testRegExp.test(filePath)) {return;}
+      if (!testRegExp.test(filePath)) {
+        return;
+      }
 
       // File content.
       const content = fs.readFileSync(file);

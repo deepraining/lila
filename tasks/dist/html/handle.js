@@ -28,7 +28,7 @@ const htmlInsert = stream => {
  * Convert html to other extension file.
  */
 const htmlExtension = stream => {
-  stream.pipe(rename({ extname: `.${  current.config.htmlExtension}` }));
+  stream.pipe(rename({ extname: `.${current.config.htmlExtension}` }));
 };
 
 /**
@@ -47,13 +47,20 @@ module.exports = gulp => {
   return function handleHtml(cb) {
     logger.log('Handling html files.', { prefix: !0, preLn: !0, postLn: !0 });
 
-    if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension)
-    {return cb();}
+    if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension) {
+      return cb();
+    }
 
-    const stream = gulp.src(`${current.config.buildPaths.buildTmp.html  }/**/*.html`);
-    if (current.config.hasHtmlReplace) {htmlReplace(stream);}
-    if (current.config.hasHtmlInsert) {htmlInsert(stream);}
-    if (current.config.hasHtmlExtension) {htmlExtension(stream);}
+    const stream = gulp.src(`${current.config.buildPaths.buildTmp.html}/**/*.html`);
+    if (current.config.hasHtmlReplace) {
+      htmlReplace(stream);
+    }
+    if (current.config.hasHtmlInsert) {
+      htmlInsert(stream);
+    }
+    if (current.config.hasHtmlExtension) {
+      htmlExtension(stream);
+    }
 
     stream.pipe(gulp.dest(current.config.buildPaths.buildStore.html));
 

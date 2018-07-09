@@ -8,7 +8,9 @@ const forEach = require('lodash/forEach');
 module.exports = config => {
   const option = config.envOptions && config.envOptions[config.env];
 
-  if (!option) {return;}
+  if (!option) {
+    return;
+  }
 
   forEach(option, (value, key) => {
     config[key] = value;

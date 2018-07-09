@@ -36,7 +36,9 @@ const defaultValue = {
  */
 module.exports = config => {
   forEach(defaultValue, (value, key) => {
-    if (typeof config[key] === 'undefined') {config[key] = typeof value === 'object' ? cloneDeep(value) : value;}
+    if (typeof config[key] === 'undefined') {
+      config[key] = typeof value === 'object' ? cloneDeep(value) : value;
+    }
   });
 
   // htmlCdnExtensions

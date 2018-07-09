@@ -27,9 +27,11 @@ module.exports = gulp => {
       };
 
       return gulp
-        .src(`${current.config.buildPaths.buildTmp.dir  }/**/*.html`)
+        .src(`${current.config.buildPaths.buildTmp.dir}/**/*.html`)
         .pipe(htmlmin(options))
         .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
-    } else {cb();}
+    } else {
+      cb();
+    }
   };
 };

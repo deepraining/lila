@@ -7,7 +7,9 @@ const keys = require('lodash/keys');
  */
 module.exports = config => {
   // No directories.
-  if (!config.directoriesToSync || !keys(config.directoriesToSync).length) {return;}
+  if (!config.directoriesToSync || !keys(config.directoriesToSync).length) {
+    return;
+  }
 
   /**
    * Keys of directories.
@@ -37,7 +39,7 @@ module.exports = config => {
   // Generate `syncDirItems`.
   config.processing.syncDirKeys.forEach(key => {
     // Absolute path.
-    const path = `${config.basePaths.webRoot  }/${  config.directoriesToSync[key]}`;
+    const path = `${config.basePaths.webRoot}/${config.directoriesToSync[key]}`;
 
     // Add an item.
     config.processing.syncDirItems[key] = { path };

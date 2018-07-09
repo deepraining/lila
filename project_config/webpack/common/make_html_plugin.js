@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = config => {
   !config.htmlWebpack && (config.htmlWebpack = {});
 
-  config.htmlWebpack.template = `${config.buildPaths.src.dir  }/${  config.module  }/index.html`;
+  config.htmlWebpack.template = `${config.buildPaths.src.dir}/${config.module}/index.html`;
 
   return new HtmlWebpackPlugin(config.htmlWebpack);
 };

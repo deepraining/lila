@@ -10,7 +10,9 @@ const cliInfo = require('../../data/cli_info');
 module.exports = config => {
   const option = config.commandOptions && cliInfo.command && config.commandOptions[cliInfo.command];
 
-  if (!option) {return;}
+  if (!option) {
+    return;
+  }
 
   forEach(option, (value, key) => {
     config[key] = value;

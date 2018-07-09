@@ -23,10 +23,10 @@ module.exports = config => {
    * Webpack output config.
    */
   !config.webpack.output && (config.webpack.output = {});
-  config.webpack.output.path = `${config.buildPaths.build.dir  }/`;
+  config.webpack.output.path = `${config.buildPaths.build.dir}/`;
   config.webpack.output.filename = '[chunkhash].js';
   config.webpack.output.hashDigestLength = share.hashDigestLength;
-  config.webpack.output.publicPath = `${config.staticServerDir + config.basePaths.webPrefix  }/dist/`;
+  config.webpack.output.publicPath = `${config.staticServerDir + config.basePaths.webPrefix}/dist/`;
 
   makePlugins(config);
   makeModule(config);

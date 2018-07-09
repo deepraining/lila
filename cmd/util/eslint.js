@@ -14,8 +14,11 @@ options.fix = !!projectConfig.esLintFix;
 const cli = new CLIEngine(options);
 
 let subDir = moduleName;
-if (moduleName === '*') {subDir = '';}
-else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
+if (moduleName === '*') {
+  subDir = '';
+} else if (moduleName.slice(-1) === '*') {
+  subDir = moduleName.slice(0, -2);
+}
 
 const formatter = cli.getFormatter();
 const report = cli.executeOnFiles([path.join(projectConfig.buildPaths.src.dir, subDir)]);

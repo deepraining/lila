@@ -10,8 +10,11 @@ const moduleName = argv.module;
 const projectConfig = require('../../project_config');
 
 let subDir = moduleName;
-if (moduleName === '*') {subDir = '';}
-else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
+if (moduleName === '*') {
+  subDir = '';
+} else if (moduleName.slice(-1) === '*') {
+  subDir = moduleName.slice(0, -2);
+}
 
 const options = projectConfig.styleLintOptions || {};
 options.fix = !!projectConfig.styleLintFix;

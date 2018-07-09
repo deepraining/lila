@@ -21,7 +21,6 @@ checkConfigFile();
 const projectConfig = require('../project_config');
 
 require('./util/lint')(() => {
-
   // Guarantee `share.originalProcessArgv` has been loaded.
   const share = require('../share');
   const pathInfo = require('../data/path_info');
@@ -30,7 +29,13 @@ require('./util/lint')(() => {
     require('./util/webpack');
   } else {
     // Modify `process.argv` for `gulp-cli`.
-    process.argv = [share.originalProcessArgv[0], share.originalProcessArgv[1], 'sync', '--gulpfile', pathInfo.gulpFile];
+    process.argv = [
+      share.originalProcessArgv[0],
+      share.originalProcessArgv[1],
+      'sync',
+      '--gulpfile',
+      pathInfo.gulpFile,
+    ];
 
     require('gulp-cli')(err => {
       if (err) {

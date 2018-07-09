@@ -46,23 +46,23 @@ module.exports = config => {
         config.webpack.module.rules.push(makeExtractLessLoader(!1, [], !1, !1, localIdentName));
     }
   } else if (config.cssModules && excludeMatches) {
-      !config.disableCssLoader &&
-        config.webpack.module.rules.push(
-          makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
-          makeCssLoader(!0, excludeMatches, !1, !0, localIdentName)
-        );
-      !config.disableLessLoader &&
-        config.webpack.module.rules.push(
-          makeLessLoader(!1, excludeMatches, !0, !1, localIdentName),
-          makeLessLoader(!0, excludeMatches, !1, !0, localIdentName)
-        );
-    } else if (config.cssModules) {
-      !config.disableCssLoader &&
-        config.webpack.module.rules.push(makeCssLoader(!0, excludeMatches, !1, !1, localIdentName));
-      !config.disableLessLoader &&
-        config.webpack.module.rules.push(makeLessLoader(!0, excludeMatches, !1, !1, localIdentName));
-    } else {
-      !config.disableCssLoader && config.webpack.module.rules.push(makeCssLoader(!1, [], !1, !1, localIdentName));
-      !config.disableLessLoader && config.webpack.module.rules.push(makeLessLoader(!1, [], !1, !1, localIdentName));
-    }
+    !config.disableCssLoader &&
+      config.webpack.module.rules.push(
+        makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
+        makeCssLoader(!0, excludeMatches, !1, !0, localIdentName)
+      );
+    !config.disableLessLoader &&
+      config.webpack.module.rules.push(
+        makeLessLoader(!1, excludeMatches, !0, !1, localIdentName),
+        makeLessLoader(!0, excludeMatches, !1, !0, localIdentName)
+      );
+  } else if (config.cssModules) {
+    !config.disableCssLoader &&
+      config.webpack.module.rules.push(makeCssLoader(!0, excludeMatches, !1, !1, localIdentName));
+    !config.disableLessLoader &&
+      config.webpack.module.rules.push(makeLessLoader(!0, excludeMatches, !1, !1, localIdentName));
+  } else {
+    !config.disableCssLoader && config.webpack.module.rules.push(makeCssLoader(!1, [], !1, !1, localIdentName));
+    !config.disableLessLoader && config.webpack.module.rules.push(makeLessLoader(!1, [], !1, !1, localIdentName));
+  }
 };
