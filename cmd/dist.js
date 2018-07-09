@@ -39,15 +39,14 @@ const postStyleLint = () => {
 
   if (projectConfig.onlyWebpack) {
     require('./util/webpack');
-  }
-  else {
+  } else {
     // Modify `process.argv` for `gulp-cli`.
     process.argv = [
       share.originalProcessArgv[0],
       share.originalProcessArgv[1],
       'dist',
       '--gulpfile',
-      pathInfo.gulpFile
+      pathInfo.gulpFile,
     ];
 
     require('gulp-cli')(err => {
@@ -56,8 +55,7 @@ const postStyleLint = () => {
 Error occurred when lila build modules, you should resolve those errors, and try again.
     `);
         logger.error(err.stack || err);
-      }
-      else {
+      } else {
         logger.success(`
     Pack source codes and static files into production successfully.
     `);
@@ -90,7 +88,6 @@ if (projectConfig.styleLint) {
 
     postStyleLint();
   });
-}
-else {
+} else {
   postStyleLint();
 }

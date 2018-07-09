@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 
 /**
@@ -11,6 +10,5 @@ const fs = require('fs');
  * @param config
  */
 module.exports = config => {
-
-    return config.buildPaths.src.dir + '/' + config.module + '/index.js';
+  return config.buildPaths.src.dir + '/' + config.module + '/index.js';
 };

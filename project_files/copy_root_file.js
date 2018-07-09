@@ -1,4 +1,3 @@
-
 const copyFile = require('./copy_file');
 
 /**
@@ -11,5 +10,5 @@ const copyFile = require('./copy_file');
  * @param replacement What to replace content.
  */
 module.exports = (targetDir, fileName, hasPrefix, replaceTarget, replacement) => {
-    copyFile('root', targetDir, fileName, hasPrefix, replaceTarget, replacement);
+  copyFile('root', targetDir, fileName, hasPrefix, replaceTarget, replacement);
 };

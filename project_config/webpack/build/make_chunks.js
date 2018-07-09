@@ -1,4 +1,3 @@
-
 const keys = require('lodash/keys');
 const concat = require('lodash/concat');
 
@@ -24,23 +23,25 @@ const concat = require('lodash/concat');
  * @param config
  */
 module.exports = config => {
-    if (!config.splitJs) return;
+  if (!config.splitJs) return;
 
-    config.splitJsChunks = {};
+  config.splitJsChunks = {};
 
-    const splitJsKeys = keys(config.splitJs);
+  const splitJsKeys = keys(config.splitJs);
 
-    splitJsKeys.forEach((key, index) => {
-        let i = index, tmpKey, chunks = [];
+  splitJsKeys.forEach((key, index) => {
+    let i = index,
+      tmpKey,
+      chunks = [];
 
-        config.splitJsChunks[key] = {};
-        for (; i > -1; i--) {
-            tmpKey = splitJsKeys[i];
-            chunks = concat(chunks, config.splitJs[tmpKey]);
-        }
+    config.splitJsChunks[key] = {};
+    for (; i > -1; i--) {
+      tmpKey = splitJsKeys[i];
+      chunks = concat(chunks, config.splitJs[tmpKey]);
+    }
 
-        config.splitJsChunks[key] = chunks;
-    });
+    config.splitJsChunks[key] = chunks;
+  });
 
-    config.splitJsKeys = splitJsKeys;
+  config.splitJsKeys = splitJsKeys;
 };

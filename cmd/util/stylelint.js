@@ -1,4 +1,3 @@
-
 const path = require('path');
 const stylelint = require('stylelint');
 
@@ -19,7 +18,7 @@ options.files = [
   path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.css'),
   path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.less'),
   path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.scss'),
-  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.sass')
+  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.sass'),
 ];
 
 module.exports = cb => {
@@ -33,11 +32,9 @@ module.exports = cb => {
       }
 
       cb();
-    }
-    catch(err) {
+    } catch (err) {
       console.error(err.stack);
       process.exit(1);
     }
   })();
-
 };

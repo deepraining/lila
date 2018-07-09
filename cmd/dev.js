@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const devMiddleWare = require('webpack-dev-middleware');
 const hotMiddleWare = require('webpack-hot-middleware');
@@ -13,15 +12,15 @@ const argv = require('../data/argv');
 const moduleName = argv.module;
 
 if (!moduleName) {
-    logger.error(`
+  logger.error(`
     Missing module name for command: dev.
     `);
-    logger.log(`
+  logger.log(`
     You can use this command as follows:
     
     lila dev <name>
     `);
-    process.exit(0);
+  process.exit(0);
 }
 
 checkConfigFile();
@@ -38,10 +37,11 @@ const compiler = webpack(projectConfig.webpack);
 const browserSyncConfig = projectConfig.browserSync || {};
 
 browserSyncConfig.server = {
-    baseDir: projectConfig.basePaths.webRoot
+  baseDir: projectConfig.basePaths.webRoot,
 };
 browserSyncConfig.port = projectConfig.devServerPort;
-browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
+browserSyncConfig.startPath =
+  projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
 
 // Middleware.
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);

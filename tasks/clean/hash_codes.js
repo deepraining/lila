@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const rd = require('rd');
 
@@ -12,21 +11,22 @@ const makeRegExp = require('./reg_exp');
  * @returns {Array}
  */
 module.exports = () => {
-    let hashCodes = [];
+  let hashCodes = [];
 
-    let htmlDirectory = pathInfo.projectRoot + '/dist/html';
+  let htmlDirectory = pathInfo.projectRoot + '/dist/html';
 
-    // Find all files and extract hash codes.
-    fs.existsSync(htmlDirectory) && rd.eachFileFilterSync(htmlDirectory, file => {
-        // File content.
-        let content = fs.readFileSync(file);
+  // Find all files and extract hash codes.
+  fs.existsSync(htmlDirectory) &&
+    rd.eachFileFilterSync(htmlDirectory, file => {
+      // File content.
+      let content = fs.readFileSync(file);
 
-        let regExp = makeRegExp.extractFromHtml(share.hashDigestLength);
-        let result;
-        while(result = regExp.exec(content)) {
-            hashCodes.push(result[1]);
-        }
+      let regExp = makeRegExp.extractFromHtml(share.hashDigestLength);
+      let result;
+      while ((result = regExp.exec(content))) {
+        hashCodes.push(result[1]);
+      }
     });
 
-    return hashCodes;
+  return hashCodes;
 };

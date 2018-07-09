@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 
 const argv = require('../data/argv');
@@ -11,15 +10,15 @@ let moduleName = argv._[1];
 
 // Missing module name.
 if (!moduleName) {
-    logger.error(`
+  logger.error(`
     Missing module name for command: add.
     `);
-    logger.log(`
+  logger.log(`
     You can use this command as follows:
     
     lila add <name>
     `);
-    process.exit(0);
+  process.exit(0);
 }
 
 // Check if project config file exists.
@@ -33,13 +32,13 @@ let moduleDirPath = projectConfig.basePaths.buildRoot + '/src/' + moduleName;
 // Html file path to be created.
 let htmlFilePath = moduleDirPath + '/index.html';
 // Js file path to be created.
-let jsFilePath =  moduleDirPath + '/index.js';
+let jsFilePath = moduleDirPath + '/index.js';
 
 if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
-    logger.error(`
+  logger.error(`
     Module '${moduleName}' has already been added.
     `);
-    process.exit(0);
+  process.exit(0);
 }
 
 // Make js file.

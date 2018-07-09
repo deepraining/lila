@@ -1,4 +1,3 @@
-
 const isEmpty = require('lodash/isEmpty');
 const forEach = require('lodash/forEach');
 const capitalize = require('lodash/capitalize');
@@ -15,42 +14,46 @@ const next = require('../next/sync_dir');
  * @param cb
  */
 module.exports = function changedDirFiles(cb) {
-    next();
+  next();
 
-    const currentKey = projectConfig.processing.syncDirKey;
-    const currentItem = projectConfig.processing.syncDirItems[currentKey];
-    const dirPath = currentItem.path;
+  const currentKey = projectConfig.processing.syncDirKey;
+  const currentItem = projectConfig.processing.syncDirItems[currentKey];
+  const dirPath = currentItem.path;
 
-    logger.log(`Finding changed files of '${currentKey}'.`, {prefix: !0, preLn: !0, postLn: !0});
+  logger.log(`Finding changed files of '${currentKey}'.`, {
+    prefix: !0,
+    preLn: !0,
+    postLn: !0,
+  });
 
-    // Enabled.
-    if (projectConfig.recordFileChanges) {
-        // Get changed files.
-        const changedFiles = findChangedFiles(dirPath, currentKey);
-        const changedFilesPaths = [];
+  // Enabled.
+  if (projectConfig.recordFileChanges) {
+    // Get changed files.
+    const changedFiles = findChangedFiles(dirPath, currentKey);
+    const changedFilesPaths = [];
 
-        // Not empty.
-        if (!isEmpty(changedFiles)) {
+    // Not empty.
+    if (!isEmpty(changedFiles)) {
+      logger.info('');
+      forEach(changedFiles, (value, key) => {
+        changedFilesPaths.push(dirPath + '/' + key);
+        logger.info(`File changed: ${key}.`, { prefix: !0 });
+      });
+      logger.info('');
 
-            logger.info('');
-            forEach(changedFiles, (value, key) => {
-                changedFilesPaths.push(dirPath + '/' + key);
-                logger.info(`File changed: ${key}.`, {prefix: !0});
-            });
-            logger.info('');
-
-            currentItem.changedFiles = changedFilesPaths;
-
-        }
-        else {
-            logger.info(`${capitalize(currentKey)} nothing changed.`, {prefix: !0, preLn: !0, postLn: !0});
-        }
+      currentItem.changedFiles = changedFilesPaths;
+    } else {
+      logger.info(`${capitalize(currentKey)} nothing changed.`, {
+        prefix: !0,
+        preLn: !0,
+        postLn: !0,
+      });
     }
-    // Disabled.
-    else {
-        currentItem.changedFiles = dirPath + '/**/*';
-    }
+  }
+  // Disabled.
+  else {
+    currentItem.changedFiles = dirPath + '/**/*';
+  }
 
-    cb();
-
+  cb();
 };

@@ -1,4 +1,3 @@
-
 const path = require('path');
 const esLint = require('eslint');
 const CLIEngine = esLint.CLIEngine;

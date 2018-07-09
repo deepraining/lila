@@ -1,4 +1,3 @@
-
 const argv = require('../../data/argv');
 
 const basePaths = require('./base_paths');
@@ -31,38 +30,38 @@ const webpack = require('./webpack');
  * @param custom Whether is custom config.
  */
 module.exports = (config, custom) => {
-    // paths
-    basePaths(config);
-    buildPaths(config);
+  // paths
+  basePaths(config);
+  buildPaths(config);
 
-    // cmd
-    cmdAlias(config);
-    envAlias(config);
-    // Here only pre load some required arguments.
-    cmdValues(config, !0, custom);
+  // cmd
+  cmdAlias(config);
+  envAlias(config);
+  // Here only pre load some required arguments.
+  cmdValues(config, !0, custom);
 
-    // Options to override config root attribute.
-    localOptions(config);
-    moduleOptions(config);
-    envOptions(config);
-    commandOptions(config);
-    cmdValues(config);
+  // Options to override config root attribute.
+  localOptions(config);
+  moduleOptions(config);
+  envOptions(config);
+  commandOptions(config);
+  cmdValues(config);
 
-    // `beforeFormatConfig` callback
-    config.beforeFormatConfig && config.beforeFormatConfig(config, argv);
+  // `beforeFormatConfig` callback
+  config.beforeFormatConfig && config.beforeFormatConfig(config, argv);
 
-    // Fill default value to config.
-    fill(config);
+  // Fill default value to config.
+  fill(config);
 
-    // More handling.
-    processing(config);
-    moduleGroup(config);
-    formatModule(config);
-    html(config);
-    directoriesToSync(config);
-    servers(config);
-    builtinRules(config);
-    webpack(config);
+  // More handling.
+  processing(config);
+  moduleGroup(config);
+  formatModule(config);
+  html(config);
+  directoriesToSync(config);
+  servers(config);
+  builtinRules(config);
+  webpack(config);
 
-    return config;
+  return config;
 };

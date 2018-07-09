@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -7,45 +6,47 @@ const makeHtmlPlugin = require('../common/make_html_plugin');
 const makePlugins = require('../common/make_plugins');
 
 module.exports = config => {
+  checkPlugins(config);
 
-    checkPlugins(config);
+  config.webpack.plugins.push(makeHtmlPlugin(config));
 
-    config.webpack.plugins.push(makeHtmlPlugin(config));
+  // Pack css alone.
+  if (config.packCssSeparately) {
+    config.webpack.plugins.push(new ExtractTextPlugin('[contenthash].css'));
+  }
 
-    // Pack css alone.
-    if (config.packCssSeparately) {
-        config.webpack.plugins.push(new ExtractTextPlugin('[contenthash].css'));
-    }
+  /**
+   * Common chunks.
+   *
+   * ```
+   * [
+   *   CommonsChunkPlugin({chunks: ['index', 'vendor', 'vendor2', 'common']}),
+   *   CommonsChunkPlugin({chunks: ['index', 'vendor2', 'common']}),
+   *   CommonsChunkPlugin({chunks: ['index', 'common']})
+   * ]
+   * ```
+   */
+  if (config.splitJsKeys) {
+    let keysLength = config.splitJsKeys.length;
 
-    /**
-     * Common chunks.
-     *
-     * ```
-     * [
-     *   CommonsChunkPlugin({chunks: ['index', 'vendor', 'vendor2', 'common']}),
-     *   CommonsChunkPlugin({chunks: ['index', 'vendor2', 'common']}),
-     *   CommonsChunkPlugin({chunks: ['index', 'common']})
-     * ]
-     * ```
-     */
-    if (config.splitJsKeys) {
-        let keysLength = config.splitJsKeys.length;
+    config.splitJsKeys.forEach((key, index) => {
+      let i = index,
+        chunks = [config.moduleName];
 
-        config.splitJsKeys.forEach((key, index) => {
-            let i = index, chunks = [config.moduleName];
+      for (; i < keysLength; i++) {
+        chunks.push(config.splitJsKeys[i]);
+      }
 
-            for (; i < keysLength; i++) {
-                chunks.push(config.splitJsKeys[i]);
-            }
+      config.webpack.plugins.push(
+        new webpack.optimize.CommonsChunkPlugin({
+          name: key,
+          filename: '[chunkhash].js',
+          chunks: chunks,
+          minChunks: Infinity,
+        })
+      );
+    });
+  }
 
-            config.webpack.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-                name: key,
-                filename: '[chunkhash].js',
-                chunks: chunks,
-                minChunks: Infinity
-            }));
-        });
-    }
-
-    makePlugins(config);
+  makePlugins(config);
 };

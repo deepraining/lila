@@ -1,4 +1,3 @@
-
 const logger = require('./logger');
 
 /**
@@ -8,9 +7,9 @@ const logger = require('./logger');
  * @param message
  */
 module.exports = (value, message) => {
-    if (value && !Array.isArray(value)) {
-        logger.error(message);
+  if (value && !Array.isArray(value)) {
+    logger.error(message);
 
-        process.exit(1);
-    }
+    process.exit(1);
+  }
 };

@@ -1,8 +1,7 @@
-
 const suffixes = {
-    1: 'st',
-    2: 'nd',
-    3: 'rd'
+  1: 'st',
+  2: 'nd',
+  3: 'rd',
 };
 
 /**
@@ -12,5 +11,5 @@ const suffixes = {
  * @returns {*|string}
  */
 module.exports = index => {
-    return suffixes[index || 0] || 'th';
+  return suffixes[index || 0] || 'th';
 };

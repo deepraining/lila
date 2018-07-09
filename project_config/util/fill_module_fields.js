@@ -1,4 +1,3 @@
-
 const pathUtil = require('../../util/path');
 
 /**
@@ -7,6 +6,6 @@ const pathUtil = require('../../util/path');
  * @param config
  */
 module.exports = config => {
-    config.moduleDir = pathUtil.getModuleDir(config.module);
-    config.moduleName = pathUtil.getModuleName(config.module);
+  config.moduleDir = pathUtil.getModuleDir(config.module);
+  config.moduleName = pathUtil.getModuleName(config.module);
 };

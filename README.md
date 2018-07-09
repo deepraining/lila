@@ -4,7 +4,7 @@ An automatic building tool of web frontend, for teamwork.
 
 ## Quick start
 
-Install lila: 
+Install lila:
 
 ```
 npm install lila -g
@@ -33,20 +33,20 @@ cd demo && npm install lila --save-dev
     |-- ...
 ```
 
-* `src`: Source directory, where to place all source codes, like `html, css, less, js, images...`.
-* `dev`: Development directory, system reserved temporary directory to debug in browser. 
-* `dist`: Production directory, system reserved temporary directory, generated after building. 
+- `src`: Source directory, where to place all source codes, like `html, css, less, js, images...`.
+- `dev`: Development directory, system reserved temporary directory to debug in browser.
+- `dist`: Production directory, system reserved temporary directory, generated after building.
 
 ## 2. Module files.
 
 ### 2.1 Module
 
-A module means a package with a `html` entry file and a `js` entry file, which can start a local server to debug. 
+A module means a package with a `html` entry file and a `js` entry file, which can start a local server to debug.
 
 ### 2.2 Workspace
 
 Each module has a workspace under `src` directory.
- 
+
 For example, if current module is `test/inner`, the workspace is `src/test/inner` directory.
 
 ### 2.3 Files
@@ -61,8 +61,8 @@ Each module must have a `html` file and a `js` file, and paths are as follows(mo
             |-- index.js
 ```
 
-* `html`: `src/test/inner/index.html`
-* `js`: `src/test/inner/register.js`
+- `html`: `src/test/inner/index.html`
+- `js`: `src/test/inner/register.js`
 
 #### note
 
@@ -91,7 +91,7 @@ Here isn't a `css/less` entry file, for style files are loaded by `javascript`.
 
 You can split one single html file into pieces, and use [webpack require](https://webpack.js.org/loaders/html-loader/) to import pieces into the main html file.
 
-##### Example: 
+##### Example:
 
 ```
 # index.html
@@ -119,7 +119,7 @@ ${require('./html/piece-2.html')}
 <div class="test-index-less"></div>
 ```
 
-##### Result: 
+##### Result:
 
 ```
 # index.html
@@ -146,7 +146,7 @@ ${require('./html/piece-2.html')}
 You can import all other files into js files, including `css/less/images...` files.
 
 ##### Example:
- 
+
 ```
 require('bootstrap/dist/css/bootstrap.css');
 require('../../test/index.css');
@@ -177,7 +177,7 @@ More to see: [require.ensure](https://webpack.js.org/api/module-methods/#require
 
 ### 2.8 note
 
-The html file in production is not the same as `src`. 
+The html file in production is not the same as `src`.
 
 For example, in `src`, html file path is `src/test/inner/index.html`, in `dist` of production, html file path is `dist/test/inner.html`.
 
@@ -193,7 +193,7 @@ lila <command> [args]
 lila new projectName
 ```
 
-* `since`: `v0.0.1`
+- `since`: `v0.0.1`
 
 ### 3.2 `add`: Add a module.
 
@@ -201,7 +201,7 @@ lila new projectName
 lila add moduleName
 ```
 
-* `since`: `v0.0.1`
+- `since`: `v0.0.1`
 
 ### 3.3 `dev`: Watch files' changes, with hot replacing and reloading, and start a local server for debug.
 
@@ -209,8 +209,8 @@ lila add moduleName
 lila dev moduleName
 ```
 
-* Can take with arguments: `local/l`, `out/o`.
-* `since`: `v0.0.1`
+- Can take with arguments: `local/l`, `out/o`.
+- `since`: `v0.0.1`
 
 ### 3.4 `dist`: Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.
 
@@ -218,8 +218,8 @@ lila dev moduleName
 lila dist moduleName [-e 0(1,2)]
 ```
 
-* Can take with arguments: `env/e`, `local/l`, `out/o`.
-* `since`: `v0.0.1`
+- Can take with arguments: `env/e`, `local/l`, `out/o`.
+- `since`: `v0.0.1`
 
 ### 3.5 `sync`: Firstly do production tasks, and then sync production files to remote servers.
 
@@ -227,8 +227,8 @@ lila dist moduleName [-e 0(1,2)]
 lila sync moduleName [-e 0(1,2)]
 ```
 
-* Can take with arguments: `env/e`, `local/l`, `out/o`.
-* `since`: `v0.0.1`
+- Can take with arguments: `env/e`, `local/l`, `out/o`.
+- `since`: `v0.0.1`
 
 ### 3.6 `analyze/ana`: Visualize size of webpack output files with an interactive zoomable treemap.
 
@@ -239,7 +239,7 @@ lila analyze moduleName
 lila ana moduleName
 ```
 
-* `since`: `v0.1.4`
+- `since`: `v0.1.4`
 
 ### 3.7 `eslint`: Use 'eslint' to identify and report on patterns in JavaScript.
 
@@ -247,7 +247,7 @@ lila ana moduleName
 lila eslint moduleName
 ```
 
-* `since`: `v0.3.1`
+- `since`: `v0.3.1`
 
 ### 3.8 `stylelint`: Use 'stylelint' check errors and enforce consistent conventions in stylesheets.
 
@@ -255,7 +255,7 @@ lila eslint moduleName
 lila stylelint moduleName
 ```
 
-* `since`: `v0.3.1`
+- `since`: `v0.3.1`
 
 ### 3.9 `prettier`: Use 'prettier' to format codes.
 
@@ -263,33 +263,32 @@ lila stylelint moduleName
 lila prettier moduleName
 ```
 
-* `supported`: `js,jsx,ts,css,less,sass,scss,json,md`
-* `since`: `v0.3.1`
+- `supported`: `js,jsx,ts,css,less,sass,scss,json,md`
+- `since`: `v0.3.1`
 
 ### 3.10 Arguments.
 
 #### 3.10.1 `env/e`:
 
-* Specify current environment through command line, example: `-e 0`, `-e 1`;
-* If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
-* If env is not provided, default is `0`.
+- Specify current environment through command line, example: `-e 0`, `-e 1`;
+- If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
+- If env is not provided, default is `0`.
 
 #### 3.10.2 `local/l`
 
-* Specify current local name through command line.
+- Specify current local name through command line.
 
 #### `out/o`
 
-* Specify whether to use `outResolveAlias`.
+- Specify whether to use `outResolveAlias`.
 
 #### 3.10.3 `moduleName`
 
-* `test/index`: A single file module.
-* `test/index,test/index2`: Multiple modules.
-* `test/*` : Wildcard, means all modules under directory `src/test`.
-* `test/index,test2/*` : Multiple modes.
-* `*` or `all` : Specially, indicates all modules in current project(On linux or mac, you should use `all`, and `*` will not work).
-
+- `test/index`: A single file module.
+- `test/index,test/index2`: Multiple modules.
+- `test/*` : Wildcard, means all modules under directory `src/test`.
+- `test/index,test2/*` : Multiple modes.
+- `*` or `all` : Specially, indicates all modules in current project(On linux or mac, you should use `all`, and `*` will not work).
 
 ## 4. Server side command line.
 
@@ -304,9 +303,9 @@ lila archive
 lila arc
 ```
 
-* Current working directory should have a sub directory named `dist`.
-* This command just do with `dist` directory, if you want to archive the whole project, please use your own way.
-* `since`: `v0.0.1`
+- Current working directory should have a sub directory named `dist`.
+- This command just do with `dist` directory, if you want to archive the whole project, please use your own way.
+- `since`: `v0.0.1`
 
 ### 4.2 `clean`: Clean redundant `hash-coded` files which created by revision, and are not used anymore.
 
@@ -314,10 +313,10 @@ lila arc
 lila clean
 ```
 
-* Current working directory should have a sub directory named `dist`.
-* Before execute this command, `archive` will be automatically executed once.
-* After executing this command, you should remove `.lila` directory in root of project.
-* `since`: `v0.0.1`
+- Current working directory should have a sub directory named `dist`.
+- Before execute this command, `archive` will be automatically executed once.
+- After executing this command, you should remove `.lila` directory in root of project.
+- `since`: `v0.0.1`
 
 ### 4.3 `revert`: Revert `dist` directory to last archive state.
 
@@ -325,10 +324,10 @@ lila clean
 lila revert [-i,--index(1,2,3)]
 ```
 
-* Current working directory should have a sub directory named `dist`.
-* This command should be used after done `clean` command, and you want to restore it.
-* Can take with argument `index(i)`, to specify last nth state to revert, default is `1`
-* `since`: `v0.0.1`
+- Current working directory should have a sub directory named `dist`.
+- This command should be used after done `clean` command, and you want to restore it.
+- Can take with argument `index(i)`, to specify last nth state to revert, default is `1`
+- `since`: `v0.0.1`
 
 ## 5. Project config.
 
@@ -402,7 +401,7 @@ You can put all your `json` files into `data` directory(`data` is recommended, n
     |-- file1.json
     |-- file2.json
     |-- ...
-``` 
+```
 
 Now, you can access to those files through `/src/one/module/data/file1.json, /src/one/module/data/file2.json, ...`.
 
@@ -415,7 +414,7 @@ Using `json` files has a big disadvantage, that we could not make a `if`, `loop`
     |-- file1.js
     |-- file2.js
     |-- ...
-``` 
+```
 
 Now, you can access to those files through `/src/one/module/data/file1, /src/one/module/data/file2, ...`.
 
@@ -431,8 +430,8 @@ Arguments `req, res` refer to [Node Http](https://nodejs.org/dist/latest-v8.x/do
 
 ##### Note.
 
-* The js file name should not have `.` character, or it will not take effectively. 
-* You can disable this by set `mock: false` in `lila.config.js`. 
+- The js file name should not have `.` character, or it will not take effectively.
+- You can disable this by set `mock: false` in `lila.config.js`.
 
 ### 6.3 Your own ways.
 
@@ -448,15 +447,15 @@ When develop node.js application, [nodemon](https://github.com/remy/nodemon) is 
 
 When use node.js application as distributed intermediate layer, we can unite `nodemon`'s automatically restarting the server with `lila`'s hot reloading. Thus we can both modify node.js application and lila web project at the same time, and those changes will both apply to developing environment(browsers and command line).
 
-Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/07-node). 
+Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/07-node).
 
 ## 8. Packages
 
-* [webpack](https://webpack.js.org): 3.12.0
-* [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): 2.0.6
-* [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware): 2.22.2
-* [browser-sync](https://github.com/BrowserSync/browser-sync): 2.24.4
-* [gulp](https://github.com/gulpjs/gulp): 4.0.0
+- [webpack](https://webpack.js.org): 3.12.0
+- [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): 2.0.6
+- [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware): 2.22.2
+- [browser-sync](https://github.com/BrowserSync/browser-sync): 2.24.4
+- [gulp](https://github.com/gulpjs/gulp): 4.0.0
 
 More to see [package.json](./package.json).
 
@@ -467,4 +466,3 @@ See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
 ## 10. Examples
 
 See [lila examples](./examples).
-

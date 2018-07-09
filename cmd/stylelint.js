@@ -26,4 +26,3 @@ require('./util/stylelint')(() => {
     No errors occurred under module '${moduleName}'.
   `);
 });
-

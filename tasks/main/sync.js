@@ -1,4 +1,3 @@
-
 const fill = require('lodash/fill');
 const concat = require('lodash/concat');
 const SSH = require('gulp-ssh');
@@ -15,69 +14,74 @@ const nextSyncDir = require('../dist/next/sync_dir');
  * @param gulp
  */
 module.exports = gulp => {
+  const syncStatic = () => {
+    nextStaticServer();
 
-    const syncStatic = () => {
-        nextStaticServer();
+    const server = projectConfig.staticServers[projectConfig.processing.staticServerIndex];
+    const connect = new SSH(server.options);
 
-        const server = projectConfig.staticServers[projectConfig.processing.staticServerIndex];
-        const connect = new SSH(server.options);
+    return gulp
+      .src(projectConfig.buildPaths.dist.dir + '/**/*', {
+        base: projectConfig.basePaths.webRoot,
+      })
+      .pipe(connect.dest(server.remotePath));
+  };
 
-        return gulp.src(projectConfig.buildPaths.dist.dir + '/**/*', {base: projectConfig.basePaths.webRoot})
-            .pipe(connect.dest(server.remotePath));
-    };
+  const syncHtml = () => {
+    nextWebServer();
 
-    const syncHtml = () => {
-        nextWebServer();
+    const server = projectConfig.webServers[projectConfig.processing.webServerIndex];
+    const connect = new SSH(server.options);
 
-        const server = projectConfig.webServers[projectConfig.processing.webServerIndex];
-        const connect = new SSH(server.options);
+    return gulp
+      .src(projectConfig.buildPaths.dist.html + '/**/*', {
+        base: projectConfig.buildPaths.dist.html,
+      })
+      .pipe(connect.dest(server.remotePath));
+  };
 
-        return gulp.src(projectConfig.buildPaths.dist.html + '/**/*', {base: projectConfig.buildPaths.dist.html})
-            .pipe(connect.dest(server.remotePath));
-    };
+  const syncDir = cb => {
+    nextSyncDir();
 
-    const syncDir = cb => {
-        nextSyncDir();
+    const server = projectConfig.staticServers[projectConfig.processing.staticServerIndex];
 
-        const server = projectConfig.staticServers[projectConfig.processing.staticServerIndex];
+    const changedFiles =
+      projectConfig.processing.syncDirItems[projectConfig.processing.syncDirKey].changedFiles;
 
-        const changedFiles = projectConfig.processing.syncDirItems[projectConfig.processing.syncDirKey].changedFiles;
+    if (changedFiles && (typeof changedFiles === 'string' || changedFiles.length)) {
+      const connect = new SSH(server.options);
+      return gulp
+        .src(changedFiles, { base: projectConfig.basePaths.webRoot })
+        .pipe(connect.dest(server.remotePath));
+    } else cb();
+  };
 
-        if (changedFiles && (typeof changedFiles === 'string' || changedFiles.length)) {
-            const connect = new SSH(server.options);
-            return gulp.src(changedFiles, {base: projectConfig.basePaths.webRoot})
-                .pipe(connect.dest(server.remotePath));
-        }
-        else cb();
-    };
+  const syncStaticTasks = fill(
+    new Array((projectConfig.staticServers && projectConfig.staticServers.length) || 0),
+    syncStatic
+  );
+  const syncWebTasks = fill(
+    new Array((projectConfig.webServers && projectConfig.webServers.length) || 0),
+    syncHtml
+  );
 
-    const syncStaticTasks = fill(new Array(projectConfig.staticServers && projectConfig.staticServers.length || 0), syncStatic);
-    const syncWebTasks = fill(new Array(projectConfig.webServers && projectConfig.webServers.length || 0), syncHtml);
-
-    const syncDirTasks = [];
-    projectConfig.staticServers &&
+  const syncDirTasks = [];
+  projectConfig.staticServers &&
     projectConfig.staticServers.length &&
     projectConfig.processing.syncDirKeys &&
     projectConfig.processing.syncDirKeys.length &&
     projectConfig.staticServers.forEach(() => {
-        syncDirTasks.push(nextStaticServer);
-        projectConfig.processing.syncDirKeys.forEach(() => {
-            syncDirTasks.push(syncDir);
-        });
+      syncDirTasks.push(nextStaticServer);
+      projectConfig.processing.syncDirKeys.forEach(() => {
+        syncDirTasks.push(syncDir);
+      });
     });
 
-    const tasks = concat([], [
-        'pre_dist'
-    ],
-        syncStaticTasks,
-        syncDirTasks,
-        syncWebTasks,
-        [
-            delDist,
-            'del_bak_manifests'
-        ]
-    );
+  const tasks = concat([], ['pre_dist'], syncStaticTasks, syncDirTasks, syncWebTasks, [
+    delDist,
+    'del_bak_manifests',
+  ]);
 
-    // Register task.
-    gulp.task('sync', gulp.series.apply(null, tasks));
+  // Register task.
+  gulp.task('sync', gulp.series.apply(null, tasks));
 };

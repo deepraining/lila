@@ -1,4 +1,3 @@
-
 const fill = require('lodash/fill');
 const concat = require('lodash/concat');
 
@@ -19,31 +18,22 @@ const backupHtml = require('../dist/html/backup');
 const syncDirChanged = require('../dist/changed/sync_dir');
 const distTasks = require('../dist/tasks');
 
-module.exports = (gulp) => {
+module.exports = gulp => {
+  const syncDirChangedTasks = fill(
+    new Array(
+      (projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length) || 0
+    ),
+    syncDirChanged
+  );
 
-    const syncDirChangedTasks = fill(
-        new Array(projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length || 0),
-        syncDirChanged
-    );
+  const tasks = concat(
+    [],
+    [delAnalyze, delDev, delDist, copyManifests, logFirstModule],
+    distTasks(gulp),
+    syncDirChangedTasks,
+    [copyToDist, renameHtml, backupHtml, delStore]
+  );
 
-    const tasks = concat([],
-        [
-            delAnalyze,
-            delDev,
-            delDist,
-            copyManifests,
-            logFirstModule
-        ],
-            distTasks(gulp),
-            syncDirChangedTasks,
-        [
-            copyToDist,
-            renameHtml,
-            backupHtml,
-            delStore
-        ]);
-
-    // Register task.
-    gulp.task('pre_dist', gulp.series.apply(null, tasks));
+  // Register task.
+  gulp.task('pre_dist', gulp.series.apply(null, tasks));
 };
-

@@ -1,4 +1,3 @@
-
 const cloneDeep = require('lodash/cloneDeep');
 
 const origin = require('./origin');
@@ -10,18 +9,18 @@ const allConfigs = [];
 
 // Multiple modules.
 if (config.multiple) {
-    config.allModules.forEach(moduleName => {
-        let clonedConfig = cloneDeep(origin);
+  config.allModules.forEach(moduleName => {
+    let clonedConfig = cloneDeep(origin);
 
-        // Change current config's module attribute to `moduleName`.
-        clonedConfig.module = moduleName;
+    // Change current config's module attribute to `moduleName`.
+    clonedConfig.module = moduleName;
 
-        allConfigs.push(format(clonedConfig, !0));
-    });
+    allConfigs.push(format(clonedConfig, !0));
+  });
 }
 // Single module.
 else {
-    allConfigs.push(config);
+  allConfigs.push(config);
 }
 
 /**
@@ -30,4 +29,3 @@ else {
  * @type {Array}
  */
 module.exports = allConfigs;
-

@@ -4,8 +4,7 @@
  * @param config
  */
 module.exports = config => {
-
-    if (config.moduleGroup && config.moduleGroup[config.module]) {
-        config.module = config.moduleGroup[config.module].join(',');
-    }
+  if (config.moduleGroup && config.moduleGroup[config.module]) {
+    config.module = config.moduleGroup[config.module].join(',');
+  }
 };

@@ -1,4 +1,3 @@
-
 const cloneDeep = require('lodash/cloneDeep');
 
 const origin = require('./origin');

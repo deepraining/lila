@@ -1,7 +1,5 @@
-
 const fs = require('fs');
 const md5 = require('crypto-md5');
-
 
 /**
  * Get md5 of a file.
@@ -10,5 +8,5 @@ const md5 = require('crypto-md5');
  * @returns {*}
  */
 module.exports = filePath => {
-    return md5(fs.readFileSync(filePath), 'hex');
+  return md5(fs.readFileSync(filePath), 'hex');
 };

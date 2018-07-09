@@ -82,5 +82,8 @@
     "webpack-hot-middleware": "^2.22.2",
     "write-file-webpack-plugin": "^4.3.2",
     "yargs": "^8.0.2"
+  },
+  "scripts": {
+    "prettier": "prettier --write ./**/*.{js,json,md}"
   }
 }
