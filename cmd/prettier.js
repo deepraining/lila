@@ -17,6 +17,10 @@ if (!moduleName) {
 
 checkConfigFile();
 
+logger.log(`
+    Start 'prettier' for module '${moduleName}'.
+`);
+
 require('./util/prettier');
 
 logger.success(`

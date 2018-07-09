@@ -2,6 +2,7 @@
 
 ## 0.3.1 [2018-06-21]
 
+- Add `esLint, styleLint, prettier` option.
 - Add `prettierOptions` option.
 - Add `prettier` command.
 - Add `styleLintOptions, styleLintFix` option.

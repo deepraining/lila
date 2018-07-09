@@ -27,7 +27,5 @@ module.exports = () => {
     console.log(item);
   });
 
-  $('body').css({
-    'background-color': '#0000ff',
-  });
+  $('body').css({ 'background-color': '#0000ff' });
 };

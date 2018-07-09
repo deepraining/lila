@@ -18,7 +18,7 @@ require('out-2')();
 
 console.log('test/index');
 
-// test ignoreNodeModules
+/* eslint no-unused-vars: 0 */
 const Swiper = require('swiper');
 require('bootstrap');
 

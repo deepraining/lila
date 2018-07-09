@@ -17,6 +17,10 @@ if (!moduleName) {
 
 checkConfigFile();
 
+logger.log(`
+    Start 'eslint' for module '${moduleName}'.
+`);
+
 require('./util/eslint');
 
 logger.success(`

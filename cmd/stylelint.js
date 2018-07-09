@@ -17,6 +17,10 @@ if (!moduleName) {
 
 checkConfigFile();
 
+logger.log(`
+    Start 'stylelint' for module '${moduleName}'.
+`);
+
 require('./util/stylelint')(() => {
   logger.success(`
     No errors occurred under module '${moduleName}'.

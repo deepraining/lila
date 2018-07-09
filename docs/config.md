@@ -640,21 +640,12 @@ See [Project config - servers](./servers.md).
 * `default`: `true`
 * `since`: `v0.3.1`
 
-## beforeFormatConfig
+## esLint
 
-* `desc`: Callback before formatting a project config, you can modify project config before it applys to building process.
-* `type`: `function`
-* `default`: empty
-* `since`: `v0.3.0`
-* `example`: 
-
-```
-(config, argv) => {
-    // Modify config as you want.
-}
-```
-* `config`: Project config.
-* `argv`: Arguments from command line. See [minimist](https://github.com/substack/minimist). 
+* `desc`: Whether to use [eslint](https://github.com/eslint/eslint) before building task.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.1`
 
 ## esLintOptions
 
@@ -668,6 +659,13 @@ See [Project config - servers](./servers.md).
 
 * `desc`: Whether to try to fix errors and warnings when use [eslint](https://github.com/eslint/eslint).
 * `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.1`
+
+## styleLint
+
+* `desc`: Whether to use [stylelint](https://github.com/stylelint/stylelint) before building task.
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.3.1`
@@ -688,6 +686,13 @@ See [Project config - servers](./servers.md).
 * `default`: `false`
 * `since`: `v0.3.1`
 
+## prettier
+
+* `desc`: Whether to use [prettier](https://github.com/prettier/prettier) before building task.
+* `type`: `bool`
+* `default`: `false`
+* `since`: `v0.3.1`
+
 ## prettierOptions
 
 * `desc`: Options to initialize [prettier](https://github.com/prettier/prettier).
@@ -695,3 +700,19 @@ See [Project config - servers](./servers.md).
 * `type`: `map`, details to see [minimist](https://github.com/substack/minimist) 
 * `default`: `{}`
 * `since`: `v0.3.1`
+
+## beforeFormatConfig
+
+* `desc`: Callback before formatting a project config, you can modify project config before it applys to building process.
+* `type`: `function`
+* `default`: empty
+* `since`: `v0.3.0`
+* `example`: 
+
+```
+(config, argv) => {
+    // Modify config as you want.
+}
+```
+* `config`: Project config.
+* `argv`: Arguments from command line. See [minimist](https://github.com/substack/minimist). 
