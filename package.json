@@ -25,9 +25,11 @@
   "homepage": "https://github.com/senntyou/lila",
   "readmeFilename": "README.md",
   "scripts": {
+    "precommit": "npm run lint-staged",
     "prettier": "prettier --write ./**/*.{js,json,md}",
     "eslint": "eslint .",
-    "eslint:fix": "eslint . --fix"
+    "eslint:fix": "eslint . --fix",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
@@ -89,11 +91,17 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run eslint:fix && npm run prettier && git add ."
-    }
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --wirter",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }

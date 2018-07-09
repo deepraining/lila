@@ -266,15 +266,23 @@ lila prettier moduleName
 - `supported`: `js,jsx,ts,css,less,sass,scss,json,md`
 - `since`: `v0.3.1`
 
-### 3.10 Arguments.
+### 3.10 `upgrade`: Upgrade project to current version's lila environment.
 
-#### 3.10.1 `env/e`:
+```
+lila upgrade
+```
+
+- `since`: `v0.3.1`
+
+### 3.11 Arguments.
+
+#### 3.11.1 `env/e`:
 
 - Specify current environment through command line, example: `-e 0`, `-e 1`;
 - If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
 - If env is not provided, default is `0`.
 
-#### 3.10.2 `local/l`
+#### 3.11.2 `local/l`
 
 - Specify current local name through command line.
 
@@ -282,7 +290,7 @@ lila prettier moduleName
 
 - Specify whether to use `outResolveAlias`.
 
-#### 3.10.3 `moduleName`
+#### 3.11.3 `moduleName`
 
 - `test/index`: A single file module.
 - `test/index,test/index2`: Multiple modules.
