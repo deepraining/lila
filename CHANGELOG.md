@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.1 [2018-06-21]
+## 0.3.1 [2018-07-09]
 
 - Add `upgrade` command.
 - Add `esLint, styleLint, prettier` option.
