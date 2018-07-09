@@ -10,10 +10,8 @@ const logger = require('../util/logger');
 module.exports = () => {
   if (!fs.existsSync(pathInfo.configFilePath)) {
     logger.error(`
-    'Missing config file '${
-      pathInfo.configFile
-    }' in project root directory, and it's required by lila.'    
-        `);
+  Missing config file "${pathInfo.configFile}" in project root directory, and it's required by lila.    
+    `);
     process.exit(1);
   }
 };

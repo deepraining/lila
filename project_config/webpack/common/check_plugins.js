@@ -12,16 +12,16 @@ module.exports = config => {
     emptyOrArray(
       config.plugins,
       `
-    'plugins' defined in '${pathInfo.configFile}' must be an array.    
-        `
+  'plugins' defined in '${pathInfo.configFile}' must be an array.    
+      `
     );
     config.webpack.plugins = config.plugins;
   } else if (config.webpack.plugins) {
     emptyOrArray(
       config.webpack.plugins,
       `
-    'webpack.plugins' defined in '${pathInfo.configFile}' must be an array.    
-        `
+  'webpack.plugins' defined in '${pathInfo.configFile}' must be an array.    
+      `
     );
   } else {
     config.webpack.plugins = [];

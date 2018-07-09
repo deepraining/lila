@@ -11,7 +11,7 @@ module.exports = config => {
   emptyOrArray(
     config.webpack.entry,
     `
-    'webpack.entry' defined in '${pathInfo.configFile}' must be an array.
+  'webpack.entry' defined in '${pathInfo.configFile}' must be an array.
     `
   );
   !config.webpack.entry && (config.webpack.entry = []);

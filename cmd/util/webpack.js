@@ -6,13 +6,13 @@ const projectConfig = require('../../project_config');
 
 if (projectConfig.multiple) {
   logger.error(`
-    Current mode do not support multiple modules.
-    `);
+  Current mode do not support multiple modules.
+  `);
   logger.log(`
-    You can use it like this:
-    
-    lila dist <single-name> -w
-    `);
+  You can use it like this:
+  
+  lila dist <single-name> -w
+  `);
 
   process.exit(0);
 }
@@ -42,6 +42,6 @@ webpack(projectConfig.webpack, (err, stats) => {
   }
 
   logger.success(`
-    Webpack build module '${projectConfig.module}' successfully, no errors.
-    `);
+  Webpack build module '${projectConfig.module}' successfully, no errors.
+  `);
 });

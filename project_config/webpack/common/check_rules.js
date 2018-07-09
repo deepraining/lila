@@ -13,16 +13,16 @@ module.exports = config => {
     emptyOrArray(
       config.rules,
       `
-    'rules' defined in '${pathInfo.configFile}' must be an array.    
-        `
+  'rules' defined in '${pathInfo.configFile}' must be an array.    
+      `
     );
     config.webpack.module.rules = config.rules;
   } else if (config.webpack.module.rules) {
     emptyOrArray(
       config.webpack.module.rules,
       `
-    'webpack.module.rules' defined in '${pathInfo.configFile}' must be an array.    
-        `
+  'webpack.module.rules' defined in '${pathInfo.configFile}' must be an array.    
+      `
     );
   } else {
     config.webpack.module.rules = [];

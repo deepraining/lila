@@ -13,13 +13,13 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: dev.
-    `);
+  Missing module name for command: dev.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila dev <name>
-    `);
+  You can use this command as follows:
+  
+  lila dev <name>
+  `);
   process.exit(0);
 }
 

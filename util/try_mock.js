@@ -31,7 +31,7 @@ module.exports = (req, res, next) => {
 Mock[${method}] ${url}
 =>
 ${filePath}            
-            `);
+      `);
       // Disable cache.
       require.cache[filePath] && delete require.cache[filePath];
       require(filePath)(req, res);

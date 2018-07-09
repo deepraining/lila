@@ -1,11 +1,12 @@
 const chalk = require('chalk');
+const repeat = require('lodash/repeat');
 
 /**
  * 11 spaces.
  *
  * @type {string}
  */
-const prefixSpaces = '           ';
+const prefixSpaces = repeat(' ', 11);
 
 /**
  * Get string to display.

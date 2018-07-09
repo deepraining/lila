@@ -16,8 +16,8 @@ revertShare.packages = glob.sync('dist-*.zip');
 
 if (!revertShare.packages || !revertShare.packages.length) {
   logger.error(`
-    No archive packages in current directory.
-    `);
+  No archive packages in current directory.
+  `);
   process.exit(0);
 }
 
@@ -26,8 +26,8 @@ const index = parseInt(argv.i) || parseInt(argv.index) || 0;
 // Index is greater than total length.
 if (index > revertShare.packages.length) {
   logger.error(`
-    Index "${index}" is greater than packages' length "${revertShare.packages.length}".
-    `);
+  Index "${index}" is greater than packages' length "${revertShare.packages.length}".
+  `);
   process.exit(0);
 }
 
@@ -39,11 +39,9 @@ registerTasks(gulp);
 // Execute task.
 gulp.series('revert', cb => {
   logger.success(`
-    Revert 'dist' directory to last ${revertShare.index}${sequenceSuffix(
-    revertShare.index
-  )} archive state successfully,
-    with filename of '${revertShare.revertZip}'.
-    `);
+  Revert 'dist' directory to last ${revertShare.index}${sequenceSuffix(revertShare.index)} archive state successfully, 
+  with filename of '${revertShare.revertZip}'.
+  `);
 
   cb();
 })();

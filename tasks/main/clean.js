@@ -56,8 +56,8 @@ module.exports = gulp => {
     });
 
     logger.success(`
-    ${deletedFilesCount} redundant files are deleted successfully.    
-        `);
+  ${deletedFilesCount} redundant files are deleted successfully.    
+    `);
 
     cb();
   };
@@ -99,8 +99,8 @@ module.exports = gulp => {
     });
 
     logger.success(`
-    ${deletedFilesCount} redundant js chunk files are deleted successfully.
-        `);
+  ${deletedFilesCount} redundant js chunk files are deleted successfully.
+    `);
 
     cb();
   };

@@ -11,13 +11,13 @@ let moduleName = argv._[1];
 // Missing module name.
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: add.
-    `);
+  Missing module name for command: add.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila add <name>
-    `);
+  You can use this command as follows:
+  
+  lila add <name>
+  `);
   process.exit(0);
 }
 
@@ -36,8 +36,8 @@ let jsFilePath = moduleDirPath + '/index.js';
 
 if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
   logger.error(`
-    Module '${moduleName}' has already been added.
-    `);
+  Module '${moduleName}' has already been added.
+  `);
   process.exit(0);
 }
 
@@ -47,5 +47,5 @@ copyDemoFile(moduleDirPath, 'index.js');
 copyDemoFile(moduleDirPath, 'index.html');
 
 logger.success(`
-    Lila add module '${moduleName}' successfully!
+  Lila add module '${moduleName}' successfully!
 `);

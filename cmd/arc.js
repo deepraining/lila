@@ -8,8 +8,8 @@ const registerTasks = require('../tasks/register');
 
 if (!fs.existsSync(pathInfo.projectRoot + '/dist')) {
   logger.error(`
-    Missing 'dist' directory for command: arc.
-    `);
+  Missing 'dist' directory for command: arc.
+  `);
   process.exit(0);
 }
 

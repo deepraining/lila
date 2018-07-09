@@ -5,24 +5,24 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: eslint.
-    `);
+  Missing module name for command: eslint.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila eslint <name>
-    `);
+  You can use this command as follows:
+  
+  lila eslint <name>
+  `);
   process.exit(0);
 }
 
 checkConfigFile();
 
 logger.log(`
-    Start 'eslint' for module '${moduleName}'.
+  Start 'eslint' for module '${moduleName}'.
 `);
 
 require('./util/eslint');
 
 logger.success(`
-    No errors occurred under module '${moduleName}'.
+  No errors occurred under module '${moduleName}'.
 `);

@@ -5,24 +5,24 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: stylelint.
-    `);
+  Missing module name for command: stylelint.
+  `);
   logger.log(`
-    You can use this command as follows:
+  You can use this command as follows:
     
-    lila stylelint <name>
-    `);
+  lila stylelint <name>
+  `);
   process.exit(0);
 }
 
 checkConfigFile();
 
 logger.log(`
-    Start 'stylelint' for module '${moduleName}'.
+  Start 'stylelint' for module '${moduleName}'.
 `);
 
 require('./util/stylelint')(() => {
   logger.success(`
-    No errors occurred under module '${moduleName}'.
+  No errors occurred under module '${moduleName}'.
   `);
 });

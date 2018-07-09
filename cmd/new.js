@@ -13,13 +13,13 @@ let projectName = argv._[1];
 // No project name.
 if (!projectName) {
   logger.error(`
-    Missing project name for command: new.
-    `);
+  Missing project name for command: new.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila new <name>
-    `);
+  You can use this command as follows:
+  
+  lila new <name>
+  `);
   process.exit(0);
 }
 
@@ -28,8 +28,8 @@ let projectPath = path.join(pathInfo.projectRoot, projectName);
 // Project has been created.
 if (fs.existsSync(projectPath)) {
   logger.error(`
-    Project '${projectName}' has already been created.
-    `);
+  Project '${projectName}' has already been created.
+  `);
   process.exit(0);
 }
 
@@ -76,5 +76,5 @@ copyRootFile(projectPath, 'lila.config.js');
 copyRootFile(projectPath, 'lila.server.config.js');
 
 logger.success(`
-    Lila new project '${projectName}' successfully!
+  Lila new project '${projectName}' successfully!
 `);

@@ -4,13 +4,13 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: ana.
-    `);
+  Missing module name for command: ana.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila ana <name>
-    `);
+  You can use this command as follows:
+  
+  lila ana <name>
+  `);
   process.exit(0);
 }
 

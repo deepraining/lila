@@ -39,8 +39,8 @@ const getModules = (module, config) => {
   // The rest.
   else {
     logger.error(`
-    Can not resolve module ${module}.
-        `);
+  Can not resolve module ${module}.
+    `);
     process.exit(1);
   }
 

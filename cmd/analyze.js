@@ -7,13 +7,13 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: analyze.
-    `);
+  Missing module name for command: analyze.
+  `);
   logger.log(`
-    You can use this command as follows:
-    
-    lila analyze <name>
-    `);
+  You can use this command as follows:
+  
+  lila analyze <name>
+  `);
   process.exit(0);
 }
 
