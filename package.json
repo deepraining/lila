@@ -24,6 +24,11 @@
   },
   "homepage": "https://github.com/senntyou/lila",
   "readmeFilename": "README.md",
+  "scripts": {
+    "prettier": "prettier --write ./**/*.{js,json,md}",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
@@ -83,9 +88,12 @@
     "write-file-webpack-plugin": "^4.3.2",
     "yargs": "^8.0.2"
   },
-  "scripts": {
-    "prettier": "prettier --write ./**/*.{js,json,md}",
-    "eslint": "eslint .",
-    "eslint:fix": "eslint . --fix"
+  "devDependencies": {
+    "husky": "^0.14.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint:fix && npm run prettier && git add ."
+    }
   }
 }
