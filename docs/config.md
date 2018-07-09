@@ -687,3 +687,11 @@ See [Project config - servers](./servers.md).
 * `type`: `bool`
 * `default`: `false`
 * `since`: `v0.3.1`
+
+## prettierOptions
+
+* `desc`: Options to initialize [prettier](https://github.com/prettier/prettier).
+* `see`: [prettier - options](https://prettier.io/docs/en/options.html)
+* `type`: `map`, details to see [minimist](https://github.com/substack/minimist) 
+* `default`: `{}`
+* `since`: `v0.3.1`

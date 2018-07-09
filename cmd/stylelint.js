@@ -19,7 +19,7 @@ checkConfigFile();
 
 require('./util/stylelint')(() => {
   logger.success(`
-    No errors occurred.
+    No errors occurred under module '${moduleName}'.
   `);
 });
 

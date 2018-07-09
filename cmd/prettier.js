@@ -5,20 +5,20 @@ const moduleName = argv.module;
 
 if (!moduleName) {
   logger.error(`
-    Missing module name for command: eslint.
+    Missing module name for command: prettier.
     `);
   logger.log(`
     You can use this command as follows:
     
-    lila eslint <name>
+    lila prettier <name>
     `);
   process.exit(0);
 }
 
 checkConfigFile();
 
-require('./util/eslint');
+require('./util/prettier');
 
 logger.success(`
-    No errors occurred under module '${moduleName}'.
+    Done for formatting code under module '${moduleName}'.
 `);

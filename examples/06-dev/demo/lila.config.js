@@ -118,5 +118,8 @@ module.exports = {
   },
   esLintFix: !0,
   styleLintFix: !0,
+  prettierOptions: {
+    // 'print-width': 40
+  }
 };
 

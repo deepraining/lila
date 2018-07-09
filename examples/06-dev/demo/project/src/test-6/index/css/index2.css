@@ -1,14 +1,13 @@
-
 .test-index-2 {
-    width: 200px;
-    height: 200px;
-    background-image: url("../../../../images/test/index.png");
+  width: 200px;
+  height: 200px;
+  background-image: url('../../../../images/test/index.png');
 }
 
 .test-index-2-3 {
-    transition: all .5s;
-    transform: translateY(100%);
+  transition: all 0.5s;
+  transform: translateY(100%);
 }
 .test-index-2-3.active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
