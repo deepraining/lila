@@ -25,7 +25,7 @@ module.exports = gulp => {
 
     rd.eachFileFilterSync(pathInfo.projectRoot + '/dist', file => {
       // Only clean js and css files.
-      if (file.slice(-3) !== '.js' && file.slice(-4) !== '.css') return;
+      if (file.slice(-3) !== '.js' && file.slice(-4) !== '.css') {return;}
 
       /**
        * File path.
@@ -44,7 +44,7 @@ module.exports = gulp => {
       // Match `js|css` file.
       let regExp = makeRegExp.matchFileName(share.hashDigestLength);
       let result = regExp.exec(fileName);
-      if (!result) return;
+      if (!result) {return;}
 
       // Not in use, remove it.
       if (hashCodes.indexOf(result[1]) < 0) {
@@ -82,7 +82,7 @@ module.exports = gulp => {
     rd.eachFileFilterSync(pathInfo.projectRoot + '/dist', file => {
       // File path.
       let filePath = pathUtil.replaceBackSlash(file);
-      if (!testRegExp.test(filePath)) return;
+      if (!testRegExp.test(filePath)) {return;}
 
       let lastSlashIndex = filePath.lastIndexOf('/');
       let fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);

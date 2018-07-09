@@ -23,7 +23,7 @@ const concat = require('lodash/concat');
  * @param config
  */
 module.exports = config => {
-  if (!config.splitJs) return;
+  if (!config.splitJs) {return;}
 
   config.splitJsChunks = {};
 

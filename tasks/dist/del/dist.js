@@ -10,7 +10,7 @@ const projectConfig = require('../../../project_config');
  * @returns {*}
  */
 module.exports = function delDist() {
-  logger.log("Deleting 'dist' directory.", {
+  logger.log('Deleting \'dist\' directory.', {
     prefix: !0,
     preLn: !0,
     postLn: !0,

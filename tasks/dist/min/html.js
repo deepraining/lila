@@ -30,6 +30,6 @@ module.exports = gulp => {
         .src(current.config.buildPaths.buildTmp.dir + '/**/*.html')
         .pipe(htmlmin(options))
         .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
-    } else cb();
+    } else {cb();}
   };
 };

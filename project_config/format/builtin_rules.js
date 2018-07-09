@@ -4,7 +4,7 @@
  * @param config
  */
 module.exports = config => {
-  if (!config.builtinRules) return;
+  if (!config.builtinRules) {return;}
 
   // Disable builtin `babel-loader`.
   config.disableBabelLoader = config.builtinRules.babelLoader === false;

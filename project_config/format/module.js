@@ -27,15 +27,15 @@ const asteriskRegExp = /\*/;
  */
 const getModules = (module, config) => {
   // No asterisk.
-  if (!asteriskRegExp.test(module)) return [module];
+  if (!asteriskRegExp.test(module)) {return [module];}
 
   let dir;
   const modules = [];
 
   // All modules in current project.
-  if (module === '*') dir = config.buildPaths.src.dir;
+  if (module === '*') {dir = config.buildPaths.src.dir;}
   // test/*
-  else if (module.slice(-2) === '/*') dir = config.buildPaths.src.dir + '/' + module.slice(0, -2);
+  else if (module.slice(-2) === '/*') {dir = config.buildPaths.src.dir + '/' + module.slice(0, -2);}
   // The rest.
   else {
     logger.error(`
@@ -109,8 +109,8 @@ module.exports = config => {
   let allModules = [];
 
   // Split by comma.
-  if (hasComma) modules = currentModule.split(',');
-  else modules = [currentModule];
+  if (hasComma) {modules = currentModule.split(',');}
+  else {modules = [currentModule];}
 
   modules.forEach(item => {
     allModules = concat(allModules, getModules(item, config));

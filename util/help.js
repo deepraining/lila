@@ -37,7 +37,7 @@ const commands = [
   },
   {
     name: 'dev',
-    desc: "Watch files' changes, with hot replacing and reloading, and start a local server for debug.",
+    desc: 'Watch files\' changes, with hot replacing and reloading, and start a local server for debug.',
   },
   {
     name: 'dist',
@@ -65,7 +65,7 @@ const commands = [
   },
   {
     name: 'clean',
-    desc: "Clean redundant files caused by revision(filename by each file's hash code).",
+    desc: 'Clean redundant files caused by revision(filename by each file\'s hash code).',
   },
   {
     name: 'revert',
@@ -73,15 +73,15 @@ const commands = [
   },
   {
     name: 'eslint',
-    desc: "Use 'eslint' to identify and report on patterns in JavaScript.",
+    desc: 'Use \'eslint\' to identify and report on patterns in JavaScript.',
   },
   {
     name: 'stylelint',
-    desc: "Use 'stylelint' check errors and enforce consistent conventions in stylesheets.",
+    desc: 'Use \'stylelint\' check errors and enforce consistent conventions in stylesheets.',
   },
   {
     name: 'prettier',
-    desc: "Use 'prettier' to format codes.",
+    desc: 'Use \'prettier\' to format codes.',
   },
 ];
 

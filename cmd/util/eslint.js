@@ -12,8 +12,8 @@ options.fix = !!projectConfig.esLintFix;
 let cli = new CLIEngine(options);
 
 let subDir = moduleName;
-if (moduleName === '*') subDir = '';
-else if (moduleName.slice(-1) === '*') subDir = moduleName.slice(0, -2);
+if (moduleName === '*') {subDir = '';}
+else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
 
 let formatter = cli.getFormatter();
 let report = cli.executeOnFiles([path.join(projectConfig.buildPaths.src.dir, subDir)]);

@@ -23,7 +23,7 @@ module.exports = function renameHtml(cb) {
     let sourcePath = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.html';
 
     if (fs.existsSync(sourcePath) && !fs.existsSync(targetPath))
-      fsExtra.moveSync(sourcePath, targetPath, { overwrite: !0 });
+    {fsExtra.moveSync(sourcePath, targetPath, { overwrite: !0 });}
 
     // html to jsp, php ...
     if (projectConfig.htmlExtension) {
@@ -31,7 +31,7 @@ module.exports = function renameHtml(cb) {
       const sourcePath2 = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.' + projectConfig.htmlExtension;
 
       if (fs.existsSync(sourcePath2) && !fs.existsSync(targetPath2))
-        fsExtra.moveSync(sourcePath2, targetPath2, { overwrite: !0 });
+      {fsExtra.moveSync(sourcePath2, targetPath2, { overwrite: !0 });}
     }
   });
 

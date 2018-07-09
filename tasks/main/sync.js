@@ -50,7 +50,7 @@ module.exports = gulp => {
     if (changedFiles && (typeof changedFiles === 'string' || changedFiles.length)) {
       const connect = new SSH(server.options);
       return gulp.src(changedFiles, { base: projectConfig.basePaths.webRoot }).pipe(connect.dest(server.remotePath));
-    } else cb();
+    } else {cb();}
   };
 
   const syncStaticTasks = fill(

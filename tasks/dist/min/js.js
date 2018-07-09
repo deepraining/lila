@@ -15,10 +15,10 @@ module.exports = gulp => {
     logger.log('Minimizing js files.', { prefix: !0, preLn: !0, postLn: !0 });
 
     if (current.config.minJs)
-      return gulp
+    {return gulp
         .src(current.config.buildPaths.buildTmp.dir + '/**/*.js')
         .pipe(uglify(current.config.minJsOptions || {}))
-        .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
-    else cb();
+        .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));}
+    else {cb();}
   };
 };

@@ -7,7 +7,7 @@ const keys = require('lodash/keys');
  */
 module.exports = config => {
   // No directories.
-  if (!config.directoriesToSync || !keys(config.directoriesToSync).length) return;
+  if (!config.directoriesToSync || !keys(config.directoriesToSync).length) {return;}
 
   /**
    * Keys of directories.

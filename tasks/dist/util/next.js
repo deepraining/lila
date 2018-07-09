@@ -10,7 +10,7 @@ const current = require('../current');
  * @param log
  */
 module.exports = log => {
-  if (!projectConfig.multiple) return;
+  if (!projectConfig.multiple) {return;}
 
   log &&
     logger.success(`Finish building module '${projectConfig.allModules[current.index]}'.`, {

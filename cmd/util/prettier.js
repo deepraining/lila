@@ -7,8 +7,8 @@ const moduleName = argv.module;
 const projectConfig = require('../../project_config');
 
 let subDir = moduleName;
-if (moduleName === '*') subDir = '';
-else if (moduleName.slice(-1) === '*') subDir = moduleName.slice(0, -2);
+if (moduleName === '*') {subDir = '';}
+else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
 
 // Prettier needs to change `process.argv`.
 let oldProcessArgv = process.argv;
@@ -20,10 +20,10 @@ process.argv.push(
 );
 
 if (projectConfig.prettierOptions)
-  forEach(projectConfig.prettierOptions, (value, key) => {
-    process.argv.push(`--${key}`);
-    value !== true && process.argv.push(value);
-  });
+{forEach(projectConfig.prettierOptions, (value, key) => {
+  process.argv.push(`--${key}`);
+  value !== true && process.argv.push(value);
+});}
 
 require('prettier/bin-prettier');
 

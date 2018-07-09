@@ -22,7 +22,7 @@ module.exports = () => {
     rd.eachFileFilterSync(dir, file => {
       // File path.
       let filePath = pathUtil.replaceBackSlash(file);
-      if (!testRegExp.test(filePath)) return;
+      if (!testRegExp.test(filePath)) {return;}
 
       // File content.
       let content = fs.readFileSync(file);

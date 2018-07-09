@@ -30,10 +30,10 @@ module.exports = (dir, name) => {
   let changedFiles = {};
 
   // If manifests directory is not exist, create it.
-  if (!fs.existsSync(pathInfo.manifestsDir)) fs.mkdirSync(pathInfo.manifestsDir);
+  if (!fs.existsSync(pathInfo.manifestsDir)) {fs.mkdirSync(pathInfo.manifestsDir);}
 
   // If manifest file exist, load it.
-  if (fs.existsSync(manifestPath)) oldManifest = require(manifestPath);
+  if (fs.existsSync(manifestPath)) {oldManifest = require(manifestPath);}
 
   // Read all files under dir.
   rd.eachFileFilterSync(dir, file => {

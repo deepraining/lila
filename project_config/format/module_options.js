@@ -10,7 +10,7 @@ const keys = require('lodash/keys');
  * @param config
  */
 module.exports = config => {
-  if (!config.moduleOptions) return;
+  if (!config.moduleOptions) {return;}
 
   let option = config.moduleOptions[config.module];
 
@@ -27,7 +27,7 @@ module.exports = config => {
 
   moduleKeys.forEach(key => {
     // Found.
-    if (option) return;
+    if (option) {return;}
 
     let moduleOption = config.moduleOptions[key];
 
@@ -46,10 +46,10 @@ module.exports = config => {
 
     keyArray.forEach(oneModule => {
       // Found.
-      if (option) return;
+      if (option) {return;}
 
       // Not wildcard mode.
-      if (oneModule.slice(-1) !== '*') return;
+      if (oneModule.slice(-1) !== '*') {return;}
 
       // Wildcard, `test-4/*`.
       if (startsWith(config.module, oneModule.slice(0, -1))) {

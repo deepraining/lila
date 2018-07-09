@@ -21,8 +21,8 @@ module.exports = {
 
       return stat.isDirectory();
     } catch (err) {
-      if (err.code === 'ENOENT') return !1;
-      else throw new Error(err);
+      if (err.code === 'ENOENT') {return !1;}
+      else {throw new Error(err);}
     }
   },
   /**
@@ -37,8 +37,8 @@ module.exports = {
 
       return stat.isFile();
     } catch (err) {
-      if (err.code === 'ENOENT') return !1;
-      else throw new Error(err);
+      if (err.code === 'ENOENT') {return !1;}
+      else {throw new Error(err);}
     }
   },
 };

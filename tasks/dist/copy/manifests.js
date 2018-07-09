@@ -12,7 +12,7 @@ const filesCount = require('../../../util/files_count');
  * @param cb
  */
 module.exports = function copyManifests(cb) {
-  logger.log("Backing up 'manifests' directory.", {
+  logger.log('Backing up \'manifests\' directory.', {
     prefix: !0,
     preLn: !0,
     postLn: !0,

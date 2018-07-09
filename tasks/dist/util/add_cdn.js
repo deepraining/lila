@@ -65,10 +65,10 @@ module.exports = options => {
 
     let contents = file.contents.toString().replace(matchFiles, (content, filePath) => {
       // If is url, keep it.
-      if (isUrl(filePath)) return content;
+      if (isUrl(filePath)) {return content;}
 
       // Not Match, exit.
-      if (!continueMatch.test(filePath)) return content;
+      if (!continueMatch.test(filePath)) {return content;}
 
       for (let i = 0; i < options.rules.length; i++) {
         let rule = options.rules[i];
@@ -78,12 +78,12 @@ module.exports = options => {
             (startsWith(filePath, rule.start) && !rule.reverse) ||
             (!startsWith(filePath, rule.start) && rule.reverse)
           )
-            return content.replace(filePath, rule.cdn + filePath);
+          {return content.replace(filePath, rule.cdn + filePath);}
         }
         // Has test.
         else if (rule.test) {
           if ((rule.test.test(filePath) && !rule.reverse) || (!rule.test.test(filePath) && rule.reverse))
-            return content.replace(filePath, rule.cdn + filePath);
+          {return content.replace(filePath, rule.cdn + filePath);}
         }
         // Both not provided, means match all.
         else {

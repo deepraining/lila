@@ -17,7 +17,7 @@ module.exports = (subDir, targetDir, fileName, hasPrefix, replaceTarget, replace
 
   let content = fsExtra.readFileSync(filePath, 'utf8');
 
-  if (replaceTarget && replacement) content = content.replace(replaceTarget, replacement);
+  if (replaceTarget && replacement) {content = content.replace(replaceTarget, replacement);}
 
   fsExtra.outputFileSync(targetFilePath, content);
 };

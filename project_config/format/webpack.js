@@ -14,7 +14,7 @@ const makeAnalyzeConfig = require('../webpack/make_analyze_config');
  */
 module.exports = config => {
   // If multiple modules, no more handling.
-  if (config.multiple) return;
+  if (config.multiple) {return;}
 
   staticServerUrl(config);
   resolveModules(config);
@@ -22,7 +22,7 @@ module.exports = config => {
 
   !config.webpack && (config.webpack = {});
 
-  if (cliInfo.command === 'dev') makeDevConfig(config);
-  else if (cliInfo.command === 'dist' || cliInfo.command === 'sync') makeBuildConfig(config);
-  else if (cliInfo.command === 'analyze' || cliInfo.command === 'ana') makeAnalyzeConfig(config);
+  if (cliInfo.command === 'dev') {makeDevConfig(config);}
+  else if (cliInfo.command === 'dist' || cliInfo.command === 'sync') {makeBuildConfig(config);}
+  else if (cliInfo.command === 'analyze' || cliInfo.command === 'ana') {makeAnalyzeConfig(config);}
 };

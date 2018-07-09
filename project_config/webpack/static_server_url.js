@@ -31,9 +31,9 @@ module.exports = config => {
 
   let prefixLength = 0;
 
-  if (hasHttp) prefixLength = 7;
-  else if (hasHttps) prefixLength = 8;
-  else if (hasDoubleSlashes) prefixLength = 2;
+  if (hasHttp) {prefixLength = 7;}
+  else if (hasHttps) {prefixLength = 8;}
+  else if (hasDoubleSlashes) {prefixLength = 2;}
 
   // Three slash index(match directory).
   let threeSlashIndex = config.staticServerUrl.indexOf('/', prefixLength);
