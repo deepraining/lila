@@ -80,19 +80,8 @@ if (copyCount) {
   logger.success(`
   Successfully upgrade to version ${version}.
   `);
-}
-else {
+} else {
   logger.success(`
   You have already been in version ${version}, nothing to upgrade.
   `);
 }
-
-
-
-
-
-
-
-
-
-
