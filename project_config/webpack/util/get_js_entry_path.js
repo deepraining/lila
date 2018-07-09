@@ -1,6 +1,3 @@
-
-const fs = require('fs');
-
 /**
  * Get js entry path.
  *
@@ -11,6 +8,5 @@ const fs = require('fs');
  * @param config
  */
 module.exports = config => {
-
-    return config.buildPaths.src.dir + '/' + config.module + '/index.js';
+  return `${config.buildPaths.src.dir}/${config.module}/index.js`;
 };

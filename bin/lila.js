@@ -13,50 +13,50 @@ const help = require('../util/help');
 const notToLocalToExec = ['new', 'add', 'archive', 'arc', 'clean', 'revert'];
 
 // command name
-let command = argv._[0];
+const command = argv._[0];
 // package version
-let version = packageJson.version;
+const version = packageJson.version;
 
 // -v --version
 if (argv.v || argv.version) {
-    logger.log(version);
-    process.exit(0);
+  logger.log(version);
+  process.exit(0);
 }
 // -h --help
 if (argv.h || argv.help) {
-    help();
-    process.exit(0);
+  help();
+  process.exit(0);
 }
 
 // no command
 if (!command) {
-    help();
-    process.exit(0);
+  help();
+  process.exit(0);
 }
 
 // Do not need go to local.
 if (notToLocalToExec.indexOf(command) > -1) {
-    require('../index');
+  require('../index');
 }
 // Need to go to local to execute.
 else {
-    let localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
-    if (!fs.existsSync(localPkgPath)) {
-        logger.error(`
-    Missing local lila.    
-        `);
-        logger.log(`
-    Please install local lila before next running:
+  const localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
+  if (!fs.existsSync(localPkgPath)) {
+    logger.error(`
+  Missing local lila.    
+    `);
+    logger.log(`
+  Please install local lila before next running:
     
-    npm install lila --save-dev
-        `);
+  npm install lila --save-dev
+  `);
 
-        process.exit(0);
-    }
+    process.exit(0);
+  }
 
-    let localPkg = require(localPkgPath);
+  const localPkg = require(localPkgPath);
 
-    // Get package.json main attribute.
-    let localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
-    require(localPkgIndexPath);
+  // Get package.json main attribute.
+  const localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
+  require(localPkgIndexPath);
 }

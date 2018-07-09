@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const devMiddleWare = require('webpack-dev-middleware');
 const hotMiddleWare = require('webpack-hot-middleware');
@@ -13,21 +12,23 @@ const argv = require('../data/argv');
 const moduleName = argv.module;
 
 if (!moduleName) {
-    logger.error(`
-    Missing module name for command: dev.
-    `);
-    logger.log(`
-    You can use this command as follows:
-    
-    lila dev <name>
-    `);
-    process.exit(0);
+  logger.error(`
+  Missing module name for command: dev.
+  `);
+  logger.log(`
+  You can use this command as follows:
+  
+  lila dev <name>
+  `);
+  process.exit(0);
 }
 
 checkConfigFile();
 
 // Project config.
 const projectConfig = require('../project_config');
+// Imported after check project config.
+const tryMock = require('../util/try_mock');
 
 // Make a compiler.
 const compiler = webpack(projectConfig.webpack);
@@ -36,20 +37,21 @@ const compiler = webpack(projectConfig.webpack);
 const browserSyncConfig = projectConfig.browserSync || {};
 
 browserSyncConfig.server = {
-    baseDir: projectConfig.basePaths.webRoot
+  baseDir: projectConfig.basePaths.webRoot,
 };
 browserSyncConfig.port = projectConfig.devServerPort;
-browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
+browserSyncConfig.startPath = `${projectConfig.basePaths.webPrefix}/dev/${projectConfig.module}/index.html`;
 
 // Middleware.
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);
 
 // This must be in the first place.
 projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
+projectConfig.mock && browserSyncConfig.middleware.unshift(tryMock);
 
-let devOptions = projectConfig.webpackDev || {};
+const devOptions = projectConfig.webpackDev || {};
 devOptions.stats = 'errors-only';
-devOptions.publicPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module;
+devOptions.publicPath = `${projectConfig.basePaths.webPrefix}/dev/${projectConfig.module}`;
 
 browserSyncConfig.middleware.push(devMiddleWare(compiler, devOptions));
 browserSyncConfig.middleware.push(hotMiddleWare(compiler, projectConfig.webpackHot || {}));

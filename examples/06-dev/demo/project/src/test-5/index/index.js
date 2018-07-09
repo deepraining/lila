@@ -1,4 +1,7 @@
 
+import styles from './css/index.css';
+import styles2 from './css/index2.less';
+
 require('bootstrap/dist/css/bootstrap.css');
 // require('../../test/index/css/index.less');
 // require('../../test/index/css/index.css');
@@ -18,11 +21,9 @@ require('out')();
 
 console.log(`globalDefine: ${globalDefine}`);
 
-import styles from './css/index.css';
-import styles2 from './css/index2.less';
-
 const $ = require('jquery');
-let $body = $('body');
+
+const $body = $('body');
 $body.append(`<div class="${styles.dynamicImportCss}">dynamicImportCss</div>`);
 $body.append(`<div class="${styles2.dynamicImportLess}">dynamicImportLess</div>`);
 

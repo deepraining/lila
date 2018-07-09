@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const path = require('path');
 const concat = require('lodash/concat');
@@ -27,41 +26,44 @@ const asteriskRegExp = /\*/;
  * @returns {*}
  */
 const getModules = (module, config) => {
-    // No asterisk.
-    if (!asteriskRegExp.test(module)) return [module];
+  // No asterisk.
+  if (!asteriskRegExp.test(module)) {
+    return [module];
+  }
 
-    let dir;
-    const modules = [];
+  let dir;
+  const modules = [];
 
-    // All modules in current project.
-    if (module === '*') dir = config.buildPaths.src.dir;
+  // All modules in current project.
+  if (module === '*') {
+    dir = config.buildPaths.src.dir;
+  }
+  // test/*
+  else if (module.slice(-2) === '/*') {
+    dir = `${config.buildPaths.src.dir}/${module.slice(0, -2)}`;
+  }
+  // The rest.
+  else {
+    logger.error(`
+  Can not resolve module ${module}.
+    `);
+    process.exit(1);
+  }
 
-    // test/*
-    else if (module.slice(-2) === '/*') dir = config.buildPaths.src.dir + '/' + module.slice(0, -2);
+  // Get all modules.
+  rd.readDirFilterSync(dir, dirPath => {
+    const htmlFile = `${dirPath}/index.html`;
+    const jsFile = `${dirPath}/index.js`;
 
-    // The rest.
-    else {
-        logger.error(`
-    Can not resolve module ${module}.
-        `);
-        process.exit(1);
+    // Both `index.html` and `index.js` exist, means this directory is a module's workspace.
+    if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
+      const realModule = path.relative(config.buildPaths.src.dir, dirPath);
+      modules.push(pathUtil.replaceBackSlash(realModule));
     }
+  });
 
-    // Get all modules.
-    rd.readDirFilterSync(dir, dirPath => {
-        const htmlFile = dirPath + '/index.html';
-        const jsFile = dirPath + '/index.js';
-
-        // Both `index.html` and `index.js` exist, means this directory is a module's workspace.
-        if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
-            const realModule = path.relative(config.buildPaths.src.dir, dirPath);
-            modules.push(pathUtil.replaceBackSlash(realModule));
-        }
-    });
-
-    return modules;
+  return modules;
 };
-
 
 /**
  *
@@ -69,57 +71,60 @@ const getModules = (module, config) => {
  * @param config
  */
 module.exports = config => {
-    let currentModule = config.module;
-    // Has `,` in module.
-    let hasComma = commaRegExp.test(currentModule);
-    // Has `*` in module.
-    let hasAsterisk = asteriskRegExp.test(currentModule);
+  const currentModule = config.module;
+  // Has `,` in module.
+  const hasComma = commaRegExp.test(currentModule);
+  // Has `*` in module.
+  const hasAsterisk = asteriskRegExp.test(currentModule);
 
-    // Default is false.
-    config.multiple = !1;
-    config.allModules = [];
+  // Default is false.
+  config.multiple = !1;
+  config.allModules = [];
 
-    // No comma, no asterisk, means single module.
-    if (!hasComma && !hasAsterisk) {
-        config.allModules.push(currentModule);
-        fillModuleFields(config);
+  // No comma, no asterisk, means single module.
+  if (!hasComma && !hasAsterisk) {
+    config.allModules.push(currentModule);
+    fillModuleFields(config);
 
-        return;
-    }
+    return;
+  }
 
-    /**
-     * Module collection.
-     *
-     * @example
-     *
-     * ```
-     * ['test/index', 'test2/*']
-     * ```
-     *
-     * @type {Array}
-     */
-    let modules = [];
-    /**
-     * Formatted module collection(make all asterisk module to real module).
-     *
-     * @example
-     *
-     * ```
-     * ['test/index', 'test2/index', 'test2/index2', ...]
-     * ```
-     *
-     * @type {Array}
-     */
-    let allModules = [];
+  /**
+   * Module collection.
+   *
+   * @example
+   *
+   * ```
+   * ['test/index', 'test2/*']
+   * ```
+   *
+   * @type {Array}
+   */
+  let modules = [];
+  /**
+   * Formatted module collection(make all asterisk module to real module).
+   *
+   * @example
+   *
+   * ```
+   * ['test/index', 'test2/index', 'test2/index2', ...]
+   * ```
+   *
+   * @type {Array}
+   */
+  let allModules = [];
 
-    // Split by comma.
-    if (hasComma) modules = currentModule.split(',');
-    else modules = [currentModule];
+  // Split by comma.
+  if (hasComma) {
+    modules = currentModule.split(',');
+  } else {
+    modules = [currentModule];
+  }
 
-    modules.forEach(item => {
-        allModules = concat(allModules, getModules(item, config));
-    });
+  modules.forEach(item => {
+    allModules = concat(allModules, getModules(item, config));
+  });
 
-    config.multiple = !0;
-    config.allModules = allModules;
+  config.multiple = !0;
+  config.allModules = allModules;
 };

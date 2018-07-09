@@ -1,4 +1,3 @@
-
 const rd = require('rd');
 
 /**
@@ -8,11 +7,11 @@ const rd = require('rd');
  * @returns {number}
  */
 module.exports = dir => {
-    let count = 0;
+  let count = 0;
 
-    rd.eachFileFilterSync(dir, () => {
-        count += 1;
-    });
+  rd.eachFileFilterSync(dir, () => {
+    count += 1;
+  });
 
-    return count;
+  return count;
 };

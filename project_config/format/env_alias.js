@@ -1,12 +1,11 @@
-
 const cloneDeep = require('lodash/cloneDeep');
 const defaults = require('lodash/defaults');
 
 // Default value.
 const defaultValue = {
-    test: 0,
-    production: 1,
-    prod: 1
+  test: 0,
+  production: 1,
+  prod: 1,
 };
 
 /**
@@ -17,6 +16,5 @@ const defaultValue = {
  * @param config
  */
 module.exports = config => {
-
-    config.envAlias = !config.envAlias ? cloneDeep(defaultValue) : defaults(config.envAlias, cloneDeep(defaultValue));
+  config.envAlias = !config.envAlias ? cloneDeep(defaultValue) : defaults(config.envAlias, cloneDeep(defaultValue));
 };

@@ -1,8 +1,8 @@
-# Builtin plugins 
+# Builtin plugins
 
 Lila has some builtin plugins, you can configure them.
 
-### 1. [HotModuleReplacementPlugin](https://webpack.js.org/plugins/hot-module-replacement-plugin/) 
+### 1. [HotModuleReplacementPlugin](https://webpack.js.org/plugins/hot-module-replacement-plugin/)
 
 You can configure it through `hotModuleReplacement` config option.
 

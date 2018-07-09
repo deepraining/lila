@@ -1,13 +1,12 @@
-
 const path = require('path');
 
 const pathInfo = {
-    // lila root directory
-    lilaRoot: path.join(__dirname, '../'),
-    // project root directory
-    projectRoot: process.cwd(),
-    // config file
-    configFile: 'lila.config.js'
+  // lila root directory
+  lilaRoot: path.join(__dirname, '../'),
+  // project root directory
+  projectRoot: process.cwd(),
+  // config file
+  configFile: 'lila.config.js',
 };
 
 // Config file path.

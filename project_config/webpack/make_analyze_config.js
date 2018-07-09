@@ -1,4 +1,3 @@
-
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const pathInfo = require('../../data/path_info');
@@ -22,40 +21,33 @@ const makeModule = require('./dev/make_module');
  * }
  */
 module.exports = config => {
+  checkEntry(config);
 
-    checkEntry(config);
+  config.webpack.entry.push(getJsEntryPath(config));
 
-    config.webpack.entry.push(
-        getJsEntryPath(config)
-    );
+  /**
+   * Webpack output config.
+   */
+  !config.webpack.output && (config.webpack.output = {});
+  config.webpack.output.path = pathInfo.analyzeWorkspace;
+  config.webpack.output.filename = 'index.js';
 
+  checkPlugins(config);
 
-    /**
-     * Webpack output config.
-     */
-    !config.webpack.output && (config.webpack.output = {});
-    config.webpack.output.path = pathInfo.analyzeWorkspace;
-    config.webpack.output.filename = 'index.js';
+  config.webpack.plugins.push(new BundleAnalyzerPlugin(config.bundleAnalyzer || { analyzerPort: 8190 }));
 
+  /**
+   * Common plugins
+   */
+  makePlugins(config);
 
-    checkPlugins(config);
+  /**
+   * Webpack module config.
+   */
+  makeModule(config);
 
-    config.webpack.plugins.push(
-        new BundleAnalyzerPlugin(config.bundleAnalyzer || {analyzerPort: 8190})
-    );
-
-    /**
-     * Common plugins
-     */
-    makePlugins(config);
-
-    /**
-     * Webpack module config.
-     */
-    makeModule(config);
-
-    /**
-     * Webpack resolve config.
-     */
-    makeResolve(config);
+  /**
+   * Webpack resolve config.
+   */
+  makeResolve(config);
 };

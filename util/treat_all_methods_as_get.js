@@ -6,6 +6,6 @@
  * @param next
  */
 module.exports = (req, res, next) => {
-    req.method = 'GET';
-    next();
+  req.method = 'GET';
+  next();
 };

@@ -1,4 +1,3 @@
-
 const forEach = require('lodash/forEach');
 
 /**
@@ -7,11 +6,13 @@ const forEach = require('lodash/forEach');
  * @param config
  */
 module.exports = config => {
-    let option = config.envOptions && config.envOptions[config.env];
+  const option = config.envOptions && config.envOptions[config.env];
 
-    if (!option) return;
+  if (!option) {
+    return;
+  }
 
-    forEach(option, (value, key) => {
-        config[key] = value;
-    });
+  forEach(option, (value, key) => {
+    config[key] = value;
+  });
 };

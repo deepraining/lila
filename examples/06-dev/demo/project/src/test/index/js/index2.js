@@ -1,6 +1,6 @@
 
 const $ = require('jquery');
-//const _ = require('underscore');
+// const _ = require('underscore');
 
 module.exports = () => {
     const h1 = document.createElement('h1');
@@ -11,7 +11,7 @@ module.exports = () => {
 
     const map = {
         key1: 'key1',
-        key2: 'key2'
+        key2: 'key2',
     };
     const {key1, key2} = map;
     console.log(key1);

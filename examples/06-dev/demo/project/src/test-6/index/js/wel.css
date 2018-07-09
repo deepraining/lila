@@ -1,0 +1,7 @@
+.btn {
+  color: red;
+}
+
+.btn .btn-inner {
+  color: blue;
+}

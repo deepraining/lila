@@ -1,4 +1,3 @@
-
 const path = require('path');
 
 const pathInfo = require('../../data/path_info');
@@ -15,24 +14,24 @@ const pathInfo = require('../../data/path_info');
  * @param config
  */
 module.exports = config => {
-    let resolveModules = config.resolveModules || [];
-    let realResolveModules = [];
+  let resolveModules = config.resolveModules || [];
+  const realResolveModules = [];
 
-    // String, a single dir.
-    !Array.isArray(resolveModules) && (resolveModules = [resolveModules]);
+  // String, a single dir.
+  !Array.isArray(resolveModules) && (resolveModules = [resolveModules]);
 
-    resolveModules.forEach(dirPath => {
-        realResolveModules.push(path.join(pathInfo.projectRoot, dirPath));
-    });
+  resolveModules.forEach(dirPath => {
+    realResolveModules.push(path.join(pathInfo.projectRoot, dirPath));
+  });
 
-    // pathInfo.projectRoot + '/node_modules'
-    realResolveModules.unshift(pathInfo.projectRoot + '/node_modules');
+  // pathInfo.projectRoot + '/node_modules'
+  realResolveModules.unshift(`${pathInfo.projectRoot}/node_modules`);
 
-    // config.buildPaths.src.dir
-    realResolveModules.unshift(config.buildPaths.src.dir);
+  // config.buildPaths.src.dir
+  realResolveModules.unshift(config.buildPaths.src.dir);
 
-    // 'node_modules'
-    realResolveModules.push('node_modules');
+  // 'node_modules'
+  realResolveModules.push('node_modules');
 
-    config.resolveModules = realResolveModules;
+  config.resolveModules = realResolveModules;
 };

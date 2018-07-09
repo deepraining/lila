@@ -1,15 +1,13 @@
-
-
 const argv = require('minimist')(process.argv.slice(2));
 
 // need `--module`
-const commandsNeedModuleArg = ['dev', 'dist', 'sync', 'analyze', 'ana'];
+const commandsNeedModuleArg = ['dev', 'dist', 'sync', 'analyze', 'ana', 'eslint', 'stylelint', 'prettier'];
 
 // command name
-let commandName = argv._[0];
+const commandName = argv._[0];
 
 // module name
-let moduleName = argv._[1];
+const moduleName = argv._[1];
 
 /**
  * Convert moduleName to module argument.
@@ -17,7 +15,7 @@ let moduleName = argv._[1];
  * `lila dev test/index` -> `lila dev --module test/index`
  */
 if (commandName && moduleName && commandsNeedModuleArg.indexOf(commandName) > -1) {
-    argv.module = moduleName;
+  argv.module = moduleName;
 }
 
 module.exports = argv;

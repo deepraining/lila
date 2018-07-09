@@ -14,7 +14,6 @@ The same as `resolveAlias`, but mainly for below occasions:
     |-- component1 (a standalone git project)
     |-- component2 (a standalone git project)
     ...
-
 ```
 
 ##### `project1` relies on `component1`, and `component1` relies on `project1` too, and code is as follows:
@@ -50,7 +49,7 @@ resolveModules: [
 }
 ```
 
-Here is a note: 
+Here is a note:
 
 The css module must be defined before js module, or css module will not work.
 

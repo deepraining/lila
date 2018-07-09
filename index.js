@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 
 const argv = require('./data/argv');
@@ -13,14 +12,14 @@ const commandName = argv._[0];
 cliInfo.command = commandName;
 
 // File path corresponding to command.
-let commandPath = pathInfo.lilaRoot + '/cmd/' + commandName + '.js';
+const commandPath = `${pathInfo.lilaRoot}/cmd/${commandName}.js`;
 
 // has command
 if (commandName && fs.existsSync(commandPath)) {
-    require(commandPath);
+  require(commandPath);
 }
 // no command or not exist
 else {
-    help();
-    process.exit(0);
+  help();
+  process.exit(0);
 }

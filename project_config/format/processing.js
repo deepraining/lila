@@ -4,10 +4,9 @@
  * @param config
  */
 module.exports = config => {
-
-    /**
-     * Processing data bind to config.
-     * @type {{}}
-     */
-    config.processing = {};
+  /**
+   * Processing data bind to config.
+   * @type {{}}
+   */
+  config.processing = {};
 };

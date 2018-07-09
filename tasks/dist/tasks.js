@@ -1,4 +1,3 @@
-
 const concat = require('lodash/concat');
 const flatten = require('lodash/flatten');
 
@@ -27,48 +26,44 @@ const next = require('./util/next');
 
 const delTasks = [delBuild, delTmp];
 
-module.exports = (gulp) => {
+module.exports = gulp => {
+  const adjustHtml = getAdjustHtml(gulp);
 
-    const adjustHtml = getAdjustHtml(gulp);
+  const changedBase = getChangedBase(gulp);
 
-    const changedBase = getChangedBase(gulp);
+  const minCss = getMinCss(gulp);
+  const minJs = getMinJs(gulp);
+  const minHtml = getMinHtml(gulp);
 
-    const minCss = getMinCss(gulp);
-    const minJs = getMinJs(gulp);
-    const minHtml = getMinHtml(gulp);
+  const handleHtml = getHandleHtml(gulp);
 
-    const handleHtml = getHandleHtml(gulp);
+  const getTask = () => {
+    return concat([], delTasks, [
+      webpack,
+      placeHtml,
+      changedBase,
+      minCss,
+      minJs,
+      adjustHtml,
+      minHtml,
+      copyToStore,
+      handleHtml,
+      nextModule,
+    ]);
+  };
 
-    const getTask = () => {
-        return concat([],
-            delTasks,
-            [
-                webpack,
-                placeHtml,
-                changedBase,
-                minCss,
-                minJs,
-                adjustHtml,
-                minHtml,
-                copyToStore,
-                handleHtml,
-                nextModule
-            ]);
-    };
+  const tasks = [];
 
-    const tasks = [];
-
-    if (!projectConfig.multiple) {
-        tasks.push(getTask());
+  if (!projectConfig.multiple) {
+    tasks.push(getTask());
+  } else {
+    for (let i = 0, il = projectConfig.allModules.length; i < il; i++) {
+      tasks.push(getTask());
+      next();
     }
-    else {
-        for (let i = 0, il = projectConfig.allModules.length; i < il; i++) {
-            tasks.push(getTask());
-            next();
-        }
-    }
+  }
 
-    tasks.push(delTasks);
+  tasks.push(delTasks);
 
-    return flatten(tasks);
+  return flatten(tasks);
 };

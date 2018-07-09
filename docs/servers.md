@@ -13,8 +13,8 @@
 
 ### `type`
 
-* `web`: Where to sync html files to. All paths are relative to `dist` directory.
-* `static`: Where to sync static files to. All paths are relative to `config.webRoot` directory.
+- `web`: Where to sync html files to. All paths are relative to `dist` directory.
+- `static`: Where to sync static files to. All paths are relative to `config.webRoot` directory.
 
 Default is `static`.
 
@@ -43,10 +43,10 @@ options: {
 
 If you are using distributed servers, or just want to make html separately with other resources, and upload to different servers, here is what you are looking for.
 
-* `web` means where to upload html files to. 
-* `static` means where to upload all static resources to. 
-* You can use multiple web servers and multiple static servers.
+- `web` means where to upload html files to.
+- `static` means where to upload all static resources to.
+- You can use multiple web servers and multiple static servers.
 
 ## note
 
-* If you want to keep servers private, not in git control, you can define servers config in `lila.server.config.js`, and import it to `lila.config.js`.
+- If you want to keep servers private, not in git control, you can define servers config in `lila.server.config.js`, and import it to `lila.config.js`.

@@ -1,4 +1,3 @@
-
 const md5 = require('crypto-md5');
 const path = require('path');
 const rd = require('rd');
@@ -17,53 +16,56 @@ const isManifest = require('../../../util/is_manifest');
  * @returns {{}}
  */
 module.exports = (dir, name) => {
+  // Manifest file.
+  const manifestFile = manifests[name || 'base'];
 
-    // Manifest file.
-    const manifestFile = manifests[name || 'base'];
+  // Manifest file path.
+  const manifestPath = path.join(pathInfo.manifestsDir, manifestFile);
 
-    // Manifest file path.
-    const manifestPath = path.join(pathInfo.manifestsDir, manifestFile);
+  // New manifest.
+  const newManifest = {};
+  // Old manifest.
+  let oldManifest = {};
+  // Changed files.
+  const changedFiles = {};
 
-    // New manifest.
-    let newManifest = {};
-    // Old manifest.
-    let oldManifest = {};
-    // Changed files.
-    let changedFiles = {};
+  // If manifests directory is not exist, create it.
+  if (!fs.existsSync(pathInfo.manifestsDir)) {
+    fs.mkdirSync(pathInfo.manifestsDir);
+  }
 
-    // If manifests directory is not exist, create it.
-    if (!fs.existsSync(pathInfo.manifestsDir)) fs.mkdirSync(pathInfo.manifestsDir);
+  // If manifest file exist, load it.
+  if (fs.existsSync(manifestPath)) {
+    oldManifest = require(manifestPath);
+  }
 
-    // If manifest file exist, load it.
-    if (fs.existsSync(manifestPath)) oldManifest = require(manifestPath);
+  // Read all files under dir.
+  rd.eachFileFilterSync(dir, file => {
+    const fileRelativePath = path.relative(dir, file);
 
-    // Read all files under dir.
-    rd.eachFileFilterSync(dir, file => {
-        let fileRelativePath = path.relative(dir, file);
+    if (!isManifest(fileRelativePath)) {
+      const fileContent = fs.readFileSync(file);
+      // Record it in newManifest.
+      fileContent && (newManifest[fileRelativePath] = md5(fileContent, 'hex'));
+    }
+  });
 
-        if (!isManifest(fileRelativePath)) {
-            let fileContent = fs.readFileSync(file);
-            // Record it in newManifest.
-            fileContent && (newManifest[fileRelativePath] = md5(fileContent, 'hex'));
-        }
-    });
+  // Find out all changed files.
+  forEach(newManifest, (value, key) => {
+    if (oldManifest[key] !== value) {
+      changedFiles[key] = value;
+    }
+  });
 
-    // Find out all changed files.
-    forEach(newManifest, (value, key) => {
-        if (oldManifest[key] !== value) {
-            changedFiles[key] = value;
-        }
-    });
+  // Merge oldManifest to newManifest.
+  forEach(oldManifest, (value, key) => {
+    if (!newManifest[key]) {
+      newManifest[key] = value;
+    }
+  });
 
-    // Merge oldManifest to newManifest.
-    forEach(oldManifest, (value, key) => {
-        if (!newManifest[key]) {
-            newManifest[key] = value;
-        }
-    });
+  // Save new content to manifest file.
+  fs.writeFileSync(manifestPath, JSON.stringify(newManifest));
 
-    // Save new content to manifest file.
-    fs.writeFileSync(manifestPath, JSON.stringify(newManifest));
-
-    return changedFiles;
+  return changedFiles;
 };

@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "bin": "bin/lila.js",
   "description": "An automatic building tool of web frontend, for teamwork.",
@@ -24,8 +24,16 @@
   },
   "homepage": "https://github.com/senntyou/lila",
   "readmeFilename": "README.md",
+  "scripts": {
+    "precommit": "npm run lint-staged",
+    "prettier": "prettier --write ./**/*.{js,json,md}",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "lint-staged": "lint-staged"
+  },
   "dependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
     "babel-loader": "^7.1.4",
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
@@ -38,6 +46,13 @@
     "css-loader": "^0.28.11",
     "decompress": "^4.2.0",
     "del": "^3.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
     "fs-extra": "^6.0.1",
@@ -58,11 +73,14 @@
     "less-loader": "^4.1.0",
     "lodash": "^4.17.10",
     "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
     "moment": "^2.22.2",
     "plugin-error": "^1.0.1",
+    "prettier": "^1.13.7",
     "rd": "^1.1.2",
     "style-loader": "^0.21.0",
+    "stylelint": "^9.3.0",
+    "stylelint-config-prettier": "^3.3.0",
+    "stylelint-config-standard": "^18.2.0",
     "through2": "^2.0.3",
     "url-loader": "^1.0.1",
     "webpack": "^3.12.0",
@@ -71,5 +89,19 @@
     "webpack-hot-middleware": "^2.22.2",
     "write-file-webpack-plugin": "^4.3.2",
     "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
   }
 }

@@ -23,3 +23,9 @@ console.log('test/index');
 // test ignoreNodeModules
 const Swiper = require('swiper');
 require('bootstrap');
+
+const $ = require('jquery');
+
+$.get('/src/test/index/data/index/?key1=value1&key2=value2', {}, res => {
+    console.log("get['/src/test/index/data/index']", res);
+});

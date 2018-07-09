@@ -1,9 +1,8 @@
-
 module.exports = {
-    /**
-     * Current command name.
-     *
-     * @type {string}
-     */
-    command: ''
+  /**
+   * Current command name.
+   *
+   * @type {string}
+   */
+  command: '',
 };

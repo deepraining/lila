@@ -4,6 +4,5 @@
  * @param gulp
  */
 module.exports = gulp => {
-
-    gulp.task('arc', gulp.series('pre_archive'));
+  gulp.task('arc', gulp.series('pre_archive'));
 };

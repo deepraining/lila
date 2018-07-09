@@ -1,76 +1,80 @@
-
 const path = require('path');
 const fs = require('fs');
 const fsExtra = require('fs-extra');
-const mkdirp = require('mkdirp');
 
 const argv = require('../data/argv');
 const pathInfo = require('../data/path_info');
 const logger = require('../util/logger');
+const copyRootFile = require('../project_files/copy_root_file');
 
 // Project name to be created.
-let projectName = argv._[1];
+const projectName = argv._[1];
 
 // No project name.
 if (!projectName) {
-    logger.error(`
-    Missing project name for command: new.
-    `);
-    logger.log(`
-    You can use this command as follows:
-    
-    lila new <name>
-    `);
-    process.exit(0);
+  logger.error(`
+  Missing project name for command: new.
+  `);
+  logger.log(`
+  You can use this command as follows:
+  
+  lila new <name>
+  `);
+  process.exit(0);
 }
 
-let projectPath = path.join(pathInfo.projectRoot, projectName);
-let projectSubPath = path.join(projectPath, 'project');
+const projectPath = path.join(pathInfo.projectRoot, projectName);
 
 // Project has been created.
 if (fs.existsSync(projectPath)) {
-    logger.error(`
-    Project '${projectName}' has already been created.
-    `);
-    process.exit(0);
+  logger.error(`
+  Project '${projectName}' has already been created.
+  `);
+  process.exit(0);
 }
 
-// Create './[projectName]/project' directory.
-mkdirp.sync(projectSubPath);
-
 // Copy base dirs.
-fsExtra.copySync(path.join(pathInfo.lilaRoot, 'project_files/project_dir'), projectSubPath);
+fsExtra.ensureFileSync(path.join(projectPath, 'project/src/.gitkeep'));
 
 // Make `.gitignore` file.
-fsExtra.outputFileSync(
-    projectPath + '/.gitignore',
-    fsExtra.readFileSync(pathInfo.lilaRoot + '/project_files/misc/_.gitignore', 'utf8')
-);
+copyRootFile(projectPath, '.gitignore', !0);
+
+// Make `.npmrc` file.
+copyRootFile(projectPath, '.npmrc', !0);
+
+// Make `.editorconfig` file.
+copyRootFile(projectPath, '.editorconfig', !0);
+
+// Make `.eslintrc` file.
+copyRootFile(projectPath, '.eslintrc', !0);
+
+// Make `.eslintignore` file.
+copyRootFile(projectPath, '.eslintignore', !0);
+
+// Make `.stylelintrc` file.
+copyRootFile(projectPath, '.stylelintrc', !0);
+
+// Make `.stylelintignore` file.
+copyRootFile(projectPath, '.stylelintignore', !0);
+
+// Make `.prettierrc` file.
+copyRootFile(projectPath, '.prettierrc', !0);
+
+// Make `.prettierignore` file.
+copyRootFile(projectPath, '.prettierignore', !0);
 
 // Make `package.json` file.
-fsExtra.outputFileSync(
-    projectPath + '/package.json',
-    fsExtra.readFileSync(pathInfo.lilaRoot + '/project_files/misc/_package.json', 'utf8').replace('{{projectName}}', projectName)
-);
+copyRootFile(projectPath, 'package.json', !0, '{{projectName}}', projectName);
 
 // Make `README.md` file.
-fsExtra.outputFileSync(
-    projectPath + '/README.md',
-    fsExtra.readFileSync(pathInfo.lilaRoot + '/project_files/misc/README.md', 'utf8').replace('{{projectName}}', projectName)
-);
+copyRootFile(projectPath, 'README.md', !0, '{{projectName}}', projectName);
 
 // Make `lila.config.js` file.
-fsExtra.outputFileSync(
-    projectPath + '/lila.config.js',
-    fsExtra.readFileSync(pathInfo.lilaRoot + '/project_files/config/lila.config.js', 'utf8')
-);
+copyRootFile(projectPath, 'lila.config.js');
 
 // Make `lila.server.config.js` file.
-fsExtra.outputFileSync(
-    projectPath + '/lila.server.config.js',
-    fsExtra.readFileSync(pathInfo.lilaRoot + '/project_files/config/lila.server.config.js', 'utf8')
-);
+copyRootFile(projectPath, 'lila.server.config.js');
 
 logger.success(`
-    Lila new project '${projectName}' successfully!
+  Lila new project '${projectName}' successfully!
 `);
