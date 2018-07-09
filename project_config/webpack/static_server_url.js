@@ -15,11 +15,11 @@ module.exports = config => {
   }
 
   // http://
-  let hasHttp = startsWith(config.staticServerUrl, 'http://');
+  const hasHttp = startsWith(config.staticServerUrl, 'http://');
   // https://
-  let hasHttps = startsWith(config.staticServerUrl, 'https://');
+  const hasHttps = startsWith(config.staticServerUrl, 'https://');
   // //
-  let hasDoubleSlashes = startsWith(config.staticServerUrl, '//');
+  const hasDoubleSlashes = startsWith(config.staticServerUrl, '//');
 
   // No domain, just directory.
   if (!hasHttp && !hasHttps && !hasDoubleSlashes) {
@@ -36,7 +36,7 @@ module.exports = config => {
   else if (hasDoubleSlashes) {prefixLength = 2;}
 
   // Three slash index(match directory).
-  let threeSlashIndex = config.staticServerUrl.indexOf('/', prefixLength);
+  const threeSlashIndex = config.staticServerUrl.indexOf('/', prefixLength);
 
   // Only domain, no directory.
   if (threeSlashIndex < 0) {

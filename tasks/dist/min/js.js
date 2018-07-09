@@ -16,7 +16,7 @@ module.exports = gulp => {
 
     if (current.config.minJs)
     {return gulp
-        .src(current.config.buildPaths.buildTmp.dir + '/**/*.js')
+        .src(`${current.config.buildPaths.buildTmp.dir  }/**/*.js`)
         .pipe(uglify(current.config.minJsOptions || {}))
         .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));}
     else {cb();}

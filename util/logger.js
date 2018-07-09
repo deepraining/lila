@@ -20,7 +20,7 @@ const getStr = (str, options) => {
   options.prefix && (str = prefixSpaces + str);
 
   // Prepend ln.
-  options.preLn && (str = '\n' + str);
+  options.preLn && (str = `\n${  str}`);
 
   // Append ln.
   options.postLn && (str += '\n');

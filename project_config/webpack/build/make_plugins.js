@@ -27,11 +27,11 @@ module.exports = config => {
    * ```
    */
   if (config.splitJsKeys) {
-    let keysLength = config.splitJsKeys.length;
+    const keysLength = config.splitJsKeys.length;
 
     config.splitJsKeys.forEach((key, index) => {
-      let i = index,
-        chunks = [config.moduleName];
+      let i = index;
+      const chunks = [config.moduleName];
 
       for (; i < keysLength; i++) {
         chunks.push(config.splitJsKeys[i]);
@@ -41,7 +41,7 @@ module.exports = config => {
         new webpack.optimize.CommonsChunkPlugin({
           name: key,
           filename: '[chunkhash].js',
-          chunks: chunks,
+          chunks,
           minChunks: Infinity,
         })
       );

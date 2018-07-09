@@ -40,7 +40,7 @@ browserSyncConfig.server = {
   baseDir: projectConfig.basePaths.webRoot,
 };
 browserSyncConfig.port = projectConfig.devServerPort;
-browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
+browserSyncConfig.startPath = `${projectConfig.basePaths.webPrefix  }/dev/${  projectConfig.module  }/index.html`;
 
 // Middleware.
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);
@@ -49,9 +49,9 @@ browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + proj
 projectConfig.treatAllMethodsAsGet && browserSyncConfig.middleware.unshift(treatAllMethodsAsGet);
 projectConfig.mock && browserSyncConfig.middleware.unshift(tryMock);
 
-let devOptions = projectConfig.webpackDev || {};
+const devOptions = projectConfig.webpackDev || {};
 devOptions.stats = 'errors-only';
-devOptions.publicPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module;
+devOptions.publicPath = `${projectConfig.basePaths.webPrefix  }/dev/${  projectConfig.module}`;
 
 browserSyncConfig.middleware.push(devMiddleWare(compiler, devOptions));
 browserSyncConfig.middleware.push(hotMiddleWare(compiler, projectConfig.webpackHot || {}));

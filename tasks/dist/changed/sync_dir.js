@@ -36,7 +36,7 @@ module.exports = function changedDirFiles(cb) {
     if (!isEmpty(changedFiles)) {
       logger.info('');
       forEach(changedFiles, (value, key) => {
-        changedFilesPaths.push(dirPath + '/' + key);
+        changedFilesPaths.push(`${dirPath  }/${  key}`);
         logger.info(`File changed: ${key}.`, { prefix: !0 });
       });
       logger.info('');
@@ -52,7 +52,7 @@ module.exports = function changedDirFiles(cb) {
   }
   // Disabled.
   else {
-    currentItem.changedFiles = dirPath + '/**/*';
+    currentItem.changedFiles = `${dirPath  }/**/*`;
   }
 
   cb();

@@ -12,7 +12,7 @@ const commandName = argv._[0];
 cliInfo.command = commandName;
 
 // File path corresponding to command.
-let commandPath = pathInfo.lilaRoot + '/cmd/' + commandName + '.js';
+const commandPath = `${pathInfo.lilaRoot  }/cmd/${  commandName  }.js`;
 
 // has command
 if (commandName && fs.existsSync(commandPath)) {

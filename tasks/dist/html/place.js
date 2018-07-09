@@ -18,8 +18,8 @@ module.exports = function placeHtml(cb) {
   });
 
   fsExtra.moveSync(
-    projectConfig.buildPaths.build.dir + '/index.html',
-    projectConfig.buildPaths.build.dir + '/html/' + current.config.module + '.html'
+    `${projectConfig.buildPaths.build.dir  }/index.html`,
+    `${projectConfig.buildPaths.build.dir  }/html/${  current.config.module  }.html`
   );
 
   cb();

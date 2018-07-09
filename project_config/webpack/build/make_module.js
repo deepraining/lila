@@ -20,8 +20,8 @@ module.exports = config => {
   !config.disableUrlLoader && config.webpack.module.rules.push(makeUrlLoader(config, !0));
   !config.disableHtmlLoader && config.webpack.module.rules.push(makeHtmlLoader(config));
 
-  let excludeMatches = config.cssModulesExclude;
-  let localIdentName = config.cssModulesName;
+  const excludeMatches = config.cssModulesExclude;
+  const localIdentName = config.cssModulesName;
   if (config.packCssSeparately) {
     if (config.cssModules && excludeMatches) {
       !config.disableExtractCssLoader &&
@@ -45,8 +45,7 @@ module.exports = config => {
       !config.disableExtractLessLoader &&
         config.webpack.module.rules.push(makeExtractLessLoader(!1, [], !1, !1, localIdentName));
     }
-  } else {
-    if (config.cssModules && excludeMatches) {
+  } else if (config.cssModules && excludeMatches) {
       !config.disableCssLoader &&
         config.webpack.module.rules.push(
           makeCssLoader(!1, excludeMatches, !0, !1, localIdentName),
@@ -66,5 +65,4 @@ module.exports = config => {
       !config.disableCssLoader && config.webpack.module.rules.push(makeCssLoader(!1, [], !1, !1, localIdentName));
       !config.disableLessLoader && config.webpack.module.rules.push(makeLessLoader(!1, [], !1, !1, localIdentName));
     }
-  }
 };

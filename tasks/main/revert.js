@@ -10,7 +10,7 @@ const revertShare = require('../../share/revert');
  */
 module.exports = gulp => {
   gulp.task('revert', cb => {
-    let distPath = pathInfo.projectRoot + '/dist';
+    const distPath = `${pathInfo.projectRoot  }/dist`;
 
     // Remove old `dist` directory.
     fsExtra.removeSync(distPath);
@@ -22,7 +22,7 @@ module.exports = gulp => {
      */
     revertShare.revertZip = revertShare.packages[revertShare.packages.length - revertShare.index];
 
-    decompress(pathInfo.projectRoot + '/' + revertShare.revertZip, distPath).then(files => {
+    decompress(`${pathInfo.projectRoot  }/${  revertShare.revertZip}`, distPath).then(() => {
       cb();
     });
   });

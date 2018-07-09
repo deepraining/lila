@@ -8,7 +8,7 @@ const forEach = require('lodash/forEach');
  * @param config
  */
 module.exports = config => {
-  let option = config.local && config.localOptions && config.localOptions[config.local];
+  const option = config.local && config.localOptions && config.localOptions[config.local];
 
   if (!option) {return;}
 

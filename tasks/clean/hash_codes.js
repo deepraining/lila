@@ -11,17 +11,17 @@ const makeRegExp = require('./reg_exp');
  * @returns {Array}
  */
 module.exports = () => {
-  let hashCodes = [];
+  const hashCodes = [];
 
-  let htmlDirectory = pathInfo.projectRoot + '/dist/html';
+  const htmlDirectory = `${pathInfo.projectRoot  }/dist/html`;
 
   // Find all files and extract hash codes.
   fs.existsSync(htmlDirectory) &&
     rd.eachFileFilterSync(htmlDirectory, file => {
       // File content.
-      let content = fs.readFileSync(file);
+      const content = fs.readFileSync(file);
 
-      let regExp = makeRegExp.extractFromHtml(share.hashDigestLength);
+      const regExp = makeRegExp.extractFromHtml(share.hashDigestLength);
       let result;
       while ((result = regExp.exec(content))) {
         hashCodes.push(result[1]);

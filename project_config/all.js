@@ -10,7 +10,7 @@ const allConfigs = [];
 // Multiple modules.
 if (config.multiple) {
   config.allModules.forEach(moduleName => {
-    let clonedConfig = cloneDeep(origin);
+    const clonedConfig = cloneDeep(origin);
 
     // Change current config's module attribute to `moduleName`.
     clonedConfig.module = moduleName;

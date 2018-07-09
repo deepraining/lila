@@ -15,7 +15,7 @@ module.exports = gulp => {
 
     if (!current.config.staticServerUrl) {return cb();}
 
-    let options = {
+    const options = {
       extensions: current.config.htmlCdnExtensions,
       rules: [],
     };
@@ -50,7 +50,7 @@ module.exports = gulp => {
     }
 
     return gulp
-      .src(current.config.buildPaths.buildTmp.dir + '/**/*.html')
+      .src(`${current.config.buildPaths.buildTmp.dir  }/**/*.html`)
       .pipe(addCdn(options))
       .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
   };

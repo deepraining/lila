@@ -8,7 +8,7 @@ const cliInfo = require('../../data/cli_info');
  * @param config
  */
 module.exports = config => {
-  let option = config.commandOptions && cliInfo.command && config.commandOptions[cliInfo.command];
+  const option = config.commandOptions && cliInfo.command && config.commandOptions[cliInfo.command];
 
   if (!option) {return;}
 

@@ -6,7 +6,7 @@ const copyDemoFile = require('../project_files/copy_demo_file');
 const logger = require('../util/logger');
 
 // Module name.
-let moduleName = argv._[1];
+const moduleName = argv._[1];
 
 // Missing module name.
 if (!moduleName) {
@@ -27,12 +27,12 @@ checkConfigFile();
 // Project config.
 const projectConfig = require('../project_config');
 
-let moduleDirPath = projectConfig.basePaths.buildRoot + '/src/' + moduleName;
+const moduleDirPath = `${projectConfig.basePaths.buildRoot  }/src/${  moduleName}`;
 
 // Html file path to be created.
-let htmlFilePath = moduleDirPath + '/index.html';
+const htmlFilePath = `${moduleDirPath  }/index.html`;
 // Js file path to be created.
-let jsFilePath = moduleDirPath + '/index.js';
+const jsFilePath = `${moduleDirPath  }/index.js`;
 
 if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
   logger.error(`

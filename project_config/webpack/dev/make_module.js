@@ -18,8 +18,8 @@ module.exports = config => {
   !config.disableUrlLoader && config.webpack.module.rules.push(makeUrlLoader(config));
   !config.disableHtmlLoader && config.webpack.module.rules.push(makeHtmlLoader(config));
 
-  let excludeMatches = config.cssModulesExclude;
-  let localIdentName = config.cssModulesName;
+  const excludeMatches = config.cssModulesExclude;
+  const localIdentName = config.cssModulesName;
   if (config.cssModules && excludeMatches) {
     !config.disableCssLoader &&
       config.webpack.module.rules.push(

@@ -20,10 +20,10 @@ module.exports = gulp => {
   // Here should be named function, otherwise in the command line will show anonymous function.
   const clean = cb => {
     // All hash codes.
-    let hashCodes = uniq(extractHashCodes());
+    const hashCodes = uniq(extractHashCodes());
     let deletedFilesCount = 0;
 
-    rd.eachFileFilterSync(pathInfo.projectRoot + '/dist', file => {
+    rd.eachFileFilterSync(`${pathInfo.projectRoot  }/dist`, file => {
       // Only clean js and css files.
       if (file.slice(-3) !== '.js' && file.slice(-4) !== '.css') {return;}
 
@@ -37,13 +37,13 @@ module.exports = gulp => {
        * inner/index.js
        * ```
        */
-      let filePath = pathUtil.replaceBackSlash(file);
-      let lastSlashIndex = filePath.lastIndexOf('/');
-      let fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);
+      const filePath = pathUtil.replaceBackSlash(file);
+      const lastSlashIndex = filePath.lastIndexOf('/');
+      const fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);
 
       // Match `js|css` file.
-      let regExp = makeRegExp.matchFileName(share.hashDigestLength);
-      let result = regExp.exec(fileName);
+      const regExp = makeRegExp.matchFileName(share.hashDigestLength);
+      const result = regExp.exec(fileName);
       if (!result) {return;}
 
       // Not in use, remove it.
@@ -75,19 +75,19 @@ module.exports = gulp => {
    */
   const cleanChunks = cb => {
     // All hash codes.
-    let hashCodes = uniq(extractChunkHashCodes());
-    let testRegExp = makeRegExp.matchJsChunkFileName(share.hashDigestLength);
+    const hashCodes = uniq(extractChunkHashCodes());
+    const testRegExp = makeRegExp.matchJsChunkFileName(share.hashDigestLength);
     let deletedFilesCount = 0;
 
-    rd.eachFileFilterSync(pathInfo.projectRoot + '/dist', file => {
+    rd.eachFileFilterSync(`${pathInfo.projectRoot  }/dist`, file => {
       // File path.
-      let filePath = pathUtil.replaceBackSlash(file);
+      const filePath = pathUtil.replaceBackSlash(file);
       if (!testRegExp.test(filePath)) {return;}
 
-      let lastSlashIndex = filePath.lastIndexOf('/');
-      let fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);
+      const lastSlashIndex = filePath.lastIndexOf('/');
+      const fileName = lastSlashIndex === -1 ? filePath : filePath.slice(lastSlashIndex + 1);
 
-      let hash = fileName.split('.')[1];
+      const hash = fileName.split('.')[1];
 
       // not in use, remove it
       if (hashCodes.indexOf(hash) < 0) {

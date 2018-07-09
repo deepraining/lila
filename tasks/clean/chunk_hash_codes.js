@@ -12,22 +12,22 @@ const makeRegExp = require('./reg_exp');
  * @returns {Array}
  */
 module.exports = () => {
-  let hashCodes = [];
+  const hashCodes = [];
 
-  let dir = pathInfo.projectRoot + '/dist';
-  let testRegExp = makeRegExp.matchJsFileName(share.hashDigestLength);
+  const dir = `${pathInfo.projectRoot  }/dist`;
+  const testRegExp = makeRegExp.matchJsFileName(share.hashDigestLength);
 
   // Find all files and extract hash codes.
   fs.existsSync(dir) &&
     rd.eachFileFilterSync(dir, file => {
       // File path.
-      let filePath = pathUtil.replaceBackSlash(file);
+      const filePath = pathUtil.replaceBackSlash(file);
       if (!testRegExp.test(filePath)) {return;}
 
       // File content.
-      let content = fs.readFileSync(file);
+      const content = fs.readFileSync(file);
 
-      let regExp = makeRegExp.extractFromJs(share.hashDigestLength);
+      const regExp = makeRegExp.extractFromJs(share.hashDigestLength);
       let result;
       while ((result = regExp.exec(content))) {
         hashCodes.push(result[1]);

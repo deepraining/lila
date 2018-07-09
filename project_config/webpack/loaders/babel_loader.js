@@ -10,15 +10,15 @@ const importPlugin = require('babel-plugin-import');
  * @returns {{loader: string, options: {presets: *[], plugins: *[]}, test: RegExp}}
  */
 module.exports = config => {
-  let presets = config.babelLoaderPresets || [];
+  const presets = config.babelLoaderPresets || [];
   presets.unshift(stage0Preset);
   presets.unshift(es2015Preset);
 
-  let plugins = config.babelLoaderPlugins || [];
+  const plugins = config.babelLoaderPlugins || [];
   plugins.unshift([importPlugin.default, config.import || []]);
   plugins.unshift(transformReactJsx);
 
-  let loader = {
+  const loader = {
     loader: 'babel-loader',
     test: /\.(js|jsx)$/,
     options: {

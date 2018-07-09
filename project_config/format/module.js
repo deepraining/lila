@@ -35,7 +35,7 @@ const getModules = (module, config) => {
   // All modules in current project.
   if (module === '*') {dir = config.buildPaths.src.dir;}
   // test/*
-  else if (module.slice(-2) === '/*') {dir = config.buildPaths.src.dir + '/' + module.slice(0, -2);}
+  else if (module.slice(-2) === '/*') {dir = `${config.buildPaths.src.dir  }/${  module.slice(0, -2)}`;}
   // The rest.
   else {
     logger.error(`
@@ -46,8 +46,8 @@ const getModules = (module, config) => {
 
   // Get all modules.
   rd.readDirFilterSync(dir, dirPath => {
-    const htmlFile = dirPath + '/index.html';
-    const jsFile = dirPath + '/index.js';
+    const htmlFile = `${dirPath  }/index.html`;
+    const jsFile = `${dirPath  }/index.js`;
 
     // Both `index.html` and `index.js` exist, means this directory is a module's workspace.
     if (fs.existsSync(htmlFile) && fs.existsSync(jsFile)) {
@@ -65,11 +65,11 @@ const getModules = (module, config) => {
  * @param config
  */
 module.exports = config => {
-  let currentModule = config.module;
+  const currentModule = config.module;
   // Has `,` in module.
-  let hasComma = commaRegExp.test(currentModule);
+  const hasComma = commaRegExp.test(currentModule);
   // Has `*` in module.
-  let hasAsterisk = asteriskRegExp.test(currentModule);
+  const hasAsterisk = asteriskRegExp.test(currentModule);
 
   // Default is false.
   config.multiple = !1;

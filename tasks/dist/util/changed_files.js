@@ -23,11 +23,11 @@ module.exports = (dir, name) => {
   const manifestPath = path.join(pathInfo.manifestsDir, manifestFile);
 
   // New manifest.
-  let newManifest = {};
+  const newManifest = {};
   // Old manifest.
   let oldManifest = {};
   // Changed files.
-  let changedFiles = {};
+  const changedFiles = {};
 
   // If manifests directory is not exist, create it.
   if (!fs.existsSync(pathInfo.manifestsDir)) {fs.mkdirSync(pathInfo.manifestsDir);}
@@ -37,10 +37,10 @@ module.exports = (dir, name) => {
 
   // Read all files under dir.
   rd.eachFileFilterSync(dir, file => {
-    let fileRelativePath = path.relative(dir, file);
+    const fileRelativePath = path.relative(dir, file);
 
     if (!isManifest(fileRelativePath)) {
-      let fileContent = fs.readFileSync(file);
+      const fileContent = fs.readFileSync(file);
       // Record it in newManifest.
       fileContent && (newManifest[fileRelativePath] = md5(fileContent, 'hex'));
     }

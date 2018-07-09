@@ -1,4 +1,5 @@
 const packageJson = require('../package.json');
+
 const version = packageJson.version;
 
 // cli options

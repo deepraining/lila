@@ -63,7 +63,7 @@ module.exports = options => {
       return cb();
     }
 
-    let contents = file.contents.toString().replace(matchFiles, (content, filePath) => {
+    const contents = file.contents.toString().replace(matchFiles, (content, filePath) => {
       // If is url, keep it.
       if (isUrl(filePath)) {return content;}
 
@@ -71,7 +71,7 @@ module.exports = options => {
       if (!continueMatch.test(filePath)) {return content;}
 
       for (let i = 0; i < options.rules.length; i++) {
-        let rule = options.rules[i];
+        const rule = options.rules[i];
         // Has start.
         if (rule.start) {
           if (

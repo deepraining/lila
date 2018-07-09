@@ -15,7 +15,7 @@ const pathInfo = require('../../data/path_info');
  */
 module.exports = config => {
   let resolveModules = config.resolveModules || [];
-  let realResolveModules = [];
+  const realResolveModules = [];
 
   // String, a single dir.
   !Array.isArray(resolveModules) && (resolveModules = [resolveModules]);
@@ -25,7 +25,7 @@ module.exports = config => {
   });
 
   // pathInfo.projectRoot + '/node_modules'
-  realResolveModules.unshift(pathInfo.projectRoot + '/node_modules');
+  realResolveModules.unshift(`${pathInfo.projectRoot  }/node_modules`);
 
   // config.buildPaths.src.dir
   realResolveModules.unshift(config.buildPaths.src.dir);

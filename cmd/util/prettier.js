@@ -2,6 +2,7 @@ const forEach = require('lodash/forEach');
 const path = require('path');
 
 const argv = require('../../data/argv');
+
 const moduleName = argv.module;
 
 const projectConfig = require('../../project_config');
@@ -11,7 +12,7 @@ if (moduleName === '*') {subDir = '';}
 else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
 
 // Prettier needs to change `process.argv`.
-let oldProcessArgv = process.argv;
+const oldProcessArgv = process.argv;
 process.argv = oldProcessArgv.slice(0, 2);
 
 process.argv.push(

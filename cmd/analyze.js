@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const checkConfigFile = require('../util/check_config_file');
 const logger = require('../util/logger');
 const argv = require('../data/argv');
+
 const moduleName = argv.module;
 
 if (!moduleName) {
@@ -40,7 +41,7 @@ webpack(projectConfig.webpack, (err, stats) => {
   }
 
   if (stats.hasWarnings()) {
-    info.warnings.forEach(function(warning) {
+    info.warnings.forEach((warning) => {
       logger.warn(warning);
     });
   }

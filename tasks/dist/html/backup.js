@@ -38,7 +38,7 @@ module.exports = function backupHtml(cb) {
       const baseFileName = fileName.slice(0, lastDotIndex);
       const extName = fileName.slice(lastDotIndex + 1);
 
-      const targetPath = dir + '/' + baseFileName + '-' + suffix + '.' + extName;
+      const targetPath = `${dir  }/${  baseFileName  }-${  suffix  }.${  extName}`;
 
       fsExtra.copySync(sourcePath, targetPath);
     });

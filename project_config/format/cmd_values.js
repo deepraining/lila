@@ -18,7 +18,7 @@ const preFields = ['env', 'module', 'local'];
 module.exports = (config, pre, custom) => {
   forEach(argv, (value, key) => {
     // Get real key, for some key has alias.
-    let realKey = config.cmdAlias[key] ? config.cmdAlias[key] : key;
+    const realKey = config.cmdAlias[key] ? config.cmdAlias[key] : key;
 
     if (pre && preFields.indexOf(realKey) < 0) {return;}
     if (!pre && preFields.indexOf(realKey) > -1) {return;}

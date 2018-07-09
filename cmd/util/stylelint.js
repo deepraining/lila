@@ -4,6 +4,7 @@ const stylelint = require('stylelint');
 const formatter = stylelint.formatters.string;
 
 const argv = require('../../data/argv');
+
 const moduleName = argv.module;
 
 const projectConfig = require('../../project_config');
@@ -12,7 +13,7 @@ let subDir = moduleName;
 if (moduleName === '*') {subDir = '';}
 else if (moduleName.slice(-1) === '*') {subDir = moduleName.slice(0, -2);}
 
-let options = projectConfig.styleLintOptions || {};
+const options = projectConfig.styleLintOptions || {};
 options.fix = !!projectConfig.styleLintFix;
 options.files = [
   path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.css'),

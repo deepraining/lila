@@ -4,7 +4,7 @@
  * @param cmd
  */
 module.exports = cmd => {
-  let cmdArray = cmd.split(/\s+/);
+  const cmdArray = cmd.split(/\s+/);
 
   // Remove `lila`(the first element).
   cmdArray.shift();

@@ -1,5 +1,5 @@
-const pathInfo = require('../../data/path_info');
 const del = require('del');
+const pathInfo = require('../../data/path_info');
 
 /**
  * Register Delete bak manifests task.

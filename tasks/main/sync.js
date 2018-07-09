@@ -21,7 +21,7 @@ module.exports = gulp => {
     const connect = new SSH(server.options);
 
     return gulp
-      .src(projectConfig.buildPaths.dist.dir + '/**/*', {
+      .src(`${projectConfig.buildPaths.dist.dir  }/**/*`, {
         base: projectConfig.basePaths.webRoot,
       })
       .pipe(connect.dest(server.remotePath));
@@ -34,7 +34,7 @@ module.exports = gulp => {
     const connect = new SSH(server.options);
 
     return gulp
-      .src(projectConfig.buildPaths.dist.html + '/**/*', {
+      .src(`${projectConfig.buildPaths.dist.html  }/**/*`, {
         base: projectConfig.buildPaths.dist.html,
       })
       .pipe(connect.dest(server.remotePath));

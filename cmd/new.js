@@ -8,7 +8,7 @@ const logger = require('../util/logger');
 const copyRootFile = require('../project_files/copy_root_file');
 
 // Project name to be created.
-let projectName = argv._[1];
+const projectName = argv._[1];
 
 // No project name.
 if (!projectName) {
@@ -23,7 +23,7 @@ if (!projectName) {
   process.exit(0);
 }
 
-let projectPath = path.join(pathInfo.projectRoot, projectName);
+const projectPath = path.join(pathInfo.projectRoot, projectName);
 
 // Project has been created.
 if (fs.existsSync(projectPath)) {

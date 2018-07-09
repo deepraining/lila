@@ -23,20 +23,20 @@ module.exports = config => {
   }
 
   // `moduleOptions` keys.
-  let moduleKeys = keys(config.moduleOptions);
+  const moduleKeys = keys(config.moduleOptions);
 
   moduleKeys.forEach(key => {
     // Found.
     if (option) {return;}
 
-    let moduleOption = config.moduleOptions[key];
+    const moduleOption = config.moduleOptions[key];
 
     /**
      * Multiple modules splitting by ',', `test-2/index,test-3/index,test-4/*`
      *
      * @type {*|string[]}
      */
-    let keyArray = key.split(',');
+    const keyArray = key.split(',');
 
     // Found.
     if (keyArray.indexOf(config.module) > -1) {

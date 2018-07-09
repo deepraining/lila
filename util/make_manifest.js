@@ -6,5 +6,5 @@
  * @returns {string}
  */
 module.exports = (mark = 'base', env = 0) => {
-  return 'manifest-' + mark + '-' + env + '.json';
+  return `manifest-${  mark  }-${  env  }.json`;
 };

@@ -36,7 +36,7 @@ webpack(projectConfig.webpack, (err, stats) => {
   }
 
   if (stats.hasWarnings()) {
-    info.warnings.forEach(function(warning) {
+    info.warnings.forEach((warning) => {
       logger.warn(warning);
     });
   }

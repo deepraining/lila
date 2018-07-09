@@ -30,9 +30,9 @@ module.exports = config => {
    * Webpack output config.
    */
   !config.webpack.output && (config.webpack.output = {});
-  config.webpack.output.path = config.buildPaths.dev.dir + '/' + config.module + '/';
+  config.webpack.output.path = `${config.buildPaths.dev.dir  }/${  config.module  }/`;
   config.webpack.output.filename = 'index.js';
-  config.webpack.output.publicPath = config.basePaths.webPrefix + '/dev/' + config.module + '/';
+  config.webpack.output.publicPath = `${config.basePaths.webPrefix  }/dev/${  config.module  }/`;
 
   checkPlugins(config);
 

@@ -37,7 +37,7 @@ module.exports = config => {
   // Generate `syncDirItems`.
   config.processing.syncDirKeys.forEach(key => {
     // Absolute path.
-    const path = config.basePaths.webRoot + '/' + config.directoriesToSync[key];
+    const path = `${config.basePaths.webRoot  }/${  config.directoriesToSync[key]}`;
 
     // Add an item.
     config.processing.syncDirItems[key] = { path };

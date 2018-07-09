@@ -9,7 +9,7 @@
  * @returns {{test: RegExp, use: *[]}}
  */
 module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1, localIdentName) => {
-  let loader = {
+  const loader = {
     test: /\.less$/,
     use: [
       {

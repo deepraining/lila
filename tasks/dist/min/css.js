@@ -16,7 +16,7 @@ module.exports = gulp => {
 
     if (current.config.minCss)
     {return gulp
-        .src(current.config.buildPaths.buildTmp.dir + '/**/*.css')
+        .src(`${current.config.buildPaths.buildTmp.dir  }/**/*.css`)
         .pipe(csso(current.config.minCssOptions || { comments: !1 }))
         .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));}
     else {cb();}

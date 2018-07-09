@@ -13,9 +13,9 @@ const help = require('../util/help');
 const notToLocalToExec = ['new', 'add', 'archive', 'arc', 'clean', 'revert'];
 
 // command name
-let command = argv._[0];
+const command = argv._[0];
 // package version
-let version = packageJson.version;
+const version = packageJson.version;
 
 // -v --version
 if (argv.v || argv.version) {
@@ -40,7 +40,7 @@ if (notToLocalToExec.indexOf(command) > -1) {
 }
 // Need to go to local to execute.
 else {
-  let localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
+  const localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
   if (!fs.existsSync(localPkgPath)) {
     logger.error(`
   Missing local lila.    
@@ -54,9 +54,9 @@ else {
     process.exit(0);
   }
 
-  let localPkg = require(localPkgPath);
+  const localPkg = require(localPkgPath);
 
   // Get package.json main attribute.
-  let localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
+  const localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
   require(localPkgIndexPath);
 }

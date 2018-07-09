@@ -20,7 +20,7 @@ const defaultValue = {
  * @param config
  */
 module.exports = config => {
-  let clonedDefaultValue = cloneDeep(defaultValue);
+  const clonedDefaultValue = cloneDeep(defaultValue);
   config.basePaths = !config.basePaths ? clonedDefaultValue : defaults(config.basePaths, clonedDefaultValue);
 
   /**
@@ -42,8 +42,8 @@ module.exports = config => {
    *         webPrefix: "/static"
    *     }
    */
-  let webPrefix = path.relative(config.basePaths.webRoot, config.basePaths.buildRoot);
-  config.basePaths.webPrefix = webPrefix ? '/' + webPrefix : '';
+  const webPrefix = path.relative(config.basePaths.webRoot, config.basePaths.buildRoot);
+  config.basePaths.webPrefix = webPrefix ? `/${  webPrefix}` : '';
 
   // Make absolute path.
   config.basePaths.buildRoot = path.join(pathInfo.projectRoot, config.basePaths.buildRoot);

@@ -19,7 +19,7 @@ module.exports = gulp => {
     // Don't record files' changes.
     if (!current.config.recordFileChanges) {
       return gulp
-        .src(current.config.buildPaths.build.dir + '/**/*', {
+        .src(`${current.config.buildPaths.build.dir  }/**/*`, {
           base: current.config.buildPaths.build.dir,
         })
         .pipe(gulp.dest(current.config.buildPaths.buildTmp.dir));
@@ -27,13 +27,13 @@ module.exports = gulp => {
     // Record files' changes.
     else {
       // Get changed files.
-      const changedFiles = findChangedFiles(current.config.buildPaths.build.dir, 'base');
+      const foundChangedFiles = findChangedFiles(current.config.buildPaths.build.dir, 'base');
       const changedFilesPaths = [];
 
-      if (!isEmpty(changedFiles)) {
+      if (!isEmpty(foundChangedFiles)) {
         logger.info('');
-        forEach(changedFiles, (value, key) => {
-          changedFilesPaths.push(current.config.buildPaths.build.dir + '/' + key);
+        forEach(foundChangedFiles, (value, key) => {
+          changedFilesPaths.push(`${current.config.buildPaths.build.dir  }/${  key}`);
           logger.info(`File changed: ${key}.`, { prefix: !0 });
         });
         logger.info('');
