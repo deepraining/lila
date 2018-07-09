@@ -20,18 +20,7 @@ checkConfigFile();
 
 const projectConfig = require('../project_config');
 
-const postStyleLint = () => {
-  if (projectConfig.prettier) {
-    logger.log(`
-  Start 'prettier' for module '${moduleName}'.
-    `);
-
-    require('./util/prettier');
-
-    logger.success(`
-  Done for formatting code under module '${moduleName}'.
-    `);
-  }
+require('./util/lint')(() => {
 
   // Guarantee `share.originalProcessArgv` has been loaded.
   const share = require('../share');
@@ -62,32 +51,4 @@ const postStyleLint = () => {
       }
     });
   }
-};
-
-if (projectConfig.esLint) {
-  logger.log(`
-  Start 'eslint' for module '${moduleName}'.
-  `);
-
-  require('./util/eslint');
-
-  logger.success(`
-  No errors occurred under module '${moduleName}'.
-  `);
-}
-
-if (projectConfig.styleLint) {
-  logger.log(`
-  Start 'stylelint' for module '${moduleName}'.
-  `);
-
-  require('./util/stylelint')(() => {
-    logger.success(`
-  No errors occurred under module '${moduleName}'.
-    `);
-
-    postStyleLint();
-  });
-} else {
-  postStyleLint();
-}
+});
