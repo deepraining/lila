@@ -17,10 +17,7 @@ module.exports = function copyToStore(cb) {
   });
 
   if (fs.existsSync(projectConfig.buildPaths.buildTmp.dir))
-    fsExtra.copySync(
-      projectConfig.buildPaths.buildTmp.dir,
-      projectConfig.buildPaths.buildStore.dir
-    );
+    fsExtra.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);
 
   cb();
 };

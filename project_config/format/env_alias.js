@@ -16,7 +16,5 @@ const defaultValue = {
  * @param config
  */
 module.exports = config => {
-  config.envAlias = !config.envAlias
-    ? cloneDeep(defaultValue)
-    : defaults(config.envAlias, cloneDeep(defaultValue));
+  config.envAlias = !config.envAlias ? cloneDeep(defaultValue) : defaults(config.envAlias, cloneDeep(defaultValue));
 };

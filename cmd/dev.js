@@ -40,8 +40,7 @@ browserSyncConfig.server = {
   baseDir: projectConfig.basePaths.webRoot,
 };
 browserSyncConfig.port = projectConfig.devServerPort;
-browserSyncConfig.startPath =
-  projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
+browserSyncConfig.startPath = projectConfig.basePaths.webPrefix + '/dev/' + projectConfig.module + '/index.html';
 
 // Middleware.
 !browserSyncConfig.middleware && (browserSyncConfig.middleware = []);

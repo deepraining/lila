@@ -47,11 +47,7 @@ module.exports = gulp => {
   return function handleHtml(cb) {
     logger.log('Handling html files.', { prefix: !0, preLn: !0, postLn: !0 });
 
-    if (
-      !current.config.hasHtmlReplace &&
-      !current.config.hasHtmlInsert &&
-      !current.config.hasHtmlExtension
-    )
+    if (!current.config.hasHtmlReplace && !current.config.hasHtmlInsert && !current.config.hasHtmlExtension)
       return cb();
 
     let stream = gulp.src(current.config.buildPaths.buildTmp.html + '/**/*.html');

@@ -43,10 +43,7 @@ module.exports = options => {
    *
    * @type {RegExp}
    */
-  const matchFiles = new RegExp(
-    `["'\(]\s*([^"'\)]*\.(${extensionsString})[^"'\)\w/]*\s*)["'\)]`,
-    'gim'
-  );
+  const matchFiles = new RegExp(`["'\(]\s*([^"'\)]*\.(${extensionsString})[^"'\)\w/]*\s*)["'\)]`, 'gim');
 
   /**
    * Matched, continue. Only handle which starts with `/` and ends with `extensions`.
@@ -85,10 +82,7 @@ module.exports = options => {
         }
         // Has test.
         else if (rule.test) {
-          if (
-            (rule.test.test(filePath) && !rule.reverse) ||
-            (!rule.test.test(filePath) && rule.reverse)
-          )
+          if ((rule.test.test(filePath) && !rule.reverse) || (!rule.test.test(filePath) && rule.reverse))
             return content.replace(filePath, rule.cdn + filePath);
         }
         // Both not provided, means match all.

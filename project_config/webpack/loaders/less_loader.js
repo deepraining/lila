@@ -8,13 +8,7 @@
  * @param localIdentName
  * @returns {{test: RegExp, use: *[]}}
  */
-module.exports = (
-  useCssModules = !1,
-  excludeMatches = [],
-  include = !1,
-  exclude = !1,
-  localIdentName
-) => {
+module.exports = (useCssModules = !1, excludeMatches = [], include = !1, exclude = !1, localIdentName) => {
   let loader = {
     test: /\.less$/,
     use: [

@@ -20,9 +20,7 @@ const distTasks = require('../dist/tasks');
 
 module.exports = gulp => {
   const syncDirChangedTasks = fill(
-    new Array(
-      (projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length) || 0
-    ),
+    new Array((projectConfig.processing.syncDirKeys && projectConfig.processing.syncDirKeys.length) || 0),
     syncDirChanged
   );
 

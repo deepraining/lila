@@ -27,10 +27,8 @@ module.exports = function renameHtml(cb) {
 
     // html to jsp, php ...
     if (projectConfig.htmlExtension) {
-      const targetPath2 =
-        projectConfig.buildPaths.dist.html + '/' + targetModule + '.' + projectConfig.htmlExtension;
-      const sourcePath2 =
-        projectConfig.buildPaths.dist.html + '/' + sourceModule + '.' + projectConfig.htmlExtension;
+      const targetPath2 = projectConfig.buildPaths.dist.html + '/' + targetModule + '.' + projectConfig.htmlExtension;
+      const sourcePath2 = projectConfig.buildPaths.dist.html + '/' + sourceModule + '.' + projectConfig.htmlExtension;
 
       if (fs.existsSync(sourcePath2) && !fs.existsSync(targetPath2))
         fsExtra.moveSync(sourcePath2, targetPath2, { overwrite: !0 });

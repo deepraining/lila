@@ -28,13 +28,7 @@ if (projectConfig.onlyWebpack) {
   require('./util/webpack');
 } else {
   // Modify `process.argv` for `gulp-cli`.
-  process.argv = [
-    share.originalProcessArgv[0],
-    share.originalProcessArgv[1],
-    'sync',
-    '--gulpfile',
-    pathInfo.gulpFile,
-  ];
+  process.argv = [share.originalProcessArgv[0], share.originalProcessArgv[1], 'sync', '--gulpfile', pathInfo.gulpFile];
 
   require('gulp-cli')(err => {
     if (err) {

@@ -15,11 +15,7 @@ let oldProcessArgv = process.argv;
 process.argv = oldProcessArgv.slice(0, 2);
 
 process.argv.push(
-  path.join(
-    projectConfig.buildPaths.src.dir,
-    subDir,
-    '**/*.{js,jsx,ts,css,less,sass,scss,json,md}'
-  ),
+  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.{js,jsx,ts,css,less,sass,scss,json,md}'),
   '--write'
 );
 

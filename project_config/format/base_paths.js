@@ -21,9 +21,7 @@ const defaultValue = {
  */
 module.exports = config => {
   let clonedDefaultValue = cloneDeep(defaultValue);
-  config.basePaths = !config.basePaths
-    ? clonedDefaultValue
-    : defaults(config.basePaths, clonedDefaultValue);
+  config.basePaths = !config.basePaths ? clonedDefaultValue : defaults(config.basePaths, clonedDefaultValue);
 
   /**
    * Make `webPrefix`.

@@ -37,13 +37,11 @@ const commands = [
   },
   {
     name: 'dev',
-    desc:
-      "Watch files' changes, with hot replacing and reloading, and start a local server for debug.",
+    desc: "Watch files' changes, with hot replacing and reloading, and start a local server for debug.",
   },
   {
     name: 'dist',
-    desc:
-      'Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.',
+    desc: 'Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.',
   },
   {
     name: 'sync',
