@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2 [2018-07-10]
+
+- Fix bugs `*` module for `prettier, eslint, stylelint` commands on `linux, mac`.
+
 ## 0.3.1 [2018-07-09]
 
 - Add `upgrade` command.
