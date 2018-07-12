@@ -1,0 +1,4 @@
+
+project/src/*
+
+!project/src/.gitkeep
