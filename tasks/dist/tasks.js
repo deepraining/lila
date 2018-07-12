@@ -57,7 +57,7 @@ module.exports = gulp => {
   if (!projectConfig.multiple) {
     tasks.push(getTask());
   } else {
-    for (let i = 0, il = projectConfig.allModules.length; i < il; i++) {
+    for (let i = 0, il = projectConfig.allModules.length; i < il; i += 1) {
       tasks.push(getTask());
       next();
     }

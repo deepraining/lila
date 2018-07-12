@@ -74,7 +74,7 @@ module.exports = options => {
         return content;
       }
 
-      for (let i = 0; i < options.rules.length; i++) {
+      for (let i = 0; i < options.rules.length; i += 1) {
         const rule = options.rules[i];
         // Has start.
         if (rule.start) {

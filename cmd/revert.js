@@ -21,7 +21,7 @@ if (!revertShare.packages || !revertShare.packages.length) {
   process.exit(0);
 }
 
-const index = parseInt(argv.i) || parseInt(argv.index) || 0;
+const index = parseInt(argv.i, 10) || parseInt(argv.index, 10) || 0;
 
 // Index is greater than total length.
 if (index > revertShare.packages.length) {
