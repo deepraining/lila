@@ -24,7 +24,7 @@ describe('archive command', () => {
     });
   });
 
-  test('archive a non-existed directory ', done => {
+  test('archive a non-existed directory', done => {
     const child = spawn('node', [path.join(__dirname, 'not-exist.js')]);
 
     let stderrCount = 0;
