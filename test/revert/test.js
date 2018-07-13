@@ -36,11 +36,11 @@ describe('revert command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain('No archive packages in current directory.');
       done();
     });
@@ -58,15 +58,15 @@ describe('revert command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain("Revert 'dist' directory to last");
       // 2 files
       expect(filesCount(distDir)).toBe(2);
-      // Have 1.js
+      // Has 1.js
       expect(fs.existsSync(path.join(distDir, '11.js'))).toBeTruthy();
-      // Have inner/2.js
+      // Has inner/2.js
       expect(fs.existsSync(path.join(distDir, 'inner/12.js'))).toBeTruthy();
       done();
     });
@@ -84,15 +84,15 @@ describe('revert command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain("Revert 'dist' directory to last");
       // 2 files
       expect(filesCount(distDir)).toBe(2);
-      // Have 1.js
+      // Has 1.js
       expect(fs.existsSync(path.join(distDir, '1.js'))).toBeTruthy();
-      // Have inner/2.js
+      // Has inner/2.js
       expect(fs.existsSync(path.join(distDir, 'inner/2.js'))).toBeTruthy();
       done();
     });
@@ -111,11 +111,11 @@ describe('revert command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain("is greater than packages' length");
       done();
     });

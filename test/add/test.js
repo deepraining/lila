@@ -52,11 +52,11 @@ describe('add command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain('Missing module name for command: add.');
       done();
     });
@@ -75,15 +75,15 @@ describe('add command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have one stdout
+      // Has one stdout
       expect(stdoutCount).toBe(1);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain('successfully!');
-      // Have index.html
+      // Has index.html
       expect(fs.existsSync(path.join(dir1, 'index.html'))).toBeTruthy();
-      // Have index.js
+      // Has index.js
       expect(fs.existsSync(path.join(dir1, 'index.js'))).toBeTruthy();
       // 2 files, index.html,index.js
       expect(filesCount(dir1)).toBe(2);
@@ -104,11 +104,11 @@ describe('add command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain('has already been added.');
       done();
     });
@@ -127,15 +127,15 @@ describe('add command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have one stdout
+      // Has one stdout
       expect(stdoutCount).toBe(1);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain('successfully!');
-      // Have index.html
+      // Has index.html
       expect(fs.existsSync(path.join(dir2, 'index.html'))).toBeTruthy();
-      // Have index.js
+      // Has index.js
       expect(fs.existsSync(path.join(dir2, 'index.js'))).toBeTruthy();
       // 2 files, index.html,index.js
       expect(filesCount(dir2)).toBe(2);
@@ -156,15 +156,15 @@ describe('add command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have one stdout
+      // Has one stdout
       expect(stdoutCount).toBe(1);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain('successfully!');
-      // Have index.html
+      // Has index.html
       expect(fs.existsSync(path.join(dir3, 'index.html'))).toBeTruthy();
-      // Have index.js
+      // Has index.js
       expect(fs.existsSync(path.join(dir3, 'index.js'))).toBeTruthy();
       // 2 files, index.html,index.js
       expect(filesCount(dir3)).toBe(2);

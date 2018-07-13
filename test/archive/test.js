@@ -37,11 +37,11 @@ describe('archive command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain("Missing 'dist' directory for command: archive.");
       done();
     });
@@ -59,9 +59,9 @@ describe('archive command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain("Pack 'dist' directory successfully!");
       done();
     });
@@ -79,9 +79,9 @@ describe('archive command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain("Pack 'dist' directory successfully!");
 
       let zipFilesCount = 0;

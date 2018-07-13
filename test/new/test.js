@@ -34,11 +34,11 @@ describe('new command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain('Missing project name for command: new.');
       done();
     });
@@ -57,15 +57,15 @@ describe('new command', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      // Have one stdout
+      // Has one stdout
       expect(stdoutCount).toBe(1);
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).not.toBeUndefined();
-      // Have stdout
+      // Has stdout
       expect(stdoutMessage).toContain('successfully!');
-      // Have demo string in package.json
+      // Has demo string in package.json
       expect(fse.readFileSync(path.join(demoDir, 'package.json'), 'utf8')).toContain('demo');
-      // Have demo string in README.md
+      // Has demo string in README.md
       expect(fse.readFileSync(path.join(demoDir, 'README.md'), 'utf8')).toContain('demo');
       // 14 files, include .gitkeep
       expect(filesCount(demoDir)).toBe(14);
@@ -86,11 +86,11 @@ describe('new command', () => {
 
     child.on('close', code => {
       expect(code).toBe(1);
-      // Have one stderr
+      // Has one stderr
       expect(stderrCount).toBe(1);
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).not.toBeUndefined();
-      // Have stderr
+      // Has stderr
       expect(stderrMessage).toContain('has already been created.');
       done();
     });
