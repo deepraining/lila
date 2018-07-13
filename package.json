@@ -30,7 +30,8 @@
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "lint-staged": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "test:dist": "jest ./test/dist/test.js"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
