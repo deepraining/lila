@@ -20,7 +20,7 @@ if (!projectName) {
   
   lila new <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 const projectPath = path.join(pathInfo.projectRoot, projectName);
@@ -30,7 +30,7 @@ if (fs.existsSync(projectPath)) {
   logger.error(`
   Project '${projectName}' has already been created.
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 // Copy base dirs.
