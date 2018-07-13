@@ -10,7 +10,7 @@ share.endHandler = cb => {
   logger.success(`
   Pack 'dist' directory successfully!
   
-  You can it '${share.zipFileName}' in current directory.
+  You can find it '${share.zipFileName}' in current directory.
   `);
 
   cb();
