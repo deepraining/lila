@@ -1,4 +1,4 @@
-# How to update.
+# How to upgrade.
 
 ## `0.3.0` -> `0.3.1`
 

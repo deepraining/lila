@@ -467,9 +467,9 @@ Here is an example, and you can follow the steps to see how to use: [Example for
 
 More to see [package.json](./package.json).
 
-## 9. Update to new version from old versions.
+## 9. Upgrade to new version from old versions.
 
-See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
+See [Change log](./CHANGELOG.md), [Upgrade log](./UPGRADE.md).
 
 ## 10. Examples
 
