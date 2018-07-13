@@ -18,7 +18,7 @@ if (!moduleName) {
   
   lila add <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 // Check if project config file exists.
@@ -38,7 +38,7 @@ if (fs.existsSync(htmlFilePath) || fs.existsSync(jsFilePath)) {
   logger.error(`
   Module '${moduleName}' has already been added.
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 // Make js file.
