@@ -13,7 +13,7 @@ if (!moduleName) {
   
   lila sync <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 checkConfigFile();

@@ -51,7 +51,7 @@ else {
   npm install lila --save-dev
   `);
 
-    process.exit(0);
+    process.exit(1);
   }
 
   const localPkg = require(localPkgPath);

@@ -12,7 +12,7 @@ if (!moduleName) {
   
   lila ana <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 require('./analyze');

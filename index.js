@@ -21,5 +21,5 @@ if (commandName && fs.existsSync(commandPath)) {
 // no command or not exist
 else {
   help();
-  process.exit(0);
+  process.exit(1);
 }
