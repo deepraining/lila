@@ -101,6 +101,7 @@ module.exports = options => {
       return content;
     });
 
+    /* eslint-disable node/no-deprecated-api */
     file.contents = new Buffer(contents);
 
     this.push(file);
