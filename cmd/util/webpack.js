@@ -14,7 +14,7 @@ if (projectConfig.multiple) {
   lila dist <single-name> -w
   `);
 
-  process.exit(0);
+  process.exit(1);
 }
 
 webpack(projectConfig.webpack, (err, stats) => {

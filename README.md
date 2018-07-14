@@ -455,7 +455,7 @@ When develop node.js application, [nodemon](https://github.com/remy/nodemon) is 
 
 When use node.js application as distributed intermediate layer, we can unite `nodemon`'s automatically restarting the server with `lila`'s hot reloading. Thus we can both modify node.js application and lila web project at the same time, and those changes will both apply to developing environment(browsers and command line).
 
-Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/07-node).
+Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/node).
 
 ## 8. Packages
 
@@ -467,9 +467,9 @@ Here is an example, and you can follow the steps to see how to use: [Example for
 
 More to see [package.json](./package.json).
 
-## 9. Update to new version from old versions.
+## 9. Upgrade to new version from old versions.
 
-See [Change log](./CHANGELOG.md), [Update log](./UPDATE.md).
+See [Change log](./CHANGELOG.md), [Upgrade log](./UPGRADE.md).
 
 ## 10. Examples
 

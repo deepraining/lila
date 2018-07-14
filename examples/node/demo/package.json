@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "handlebars": "^4.0.11",
+    "koa": "^2.5.1",
+    "koa-views": "^6.1.4"
+  }
+}

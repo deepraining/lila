@@ -20,7 +20,7 @@ if (!moduleName) {
   
   lila dev <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 checkConfigFile();

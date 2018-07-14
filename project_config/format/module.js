@@ -50,6 +50,9 @@ const getModules = (module, config) => {
     process.exit(1);
   }
 
+  // Dir not exist.
+  if (!fs.existsSync(dir)) return modules;
+
   // Get all modules.
   rd.readDirFilterSync(dir, dirPath => {
     const htmlFile = `${dirPath}/index.html`;
@@ -124,6 +127,13 @@ module.exports = config => {
   modules.forEach(item => {
     allModules = concat(allModules, getModules(item, config));
   });
+
+  if (!allModules.length) {
+    logger.error(`
+  No modules found by ${currentModule}.
+    `);
+    process.exit(1);
+  }
 
   config.multiple = !0;
   config.allModules = allModules;

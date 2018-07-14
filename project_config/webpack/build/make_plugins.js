@@ -33,7 +33,7 @@ module.exports = config => {
       let i = index;
       const chunks = [config.moduleName];
 
-      for (; i < keysLength; i++) {
+      for (; i < keysLength; i += 1) {
         chunks.push(config.splitJsKeys[i]);
       }
 

@@ -37,7 +37,7 @@ module.exports = config => {
     let chunks = [];
 
     config.splitJsChunks[key] = {};
-    for (; i > -1; i--) {
+    for (; i > -1; i -= 1) {
       tmpKey = splitJsKeys[i];
       chunks = concat(chunks, config.splitJs[tmpKey]);
     }

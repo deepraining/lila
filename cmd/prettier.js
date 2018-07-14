@@ -13,7 +13,7 @@ if (!moduleName) {
   
   lila prettier <name>
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 checkConfigFile();

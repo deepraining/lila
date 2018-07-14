@@ -18,17 +18,17 @@ if (!revertShare.packages || !revertShare.packages.length) {
   logger.error(`
   No archive packages in current directory.
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
-const index = parseInt(argv.i) || parseInt(argv.index) || 0;
+const index = parseInt(argv.i, 10) || parseInt(argv.index, 10) || 0;
 
 // Index is greater than total length.
 if (index > revertShare.packages.length) {
   logger.error(`
   Index "${index}" is greater than packages' length "${revertShare.packages.length}".
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 revertShare.index = index || 1;

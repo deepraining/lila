@@ -14,9 +14,9 @@ options.fix = !!projectConfig.esLintFix;
 const cli = new CLIEngine(options);
 
 let subDir = moduleName;
-if (moduleName === '*') {
+if (moduleName === '*' || moduleName === 'all') {
   subDir = '';
-} else if (moduleName.slice(-1) === '*') {
+} else if (moduleName.slice(-2) === '/*') {
   subDir = moduleName.slice(0, -2);
 }
 

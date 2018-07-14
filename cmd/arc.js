@@ -10,7 +10,7 @@ if (!fs.existsSync(`${pathInfo.projectRoot}/dist`)) {
   logger.error(`
   Missing 'dist' directory for command: arc.
   `);
-  process.exit(0);
+  process.exit(1);
 }
 
 // Register gulp tasks.
