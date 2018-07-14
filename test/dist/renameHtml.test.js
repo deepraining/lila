@@ -4,19 +4,19 @@ const fs = require('fs');
 const fse = require('fs-extra');
 
 const demoDir = path.join(__dirname, 'demo');
-const fixtureDir = path.join(__dirname, 'fixtures/renameHtml');
-const distDir = path.join(fixtureDir, 'project/dist');
+const runtimeDir = path.join(__dirname, 'runtime/renameHtml');
+const distDir = path.join(runtimeDir, 'project/dist');
 
 describe('dist renameHtml', () => {
   // 60s timeout
   jest.setTimeout(60000);
 
   beforeAll(() => {
-    fse.copySync(demoDir, fixtureDir);
+    fse.copySync(demoDir, runtimeDir);
   });
   afterAll(() => {
-    if (fs.existsSync(fixtureDir)) {
-      fse.removeSync(fixtureDir);
+    if (fs.existsSync(runtimeDir)) {
+      fse.removeSync(runtimeDir);
     }
   });
 
@@ -24,7 +24,7 @@ describe('dist renameHtml', () => {
     const child = spawn('node', [path.join(__dirname, 'dist.js')], {
       env: Object.assign({}, process.env, {
         local: 'renameHtml',
-        fixtureDir: 'fixtures/renameHtml',
+        runtimeDir: 'runtime/renameHtml',
       }),
     });
 

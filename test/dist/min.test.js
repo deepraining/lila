@@ -5,19 +5,19 @@ const fse = require('fs-extra');
 const rd = require('rd');
 
 const demoDir = path.join(__dirname, 'demo');
-const fixtureDir = path.join(__dirname, 'fixtures/min');
-const distDir = path.join(fixtureDir, 'project/dist');
+const runtimeDir = path.join(__dirname, 'runtime/min');
+const distDir = path.join(runtimeDir, 'project/dist');
 
 describe('dist min', () => {
   // 60s timeout
   jest.setTimeout(60000);
 
   beforeAll(() => {
-    fse.copySync(demoDir, fixtureDir);
+    fse.copySync(demoDir, runtimeDir);
   });
   afterAll(() => {
-    if (fs.existsSync(fixtureDir)) {
-      fse.removeSync(fixtureDir);
+    if (fs.existsSync(runtimeDir)) {
+      fse.removeSync(runtimeDir);
     }
   });
 
@@ -25,7 +25,7 @@ describe('dist min', () => {
     const child = spawn('node', [path.join(__dirname, 'dist.js')], {
       env: Object.assign({}, process.env, {
         local: 'min',
-        fixtureDir: 'fixtures/min',
+        runtimeDir: 'runtime/min',
       }),
     });
 

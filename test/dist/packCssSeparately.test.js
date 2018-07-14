@@ -6,19 +6,19 @@ const fse = require('fs-extra');
 const filesCount = require('../../util/files_count');
 
 const demoDir = path.join(__dirname, 'demo');
-const fixtureDir = path.join(__dirname, 'fixtures/packCssSeparately');
-const distDir = path.join(fixtureDir, 'project/dist');
+const runtimeDir = path.join(__dirname, 'runtime/packCssSeparately');
+const distDir = path.join(runtimeDir, 'project/dist');
 
 describe('dist packCssSeparately', () => {
   // 60s timeout
   jest.setTimeout(60000);
 
   beforeAll(() => {
-    fse.copySync(demoDir, fixtureDir);
+    fse.copySync(demoDir, runtimeDir);
   });
   afterAll(() => {
-    if (fs.existsSync(fixtureDir)) {
-      fse.removeSync(fixtureDir);
+    if (fs.existsSync(runtimeDir)) {
+      fse.removeSync(runtimeDir);
     }
   });
 
@@ -26,7 +26,7 @@ describe('dist packCssSeparately', () => {
     const child = spawn('node', [path.join(__dirname, 'dist.js')], {
       env: Object.assign({}, process.env, {
         local: 'packCssSeparately',
-        fixtureDir: 'fixtures/packCssSeparately',
+        runtimeDir: 'runtime/packCssSeparately',
       }),
     });
 
