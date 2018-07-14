@@ -5,6 +5,8 @@ if (local) {
   cmd += ` --local ${local}`;
 }
 
-require('../../util/change_cwd')(__dirname + '/demo');
+const dir = process.env.fixtureDir || 'fixtures/base';
+
+require('../../util/change_cwd')(__dirname + '/' + dir);
 
 require('../../util/exec')(cmd);

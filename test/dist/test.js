@@ -5,13 +5,24 @@ const fse = require('fs-extra');
 
 const filesCount = require('../../util/files_count');
 
-const dotLilaDir = path.join(__dirname, 'demo/.lila');
-const manifestsDir = path.join(__dirname, 'demo/.lila/manifests');
-const distDir = path.join(__dirname, 'demo/project/dist');
+const demoDir = path.join(__dirname, 'demo');
+const fixtureDir = path.join(__dirname, 'fixtures/base');
+const dotLilaDir = path.join(fixtureDir, '.lila');
+const manifestsDir = path.join(fixtureDir, '.lila/manifests');
+const distDir = path.join(fixtureDir, 'project/dist');
 
 describe('dist base', () => {
   // 60s timeout
   jest.setTimeout(60000);
+
+  beforeAll(() => {
+    fse.copySync(demoDir, fixtureDir);
+  });
+  afterAll(() => {
+    if (fs.existsSync(fixtureDir)) {
+      fse.removeSync(fixtureDir);
+    }
+  });
 
   beforeEach(() => {
     if (fs.existsSync(dotLilaDir)) {

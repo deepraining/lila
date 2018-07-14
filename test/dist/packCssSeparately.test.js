@@ -5,33 +5,29 @@ const fse = require('fs-extra');
 
 const filesCount = require('../../util/files_count');
 
-const dotLilaDir = path.join(__dirname, 'demo/.lila');
-const distDir = path.join(__dirname, 'demo/project/dist');
+const demoDir = path.join(__dirname, 'demo');
+const fixtureDir = path.join(__dirname, 'fixtures/packCssSeparately');
+const distDir = path.join(fixtureDir, 'project/dist');
 
 describe('dist packCssSeparately', () => {
   // 60s timeout
   jest.setTimeout(60000);
 
   beforeAll(() => {
-    if (fs.existsSync(dotLilaDir)) {
-      fse.removeSync(dotLilaDir);
-    }
-    if (fs.existsSync(distDir)) {
-      fse.removeSync(distDir);
-    }
+    fse.copySync(demoDir, fixtureDir);
   });
   afterAll(() => {
-    if (fs.existsSync(dotLilaDir)) {
-      fse.removeSync(dotLilaDir);
-    }
-    if (fs.existsSync(distDir)) {
-      fse.removeSync(distDir);
+    if (fs.existsSync(fixtureDir)) {
+      fse.removeSync(fixtureDir);
     }
   });
 
   test('dist: packCssSeparately', done => {
     const child = spawn('node', [path.join(__dirname, 'dist.js')], {
-      env: Object.assign({}, process.env, { local: 'packCssSeparately' }),
+      env: Object.assign({}, process.env, {
+        local: 'packCssSeparately',
+        fixtureDir: 'fixtures/packCssSeparately',
+      }),
     });
 
     let stdoutMessage;
