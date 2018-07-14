@@ -2,6 +2,9 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 describe('eslint command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   test('eslint without name', done => {
     const child = spawn('node', [path.join(__dirname, 'es-no-name.js')]);
 

@@ -9,6 +9,9 @@ const script = path.join(__dirname, 'demo.js');
 const demoDir = path.join(__dirname, 'demo');
 
 describe('new command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeAll(() => {
     if (fs.existsSync(demoDir)) {
       fse.removeSync(demoDir);

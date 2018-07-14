@@ -15,6 +15,9 @@ const dir3 = path.join(__dirname, 'demo/project/src/parent/test/index');
 const dir3_2 = path.join(__dirname, 'demo/project/src/parent');
 
 describe('add command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeAll(() => {
     if (fs.existsSync(dir1)) {
       fse.removeSync(dir1);

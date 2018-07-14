@@ -11,6 +11,9 @@ const script3 = path.join(__dirname, '3.js');
 const distDir = path.join(__dirname, 'demo/dist');
 
 describe('revert command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeAll(() => {
     if (fs.existsSync(distDir)) {
       fse.removeSync(distDir);

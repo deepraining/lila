@@ -2,6 +2,9 @@ const path = require('path');
 const { spawn } = require('child_process');
 
 describe('stylelint command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   test('stylelint without name', done => {
     const child = spawn('node', [path.join(__dirname, 'style-no-name.js')]);
 

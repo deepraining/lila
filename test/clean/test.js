@@ -11,6 +11,9 @@ const distDir = path.join(__dirname, 'demo/dist');
 const bakDir = path.join(__dirname, 'demo/bak');
 
 describe('clean command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeAll(() => {
     if (fs.existsSync(distDir)) {
       fse.removeSync(distDir);

@@ -8,6 +8,9 @@ const script2 = path.join(__dirname, 'arc.js');
 const demoDir = path.join(__dirname, 'demo');
 
 describe('archive command', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeAll(() => {
     fs.readdirSync(demoDir).filter(file => {
       if (file.slice(-4) === '.zip') {

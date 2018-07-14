@@ -6,10 +6,13 @@ const fse = require('fs-extra');
 const filesCount = require('../../util/files_count');
 
 const dotLilaDir = path.join(__dirname, 'demo/.lila');
-// const manifestsDir = path.join(__dirname, 'demo/.lila/manifests');
+const manifestsDir = path.join(__dirname, 'demo/.lila/manifests');
 const distDir = path.join(__dirname, 'demo/project/dist');
 
 describe('dist base', () => {
+  // 60s timeout
+  jest.setTimeout(60000);
+
   beforeEach(() => {
     if (fs.existsSync(dotLilaDir)) {
       fse.removeSync(dotLilaDir);
@@ -115,6 +118,8 @@ describe('dist base', () => {
       expect(filesCount(distDir)).toBe(4);
       // Check html.
       expect(fs.existsSync(path.join(distDir, 'html/test/index.html'))).toBeTruthy();
+      // Check manifests directory.
+      expect(fs.existsSync(manifestsDir)).toBeTruthy();
       done();
     });
   });
