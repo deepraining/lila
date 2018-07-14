@@ -23,5 +23,13 @@ module.exports = {
       },
       htmlExtension: 'php',
     },
+    renameHtml: {
+      renameHtml: {
+        'test/index': 'test-2/index',
+      },
+    },
+    backupHtml: {
+      backupHtml: !0,
+    },
   },
 };
