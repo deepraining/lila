@@ -32,7 +32,7 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:dist": "jest test/dist",
-    "test:dist:backupHtml": "jest test/dist/backupHtml.test.js"
+    "test:dist:splitJs": "jest test/dist/splitJs.test.js"
   },
   "dependencies": {
     "babel-core": "^6.26.3",

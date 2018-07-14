@@ -31,5 +31,10 @@ module.exports = {
     backupHtml: {
       backupHtml: !0,
     },
+    splitJs: {
+      splitJs: {
+        chunk1: ['test/index/hello'],
+      },
+    },
   },
 };
