@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   localOptions: {
     packCssSeparately: {
       packCssSeparately: !0,
@@ -36,5 +36,30 @@ module.exports = {
         chunk1: ['test/index/hello'],
       },
     },
+    'staticServerUrl:subDir': {
+      packCssSeparately: !0,
+      staticServerUrl: '/sub/dir',
+    },
+    'staticServerUrl:domain': {
+      packCssSeparately: !0,
+      staticServerUrl: 'https://www.senntyou.com',
+    },
+    'staticServerUrl:all': {
+      packCssSeparately: !0,
+      staticServerUrl: '//www.senntyou.com/sub/dir',
+    },
+    'staticServerUrl:all:cus': {
+      packCssSeparately: !0,
+      staticServerUrl: '//www.senntyou.com/sub/dir',
+    },
   },
 };
+
+if (process.env.customBasePaths) {
+  config.basePaths = {
+    buildRoot: './project',
+    webRoot: './',
+  };
+}
+
+module.exports = config;

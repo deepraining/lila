@@ -31,8 +31,7 @@
     "eslint:fix": "eslint . --fix",
     "lint-staged": "lint-staged",
     "test": "jest",
-    "test:dist": "jest test/dist",
-    "test:dist:splitJs": "jest test/dist/splitJs.test.js"
+    "test:dist": "jest test/dist"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
