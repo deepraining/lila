@@ -32,7 +32,7 @@
     "lint-staged": "lint-staged",
     "test": "jest",
     "test:dist": "jest test/dist",
-    "test:dist:min": "jest test/dist/min.test.js"
+    "test:dist:html": "jest test/dist/html.test.js"
   },
   "dependencies": {
     "babel-core": "^6.26.3",
