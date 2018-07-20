@@ -1,7 +1,9 @@
-
 .DS_Store
 node_modules
 bower_components
-npm-debug.log
+/coverage
+*.log
 .idea
+.vscode
+.eslintcache
 package-lock.json
