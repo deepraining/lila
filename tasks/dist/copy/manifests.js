@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 
 const logger = require('../../../util/logger');
 
@@ -23,9 +23,9 @@ module.exports = function copyManifests(cb) {
    */
   if (!fs.existsSync(pathInfo.manifestsDirKeepFile)) {
     // Create `manifests` directory.
-    fsExtra.ensureFileSync(pathInfo.manifestsDirKeepFile);
+    fse.ensureFileSync(pathInfo.manifestsDirKeepFile);
     // Create `manifests_bak` directory.
-    fsExtra.ensureFileSync(pathInfo.manifestsBakDirKeepFile);
+    fse.ensureFileSync(pathInfo.manifestsBakDirKeepFile);
   } else if (filesCount(pathInfo.manifestsDir) > 1) {
     /**
      * Has `manifests` directory, and also has other files despite of `.keep` file under `manifests` directory,
@@ -38,13 +38,13 @@ module.exports = function copyManifests(cb) {
      * (If only exist `.keep` file, saying that last building is the first time, otherwise N times.)
      */
     if (fs.existsSync(pathInfo.manifestsBakDirKeepFile)) {
-      fsExtra.removeSync(pathInfo.manifestsDir);
-      fsExtra.copySync(pathInfo.manifestsBakDir, pathInfo.manifestsDir);
+      fse.removeSync(pathInfo.manifestsDir);
+      fse.copySync(pathInfo.manifestsBakDir, pathInfo.manifestsDir);
     } else {
       /**
        * Normal state, copy `manifests` to `manifests_bak`.
        */
-      fsExtra.copySync(pathInfo.manifestsDir, pathInfo.manifestsBakDir);
+      fse.copySync(pathInfo.manifestsDir, pathInfo.manifestsBakDir);
     }
   }
 

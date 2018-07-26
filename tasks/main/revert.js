@@ -1,4 +1,4 @@
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 const decompress = require('decompress');
 
 const pathInfo = require('../../data/path_info');
@@ -13,7 +13,7 @@ module.exports = gulp => {
     const distPath = `${pathInfo.projectRoot}/dist`;
 
     // Remove old `dist` directory.
-    fsExtra.removeSync(distPath);
+    fse.removeSync(distPath);
 
     /**
      * Zip file name.

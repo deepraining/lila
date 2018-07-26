@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 
 const argv = require('../data/argv');
 const pathInfo = require('../data/path_info');
@@ -34,7 +34,7 @@ if (fs.existsSync(projectPath)) {
 }
 
 // Copy base dirs.
-fsExtra.ensureFileSync(path.join(projectPath, 'project/src/.gitkeep'));
+fse.ensureFileSync(path.join(projectPath, 'project/src/.gitkeep'));
 
 // Make `.gitignore` file.
 copyRootFile(projectPath, '.gitignore', !0);

@@ -1,4 +1,4 @@
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 const uniq = require('lodash/uniq');
 const rd = require('rd');
 
@@ -52,7 +52,7 @@ module.exports = gulp => {
 
       // Not in use, remove it.
       if (hashCodes.indexOf(result[1]) < 0) {
-        fsExtra.removeSync(file);
+        fse.removeSync(file);
         deletedFilesCount < 1 && logger.info('');
         logger.info(`Deleted file: ${file}`);
         deletedFilesCount += 1;
@@ -97,7 +97,7 @@ module.exports = gulp => {
 
       // not in use, remove it
       if (hashCodes.indexOf(hash) < 0) {
-        fsExtra.removeSync(file);
+        fse.removeSync(file);
         deletedFilesCount < 1 && logger.info('');
         logger.info(`Deleted js chunk file: ${file}`);
         deletedFilesCount += 1;

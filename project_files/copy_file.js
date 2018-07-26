@@ -1,5 +1,5 @@
 const path = require('path');
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 
 /**
  * Copy project's files.
@@ -15,11 +15,11 @@ module.exports = (subDir, targetDir, fileName, hasPrefix, replaceTarget, replace
   const filePath = path.join(__dirname, subDir, hasPrefix ? `_${fileName}` : fileName);
   const targetFilePath = path.join(targetDir, fileName);
 
-  let content = fsExtra.readFileSync(filePath, 'utf8');
+  let content = fse.readFileSync(filePath, 'utf8');
 
   if (replaceTarget && replacement) {
     content = content.replace(replaceTarget, replacement);
   }
 
-  fsExtra.outputFileSync(targetFilePath, content);
+  fse.outputFileSync(targetFilePath, content);
 };
