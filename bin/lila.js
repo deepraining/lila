@@ -10,7 +10,7 @@ const logger = require('../util/logger');
 const help = require('../util/help');
 
 // Commands not need to go to local to execute.
-const notToLocalToExec = ['new', 'add', 'archive', 'arc', 'clean', 'revert'];
+const notToLocalToExec = ['new', 'add'];
 
 // command name
 const command = argv._[0];
