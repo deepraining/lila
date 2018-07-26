@@ -230,13 +230,10 @@ lila sync moduleName [-e 0(1,2)]
 - Can take with arguments: `env/e`, `local/l`, `out/o`.
 - `since`: `v0.0.1`
 
-### 3.6 `analyze/ana`: Visualize size of webpack output files with an interactive zoomable treemap.
+### 3.6 `analyze`: Visualize size of webpack output files with an interactive zoomable treemap.
 
 ```
 lila analyze moduleName
-
-# or
-lila ana moduleName
 ```
 
 - `since`: `v0.1.4`

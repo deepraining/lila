@@ -53,10 +53,6 @@ const commands = [
     desc: 'Visualize size of webpack output files with an interactive zoomable treemap.',
   },
   {
-    name: 'ana',
-    desc: 'Alias of command analyze.',
-  },
-  {
     name: 'eslint',
     desc: "Use 'eslint' to identify and report on patterns in JavaScript.",
   },
