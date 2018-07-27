@@ -65,7 +65,7 @@ module.exports = {
     }
   },
   import: [{"libraryName": "antd", style: "css"}],
-  enableCssModules: !0,
+  cssModules: !0,
   cssModulesExclude: [/node_modules/, /src\/less/],
   define: {
     globalDefine: JSON.stringify('hello')
