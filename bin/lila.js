@@ -16,10 +16,23 @@ const notToLocalToExec = ['new', 'add'];
 const command = argv._[0];
 // package version
 const version = packageJson.version;
+const localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
+let localVersion;
+let localPkg;
+
+if (fs.existsSync(localPkgPath)) {
+  localPkg = require(localPkgPath);
+  localVersion = localPkg.version;
+}
 
 // -v --version
 if (argv.v || argv.version) {
-  logger.log(version);
+  if (localVersion) {
+    logger.log(`Global lila v${version}`);
+    logger.log(`Local lila v${localVersion}`);
+  } else {
+    logger.log(version);
+  }
   process.exit(0);
 }
 // -h --help
@@ -40,8 +53,7 @@ if (notToLocalToExec.indexOf(command) > -1) {
 }
 // Need to go to local to execute.
 else {
-  const localPkgPath = path.join(pathInfo.projectRoot, 'node_modules/lila/package.json');
-  if (!fs.existsSync(localPkgPath)) {
+  if (!localPkg) {
     logger.error(`
   Missing local lila.    
     `);
@@ -53,8 +65,6 @@ else {
 
     process.exit(1);
   }
-
-  const localPkg = require(localPkgPath);
 
   // Get package.json main attribute.
   const localPkgIndexPath = path.join(pathInfo.projectRoot, 'node_modules/lila', localPkg.main);
