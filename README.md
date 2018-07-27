@@ -432,3 +432,7 @@ See [Change log](./CHANGELOG.md), [Upgrade log](./UPGRADE.md).
 ## 9. Examples
 
 See [lila examples](./examples).
+
+## 10. Clean obsolete hash-code files in server-side.
+
+After several building and uploading to servers, there will be some obsolete files, such as js and css, which will not be used any more. You can use [sclean](https://github.com/senntyou/sclean) to clean them.   
