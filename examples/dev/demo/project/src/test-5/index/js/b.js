@@ -1,4 +1,3 @@
-
 module.exports = _ => {
-    console.log('test-5/index/js/b');
+  console.log('test-5/index/js/b');
 };

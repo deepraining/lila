@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 const moment = require('moment');
 const rd = require('rd');
 
@@ -40,7 +40,7 @@ module.exports = function backupHtml(cb) {
 
       const targetPath = `${dir}/${baseFileName}-${suffix}.${extName}`;
 
-      fsExtra.copySync(sourcePath, targetPath);
+      fse.copySync(sourcePath, targetPath);
     });
   }
 

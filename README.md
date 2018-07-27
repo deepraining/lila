@@ -230,13 +230,10 @@ lila sync moduleName [-e 0(1,2)]
 - Can take with arguments: `env/e`, `local/l`, `out/o`.
 - `since`: `v0.0.1`
 
-### 3.6 `analyze/ana`: Visualize size of webpack output files with an interactive zoomable treemap.
+### 3.6 `analyze`: Visualize size of webpack output files with an interactive zoomable treemap.
 
 ```
 lila analyze moduleName
-
-# or
-lila ana moduleName
 ```
 
 - `since`: `v0.1.4`
@@ -298,66 +295,27 @@ lila upgrade
 - `test/index,test2/*` : Multiple modes.
 - `*` or `all` : Specially, indicates all modules in current project(On linux or mac, you should use `all`, and `*` will not work).
 
-## 4. Server side command line.
-
-Commands to manage production files on server side.
-
-### 4.1 `archive/arc`: Archive files of dist directory into a zip package.
-
-```
-lila archive
-
-# or
-lila arc
-```
-
-- Current working directory should have a sub directory named `dist`.
-- This command just do with `dist` directory, if you want to archive the whole project, please use your own way.
-- `since`: `v0.0.1`
-
-### 4.2 `clean`: Clean redundant `hash-coded` files which created by revision, and are not used anymore.
-
-```
-lila clean
-```
-
-- Current working directory should have a sub directory named `dist`.
-- Before execute this command, `archive` will be automatically executed once.
-- After executing this command, you should remove `.lila` directory in root of project.
-- `since`: `v0.0.1`
-
-### 4.3 `revert`: Revert `dist` directory to last archive state.
-
-```
-lila revert [-i,--index(1,2,3)]
-```
-
-- Current working directory should have a sub directory named `dist`.
-- This command should be used after done `clean` command, and you want to restore it.
-- Can take with argument `index(i)`, to specify last nth state to revert, default is `1`
-- `since`: `v0.0.1`
-
-## 5. Project config.
+## 4. Project config.
 
 Project config is defined in `lila.config.js`. See [Detail project config](./docs/config.md).
 
-### 5.1 Custom config for each developer.
+### 4.1 Custom config for each developer.
 
 Each developer can have his/her own private config. See [Project config - localOptions](./docs/config.md#localOptions).
 
-### 5.2 Custom config for each module.
+### 4.2 Custom config for each module.
 
 Each module can have its own private config. See [Project config - moduleOptions](./docs/config.md#moduleOptions).
 
-### 5.3 Custom config for different environment.
+### 4.3 Custom config for different environment.
 
 You can make different configs according to different environments. See [Project config - envOptions](./docs/config.md#envOptions).
 
-### 5.4 Custom config for each command.
+### 4.4 Custom config for each command.
 
 Each command can have its own private config. See [Project config - commandOptions](./docs/config.md#commandOptions).
 
-### 5.5 More custom config from command line.
+### 4.5 More custom config from command line.
 
 You can override config by pass arguments from command line.
 
@@ -388,7 +346,7 @@ In your project config from `lila.config.js`, there will be 3 more fields.
 
 Relative reference: [minimist](https://github.com/substack/minimist).
 
-### 5.6 Custom config loading sequences.
+### 4.6 Custom config loading sequences.
 
 ```
 localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues
@@ -396,11 +354,11 @@ localOptions -> moduleOptions -> envOptions -> commandOptions -> cmdValues
 
 The later loaded config values will override the former loaded config values.
 
-## 6. Use mock data in developing.
+## 5. Use mock data in developing.
 
 When in developing, using mock data to debug locally is recommended. There are two ways:
 
-### 6.1 Use `json` files.
+### 5.1 Use `json` files.
 
 You can put all your `json` files into `data` directory(`data` is recommended, not required) of one module's workspace, like this:
 
@@ -413,7 +371,7 @@ You can put all your `json` files into `data` directory(`data` is recommended, n
 
 Now, you can access to those files through `/src/one/module/data/file1.json, /src/one/module/data/file2.json, ...`.
 
-### 6.2 Use `js` files.
+### 5.2 Use `js` files.
 
 Using `json` files has a big disadvantage, that we could not make a `if`, `loop` etc, to dynamically get response data. Thus, we can use `js` files to avoid this.
 
@@ -441,15 +399,15 @@ Arguments `req, res` refer to [Node Http](https://nodejs.org/dist/latest-v8.x/do
 - The js file name should not have `.` character, or it will not take effectively.
 - You can disable this by set `mock: false` in `lila.config.js`.
 
-### 6.3 Your own ways.
+### 5.3 Your own ways.
 
 Also, you can use your own way to make it, like [mock.js](https://github.com/nuysoft/Mock).
 
-### 6.4 With [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch).
+### 5.4 With [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch).
 
 You can use [see-ajax](https://github.com/senntyou/see-ajax), [see-fetch](https://github.com/senntyou/see-fetch) to develop more efficient.
 
-## 7. Develop with distributed intermediate layer node.js application.
+## 6. Develop with distributed intermediate layer node.js application.
 
 When develop node.js application, [nodemon](https://github.com/remy/nodemon) is recommended. It provides a functionality which is similar with lila's hot reloading: monitor for any changes in node.js application and automatically restart the server.
 
@@ -457,7 +415,7 @@ When use node.js application as distributed intermediate layer, we can unite `no
 
 Here is an example, and you can follow the steps to see how to use: [Example for developing with distributed intermediate layer node.js application](./examples/node).
 
-## 8. Packages
+## 7. Packages
 
 - [webpack](https://webpack.js.org): 3.12.0
 - [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware): 2.0.6
@@ -467,10 +425,14 @@ Here is an example, and you can follow the steps to see how to use: [Example for
 
 More to see [package.json](./package.json).
 
-## 9. Upgrade to new version from old versions.
+## 8. Upgrade to new version from old versions.
 
 See [Change log](./CHANGELOG.md), [Upgrade log](./UPGRADE.md).
 
-## 10. Examples
+## 9. Examples
 
 See [lila examples](./examples).
+
+## 10. Clean obsolete hash-code files in server-side.
+
+After several building and uploading to servers, there will be some obsolete files, such as js and css, which will not be used any more. You can use [sclean](https://github.com/senntyou/sclean) to clean them.   

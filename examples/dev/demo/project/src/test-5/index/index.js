@@ -1,4 +1,3 @@
-
 import styles from './css/index.css';
 import styles2 from './css/index2.less';
 
@@ -27,16 +26,18 @@ const $body = $('body');
 $body.append(`<div class="${styles.dynamicImportCss}">dynamicImportCss</div>`);
 $body.append(`<div class="${styles2.dynamicImportLess}">dynamicImportLess</div>`);
 
-document.body.addEventListener('click', e => {
-
+document.body.addEventListener(
+  'click',
+  e => {
     require.ensure([], require => {
-        require('./js/a')();
+      require('./js/a')();
     });
     require.ensure([], require => {
-        require('./js/b')();
+      require('./js/b')();
     });
     require.ensure([], require => {
-        require('./js/c')();
+      require('./js/c')();
     });
-
-}, !1);
+  },
+  !1
+);

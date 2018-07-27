@@ -28,7 +28,7 @@ module.exports = config => {
     makeDevConfig(config);
   } else if (cliInfo.command === 'dist' || cliInfo.command === 'sync') {
     makeBuildConfig(config);
-  } else if (cliInfo.command === 'analyze' || cliInfo.command === 'ana') {
+  } else if (cliInfo.command === 'analyze') {
     makeAnalyzeConfig(config);
   }
 };

@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.3.2-alpha.1",
+  "version": "0.4.0",
   "main": "index.js",
   "bin": "bin/lila.js",
   "description": "An automatic building tool of web frontend, for teamwork.",
@@ -50,7 +50,6 @@
     "chalk": "^2.4.1",
     "crypto-md5": "^1.0.0",
     "css-loader": "^0.28.11",
-    "decompress": "^4.2.0",
     "del": "^3.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
@@ -73,7 +72,6 @@
     "gulp-replace": "^1.0.0",
     "gulp-ssh": "^0.7.0",
     "gulp-uglify": "^3.0.0",
-    "gulp-zip": "^4.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.0.4",

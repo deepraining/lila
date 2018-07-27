@@ -1,4 +1,4 @@
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 
 const logger = require('../../../util/logger');
 
@@ -17,7 +17,7 @@ module.exports = function placeHtml(cb) {
     postLn: !0,
   });
 
-  fsExtra.moveSync(
+  fse.moveSync(
     `${projectConfig.buildPaths.build.dir}/index.html`,
     `${projectConfig.buildPaths.build.dir}/html/${current.config.module}.html`
   );

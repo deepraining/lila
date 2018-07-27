@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 [2018-07-26]
+
+- Remove `archive,arc,clean,revert` all server-side commands. 
+- Remove `ana` command.
+- Fix bug of `eslint,stylelint,prettier` supporting `test/index,test-2/*` multi mode module. 
+
 ## 0.3.2 [2018-07-10]
 
 - Fix bugs `*` module for `prettier, eslint, stylelint` commands on `linux, mac`.

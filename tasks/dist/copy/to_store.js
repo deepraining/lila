@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fse = require('fs-extra');
 
 const logger = require('../../../util/logger');
 
@@ -17,7 +17,7 @@ module.exports = function copyToStore(cb) {
   });
 
   if (fs.existsSync(projectConfig.buildPaths.buildTmp.dir)) {
-    fsExtra.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);
+    fse.copySync(projectConfig.buildPaths.buildTmp.dir, projectConfig.buildPaths.buildStore.dir);
   }
 
   cb();

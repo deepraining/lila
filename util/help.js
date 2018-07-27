@@ -53,26 +53,6 @@ const commands = [
     desc: 'Visualize size of webpack output files with an interactive zoomable treemap.',
   },
   {
-    name: 'ana',
-    desc: 'Alias of command analyze.',
-  },
-  {
-    name: 'archive',
-    desc: 'Archive dist directory on server side.',
-  },
-  {
-    name: 'arc',
-    desc: 'Alias of command archive.',
-  },
-  {
-    name: 'clean',
-    desc: "Clean redundant files caused by revision(filename by each file's hash code).",
-  },
-  {
-    name: 'revert',
-    desc: 'Revert dist directory to last archive state.',
-  },
-  {
     name: 'eslint',
     desc: "Use 'eslint' to identify and report on patterns in JavaScript.",
   },
