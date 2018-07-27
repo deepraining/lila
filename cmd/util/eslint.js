@@ -4,24 +4,22 @@ const esLint = require('eslint');
 const CLIEngine = esLint.CLIEngine;
 
 const argv = require('../../data/argv');
-
-const moduleName = argv.module;
-
 const projectConfig = require('../../project_config');
 
 const options = projectConfig.esLintOptions || {};
 options.fix = !!projectConfig.esLintFix;
 const cli = new CLIEngine(options);
 
-let subDir = moduleName;
-if (moduleName === '*' || moduleName === 'all') {
-  subDir = '';
-} else if (moduleName.slice(-2) === '/*') {
-  subDir = moduleName.slice(0, -2);
-}
+const modules = argv.module.split(',');
+const moduleDirs = modules.map(moduleName => {
+  if (moduleName === '*' || moduleName === 'all') return '';
+  else if (moduleName.slice(-2) === '/*') return moduleName.slice(0, -2);
+  else return moduleName;
+});
+const modulePaths = moduleDirs.map(dir => path.join(projectConfig.buildPaths.src.dir, dir));
 
 const formatter = cli.getFormatter();
-const report = cli.executeOnFiles([path.join(projectConfig.buildPaths.src.dir, subDir)]);
+const report = cli.executeOnFiles(modulePaths);
 
 // Output fixes to disk.
 options.fix && CLIEngine.outputFixes(report);

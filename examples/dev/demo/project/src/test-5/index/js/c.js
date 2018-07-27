@@ -1,10 +1,9 @@
-
 require('../css/index2.less');
 
 const b = require('./b');
 
 module.exports = _ => {
-    b();
+  b();
 
-    console.log('test-5/index/js/c');
+  console.log('test-5/index/js/c');
 };

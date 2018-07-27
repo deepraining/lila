@@ -5,25 +5,25 @@ const formatter = stylelint.formatters.string;
 
 const argv = require('../../data/argv');
 
-const moduleName = argv.module;
-
 const projectConfig = require('../../project_config');
 
-let subDir = moduleName;
-if (moduleName === '*' || moduleName === 'all') {
-  subDir = '';
-} else if (moduleName.slice(-2) === '/*') {
-  subDir = moduleName.slice(0, -2);
-}
+const modules = argv.module.split(',');
+const moduleDirs = modules.map(moduleName => {
+  if (moduleName === '*' || moduleName === 'all') return '';
+  else if (moduleName.slice(-2) === '/*') return moduleName.slice(0, -2);
+  else return moduleName;
+});
+const moduleFiles = [];
+const extensions = ['css', 'less', 'scss', 'sass'];
+moduleDirs.forEach(dir => {
+  extensions.forEach(ext => {
+    moduleFiles.push(path.join(projectConfig.buildPaths.src.dir, dir, '**/*.' + ext));
+  });
+});
 
 const options = projectConfig.styleLintOptions || {};
 options.fix = !!projectConfig.styleLintFix;
-options.files = [
-  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.css'),
-  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.less'),
-  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.scss'),
-  path.join(projectConfig.buildPaths.src.dir, subDir, '**/*.sass'),
-];
+options.files = moduleFiles;
 
 module.exports = cb => {
   (async () => {
