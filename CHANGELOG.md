@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1 [2018-08-01]
+
+- Update `project_files/root/_package.json`.
+
 ## 0.4.0 [2018-07-26]
 
 - Remove `archive,arc,clean,revert` all server-side commands. 
