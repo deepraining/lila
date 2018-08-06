@@ -19,7 +19,7 @@ lila new demo
 Install local lila:
 
 ```
-cd demo && npm install lila --save-dev
+cd demo && npm install && npm install lila --save-dev
 ```
 
 ## 1. Directory structure.
