@@ -64,10 +64,6 @@ const commands = [
     name: 'prettier',
     desc: "Use 'prettier' to format codes.",
   },
-  {
-    name: 'upgrade',
-    desc: "Upgrade project to current version's lila environment.",
-  },
 ];
 
 /**

@@ -2,6 +2,10 @@
 
 ## 0.4.1 [2018-08-01]
 
+- Remove `upgrade` command.
+- Remove `esLintOptions, esLintFix, styleLintOptions, styleLintFix, prettierOptions` option.
+- Remove `esLint, styleLint, prettier` option.
+- Remove `eslint,stylelint,prettier` command.
 - Update `project_files/root/_package.json`.
 
 ## 0.4.0 [2018-07-26]
