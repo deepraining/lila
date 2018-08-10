@@ -19,11 +19,6 @@ const options = {
     type: 'bool',
     desc: 'Whether to use out resolve alias.',
   },
-  onlyWebpack: {
-    alias: 'w',
-    type: 'bool',
-    desc: 'Only run webpack task, without gulp, for dist and sync command.',
-  },
 };
 
 // all commands
@@ -51,22 +46,6 @@ const commands = [
   {
     name: 'analyze',
     desc: 'Visualize size of webpack output files with an interactive zoomable treemap.',
-  },
-  {
-    name: 'eslint',
-    desc: "Use 'eslint' to identify and report on patterns in JavaScript.",
-  },
-  {
-    name: 'stylelint',
-    desc: "Use 'stylelint' check errors and enforce consistent conventions in stylesheets.",
-  },
-  {
-    name: 'prettier',
-    desc: "Use 'prettier' to format codes.",
-  },
-  {
-    name: 'upgrade',
-    desc: "Upgrade project to current version's lila environment.",
   },
 ];
 

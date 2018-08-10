@@ -6,7 +6,6 @@ const defaultValue = {
   e: 'env', // Environment.
   l: 'local', // Local name
   o: 'out', // Whether to use out resolve alias.
-  w: 'onlyWebpack', // Only run webpack task, without gulp, for dist and sync command.
 };
 
 /**

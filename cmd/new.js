@@ -3,9 +3,12 @@ const fs = require('fs');
 const fse = require('fs-extra');
 
 const argv = require('../data/argv');
+const packageJson = require('../package.json');
 const pathInfo = require('../data/path_info');
 const logger = require('../util/logger');
 const copyRootFile = require('../project_files/copy_root_file');
+
+const { version } = packageJson;
 
 // Project name to be created.
 const projectName = argv._[1];
@@ -64,10 +67,13 @@ copyRootFile(projectPath, '.prettierrc', !0);
 copyRootFile(projectPath, '.prettierignore', !0);
 
 // Make `package.json` file.
-copyRootFile(projectPath, 'package.json', !0, '{{projectName}}', projectName);
+copyRootFile(projectPath, 'package.json', !0, [
+  { target: new RegExp(`{{projectName}}`, 'gi'), replacement: projectName },
+  { target: new RegExp(`{{lilaVersion}}`, 'gi'), replacement: version },
+]);
 
 // Make `README.md` file.
-copyRootFile(projectPath, 'README.md', !0, '{{projectName}}', projectName);
+copyRootFile(projectPath, 'README.md', !0, [{ target: new RegExp(`{{projectName}}`, 'gi'), replacement: projectName }]);
 
 // Make `lila.config.js` file.
 copyRootFile(projectPath, 'lila.config.js');

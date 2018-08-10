@@ -65,7 +65,7 @@ module.exports = {
     }
   },
   import: [{"libraryName": "antd", style: "css"}],
-  enableCssModules: !0,
+  cssModules: !0,
   cssModulesExclude: [/node_modules/, /src\/less/],
   define: {
     globalDefine: JSON.stringify('hello')
@@ -116,13 +116,5 @@ module.exports = {
       }
     }
   },
-  esLint: !0,
-  // esLintFix: !0,
-  styleLint: !0,
-  // styleLintFix: !0,
-  prettier: !0,
-  prettierOptions: {
-    // 'print-width': 40
-  }
 };
 
