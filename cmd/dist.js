@@ -29,11 +29,11 @@ require('gulp-cli')(err => {
   if (err) {
     logger.error(`
   Error occurred when lila build modules, you should resolve those errors, and try again.
-        `);
+    `);
     logger.error(err.stack || err);
   } else {
     logger.success(`
   Pack source codes and static files into production successfully.
-        `);
+    `);
   }
 });

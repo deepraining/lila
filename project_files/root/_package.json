@@ -13,12 +13,22 @@
     "lint-staged": "lint-staged"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
     "eslint": "^4.19.1",
+    "babel-eslint": "^8.2.5",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
-    "stylelint": "^9.3.0"
+    "stylelint": "^9.3.0",
+    "stylelint-config-prettier": "^3.3.0",
+    "stylelint-config-standard": "^18.2.0",
+    "lila": "^{{lilaVersion}}"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [

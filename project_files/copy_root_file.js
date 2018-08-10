@@ -6,9 +6,8 @@ const copyFile = require('./copy_file');
  * @param targetDir Project target directory.
  * @param fileName File to copy.
  * @param hasPrefix Whether `fileName` has `_` prefix.
- * @param replaceTarget Whether to replace content.
- * @param replacement What to replace content.
+ * @param replace Whether to replace content. `[{target, replacement}]`
  */
-module.exports = (targetDir, fileName, hasPrefix, replaceTarget, replacement) => {
-  copyFile('root', targetDir, fileName, hasPrefix, replaceTarget, replacement);
+module.exports = (targetDir, fileName, hasPrefix, replace) => {
+  copyFile('root', targetDir, fileName, hasPrefix, replace);
 };
