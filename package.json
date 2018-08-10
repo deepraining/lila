@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.4.1-alpha",
+  "version": "0.4.1",
   "main": "index.js",
   "bin": "bin/lila.js",
   "description": "An automatic building tool of web frontend, for teamwork.",

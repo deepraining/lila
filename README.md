@@ -16,10 +16,10 @@ New project:
 lila new demo
 ```
 
-Install local lila:
+Install dependencies:
 
 ```
-cd demo && git init && npm install && npm install lila --save-dev
+cd demo && git init && npm install
 ```
 
 ## 1. Directory structure.
