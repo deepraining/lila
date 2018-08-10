@@ -238,40 +238,15 @@ lila analyze moduleName
 
 - `since`: `v0.1.4`
 
-### 3.7 `eslint`: Use 'eslint' to identify and report on patterns in JavaScript.
+### 3.7 Arguments.
 
-```
-lila eslint moduleName
-```
-
-- `since`: `v0.3.1`
-
-### 3.8 `stylelint`: Use 'stylelint' check errors and enforce consistent conventions in stylesheets.
-
-```
-lila stylelint moduleName
-```
-
-- `since`: `v0.3.1`
-
-### 3.9 `prettier`: Use 'prettier' to format codes.
-
-```
-lila prettier moduleName
-```
-
-- `supported`: `js,jsx,ts,css,less,sass,scss,json,md`
-- `since`: `v0.3.1`
-
-### 3.10 Arguments.
-
-#### 3.10.1 `env/e`:
+#### 3.7.1 `env/e`:
 
 - Specify current environment through command line, example: `-e 0`, `-e 1`;
 - If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
 - If env is not provided, default is `0`.
 
-#### 3.10.2 `local/l`
+#### 3.7.2 `local/l`
 
 - Specify current local name through command line.
 
@@ -279,7 +254,7 @@ lila prettier moduleName
 
 - Specify whether to use `outResolveAlias`.
 
-#### 3.10.3 `moduleName`
+#### 3.7.3 `moduleName`
 
 - `test/index`: A single file module.
 - `test/index,test/index2`: Multiple modules.

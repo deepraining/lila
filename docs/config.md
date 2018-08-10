@@ -41,7 +41,6 @@
     e: 'env', // environment
     l: 'local', // local name
     o: 'out', // Whether to use outResolveAlias.
-    w: 'onlyWebpack' // Only run webpack task, without gulp, for dist and sync command.
 }
 ```
 
@@ -415,13 +414,6 @@ See [Use extra `resolveAlias` temporarily](./out.md).
 - `default`: `false`
 - `since`: `v0.1.3`
 
-## onlyWebpack
-
-- `desc`: Sometimes, we just want to run webpack task, without gulp. Additionally, it always be specified from command line by `-w`.
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.0`
-
 ## minJs
 
 - `desc`: Whether mini js files.
@@ -638,67 +630,6 @@ See [Project config - servers](./servers.md).
 - `desc`: Whether to use `js` files mock data in developing.
 - `type`: `bool`
 - `default`: `true`
-- `since`: `v0.3.1`
-
-## esLint
-
-- `desc`: Whether to use [eslint](https://github.com/eslint/eslint) before building task.
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.1`
-
-## esLintOptions
-
-- `desc`: Options to initialize [eslint](https://github.com/eslint/eslint) CLIEngine.
-- `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
-- `type`: `map`
-- `default`: `{}`
-- `since`: `v0.3.1`
-
-## esLintFix
-
-- `desc`: Whether to try to fix errors and warnings when use [eslint](https://github.com/eslint/eslint).
-- `see`: [ESLint - Node.js API - CLIEngine](https://eslint.org/docs/developer-guide/nodejs-api#cliengine)
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.1`
-
-## styleLint
-
-- `desc`: Whether to use [stylelint](https://github.com/stylelint/stylelint) before building task.
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.1`
-
-## styleLintOptions
-
-- `desc`: Options to initialize [stylelint](https://github.com/stylelint/stylelint).
-- `see`: [stylelint - Node.js API - options](https://stylelint.io/user-guide/node-api/#options)
-- `type`: `map`
-- `default`: `{}`
-- `since`: `v0.3.1`
-
-## styleLintFix
-
-- `desc`: Whether to try to fix errors and warnings when use [stylelint](https://github.com/stylelint/stylelint).
-- `see`: [stylelint - Node.js API - options](https://stylelint.io/user-guide/node-api/#options)
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.1`
-
-## prettier
-
-- `desc`: Whether to use [prettier](https://github.com/prettier/prettier) before building task.
-- `type`: `bool`
-- `default`: `false`
-- `since`: `v0.3.1`
-
-## prettierOptions
-
-- `desc`: Options to initialize [prettier](https://github.com/prettier/prettier).
-- `see`: [prettier - options](https://prettier.io/docs/en/options.html)
-- `type`: `map`, details to see [minimist](https://github.com/substack/minimist)
-- `default`: `{}`
 - `since`: `v0.3.1`
 
 ## beforeFormatConfig

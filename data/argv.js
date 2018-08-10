@@ -1,7 +1,7 @@
 const argv = require('minimist')(process.argv.slice(2));
 
 // need `--module`
-const commandsNeedModuleArg = ['dev', 'dist', 'sync', 'analyze', 'eslint', 'stylelint', 'prettier'];
+const commandsNeedModuleArg = ['dev', 'dist', 'sync', 'analyze'];
 
 // command name
 const commandName = argv._[0];

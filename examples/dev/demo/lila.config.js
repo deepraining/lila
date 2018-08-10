@@ -116,13 +116,5 @@ module.exports = {
       }
     }
   },
-  esLint: !0,
-  // esLintFix: !0,
-  styleLint: !0,
-  // styleLintFix: !0,
-  prettier: !0,
-  prettierOptions: {
-    // 'print-width': 40
-  }
 };
 
