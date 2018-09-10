@@ -632,6 +632,20 @@ See [Project config - servers](./servers.md).
 - `default`: `true`
 - `since`: `v0.3.1`
 
+## flow
+
+- `desc`: Whether to use [flow](https://github.com/facebook/flow).
+- `type`: `bool`
+- `default`: `false`
+- `since`: `v0.4.2`
+
+## flowRuntime
+
+- `desc`: Whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime).
+- `type`: `bool`
+- `default`: `false`
+- `since`: `v0.4.2`
+
 ## beforeFormatConfig
 
 - `desc`: Callback before formatting a project config, you can modify project config before it applys to building process.
