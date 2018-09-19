@@ -28,10 +28,6 @@ const commands = [
     desc: 'Create a new project.',
   },
   {
-    name: 'add',
-    desc: 'Add a new module.',
-  },
-  {
     name: 'dev',
     desc: "Watch files' changes, with hot replacing and reloading, and start a local server for debug.",
   },
