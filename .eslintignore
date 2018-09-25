@@ -1,1 +1,6 @@
 /old
+/lib
+/build
+packages/*/node_modules
+packages/*/lib
+packages/*/dist
