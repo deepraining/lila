@@ -1,6 +1,6 @@
 # lila-core
 
-`lila` core.
+Lila core.
 
 ## install
 

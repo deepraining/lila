@@ -1,0 +1,40 @@
+{
+  "name": "lila-cli",
+  "version": "0.0.1",
+  "description": "lila command line",
+  "main": "lib/index.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-cli",
+  "keywords": [
+    "web",
+    "frontend",
+    "build",
+    "tool",
+    "teamwork",
+    "automatic",
+    "babel",
+    "webpack",
+    "rollup",
+    "parcel",
+    "gulp",
+    "browser-sync"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

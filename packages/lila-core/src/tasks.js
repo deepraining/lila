@@ -1,5 +1,33 @@
 const tasks = {};
 
-export const register = () => {};
-
 export default tasks;
+
+/**
+ * Register a task
+ * @param name Task name
+ * @param generator Task generator
+ */
+export const registerTask = (name, generator) => {
+  if (!name || typeof name !== 'string')
+    throw new Error('Task name should be a non-empty string.');
+  if (typeof generator !== 'function')
+    throw new Error('Task generator should be a function.');
+  if (tasks[name])
+    throw new Error(`Task [${name}] has already been registered.`);
+
+  tasks[name] = { name, generator };
+};
+
+/**
+ * Unregister a task
+ * @param name
+ */
+export const unregisterTask = name => {
+  delete tasks[name];
+};
+
+/**
+ * Get all registered task names
+ * @returns {string[]}
+ */
+export const registeredTasks = () => Object.keys(tasks);
