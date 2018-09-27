@@ -1,10 +1,30 @@
 const settings = {
-  srcRoot: 'src',
-  buildRoot: 'build',
-  webRoot: 'src',
+  srcRoot: 'src', // src root directory (relative to project root)
+  buildRoot: 'build', // build root directory (relative to project root)
+  webRoot: 'src', // web root directory (relative to project root)
+  getEntryJs: undefined, // Get entry js file path of a page.
+  getEntryHtml: undefined, // Get entry html file path of a page.
 };
 
 export default settings;
+
+/**
+ * Get entry js file path of a page.
+ *
+ * @param page
+ * @returns {string}
+ */
+export const defaultGetEntryJs = ({ page }) =>
+  `${settings.srcRoot}/${page}/index.js`;
+
+/**
+ * Get entry html file path of a page.
+ *
+ * @param page
+ * @returns {string}
+ */
+export const defaultGetEntryHtml = ({ page }) =>
+  `${settings.srcRoot}/${page}/index.html`;
 
 /**
  * Set a setting value

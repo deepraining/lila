@@ -1,6 +1,6 @@
 {
   "name": "lila-cli",
-  "version": "0.0.1",
+  "version": "0.6.0",
   "description": "lila command line",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -29,12 +29,18 @@
   },
   "readmeFilename": "README.md",
   "files": [
+    "bin",
     "lib"
   ],
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.18.0"
+  },
   "devDependencies": {},
   "engines": {
     "node": ">=8.0.0"
+  },
+  "bin": {
+    "lila": "./bin/lila.js"
   }
 }
