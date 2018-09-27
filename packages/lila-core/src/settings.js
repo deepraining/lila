@@ -1,3 +1,5 @@
+import forEach from 'lodash/forEach';
+
 const settings = {
   srcRoot: 'src', // src root directory (relative to project root)
   buildRoot: 'build', // build root directory (relative to project root)
@@ -40,8 +42,8 @@ export const setSetting = (name, value) => {
  * @param collection
  */
 export const setSettings = collection => {
-  Object.keys(collection).forEach(key => {
-    settings[key] = collection[key];
+  forEach(collection, (value, key) => {
+    settings[key] = value;
   });
 };
 
