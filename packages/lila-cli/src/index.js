@@ -2,20 +2,22 @@ import forEach from 'lodash/forEach';
 import commander from 'commander';
 
 import pkg from '../package.json';
-import { core, corePkg } from './local';
+import { lilaCore, lilaCorePkg } from './local';
+import { missingCore } from '../util/error';
+import validArgv from '../util/valid-argv';
 
 // version
 commander.version(
-  pkg.version + (corePkg ? ` (lila-core ${corePkg.version})` : '')
+  pkg.version + (lilaCorePkg ? ` (lila-core ${lilaCorePkg.version})` : '')
 );
 
 // build cmd
 const buildCmd = commander
-  .command('build <page>')
+  .command('build <page> [extraPages...]')
   .description('pack source codes to production bundles');
 
-if (core) {
-  const { getBuildCmdOptions } = core;
+if (lilaCore) {
+  const { getBuildCmdOptions } = lilaCore;
   const buildOptions = getBuildCmdOptions();
 
   if (buildOptions && buildOptions.length) {
@@ -25,18 +27,23 @@ if (core) {
   }
 }
 
-buildCmd.action((page, options) => {
-  // todo
-  console.log(page, options);
+buildCmd.action((page, extraPages, options) => {
+  if (!lilaCore) {
+    missingCore();
+  }
+
+  const { build } = lilaCore;
+
+  build([page, ...extraPages], validArgv(options));
 });
 
 // sync cmd
 const syncCmd = commander
-  .command('sync <page>')
+  .command('sync <page> [extraPages...]')
   .description('make production bundles, then sync to remote servers');
 
-if (core) {
-  const { getSyncCmdOptions } = core;
+if (lilaCore) {
+  const { getSyncCmdOptions } = lilaCore;
   const syncOptions = getSyncCmdOptions();
 
   if (syncOptions && syncOptions.length) {
@@ -46,13 +53,18 @@ if (core) {
   }
 }
 
-syncCmd.action((page, options) => {
-  // todo
-  console.log(page, options);
+syncCmd.action((page, extraPages, options) => {
+  if (!lilaCore) {
+    missingCore();
+  }
+
+  const { sync } = lilaCore;
+
+  sync([page, ...extraPages], validArgv(options));
 });
 
-if (core) {
-  const { getCommands } = core;
+if (lilaCore) {
+  const { getCommands } = lilaCore;
   const registeredCommands = getCommands();
 
   if (registeredCommands && registeredCommands.length) {

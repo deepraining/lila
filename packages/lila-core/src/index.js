@@ -1,5 +1,18 @@
-export { addBuildCmdOption, getBuildCmdOptions } from './build-cmd-options';
+import fs from 'fs';
+import path from 'path';
+import * as lila from './lila';
 
-export { addSyncCmdOption, getSyncCmdOptions } from './sync-cmd-options';
+export default lila;
 
-export { addCommand, getCommands } from './commands';
+const entryPath = path.join(process.cwd(), 'lila.js');
+
+if (!fs.existsSync(entryPath)) throw new Error(`file not found ${entryPath}`);
+
+const entry = require(entryPath); // eslint-disable-line
+
+if (typeof entry !== 'function')
+  throw new Error('lila.js should export a function');
+
+const makeConfig = entry(lila);
+
+console.log(makeConfig);
