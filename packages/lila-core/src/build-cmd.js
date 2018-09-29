@@ -1,3 +1,7 @@
+import getConfigs from './get-configs';
+
 export default (pages, argv) => {
-  console.log(argv);
+  const configs = getConfigs(pages, argv, 'build');
+
+  console.log(configs);
 };

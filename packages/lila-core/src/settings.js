@@ -3,12 +3,10 @@ import forEach from 'lodash/forEach';
 const settings = {
   srcRoot: 'src', // src root directory (relative to project root)
   buildRoot: 'dist', // build root directory (relative to project root)
-  webRoot: 'src', // web root directory (relative to project root)
+  webRoot: './', // web root directory (relative to project root)
   getEntryJs: undefined, // Get entry js file path of a page.
   getEntryHtml: undefined, // Get entry html file path of a page.
 };
-
-export default settings;
 
 /**
  * Get entry js file path of a page.
@@ -16,7 +14,7 @@ export default settings;
  * @param page
  * @returns {string}
  */
-export const defaultGetEntryJs = page => `${settings.srcRoot}/${page}/index.js`;
+const defaultGetEntryJs = page => `${settings.srcRoot}/${page}/index.js`;
 
 /**
  * Get entry html file path of a page.
@@ -24,8 +22,12 @@ export const defaultGetEntryJs = page => `${settings.srcRoot}/${page}/index.js`;
  * @param page
  * @returns {string}
  */
-export const defaultGetEntryHtml = page =>
-  `${settings.srcRoot}/${page}/index.html`;
+const defaultGetEntryHtml = page => `${settings.srcRoot}/${page}/index.html`;
+
+settings.getEntryJs = defaultGetEntryJs;
+settings.getEntryHtml = defaultGetEntryHtml;
+
+export default settings;
 
 /**
  * Set a setting value
