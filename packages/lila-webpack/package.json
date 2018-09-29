@@ -1,0 +1,42 @@
+{
+  "name": "lila-webpack",
+  "version": "0.5.0",
+  "description": "lila webpack",
+  "main": "lib/index.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-webpack",
+  "keywords": [
+    "web",
+    "frontend",
+    "build",
+    "tool",
+    "teamwork",
+    "automatic",
+    "babel",
+    "webpack",
+    "rollup",
+    "parcel",
+    "gulp",
+    "browser-sync"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "lodash": "^4.17.11"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

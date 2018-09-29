@@ -9,9 +9,9 @@ export default tasks;
  */
 export const registerTask = (name, generator) => {
   if (!name || typeof name !== 'string')
-    throw new Error('Task name should be a non-empty string.');
+    throw new Error('Task name should be a non-empty string');
   if (typeof generator !== 'function')
-    throw new Error('Task generator should be a function.');
+    throw new Error('Task generator should be a function');
   if (tasks[name])
     throw new Error(`Task [${name}] has already been registered.`);
 

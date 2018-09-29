@@ -11,3 +11,7 @@ export { addCommand, getCommands } from './commands';
 export { default as build } from './build-cmd';
 
 export { default as sync } from './sync-cmd';
+
+export { default as makeConfig } from './make-config';
+
+export { default as pureArgv } from '../../lila-cli/util/pure-argv';

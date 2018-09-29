@@ -4,7 +4,7 @@ import commander from 'commander';
 import pkg from '../package.json';
 import { lilaCore, lilaCorePkg } from './local';
 import { missingCore } from '../util/error';
-import validArgv from '../util/valid-argv';
+import pureArgv from '../util/pure-argv';
 
 // version
 commander.version(
@@ -34,7 +34,7 @@ buildCmd.action((page, extraPages, options) => {
 
   const { build } = lilaCore;
 
-  build([page, ...extraPages], validArgv(options));
+  build([page, ...extraPages], pureArgv(options));
 });
 
 // sync cmd
@@ -60,7 +60,7 @@ syncCmd.action((page, extraPages, options) => {
 
   const { sync } = lilaCore;
 
-  sync([page, ...extraPages], validArgv(options));
+  sync([page, ...extraPages], pureArgv(options));
 });
 
 if (lilaCore) {
