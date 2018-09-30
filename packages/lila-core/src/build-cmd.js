@@ -1,7 +1,5 @@
-import getConfigs from './get-configs';
+import runTasks from './run-tasks';
 
 export default (pages, argv) => {
-  const configs = getConfigs(pages, argv, 'build');
-
-  console.log(configs);
+  runTasks(pages, argv, 'build');
 };

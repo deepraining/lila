@@ -8,6 +8,9 @@ export const info = (...args) => {
 export const warn = (...args) => {
   console.warn(...args);
 };
+export const debug = (...args) => {
+  console.debug(...args);
+};
 export const error = (...args) => {
   console.error(...args);
 };

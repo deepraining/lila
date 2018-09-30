@@ -1,3 +1,5 @@
+import runTasks from './run-tasks';
+
 export default (pages, argv) => {
-  console.log(argv);
+  runTasks(pages, argv, 'sync');
 };
