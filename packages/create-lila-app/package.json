@@ -1,10 +1,10 @@
 {
   "name": "create-lila-app",
   "version": "0.5.0",
-  "description": "lila command line",
+  "description": "command line tool to create a lila application",
   "main": "lib/index.js",
   "bin": {
-    "lila": "./bin/lila.js"
+    "create-lila-app": "./bin/create-lila-app.js"
   },
   "author": "senntyou <jiangjinbelief@163.com>",
   "homepage": "https://github.com/senntyou/lila",
@@ -37,7 +37,9 @@
   ],
   "scripts": {},
   "dependencies": {
-    "commander": "^2.18.0"
+    "commander": "^2.18.0",
+    "fs-extra": "^7.0.0",
+    "shelljs": "^0.8.2"
   },
   "devDependencies": {},
   "engines": {

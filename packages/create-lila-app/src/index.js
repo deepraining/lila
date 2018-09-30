@@ -1,22 +1,15 @@
 import commander from 'commander';
 
 import pkg from '../package.json';
-import { lilaCore, lilaCorePkg } from './local';
+import create from './create';
 
 // version
-commander.version(
-  pkg.version + (lilaCorePkg ? ` (lila-core ${lilaCorePkg.version})` : '')
-);
-
-if (lilaCore) {
-  const { getCommands } = lilaCore;
-  const addedCommands = getCommands();
-
-  if (addedCommands && addedCommands.length) {
-    addedCommands.forEach(cmd => {
-      cmd(commander);
-    });
-  }
-}
+commander
+  .version(pkg.version)
+  .arguments('<project-directory>')
+  .option('-i, --install', 'create application with installing dependencies')
+  .action((dir, { install }) => {
+    create(dir, install);
+  });
 
 commander.parse(process.argv);

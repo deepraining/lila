@@ -4,4 +4,4 @@ packages/*/node_modules
 packages/*/lib
 packages/*/dist
 
-/boilerplate
+/packages/create-lila-app/boilerplate
