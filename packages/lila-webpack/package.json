@@ -33,7 +33,12 @@
   ],
   "scripts": {},
   "dependencies": {
-    "lodash": "^4.17.11"
+    "browser-sync": "^2.24.7",
+    "lodash": "^4.17.11",
+    "webpack": "^4.20.2",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.2"
   },
   "devDependencies": {},
   "engines": {

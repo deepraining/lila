@@ -4,7 +4,7 @@ import commander from 'commander';
 import pkg from '../package.json';
 import { lilaCore, lilaCorePkg } from './local';
 import { missingCore } from '../util/error';
-import pureArgv from '../util/pure-argv';
+import pureArgv from '../../../util/pure-argv';
 
 // version
 commander.version(

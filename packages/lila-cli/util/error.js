@@ -1,4 +1,4 @@
-import { error } from './logger';
+import { error } from '../../../util/logger';
 
 export const missingCore = (exit = true, code = 1) => {
   error(`

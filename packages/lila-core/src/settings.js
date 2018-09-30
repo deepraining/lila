@@ -2,6 +2,7 @@ import forEach from 'lodash/forEach';
 
 const settings = {
   srcRoot: 'src', // src root directory (relative to project root)
+  devRoot: 'dev', // dev root directory (relative to project root)
   buildRoot: 'dist', // build root directory (relative to project root)
   webRoot: './', // web root directory (relative to project root)
   getEntryJs: undefined, // Get entry js file path of a page.

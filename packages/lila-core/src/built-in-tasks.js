@@ -3,7 +3,8 @@ import fse from 'fs-extra';
 import SSH from 'gulp-ssh';
 
 export const correctHtml = ({ page, args }, lila) => cb => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   fse.moveSync(
     path.join(buildRoot, 'index.html'),
@@ -14,7 +15,9 @@ export const correctHtml = ({ page, args }, lila) => cb => {
 };
 
 export const replaceHtml = ({ page, args }, lila) => cb => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   const [replace, filePath = 'index.html'] = args;
 
@@ -35,7 +38,9 @@ export const replaceHtml = ({ page, args }, lila) => cb => {
 };
 
 export const insertHtml = ({ page, args }, lila) => cb => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   const [insert, filePath = 'index.html'] = args;
 
@@ -55,7 +60,9 @@ export const insertHtml = ({ page, args }, lila) => cb => {
 };
 
 export const convertHtml = ({ page, args }, lila) => cb => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   const [ext, filePath = 'index.html'] = args;
 
@@ -67,7 +74,9 @@ export const convertHtml = ({ page, args }, lila) => cb => {
 };
 
 export const renameHtml = ({ page, args }, lila) => cb => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   const options = args[0];
   const { target, source } = options;
@@ -78,8 +87,10 @@ export const renameHtml = ({ page, args }, lila) => cb => {
 };
 
 export const syncAll = ({ page, args, gulp }, lila) => () => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
-  const webRoot = lila.getSetting('webRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
+  const webRoot = getSetting('webRoot');
 
   const options = args[0];
   const { server, remotePath } = options;
@@ -92,7 +103,9 @@ export const syncAll = ({ page, args, gulp }, lila) => () => {
 };
 
 export const syncHtml = ({ page, args, gulp }, lila) => () => {
-  const buildRoot = lila.getSetting('buildRoot')(page, lila);
+  console.log(page);
+  const { getSetting } = lila;
+  const buildRoot = getSetting('buildRoot');
 
   const options = args[0];
   const { server, remotePath } = options;

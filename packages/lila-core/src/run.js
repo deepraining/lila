@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import { info, debug, error } from '../../lila-cli/util/logger';
+import { info, debug, error } from '../../../util/logger';
 
 // format error thrown by gulp
 const formatError = e => {
