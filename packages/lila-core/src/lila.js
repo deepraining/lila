@@ -14,4 +14,4 @@ export { default as sync } from './sync-cmd';
 
 export { default as makeConfig } from './make-config';
 
-export { default as pureArgv } from '../../../util/pure-argv';
+export { default as pureArgv } from '../util/pure-argv';

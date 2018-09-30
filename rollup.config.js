@@ -2,10 +2,13 @@ import json from 'rollup-plugin-json';
 
 const pkgName = process.env.PKG_NAME;
 
+const fullPkgName =
+  pkgName === 'create' ? 'create-lila-app' : `lila-${pkgName}`;
+
 export default {
-  input: `packages/lila-${pkgName}/src/index.js`,
+  input: `packages/${fullPkgName}/src/index.js`,
   output: {
-    file: `packages/lila-${pkgName}/lib/index.js`,
+    file: `packages/${fullPkgName}/lib/index.js`,
     format: 'cjs',
   },
   plugins: [json()],
