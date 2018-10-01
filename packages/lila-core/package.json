@@ -33,6 +33,7 @@
   ],
   "scripts": {},
   "dependencies": {
+    "crypto-md5": "^1.0.0",
     "fs-extra": "^7.0.0",
     "gulp": "^4.0.0",
     "gulp-ssh": "^0.7.0",

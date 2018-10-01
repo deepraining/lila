@@ -11,6 +11,7 @@ import {
   convertHtml,
   renameHtml,
   syncAll,
+  saveCache,
   syncHtml,
 } from './built-in-tasks';
 import { buildCmd, syncCmd } from './built-in-commands';
@@ -21,6 +22,7 @@ registerTask('@lila/insert-html', insertHtml);
 registerTask('@lila/convert-html', convertHtml);
 registerTask('@lila/rename-html', renameHtml);
 registerTask('@lila/sync-all', syncAll);
+registerTask('@lila/save-cache', saveCache);
 registerTask('@lila/sync-html', syncHtml);
 
 addCommand(buildCmd);
