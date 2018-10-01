@@ -1,5 +1,7 @@
 import path from 'path';
 
+const { join } = path;
+
 let corePkg;
 let core;
 
@@ -12,11 +14,11 @@ try {
    * @type {String}
    */
   const resolvedCore = require.resolve('lila-core');
-  const corePath = path.join(
+  const corePath = join(
     resolvedCore.split('node_modules')[0],
     'node_modules/lila-core'
   );
-  const corePkgPath = path.join(corePath, 'package.json');
+  const corePkgPath = join(corePath, 'package.json');
 
   core = require(corePath); // eslint-disable-line
   corePkg = require(corePkgPath); // eslint-disable-line

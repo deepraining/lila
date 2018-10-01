@@ -19,21 +19,21 @@ const formatError = e => {
 gulp.on('start', e => {
   const { name, branch } = e;
   const log = branch ? debug : info;
-  log(`starting ${name}...`);
+  log(`starting task ${name}...`);
 });
 
 // task finish
 gulp.on('stop', e => {
   const { name, branch } = e;
   const log = branch ? debug : info;
-  log(`finished ${name}`);
+  log(`finished task ${name}`);
 });
 
 // task error
 gulp.on('error', e => {
   const { name, branch } = e;
   const log = branch ? debug : error;
-  log(`error ${name}`);
+  log(`error task ${name}`);
 
   error(formatError(e));
 });

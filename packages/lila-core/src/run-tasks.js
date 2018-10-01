@@ -1,15 +1,38 @@
+import path from 'path';
 import gulp from 'gulp';
 import app from './app';
 import tasks from './tasks';
+import run from './run';
+import { log } from '../../../util/logger';
+
+const { join } = path;
 
 export default (pages, argv, cmd) => {
   const { lila } = app;
-  const { makeConfig } = lila;
+  const { makeConfig, getSettings, getSetting } = lila;
+  const [getPages, srcDir, appDir] = getSettings([
+    'getPages',
+    'srcDir',
+    'appDir',
+  ]);
+
+  const srcPath = join(appDir, srcDir);
+  const realPages = [];
+
+  pages.forEach(page => {
+    if (page === '*' || page === 'all')
+      realPages.push(...(getPages(srcPath) || []));
+    else if (page.slice(-2) === '/*')
+      realPages.push(...(getPages(join(srcPath, page.slice(0, -2))) || []));
+    else if (page.slice(-4) === '/all')
+      realPages.push(...(getPages(join(srcPath, page.slice(0, -4))) || []));
+    else realPages.push(page);
+  });
 
   const runTasks = [];
 
-  pages.forEach(page => {
-    const config = makeConfig({ page, cmd }, argv);
+  realPages.forEach(page => {
+    const config = makeConfig({ page, cmd, argv });
 
     const importTasks = config[`${cmd}Tasks`];
 
@@ -24,14 +47,28 @@ export default (pages, argv, cmd) => {
         args = task.slice(1);
       }
 
-      const taskGenerator = tasks[taskName];
+      const definedTask = tasks[taskName];
 
-      if (!taskGenerator)
+      if (!definedTask)
         throw new Error(`task ${taskName} has not been registered`);
 
-      runTasks.push(taskGenerator({ page, args }, lila));
+      const { generator } = definedTask;
+      const realTaskName = `${page}:${taskName}`;
+
+      gulp.task(
+        realTaskName,
+        generator({ page, args, argv, cmd, config, lila, gulp })
+      );
+
+      runTasks.push(realTaskName);
     });
   });
 
-  if (runTasks.length) gulp.task(`@lila/${cmd}`, gulp.series(...runTasks));
+  if (runTasks.length) {
+    const cmdTaskName = `@lila/${cmd}`;
+    gulp.task(cmdTaskName, gulp.series(...runTasks));
+    run(cmdTaskName, () => {
+      log(getSetting('doneMessage'));
+    });
+  }
 };

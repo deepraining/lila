@@ -33,7 +33,9 @@
   "readmeFilename": "README.md",
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "boilerplate",
+    "extra"
   ],
   "scripts": {},
   "dependencies": {

@@ -3,8 +3,10 @@ import path from 'path';
 import shell from 'shelljs';
 import fse from 'fs-extra';
 import { missingGit } from '../util/error';
+import copyExtra from './copy-extra';
 import { error, info, log } from '../../../util/logger';
 
+const { join } = path;
 const { existsSync } = fs;
 const { which, exec } = shell;
 const { copySync } = fse;
@@ -12,8 +14,9 @@ const { copySync } = fse;
 export default (dir, install) => {
   if (!which('git')) missingGit();
 
-  const source = path.join(__dirname, '../boilerplate');
-  const target = path.join(process.cwd(), dir);
+  const cwd = process.cwd();
+  const source = join(__dirname, '../boilerplate');
+  const target = join(cwd, dir);
 
   if (existsSync(target)) {
     error(`
@@ -23,6 +26,8 @@ export default (dir, install) => {
   }
 
   copySync(source, target);
+  copyExtra(target, 'package.json', dir);
+  copyExtra(target, 'README.md', dir);
   process.chdir(target);
 
   log(`

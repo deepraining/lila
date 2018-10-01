@@ -1,5 +1,5 @@
 {
-  "name": "lila-demo",
+  "name": "[project-name]",
   "private": true,
   "version": "0.0.1",
   "description": "A lila project.",
@@ -28,20 +28,13 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "lint-staged": {
-    "**/*.{js,jsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
+    "**/*.{js,jsx}": ["eslint --fix", "prettier --write", "git add"],
     "**/*.{css,less,scss,sass}": [
       "stylelint --fix",
       "prettier --write",
       "git add"
     ],
-    "**/*.{md,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "**/*.{md,json}": ["prettier --write", "git add"]
   },
   "engines": {
     "node": ">=8.0.0"

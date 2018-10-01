@@ -10,10 +10,10 @@ commander.version(
 
 if (lilaCore) {
   const { getCommands } = lilaCore;
-  const addedCommands = getCommands();
+  const commands = getCommands();
 
-  if (addedCommands && addedCommands.length) {
-    addedCommands.forEach(cmd => {
+  if (commands && commands.length) {
+    commands.forEach(cmd => {
       cmd(commander);
     });
   }

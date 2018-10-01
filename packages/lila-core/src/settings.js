@@ -1,39 +1,59 @@
+import fs from 'fs';
+import path from 'path';
+import rd from 'rd';
 import forEach from 'lodash/forEach';
 
+import { correctSlash } from '../../../util/index';
+
+const { existsSync } = fs;
+const { relative, join } = path;
+const { readDirFilterSync } = rd;
+
 const settings = {
-  srcRoot: 'src', // src root directory (relative to project root)
-  devRoot: 'dev', // dev root directory (relative to project root)
-  buildRoot: 'dist', // build root directory (relative to project root)
-  webRoot: './', // web root directory (relative to project root)
-  getEntryJs: undefined, // Get entry js file path of a page.
-  getEntryHtml: undefined, // Get entry html file path of a page.
+  srcDir: 'src',
+  devDir: 'dev',
+  buildDir: 'build',
+  /**
+   * app dir
+   *
+   * @example
+   *
+   * ```
+   * app/(src,dev,build)
+   * ```
+   */
+  appDir: '',
+  // message for all tasks been done
+  doneMessage: `
+  done
+  `,
+  // get js entry file path of a page
+  jsEntry: ({ page, srcDir, appDir }) =>
+    join(appDir, srcDir, `${page}/index.js`),
+  // get html entry file path of a page
+  htmlEntry: ({ page, srcDir, appDir }) =>
+    join(appDir, srcDir, `${page}/index.html`),
+  // get all pages under a dir
+  getPages: dir => {
+    const pages = [];
+    readDirFilterSync(dir, dirPath => {
+      const htmlFile = `${dirPath}/index.html`;
+      const jsFile = `${dirPath}/index.js`;
+
+      // Both `index.html` and `index.js` existing, means this directory is a page's workspace.
+      if (existsSync(htmlFile) && existsSync(jsFile)) {
+        pages.push(correctSlash(relative(dir, dirPath)));
+      }
+    });
+  },
 };
-
-/**
- * Get entry js file path of a page.
- *
- * @param page
- * @returns {string}
- */
-const defaultGetEntryJs = page => `${settings.srcRoot}/${page}/index.js`;
-
-/**
- * Get entry html file path of a page.
- *
- * @param page
- * @returns {string}
- */
-const defaultGetEntryHtml = page => `${settings.srcRoot}/${page}/index.html`;
-
-settings.getEntryJs = defaultGetEntryJs;
-settings.getEntryHtml = defaultGetEntryHtml;
 
 export default settings;
 
 /**
- * Set a setting value
- * @param name Setting name
- * @param value Setting value
+ * Set a setting
+ * @param name
+ * @param value
  */
 export const setSetting = (name, value) => {
   settings[name] = value;
@@ -50,14 +70,21 @@ export const setSettings = collection => {
 };
 
 /**
- * Get a setting value
+ * Get a setting
  * @param name
  * @returns {*}
  */
 export const getSetting = name => settings[name];
 
 /**
+ * Get multiple settings
+ * @param keys
+ * @returns {[]}
+ */
+export const getSettings = keys => keys.map(key => settings[key]);
+
+/**
  * Get all settings
  * @returns {{}}
  */
-export const getSettings = () => settings;
+export const getAllSettings = () => settings;

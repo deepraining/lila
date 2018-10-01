@@ -1,9 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
-const entryPath = path.join(process.cwd(), 'lila.js');
+const { join } = path;
+const { existsSync } = fs;
 
-if (!fs.existsSync(entryPath)) throw new Error(`file not found ${entryPath}`);
+const entryPath = join(process.cwd(), 'lila.js');
+
+if (!existsSync(entryPath)) throw new Error(`file not found ${entryPath}`);
 
 const entry = require(entryPath); // eslint-disable-line
 

@@ -13,7 +13,7 @@ import {
   syncAll,
   syncHtml,
 } from './built-in-tasks';
-import { buildCmdGenerator, syncCmdGenerator } from './built-in-commands';
+import { buildCmd, syncCmd } from './built-in-commands';
 
 registerTask('@lila/correct-html', correctHtml);
 registerTask('@lila/replace-html', replaceHtml);
@@ -23,8 +23,8 @@ registerTask('@lila/rename-html', renameHtml);
 registerTask('@lila/sync-all', syncAll);
 registerTask('@lila/sync-html', syncHtml);
 
-addCommand(buildCmdGenerator(lila));
-addCommand(syncCmdGenerator(lila));
+addCommand(buildCmd);
+addCommand(syncCmd);
 
 app.lila = lila;
 
@@ -32,8 +32,8 @@ app.lila = lila;
 const configGenerator = entry(lila);
 
 if (typeof configGenerator !== 'function')
-  throw new Error('lila.js exported function should return a another function');
+  throw new Error('lila.js exported function should return another function');
 
-registerConfigGenerator(entry);
+registerConfigGenerator(configGenerator);
 
 export default lila;

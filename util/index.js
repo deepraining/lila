@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+const { statSync } = fs;
+
 /**
  * Test is url or not.
  * @param url
@@ -17,7 +19,7 @@ export const isUrl = url =>
  */
 export const isFile = file => {
   try {
-    const stat = fs.statSync(file);
+    const stat = statSync(file);
 
     return stat.isFile();
   } catch (err) {
@@ -34,7 +36,7 @@ export const isFile = file => {
  */
 export const isDir = dir => {
   try {
-    const stat = fs.statSync(dir);
+    const stat = statSync(dir);
 
     return stat.isDirectory();
   } catch (err) {
@@ -43,3 +45,18 @@ export const isDir = dir => {
     throw new Error(err);
   }
 };
+
+/**
+ * Replace back slash with slash.
+ *
+ * @example
+ *
+ * ```
+ * \\ -> /
+ * \\\\ -> /
+ * ```
+ *
+ * @param str
+ * @returns {string}
+ */
+export const correctSlash = str => str.replace(/(\\\\|\\)/g, '/');
