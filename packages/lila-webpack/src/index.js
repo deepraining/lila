@@ -1,8 +1,9 @@
 import dev from './dev';
 import analyze from './analyze';
+import task from './task';
 
 export default lila => {
-  const { addCommand, pureArgv } = lila;
+  const { addCommand, pureArgv, registerTask } = lila;
 
   // add dev command
   addCommand(commander => {
@@ -27,4 +28,7 @@ export default lila => {
         analyze(page, argv, lila);
       });
   });
+
+  // register @lila/webpack task
+  registerTask('@lila/webpack', task);
 };

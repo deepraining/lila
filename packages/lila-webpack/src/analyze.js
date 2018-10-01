@@ -6,11 +6,30 @@ import { error, warn } from '../../../util/logger';
 const { BundleAnalyzerPlugin } = webpackBundleAnalyzer;
 
 export default (page, argv, lila) => {
-  const { makeConfig } = lila;
-  const config = makeConfig({ page, cmd: 'analyze' }, argv);
+  const { getSetting, makeConfig } = lila;
+  const webpackConfigGenerator = getSetting('webpackConfigGenerator');
+
+  if (!webpackConfigGenerator)
+    throw new Error('webpackConfigGenerator not configured');
+
+  const makeWebpackConfig = webpackConfigGenerator(webpack);
+
+  if (typeof makeWebpackConfig !== 'function')
+    throw new Error('webpackConfigGenerator should return a function');
+
+  const config = makeConfig({ page, cmd: 'analyze', argv });
+  const webpackConfig = makeWebpackConfig({
+    page,
+    argv,
+    cmd: 'analyze',
+    config,
+    lila,
+  });
+
+  if (!webpackConfig.plugins) webpackConfig.plugins = [];
 
   const { bundleAnalyzer } = config;
-  const webpackConfig = config.webpack || {};
+
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin(bundleAnalyzer || { analyzerPort: 8190 })
   );

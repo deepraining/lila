@@ -5,19 +5,18 @@ import trimEnd from 'lodash/trimEnd';
 const { existsSync } = fs;
 const { join } = path;
 
-export default webRoot => (req, res, next) => {
-  // url?key1=value1
-  let url = req.url.split('?')[0];
-
-  // path/to/index/
-  url = trimEnd(url, '/');
-
-  const urls = url.split('/');
-  const filename = urls[urls.length - 1];
+export default root => (req, res, next) => {
+  // path/to/index/?key1=value1
+  const url = trimEnd(req.url.split('?')[0], '/');
 
   // Don't have `.`
-  if (filename.indexOf('.') < 0) {
-    const filePath = join(webRoot, `${url}.js`);
+  if (
+    url
+      .split('/')
+      .slice(-1)[0]
+      .indexOf('.') < 0
+  ) {
+    const filePath = join(root, `${url}.js`);
     if (existsSync(filePath)) {
       // Disable cache.
       if (require.cache[filePath]) delete require.cache[filePath];

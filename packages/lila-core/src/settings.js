@@ -6,7 +6,7 @@ import forEach from 'lodash/forEach';
 import { correctSlash } from '../../../util/index';
 
 const { existsSync } = fs;
-const { relative, join } = path;
+const { relative } = path;
 const { readDirFilterSync } = rd;
 
 const settings = {
@@ -27,12 +27,6 @@ const settings = {
   doneMessage: `
   done
   `,
-  // get js entry file path of a page
-  jsEntry: ({ page, srcDir, appDir }) =>
-    join(appDir, srcDir, `${page}/index.js`),
-  // get html entry file path of a page
-  htmlEntry: ({ page, srcDir, appDir }) =>
-    join(appDir, srcDir, `${page}/index.html`),
   // get all pages under a dir
   getPages: dir => {
     const pages = [];
