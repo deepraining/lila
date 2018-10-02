@@ -47,12 +47,16 @@ export default (dir, install) => {
     return;
   }
 
+  let npm = 'npm';
+  if (which('cnpm')) npm = 'cnpm';
+
   log(`
-  npm install ...
+  ${npm} install ...
   `);
-  if (exec('npm install').code !== 0) {
+
+  if (exec(`${npm} install`).code !== 0) {
     error(`
-  error: npm install  
+  error: ${npm} install  
     `);
     process.exit(1);
   }
