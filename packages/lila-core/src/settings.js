@@ -4,7 +4,7 @@ import rd from 'rd';
 import forEach from 'lodash/forEach';
 
 import { correctSlash } from '../../../util/index';
-import { tmpDir } from './app';
+import { cwd, tmpDir } from './app';
 
 const { existsSync } = fs;
 const { relative } = path;
@@ -24,6 +24,7 @@ const settings = {
    * ```
    */
   appDir: '',
+  cwd,
   tmpDir,
   // message for all tasks been done
   doneMessage: `

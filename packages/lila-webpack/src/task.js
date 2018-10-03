@@ -1,5 +1,5 @@
 import webpack from 'webpack';
-import { error, warn } from '../../../util/logger';
+import run from './run';
 
 export default ({ page, args, argv, cmd, config, lila }) => cb => {
   const { getSetting } = lila;
@@ -13,29 +13,35 @@ export default ({ page, args, argv, cmd, config, lila }) => cb => {
   if (typeof makeWebpackConfig !== 'function')
     throw new Error('webpackConfigGenerator should return a function');
 
-  webpack(
-    makeWebpackConfig({ page, args, argv, cmd, config, lila }),
-    (err, stats) => {
-      if (err) {
-        error(err.stack || err);
-        if (err.details) {
-          error(err.details);
-        }
-        process.exit(1);
-      }
+  const webpackConfig = makeWebpackConfig({
+    page,
+    args,
+    argv,
+    cmd,
+    config,
+    lila,
+  });
 
-      const info = stats.toJson();
+  if (!Array.isArray(webpackConfig)) {
+    // single config
 
-      if (stats.hasErrors()) {
-        info.errors.forEach(error);
-        process.exit(1);
-      }
-
-      if (stats.hasWarnings()) {
-        info.warnings.forEach(warn);
-      }
-
+    run(webpackConfig, () => {
       cb();
-    }
-  );
+    });
+  } else {
+    // multiple
+
+    let index = 0;
+    // go on
+    const goon = () => {
+      run(webpackConfig[index], () => {
+        index += 1;
+
+        if (index >= webpackConfig.length) cb();
+        else goon();
+      });
+    };
+
+    goon();
+  }
 };

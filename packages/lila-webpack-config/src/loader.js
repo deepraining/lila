@@ -2,25 +2,23 @@ export const babelLoader = ({ babelImport, babelExclude }) => ({
   loader: 'babel-loader',
   test: /\.(js|jsx)$/,
   options: {
-    presets: ['es2015', 'stage-0', 'react'],
-    plugins: ['transform-react-jsx', ['import', babelImport]],
+    presets: ['@babel/preset-env', '@babel/preset-react'],
+    plugins: [
+      '@babel/plugin-transform-react-jsx',
+      '@babel/plugin-syntax-dynamic-import',
+      ['import', babelImport],
+    ],
   },
   exclude: babelExclude,
 });
 
-export const urlLoader = ({
-  fileSuffixes,
-  isBuild,
-  buildDir,
-  staticServerDir,
-}) => ({
+export const urlLoader = ({ fileSuffixes }) => ({
   loader: 'url-loader',
   options: {
     // 0 means infinite, put 1 here to disable base64.
     limit: 1,
-    publicPath: isBuild ? `${staticServerDir}/${buildDir}/` : '',
   },
-  test: new RegExp(`.(${fileSuffixes.join('|')})$`),
+  test: new RegExp(`\\.(${fileSuffixes.join('|')})$`),
 });
 
 export const htmlLoader = () => ({
