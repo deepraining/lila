@@ -7,7 +7,7 @@ import {
   lessLoader,
   sassLoader,
   urlLoader,
-} from './loader';
+} from './loaders';
 import {
   defaultAlias,
   defaultBabelExclude,
@@ -18,6 +18,7 @@ import {
   defaultFileSuffixes,
   defaultProvide,
   defaultMinHtmlOptions,
+  defaultBrowsers,
 } from './defaults';
 
 const { join } = path;
@@ -61,19 +62,24 @@ export const baseLoaders = (lila, webpack, { config }) => {
   ];
 };
 
-export const makeStyleLoaders = (lila, webpack, { config }) => {
+export const styleLoaders = (lila, webpack, { cmd, config }) => {
   const {
     cssModules = defaultCssModules,
     cssModulesName,
     cssModulesExclude = defaultCssModulesExclude,
+    browsers = defaultBrowsers,
   } = config;
   const rules = [];
+
+  const isBuild = cmd === 'build' || cmd === 'sync';
 
   if (cssModules) {
     const options = {
       cssModules: !0,
       localIdentName: cssModulesName,
       match: cssModulesExclude,
+      browsers,
+      isBuild,
     };
     const excludeOptions = { ...options, exclude: !0 };
     const includeOptions = { ...options, exclude: !1 };
@@ -86,7 +92,7 @@ export const makeStyleLoaders = (lila, webpack, { config }) => {
       sassLoader(includeOptions)
     );
   } else {
-    const options = { cssModules: !1 };
+    const options = { cssModules: !1, browsers, isBuild };
 
     rules.push(cssLoader(options), lessLoader(options), sassLoader(options));
   }

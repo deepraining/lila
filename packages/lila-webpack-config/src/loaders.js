@@ -1,3 +1,6 @@
+import autoprefixer from 'autoprefixer';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+
 export const babelLoader = ({ babelImport, babelExclude }) => ({
   loader: 'babel-loader',
   test: /\.(js|jsx)$/,
@@ -30,11 +33,18 @@ export const htmlLoader = () => ({
   },
 });
 
-export const cssLoader = ({ cssModules, localIdentName, match, exclude }) => ({
+export const cssLoader = ({
+  cssModules,
+  localIdentName,
+  match,
+  exclude,
+  browsers,
+  isBuild,
+}) => ({
   test: /\.css$/,
   use: [
     {
-      loader: 'style-loader',
+      loader: isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
     },
     {
       loader: 'css-loader',
@@ -42,17 +52,28 @@ export const cssLoader = ({ cssModules, localIdentName, match, exclude }) => ({
         modules: cssModules && exclude,
         localIdentName,
       },
+    },
+    {
+      loader: 'postcss-loader',
+      options: { plugins: [autoprefixer({ browsers })] },
     },
   ],
   exclude: cssModules && exclude ? match : undefined,
   include: cssModules && !exclude ? match : undefined,
 });
 
-export const lessLoader = ({ cssModules, localIdentName, match, exclude }) => ({
+export const lessLoader = ({
+  cssModules,
+  localIdentName,
+  match,
+  exclude,
+  browsers,
+  isBuild,
+}) => ({
   test: /\.less$/,
   use: [
     {
-      loader: 'style-loader',
+      loader: isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
     },
     {
       loader: 'css-loader',
@@ -60,6 +81,10 @@ export const lessLoader = ({ cssModules, localIdentName, match, exclude }) => ({
         modules: cssModules && exclude,
         localIdentName,
       },
+    },
+    {
+      loader: 'postcss-loader',
+      options: { plugins: [autoprefixer({ browsers })] },
     },
     {
       loader: 'less-loader',
@@ -69,11 +94,18 @@ export const lessLoader = ({ cssModules, localIdentName, match, exclude }) => ({
   include: cssModules && !exclude ? match : undefined,
 });
 
-export const sassLoader = ({ cssModules, localIdentName, match, exclude }) => ({
+export const sassLoader = ({
+  cssModules,
+  localIdentName,
+  match,
+  exclude,
+  browsers,
+  isBuild,
+}) => ({
   test: /\.scss$/,
   use: [
     {
-      loader: 'style-loader',
+      loader: isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
     },
     {
       loader: 'css-loader',
@@ -81,6 +113,10 @@ export const sassLoader = ({ cssModules, localIdentName, match, exclude }) => ({
         modules: cssModules && exclude,
         localIdentName,
       },
+    },
+    {
+      loader: 'postcss-loader',
+      options: { plugins: [autoprefixer({ browsers })] },
     },
     {
       loader: 'sass-loader',

@@ -1,10 +1,5 @@
 import path from 'path';
-import {
-  basePlugins,
-  baseLoaders,
-  makeStyleLoaders,
-  makeResolve,
-} from './make';
+import { basePlugins, baseLoaders, styleLoaders, makeResolve } from './make';
 
 const { join } = path;
 
@@ -38,7 +33,7 @@ export default (lila, webpack, { page, cmd, config }) => {
     module: {
       rules: [
         ...baseLoaders(lila, webpack, { page, cmd, config }),
-        ...makeStyleLoaders(lila, webpack, { page, cmd, config }),
+        ...styleLoaders(lila, webpack, { page, cmd, config }),
       ],
     },
     resolve: makeResolve(lila, webpack, { page, cmd, config }),

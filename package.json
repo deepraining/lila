@@ -12,7 +12,8 @@
     "build:cli": "PKG_NAME=cli npm run build",
     "build:create": "PKG_NAME=create npm run build",
     "build:core": "PKG_NAME=core npm run build",
-    "build:webpack": "PKG_NAME=webpack npm run build"
+    "build:webpack": "PKG_NAME=webpack npm run build",
+    "build:webpack-config": "PKG_NAME=webpack-config npm run build"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
