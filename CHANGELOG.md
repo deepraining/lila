@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 [2018-09-19]
+
+- Rewrite gulp tasks.
+- Remove `add` command.
+
+## 0.4.2 [2018-09-10]
+
+- Add `flow, flowRuntime` config options.
+
 ## 0.4.1 [2018-08-01]
 
 - Remove `upgrade` command.

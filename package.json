@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.4.1",
+  "version": "0.5.0-alpha.1",
   "main": "index.js",
   "bin": "bin/lila.js",
   "description": "An automatic building tool of web frontend, for teamwork.",
@@ -40,9 +40,11 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-flow-runtime": "^0.17.0",
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "browser-sync": "^2.24.4",
@@ -52,6 +54,7 @@
     "del": "^3.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
+    "flow-runtime": "^0.17.0",
     "fs-extra": "^6.0.1",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",

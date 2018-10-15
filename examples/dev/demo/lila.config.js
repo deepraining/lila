@@ -75,17 +75,23 @@ module.exports = {
       define: {
         globalDefine: JSON.stringify('dev')
       },
-      cssModulesName: '[path][name]__[local]--[hash:base64:5]'
+      cssModulesName: '[path][name]__[local]--[hash:base64:5]',
+      flow: !0,
+      flowRuntime: !0,
     },
     dist: {
       define: {
         globalDefine: JSON.stringify('dist')
-      }
+      },
+      flow: !0,
+      flowRuntime: !0,
     },
     sync: {
       define: {
         globalDefine: JSON.stringify('sync')
-      }
+      },
+      flow: !0,
+      flowRuntime: !0,
     }
   },
   webpack: {},

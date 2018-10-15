@@ -195,15 +195,7 @@ lila new projectName
 
 - `since`: `v0.0.1`
 
-### 3.2 `add`: Add a module.
-
-```
-lila add moduleName
-```
-
-- `since`: `v0.0.1`
-
-### 3.3 `dev`: Watch files' changes, with hot replacing and reloading, and start a local server for debug.
+### 3.2 `dev`: Watch files' changes, with hot replacing and reloading, and start a local server for debug.
 
 ```
 lila dev moduleName
@@ -212,7 +204,7 @@ lila dev moduleName
 - Can take with arguments: `local/l`, `out/o`.
 - `since`: `v0.0.1`
 
-### 3.4 `dist`: Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.
+### 3.3 `dist`: Pack source codes and static files into production, including minimizing, splitting, path correcting, etc.
 
 ```
 lila dist moduleName [-e 0(1,2)]
@@ -221,7 +213,7 @@ lila dist moduleName [-e 0(1,2)]
 - Can take with arguments: `env/e`, `local/l`, `out/o`.
 - `since`: `v0.0.1`
 
-### 3.5 `sync`: Firstly do production tasks, and then sync production files to remote servers.
+### 3.4 `sync`: Firstly do production tasks, and then sync production files to remote servers.
 
 ```
 lila sync moduleName [-e 0(1,2)]
@@ -230,7 +222,7 @@ lila sync moduleName [-e 0(1,2)]
 - Can take with arguments: `env/e`, `local/l`, `out/o`.
 - `since`: `v0.0.1`
 
-### 3.6 `analyze`: Visualize size of webpack output files with an interactive zoomable treemap.
+### 3.5 `analyze`: Visualize size of webpack output files with an interactive zoomable treemap.
 
 ```
 lila analyze moduleName
@@ -238,15 +230,15 @@ lila analyze moduleName
 
 - `since`: `v0.1.4`
 
-### 3.7 Arguments.
+### 3.6 Arguments.
 
-#### 3.7.1 `env/e`:
+#### 3.6.1 `env/e`:
 
 - Specify current environment through command line, example: `-e 0`, `-e 1`;
 - If env is string, default is `test=0, prod/production=1`. And you can configure it in `envAlias` of project config;
 - If env is not provided, default is `0`.
 
-#### 3.7.2 `local/l`
+#### 3.6.2 `local/l`
 
 - Specify current local name through command line.
 
@@ -254,7 +246,7 @@ lila analyze moduleName
 
 - Specify whether to use `outResolveAlias`.
 
-#### 3.7.3 `moduleName`
+#### 3.6.3 `moduleName`
 
 - `test/index`: A single file module.
 - `test/index,test/index2`: Multiple modules.
