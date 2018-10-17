@@ -1,40 +1,19 @@
-import path from 'path';
 import gulp from 'gulp';
 import app from './app';
 import tasks from './tasks';
 import run from './run';
-import { log } from '../../../util/logger';
 
-const { join } = path;
-
-export default (pages, argv, cmd) => {
+export default ({ pages, argv, cmd }, successCB, errorCB) => {
   const { lila } = app;
-  const { makeConfig, getSettings, getSetting } = lila;
-  const [getPages, srcDir, appDir] = getSettings([
-    'getPages',
-    'srcDir',
-    'appDir',
-  ]);
-
-  const srcPath = join(appDir, srcDir);
-  const realPages = [];
-
-  pages.forEach(page => {
-    if (page === '*' || page === 'all')
-      realPages.push(...(getPages(srcPath) || []));
-    else if (page.slice(-2) === '/*')
-      realPages.push(...(getPages(join(srcPath, page.slice(0, -2))) || []));
-    else if (page.slice(-4) === '/all')
-      realPages.push(...(getPages(join(srcPath, page.slice(0, -4))) || []));
-    else realPages.push(page);
-  });
+  const { makeConfig } = lila;
 
   const runTasks = [];
 
-  realPages.forEach(page => {
+  pages.forEach(page => {
     const config = makeConfig({ page, cmd, argv });
 
-    const importTasks = config[`${cmd}Tasks`];
+    const { tasks: importTasks } = config;
+    const taskCount = {};
 
     if (!importTasks) return;
 
@@ -47,13 +26,18 @@ export default (pages, argv, cmd) => {
         args = task.slice(1);
       }
 
-      const definedTask = tasks[taskName];
+      const generator = tasks[taskName];
 
-      if (!definedTask)
+      if (!generator)
         throw new Error(`task ${taskName} has not been registered`);
 
-      const { generator } = definedTask;
-      const realTaskName = `${page}:${taskName}`;
+      if (taskCount[taskName]) taskCount[taskName] += 1;
+      else taskCount[taskName] = 1;
+
+      // maybe one task executed multiple times in one page
+      const realTaskName = `${page}:${taskName}${
+        taskCount[taskName] > 1 ? `:${taskCount[taskName]}` : ''
+      }`;
 
       gulp.task(
         realTaskName,
@@ -65,10 +49,16 @@ export default (pages, argv, cmd) => {
   });
 
   if (runTasks.length) {
-    const cmdTaskName = `@lila/${cmd}`;
+    const cmdTaskName = `cmd:${cmd}`;
     gulp.task(cmdTaskName, gulp.series(...runTasks));
-    run(cmdTaskName, () => {
-      log(getSetting('doneMessage'));
-    });
+    run(
+      cmdTaskName,
+      () => {
+        if (successCB) successCB();
+      },
+      err => {
+        if (errorCB) errorCB(err);
+      }
+    );
   }
 };

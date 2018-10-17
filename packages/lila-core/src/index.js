@@ -1,7 +1,6 @@
 import app from './app';
 import * as lila from './lila';
 import { registerTask } from './tasks';
-import { addCommand } from './commands';
 import { registerConfigGenerator } from './make-config';
 import entry from './entry';
 import {
@@ -14,7 +13,6 @@ import {
   saveCache,
   syncHtml,
 } from './built-in-tasks';
-import { buildCmd, syncCmd } from './built-in-commands';
 
 registerTask('@lila/correct-html', correctHtml);
 registerTask('@lila/replace-html', replaceHtml);
@@ -24,9 +22,6 @@ registerTask('@lila/rename-html', renameHtml);
 registerTask('@lila/sync-all', syncAll);
 registerTask('@lila/save-cache', saveCache);
 registerTask('@lila/sync-html', syncHtml);
-
-addCommand(buildCmd);
-addCommand(syncCmd);
 
 app.lila = lila;
 

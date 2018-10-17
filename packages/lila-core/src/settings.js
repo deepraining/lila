@@ -1,14 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import rd from 'rd';
 import forEach from 'lodash/forEach';
 
-import { correctSlash } from '../../../util/index';
 import { cwd, tmpDir } from './app';
-
-const { existsSync } = fs;
-const { relative } = path;
-const { readDirFilterSync } = rd;
 
 const settings = {
   srcDir: 'src',
@@ -26,23 +18,6 @@ const settings = {
   appDir: '',
   cwd,
   tmpDir,
-  // message for all tasks been done
-  doneMessage: `
-  done
-  `,
-  // get all pages under a dir
-  getPages: dir => {
-    const pages = [];
-    readDirFilterSync(dir, dirPath => {
-      const htmlFile = `${dirPath}/index.html`;
-      const jsFile = `${dirPath}/index.js`;
-
-      // Both `index.html` and `index.js` existing, means this directory is a page's workspace.
-      if (existsSync(htmlFile) && existsSync(jsFile)) {
-        pages.push(correctSlash(relative(dir, dirPath)));
-      }
-    });
-  },
 };
 
 export default settings;

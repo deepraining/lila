@@ -35,6 +35,7 @@
   "dependencies": {
     "browser-sync": "^2.24.7",
     "lodash": "^4.17.11",
+    "rd": "^2.0.1",
     "webpack": "^4.20.2",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-dev-middleware": "^3.4.0",

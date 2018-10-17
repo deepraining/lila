@@ -1,10 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 
+import { cwd } from './app';
+
 const { join } = path;
 const { existsSync } = fs;
 
-const entryPath = join(process.cwd(), 'lila.js');
+const entryPath = join(cwd, 'lila.js');
 
 if (!existsSync(entryPath)) throw new Error(`file not found ${entryPath}`);
 

@@ -4,7 +4,7 @@
   "description": "lila command line",
   "main": "lib/index.js",
   "bin": {
-    "lila": "./bin/lila.js"
+    "nlila": "./bin/lila.js"
   },
   "author": "senntyou <jiangjinbelief@163.com>",
   "homepage": "https://github.com/senntyou/lila",

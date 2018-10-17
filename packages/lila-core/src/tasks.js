@@ -15,7 +15,7 @@ export const registerTask = (name, generator) => {
   if (tasks[name])
     throw new Error(`Task [${name}] has already been registered`);
 
-  tasks[name] = { name, generator };
+  tasks[name] = generator;
 };
 
 /**
@@ -42,6 +42,6 @@ export const getTasks = keys => keys.map(key => tasks[key]);
 
 /**
  * Get all tasks
- * @returns {{}}
+ * @returns {[]}
  */
-export const getAllTasks = () => tasks;
+export const getAllTasks = () => Object.values(tasks);
