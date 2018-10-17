@@ -42,6 +42,6 @@ export const getTasks = keys => keys.map(key => tasks[key]);
 
 /**
  * Get all tasks
- * @returns {[]}
+ * @returns {{}}
  */
-export const getAllTasks = () => Object.values(tasks);
+export const getAllTasks = () => tasks;
