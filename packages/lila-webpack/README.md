@@ -1,6 +1,6 @@
 # lila-webpack
 
-Lila webpack.
+Lila webpack plugin.
 
 ## install
 

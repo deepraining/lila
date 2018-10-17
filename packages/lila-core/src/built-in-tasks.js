@@ -227,11 +227,13 @@ const newCacheJson = {};
  *
  * @param page
  * @param args
+ * @param argv
+ * @param cmd
  * @param gulp
  * @param lila
  * @returns {function()}
  */
-export const syncAll = ({ page, args, gulp, lila }) => () => {
+export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
 
@@ -244,7 +246,11 @@ export const syncAll = ({ page, args, gulp, lila }) => () => {
   let src = [buildDir, ...extra].map(dir => `${appDir}/${dir}/**/*`);
 
   if (cache) {
-    const cacheFile = `${tmpDir}/${cacheFileName}.json`;
+    const cacheFile = `${tmpDir}/${
+      typeof cacheFileName === 'function'
+        ? cacheFileName({ page, argv, cmd })
+        : cacheFileName
+    }.json`;
     const oldJson = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
     const { json, changed } = changedFiles(
       [buildDir, ...extra],
@@ -272,11 +278,17 @@ export const syncAll = ({ page, args, gulp, lila }) => () => {
  *
  * @param page
  * @param args
+ * @param argv
+ * @param cmd
  * @returns {function(*)}
  */
-export const saveCache = ({ page, args }) => cb => {
+export const saveCache = ({ page, args, argv, cmd }) => cb => {
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
-  const cacheFile = `${tmpDir}/${cacheFileName}.json`;
+  const cacheFile = `${tmpDir}/${
+    typeof cacheFileName === 'function'
+      ? cacheFileName({ page, argv, cmd })
+      : cacheFileName
+  }.json`;
   const json = newCacheJson[page];
 
   if (json) writeFileSync(cacheFile, JSON.stringify(json));

@@ -8,7 +8,7 @@ const { relative } = path;
 const { readDirFilterSync } = rd;
 
 // get all pages under a dir
-export const getPages = dir => {
+export const defaultGetPages = dir => {
   const pages = [];
   readDirFilterSync(dir, dirPath => {
     const htmlFile = `${dirPath}/index.html`;

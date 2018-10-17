@@ -315,7 +315,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `remotePath`: `string`, remote server path to upload to.
 - `extra`: `string[]`, extra directories to upload, same level of `build`.
 - `cache`: `bool`, whether cache uploading record, thus next time will only upload changed files, default `false`.
-- `cacheFileName`: `string`, file name to record cache, default `cache`.
+- `cacheFileName`: `string|function`, file name to record cache, default `cache`. It can be a function, `({page, argv, cmd}) => fileName`.
 
 ### `@lila/save-cache`: save cache after sync-all task
 
@@ -325,7 +325,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/save-cache', {cacheFileName}]
 ```
 
-- `cacheFileName`: `string`, file name to record cache, default `cache`.
+- `cacheFileName`: `string|function`, file name to record cache, default `cache`. It can be a function, `({page, argv, cmd}) => fileName`.
 
 ### `@lila/sync-html`: sync html files to remote server
 
