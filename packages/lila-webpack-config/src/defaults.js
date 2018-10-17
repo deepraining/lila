@@ -40,7 +40,7 @@ export const defaultMinHtmlOptions = {
   minifyCSS: !0,
 };
 
-export const defaultDll = {};
+export const defaultSplitJs = {};
 
 export const defaultBrowsers = [
   '> 1%',

@@ -9,11 +9,11 @@
     "eslint:fix": "eslint . --fix",
     "lint-staged": "lint-staged",
     "build": "rollup -c",
-    "build:cli": "PKG_NAME=cli npm run build",
-    "build:create": "PKG_NAME=create npm run build",
-    "build:core": "PKG_NAME=core npm run build",
-    "build:webpack": "PKG_NAME=webpack npm run build",
-    "build:webpack-config": "PKG_NAME=webpack-config npm run build"
+    "build:cli": "npm run build -- --name cli",
+    "build:create": "npm run build -- --name create",
+    "build:core": "npm run build -- --name core",
+    "build:webpack": "npm run build -- --name webpack",
+    "build:webpack-config": "npm run build -- --name webpack-config"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
@@ -28,6 +28,7 @@
     "jest": "^23.6.0",
     "lerna": "^3.4.0",
     "lint-staged": "^7.3.0",
+    "minimist": "^1.2.0",
     "prettier": "^1.14.3",
     "rollup": "^0.66.2",
     "rollup-plugin-json": "^3.1.0"

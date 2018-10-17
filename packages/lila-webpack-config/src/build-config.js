@@ -5,7 +5,7 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import { basePlugins, baseLoaders, styleLoaders, makeResolve } from './make';
-import { defaultDll, defaultStaticServer } from './defaults';
+import { defaultSplitJs, defaultStaticServer } from './defaults';
 import dllConfig from './dll-config';
 
 const { join } = path;
@@ -13,7 +13,10 @@ const { join } = path;
 export default (lila, webpack, { page, cmd, config }) => {
   const { DllReferencePlugin } = webpack;
   const { getSettings } = lila;
-  const { staticServer = defaultStaticServer, dll = defaultDll } = config;
+  const {
+    staticServer = defaultStaticServer,
+    splitJs = defaultSplitJs,
+  } = config;
   const [cwd, srcDir, buildDir, appDir, tmpDir] = getSettings([
     'cwd',
     'srcDir',
@@ -27,7 +30,7 @@ export default (lila, webpack, { page, cmd, config }) => {
 
   const dllConfigs = [];
   const dllPlugins = [];
-  forEach(dll, (value, key) => {
+  forEach(splitJs, (value, key) => {
     dllConfigs.push(
       dllConfig(lila, webpack, { page, cmd, config }, key, value)
     );

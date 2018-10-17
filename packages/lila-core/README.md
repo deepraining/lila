@@ -228,3 +228,123 @@ commander
     const argv = pureArgv(options);
   });
 ```
+
+## built-in settings
+
+- `srcDir`: `string`, source directory name, default `src`.
+- `devDir`: `string`, development directory name, default `dev`.
+- `buildDir`: `string`, build directory name, default `build`.
+- `appDir`: `string`, application directory name, for instance `app/(src,dev,build)`, default empty string.
+- `cwd`: `process.cwd()`, current working directory, and you should not modify it.
+- `tmpDir`: `cwd/.lila`, tmp directory of project, and you should not modify it.
+
+## built-in tasks
+
+### `@lila/correct-html`: correct html path
+
+By default, a `index.html` will be generated under `build` directory, and this task is to modify its path, `build/index.html -> build/page/name.html`.
+
+```
+'@lila/correct-html'
+// or
+['@lila/correct-html', {source, target}]
+```
+
+- `source`: `string`, source html file, default `index.html`.
+- `target`: `string|function`, target html file, default `${page}.html`. It can be a function, `page => target`.
+
+### `@lila/replace-html`: replace html content
+
+```
+['@lila/replace-html', {file, replace: [{target, replacement}]}]
+```
+
+- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `replace`: `[]`, options to replace.
+  - `target`: `string|RegExp`, target to be replaced.
+  - `replacement`: `string`, string to replace.
+
+### `@lila/insert-html`: insert html content
+
+```
+['@lila/insert-html', {file, start, end}]
+```
+
+- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `start`: `string`, content to prepend.
+- `end`: `string`, content to append.
+
+### `@lila/convert-html`: convert html extension
+
+```
+['@lila/convert-html', {file, ext}]
+```
+
+- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `ext`: `string`, extension name, like `php, jsp`.
+
+### `@lila/backup-html`: backup html file
+
+Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
+
+```
+'@lila/backup-html'
+// or
+['@lila/backup-html', {suffix, ext}]
+```
+
+- `suffix`: `string`, `index.html -> index.${suffix}.html`, default `(new Date()).getTime()`.
+- `ext`: `string`, html file extension, default `html`.
+
+### `@lila/rename-html`: rename html path
+
+```
+['@lila/rename-html', {page, ext}]
+```
+
+- `page`: `string|function`, new page to rename to. It can be a function, `page => newPage`.
+- `ext`: `string`, html file extension, default `html`.
+
+### `@lila/sync-all`: sync all static resources to remote server
+
+```
+['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName}]
+```
+
+- `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `string`, remote server path to upload to.
+- `extra`: `string[]`, extra directories to upload, same level of `build`.
+- `cache`: `bool`, whether cache uploading record, thus next time will only upload changed files, default `false`.
+- `cacheFileName`: `string`, file name to record cache, default `cache`.
+
+### `@lila/save-cache`: save cache after sync-all task
+
+```
+'@lila/save-cache'
+// or
+['@lila/save-cache', {cacheFileName}]
+```
+
+- `cacheFileName`: `string`, file name to record cache, default `cache`.
+
+### `@lila/sync-html`: sync html files to remote server
+
+```
+['@lila/sync-html', {server, remotePath, ext}]
+```
+
+- `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `string`, remote server path to upload to.
+- `ext`: `string`, html file extension, default `html`.
+
+### `@lila/del-dev`: delete dev directory
+
+```
+'@lila/del-dev'
+```
+
+### `@lila/del-build`: delete build directory
+
+```
+'@lila/del-build'
+```

@@ -2,14 +2,30 @@ import fs from 'fs';
 import path from 'path';
 import fse from 'fs-extra';
 import SSH from 'gulp-ssh';
+import del from 'del';
 import { tmpDir } from './app';
 import changedFiles from '../util/changed';
 
 const { existsSync, writeFileSync } = fs;
 const { join } = path;
-const { moveSync, readFileSync, outputFileSync } = fse;
+const { moveSync, readFileSync, outputFileSync, copySync } = fse;
 
-// index.html => test/index.html
+/**
+ * correct html path
+ *
+ * @example
+ *
+ * ```
+ * index.html => test/index.html
+ *
+ * ['@lila/correct-html', {source, target}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
 export const correctHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
@@ -17,11 +33,28 @@ export const correctHtml = ({ page, args, lila }) => cb => {
   const { source = 'index.html', target = `${page}.html` } =
     (args && args[0]) || {};
 
-  moveSync(join(buildPath, source), join(buildPath, target));
+  moveSync(
+    join(buildPath, source),
+    join(buildPath, typeof target === 'function' ? target(page) : target)
+  );
 
   return cb();
 };
 
+/**
+ * replace html content
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/replace-html', {file, replace: [{target, replacement}]}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
 export const replaceHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
@@ -31,7 +64,10 @@ export const replaceHtml = ({ page, args, lila }) => cb => {
 
   if (!Array.isArray(replace)) return cb();
 
-  const filePath = join(buildPath, file);
+  const filePath = join(
+    buildPath,
+    typeof file === 'function' ? file(page) : file
+  );
   let content = readFileSync(filePath, 'utf8');
 
   replace.forEach(item => {
@@ -45,19 +81,34 @@ export const replaceHtml = ({ page, args, lila }) => cb => {
   return cb();
 };
 
+/**
+ * insert html content
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/insert-html', {file, start, end}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
 export const insertHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
   const buildPath = join(appDir, buildDir);
 
-  const { file = `${page}.html`, insert = {} } = (args && args[0]) || {};
+  const { file = `${page}.html`, start, end } = (args && args[0]) || {};
 
-  if (!insert) return cb();
+  if (!start && !end) return cb();
 
-  const filePath = join(buildPath, file);
+  const filePath = join(
+    buildPath,
+    typeof file === 'function' ? file(page) : file
+  );
   let content = readFileSync(filePath, 'utf8');
-
-  const { start, end } = insert;
 
   if (start) content = start + content;
   if (end) content += end;
@@ -67,6 +118,20 @@ export const insertHtml = ({ page, args, lila }) => cb => {
   return cb();
 };
 
+/**
+ * convert html extension
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/convert-html', {file, ext}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
 export const convertHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
@@ -76,31 +141,96 @@ export const convertHtml = ({ page, args, lila }) => cb => {
 
   if (!ext) return cb();
 
-  const filePath = join(buildPath, file);
+  const filePath = join(
+    buildPath,
+    typeof file === 'function' ? file(page) : file
+  );
 
   moveSync(filePath, filePath.slice(-4) + ext);
 
   return cb();
 };
 
+/**
+ * backup html
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/backup-html', {suffix, ext}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
+export const backupHtml = ({ page, args, lila }) => cb => {
+  const { getSettings } = lila;
+  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const buildPath = join(appDir, buildDir);
+
+  const { suffix = new Date().getTime(), ext = 'html' } =
+    (args && args[0]) || {};
+
+  copySync(
+    join(buildPath, `${page}.${ext}`),
+    join(buildPath, `${page}.${suffix}.${ext}`)
+  );
+
+  return cb();
+};
+
+/**
+ * rename html path
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/rename-html', {page, ext}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
 export const renameHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
   const buildPath = join(appDir, buildDir);
 
-  const { target = '', ext = 'html' } = (args && args[0]) || {};
+  const { page: newPage = '', ext = 'html' } = (args && args[0]) || {};
 
-  if (!target) return cb();
+  if (!newPage) return cb();
 
   moveSync(
     join(buildPath, `${page}.${ext}`),
-    join(buildPath, `${target}.${ext}`)
+    join(
+      buildPath,
+      `${typeof newPage === 'function' ? newPage(page) : newPage}.${ext}`
+    )
   );
 
   return cb();
 };
 
 const newCacheJson = {};
+/**
+ * sync all static resources to remote server
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @param gulp
+ * @param lila
+ * @returns {function()}
+ */
 export const syncAll = ({ page, args, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
@@ -131,16 +261,43 @@ export const syncAll = ({ page, args, gulp, lila }) => () => {
   return gulp.src(src, { base: appDir }).pipe(connect.dest(remotePath));
 };
 
+/**
+ * save cache after sync-all task
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/save-cache', {cacheFileName}]
+ * ```
+ *
+ * @param page
+ * @param args
+ * @returns {function(*)}
+ */
 export const saveCache = ({ page, args }) => cb => {
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
   const cacheFile = `${tmpDir}/${cacheFileName}.json`;
-  const json = newCacheJson[page] || {};
+  const json = newCacheJson[page];
 
-  writeFileSync(cacheFile, JSON.stringify(json));
+  if (json) writeFileSync(cacheFile, JSON.stringify(json));
 
   return cb();
 };
 
+/**
+ * sync html files to remote server
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/sync-html', {server, remotePath, ext}]
+ * ```
+ *
+ * @param args
+ * @param gulp
+ * @param lila
+ * @returns {function()}
+ */
 export const syncHtml = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
@@ -156,4 +313,44 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
   return gulp
     .src(`${buildPath}/**/*.${ext}`, { base: appDir })
     .pipe(connect.dest(remotePath));
+};
+
+/**
+ * delete dev directory
+ *
+ * @example
+ *
+ * ```
+ * '@lila/del-dev'
+ * ```
+ *
+ * @param lila
+ * @returns {function()}
+ */
+export const delDev = ({ lila }) => () => {
+  const { getSettings } = lila;
+  const [devDir, appDir] = getSettings(['devDir', 'appDir']);
+  const devPath = join(appDir, devDir);
+
+  return del([devPath]);
+};
+
+/**
+ * delete build directory
+ *
+ * @example
+ *
+ * ```
+ * '@lila/del-build'
+ * ```
+ *
+ * @param lila
+ * @returns {function()}
+ */
+export const delBuild = ({ lila }) => () => {
+  const { getSettings } = lila;
+  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const buildPath = join(appDir, buildDir);
+
+  return del([buildPath]);
 };

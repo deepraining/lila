@@ -1,15 +1,18 @@
+import minimist from 'minimist';
 import json from 'rollup-plugin-json';
 
-const pkgName = process.env.PKG_NAME;
+const argv = minimist(process.argv.slice(2));
+const names = argv.name.split(',');
 
-const fullPkgName =
-  pkgName === 'create' ? 'create-lila-app' : `lila-${pkgName}`;
+const fullNames = names.map(
+  name => (name === 'create' ? 'create-lila-app' : `lila-${name}`)
+);
 
-export default {
-  input: `packages/${fullPkgName}/src/index.js`,
+export default fullNames.map(name => ({
+  input: `packages/${name}/src/index.js`,
   output: {
-    file: `packages/${fullPkgName}/lib/index.js`,
+    file: `packages/${name}/lib/index.js`,
     format: 'cjs',
   },
   plugins: [json()],
-};
+}));
