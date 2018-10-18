@@ -30,7 +30,7 @@ export default ({ page, argv, lila }) => {
 
   if (!webpackConfig.plugins) webpackConfig.plugins = [];
 
-  const { bundleAnalyzer = { analyzerPort: 8290 } } = config;
+  const { bundleAnalyzer = { analyzerPort: 8190 } } = config;
 
   webpackConfig.plugins.push(new BundleAnalyzerPlugin(bundleAnalyzer));
 

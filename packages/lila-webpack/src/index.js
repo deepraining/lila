@@ -135,7 +135,7 @@ export default lila => {
     const command = commander
       .command('serve <page>')
       .description(
-        'start a local server to develop a page, and simulate a backend environment'
+        'simulate a backend environment to start a local server to develop a page'
       );
 
     getCmdOptions('serve').forEach(value => {

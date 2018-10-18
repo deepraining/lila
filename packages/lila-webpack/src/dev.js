@@ -5,6 +5,7 @@ import hotMiddleware from 'webpack-hot-middleware';
 import browserSync from 'browser-sync';
 
 import { makeMock, forceGet as forceGetMiddleware, makeServe } from './util';
+import { defaultDevMiddleware } from './defaults';
 
 const { join } = path;
 
@@ -42,8 +43,8 @@ export default ({ page, argv, lila, serve, servePath }) => {
     mock = true,
     port = 8090,
     browserSync: browserSyncConfig = {},
-    webpackDev: webpackDevConfig = {},
-    webpackHot: webpackHotConfig = {},
+    devMiddleware: devMiddlewareConfig = defaultDevMiddleware,
+    hotMiddleware: hotMiddlewareConfig = {},
   } = config;
 
   const compiler = webpack(webpackConfig);
@@ -68,11 +69,15 @@ export default ({ page, argv, lila, serve, servePath }) => {
       })
     );
 
-  webpackDevConfig.stats = 'errors-only';
-  webpackDevConfig.publicPath = `/${devDir}/`;
+  devMiddlewareConfig.stats = 'errors-only';
+  devMiddlewareConfig.publicPath = `/${devDir}/`;
 
-  browserSyncConfig.middleware.push(devMiddleware(compiler, webpackDevConfig));
-  browserSyncConfig.middleware.push(hotMiddleware(compiler, webpackHotConfig));
+  browserSyncConfig.middleware.push(
+    devMiddleware(compiler, devMiddlewareConfig)
+  );
+  browserSyncConfig.middleware.push(
+    hotMiddleware(compiler, hotMiddlewareConfig)
+  );
 
   browserSync.init(browserSyncConfig);
 };

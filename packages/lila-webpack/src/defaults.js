@@ -22,5 +22,9 @@ export const defaultGetPages = dir => {
   return pages;
 };
 
-// get serve.js file path
+// get js file path for command server
 export const defaultServePath = (page, srcDir) => `${srcDir}/${page}/serve.js`;
+
+export const defaultDevMiddleware = {
+  watchOptions: { ignored: /node_modules/ },
+};
