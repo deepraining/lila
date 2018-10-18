@@ -7,51 +7,43 @@ import {
   lessLoader,
   sassLoader,
   urlLoader,
-} from './loaders';
+} from './rules';
 import {
-  defaultAlias,
-  defaultBabelExclude,
-  defaultBabelImport,
-  defaultCssModules,
-  defaultCssModulesExclude,
-  defaultDefine,
   defaultFileSuffixes,
-  defaultProvide,
   defaultMinHtmlOptions,
   defaultBrowsers,
 } from './defaults';
 
 const { join } = path;
 
-export const basePlugins = (lila, webpack, { page, cmd, config }) => {
+export const basePlugins = (lila, webpack, { page, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, appDir] = getSettings(['cwd', 'srcDir', 'appDir']);
   const { ProvidePlugin, DefinePlugin } = webpack;
   const {
-    provide = defaultProvide,
-    define = defaultDefine,
+    provide = {},
+    define = {},
+    minHtml = !1,
     minHtmlOptions = defaultMinHtmlOptions,
   } = config;
 
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
 
-  const isBuild = cmd === 'build' || cmd === 'sync';
-
   return [
     new ProvidePlugin(provide),
     new DefinePlugin(define),
     new HtmlWebpackPlugin({
       template: `${realSrcDir}/${page}/index.html`,
-      minify: isBuild ? minHtmlOptions : false,
+      minify: minHtml ? minHtmlOptions : false,
     }),
   ];
 };
 
 export const baseLoaders = (lila, webpack, { config }) => {
   const {
-    babelImport = defaultBabelImport,
-    babelExclude = defaultBabelExclude,
+    babelImport = [],
+    babelExclude = [/node_modules/],
     fileSuffixes = defaultFileSuffixes,
   } = config;
 
@@ -62,22 +54,20 @@ export const baseLoaders = (lila, webpack, { config }) => {
   ];
 };
 
-export const styleLoaders = (lila, webpack, { cmd, config }) => {
+export const styleLoaders = (lila, webpack, { config }, isBuild = !1) => {
   const {
-    cssModules = defaultCssModules,
+    cssModules = !1,
     cssModulesName,
-    cssModulesExclude = defaultCssModulesExclude,
+    cssModulesExclude = [/node_modules/],
     browsers = defaultBrowsers,
   } = config;
   const rules = [];
 
-  const isBuild = cmd === 'build' || cmd === 'sync';
-
   if (cssModules) {
     const options = {
-      cssModules: !0,
-      localIdentName: cssModulesName,
-      match: cssModulesExclude,
+      cssModules,
+      cssModulesName,
+      cssModulesExclude,
       browsers,
       isBuild,
     };
@@ -92,7 +82,13 @@ export const styleLoaders = (lila, webpack, { cmd, config }) => {
       sassLoader(includeOptions)
     );
   } else {
-    const options = { cssModules: !1, browsers, isBuild };
+    const options = {
+      cssModules,
+      cssModulesName,
+      cssModulesExclude,
+      browsers,
+      isBuild,
+    };
 
     rules.push(cssLoader(options), lessLoader(options), sassLoader(options));
   }
@@ -101,7 +97,7 @@ export const styleLoaders = (lila, webpack, { cmd, config }) => {
 export const makeResolve = (lila, webpack, { config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, appDir] = getSettings(['cwd', 'srcDir', 'appDir']);
-  const { alias = defaultAlias } = config;
+  const { alias = {} } = config;
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
 

@@ -1,6 +1,6 @@
-import devConfig from './dev-config';
-import analyzeConfig from './analyze-config';
-import buildConfig from './build-config';
+import devConfig from './dev';
+import analyzeConfig from './analyze';
+import buildConfig from './build';
 
 export default lila => {
   const { setSetting } = lila;

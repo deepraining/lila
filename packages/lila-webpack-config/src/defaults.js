@@ -1,15 +1,3 @@
-export const defaultAnalyzeDir = 'analyze';
-
-export const defaultStaticServer = '';
-
-export const defaultProvide = {};
-
-export const defaultDefine = {};
-
-export const defaultBabelImport = [];
-
-export const defaultBabelExclude = [/node_modules/];
-
 export const defaultFileSuffixes = [
   'jpg',
   'jpeg',
@@ -23,12 +11,6 @@ export const defaultFileSuffixes = [
   'woff2',
 ];
 
-export const defaultCssModules = !1;
-
-export const defaultCssModulesExclude = [/node_modules/];
-
-export const defaultAlias = {};
-
 export const defaultMinHtmlOptions = {
   removeComments: !0,
   collapseWhitespace: !0,
@@ -39,8 +21,6 @@ export const defaultMinHtmlOptions = {
   minifyJS: !1,
   minifyCSS: !0,
 };
-
-export const defaultSplitJs = {};
 
 export const defaultBrowsers = [
   '> 1%',

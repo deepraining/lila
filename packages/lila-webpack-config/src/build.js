@@ -5,18 +5,14 @@ import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import { basePlugins, baseLoaders, styleLoaders, makeResolve } from './make';
-import { defaultSplitJs, defaultStaticServer } from './defaults';
-import dllConfig from './dll-config';
+import dllConfig from './dll';
 
 const { join } = path;
 
 export default (lila, webpack, { page, cmd, config }) => {
   const { DllReferencePlugin } = webpack;
   const { getSettings } = lila;
-  const {
-    staticServer = defaultStaticServer,
-    splitJs = defaultSplitJs,
-  } = config;
+  const { staticServer = '', splitJs = {} } = config;
   const [cwd, srcDir, buildDir, appDir, tmpDir] = getSettings([
     'cwd',
     'srcDir',

@@ -35,8 +35,8 @@ export const htmlLoader = () => ({
 
 export const cssLoader = ({
   cssModules,
-  localIdentName,
-  match,
+  cssModulesName,
+  cssModulesExclude,
   exclude,
   browsers,
   isBuild,
@@ -50,7 +50,7 @@ export const cssLoader = ({
       loader: 'css-loader',
       options: {
         modules: cssModules && exclude,
-        localIdentName,
+        localIdentName: cssModulesName,
       },
     },
     {
@@ -58,14 +58,14 @@ export const cssLoader = ({
       options: { plugins: [autoprefixer({ browsers })] },
     },
   ],
-  exclude: cssModules && exclude ? match : undefined,
-  include: cssModules && !exclude ? match : undefined,
+  exclude: cssModules && exclude ? cssModulesExclude : undefined,
+  include: cssModules && !exclude ? cssModulesExclude : undefined,
 });
 
 export const lessLoader = ({
   cssModules,
-  localIdentName,
-  match,
+  cssModulesName,
+  cssModulesExclude,
   exclude,
   browsers,
   isBuild,
@@ -79,7 +79,7 @@ export const lessLoader = ({
       loader: 'css-loader',
       options: {
         modules: cssModules && exclude,
-        localIdentName,
+        localIdentName: cssModulesName,
       },
     },
     {
@@ -90,14 +90,14 @@ export const lessLoader = ({
       loader: 'less-loader',
     },
   ],
-  exclude: cssModules && exclude ? match : undefined,
-  include: cssModules && !exclude ? match : undefined,
+  exclude: cssModules && exclude ? cssModulesExclude : undefined,
+  include: cssModules && !exclude ? cssModulesExclude : undefined,
 });
 
 export const sassLoader = ({
   cssModules,
-  localIdentName,
-  match,
+  cssModulesName,
+  cssModulesExclude,
   exclude,
   browsers,
   isBuild,
@@ -111,7 +111,7 @@ export const sassLoader = ({
       loader: 'css-loader',
       options: {
         modules: cssModules && exclude,
-        localIdentName,
+        localIdentName: cssModulesName,
       },
     },
     {
@@ -122,6 +122,6 @@ export const sassLoader = ({
       loader: 'sass-loader',
     },
   ],
-  exclude: cssModules && exclude ? match : undefined,
-  include: cssModules && !exclude ? match : undefined,
+  exclude: cssModules && exclude ? cssModulesExclude : undefined,
+  include: cssModules && !exclude ? cssModulesExclude : undefined,
 });
