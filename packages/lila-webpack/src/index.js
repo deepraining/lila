@@ -1,11 +1,10 @@
 import path from 'path';
-import forEach from 'lodash/forEach';
 import dev from './dev';
 import start from './start';
 import analyze from './analyze';
 import task from './task';
 import { getCmdOptions } from './cmd-options';
-import { defaultGetPages } from './defaults';
+import { defaultGetPages, defaultServePath } from './defaults';
 import { getAllPages } from './util';
 
 export { addCmdOption } from './cmd-options';
@@ -14,14 +13,32 @@ const { join } = path;
 
 export default lila => {
   const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
-  const [cwd, srcDir, appDir, getPages = defaultGetPages] = getSettings([
-    'cwd',
-    'srcDir',
-    'appDir',
-    'getPages',
-  ]);
+  const [
+    cwd,
+    srcDir,
+    appDir,
+    getPages = defaultGetPages,
+    servePath = defaultServePath,
+  ] = getSettings(['cwd', 'srcDir', 'appDir', 'getPages', 'servePath']);
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
+
+  // add dev command
+  addCommand(commander => {
+    const command = commander
+      .command('dev <page>')
+      .description('start a local server to develop a page');
+
+    getCmdOptions('dev').forEach(value => {
+      command.option(...value);
+    });
+
+    command.action((page, options) => {
+      const argv = pureArgv(options);
+
+      dev({ page, argv, lila });
+    });
+  });
 
   // add build command
   addCommand(commander => {
@@ -29,7 +46,7 @@ export default lila => {
       .command('build <page> [extraPages...]')
       .description('pack source codes to production bundles');
 
-    forEach(getCmdOptions('build'), value => {
+    getCmdOptions('build').forEach(value => {
       command.option(...value);
     });
 
@@ -52,7 +69,7 @@ export default lila => {
       .command('sync <page> [extraPages...]')
       .description('make production bundles, then sync to remote servers');
 
-    forEach(getCmdOptions('sync'), value => {
+    getCmdOptions('sync').forEach(value => {
       command.option(...value);
     });
 
@@ -77,38 +94,22 @@ export default lila => {
         'make production bundles, then start a local server to preview'
       );
 
-    forEach(getCmdOptions('start'), value => {
-      command.option(...value);
-    });
-
-    command.action((page, options) => {
-      runTasks(
-        {
-          pages: [page],
-          argv: pureArgv(options),
-          cmd: 'start',
-        },
-        () => {
-          start();
-        }
-      );
-    });
-  });
-
-  // add dev command
-  addCommand(commander => {
-    const command = commander
-      .command('dev <page>')
-      .description('start a local server to develop a page');
-
-    forEach(getCmdOptions('dev'), value => {
+    getCmdOptions('start').forEach(value => {
       command.option(...value);
     });
 
     command.action((page, options) => {
       const argv = pureArgv(options);
-
-      dev(page, argv, lila);
+      runTasks(
+        {
+          pages: [page],
+          argv,
+          cmd: 'start',
+        },
+        () => {
+          start({ page, argv, lila });
+        }
+      );
     });
   });
 
@@ -118,18 +119,35 @@ export default lila => {
       .command('analyze <page>')
       .description('visualize size of webpack output files');
 
-    forEach(getCmdOptions('analyze'), value => {
+    getCmdOptions('analyze').forEach(value => {
       command.option(...value);
     });
 
     command.action((page, options) => {
       const argv = pureArgv(options);
 
-      analyze(page, argv, lila);
+      analyze({ page, argv, lila });
     });
   });
 
-  // todo cmd: serve, start
+  // add serve command
+  addCommand(commander => {
+    const command = commander
+      .command('serve <page>')
+      .description(
+        'start a local server to develop a page, and simulate a backend environment'
+      );
+
+    getCmdOptions('serve').forEach(value => {
+      command.option(...value);
+    });
+
+    command.action((page, options) => {
+      const argv = pureArgv(options);
+
+      dev({ page, argv, lila, serve: !0, servePath });
+    });
+  });
 
   // register @lila/webpack task
   registerTask('@lila/webpack', task);

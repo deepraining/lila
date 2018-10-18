@@ -4,22 +4,21 @@ import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
 import browserSync from 'browser-sync';
 
-import makeMock from './make-mock';
-import forceGetMiddleware from './force-get';
+import { makeMock, forceGet as forceGetMiddleware, makeServe } from './util';
 
 const { join } = path;
 
-export default (page, argv, lila) => {
+export default ({ page, argv, lila, serve, servePath }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, devDir, appDir, webpackConfigGenerator] = getSettings([
+  const [cwd, srcDir, devDir, appDir, webpackConfigGenerator] = getSettings([
     'cwd',
+    'srcDir',
     'devDir',
     'appDir',
     'webpackConfigGenerator',
   ]);
 
   const realAppDir = join(cwd, appDir);
-  const realDevDir = join(realAppDir, devDir);
 
   if (!webpackConfigGenerator)
     throw new Error('webpackConfigGenerator not configured');
@@ -42,23 +41,32 @@ export default (page, argv, lila) => {
     forceGet = true,
     mock = true,
     port = 8090,
-    startPath = `/${devDir}/index.html`,
+    browserSync: browserSyncConfig = {},
+    webpackDev: webpackDevConfig = {},
+    webpackHot: webpackHotConfig = {},
   } = config;
-  const browserSyncConfig = config.browserSync || {};
-  const webpackDevConfig = config.webpackDev || {};
-  const webpackHotConfig = config.webpackHot || {};
 
   const compiler = webpack(webpackConfig);
 
-  browserSyncConfig.server = { baseDir: realDevDir };
+  if (!browserSyncConfig.server) browserSyncConfig.server = {};
+
+  browserSyncConfig.server.baseDir = realAppDir;
   browserSyncConfig.port = port;
-  browserSyncConfig.startPath = startPath;
+  browserSyncConfig.startPath = serve ? '/serve' : `/${devDir}/index.html`;
 
   if (!browserSyncConfig.middleware) browserSyncConfig.middleware = [];
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
   if (mock) browserSyncConfig.middleware.unshift(makeMock(realAppDir));
+  if (serve)
+    browserSyncConfig.middleware.unshift(
+      makeServe({
+        root: realAppDir,
+        devDir,
+        servePath: servePath(page, srcDir),
+      })
+    );
 
   webpackDevConfig.stats = 'errors-only';
   webpackDevConfig.publicPath = `/${devDir}/`;

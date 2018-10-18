@@ -22,5 +22,5 @@ export const defaultGetPages = dir => {
   return pages;
 };
 
-// placeholder
-export default {};
+// get serve.js file path
+export const defaultServePath = (page, srcDir) => `${srcDir}/${page}/serve.js`;
