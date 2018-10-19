@@ -44,11 +44,15 @@ module.exports = lila => {
 
 ### `alias`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config, default `{}`
 
-### `cssModules`: whether use [css-modules](https://github.com/css-modules/css-modules), default `false`
+### `cssModules`: whether to use [css-modules](https://github.com/css-modules/css-modules), default `false`
 
 ### `cssModulesName`: [css-loader#localidentname](https://github.com/webpack-contrib/css-loader#localidentname), default `undefined`
 
 ### `cssModulesExclude`: [css-loader](https://github.com/webpack-contrib/css-loader) `css-modules` exclude, default `[/node_modules/]`
+
+### `flow`: whether to use [flow](https://github.com/facebook/flow), default `false`
+
+### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime), default `false`
 
 ### `browsers`: [autoprefixer](https://github.com/postcss/autoprefixer#browsers) browsers, default:
 
@@ -63,6 +67,11 @@ module.exports = lila => {
 ```
 
 ### `staticServer`: a static server to place bundle resources to, default empty string
+
+- `/dir`: a directory
+- `http://www.static.com`: a standalone static server
+- `https://www.static.com/dir`: a sub directory of a standalone static server
+- `//www.static.com/dir/sub_dir`: another sub directory of a standalone static server
 
 ### `minHtml`: whether minify html, default `false`
 

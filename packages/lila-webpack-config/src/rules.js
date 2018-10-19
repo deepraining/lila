@@ -1,15 +1,25 @@
 import autoprefixer from 'autoprefixer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-export const babelLoader = ({ babelImport, babelExclude }) => ({
+export const babelLoader = ({
+  babelImport,
+  babelExclude,
+  flow,
+  flowRuntime,
+}) => ({
   loader: 'babel-loader',
   test: /\.(js|jsx)$/,
   options: {
-    presets: ['@babel/preset-env', '@babel/preset-react'],
+    presets: [
+      '@babel/preset-env',
+      '@babel/preset-react',
+      ...(flow ? ['flow'] : []),
+    ],
     plugins: [
       '@babel/plugin-transform-react-jsx',
       '@babel/plugin-syntax-dynamic-import',
       ['import', babelImport],
+      ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
     ],
   },
   exclude: babelExclude,

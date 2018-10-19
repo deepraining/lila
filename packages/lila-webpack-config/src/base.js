@@ -23,6 +23,8 @@ export default (lila, webpack, { page, cmd, config }) => {
     alias = {},
     minHtml = !1,
     minHtmlOptions = defaultMinHtmlOptions,
+    flow = !1,
+    flowRuntime = !1,
   } = config;
 
   const isBuild = cmd === 'build' || cmd === 'sync' || cmd === 'start';
@@ -41,7 +43,7 @@ export default (lila, webpack, { page, cmd, config }) => {
     ],
     module: {
       rules: [
-        babelLoader({ babelImport, babelExclude }),
+        babelLoader({ babelImport, babelExclude, flow, flowRuntime }),
         urlLoader({ extensions }),
         htmlLoader(),
         ...styleLoaders(lila, webpack, { page, cmd, config }, isBuild),
