@@ -14,7 +14,8 @@
     "build:core": "npm run build -- --name core",
     "build:webpack": "npm run build -- --name webpack",
     "build:webpack-config": "npm run build -- --name webpack-config",
-    "build:all": "npm run build -- --name cli,create,core,webpack,webpack-config"
+    "build:webpack-lib": "npm run build -- --name webpack-lib",
+    "build:all": "npm run build -- --name cli,create,core,webpack,webpack-config,webpack-lib"
   },
   "devDependencies": {
     "eslint": "^5.6.1",
