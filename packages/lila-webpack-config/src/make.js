@@ -1,58 +1,5 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import {
-  babelLoader,
-  cssLoader,
-  htmlLoader,
-  lessLoader,
-  sassLoader,
-  urlLoader,
-} from './rules';
-import {
-  defaultFileSuffixes,
-  defaultMinHtmlOptions,
-  defaultBrowsers,
-} from './defaults';
-
-const { join } = path;
-
-export const basePlugins = (lila, webpack, { page, config }) => {
-  const { getSettings } = lila;
-  const [cwd, srcDir, appDir] = getSettings(['cwd', 'srcDir', 'appDir']);
-  const { ProvidePlugin, DefinePlugin } = webpack;
-  const {
-    provide = {},
-    define = {},
-    minHtml = !1,
-    minHtmlOptions = defaultMinHtmlOptions,
-  } = config;
-
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
-
-  return [
-    new ProvidePlugin(provide),
-    new DefinePlugin(define),
-    new HtmlWebpackPlugin({
-      template: `${realSrcDir}/${page}/index.html`,
-      minify: minHtml ? minHtmlOptions : false,
-    }),
-  ];
-};
-
-export const baseLoaders = (lila, webpack, { config }) => {
-  const {
-    babelImport = [],
-    babelExclude = [/node_modules/],
-    fileSuffixes = defaultFileSuffixes,
-  } = config;
-
-  return [
-    babelLoader({ babelImport, babelExclude }),
-    urlLoader({ fileSuffixes }),
-    htmlLoader(),
-  ];
-};
+import { cssLoader, lessLoader, sassLoader } from './rules';
+import { defaultBrowsers } from './defaults';
 
 export const styleLoaders = (lila, webpack, { config }, isBuild = !1) => {
   const {
@@ -94,15 +41,5 @@ export const styleLoaders = (lila, webpack, { config }, isBuild = !1) => {
   }
 };
 
-export const makeResolve = (lila, webpack, { config }) => {
-  const { getSettings } = lila;
-  const [cwd, srcDir, appDir] = getSettings(['cwd', 'srcDir', 'appDir']);
-  const { alias = {} } = config;
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
-
-  return {
-    modules: [realSrcDir, 'node_modules'],
-    alias,
-  };
-};
+// placeholder
+export default {};

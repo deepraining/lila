@@ -1,5 +1,5 @@
 import path from 'path';
-import { basePlugins, baseLoaders, styleLoaders, makeResolve } from './make';
+import base from './base';
 
 const { join } = path;
 
@@ -16,6 +16,10 @@ export default (lila, webpack, { page, cmd, config }) => {
   const realSrcDir = join(realAppDir, srcDir);
   const realDevDir = join(realAppDir, devDir);
 
+  const baseConfig = base(lila, webpack, { page, cmd, config });
+
+  baseConfig.plugins.unshift(new HotModuleReplacementPlugin());
+
   return {
     entry: [
       'webpack-hot-middleware/client?reload=true',
@@ -26,17 +30,6 @@ export default (lila, webpack, { page, cmd, config }) => {
       filename: 'index.js',
       publicPath: `/${devDir}/`,
     },
-    plugins: [
-      new HotModuleReplacementPlugin(),
-      ...basePlugins(lila, webpack, { page, cmd, config }),
-    ],
-    module: {
-      rules: [
-        ...baseLoaders(lila, webpack, { page, cmd, config }),
-        ...styleLoaders(lila, webpack, { page, cmd, config }),
-      ],
-    },
-    resolve: makeResolve(lila, webpack, { page, cmd, config }),
-    mode: 'development',
+    ...baseConfig,
   };
 };
