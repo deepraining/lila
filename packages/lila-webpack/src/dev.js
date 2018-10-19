@@ -13,9 +13,9 @@ export default ({ page, argv, lila, serve, servePath }) => {
   const { getSettings, makeConfig } = lila;
   const [cwd, srcDir, devDir, appDir, webpackConfigGenerator] = getSettings([
     'cwd',
-    'srcDir',
-    'devDir',
-    'appDir',
+    'src',
+    'dev',
+    'app',
     'webpackConfigGenerator',
   ]);
 

@@ -1,11 +1,11 @@
 import forEach from 'lodash/forEach';
 
-import { cwd, tmpDir } from './app';
+import { cwd, tmp } from './app';
 
 const settings = {
-  srcDir: 'src',
-  devDir: 'dev',
-  buildDir: 'build',
+  src: 'src',
+  dev: 'dev',
+  build: 'build',
   /**
    * app dir
    *
@@ -15,9 +15,9 @@ const settings = {
    * app/(src,dev,build)
    * ```
    */
-  appDir: '',
+  app: '',
   cwd,
-  tmpDir,
+  tmp,
 };
 
 export default settings;

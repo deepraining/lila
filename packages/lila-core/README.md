@@ -231,12 +231,12 @@ commander
 
 ## built-in settings
 
-- `srcDir`: `string`, source directory name, default `src`.
-- `devDir`: `string`, development directory name, default `dev`.
-- `buildDir`: `string`, build directory name, default `build`.
-- `appDir`: `string`, application directory name, for instance `app/(src,dev,build)`, default empty string.
+- `src`: `string`, source directory name, default `src`.
+- `dev`: `string`, development directory name, default `dev`.
+- `build`: `string`, build directory name, default `build`.
+- `app`: `string`, application directory name, for instance `app/(src,dev,build)`, default empty string.
 - `cwd`: `process.cwd()`, current working directory, and you should not modify it.
-- `tmpDir`: `cwd/.lila`, tmp directory of project, and you should not modify it.
+- `tmp`: `cwd/.lila`, tmp directory of project, and you should not modify it.
 
 ## built-in tasks
 
@@ -348,3 +348,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 '@lila/del-build'
 ```
+
+## node packages
+
+- [gulp](https://github.com/gulpjs/gulp): 4.x

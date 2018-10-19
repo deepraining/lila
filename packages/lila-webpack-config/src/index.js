@@ -1,6 +1,7 @@
 import dev from './dev';
 import analyze from './analyze';
 import build from './build';
+import { getPages, servePath } from './settings';
 
 export default lila => {
   const { setSetting } = lila;
@@ -24,4 +25,7 @@ export default lila => {
 
     return webpackConfig;
   });
+
+  setSetting('getPages', getPages);
+  setSetting('servePath', servePath);
 };

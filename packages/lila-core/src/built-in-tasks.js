@@ -3,7 +3,7 @@ import path from 'path';
 import fse from 'fs-extra';
 import SSH from 'gulp-ssh';
 import del from 'del';
-import { tmpDir } from './app';
+import { tmp } from './app';
 import changedFiles from '../util/changed';
 
 const { existsSync, writeFileSync } = fs;
@@ -28,7 +28,7 @@ const { moveSync, readFileSync, outputFileSync, copySync } = fse;
  */
 export const correctHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
   const { source = 'index.html', target = `${page}.html` } =
     (args && args[0]) || {};
@@ -57,7 +57,7 @@ export const correctHtml = ({ page, args, lila }) => cb => {
  */
 export const replaceHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { file = `${page}.html`, replace = [] } = (args && args[0]) || {};
@@ -97,7 +97,7 @@ export const replaceHtml = ({ page, args, lila }) => cb => {
  */
 export const insertHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { file = `${page}.html`, start, end } = (args && args[0]) || {};
@@ -134,7 +134,7 @@ export const insertHtml = ({ page, args, lila }) => cb => {
  */
 export const convertHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { file = `${page}.html`, ext = '' } = (args && args[0]) || {};
@@ -167,7 +167,7 @@ export const convertHtml = ({ page, args, lila }) => cb => {
  */
 export const backupHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { suffix = new Date().getTime(), ext = 'html' } =
@@ -197,7 +197,7 @@ export const backupHtml = ({ page, args, lila }) => cb => {
  */
 export const renameHtml = ({ page, args, lila }) => cb => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { page: newPage = '', ext = 'html' } = (args && args[0]) || {};
@@ -235,7 +235,7 @@ const newCacheJson = {};
  */
 export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
 
   const { server, remotePath, extra = [], cache, cacheFileName = 'cache' } =
     (args && args[0]) || {};
@@ -246,7 +246,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   let src = [buildDir, ...extra].map(dir => `${appDir}/${dir}/**/*`);
 
   if (cache) {
-    const cacheFile = `${tmpDir}/${
+    const cacheFile = `${tmp}/${
       typeof cacheFileName === 'function'
         ? cacheFileName({ page, argv, cmd })
         : cacheFileName
@@ -284,7 +284,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
  */
 export const saveCache = ({ page, args, argv, cmd }) => cb => {
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
-  const cacheFile = `${tmpDir}/${
+  const cacheFile = `${tmp}/${
     typeof cacheFileName === 'function'
       ? cacheFileName({ page, argv, cmd })
       : cacheFileName
@@ -312,7 +312,7 @@ export const saveCache = ({ page, args, argv, cmd }) => cb => {
  */
 export const syncHtml = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   const { server, remotePath, ext = 'html' } = (args && args[0]) || {};
@@ -341,7 +341,7 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
  */
 export const delDev = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [devDir, appDir] = getSettings(['devDir', 'appDir']);
+  const [devDir, appDir] = getSettings(['dev', 'app']);
   const devPath = join(appDir, devDir);
 
   return del([devPath]);
@@ -361,7 +361,7 @@ export const delDev = ({ lila }) => () => {
  */
 export const delBuild = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['buildDir', 'appDir']);
+  const [buildDir, appDir] = getSettings(['build', 'app']);
   const buildPath = join(appDir, buildDir);
 
   return del([buildPath]);

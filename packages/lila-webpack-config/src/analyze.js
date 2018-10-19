@@ -7,10 +7,10 @@ export default (lila, webpack, { page, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, appDir, tmpDir, analyzeDir = 'analyze'] = getSettings([
     'cwd',
-    'srcDir',
-    'appDir',
-    'tmpDir',
-    'analyzeDir',
+    'src',
+    'app',
+    'tmp',
+    'analyze',
   ]);
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);

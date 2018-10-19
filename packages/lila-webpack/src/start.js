@@ -6,7 +6,7 @@ const { join } = path;
 
 export default ({ page, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, buildDir, appDir] = getSettings(['cwd', 'buildDir', 'appDir']);
+  const [cwd, buildDir, appDir] = getSettings(['cwd', 'build', 'app']);
 
   const realAppDir = join(cwd, appDir);
 

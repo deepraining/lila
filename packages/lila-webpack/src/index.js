@@ -4,7 +4,6 @@ import start from './start';
 import analyze from './analyze';
 import task from './task';
 import { getCmdOptions } from './cmd-options';
-import { defaultGetPages, defaultServePath } from './defaults';
 import { getAllPages } from './util';
 
 export { addCmdOption } from './cmd-options';
@@ -13,13 +12,13 @@ const { join } = path;
 
 export default lila => {
   const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
-  const [
-    cwd,
-    srcDir,
-    appDir,
-    getPages = defaultGetPages,
-    servePath = defaultServePath,
-  ] = getSettings(['cwd', 'srcDir', 'appDir', 'getPages', 'servePath']);
+  const [cwd, srcDir, appDir, getPages, servePath] = getSettings([
+    'cwd',
+    'src',
+    'app',
+    'getPages',
+    'servePath',
+  ]);
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
 
@@ -51,12 +50,11 @@ export default lila => {
     });
 
     command.action((page, extraPages, options) => {
+      const pages = [page, ...extraPages];
       runTasks({
-        pages: getAllPages({
-          pages: [page, ...extraPages],
-          getPages,
-          srcPath: realSrcDir,
-        }),
+        pages: getPages
+          ? getAllPages({ pages, getPages, srcPath: realSrcDir })
+          : pages,
         argv: pureArgv(options),
         cmd: 'build',
       });
@@ -74,12 +72,11 @@ export default lila => {
     });
 
     command.action((page, extraPages, options) => {
+      const pages = [page, ...extraPages];
       runTasks({
-        pages: getAllPages({
-          pages: [page, ...extraPages],
-          getPages,
-          srcPath: realSrcDir,
-        }),
+        pages: getPages
+          ? getAllPages({ pages, getPages, srcPath: realSrcDir })
+          : pages,
         argv: pureArgv(options),
         cmd: 'sync',
       });
@@ -144,6 +141,8 @@ export default lila => {
 
     command.action((page, options) => {
       const argv = pureArgv(options);
+
+      if (!servePath) throw new Error("setting [servePath] hasn't been set");
 
       dev({ page, argv, lila, serve: !0, servePath });
     });

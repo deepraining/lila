@@ -8,7 +8,7 @@ const { join } = path;
 
 export default (lila, webpack, { page, cmd, config }) => {
   const { getSettings } = lila;
-  const [cwd, srcDir, appDir] = getSettings(['cwd', 'srcDir', 'appDir']);
+  const [cwd, srcDir, appDir] = getSettings(['cwd', 'src', 'app']);
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
 
@@ -27,6 +27,8 @@ export default (lila, webpack, { page, cmd, config }) => {
 
   const isBuild = cmd === 'build' || cmd === 'sync' || cmd === 'start';
   const development = cmd === 'dev' || cmd === 'serve';
+
+  // todo: flow
 
   return {
     plugins: [

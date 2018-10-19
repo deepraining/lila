@@ -2,11 +2,12 @@
 
 ## 0.5.0 [2018-09-19]
 
-- Rewrite gulp tasks.
-- Remove `add` command.
+- Multiple packages.
+- Rewrite core.
 
 ## 0.4.2 [2018-09-10]
 
+- Remove `add` command.
 - Add `flow, flowRuntime` config options.
 
 ## 0.4.1 [2018-08-01]

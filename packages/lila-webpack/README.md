@@ -82,15 +82,11 @@ webpack => ({page, args, argv, cmd, config, lila}) => config
 dir => pages;
 ```
 
-Default value, see [defaultGetPages](./src/defaults.js#L11)
-
-### `servePath`: get js file path for command server
+### `servePath`: get serve js file path for command `serve`
 
 ```
 (page, srcDir) => path
 ```
-
-Default value, see [defaultServePath](./src/defaults.js#L26)
 
 ## extended configs
 
@@ -133,7 +129,7 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 - `home/about`: a single page
 - `home/*` or `home/all`: all pages under `home` directory
-- `*` or `all`: all pages of porject
+- `*` or `all`: all pages of project
 
 ## api
 
@@ -167,3 +163,7 @@ module.exports = lila => {
 ```
 
 - `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
+
+## node packages
+
+- [webpack](https://github.com/webpack/webpack): 4.x

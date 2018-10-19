@@ -9,10 +9,10 @@ export default (lila, webpack, { page, config }, key, value) => {
   const { getSettings } = lila;
   const [cwd, srcDir, buildDir, appDir, tmpDir] = getSettings([
     'cwd',
-    'srcDir',
-    'buildDir',
-    'appDir',
-    'tmpDir',
+    'src',
+    'build',
+    'app',
+    'tmp',
   ]);
   const realAppDir = join(cwd, appDir);
   const realSrcDir = join(realAppDir, srcDir);
