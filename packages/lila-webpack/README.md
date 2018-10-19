@@ -121,13 +121,13 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `port`: local server port, default `8090`
 
-### `browserSync`: custom [browser-sync](https://github.com/BrowserSync/browser-sync) config, default `{}`
+### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) config, default `{}`
 
-### `devMiddleware`: custom [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config, default `{ watchOptions: { ignored: /node_modules/ } }`
+### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config, default `{ watchOptions: { ignored: /node_modules/ } }`
 
-### `hotMiddleware`: custom [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config, default `{}`
+### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config, default `{}`
 
-### `bundleAnalyzer`: custom [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config, default `{ analyzerPort: 8190 }`
+### `bundleAnalyzer`: [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config, default `{ analyzerPort: 8190 }`
 
 ## page specification
 

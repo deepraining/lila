@@ -23,7 +23,7 @@ export default (lila, webpack, { page, cmd, config }) => {
   const realSrcDir = join(realAppDir, srcDir);
   const realBuildDir = join(realAppDir, buildDir);
 
-  const { staticServer = '', minCss = !1, minJs = !1, splitJs = {} } = config;
+  const { staticServer = '', minJs = !1, minCss = !1, splitJs = {} } = config;
 
   const dllConfigs = [];
   const dllPlugins = [];

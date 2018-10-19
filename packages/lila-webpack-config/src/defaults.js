@@ -1,4 +1,4 @@
-export const defaultFileSuffixes = [
+export const defaultExtensions = [
   'jpg',
   'jpeg',
   'png',
@@ -18,7 +18,8 @@ export const defaultMinHtmlOptions = {
   removeEmptyAttributes: !0,
   removeScriptTypeAttributes: !0,
   removeStyleLinkTypeAttributes: !0,
-  minifyJS: !1,
+  removeRedundantAttributes: !0,
+  minifyJS: !0,
   minifyCSS: !0,
 };
 

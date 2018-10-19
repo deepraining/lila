@@ -15,13 +15,13 @@ export const babelLoader = ({ babelImport, babelExclude }) => ({
   exclude: babelExclude,
 });
 
-export const urlLoader = ({ fileSuffixes }) => ({
+export const urlLoader = ({ extensions }) => ({
   loader: 'url-loader',
   options: {
     // 0 means infinite, put 1 here to disable base64.
     limit: 1,
   },
-  test: new RegExp(`\\.(${fileSuffixes.join('|')})$`),
+  test: new RegExp(`\\.(${extensions.join('|')})$`),
 });
 
 export const htmlLoader = () => ({

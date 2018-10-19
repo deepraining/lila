@@ -1,6 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { defaultFileSuffixes, defaultMinHtmlOptions } from './defaults';
+import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
 import { babelLoader, htmlLoader, urlLoader } from './rules';
 import { styleLoaders } from './make';
 
@@ -17,7 +17,7 @@ export default (lila, webpack, { page, cmd, config }) => {
   const {
     babelImport = [],
     babelExclude = [/node_modules/],
-    fileSuffixes = defaultFileSuffixes,
+    extensions = defaultExtensions,
     provide = {},
     define = {},
     alias = {},
@@ -40,7 +40,7 @@ export default (lila, webpack, { page, cmd, config }) => {
     module: {
       rules: [
         babelLoader({ babelImport, babelExclude }),
-        urlLoader({ fileSuffixes }),
+        urlLoader({ extensions }),
         htmlLoader(),
         ...styleLoaders(lila, webpack, { page, cmd, config }, isBuild),
       ],
