@@ -23,7 +23,7 @@ export default (dirs, base, json = {}) => {
 
   forEach(newJson, (value, key) => {
     if (json[key] !== value) {
-      changed.push(join(join(base, key)));
+      changed.push(join(base, key));
     }
   });
 

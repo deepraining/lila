@@ -12,15 +12,13 @@ const { join } = path;
 
 export default lila => {
   const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
-  const [cwd, srcDir, appDir, getPages, servePath] = getSettings([
+  const [cwd, srcDir, getPages, servePath] = getSettings([
     'cwd',
     'src',
-    'app',
     'getPages',
     'servePath',
   ]);
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
+  const realSrcDir = join(cwd, srcDir);
 
   // add dev command
   addCommand(commander => {

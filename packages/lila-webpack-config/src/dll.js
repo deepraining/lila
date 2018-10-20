@@ -7,16 +7,14 @@ const { join } = path;
 export default (lila, webpack, { page, config }, key, value) => {
   const { DllPlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, srcDir, buildDir, appDir, tmpDir] = getSettings([
+  const [cwd, srcDir, buildDir, tmpDir] = getSettings([
     'cwd',
     'src',
     'build',
-    'app',
     'tmp',
   ]);
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
-  const realBuildDir = join(realAppDir, buildDir);
+  const realSrcDir = join(cwd, srcDir);
+  const realBuildDir = join(cwd, buildDir);
 
   const {
     babelImport = [],

@@ -6,15 +6,9 @@ const { join } = path;
 export default (lila, webpack, { page, cmd, config }) => {
   const { HotModuleReplacementPlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, srcDir, devDir, appDir] = getSettings([
-    'cwd',
-    'src',
-    'dev',
-    'app',
-  ]);
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
-  const realDevDir = join(realAppDir, devDir);
+  const [cwd, srcDir, devDir] = getSettings(['cwd', 'src', 'dev']);
+  const realSrcDir = join(cwd, srcDir);
+  const realDevDir = join(cwd, devDir);
 
   const baseConfig = base(lila, webpack, { page, cmd, config });
 

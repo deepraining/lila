@@ -6,16 +6,6 @@ const settings = {
   src: 'src',
   dev: 'dev',
   build: 'build',
-  /**
-   * app dir
-   *
-   * @example
-   *
-   * ```
-   * app/(src,dev,build)
-   * ```
-   */
-  app: '',
   cwd,
   tmp,
 };

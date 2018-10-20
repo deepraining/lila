@@ -234,7 +234,6 @@ commander
 - `src`: `string`, source directory name, default `src`.
 - `dev`: `string`, development directory name, default `dev`.
 - `build`: `string`, build directory name, default `build`.
-- `app`: `string`, application directory name, for instance `app/(src,dev,build)`, default empty string.
 - `cwd`: `process.cwd()`, current working directory, and you should not modify it.
 - `tmp`: `cwd/.lila`, tmp directory of project, and you should not modify it.
 

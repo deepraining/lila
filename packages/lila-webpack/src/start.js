@@ -1,14 +1,9 @@
-import path from 'path';
 import browserSync from 'browser-sync';
 import { forceGet as forceGetMiddleware, makeMock } from './util';
 
-const { join } = path;
-
 export default ({ page, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, buildDir, appDir] = getSettings(['cwd', 'build', 'app']);
-
-  const realAppDir = join(cwd, appDir);
+  const [cwd, buildDir] = getSettings(['cwd', 'build']);
 
   const config = makeConfig({ page, cmd: 'start', argv });
 
@@ -21,7 +16,7 @@ export default ({ page, argv, lila }) => {
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
 
-  browserSyncConfig.server.baseDir = realAppDir;
+  browserSyncConfig.server.baseDir = cwd;
   browserSyncConfig.port = port;
   browserSyncConfig.startPath = `/${buildDir}/index.html`;
 
@@ -29,7 +24,7 @@ export default ({ page, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(realAppDir));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
 
   browserSync.init(browserSyncConfig);
 };

@@ -8,15 +8,9 @@ const { join } = path;
 
 export default (lila, webpack, { page, cmd, config }) => {
   const { getSettings } = lila;
-  const [cwd, srcDir, buildDir, appDir] = getSettings([
-    'cwd',
-    'src',
-    'build',
-    'app',
-  ]);
-  const realAppDir = join(cwd, appDir);
-  const realSrcDir = join(realAppDir, srcDir);
-  const realBuildDir = join(realAppDir, buildDir);
+  const [cwd, srcDir, buildDir] = getSettings(['cwd', 'src', 'build']);
+  const realSrcDir = join(cwd, srcDir);
+  const realBuildDir = join(cwd, buildDir);
 
   const { BannerPlugin } = webpack;
 

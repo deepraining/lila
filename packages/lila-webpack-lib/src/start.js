@@ -1,4 +1,3 @@
-import path from 'path';
 import webpack from 'webpack';
 import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
@@ -7,18 +6,13 @@ import browserSync from 'browser-sync';
 import { makeMock, forceGet as forceGetMiddleware } from './util';
 import { defaultDevMiddleware } from './defaults';
 
-const { join } = path;
-
 export default ({ page, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, devDir, appDir, webpackConfigGenerator] = getSettings([
+  const [cwd, devDir, webpackConfigGenerator] = getSettings([
     'cwd',
     'dev',
-    'app',
     'webpackConfigGenerator',
   ]);
-
-  const realAppDir = join(cwd, appDir);
 
   if (!webpackConfigGenerator)
     throw new Error('webpackConfigGenerator not configured');
@@ -50,7 +44,7 @@ export default ({ page, argv, lila }) => {
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
 
-  browserSyncConfig.server.baseDir = realAppDir;
+  browserSyncConfig.server.baseDir = cwd;
   browserSyncConfig.port = port;
   browserSyncConfig.startPath = `/${devDir}/index.html`;
 
@@ -58,7 +52,7 @@ export default ({ page, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(realAppDir));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
 
   devMiddlewareConfig.stats = 'errors-only';
   devMiddlewareConfig.publicPath = `/${devDir}/`;

@@ -27,15 +27,14 @@ const { moveSync, readFileSync, outputFileSync, copySync } = fse;
  * @returns {function(*)}
  */
 export const correctHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
   const { source = 'index.html', target = `${page}.html` } =
     (args && args[0]) || {};
 
   moveSync(
-    join(buildPath, source),
-    join(buildPath, typeof target === 'function' ? target(page) : target)
+    join(buildDir, source),
+    join(buildDir, typeof target === 'function' ? target(page) : target)
   );
 
   return cb();
@@ -56,16 +55,15 @@ export const correctHtml = ({ page, args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const replaceHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
 
   const { file = `${page}.html`, replace = [] } = (args && args[0]) || {};
 
   if (!Array.isArray(replace)) return cb();
 
   const filePath = join(
-    buildPath,
+    buildDir,
     typeof file === 'function' ? file(page) : file
   );
   let content = readFileSync(filePath, 'utf8');
@@ -96,16 +94,15 @@ export const replaceHtml = ({ page, args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const insertHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
 
   const { file = `${page}.html`, start, end } = (args && args[0]) || {};
 
   if (!start && !end) return cb();
 
   const filePath = join(
-    buildPath,
+    buildDir,
     typeof file === 'function' ? file(page) : file
   );
   let content = readFileSync(filePath, 'utf8');
@@ -133,16 +130,15 @@ export const insertHtml = ({ page, args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const convertHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
 
   const { file = `${page}.html`, ext = '' } = (args && args[0]) || {};
 
   if (!ext) return cb();
 
   const filePath = join(
-    buildPath,
+    buildDir,
     typeof file === 'function' ? file(page) : file
   );
 
@@ -166,16 +162,15 @@ export const convertHtml = ({ page, args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const backupHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
 
   const { suffix = new Date().getTime(), ext = 'html' } =
     (args && args[0]) || {};
 
   copySync(
-    join(buildPath, `${page}.${ext}`),
-    join(buildPath, `${page}.${suffix}.${ext}`)
+    join(buildDir, `${page}.${ext}`),
+    join(buildDir, `${page}.${suffix}.${ext}`)
   );
 
   return cb();
@@ -196,18 +191,17 @@ export const backupHtml = ({ page, args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const renameHtml = ({ page, args, lila }) => cb => {
-  const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const { getSetting } = lila;
+  const buildDir = getSetting('build');
 
   const { page: newPage = '', ext = 'html' } = (args && args[0]) || {};
 
   if (!newPage) return cb();
 
   moveSync(
-    join(buildPath, `${page}.${ext}`),
+    join(buildDir, `${page}.${ext}`),
     join(
-      buildPath,
+      buildDir,
       `${typeof newPage === 'function' ? newPage(page) : newPage}.${ext}`
     )
   );
@@ -235,7 +229,7 @@ const newCacheJson = {};
  */
 export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
+  const [buildDir, cwd] = getSettings(['build', 'cwd']);
 
   const { server, remotePath, extra = [], cache, cacheFileName = 'cache' } =
     (args && args[0]) || {};
@@ -243,7 +237,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   if (!server) throw new Error('server info not configured');
   if (!remotePath) throw new Error('remotePath not configured');
 
-  let src = [buildDir, ...extra].map(dir => `${appDir}/${dir}/**/*`);
+  let src = [buildDir, ...extra].map(dir => `${cwd}/${dir}/**/*`);
 
   if (cache) {
     const cacheFile = `${tmp}/${
@@ -252,11 +246,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
         : cacheFileName
     }.json`;
     const oldJson = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
-    const { json, changed } = changedFiles(
-      [buildDir, ...extra],
-      appDir,
-      oldJson
-    );
+    const { json, changed } = changedFiles([buildDir, ...extra], cwd, oldJson);
 
     src = changed;
     newCacheJson[page] = json;
@@ -264,7 +254,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
 
   const connect = new SSH(server);
 
-  return gulp.src(src, { base: appDir }).pipe(connect.dest(remotePath));
+  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
 };
 
 /**
@@ -312,8 +302,8 @@ export const saveCache = ({ page, args, argv, cmd }) => cb => {
  */
 export const syncHtml = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const [buildDir, cwd] = getSettings(['build', 'cwd']);
+  const buildPath = join(cwd, buildDir);
 
   const { server, remotePath, ext = 'html' } = (args && args[0]) || {};
 
@@ -323,7 +313,7 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
   const connect = new SSH(server);
 
   return gulp
-    .src(`${buildPath}/**/*.${ext}`, { base: appDir })
+    .src(`${buildPath}/**/*.${ext}`, { base: cwd })
     .pipe(connect.dest(remotePath));
 };
 
@@ -341,8 +331,8 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
  */
 export const delDev = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [devDir, appDir] = getSettings(['dev', 'app']);
-  const devPath = join(appDir, devDir);
+  const [devDir, cwd] = getSettings(['dev', 'cwd']);
+  const devPath = join(cwd, devDir);
 
   return del([devPath]);
 };
@@ -361,8 +351,8 @@ export const delDev = ({ lila }) => () => {
  */
 export const delBuild = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, appDir] = getSettings(['build', 'app']);
-  const buildPath = join(appDir, buildDir);
+  const [buildDir, cwd] = getSettings(['build', 'cwd']);
+  const buildPath = join(cwd, buildDir);
 
   return del([buildPath]);
 };
