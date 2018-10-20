@@ -1,12 +1,17 @@
 import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
-import { babelLoader, htmlLoader, urlLoader } from './rules';
-import { styleLoaders } from './make';
+import { defaultExtensions } from './defaults';
+import {
+  babelLoader,
+  cssLoader,
+  htmlLoader,
+  lessLoader,
+  sassLoader,
+  urlLoader,
+} from './rules';
 
 const { join } = path;
 
-export default (lila, webpack, { page, cmd, config }) => {
+export default (lila, webpack, { cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, appDir] = getSettings(['cwd', 'src', 'app']);
   const realAppDir = join(cwd, appDir);
@@ -21,30 +26,23 @@ export default (lila, webpack, { page, cmd, config }) => {
     provide = {},
     define = {},
     alias = {},
-    minHtml = !1,
-    minHtmlOptions = defaultMinHtmlOptions,
     flow = !1,
     flowRuntime = !1,
   } = config;
 
-  const isBuild = cmd === 'build' || cmd === 'sync' || cmd === 'start';
-  const development = cmd === 'dev' || cmd === 'serve';
+  const isBuild = cmd === 'build';
+  const development = cmd === 'start';
 
   return {
-    plugins: [
-      new ProvidePlugin(provide),
-      new DefinePlugin(define),
-      new HtmlWebpackPlugin({
-        template: `${realSrcDir}/${page}/index.html`,
-        minify: isBuild && minHtml ? minHtmlOptions : false,
-      }),
-    ],
+    plugins: [new ProvidePlugin(provide), new DefinePlugin(define)],
     module: {
       rules: [
         babelLoader({ babelImport, babelExclude, flow, flowRuntime }),
         urlLoader({ extensions }),
         htmlLoader(),
-        ...styleLoaders(lila, webpack, { page, cmd, config }, isBuild),
+        cssLoader(isBuild),
+        lessLoader(isBuild),
+        sassLoader(isBuild),
       ],
     },
     resolve: {

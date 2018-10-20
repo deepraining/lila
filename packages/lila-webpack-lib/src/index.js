@@ -1,12 +1,23 @@
+import path from 'path';
 import start from './start';
 import task from './task';
 import { getCmdOptions } from './cmd-options';
 
 export { addCmdOption } from './cmd-options';
 
+const { join } = path;
+
 export default lila => {
-  const { addCommand, pureArgv, registerTask, runTasks, getSetting } = lila;
-  const getPages = getSetting('getPages');
+  const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
+  const [cwd, srcDir, appDir, getPages] = getSettings([
+    'cwd',
+    'src',
+    'app',
+    'getPages',
+  ]);
+
+  const realAppDir = join(cwd, appDir);
+  const realSrcDir = join(realAppDir, srcDir);
 
   // add start command
   addCommand(commander => {
@@ -39,7 +50,7 @@ export default lila => {
       const realPages = pages.length ? pages : ['index'];
 
       runTasks({
-        pages: getPages ? getPages(realPages) : realPages,
+        pages: getPages ? getPages(realPages, realSrcDir) : realPages,
         argv: pureArgv(options),
         cmd: 'build',
       });

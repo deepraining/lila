@@ -36,6 +36,8 @@ lila start page
 lila build page1 page2 page3 ...
 ```
 
+If you run `lila build` directly, `index` page will be added, `lila build index`.
+
 ## extended tasks
 
 ### `@lila/webpack`: run webpack
@@ -55,7 +57,7 @@ webpack => ({page, args, argv, cmd, config, lila}) => config
 ### `getPages`: get all pages with imported pages, when you want to use `*, all` special mark
 
 ```
-pages => allPages;
+(pages, srcDir) => allPages;
 ```
 
 ## extended configs
