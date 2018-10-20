@@ -1,11 +1,11 @@
-# lila-webpack-lib
+# lila-rollup
 
-Lila webpack plugin for building a library.
+Lila rollup plugin.
 
 ## install
 
 ```
-npm install --save-dev lila-webpack-lib
+npm install --save-dev lila-rollup
 ```
 
 ## use
@@ -13,10 +13,10 @@ npm install --save-dev lila-webpack-lib
 In `lila.js`:
 
 ```
-const webpackPlugin = require('lila-webpack-lib');
+const rollupPlugin = require('lila-rollup');
 
 module.exports = lila => {
-  webpackPlugin(lila);
+  rollupPlugin(lila);
 
   ...
 };
@@ -40,18 +40,18 @@ If you run `lila build` directly, `index` page will be added, `lila build index`
 
 ## extended tasks
 
-### `@lila/webpack`: run webpack
+### `@lila/rollup`: run rollup
 
 ```
-'@lila/webpack'
+'@lila/rollup'
 ```
 
 ## extended settings
 
-### `webpackConfigGenerator`: generate webpack config
+### `rollupConfigGenerator`: generate rollup config
 
 ```
-webpack => ({page, args, argv, cmd, config, lila}) => config
+rollup => ({page, args, argv, cmd, config, lila}) => config
 ```
 
 ### `getPages`: get all pages with imported pages, when you want to use `*, all` special mark
@@ -91,19 +91,15 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) config, default `{}`
 
-### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config, default `{ watchOptions: { ignored: /node_modules/ } }`
-
-### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config, default `{}`
-
 ## api
 
-### `webpackPlugin`: main export function
+### `rollupPlugin`: main export function
 
 ```
-const webpackPlugin = require('lila-webpack-lib');
+const rollupPlugin = require('lila-rollup');
 
 module.exports = lila => {
-  webpackPlugin(lila);
+  rollupPlugin(lila);
 
   ...
 };
@@ -112,8 +108,8 @@ module.exports = lila => {
 ### `addCmdOption`: add option for command
 
 ```
-const webpackPlugin = require('lila-webpack-lib');
-const { addCmdOption } = webpackPlugin;
+const rollupPlugin = require('lila-rollup');
+const { addCmdOption } = rollupPlugin;
 
 module.exports = lila => {
   // writing format
@@ -130,4 +126,4 @@ module.exports = lila => {
 
 ## node packages
 
-- [webpack](https://github.com/webpack/webpack): 4.x
+- [rollup](https://github.com/rollup/rollup): 0.66
