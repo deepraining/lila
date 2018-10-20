@@ -16,7 +16,9 @@
     "build:webpack-config": "npm run build -- --name webpack-config",
     "build:webpack-lib": "npm run build -- --name webpack-lib",
     "build:webpack-lib-config": "npm run build -- --name webpack-lib-config",
-    "build:all": "npm run build -- --name cli,create,core,webpack,webpack-config,webpack-lib,webpack-lib-config"
+    "build:rollup": "npm run build -- --name rollup",
+    "build:rollup-config": "npm run build -- --name rollup-config",
+    "build:all": "npm run build -- --name all"
   },
   "devDependencies": {
     "eslint": "^5.6.1",

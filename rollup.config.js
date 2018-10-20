@@ -1,17 +1,22 @@
+import fs from 'fs';
 import minimist from 'minimist';
 import json from 'rollup-plugin-json';
 
+const { readdirSync } = fs;
+
 const argv = minimist(process.argv.slice(2));
-const names = argv.name.split(',');
+const { name } = argv;
+const names =
+  name === 'all'
+    ? readdirSync('packages')
+    : name
+        .split(',')
+        .map(n => (n === 'create' ? 'create-lila-app' : `lila-${n}`));
 
-const fullNames = names.map(
-  name => (name === 'create' ? 'create-lila-app' : `lila-${name}`)
-);
-
-export default fullNames.map(name => ({
-  input: `packages/${name}/src/index.js`,
+export default names.map(n => ({
+  input: `packages/${n}/src/index.js`,
   output: {
-    file: `packages/${name}/lib/index.js`,
+    file: `packages/${n}/lib/index.js`,
     format: 'cjs',
   },
   plugins: [json()],

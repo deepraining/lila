@@ -24,7 +24,7 @@ module.exports = lila => {
 
 ## extended settings
 
-### `getPages`: see [getPages](./src/settings.js#L8)
+### `getPages`: see [getPages](./src/settings.js#L6)
 
 `all, *` means all pages under `src`.
 
