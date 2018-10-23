@@ -17,8 +17,8 @@ export default (lila, rollup, { cmd, config }) => {
     nodeResolve = !1,
     flow = !1,
     flowRuntime = !1,
-    minJs = !1,
-    minCss = !1,
+    minJs = !0,
+    minCss = !0,
   } = config;
 
   const isBuild = cmd === 'build';

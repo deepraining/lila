@@ -27,6 +27,8 @@ export default (lila, webpack, { cmd, config }) => {
     alias = {},
     flow = !1,
     flowRuntime = !1,
+    minJs = !0,
+    devtool,
   } = config;
 
   const isBuild = cmd === 'build';
@@ -48,6 +50,14 @@ export default (lila, webpack, { cmd, config }) => {
       modules: [realSrcDir, 'node_modules'],
       alias,
     },
+    optimization: {
+      minimize: isBuild && minJs,
+    },
+    // cheap-source-map options don't work with uglifyjs-webpack-plugin
+    devtool:
+      devtool ||
+      (development ? 'cheap-module-eval-source-map' : 'module-source-map'),
+    // production mode provide uglifyjs-webpack-plugin by default
     mode: development ? 'development' : 'production',
   };
 };

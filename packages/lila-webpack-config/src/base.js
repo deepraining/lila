@@ -20,14 +20,17 @@ export default (lila, webpack, { page, cmd, config }) => {
     provide = {},
     define = {},
     alias = {},
-    minHtml = !1,
+    minHtml = !0,
     minHtmlOptions = defaultMinHtmlOptions,
     flow = !1,
     flowRuntime = !1,
+    minJs = !0,
+    devtool,
   } = config;
 
   const isBuild = cmd === 'build' || cmd === 'sync' || cmd === 'start';
   const development = cmd === 'dev' || cmd === 'serve';
+  const noDevtool = cmd === 'analyze';
 
   return {
     plugins: [
@@ -50,6 +53,15 @@ export default (lila, webpack, { page, cmd, config }) => {
       modules: [realSrcDir, 'node_modules'],
       alias,
     },
+    optimization: {
+      minimize: isBuild && minJs,
+    },
+    // cheap-source-map options don't work with uglifyjs-webpack-plugin
+    devtool: noDevtool
+      ? undefined
+      : devtool ||
+        (development ? 'cheap-module-eval-source-map' : 'module-source-map'),
+    // production mode provide uglifyjs-webpack-plugin by default
     mode: development ? 'development' : 'production',
   };
 };

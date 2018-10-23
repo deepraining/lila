@@ -1,5 +1,4 @@
 import path from 'path';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import { babelLoader } from './rules';
 
 const { join } = path;
@@ -20,7 +19,8 @@ export default (lila, webpack, { page, config }, key, value) => {
     babelImport = [],
     babelExclude = [/node_modules/],
     alias = {},
-    minJs = !1,
+    minJs = !0,
+    devtool,
   } = config;
 
   const plugins = [
@@ -29,15 +29,6 @@ export default (lila, webpack, { page, config }, key, value) => {
       path: join(tmpDir, `dll/${page}/${key}.json`),
     }),
   ];
-
-  if (minJs)
-    plugins.push(
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          output: { comments: false },
-        },
-      })
-    );
 
   return {
     entry: Array.isArray(value) ? value : [value],
@@ -55,6 +46,10 @@ export default (lila, webpack, { page, config }, key, value) => {
       modules: [realSrcDir, 'node_modules'],
       alias,
     },
+    optimization: {
+      minimize: minJs,
+    },
+    devtool: devtool || 'module-source-map',
     mode: 'production',
   };
 };

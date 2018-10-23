@@ -46,9 +46,9 @@ module.exports = lila => {
 
 ### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime), default `false`
 
-### `minJs`: whether minify js, default `false`
+### `minJs`: whether minify js, default `true`
 
-### `minCss`: whether minify css, default `false`
+### `minCss`: whether minify css, default `true`
 
 ### `filename`: library file name, default `index`
 

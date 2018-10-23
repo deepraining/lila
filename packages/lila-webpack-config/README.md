@@ -73,7 +73,7 @@ module.exports = lila => {
 - `https://www.static.com/dir`: a sub directory of a standalone static server
 - `//www.static.com/dir/sub_dir`: another sub directory of a standalone static server
 
-### `minHtml`: whether minify html, default `false`
+### `minHtml`: whether minify html, default `true`
 
 ### `minHtmlOptions`: [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config, default:
 
@@ -91,11 +91,16 @@ module.exports = lila => {
 }
 ```
 
-### `minJs`: whether minify js, default `false`
+### `minCss`: whether minify css, default `true`
 
-### `minCss`: whether minify css, default `false`
+### `minJs`: whether minify js, default `true`
 
 ### `splitJs`: split one bundle js to many pieces, default `{}`
+
+### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config, default:
+
+- `cmd: dev, serve`: `cheap-module-eval-source-map`
+- `cmd: build, sync, start`: `module-source-map`
 
 ### `rules`: extra webpack rules, default `[]`
 

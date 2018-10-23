@@ -1,6 +1,5 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import base from './base';
 
@@ -15,8 +14,7 @@ export default (lila, webpack, { page, cmd, config }) => {
   const { BannerPlugin } = webpack;
 
   const {
-    minJs = !1,
-    minCss = !1,
+    minCss = !0,
     filename = 'index',
     library = 'Index',
     libraryTarget = 'umd',
@@ -38,15 +36,6 @@ export default (lila, webpack, { page, cmd, config }) => {
       new OptimizeCssAssetsPlugin({
         cssProcessorPluginOptions: {
           preset: ['default', { discardComments: { removeAll: true } }],
-        },
-      })
-    );
-
-  if (minJs)
-    baseConfig.plugins.push(
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          output: { comments: false },
         },
       })
     );

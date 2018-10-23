@@ -23,6 +23,7 @@ export default (lila, rollup, { page, cmd, config }) => {
     output: {
       file: `${realDevDir}/index.js`,
       format: 'cjs',
+      sourcemap: !0,
     },
     ...baseConfig,
   };

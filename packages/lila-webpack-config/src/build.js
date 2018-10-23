@@ -1,7 +1,6 @@
 import path from 'path';
 import forEach from 'lodash/forEach';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import dll from './dll';
@@ -21,7 +20,7 @@ export default (lila, webpack, { page, cmd, config }) => {
   const realSrcDir = join(cwd, srcDir);
   const realBuildDir = join(cwd, buildDir);
 
-  const { staticServer = '', minJs = !1, minCss = !1, splitJs = {} } = config;
+  const { staticServer = '', minCss = !0, splitJs = {} } = config;
 
   const dllConfigs = [];
   const dllPlugins = [];
@@ -53,15 +52,6 @@ export default (lila, webpack, { page, cmd, config }) => {
       new OptimizeCssAssetsPlugin({
         cssProcessorPluginOptions: {
           preset: ['default', { discardComments: { removeAll: true } }],
-        },
-      })
-    );
-
-  if (minJs)
-    baseConfig.plugins.push(
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          output: { comments: false },
         },
       })
     );
