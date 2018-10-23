@@ -90,11 +90,11 @@ dir => pages;
 
 ## extended configs
 
-### `forceGet`: force all ajax methods as `get`, default `true`
+### `forceGet`: `bool`, default `true`, force all ajax methods as `get`
 
 Normally, only `get` method can access static file, and `post, put, delete ...` will cause `404`.
 
-### `mock`: use js files to generate mock data, default `true`
+### `mock`: `bool`, default `true`, use js files to generate mock data
 
 In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
 
@@ -115,15 +115,15 @@ module.exports = (req, res) => {
 
 Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ...`.
 
-### `port`: local server port, default `8090`
+### `port`: `number`, default `8090`, local server port
 
-### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) config, default `{}`
+### `browserSync`: `{}`, default `{}`, [browser-sync](https://github.com/BrowserSync/browser-sync) config
 
-### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config, default `{ watchOptions: { ignored: /node_modules/ } }`
+### `devMiddleware`: `{}`, default `{ watchOptions: { ignored: /node_modules/ } }`, [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config
 
-### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config, default `{}`
+### `hotMiddleware`: `{}`, default `{}`, [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config
 
-### `bundleAnalyzer`: [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config, default `{ analyzerPort: 8190 }`
+### `bundleAnalyzer`: `{}`, default `{ analyzerPort: 8190 }`, [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config
 
 ## page specification
 

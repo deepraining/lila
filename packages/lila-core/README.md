@@ -178,7 +178,7 @@ lila.addCommand(initializer);
 commander => { ... }
 ```
 
-- `@param/commander`: `object`, see [commander.js](https://github.com/tj/commander.js)
+- `@param/commander`: `{}`, see [commander.js](https://github.com/tj/commander.js)
 
 ### `lila.getCommands`: get added command initializers
 
@@ -231,9 +231,9 @@ commander
 
 ## built-in settings
 
-- `src`: `string`, source directory name, default `src`.
-- `dev`: `string`, development directory name, default `dev`.
-- `build`: `string`, build directory name, default `build`.
+- `src`: `string`, default `src`, source directory name.
+- `dev`: `string`, default `dev`, development directory name.
+- `build`: `string`, default `build`, build directory name.
 - `cwd`: `process.cwd()`, current working directory, and you should not modify it.
 - `tmp`: `cwd/.lila`, tmp directory of project, and you should not modify it.
 
@@ -249,8 +249,8 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/correct-html', {source, target}]
 ```
 
-- `source`: `string`, source html file, default `index.html`.
-- `target`: `string|function`, target html file, default `${page}.html`. It can be a function, `page => target`.
+- `source`: `string`, default `index.html`, source html file.
+- `target`: `string|function`, default `${page}.html`, target html file. It can be a function, `page => target`.
 
 ### `@lila/replace-html`: replace html content
 
@@ -258,7 +258,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/replace-html', {file, replace: [{target, replacement}]}]
 ```
 
-- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
 - `replace`: `[]`, options to replace.
   - `target`: `string|RegExp`, target to be replaced.
   - `replacement`: `string`, string to replace.
@@ -269,7 +269,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/insert-html', {file, start, end}]
 ```
 
-- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
 - `start`: `string`, content to prepend.
 - `end`: `string`, content to append.
 
@@ -279,7 +279,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/convert-html', {file, ext}]
 ```
 
-- `file`: `string|function`, html file to handle, default `${page}.html`. It can be a function, `page => file`.
+- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
 - `ext`: `string`, extension name, like `php, jsp`.
 
 ### `@lila/backup-html`: backup html file
@@ -292,8 +292,8 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/backup-html', {suffix, ext}]
 ```
 
-- `suffix`: `string`, `index.html -> index.${suffix}.html`, default `(new Date()).getTime()`.
-- `ext`: `string`, html file extension, default `html`.
+- `suffix`: `string`, default `(new Date()).getTime()`, `index.html -> index.${suffix}.html`.
+- `ext`: `string`, default `html`, html file extension.
 
 ### `@lila/rename-html`: rename html path
 
@@ -302,7 +302,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 
 - `page`: `string|function`, new page to rename to. It can be a function, `page => newPage`.
-- `ext`: `string`, html file extension, default `html`.
+- `ext`: `string`, default `html`, html file extension.
 
 ### `@lila/sync-all`: sync all static resources to remote server
 
@@ -313,9 +313,9 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
 - `extra`: `string[]`, extra directories to upload, same level of `build`.
-- `cache`: `bool`, whether cache uploading record, thus next time will only upload changed files, default `false`.
-- `cacheFileName`: `string|function`, file name to record cache, default `cache`. It can be a function, `({page, argv, cmd}) => fileName`.
-- `sourceMap`: `bool`, whether to upload sourcemap files, default `false`.
+- `cache`: `bool`, default `false`, whether cache uploading record, thus next time will only upload changed files.
+- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({page, argv, cmd}) => fileName`.
+- `sourceMap`: `bool`, default `false`, whether to upload sourcemap files.
 
 ### `@lila/save-cache`: save cache after sync-all task
 
@@ -325,7 +325,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/save-cache', {cacheFileName}]
 ```
 
-- `cacheFileName`: `string|function`, file name to record cache, default `cache`. It can be a function, `({page, argv, cmd}) => fileName`.
+- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({page, argv, cmd}) => fileName`.
 
 ### `@lila/sync-html`: sync html files to remote server
 
@@ -335,7 +335,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
-- `ext`: `string`, html file extension, default `html`.
+- `ext`: `string`, default `html`, html file extension.
 
 ### `@lila/sync-sourcemap`: sync sourcemap files to remote server
 

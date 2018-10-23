@@ -30,31 +30,31 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config, default `[]`
+### `babelImport`: `[]`, default `[]`, [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude, default `[/node_modules/]`
+### `babelExclude`: `[]`, default `[/node_modules/]`, [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `banner`: [rollup](https://rollupjs.org/guide/en) output banner, default empty string
+### `banner`: `string`, default empty string, [rollup](https://rollupjs.org/guide/en) output banner
 
-### `alias`: [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config, default `{}`
+### `alias`: `{}`, default `{}`, [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
 
-### `inject`: [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config, default `{}`
+### `inject`: `{}`, default `{}`, [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config
 
-### `nodeResolve`: whether to use [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve), default `false`
+### `nodeResolve`: `bool`, default `false`, whether to use [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)
 
-### `flow`: whether to use [flow](https://github.com/facebook/flow), default `false`
+### `flow`: `bool`, default `false`, whether to use [flow](https://github.com/facebook/flow)
 
-### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime), default `false`
+### `flowRuntime`: `bool`, default `false`, whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
 
-### `minJs`: whether minify js, default `true`
+### `minJs`: `bool`, default `true`, whether minify js
 
-### `minCss`: whether minify css, default `true`
+### `minCss`: `bool`, default `true`, whether minify css
 
-### `filename`: library file name, default `index`
+### `filename`: `string`, default `index`, library file name
 
-### `name`: [rollup](https://rollupjs.org/guide/en) output name, default `Index`
+### `name`: `string`, default `Index`, [rollup](https://rollupjs.org/guide/en) output name
 
-### `plugins`: extra rollup plugins, default `[]`
+### `plugins`: `[]`, default `[]`, extra rollup plugins
 
 ## files of a page
 
