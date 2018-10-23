@@ -13,6 +13,7 @@ import {
   syncAll,
   saveCache,
   syncHtml,
+  syncSourceMap,
   delDev,
   delBuild,
 } from './built-in-tasks';
@@ -26,6 +27,7 @@ registerTask('@lila/rename-html', renameHtml);
 registerTask('@lila/sync-all', syncAll);
 registerTask('@lila/save-cache', saveCache);
 registerTask('@lila/sync-html', syncHtml);
+registerTask('@lila/sync-sourcemap', syncSourceMap);
 registerTask('@lila/del-dev', delDev);
 registerTask('@lila/del-build', delBuild);
 

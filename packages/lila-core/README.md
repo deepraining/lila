@@ -307,7 +307,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ### `@lila/sync-all`: sync all static resources to remote server
 
 ```
-['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName}]
+['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
 ```
 
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
@@ -315,6 +315,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `extra`: `string[]`, extra directories to upload, same level of `build`.
 - `cache`: `bool`, whether cache uploading record, thus next time will only upload changed files, default `false`.
 - `cacheFileName`: `string|function`, file name to record cache, default `cache`. It can be a function, `({page, argv, cmd}) => fileName`.
+- `sourceMap`: `bool`, whether to upload sourcemap files, default `false`.
 
 ### `@lila/save-cache`: save cache after sync-all task
 
@@ -335,6 +336,15 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
 - `ext`: `string`, html file extension, default `html`.
+
+### `@lila/sync-sourcemap`: sync sourcemap files to remote server
+
+```
+['@lila/sync-sourcemap', {server, remotePath}]
+```
+
+- `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `string`, remote server path to upload to.
 
 ### `@lila/del-dev`: delete dev directory
 

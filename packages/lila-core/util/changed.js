@@ -8,11 +8,13 @@ const { readFileSync } = fs;
 const { relative, join } = path;
 const { eachFileFilterSync } = rd;
 
-export default (dirs, base, json = {}) => {
+export default (dirs, base, json = {}, exclude = []) => {
   const newJson = {};
 
   dirs.forEach(dir => {
     eachFileFilterSync(dir, file => {
+      if (exclude.find(ext => file.slice(0 - ext.length) === ext)) return;
+
       const key = relative(base, file);
       const content = readFileSync(file);
       newJson[key] = md5(content, 'hex');
