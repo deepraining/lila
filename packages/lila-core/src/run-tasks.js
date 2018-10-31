@@ -3,14 +3,14 @@ import app from './app';
 import tasks from './tasks';
 import run from './run';
 
-export default ({ pages, argv, cmd }, successCB, errorCB) => {
+export default ({ entries, argv, cmd }, successCB, errorCB) => {
   const { lila } = app;
   const { makeConfig } = lila;
 
   const runTasks = [];
 
-  pages.forEach(page => {
-    const config = makeConfig({ page, cmd, argv });
+  entries.forEach(entry => {
+    const config = makeConfig({ entry, cmd, argv });
 
     const { tasks: importTasks } = config;
     const taskCount = {};
@@ -34,14 +34,14 @@ export default ({ pages, argv, cmd }, successCB, errorCB) => {
       if (taskCount[taskName]) taskCount[taskName] += 1;
       else taskCount[taskName] = 1;
 
-      // maybe one task executed multiple times in one page
-      const realTaskName = `${page}:${taskName}${
+      // maybe one task executed multiple times in one entry
+      const realTaskName = `${entry}:${taskName}${
         taskCount[taskName] > 1 ? `:${taskCount[taskName]}` : ''
       }`;
 
       gulp.task(
         realTaskName,
-        generator({ page, args, argv, cmd, config, lila, gulp })
+        generator({ entry, args, argv, cmd, config, lila, gulp })
       );
 
       runTasks.push(realTaskName);
