@@ -1,7 +1,7 @@
 import rollup from 'rollup';
 import run from './run';
 
-export default ({ page, args, argv, cmd, config, lila }) => cb => {
+export default ({ entry, args, argv, cmd, config, lila }) => cb => {
   const { getSetting } = lila;
   const rollupConfigGenerator = getSetting('rollupConfigGenerator');
 
@@ -14,7 +14,7 @@ export default ({ page, args, argv, cmd, config, lila }) => cb => {
     throw new Error('rollupConfigGenerator should return a function');
 
   const rollupConfig = makeRollupConfig({
-    page,
+    entry,
     args,
     argv,
     cmd,

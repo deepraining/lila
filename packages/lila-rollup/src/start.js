@@ -8,7 +8,7 @@ import { makeMock, forceGet as forceGetMiddleware } from './util';
 
 const { join } = path;
 
-export default ({ page, argv, lila }) => {
+export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
   const [cwd, devDir, rollupConfigGenerator] = getSettings([
     'cwd',
@@ -26,9 +26,9 @@ export default ({ page, argv, lila }) => {
   if (typeof makeRollupConfig !== 'function')
     throw new Error('rollupConfigGenerator should return a function');
 
-  const config = makeConfig({ page, cmd: 'start', argv });
+  const config = makeConfig({ entry, cmd: 'start', argv });
   const rollupConfig = makeRollupConfig({
-    page,
+    entry,
     argv,
     cmd: 'start',
     config,

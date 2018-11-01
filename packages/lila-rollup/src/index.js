@@ -9,42 +9,42 @@ const { join } = path;
 
 export default lila => {
   const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
-  const [cwd, srcDir, getPages] = getSettings(['cwd', 'src', 'getPages']);
+  const [cwd, srcDir, getEntries] = getSettings(['cwd', 'src', 'getEntries']);
 
   const realSrcDir = join(cwd, srcDir);
 
   // add start command
   addCommand(commander => {
     const command = commander
-      .command('start <page>')
-      .description('start a local server to develop a page');
+      .command('start <entry>')
+      .description('start a local server to develop a entry');
 
     getCmdOptions('start').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, options) => {
+    command.action((entry, options) => {
       const argv = pureArgv(options);
 
-      start({ page, argv, lila });
+      start({ entry, argv, lila });
     });
   });
 
   // add build command
   addCommand(commander => {
     const command = commander
-      .command('build [pages...]')
+      .command('build [entries...]')
       .description('pack source codes to distribution bundles');
 
     getCmdOptions('build').forEach(value => {
       command.option(...value);
     });
 
-    command.action((pages, options) => {
-      const realPages = pages.length ? pages : ['index'];
+    command.action((entries, options) => {
+      const realEntries = entries.length ? entries : ['index'];
 
       runTasks({
-        pages: getPages ? getPages(realPages, realSrcDir) : realPages,
+        entries: getEntries ? getEntries(realEntries, realSrcDir) : realEntries,
         argv: pureArgv(options),
         cmd: 'build',
       });

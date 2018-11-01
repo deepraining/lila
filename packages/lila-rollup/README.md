@@ -24,19 +24,19 @@ module.exports = lila => {
 
 ## extended commands
 
-### `start`: start a local server to develop a page
+### `start`: start a local server to develop a entry
 
 ```
-lila start page
+lila start entry
 ```
 
 ### `build`: pack source codes to distribution bundles
 
 ```
-lila build page1 page2 page3 ...
+lila build entry1 entry2 entry3 ...
 ```
 
-If you run `lila build` directly, `index` page will be added, `lila build index`.
+If you run `lila build` directly, `index` entry will be added, `lila build index`.
 
 ## extended tasks
 
@@ -51,13 +51,13 @@ If you run `lila build` directly, `index` page will be added, `lila build index`
 ### `rollupConfigGenerator`: generate rollup config
 
 ```
-rollup => ({page, args, argv, cmd, config, lila}) => config
+rollup => ({entry, args, argv, cmd, config, lila}) => config
 ```
 
-### `getPages`: get all pages with imported pages, when you want to use `*, all` special mark
+### `getEntries`: get all entries with imported entries, when you want to use `*, all` special mark
 
 ```
-(pages, srcDir) => allPages;
+(entries, srcDir) => allEntries;
 ```
 
 ## extended configs
