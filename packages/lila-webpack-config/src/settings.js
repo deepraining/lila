@@ -14,7 +14,7 @@ export const getEntries = dir => {
     const htmlFile = `${dirPath}/index.html`;
     const jsFile = `${dirPath}/index.js`;
 
-    // Both `index.html` and `index.js` existing, means this directory is a entry's workspace.
+    // Both `index.html` and `index.js` existing, means this directory is an entry's workspace.
     if (existsSync(htmlFile) && existsSync(jsFile)) {
       entries.push(correctSlash(relative(dir, dirPath)));
     }

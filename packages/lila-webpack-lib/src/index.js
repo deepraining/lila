@@ -17,7 +17,7 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('start <entry>')
-      .description('start a local server to develop a entry');
+      .description('start a local server to develop an entry');
 
     getCmdOptions('start').forEach(value => {
       command.option(...value);

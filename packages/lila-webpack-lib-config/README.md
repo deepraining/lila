@@ -69,13 +69,13 @@ module.exports = lila => {
 
 ### `plugins`: `[]`, default `[]`, extra webpack plugins
 
-## files of a entry
+## files of an entry
 
 A entry has a standalone directory, also called workspace.
 
 ### for `build` command
 
-For `build` command, a entry has at least a `index.js` file.
+For `build` command, an entry has at least a `index.js` file.
 
 If entry is `index`, its workspace is `src`:
 
@@ -98,7 +98,7 @@ Others(entry is `main`), its workspace is `src/main`:
 
 ### for `start` command
 
-For `start` command, a entry has at least a `index.html` file and a `index.js` file.
+For `start` command, an entry has at least a `index.html` file and a `index.js` file.
 
 If entry is `example`, its workspace is `example`:
 

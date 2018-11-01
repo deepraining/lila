@@ -24,7 +24,7 @@ module.exports = lila => {
 
 ## extended commands
 
-### `dev`: start a local server to develop a entry
+### `dev`: start a local server to develop an entry
 
 ```
 lila dev entry
@@ -54,7 +54,7 @@ lila start entry
 lila analyze entry
 ```
 
-### `serve`: simulate a backend environment to start a local server to develop a entry
+### `serve`: simulate a backend environment to start a local server to develop an entry
 
 ```
 lila serve entry

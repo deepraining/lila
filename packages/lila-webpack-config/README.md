@@ -106,7 +106,7 @@ module.exports = lila => {
 
 ### `plugins`: `[]`, default `[]`, extra webpack plugins
 
-## files of a entry
+## files of an entry
 
 A entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
 
@@ -120,7 +120,7 @@ A entry has a standalone directory(`src/home/about/` if entry `home/about`), als
             |-- other files and directories
 ```
 
-It's recommended to place all files of a entry to its workspace.
+It's recommended to place all files of an entry to its workspace.
 
 ## built-in rules
 
