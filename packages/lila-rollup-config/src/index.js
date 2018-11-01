@@ -1,17 +1,17 @@
 import start from './start';
 import build from './build';
-import { getPages } from './settings';
+import { getEntries } from './settings';
 
 export default lila => {
   const { setSetting } = lila;
 
-  setSetting('rollupConfigGenerator', rollup => ({ page, cmd, config }) => {
+  setSetting('rollupConfigGenerator', rollup => ({ entry, cmd, config }) => {
     let rollupConfig = {};
 
     if (cmd === 'start')
-      rollupConfig = start(lila, rollup, { page, cmd, config });
+      rollupConfig = start(lila, rollup, { entry, cmd, config });
     if (cmd === 'build')
-      rollupConfig = build(lila, rollup, { page, cmd, config });
+      rollupConfig = build(lila, rollup, { entry, cmd, config });
 
     const { plugins = [] } = config;
 
@@ -21,5 +21,5 @@ export default lila => {
     return rollupConfig;
   });
 
-  setSetting('getPages', getPages);
+  setSetting('getEntries', getEntries);
 };
