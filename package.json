@@ -12,6 +12,7 @@
     "build:cli": "npm run build -- --name cli",
     "build:create": "npm run build -- --name create",
     "build:core": "npm run build -- --name core",
+    "build:tasks": "npm run build -- --name tasks",
     "build:webpack": "npm run build -- --name webpack",
     "build:webpack-config": "npm run build -- --name webpack-config",
     "build:webpack-lib": "npm run build -- --name webpack-lib",

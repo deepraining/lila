@@ -1,7 +1,7 @@
 {
-  "name": "lila-core",
+  "name": "lila-tasks",
   "version": "0.5.0",
-  "description": "lila core",
+  "description": "lila built-in tasks",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
   "homepage": "https://github.com/senntyou/lila",
@@ -9,7 +9,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-core",
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-tasks",
   "keywords": [
     "web",
     "frontend",
@@ -33,11 +33,9 @@
   ],
   "scripts": {},
   "dependencies": {
-    "chalk": "^2.4.1",
     "crypto-md5": "^1.0.0",
     "del": "^3.0.0",
     "fs-extra": "^7.0.0",
-    "gulp": "^4.0.0",
     "gulp-ssh": "^0.7.0",
     "lodash": "^4.17.11",
     "rd": "^2.0.1"
