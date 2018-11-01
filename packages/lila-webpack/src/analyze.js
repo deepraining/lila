@@ -7,7 +7,7 @@ import { error, warn } from '../../../util/logger';
 const { red, yellow } = chalk;
 const { BundleAnalyzerPlugin } = webpackBundleAnalyzer;
 
-export default ({ page, argv, lila }) => {
+export default ({ entry, argv, lila }) => {
   const { getSetting, makeConfig } = lila;
   const webpackConfigGenerator = getSetting('webpackConfigGenerator');
 
@@ -19,9 +19,9 @@ export default ({ page, argv, lila }) => {
   if (typeof makeWebpackConfig !== 'function')
     throw new Error('webpackConfigGenerator should return a function');
 
-  const config = makeConfig({ page, cmd: 'analyze', argv });
+  const config = makeConfig({ entry, cmd: 'analyze', argv });
   const webpackConfig = makeWebpackConfig({
-    page,
+    entry,
     argv,
     cmd: 'analyze',
     config,

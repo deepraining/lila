@@ -26,7 +26,7 @@ module.exports = lila => {
 
 ### `analyze`: `string`, default `analyze`, temporary directory for command `analyze`
 
-### `getPages`: see [getPages](./src/settings.js#L11)
+### `getEntries`: see [getEntries](./src/settings.js#L11)
 
 ### `servePath`: see [servePath](./src/settings.js#L26)
 
@@ -106,9 +106,9 @@ module.exports = lila => {
 
 ### `plugins`: `[]`, default `[]`, extra webpack plugins
 
-## files of a page
+## files of a entry
 
-A page has a standalone directory(`src/home/about/` if page `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
+A entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
 
 ```
 |-- src/
@@ -120,7 +120,7 @@ A page has a standalone directory(`src/home/about/` if page `home/about`), also 
             |-- other files and directories
 ```
 
-It's recommended to place all files of a page to its workspace.
+It's recommended to place all files of a entry to its workspace.
 
 ## built-in rules
 

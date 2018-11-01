@@ -8,7 +8,7 @@ import base from './base';
 
 const { join } = path;
 
-export default (lila, webpack, { page, cmd, config }) => {
+export default (lila, webpack, { entry, cmd, config }) => {
   const { DllReferencePlugin } = webpack;
   const { getSettings } = lila;
   const [cwd, srcDir, buildDir, tmpDir] = getSettings([
@@ -25,15 +25,15 @@ export default (lila, webpack, { page, cmd, config }) => {
   const dllConfigs = [];
   const dllPlugins = [];
   forEach(splitJs, (value, key) => {
-    dllConfigs.push(dll(lila, webpack, { page, cmd, config }, key, value));
+    dllConfigs.push(dll(lila, webpack, { entry, cmd, config }, key, value));
     dllPlugins.push(
       new DllReferencePlugin({
-        manifest: join(tmpDir, `dll/${page}/${key}.json`),
+        manifest: join(tmpDir, `dll/${entry}/${key}.json`),
       })
     );
   });
 
-  const baseConfig = base(lila, webpack, { page, cmd, config });
+  const baseConfig = base(lila, webpack, { entry, cmd, config });
 
   baseConfig.plugins.push(
     // css standalone
@@ -59,7 +59,7 @@ export default (lila, webpack, { page, cmd, config }) => {
   if (dllPlugins.length) baseConfig.plugins.push(...dllPlugins);
 
   const buildConfig = {
-    entry: `${realSrcDir}/${page}/index.js`,
+    entry: `${realSrcDir}/${entry}/index.js`,
     output: {
       path: realBuildDir,
       filename: '[chunkhash].js',

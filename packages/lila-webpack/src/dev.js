@@ -6,7 +6,7 @@ import browserSync from 'browser-sync';
 import { makeMock, forceGet as forceGetMiddleware, makeServe } from './util';
 import { defaultDevMiddleware } from './defaults';
 
-export default ({ page, argv, lila, serve, servePath }) => {
+export default ({ entry, argv, lila, serve, servePath }) => {
   const { getSettings, makeConfig } = lila;
   const [cwd, srcDir, devDir, webpackConfigGenerator] = getSettings([
     'cwd',
@@ -23,9 +23,9 @@ export default ({ page, argv, lila, serve, servePath }) => {
   if (typeof makeWebpackConfig !== 'function')
     throw new Error('webpackConfigGenerator should return a function');
 
-  const config = makeConfig({ page, cmd: 'dev', argv });
+  const config = makeConfig({ entry, cmd: 'dev', argv });
   const webpackConfig = makeWebpackConfig({
-    page,
+    entry,
     argv,
     cmd: 'dev',
     config,
@@ -59,7 +59,7 @@ export default ({ page, argv, lila, serve, servePath }) => {
       makeServe({
         root: cwd,
         devDir,
-        servePath: servePath(page, srcDir),
+        servePath: servePath(entry, srcDir),
       })
     );
 

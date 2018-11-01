@@ -4,7 +4,7 @@ import start from './start';
 import analyze from './analyze';
 import task from './task';
 import { getCmdOptions } from './cmd-options';
-import { getAllPages } from './util';
+import { getAllEntries } from './util';
 
 export { addCmdOption } from './cmd-options';
 
@@ -12,10 +12,10 @@ const { join } = path;
 
 export default lila => {
   const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
-  const [cwd, srcDir, getPages, servePath] = getSettings([
+  const [cwd, srcDir, getEntries, servePath] = getSettings([
     'cwd',
     'src',
-    'getPages',
+    'getEntries',
     'servePath',
   ]);
   const realSrcDir = join(cwd, srcDir);
@@ -23,36 +23,36 @@ export default lila => {
   // add dev command
   addCommand(commander => {
     const command = commander
-      .command('dev <page>')
-      .description('start a local server to develop a page');
+      .command('dev <entry>')
+      .description('start a local server to develop a entry');
 
     getCmdOptions('dev').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, options) => {
+    command.action((entry, options) => {
       const argv = pureArgv(options);
 
-      dev({ page, argv, lila });
+      dev({ entry, argv, lila });
     });
   });
 
   // add build command
   addCommand(commander => {
     const command = commander
-      .command('build <page> [extraPages...]')
+      .command('build <entry> [extraEntries...]')
       .description('pack source codes to production bundles');
 
     getCmdOptions('build').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, extraPages, options) => {
-      const pages = [page, ...extraPages];
+    command.action((entry, extraEntries, options) => {
+      const entries = [entry, ...extraEntries];
       runTasks({
-        pages: getPages
-          ? getAllPages({ pages, getPages, srcPath: realSrcDir })
-          : pages,
+        entries: getEntries
+          ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
+          : entries,
         argv: pureArgv(options),
         cmd: 'build',
       });
@@ -62,19 +62,19 @@ export default lila => {
   // add sync command
   addCommand(commander => {
     const command = commander
-      .command('sync <page> [extraPages...]')
+      .command('sync <entry> [extraEntries...]')
       .description('make production bundles, then sync to remote servers');
 
     getCmdOptions('sync').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, extraPages, options) => {
-      const pages = [page, ...extraPages];
+    command.action((entry, extraEntries, options) => {
+      const entries = [entry, ...extraEntries];
       runTasks({
-        pages: getPages
-          ? getAllPages({ pages, getPages, srcPath: realSrcDir })
-          : pages,
+        entries: getEntries
+          ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
+          : entries,
         argv: pureArgv(options),
         cmd: 'sync',
       });
@@ -84,7 +84,7 @@ export default lila => {
   // add start command
   addCommand(commander => {
     const command = commander
-      .command('start <page>')
+      .command('start <entry>')
       .description(
         'make production bundles, then start a local server to preview'
       );
@@ -93,16 +93,16 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((page, options) => {
+    command.action((entry, options) => {
       const argv = pureArgv(options);
       runTasks(
         {
-          pages: [page],
+          entries: [entry],
           argv,
           cmd: 'start',
         },
         () => {
-          start({ page, argv, lila });
+          start({ entry, argv, lila });
         }
       );
     });
@@ -111,38 +111,38 @@ export default lila => {
   // add analyze command
   addCommand(commander => {
     const command = commander
-      .command('analyze <page>')
+      .command('analyze <entry>')
       .description('visualize size of webpack output files');
 
     getCmdOptions('analyze').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, options) => {
+    command.action((entry, options) => {
       const argv = pureArgv(options);
 
-      analyze({ page, argv, lila });
+      analyze({ entry, argv, lila });
     });
   });
 
   // add serve command
   addCommand(commander => {
     const command = commander
-      .command('serve <page>')
+      .command('serve <entry>')
       .description(
-        'simulate a backend environment to start a local server to develop a page'
+        'simulate a backend environment to start a local server to develop a entry'
       );
 
     getCmdOptions('serve').forEach(value => {
       command.option(...value);
     });
 
-    command.action((page, options) => {
+    command.action((entry, options) => {
       const argv = pureArgv(options);
 
       if (!servePath) throw new Error("setting [servePath] hasn't been set");
 
-      dev({ page, argv, lila, serve: !0, servePath });
+      dev({ entry, argv, lila, serve: !0, servePath });
     });
   });
 

@@ -6,7 +6,7 @@ import { styleLoaders } from './make';
 
 const { join } = path;
 
-export default (lila, webpack, { page, cmd, config }) => {
+export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir] = getSettings(['cwd', 'src']);
   const realSrcDir = join(cwd, srcDir);
@@ -37,7 +37,7 @@ export default (lila, webpack, { page, cmd, config }) => {
       new ProvidePlugin(provide),
       new DefinePlugin(define),
       new HtmlWebpackPlugin({
-        template: `${realSrcDir}/${page}/index.html`,
+        template: `${realSrcDir}/${entry}/index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),
     ],
@@ -46,7 +46,7 @@ export default (lila, webpack, { page, cmd, config }) => {
         babelLoader({ babelImport, babelExclude, flow, flowRuntime }),
         urlLoader({ extensions }),
         htmlLoader(),
-        ...styleLoaders(lila, webpack, { page, cmd, config }, isBuild),
+        ...styleLoaders(lila, webpack, { entry, cmd, config }, isBuild),
       ],
     },
     resolve: {

@@ -24,9 +24,9 @@ module.exports = lila => {
 
 ## extended settings
 
-### `getPages`: see [getPages](./src/settings.js#L6)
+### `getEntries`: see [getEntries](./src/settings.js#L6)
 
-`all, *` means all pages under `src`.
+`all, *` means all entries under `src`.
 
 ## extended configs
 
@@ -69,15 +69,15 @@ module.exports = lila => {
 
 ### `plugins`: `[]`, default `[]`, extra webpack plugins
 
-## files of a page
+## files of a entry
 
-A page has a standalone directory, also called workspace.
+A entry has a standalone directory, also called workspace.
 
 ### for `build` command
 
-For `build` command, a page has at least a `index.js` file.
+For `build` command, a entry has at least a `index.js` file.
 
-If page is `index`, its workspace is `src`:
+If entry is `index`, its workspace is `src`:
 
 ```
 |-- src/
@@ -86,7 +86,7 @@ If page is `index`, its workspace is `src`:
     |-- other files and directories
 ```
 
-Others(page is `main`), its workspace is `src/main`:
+Others(entry is `main`), its workspace is `src/main`:
 
 ```
 |-- src/
@@ -98,9 +98,9 @@ Others(page is `main`), its workspace is `src/main`:
 
 ### for `start` command
 
-For `start` command, a page has at least a `index.html` file and a `index.js` file.
+For `start` command, a entry has at least a `index.html` file and a `index.js` file.
 
-If page is `example`, its workspace is `example`:
+If entry is `example`, its workspace is `example`:
 
 ```
 |-- src/

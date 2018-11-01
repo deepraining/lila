@@ -85,25 +85,25 @@ export const makeServe = ({ root, devDir, servePath }) => (req, res, next) => {
 };
 
 /**
- * ['page1', 'page2/*'] => ['page1', 'page2/subPage1', 'page2/subPage2']
+ * ['entry1', 'entry2/*'] => ['entry1', 'entry2/subEntry1', 'entry2/subEntry2']
  *
- * @param pages
- * @param getPages
+ * @param entries
+ * @param getEntries
  * @param srcPath
  * @returns {Array}
  */
-export const getAllPages = ({ pages, getPages, srcPath }) => {
-  const allPages = [];
+export const getAllEntries = ({ entries, getEntries, srcPath }) => {
+  const allEntries = [];
 
-  pages.forEach(page => {
-    if (page === '*' || page === 'all')
-      allPages.push(...(getPages(srcPath) || []));
-    else if (page.slice(-2) === '/*')
-      allPages.push(...(getPages(join(srcPath, page.slice(0, -2))) || []));
-    else if (page.slice(-4) === '/all')
-      allPages.push(...(getPages(join(srcPath, page.slice(0, -4))) || []));
-    else allPages.push(page);
+  entries.forEach(entry => {
+    if (entry === '*' || entry === 'all')
+      allEntries.push(...(getEntries(srcPath) || []));
+    else if (entry.slice(-2) === '/*')
+      allEntries.push(...(getEntries(join(srcPath, entry.slice(0, -2))) || []));
+    else if (entry.slice(-4) === '/all')
+      allEntries.push(...(getEntries(join(srcPath, entry.slice(0, -4))) || []));
+    else allEntries.push(entry);
   });
 
-  return allPages;
+  return allEntries;
 };

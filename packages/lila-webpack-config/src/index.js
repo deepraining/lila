@@ -1,20 +1,20 @@
 import dev from './dev';
 import analyze from './analyze';
 import build from './build';
-import { getPages, servePath } from './settings';
+import { getEntries, servePath } from './settings';
 
 export default lila => {
   const { setSetting } = lila;
 
-  setSetting('webpackConfigGenerator', webpack => ({ page, cmd, config }) => {
+  setSetting('webpackConfigGenerator', webpack => ({ entry, cmd, config }) => {
     let webpackConfig = {};
 
     if (cmd === 'dev' || cmd === 'serve')
-      webpackConfig = dev(lila, webpack, { page, cmd, config });
+      webpackConfig = dev(lila, webpack, { entry, cmd, config });
     if (cmd === 'analyze')
-      webpackConfig = analyze(lila, webpack, { page, cmd, config });
+      webpackConfig = analyze(lila, webpack, { entry, cmd, config });
     if (cmd === 'build' || cmd === 'sync' || cmd === 'start')
-      webpackConfig = build(lila, webpack, { page, cmd, config });
+      webpackConfig = build(lila, webpack, { entry, cmd, config });
 
     const { rules = [], plugins = [] } = config;
 
@@ -26,6 +26,6 @@ export default lila => {
     return webpackConfig;
   });
 
-  setSetting('getPages', getPages);
+  setSetting('getEntries', getEntries);
   setSetting('servePath', servePath);
 };

@@ -1,11 +1,11 @@
 import browserSync from 'browser-sync';
 import { forceGet as forceGetMiddleware, makeMock } from './util';
 
-export default ({ page, argv, lila }) => {
+export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
   const [cwd, buildDir] = getSettings(['cwd', 'build']);
 
-  const config = makeConfig({ page, cmd: 'start', argv });
+  const config = makeConfig({ entry, cmd: 'start', argv });
 
   const {
     forceGet = true,

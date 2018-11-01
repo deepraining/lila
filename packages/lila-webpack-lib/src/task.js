@@ -4,7 +4,7 @@ import { error, warn } from '../../../util/logger';
 
 const { red, yellow } = chalk;
 
-export default ({ page, args, argv, cmd, config, lila }) => cb => {
+export default ({ entry, args, argv, cmd, config, lila }) => cb => {
   const { getSetting } = lila;
   const webpackConfigGenerator = getSetting('webpackConfigGenerator');
 
@@ -17,7 +17,7 @@ export default ({ page, args, argv, cmd, config, lila }) => cb => {
     throw new Error('webpackConfigGenerator should return a function');
 
   const webpackConfig = makeWebpackConfig({
-    page,
+    entry,
     args,
     argv,
     cmd,

@@ -3,7 +3,7 @@ import { babelLoader } from './rules';
 
 const { join } = path;
 
-export default (lila, webpack, { page, config }, key, value) => {
+export default (lila, webpack, { entry, config }, key, value) => {
   const { DllPlugin } = webpack;
   const { getSettings } = lila;
   const [cwd, srcDir, buildDir, tmpDir] = getSettings([
@@ -26,7 +26,7 @@ export default (lila, webpack, { page, config }, key, value) => {
   const plugins = [
     new DllPlugin({
       name: 'vendor_[chunkhash]',
-      path: join(tmpDir, `dll/${page}/${key}.json`),
+      path: join(tmpDir, `dll/${entry}/${key}.json`),
     }),
   ];
 

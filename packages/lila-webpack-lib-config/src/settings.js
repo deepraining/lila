@@ -2,11 +2,11 @@ import fs from 'fs';
 
 const { readdirSync } = fs;
 
-// get all pages with imported pages
-export const getPages = (pages, srcDir) =>
-  pages.length === 1 && (pages[0] === 'all' || pages[0] === '*')
+// get all entries with imported entries
+export const getEntries = (entries, srcDir) =>
+  entries.length === 1 && (entries[0] === 'all' || entries[0] === '*')
     ? readdirSync(srcDir)
-    : pages;
+    : entries;
 
 // placeholder
 export default {};

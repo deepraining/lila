@@ -24,40 +24,40 @@ module.exports = lila => {
 
 ## extended commands
 
-### `dev`: start a local server to develop a page
+### `dev`: start a local server to develop a entry
 
 ```
-lila dev page
+lila dev entry
 ```
 
 ### `build`: pack source codes to production bundles
 
 ```
-lila build page1 page2 page3 ...
+lila build entry1 entry2 entry3 ...
 ```
 
 ### `sync`: make production bundles, then sync to remote servers
 
 ```
-lila sync page1 page2 page3 ...
+lila sync entry1 entry2 entry3 ...
 ```
 
 ### `start`: make production bundles, then start a local server to preview
 
 ```
-lila start page
+lila start entry
 ```
 
 ### `analyze`: visualize size of webpack output files
 
 ```
-lila analyze page
+lila analyze entry
 ```
 
-### `serve`: simulate a backend environment to start a local server to develop a page
+### `serve`: simulate a backend environment to start a local server to develop a entry
 
 ```
-lila serve page
+lila serve entry
 ```
 
 ## extended tasks
@@ -73,19 +73,19 @@ lila serve page
 ### `webpackConfigGenerator`: generate webpack config
 
 ```
-webpack => ({page, args, argv, cmd, config, lila}) => config
+webpack => ({entry, args, argv, cmd, config, lila}) => config
 ```
 
-### `getPages`: get all pages under a dir
+### `getEntries`: get all entries under a dir
 
 ```
-dir => pages;
+dir => entries;
 ```
 
 ### `servePath`: get serve js file path for command `serve`
 
 ```
-(page, srcDir) => path
+(entry, srcDir) => path
 ```
 
 ## extended configs
@@ -125,11 +125,11 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `bundleAnalyzer`: `{}`, default `{ analyzerPort: 8190 }`, [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config
 
-## page specification
+## entry specification
 
-- `home/about`: a single page
-- `home/*` or `home/all`: all pages under `home` directory
-- `*` or `all`: all pages of project
+- `home/about`: a single entry
+- `home/*` or `home/all`: all entries under `home` directory
+- `*` or `all`: all entries of project
 
 ## api
 

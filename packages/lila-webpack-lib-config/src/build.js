@@ -5,7 +5,7 @@ import base from './base';
 
 const { join } = path;
 
-export default (lila, webpack, { page, cmd, config }) => {
+export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, buildDir] = getSettings(['cwd', 'src', 'build']);
   const realSrcDir = join(cwd, srcDir);
@@ -22,7 +22,7 @@ export default (lila, webpack, { page, cmd, config }) => {
     externals,
   } = config;
 
-  const baseConfig = base(lila, webpack, { page, cmd, config });
+  const baseConfig = base(lila, webpack, { entry, cmd, config });
 
   baseConfig.plugins.push(
     // css standalone
@@ -44,9 +44,9 @@ export default (lila, webpack, { page, cmd, config }) => {
 
   return {
     entry:
-      page === 'index'
+      entry === 'index'
         ? `${realSrcDir}/index.js`
-        : `${realSrcDir}/${page}/index.js`,
+        : `${realSrcDir}/${entry}/index.js`,
     output: {
       path: realBuildDir,
       filename: `${filename}.js`,
