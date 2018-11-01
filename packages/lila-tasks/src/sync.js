@@ -14,10 +14,10 @@ const newCacheJson = {};
  * @example
  *
  * ```
- * ['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName}]
+ * ['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param argv
  * @param cmd
@@ -25,7 +25,7 @@ const newCacheJson = {};
  * @param lila
  * @returns {function()}
  */
-export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
+export const syncAll = ({ entry, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, cwd, tmp] = getSettings(['build', 'cwd', 'tmp']);
 
@@ -47,7 +47,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
   if (cache) {
     const cacheFile = `${tmp}/${
       typeof cacheFileName === 'function'
-        ? cacheFileName({ page, argv, cmd })
+        ? cacheFileName({ entry, argv, cmd })
         : cacheFileName
     }.json`;
     const oldJson = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
@@ -59,7 +59,7 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
     );
 
     src = changed;
-    newCacheJson[page] = json;
+    newCacheJson[entry] = json;
   }
 
   const connect = new SSH(server);
@@ -76,26 +76,28 @@ export const syncAll = ({ page, args, argv, cmd, gulp, lila }) => () => {
  * ['@lila/save-cache', {cacheFileName}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param argv
  * @param cmd
  * @param lila
  * @returns {function(*)}
  */
-export const saveCache = ({ page, args, argv, cmd, lila }) => cb => {
+export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
   const { getSettings } = lila;
   const [tmp] = getSettings(['tmp']);
 
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
   const cacheFile = `${tmp}/${
     typeof cacheFileName === 'function'
-      ? cacheFileName({ page, argv, cmd })
+      ? cacheFileName({ entry, argv, cmd })
       : cacheFileName
   }.json`;
-  const json = newCacheJson[page];
+  const json = newCacheJson[entry];
 
   if (json) writeFileSync(cacheFile, JSON.stringify(json));
+
+  delete newCacheJson[entry];
 
   return cb();
 };

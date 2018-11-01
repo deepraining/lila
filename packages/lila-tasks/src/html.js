@@ -15,20 +15,20 @@ const { moveSync, readFileSync, outputFileSync, copySync } = fse;
  * ['@lila/correct-html', {source, target}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const correctHtml = ({ page, args, lila }) => cb => {
+export const correctHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
-  const { source = 'index.html', target = `${page}.html` } =
+  const { source = 'index.html', target = `${entry}.html` } =
     (args && args[0]) || {};
 
   moveSync(
     join(buildDir, source),
-    join(buildDir, typeof target === 'function' ? target(page) : target)
+    join(buildDir, typeof target === 'function' ? target(entry) : target)
   );
 
   return cb();
@@ -43,22 +43,22 @@ export const correctHtml = ({ page, args, lila }) => cb => {
  * ['@lila/replace-html', {file, replace: [{target, replacement}]}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const replaceHtml = ({ page, args, lila }) => cb => {
+export const replaceHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
 
-  const { file = `${page}.html`, replace = [] } = (args && args[0]) || {};
+  const { file = `${entry}.html`, replace = [] } = (args && args[0]) || {};
 
   if (!Array.isArray(replace)) return cb();
 
   const filePath = join(
     buildDir,
-    typeof file === 'function' ? file(page) : file
+    typeof file === 'function' ? file(entry) : file
   );
   let content = readFileSync(filePath, 'utf8');
 
@@ -82,22 +82,22 @@ export const replaceHtml = ({ page, args, lila }) => cb => {
  * ['@lila/insert-html', {file, start, end}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const insertHtml = ({ page, args, lila }) => cb => {
+export const insertHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
 
-  const { file = `${page}.html`, start, end } = (args && args[0]) || {};
+  const { file = `${entry}.html`, start, end } = (args && args[0]) || {};
 
   if (!start && !end) return cb();
 
   const filePath = join(
     buildDir,
-    typeof file === 'function' ? file(page) : file
+    typeof file === 'function' ? file(entry) : file
   );
   let content = readFileSync(filePath, 'utf8');
 
@@ -118,22 +118,22 @@ export const insertHtml = ({ page, args, lila }) => cb => {
  * ['@lila/convert-html', {file, ext}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const convertHtml = ({ page, args, lila }) => cb => {
+export const convertHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
 
-  const { file = `${page}.html`, ext = '' } = (args && args[0]) || {};
+  const { file = `${entry}.html`, ext = '' } = (args && args[0]) || {};
 
   if (!ext) return cb();
 
   const filePath = join(
     buildDir,
-    typeof file === 'function' ? file(page) : file
+    typeof file === 'function' ? file(entry) : file
   );
 
   moveSync(filePath, filePath.slice(-4) + ext);
@@ -150,12 +150,12 @@ export const convertHtml = ({ page, args, lila }) => cb => {
  * ['@lila/backup-html', {suffix, ext}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const backupHtml = ({ page, args, lila }) => cb => {
+export const backupHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
 
@@ -163,8 +163,8 @@ export const backupHtml = ({ page, args, lila }) => cb => {
     (args && args[0]) || {};
 
   copySync(
-    join(buildDir, `${page}.${ext}`),
-    join(buildDir, `${page}.${suffix}.${ext}`)
+    join(buildDir, `${entry}.${ext}`),
+    join(buildDir, `${entry}.${suffix}.${ext}`)
   );
 
   return cb();
@@ -176,27 +176,27 @@ export const backupHtml = ({ page, args, lila }) => cb => {
  * @example
  *
  * ```
- * ['@lila/rename-html', {page, ext}]
+ * ['@lila/rename-html', {entry, ext}]
  * ```
  *
- * @param page
+ * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const renameHtml = ({ page, args, lila }) => cb => {
+export const renameHtml = ({ entry, args, lila }) => cb => {
   const { getSetting } = lila;
   const buildDir = getSetting('build');
 
-  const { page: newPage = '', ext = 'html' } = (args && args[0]) || {};
+  const { entry: newEntry = '', ext = 'html' } = (args && args[0]) || {};
 
-  if (!newPage) return cb();
+  if (!newEntry) return cb();
 
   moveSync(
-    join(buildDir, `${page}.${ext}`),
+    join(buildDir, `${entry}.${ext}`),
     join(
       buildDir,
-      `${typeof newPage === 'function' ? newPage(page) : newPage}.${ext}`
+      `${typeof newEntry === 'function' ? newEntry(entry) : newEntry}.${ext}`
     )
   );
 

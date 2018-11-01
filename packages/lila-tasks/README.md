@@ -26,7 +26,7 @@ module.exports = lila => {
 
 ### `@lila/correct-html`: correct html path
 
-By default, a `index.html` will be generated under `build` directory, and this task is to modify its path, `build/index.html -> build/page/name.html`.
+By default, a `index.html` will be generated under `build` directory, and this task is to modify its path, `build/index.html -> build/entry/name.html`.
 
 ```
 '@lila/correct-html'
@@ -35,7 +35,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ```
 
 - `source`: `string`, default `index.html`, source html file.
-- `target`: `string|function`, default `${page}.html`, target html file. It can be a function, `page => target`.
+- `target`: `string|function`, default `${entry}.html`, target html file. It can be a function, `entry => target`.
 
 ### `@lila/replace-html`: replace html content
 
@@ -43,7 +43,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/replace-html', {file, replace: [{target, replacement}]}]
 ```
 
-- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
+- `file`: `string|function`, default `${entry}.html`, html file to handle. It can be a function, `entry => file`.
 - `replace`: `[]`, options to replace.
   - `target`: `string|RegExp`, target to be replaced.
   - `replacement`: `string`, string to replace.
@@ -54,7 +54,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/insert-html', {file, start, end}]
 ```
 
-- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
+- `file`: `string|function`, default `${entry}.html`, html file to handle. It can be a function, `entry => file`.
 - `start`: `string`, content to prepend.
 - `end`: `string`, content to append.
 
@@ -64,7 +64,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/convert-html', {file, ext}]
 ```
 
-- `file`: `string|function`, default `${page}.html`, html file to handle. It can be a function, `page => file`.
+- `file`: `string|function`, default `${entry}.html`, html file to handle. It can be a function, `entry => file`.
 - `ext`: `string`, extension name, like `php, jsp`.
 
 ### `@lila/backup-html`: backup html file
@@ -83,10 +83,10 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ### `@lila/rename-html`: rename html path
 
 ```
-['@lila/rename-html', {page, ext}]
+['@lila/rename-html', {entry, ext}]
 ```
 
-- `page`: `string|function`, new page to rename to. It can be a function, `page => newPage`.
+- `entry`: `string|function`, new entry to rename to. It can be a function, `entry => newEntry`.
 - `ext`: `string`, default `html`, html file extension.
 
 ### `@lila/sync-all`: sync all static resources to remote server
@@ -99,7 +99,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `remotePath`: `string`, remote server path to upload to.
 - `extra`: `string[]`, extra directories to upload, same level of `build`.
 - `cache`: `bool`, default `false`, whether cache uploading record, thus next time will only upload changed files.
-- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({page, argv, cmd}) => fileName`.
+- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
 - `sourceMap`: `bool`, default `false`, whether to upload sourcemap files.
 
 ### `@lila/save-cache`: save cache after sync-all task
@@ -110,7 +110,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/save-cache', {cacheFileName}]
 ```
 
-- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({page, argv, cmd}) => fileName`.
+- `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
 
 ### `@lila/sync-html`: sync html files to remote server
 
