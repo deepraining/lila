@@ -6,7 +6,14 @@ import {
   backupHtml,
   renameHtml,
 } from './html';
-import { syncAll, saveCache, syncHtml, syncSourceMap } from './sync';
+import {
+  sync,
+  syncBuild,
+  saveCache,
+  syncHtml,
+  syncSourceMap,
+  exec,
+} from './sync';
 import { delDev, delBuild } from './del';
 
 export default lila => {
@@ -19,10 +26,12 @@ export default lila => {
   registerTask('@lila/backup-html', backupHtml);
   registerTask('@lila/rename-html', renameHtml);
 
-  registerTask('@lila/sync-all', syncAll);
+  registerTask('@lila/sync', sync);
+  registerTask('@lila/sync-build', syncBuild);
   registerTask('@lila/save-cache', saveCache);
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-sourcemap', syncSourceMap);
+  registerTask('@lila/exec', exec);
 
   registerTask('@lila/del-dev', delDev);
   registerTask('@lila/del-build', delBuild);

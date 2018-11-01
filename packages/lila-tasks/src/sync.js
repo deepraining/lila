@@ -7,14 +7,43 @@ import changedFiles from '../util/changed';
 const { existsSync, writeFileSync } = fs;
 const { join } = path;
 
-const newCacheJson = {};
 /**
- * sync all static resources to remote server
+ * sync files to remote server
  *
  * @example
  *
  * ```
- * ['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
+ * ['@lila/sync', {src, server, remotePath}]
+ * ```
+ *
+ * @param args
+ * @param gulp
+ * @param lila
+ * @returns {function()}
+ */
+export const sync = ({ args, gulp, lila }) => () => {
+  const { getSettings } = lila;
+  const [cwd] = getSettings(['cwd']);
+
+  const { src, server, remotePath } = (args && args[0]) || {};
+
+  if (!src) throw new Error('src not configured');
+  if (!server) throw new Error('server info not configured');
+  if (!remotePath) throw new Error('remotePath not configured');
+
+  const connect = new SSH(server);
+
+  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
+};
+
+const newCacheJson = {};
+/**
+ * sync build directory to remote server
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/sync-build', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
  * ```
  *
  * @param entry
@@ -25,7 +54,7 @@ const newCacheJson = {};
  * @param lila
  * @returns {function()}
  */
-export const syncAll = ({ entry, args, argv, cmd, gulp, lila }) => () => {
+export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, cwd, tmp] = getSettings(['build', 'cwd', 'tmp']);
 
@@ -68,7 +97,7 @@ export const syncAll = ({ entry, args, argv, cmd, gulp, lila }) => () => {
 };
 
 /**
- * save cache after sync-all task
+ * save cache after sync-build task
  *
  * @example
  *
@@ -162,4 +191,37 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
   return gulp
     .src(`${buildPath}/**/*.map`, { base: buildPath })
     .pipe(connect.dest(remotePath));
+};
+
+/**
+ * execute scripts on remote server
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/exec', {server, scripts, log}]
+ * ```
+ *
+ * @param entry
+ * @param argv
+ * @param args
+ * @param gulp
+ * @param cmd
+ * @param lila
+ * @returns {function()}
+ */
+export const exec = ({ entry, argv, args, gulp, cmd, lila }) => () => {
+  const { getSettings } = lila;
+  const [tmp] = getSettings(['tmp']);
+
+  const { server, scripts, log = 'exec.log' } = (args && args[0]) || {};
+
+  if (!server) throw new Error('server info not configured');
+  if (!scripts) throw new Error('scripts not configured');
+
+  const filePath = typeof log === 'function' ? log({ entry, argv, cmd }) : log;
+
+  const connect = new SSH(server);
+
+  return connect.shell(scripts, { filePath }).pipe(gulp.dest(tmp));
 };

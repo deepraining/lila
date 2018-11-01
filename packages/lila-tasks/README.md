@@ -89,10 +89,20 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `entry`: `string|function`, new entry to rename to. It can be a function, `entry => newEntry`.
 - `ext`: `string`, default `html`, html file extension.
 
-### `@lila/sync-all`: sync all static resources to remote server
+### `@lila/sync`: sync files to remote server
 
 ```
-['@lila/sync-all', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
+['@lila/sync', {src, server, remotePath}]
+```
+
+- `src`: `string/array`, [gulp.src globs](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `string`, remote server path to upload to.
+
+### `@lila/sync-build`: sync build directory to remote server
+
+```
+['@lila/sync-build', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
 ```
 
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
@@ -102,7 +112,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `cacheFileName`: `string|function`, default `cache`, file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
 - `sourceMap`: `bool`, default `false`, whether to upload sourcemap files.
 
-### `@lila/save-cache`: save cache after sync-all task
+### `@lila/save-cache`: save cache after sync-build task
 
 ```
 '@lila/save-cache'
@@ -130,6 +140,16 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
+
+### `@lila/exec`: execute scripts on remote server
+
+```
+['@lila/exec', {server, scripts, log}]
+```
+
+- `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `scripts`: `string/array`, shell scripts to execute on remote server.
+- `log`: `string/function`, default `exec.log`, log file. It can be a function, `({entry, argv, cmd}) => fileName`.
 
 ### `@lila/del-dev`: delete dev directory
 
