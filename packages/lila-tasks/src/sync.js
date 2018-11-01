@@ -199,7 +199,7 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
  * @example
  *
  * ```
- * ['@lila/exec', {server, scripts, log}]
+ * ['@lila/remote-shell', {server, scripts, log}]
  * ```
  *
  * @param entry
@@ -210,11 +210,11 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
  * @param lila
  * @returns {function()}
  */
-export const exec = ({ entry, argv, args, gulp, cmd, lila }) => () => {
+export const remoteShell = ({ entry, argv, args, gulp, cmd, lila }) => () => {
   const { getSettings } = lila;
   const [tmp] = getSettings(['tmp']);
 
-  const { server, scripts, log = 'exec.log' } = (args && args[0]) || {};
+  const { server, scripts, log = 'remote-shell.log' } = (args && args[0]) || {};
 
   if (!server) throw new Error('server info not configured');
   if (!scripts) throw new Error('scripts not configured');

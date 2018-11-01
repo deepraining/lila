@@ -141,15 +141,15 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
 
-### `@lila/exec`: execute scripts on remote server
+### `@lila/remote-shell`: execute scripts on remote server
 
 ```
-['@lila/exec', {server, scripts, log}]
+['@lila/remote-shell', {server, scripts, log}]
 ```
 
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `scripts`: `string/array`, shell scripts to execute on remote server.
-- `log`: `string/function`, default `exec.log`, log file. It can be a function, `({entry, argv, cmd}) => fileName`.
+- `log`: `string/function`, default `remote-shell.log`, log file. It can be a function, `({entry, argv, cmd}) => fileName`.
 
 ### `@lila/del-dev`: delete dev directory
 

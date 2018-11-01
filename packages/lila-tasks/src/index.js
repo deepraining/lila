@@ -12,7 +12,7 @@ import {
   saveCache,
   syncHtml,
   syncSourceMap,
-  exec,
+  remoteShell,
 } from './sync';
 import { delDev, delBuild } from './del';
 
@@ -31,7 +31,7 @@ export default lila => {
   registerTask('@lila/save-cache', saveCache);
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-sourcemap', syncSourceMap);
-  registerTask('@lila/exec', exec);
+  registerTask('@lila/remote-shell', remoteShell);
 
   registerTask('@lila/del-dev', delDev);
   registerTask('@lila/del-build', delBuild);
