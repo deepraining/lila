@@ -194,7 +194,7 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * execute scripts on remote server
+ * execute shell scripts on remote server
  *
  * @example
  *

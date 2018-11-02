@@ -141,7 +141,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `{}`, server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `string`, remote server path to upload to.
 
-### `@lila/remote-shell`: execute scripts on remote server
+### `@lila/remote-shell`: execute shell scripts on remote server
 
 ```
 ['@lila/remote-shell', {server, scripts, log}]
@@ -162,3 +162,13 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 '@lila/del-build'
 ```
+
+### `@lila/shell`: execute shell scripts
+
+```
+['@lila/shell', {command, args, options}]
+```
+
+- `command`: `string`, see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+- `args`: `string[]`, see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+- `options`: `{}`, see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)

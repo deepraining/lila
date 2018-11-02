@@ -15,6 +15,7 @@ import {
   remoteShell,
 } from './sync';
 import { delDev, delBuild } from './del';
+import { shell } from './misc';
 
 export default lila => {
   const { registerTask } = lila;
@@ -35,4 +36,6 @@ export default lila => {
 
   registerTask('@lila/del-dev', delDev);
   registerTask('@lila/del-build', delBuild);
+
+  registerTask('@lila/shell', shell);
 };
