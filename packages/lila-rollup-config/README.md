@@ -30,31 +30,31 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `[]`, default `[]`, [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: `type: []` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `[]`, default `[/node_modules/]`, [babel-loader](https://github.com/babel/babel-loader) exclude
+### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `banner`: `string`, default empty string, [rollup](https://rollupjs.org/guide/en) output banner
+### `banner`: `type: string` `default: empty string` [rollup](https://rollupjs.org/guide/en) output banner
 
-### `alias`: `{}`, default `{}`, [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
+### `alias`: `type: {}` `default: {}` [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
 
-### `inject`: `{}`, default `{}`, [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config
+### `inject`: `type: {}` `default: {}` [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config
 
-### `nodeResolve`: `bool`, default `false`, whether to use [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)
+### `nodeResolve`: `type: bool` `default: false` whether to use [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)
 
-### `flow`: `bool`, default `false`, whether to use [flow](https://github.com/facebook/flow)
+### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
 
-### `flowRuntime`: `bool`, default `false`, whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
 
-### `minJs`: `bool`, default `true`, whether minify js
+### `minJs`: `type: bool` `default: true` whether minify js
 
-### `minCss`: `bool`, default `true`, whether minify css
+### `minCss`: `type: bool` `default: true` whether minify css
 
-### `filename`: `string`, default `index`, library file name
+### `filename`: `type: string` `default: index` library file name
 
-### `name`: `string`, default `Index`, [rollup](https://rollupjs.org/guide/en) output name
+### `name`: `type: string` `default: Index` [rollup](https://rollupjs.org/guide/en) output name
 
-### `plugins`: `[]`, default `[]`, extra rollup plugins
+### `plugins`: `type: []` `default: []` extra rollup plugins
 
 ## files of an entry
 

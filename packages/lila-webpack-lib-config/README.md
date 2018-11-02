@@ -30,44 +30,44 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `[]`, default `[]`, [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: `type: []` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `[]`, default `[/node_modules/]`, [babel-loader](https://github.com/babel/babel-loader) exclude
+### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `extensions`: `[]`, default `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`, [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
+### `extensions`: `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']` [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
-### `provide`: `{}`, default `{}`, [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
+### `provide`: `type: {}` `default: {}` [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
 
-### `define`: `{}`, default `{}`, [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
+### `define`: `type: {}` `default: {}` [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
 
-### `banner`: `string`, default empty string, [BannerPlugin](https://webpack.js.org/plugins/banner-plugin/) config
+### `banner`: `type: string` default empty string, [BannerPlugin](https://webpack.js.org/plugins/banner-plugin/) config
 
-### `alias`: `{}`, default `{}`, [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+### `alias`: `type: {}` `default: {}` [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
 
-### `flow`: `bool`, default `false`, whether to use [flow](https://github.com/facebook/flow)
+### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
 
-### `flowRuntime`: `bool`, default `false`, whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
 
-### `minJs`: `bool`, default `true`, whether minify js
+### `minJs`: `type: bool` `default: true` whether minify js
 
-### `minCss`: `bool`, default `true`, whether minify css
+### `minCss`: `type: bool` `default: true` whether minify css
 
-### `devtool`: `string`, [devtool](https://webpack.js.org/configuration/devtool/) config, default:
+### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
-- `cmd: start`: `cheap-module-eval-source-map`
-- `cmd: build`: `module-source-map`
+- `cmd: start`: `type: cheap-module-eval-source-map`
+- `cmd: build`: `type: module-source-map`
 
-### `filename`: `string`, default `index`, library file name
+### `filename`: `type: string` `default: index` library file name
 
-### `library`: `string`, default `Index`, library exported global name, see [output-library](https://webpack.js.org/configuration/output/#output-library)
+### `library`: `type: string` `default: Index` library exported global name, see [output-library](https://webpack.js.org/configuration/output/#output-library)
 
-### `libraryTarget`: `string,`default `umd`, see [output-librarytarget](https://webpack.js.org/configuration/output/#output-librarytarget)
+### `libraryTarget`: ` type: string,``default: umd ` see [output-librarytarget](https://webpack.js.org/configuration/output/#output-librarytarget)
 
 ### `externals`: see [externals](https://webpack.js.org/configuration/externals/#externals)
 
-### `rules`: `[]`, default `[]`, extra webpack rules
+### `rules`: `type: []` `default: []` extra webpack rules
 
-### `plugins`: `[]`, default `[]`, extra webpack plugins
+### `plugins`: `type: []` `default: []` extra webpack plugins
 
 ## files of an entry
 

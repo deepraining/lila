@@ -24,7 +24,7 @@ module.exports = lila => {
 
 ## extended settings
 
-### `analyze`: `string`, default `analyze`, temporary directory for command `analyze`
+### `analyze`: `type: string` `default: analyze` temporary directory for command `analyze`
 
 ### `getEntries`: see [getEntries](./src/settings.js#L11)
 
@@ -32,29 +32,29 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `[]`, default `[]`, [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: `type: []` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `[]`, default `[/node_modules/]`, [babel-loader](https://github.com/babel/babel-loader) exclude
+### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `extensions`: `[]`, default `['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`, [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
+### `extensions`: `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']` [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
-### `provide`: `{}`, default `{}`, [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
+### `provide`: `type: {}` `default: {}` [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
 
-### `define`: `{}`, default `{}`, [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
+### `define`: `type: {}` `default: {}` [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
 
-### `alias`: `{}`, default `{}`, [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+### `alias`: `type: {}` `default: {}` [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
 
-### `cssModules`: `bool`, default `false`, whether to use [css-modules](https://github.com/css-modules/css-modules)
+### `cssModules`: `type: bool` `default: false` whether to use [css-modules](https://github.com/css-modules/css-modules)
 
-### `cssModulesName`: `string`, [css-loader#localidentname](https://github.com/webpack-contrib/css-loader#localidentname)
+### `cssModulesName`: `type: string` [css-loader#localidentname](https://github.com/webpack-contrib/css-loader#localidentname)
 
-### `cssModulesExclude`: `[]`, default `[/node_modules/]`, [css-loader](https://github.com/webpack-contrib/css-loader) `css-modules` exclude
+### `cssModulesExclude`: `type: []` `default: [/node_modules/]` [css-loader](https://github.com/webpack-contrib/css-loader) `css-modules` exclude
 
-### `flow`: `bool`, default `false`, whether to use [flow](https://github.com/facebook/flow)
+### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
 
-### `flowRuntime`: `bool`, default `false`, whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
 
-### `browsers`: `[]`, [autoprefixer](https://github.com/postcss/autoprefixer#browsers) browsers, default:
+### `browsers`: `type: []` [autoprefixer](https://github.com/postcss/autoprefixer#browsers) browsers, default:
 
 ```
 [
@@ -66,16 +66,16 @@ module.exports = lila => {
 ]
 ```
 
-### `staticServer`: `string`, a static server to place bundle resources to, default empty string
+### `staticServer`: `type: string` a static server to place bundle resources to, default empty string
 
 - `/dir`: a directory
 - `http://www.static.com`: a standalone static server
 - `https://www.static.com/dir`: a sub directory of a standalone static server
 - `//www.static.com/dir/sub_dir`: another sub directory of a standalone static server
 
-### `minHtml`: `bool`, default `true`, whether minify html
+### `minHtml`: `type: bool` `default: true` whether minify html
 
-### `minHtmlOptions`: `{}`, [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config, default:
+### `minHtmlOptions`: `type: {}` [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config, default:
 
 ```
 {
@@ -91,20 +91,20 @@ module.exports = lila => {
 }
 ```
 
-### `minCss`: `bool`, default `true`, whether minify css
+### `minCss`: `type: bool` `default: true` whether minify css
 
-### `minJs`: `bool`, default `true`, whether minify js
+### `minJs`: `type: bool` `default: true` whether minify js
 
-### `splitJs`: `{}`, default `{}`, split one bundle js to many pieces
+### `splitJs`: `type: {}` `default: {}` split one bundle js to many pieces
 
-### `devtool`: `string`, [devtool](https://webpack.js.org/configuration/devtool/) config, default:
+### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
-- `cmd: dev, serve`: `cheap-module-eval-source-map`
-- `cmd: build, sync, start`: `module-source-map`
+- `cmd: dev, serve`: `type: cheap-module-eval-source-map`
+- `cmd: build, sync, start`: `type: module-source-map`
 
-### `rules`: `[]`, default `[]`, extra webpack rules
+### `rules`: `type: []` `default: []` extra webpack rules
 
-### `plugins`: `[]`, default `[]`, extra webpack plugins
+### `plugins`: `type: []` `default: []` extra webpack plugins
 
 ## files of an entry
 

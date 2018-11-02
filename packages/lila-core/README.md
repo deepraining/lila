@@ -68,8 +68,8 @@ module.exports = lila => {
 lila.setSetting(name, value);
 ```
 
-- `@param/name`: `string`, setting name
-- `@param/value`: `*`, setting value
+- `@param/name`: `type: string` setting name
+- `@param/value`: `type: *` setting value
 
 ### `lila.setSettings`: set multiple settings
 
@@ -77,7 +77,7 @@ lila.setSetting(name, value);
 lila.setSettings(value);
 ```
 
-- `@param/value`: `{}`, `key-value` map of settings
+- `@param/value`: `type: {}` `key-value` map of settings
 
 ### `lila.getSetting`: get a setting value
 
@@ -85,8 +85,8 @@ lila.setSettings(value);
 const value = lila.getSetting(name);
 ```
 
-- `@param/name`: `string`, setting name
-- `@return/value`: `*`, setting value
+- `@param/name`: `type: string` setting name
+- `@return/value`: `type: *` setting value
 
 ### `lila.getSettings`: get multiple setting values
 
@@ -94,8 +94,8 @@ const value = lila.getSetting(name);
 const values = lila.getSettings(names);
 ```
 
-- `@param/names`: `string[]`, setting names
-- `@return/values`: `*[]`, setting values
+- `@param/names`: `type: string[]` setting names
+- `@return/values`: `type: *[]` setting values
 
 ### `lila.getAllSettings`: get all settings
 
@@ -103,7 +103,7 @@ const values = lila.getSettings(names);
 const settings = lila.getAllSettings();
 ```
 
-- `@return/settings`: `{}`, `key-value` map of all settings
+- `@return/settings`: `type: {}` `key-value` map of all settings
 
 ### `lila.registerTask`: register a task generator
 
@@ -111,8 +111,8 @@ const settings = lila.getAllSettings();
 lila.registerTask(name, generator);
 ```
 
-- `@param/name`: `string`, task name
-- `@param/generator`: `function`, task generator
+- `@param/name`: `type: string` task name
+- `@param/generator`: `type: function` task generator
 
 #### `generator`: task generator
 
@@ -122,13 +122,13 @@ Generate a gulp task callback. See [gulptaskname-fn](https://github.com/gulpjs/g
 ({ entry, args, argv, cmd, config, lila, gulp }) => gulp-task-callback;
 ```
 
-- `@param/options.entry`: `string`, handling entry
-- `@param/options.args`: `*[]`, arguments from config
-- `@param/options.argv`: `{}`, wrapped `process.argv`
-- `@param/options.cmd`: `string`, command name
-- `@param/options.config`: `{}`, config of current entry
-- `@param/options.lila`: `{}`, `lila-core` reference
-- `@param/options.gulp`: `{}`, [gulp#4](https://github.com/gulpjs/gulp/tree/4.0) reference
+- `@param/options.entry`: `type: string` handling entry
+- `@param/options.args`: `type: *[]` arguments from config
+- `@param/options.argv`: `type: {}` wrapped `process.argv`
+- `@param/options.cmd`: `type: string` command name
+- `@param/options.config`: `type: {}` config of current entry
+- `@param/options.lila`: `type: {}` `lila-core` reference
+- `@param/options.gulp`: `type: {}` [gulp#4](https://github.com/gulpjs/gulp/tree/4.0) reference
 
 ### `lila.unregisterTask`: unregister a task generator
 
@@ -136,7 +136,7 @@ Generate a gulp task callback. See [gulptaskname-fn](https://github.com/gulpjs/g
 lila.unregisterTask(name);
 ```
 
-- `@param/name`: `string`, task name
+- `@param/name`: `type: string` task name
 
 ### `lila.getTask`: get a task generator
 
@@ -144,8 +144,8 @@ lila.unregisterTask(name);
 const generator = lila.getTask(name);
 ```
 
-- `@param/name`: `string`, task name
-- `@return/generator`: `function`, task generator
+- `@param/name`: `type: string` task name
+- `@return/generator`: `type: function` task generator
 
 ### `lila.getTasks`: get multiple task generators
 
@@ -153,8 +153,8 @@ const generator = lila.getTask(name);
 const generators = lila.getTasks(names);
 ```
 
-- `@param/names`: `string[]`, task names
-- `@return/generators`: `function[]`, task generators
+- `@param/names`: `type: string[]` task names
+- `@return/generators`: `type: function[]` task generators
 
 ### `lila.getAllTasks`: get all task generators
 
@@ -162,7 +162,7 @@ const generators = lila.getTasks(names);
 const tasks = lila.getAllTasks();
 ```
 
-- `@return/tasks`: `{}`, `name-generator` map of all tasks
+- `@return/tasks`: `type: {}` `name-generator` map of all tasks
 
 ### `lila.addCommand`: add a command
 
@@ -170,7 +170,7 @@ const tasks = lila.getAllTasks();
 lila.addCommand(initializer);
 ```
 
-- `@param/initializer`: `function`, command initializer
+- `@param/initializer`: `type: function` command initializer
 
 #### `initializer`: command initializer
 
@@ -178,7 +178,7 @@ lila.addCommand(initializer);
 commander => { ... }
 ```
 
-- `@param/commander`: `{}`, see [commander.js](https://github.com/tj/commander.js)
+- `@param/commander`: `type: {}` see [commander.js](https://github.com/tj/commander.js)
 
 ### `lila.getCommands`: get added command initializers
 
@@ -186,7 +186,7 @@ commander => { ... }
 const initializers = lila.getCommands();
 ```
 
-- `@return/initializers`: `function[]`, added command initializers
+- `@return/initializers`: `type: function[]` added command initializers
 
 ### `lila.makeConfig`: make project config
 
@@ -194,9 +194,9 @@ const initializers = lila.getCommands();
 const config = lila.makeConfig({ entry, cmd, argv });
 ```
 
-- `@param/options.entry`: `string`, handling entry
-- `@param/options.argv`: `{}`, wrapped `process.argv`
-- `@param/options.cmd`: `string`, command name
+- `@param/options.entry`: `type: string` handling entry
+- `@param/options.argv`: `type: {}` wrapped `process.argv`
+- `@param/options.cmd`: `type: string` command name
 
 ### `lila.runTasks`: run tasks
 
@@ -204,11 +204,11 @@ const config = lila.makeConfig({ entry, cmd, argv });
 lila.runTasks({ entries, argv, cmd }, success, error);
 ```
 
-- `@param/options.entry`: `string`, handling entry
-- `@param/options.argv`: `{}`, wrapped `process.argv`
-- `@param/options.cmd`: `string`, command name
-- `@param/success`: `function`, success callback, `() => { ... }`
-- `@param/error`: `function`, error callback, `err => { ... }`
+- `@param/options.entry`: `type: string` handling entry
+- `@param/options.argv`: `type: {}` wrapped `process.argv`
+- `@param/options.cmd`: `type: string` command name
+- `@param/success`: `type: function` success callback, `() => { ... }`
+- `@param/error`: `type: function` error callback, `err => { ... }`
 
 ### `lila.pureArgv`: make a pure wrapped `process.argv` of [commander.js](https://github.com/tj/commander.js)
 
@@ -231,9 +231,9 @@ commander
 
 ## built-in settings
 
-- `src`: `string`, default `src`, source directory name.
-- `dev`: `string`, default `dev`, development directory name.
-- `build`: `string`, default `build`, build directory name.
+- `src`: `type: string` `default: src` source directory name.
+- `dev`: `type: string` `default: dev` development directory name.
+- `build`: `type: string` `default: build` build directory name.
 - `cwd`: `process.cwd()`, current working directory, and you should not modify it.
 - `tmp`: `cwd/.lila`, tmp directory of project, and you should not modify it.
 

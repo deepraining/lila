@@ -62,11 +62,11 @@ rollup => ({entry, args, argv, cmd, config, lila}) => config
 
 ## extended configs
 
-### `forceGet`: `bool`, default `true`, force all ajax methods as `get`
+### `forceGet`: `type: bool` `default: true` force all ajax methods as `get`
 
 Normally, only `get` method can access static file, and `post, put, delete ...` will cause `404`.
 
-### `mock`: `bool`, default `true`, use js files to generate mock data
+### `mock`: `type: bool` `default: true` use js files to generate mock data
 
 In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
 
@@ -87,9 +87,9 @@ module.exports = (req, res) => {
 
 Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ...`.
 
-### `port`: `number`, default `8090`, local server port
+### `port`: `type: number` `default: 8090` local server port
 
-### `browserSync`: `{}`, default `{}`, [browser-sync](https://github.com/BrowserSync/browser-sync) config
+### `browserSync`: `type: {}` `default: {}` [browser-sync](https://github.com/BrowserSync/browser-sync) config
 
 ## api
 
