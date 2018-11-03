@@ -26,7 +26,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
   const plugins = [
     new DllPlugin({
       name: 'vendor_[chunkhash]',
-      path: join(tmpDir, `dll/${entry}/${key}.json`),
+      path: join(cwd, tmpDir, `dll/${entry}/${key}.json`),
     }),
   ];
 

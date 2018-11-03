@@ -12,7 +12,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     'analyze',
   ]);
   const realSrcDir = join(cwd, srcDir);
-  const realAnalyzeDir = join(tmpDir, analyzeDir);
+  const realAnalyzeDir = join(cwd, tmpDir, analyzeDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 

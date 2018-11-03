@@ -28,7 +28,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     dllConfigs.push(dll(lila, webpack, { entry, cmd, config }, key, value));
     dllPlugins.push(
       new DllReferencePlugin({
-        manifest: join(tmpDir, `dll/${entry}/${key}.json`),
+        manifest: join(cwd, tmpDir, `dll/${entry}/${key}.json`),
       })
     );
   });

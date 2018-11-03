@@ -56,7 +56,7 @@ const newCacheJson = {};
  */
 export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, cwd, tmp] = getSettings(['build', 'cwd', 'tmp']);
+  const [buildDir, cwd, tmpDir] = getSettings(['build', 'cwd', 'tmp']);
 
   const {
     server,
@@ -74,7 +74,7 @@ export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
   if (!sourceMap) src.splice(1, 0, `!${cwd}/${buildDir}/**/*.map`);
 
   if (cache) {
-    const cacheFile = `${tmp}/${
+    const cacheFile = `${cwd}/${tmpDir}/${
       typeof cacheFileName === 'function'
         ? cacheFileName({ entry, argv, cmd })
         : cacheFileName
@@ -114,10 +114,10 @@ export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
  */
 export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
   const { getSettings } = lila;
-  const [tmp] = getSettings(['tmp']);
+  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
 
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
-  const cacheFile = `${tmp}/${
+  const cacheFile = `${cwd}/${tmpDir}/${
     typeof cacheFileName === 'function'
       ? cacheFileName({ entry, argv, cmd })
       : cacheFileName
@@ -212,7 +212,7 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
  */
 export const remoteShell = ({ entry, argv, args, gulp, cmd, lila }) => () => {
   const { getSettings } = lila;
-  const [tmp] = getSettings(['tmp']);
+  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
 
   const { server, scripts, log = 'remote-shell.log' } = (args && args[0]) || {};
 
@@ -223,5 +223,7 @@ export const remoteShell = ({ entry, argv, args, gulp, cmd, lila }) => () => {
 
   const connect = new SSH(server);
 
-  return connect.shell(scripts, { filePath }).pipe(gulp.dest(tmp));
+  return connect
+    .shell(scripts, { filePath })
+    .pipe(gulp.dest(`${cwd}/${tmpDir}`));
 };
