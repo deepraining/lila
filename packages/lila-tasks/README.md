@@ -99,6 +99,16 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 
+### `@lila/sync-dir`: sync directories to remote server(relative to cwd)
+
+```
+['@lila/sync-dir', {server, remotePath, dirs}]
+```
+
+- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` remote server path to upload to.
+- `dirs`: `type: string/array` directories to sync.
+
 ### `@lila/sync-build`: sync build directory to remote server
 
 ```

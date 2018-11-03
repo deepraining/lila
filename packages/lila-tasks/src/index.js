@@ -8,6 +8,7 @@ import {
 } from './html';
 import {
   sync,
+  syncDir,
   syncBuild,
   saveCache,
   syncHtml,
@@ -28,6 +29,7 @@ export default lila => {
   registerTask('@lila/rename-html', renameHtml);
 
   registerTask('@lila/sync', sync);
+  registerTask('@lila/sync-dir', syncDir);
   registerTask('@lila/sync-build', syncBuild);
   registerTask('@lila/save-cache', saveCache);
   registerTask('@lila/sync-html', syncHtml);

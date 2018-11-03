@@ -43,6 +43,38 @@ export const sync = ({ args, gulp, lila }) => () => {
   return gulp.src(globs, options).pipe(connect.dest(remotePath));
 };
 
+/**
+ * sync directories to remote server(relative to cwd)
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/sync-dir', {server, remotePath, dirs}]
+ * ```
+ *
+ * @param args
+ * @param gulp
+ * @param lila
+ * @returns {function()}
+ */
+export const syncDir = ({ args, gulp, lila }) => () => {
+  const { getSettings } = lila;
+  const [cwd] = getSettings(['cwd']);
+
+  const { server, remotePath, dirs } = (args && args[0]) || {};
+
+  if (!server) throw new Error('server info not configured');
+  if (!remotePath) throw new Error('remotePath not configured');
+
+  const src = (Array.isArray(dirs) ? dirs : [dirs]).map(
+    dir => `${cwd}/${dir}/**/*`
+  );
+
+  const connect = new SSH(server);
+
+  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
+};
+
 const newCacheJson = {};
 /**
  * sync build directory to remote server
