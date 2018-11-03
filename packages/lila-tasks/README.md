@@ -167,6 +167,24 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/del-dir', [dir1, dir2, dir3, ...]]
 ```
 
+### `@lila/copy-dir`: copy directory(relative to cwd)
+
+```
+['@lila/copy-dir', {source, target}]
+```
+
+- `source`: `type: string` source directory
+- `target`: `type: string` target directory
+
+### `@lila/move-dir`: move directory(relative to cwd)
+
+```
+['@lila/move-dir', {source, target}]
+```
+
+- `source`: `type: string` source directory
+- `target`: `type: string` target directory
+
 ### `@lila/shell`: execute shell scripts
 
 ```

@@ -1,7 +1,9 @@
 import del from 'del';
 import path from 'path';
+import fse from 'fs-extra';
 
 const { join } = path;
+const { copySync, moveSync } = fse;
 
 /**
  * delete dev directory
@@ -65,4 +67,50 @@ export const delDir = ({ args, lila }) => () => {
   if (Array.isArray(dirs)) dirs = [dirs];
 
   return del(dirs.map(dir => `${cwd}/${dir}`));
+};
+
+/**
+ * copy directory(relative to cwd)
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/copy-dir', {source, target}]
+ * ```
+ *
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
+export const copyDir = ({ args, lila }) => cb => {
+  const { getSetting } = lila;
+  const cwd = getSetting('cwd');
+  const { source, target } = (args && args[0]) || {};
+
+  copySync(join(cwd, source), join(cwd, target));
+
+  return cb();
+};
+
+/**
+ * move directory(relative to cwd)
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/move-dir', {source, target}]
+ * ```
+ *
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
+export const moveDir = ({ args, lila }) => cb => {
+  const { getSetting } = lila;
+  const cwd = getSetting('cwd');
+  const { source, target } = (args && args[0]) || {};
+
+  moveSync(join(cwd, source), join(cwd, target));
+
+  return cb();
 };

@@ -14,7 +14,7 @@ import {
   syncSourceMap,
   remoteShell,
 } from './sync';
-import { delDev, delBuild, delDir } from './del';
+import { delDev, delBuild, delDir, copyDir, moveDir } from './dir';
 import { shell, cleanCache, saveCache } from './misc';
 
 export default lila => {
@@ -37,6 +37,8 @@ export default lila => {
   registerTask('@lila/del-dev', delDev);
   registerTask('@lila/del-build', delBuild);
   registerTask('@lila/del-dir', delDir);
+  registerTask('@lila/copy-dir', copyDir);
+  registerTask('@lila/move-dir', moveDir);
 
   registerTask('@lila/shell', shell);
   registerTask('@lila/clean-cache', cleanCache);
