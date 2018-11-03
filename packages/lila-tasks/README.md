@@ -112,17 +112,24 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ### `@lila/sync-build`: sync build directory to remote server
 
 ```
-['@lila/sync-build', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
+['@lila/sync-build', {server, remotePath, sourceMap}]
 ```
 
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
-- `extra`: `type: string[]` extra directories to upload, same level of `build`.
-- `cache`: `type: bool` `default: false` whether cache uploading record, thus next time will only upload changed files.
-- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
 - `sourceMap`: `type: bool` `default: false` whether to upload sourcemap files.
 
-### `@lila/save-cache`: save cache after sync-build task
+### `@lila/clean-cache`: remove handled files by last handling, and remain new files, for `build` directory
+
+```
+'@lila/clean-cache'
+// or
+['@lila/clean-cache', {cacheFileName}]
+```
+
+- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
+
+### `@lila/save-cache`: save files handling record, for `build` directory
 
 ```
 '@lila/save-cache'

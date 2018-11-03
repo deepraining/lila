@@ -10,6 +10,7 @@ import {
   sync,
   syncDir,
   syncBuild,
+  cleanCache,
   saveCache,
   syncHtml,
   syncSourceMap,
@@ -31,6 +32,7 @@ export default lila => {
   registerTask('@lila/sync', sync);
   registerTask('@lila/sync-dir', syncDir);
   registerTask('@lila/sync-build', syncBuild);
+  registerTask('@lila/clean-cache', cleanCache);
   registerTask('@lila/save-cache', saveCache);
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-sourcemap', syncSourceMap);

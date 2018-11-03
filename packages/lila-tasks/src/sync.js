@@ -1,11 +1,14 @@
 import fs from 'fs';
 import path from 'path';
+import rd from 'rd';
 import SSH from 'gulp-ssh';
+import md5 from 'crypto-md5';
+import fse from 'fs-extra';
 
-import { changedFiles } from './util';
-
-const { existsSync, writeFileSync } = fs;
-const { join } = path;
+const { existsSync, readFileSync, writeFileSync } = fs;
+const { join, relative } = path;
+const { eachFileFilterSync } = rd;
+const { removeSync } = fse;
 
 /**
  * sync files to remote server
@@ -75,60 +78,31 @@ export const syncDir = ({ args, gulp, lila }) => () => {
   return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
 };
 
-const newCacheJson = {};
 /**
  * sync build directory to remote server
  *
  * @example
  *
  * ```
- * ['@lila/sync-build', {server, remotePath, extra, cache, cacheFileName, sourceMap}]
+ * ['@lila/sync-build', {server, remotePath, sourceMap}]
  * ```
  *
- * @param entry
  * @param args
- * @param argv
- * @param cmd
  * @param gulp
  * @param lila
  * @returns {function()}
  */
-export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
+export const syncBuild = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, cwd, tmpDir] = getSettings(['build', 'cwd', 'tmp']);
+  const [buildDir, cwd] = getSettings(['build', 'cwd']);
 
-  const {
-    server,
-    remotePath,
-    extra = [],
-    cache,
-    cacheFileName = 'cache',
-    sourceMap = !1,
-  } = (args && args[0]) || {};
+  const { server, remotePath, sourceMap = !1 } = (args && args[0]) || {};
 
   if (!server) throw new Error('server info not configured');
   if (!remotePath) throw new Error('remotePath not configured');
 
-  let src = [buildDir, ...extra].map(dir => `${cwd}/${dir}/**/*`);
-  if (!sourceMap) src.splice(1, 0, `!${cwd}/${buildDir}/**/*.map`);
-
-  if (cache) {
-    const cacheFile = `${cwd}/${tmpDir}/${
-      typeof cacheFileName === 'function'
-        ? cacheFileName({ entry, argv, cmd })
-        : cacheFileName
-    }.json`;
-    const oldJson = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
-    const { json, changed } = changedFiles(
-      [buildDir, ...extra],
-      cwd,
-      oldJson,
-      sourceMap ? [] : ['map']
-    );
-
-    src = changed;
-    newCacheJson[entry] = json;
-  }
+  const src = [`${cwd}/${buildDir}/**/*`];
+  if (!sourceMap) src.push(`!${cwd}/${buildDir}/**/*.map`);
 
   const connect = new SSH(server);
 
@@ -136,7 +110,47 @@ export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
 };
 
 /**
- * save cache after sync-build task
+ * remove handled files by last handling, and remain new files, for `build` directory
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/clean-cache', {cacheFileName}]
+ * ```
+ *
+ * @param entry
+ * @param args
+ * @param argv
+ * @param cmd
+ * @param lila
+ * @returns {function(*)}
+ */
+export const cleanCache = ({ entry, args, argv, cmd, lila }) => cb => {
+  const { getSettings } = lila;
+  const [cwd, buildDir, tmpDir] = getSettings(['cwd', 'build', 'tmp']);
+  const buildPath = join(cwd, buildDir);
+
+  const { cacheFileName = 'cache' } = (args && args[0]) || {};
+  const cacheFile = `${cwd}/${tmpDir}/${
+    typeof cacheFileName === 'function'
+      ? cacheFileName({ entry, argv, cmd })
+      : cacheFileName
+  }.json`;
+  const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
+
+  eachFileFilterSync(buildPath, file => {
+    const key = relative(buildPath, file);
+    const content = readFileSync(file);
+    const hash = md5(content, 'hex');
+
+    if (json[key] === hash) removeSync(file);
+  });
+
+  return cb();
+};
+
+/**
+ * save files handling record, for `build` directory
  *
  * @example
  *
@@ -153,7 +167,8 @@ export const syncBuild = ({ entry, args, argv, cmd, gulp, lila }) => () => {
  */
 export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
   const { getSettings } = lila;
-  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
+  const [cwd, buildDir, tmpDir] = getSettings(['cwd', 'build', 'tmp']);
+  const buildPath = join(cwd, buildDir);
 
   const { cacheFileName = 'cache' } = (args && args[0]) || {};
   const cacheFile = `${cwd}/${tmpDir}/${
@@ -161,11 +176,16 @@ export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
       ? cacheFileName({ entry, argv, cmd })
       : cacheFileName
   }.json`;
-  const json = newCacheJson[entry];
+  const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
 
-  if (json) writeFileSync(cacheFile, JSON.stringify(json));
+  eachFileFilterSync(buildPath, file => {
+    const key = relative(buildPath, file);
+    const content = readFileSync(file);
 
-  delete newCacheJson[entry];
+    json[key] = md5(content, 'hex');
+  });
+
+  writeFileSync(cacheFile, JSON.stringify(json));
 
   return cb();
 };
