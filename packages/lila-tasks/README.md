@@ -95,7 +95,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/sync', {src, server, remotePath}]
 ```
 
-- `src`: `type: string/array` [gulp.src globs](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 
@@ -163,12 +163,17 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 '@lila/del-build'
 ```
 
+### `@lila/del-dir`: delete directories(relative to cwd)
+
+```
+['@lila/del-dir', dir]
+['@lila/del-dir', [dir1, dir2, dir3, ...]]
+```
+
 ### `@lila/shell`: execute shell scripts
 
 ```
 ['@lila/shell', {command, args, options}]
 ```
 
-- `command`: `type: string` see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
-- `args`: `type: string[]` see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
-- `options`: `type: {}` see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+- `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)

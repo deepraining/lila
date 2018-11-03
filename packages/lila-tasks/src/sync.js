@@ -33,7 +33,14 @@ export const sync = ({ args, gulp, lila }) => () => {
 
   const connect = new SSH(server);
 
-  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
+  let globs = src;
+  let options = { base: cwd };
+
+  if (Array.isArray(src) && typeof src[1] === 'object') {
+    [globs, options] = src;
+  }
+
+  return gulp.src(globs, options).pipe(connect.dest(remotePath));
 };
 
 const newCacheJson = {};

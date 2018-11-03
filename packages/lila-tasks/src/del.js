@@ -42,3 +42,27 @@ export const delBuild = ({ lila }) => () => {
 
   return del([buildPath]);
 };
+
+/**
+ * delete directories(relative to cwd)
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/del-dir', dir]
+ * ['@lila/del-dir', [dir1, dir2, dir3, ...]]
+ * ```
+ *
+ * @param args
+ * @param lila
+ * @returns {function()}
+ */
+export const delDir = ({ args, lila }) => () => {
+  const { getSettings } = lila;
+  const [cwd] = getSettings(['cwd']);
+  let dirs = (args && args[0]) || [];
+
+  if (Array.isArray(dirs)) dirs = [dirs];
+
+  return del(dirs.map(dir => `${cwd}/${dir}`));
+};
