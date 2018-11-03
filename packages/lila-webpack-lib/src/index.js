@@ -1,14 +1,18 @@
 import path from 'path';
 import start from './start';
 import task from './task';
-import { getCmdOptions } from './cmd-options';
-
-export { addCmdOption } from './cmd-options';
 
 const { join } = path;
 
 export default lila => {
-  const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
+  const {
+    addCommand,
+    makeArgv,
+    registerTask,
+    runTasks,
+    getSettings,
+    getCmdOptions,
+  } = lila;
   const [cwd, srcDir, getEntries] = getSettings(['cwd', 'src', 'getEntries']);
 
   const realSrcDir = join(cwd, srcDir);
@@ -24,7 +28,7 @@ export default lila => {
     });
 
     command.action((entry, options) => {
-      const argv = pureArgv(options);
+      const argv = makeArgv(options);
 
       start({ entry, argv, lila });
     });
@@ -45,7 +49,7 @@ export default lila => {
 
       runTasks({
         entries: getEntries ? getEntries(realEntries, realSrcDir) : realEntries,
-        argv: pureArgv(options),
+        argv: makeArgv(options),
         cmd: 'build',
       });
     });

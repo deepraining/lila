@@ -20,4 +20,6 @@ export { default as makeConfig } from './make-config';
 
 export { default as runTasks } from './run-tasks';
 
-export { default as pureArgv } from '../util/pure-argv';
+export { addCmdOption, getCmdOptions } from './cmd-options';
+
+export { makeArgv } from './util';

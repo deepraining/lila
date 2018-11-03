@@ -95,39 +95,6 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `hotMiddleware`: `type: {}` `default: {}` [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config
 
-## api
-
-### `webpackPlugin`: main export function
-
-```
-const webpackPlugin = require('lila-webpack-lib');
-
-module.exports = lila => {
-  webpackPlugin(lila);
-
-  ...
-};
-```
-
-### `addCmdOption`: add option for command
-
-```
-const webpackPlugin = require('lila-webpack-lib');
-const { addCmdOption } = webpackPlugin;
-
-module.exports = lila => {
-  // writing format
-  addCmdOption(cmd, ...option);
-
-  // an instance
-  addCmdOption('build', '-e, --env', 'specify server environment');
-
-  ...
-};
-```
-
-- `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
-
 ## node packages
 
 - [webpack](https://github.com/webpack/webpack): 4.x

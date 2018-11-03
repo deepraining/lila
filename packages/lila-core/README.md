@@ -35,9 +35,9 @@ module.exports = lila => {
   webpackConfigPlugin(lila);
 
   // return a config generator
-  return ({ entry, cmd, argv }) => {
+  return ({ entry, argv, cmd }) => {
 
-    // make a config according to `entry, cmd, argv`
+    // make a config according to `entry, argv, cmd`
     const config = { ... }
 
     return config;
@@ -86,7 +86,7 @@ const value = lila.getSetting(name);
 ```
 
 - `@param/name`: `type: string` setting name
-- `@return/value`: `type: *` setting value
+- `@return`: `type: *` setting value
 
 ### `lila.getSettings`: get multiple setting values
 
@@ -95,7 +95,7 @@ const values = lila.getSettings(names);
 ```
 
 - `@param/names`: `type: string[]` setting names
-- `@return/values`: `type: *[]` setting values
+- `@return`: `type: *[]` setting values
 
 ### `lila.getAllSettings`: get all settings
 
@@ -103,7 +103,7 @@ const values = lila.getSettings(names);
 const settings = lila.getAllSettings();
 ```
 
-- `@return/settings`: `type: {}` `key-value` map of all settings
+- `@return`: `type: {}` `key-value` map of all settings
 
 ### `lila.registerTask`: register a task generator
 
@@ -145,7 +145,7 @@ const generator = lila.getTask(name);
 ```
 
 - `@param/name`: `type: string` task name
-- `@return/generator`: `type: function` task generator
+- `@return`: `type: function` task generator
 
 ### `lila.getTasks`: get multiple task generators
 
@@ -154,7 +154,7 @@ const generators = lila.getTasks(names);
 ```
 
 - `@param/names`: `type: string[]` task names
-- `@return/generators`: `type: function[]` task generators
+- `@return`: `type: function[]` task generators
 
 ### `lila.getAllTasks`: get all task generators
 
@@ -162,7 +162,7 @@ const generators = lila.getTasks(names);
 const tasks = lila.getAllTasks();
 ```
 
-- `@return/tasks`: `type: {}` `name-generator` map of all tasks
+- `@return`: `type: {}` `name-generator` map of all tasks
 
 ### `lila.addCommand`: add a command
 
@@ -186,12 +186,12 @@ commander => { ... }
 const initializers = lila.getCommands();
 ```
 
-- `@return/initializers`: `type: function[]` added command initializers
+- `@return`: `type: function[]` added command initializers
 
 ### `lila.makeConfig`: make project config
 
 ```
-const config = lila.makeConfig({ entry, cmd, argv });
+const config = lila.makeConfig({ entry, argv, cmd });
 ```
 
 - `@param/options.entry`: `type: string` handling entry
@@ -210,13 +210,38 @@ lila.runTasks({ entries, argv, cmd }, success, error);
 - `@param/success`: `type: function` success callback, `() => { ... }`
 - `@param/error`: `type: function` error callback, `err => { ... }`
 
-### `lila.pureArgv`: make a pure wrapped `process.argv` of [commander.js](https://github.com/tj/commander.js)
+### `lila.addCmdOption`: add option for command
+
+```
+lila.addCmdOption(name, ...option);
+
+// example
+lila.addCmdOption('run', '-e, --env', 'specify server environment');
+```
+
+- `name`: command name
+- `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
+
+### `lila.getCmdOptions`: get options for command
+
+```
+const options = lila.getCmdOptions(name);
+
+// example
+options.forEach(option => {
+  command.option(...option);
+});
+```
+
+- `name`: command name
+
+### `lila.makeArgv`: make a wrapped `process.argv`
 
 ```
 import commander from 'commander';
 import lila from 'lila-core';
 
-const = {pureArgv} = lila;
+const = {makeArgv} = lila;
 
 commander
   .command('build <entry> [extraEntries...]')
@@ -224,18 +249,28 @@ commander
   .option('-e, --env [env]', 'Specify server enviroment.')
   .action((entry, extraEntries, options) => {
 
-    // make a pure wrapped `process.argv`
-    const argv = pureArgv(options);
+    // make a wrapped `process.argv`
+    const argv = makeArgv(options, keepUnknown);
   });
 ```
+
+- `@param/keepUnknown`: `type: bool` `default: false` whether to keep unknown args which stored by the key `_`, see [minimist](https://github.com/substack/minimist)
 
 ## built-in settings
 
 - `src`: `type: string` `default: src` source directory name.
 - `dev`: `type: string` `default: dev` development directory name.
 - `build`: `type: string` `default: build` build directory name.
-- `cwd`: `process.cwd()`, current working directory, and you should not modify it.
-- `tmp`: `cwd/.lila`, tmp directory of project, and you should not modify it.
+- `tmp`: `type: string` `default: .lila` tmp directory of project.
+- `cwd`: `process.cwd()` `read only` current working directory.
+
+## built-in commands
+
+### `run`: run tasks
+
+```
+lila run entry1 entry2 entry3 ...
+```
 
 ## node packages
 

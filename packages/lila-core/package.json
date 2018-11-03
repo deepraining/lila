@@ -35,7 +35,8 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "gulp": "^4.0.0",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {},
   "engines": {

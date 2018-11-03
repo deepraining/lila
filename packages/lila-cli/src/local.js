@@ -9,7 +9,11 @@ try {
   /**
    * resolved core file path
    *
-   * @example path/to/project/node_modules/_lila-core@0.5.0@lila-core/lib/index.js
+   * @example
+   *
+   * ```
+   * path/to/project/node_modules/_lila-core@0.5.0@lila-core/lib/index.js
+   * ```
    *
    * @type {String}
    */

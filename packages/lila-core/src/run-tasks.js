@@ -10,7 +10,7 @@ export default ({ entries, argv, cmd }, successCB, errorCB) => {
   const runTasks = [];
 
   entries.forEach(entry => {
-    const config = makeConfig({ entry, cmd, argv });
+    const config = makeConfig({ entry, argv, cmd });
 
     const { tasks: importTasks } = config;
     const taskCount = {};

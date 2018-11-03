@@ -91,39 +91,6 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `browserSync`: `type: {}` `default: {}` [browser-sync](https://github.com/BrowserSync/browser-sync) config
 
-## api
-
-### `rollupPlugin`: main export function
-
-```
-const rollupPlugin = require('lila-rollup');
-
-module.exports = lila => {
-  rollupPlugin(lila);
-
-  ...
-};
-```
-
-### `addCmdOption`: add option for command
-
-```
-const rollupPlugin = require('lila-rollup');
-const { addCmdOption } = rollupPlugin;
-
-module.exports = lila => {
-  // writing format
-  addCmdOption(cmd, ...option);
-
-  // an instance
-  addCmdOption('build', '-e, --env', 'specify server environment');
-
-  ...
-};
-```
-
-- `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
-
 ## node packages
 
 - [rollup](https://github.com/rollup/rollup): 0.66

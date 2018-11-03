@@ -1,11 +1,15 @@
 import app from './app';
 import * as lila from './lila';
 import { registerConfigGenerator } from './make-config';
+import { addCommand } from './commands';
+import { run } from './cmd';
 import entry from './entry';
 
 app.lila = lila;
 
-// below code should be executed after register built-in tasks
+addCommand(run);
+
+// below code should be executed at last
 const configGenerator = entry(lila);
 
 if (typeof configGenerator !== 'function')

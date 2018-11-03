@@ -3,15 +3,19 @@ import dev from './dev';
 import start from './start';
 import analyze from './analyze';
 import task from './task';
-import { getCmdOptions } from './cmd-options';
 import { getAllEntries } from './util';
-
-export { addCmdOption } from './cmd-options';
 
 const { join } = path;
 
 export default lila => {
-  const { addCommand, pureArgv, registerTask, runTasks, getSettings } = lila;
+  const {
+    addCommand,
+    makeArgv,
+    registerTask,
+    runTasks,
+    getSettings,
+    getCmdOptions,
+  } = lila;
   const [cwd, srcDir, getEntries, servePath] = getSettings([
     'cwd',
     'src',
@@ -31,7 +35,7 @@ export default lila => {
     });
 
     command.action((entry, options) => {
-      const argv = pureArgv(options);
+      const argv = makeArgv(options);
 
       dev({ entry, argv, lila });
     });
@@ -53,7 +57,7 @@ export default lila => {
         entries: getEntries
           ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
           : entries,
-        argv: pureArgv(options),
+        argv: makeArgv(options),
         cmd: 'build',
       });
     });
@@ -75,7 +79,7 @@ export default lila => {
         entries: getEntries
           ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
           : entries,
-        argv: pureArgv(options),
+        argv: makeArgv(options),
         cmd: 'sync',
       });
     });
@@ -94,7 +98,7 @@ export default lila => {
     });
 
     command.action((entry, options) => {
-      const argv = pureArgv(options);
+      const argv = makeArgv(options);
       runTasks(
         {
           entries: [entry],
@@ -119,7 +123,7 @@ export default lila => {
     });
 
     command.action((entry, options) => {
-      const argv = pureArgv(options);
+      const argv = makeArgv(options);
 
       analyze({ entry, argv, lila });
     });
@@ -138,7 +142,7 @@ export default lila => {
     });
 
     command.action((entry, options) => {
-      const argv = pureArgv(options);
+      const argv = makeArgv(options);
 
       if (!servePath) throw new Error("setting [servePath] hasn't been set");
 
