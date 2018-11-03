@@ -1,5 +1,5 @@
 import browserSync from 'browser-sync';
-import { forceGet as forceGetMiddleware, makeMock } from './util';
+import { makeMock, forceGet as forceGetMiddleware } from '../../../util/index';
 
 export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;

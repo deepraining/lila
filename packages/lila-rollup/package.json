@@ -34,10 +34,7 @@
   "scripts": {},
   "dependencies": {
     "browser-sync": "^2.24.7",
-    "chalk": "^2.4.1",
     "chokidar": "^2.0.4",
-    "fs-extra": "^7.0.0",
-    "lodash": "^4.17.11",
     "rollup": "^0.66.6"
   },
   "devDependencies": {},

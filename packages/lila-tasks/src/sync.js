@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import SSH from 'gulp-ssh';
 
-import changedFiles from '../util/changed';
+import { changedFiles } from './util';
 
 const { existsSync, writeFileSync } = fs;
 const { join } = path;

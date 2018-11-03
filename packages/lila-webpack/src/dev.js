@@ -3,7 +3,8 @@ import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
 import browserSync from 'browser-sync';
 
-import { makeMock, forceGet as forceGetMiddleware, makeServe } from './util';
+import { makeMock, forceGet as forceGetMiddleware } from '../../../util/index';
+import { makeServe } from './util';
 import { defaultDevMiddleware } from './defaults';
 
 export default ({ entry, argv, lila, serve, servePath }) => {

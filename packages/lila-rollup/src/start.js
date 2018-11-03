@@ -4,7 +4,7 @@ import chokidar from 'chokidar';
 import browserSync from 'browser-sync';
 
 import run from './run';
-import { makeMock, forceGet as forceGetMiddleware } from './util';
+import { makeMock, forceGet as forceGetMiddleware } from '../../../util/index';
 
 const { join } = path;
 

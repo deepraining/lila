@@ -8,7 +8,7 @@ const { readFileSync } = fs;
 const { relative, join } = path;
 const { eachFileFilterSync } = rd;
 
-export default (dirs, base, json = {}, exclude = []) => {
+export const changedFiles = (dirs, base, json = {}, exclude = []) => {
   const newJson = {};
 
   dirs.forEach(dir => {
@@ -31,3 +31,5 @@ export default (dirs, base, json = {}, exclude = []) => {
 
   return { json: newJson, changed };
 };
+
+export default {};
