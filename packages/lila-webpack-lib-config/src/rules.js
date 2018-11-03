@@ -3,6 +3,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 export const babelLoader = ({
   babelImport,
   babelExclude,
+  babelPresets,
+  babelPlugins,
   flow,
   flowRuntime,
 }) => ({
@@ -12,12 +14,14 @@ export const babelLoader = ({
     presets: [
       '@babel/preset-env',
       '@babel/preset-react',
+      ...babelPresets,
       ...(flow ? ['flow'] : []),
     ],
     plugins: [
       '@babel/plugin-transform-react-jsx',
       '@babel/plugin-syntax-dynamic-import',
       ['import', babelImport],
+      ...babelPlugins,
       ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
     ],
   },

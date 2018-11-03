@@ -21,6 +21,8 @@ export default (lila, webpack, { cmd, config }) => {
   const {
     babelImport = [],
     babelExclude = [/node_modules/],
+    babelPresets = [],
+    babelPlugins = [],
     extensions = defaultExtensions,
     provide = {},
     define = {},
@@ -38,7 +40,14 @@ export default (lila, webpack, { cmd, config }) => {
     plugins: [new ProvidePlugin(provide), new DefinePlugin(define)],
     module: {
       rules: [
-        babelLoader({ babelImport, babelExclude, flow, flowRuntime }),
+        babelLoader({
+          babelImport,
+          babelExclude,
+          babelPresets,
+          babelPlugins,
+          flow,
+          flowRuntime,
+        }),
         urlLoader({ extensions }),
         htmlLoader(),
         cssLoader(isBuild),

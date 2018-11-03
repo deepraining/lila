@@ -12,6 +12,8 @@ export default (lila, rollup, { cmd, config }) => {
   const {
     babelImport = [],
     babelExclude = [/node_modules/],
+    babelPresets = [],
+    babelPlugins = [],
     alias = {},
     inject = {},
     nodeResolve = !1,
@@ -34,12 +36,14 @@ export default (lila, rollup, { cmd, config }) => {
         presets: [
           '@babel/preset-env',
           '@babel/preset-react',
+          ...babelPresets,
           ...(flow ? ['flow'] : []),
         ],
         plugins: [
           '@babel/plugin-transform-react-jsx',
           '@babel/plugin-syntax-dynamic-import',
           ['import', babelImport],
+          ...babelPlugins,
           ...(flowRuntime
             ? [['flow-runtime', { assert: !0, annotate: !0 }]]
             : []),

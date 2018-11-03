@@ -34,6 +34,10 @@ module.exports = lila => {
 
 ### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 
+### `babelPresets`: `type: []` `default: []` extra babel presets
+
+### `babelPlugins`: `type: []` `default: []` extra babel plugins
+
 ### `banner`: `type: string` `default: empty string` [rollup](https://rollupjs.org/guide/en) output banner
 
 ### `alias`: `type: {}` `default: {}` [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
@@ -50,7 +54,7 @@ module.exports = lila => {
 
 ### `minCss`: `type: bool` `default: true` whether minify css
 
-### `filename`: `type: string` `default: index` library file name
+### `filename`: `type: string` `default: empty string` library file name
 
 ### `name`: `type: string` `default: Index` [rollup](https://rollupjs.org/guide/en) output name
 

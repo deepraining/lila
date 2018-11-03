@@ -18,7 +18,11 @@ export default (lila, webpack, { entry, config }, key, value) => {
   const {
     babelImport = [],
     babelExclude = [/node_modules/],
+    babelPresets = [],
+    babelPlugins = [],
     alias = {},
+    flow = !1,
+    flowRuntime = !1,
     minJs = !0,
     devtool,
   } = config;
@@ -40,7 +44,16 @@ export default (lila, webpack, { entry, config }, key, value) => {
     },
     plugins,
     module: {
-      rules: [babelLoader({ babelImport, babelExclude })],
+      rules: [
+        babelLoader({
+          babelImport,
+          babelExclude,
+          babelPresets,
+          babelPlugins,
+          flow,
+          flowRuntime,
+        }),
+      ],
     },
     resolve: {
       modules: [realSrcDir, 'node_modules'],

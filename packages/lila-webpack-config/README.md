@@ -36,6 +36,10 @@ module.exports = lila => {
 
 ### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 
+### `babelPresets`: `type: []` `default: []` extra babel presets
+
+### `babelPlugins`: `type: []` `default: []` extra babel plugins
+
 ### `extensions`: `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']` [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
 ### `provide`: `type: {}` `default: {}` [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
