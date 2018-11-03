@@ -119,26 +119,6 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `remotePath`: `type: string` remote server path to upload to.
 - `sourceMap`: `type: bool` `default: false` whether to upload sourcemap files.
 
-### `@lila/clean-cache`: remove handled files by last handling, and remain new files, for `build` directory
-
-```
-'@lila/clean-cache'
-// or
-['@lila/clean-cache', {cacheFileName}]
-```
-
-- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
-
-### `@lila/save-cache`: save files handling record, for `build` directory
-
-```
-'@lila/save-cache'
-// or
-['@lila/save-cache', {cacheFileName}]
-```
-
-- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
-
 ### `@lila/sync-html`: sync html files to remote server
 
 ```
@@ -194,3 +174,25 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 
 - `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+
+### `@lila/clean-cache`: remove handled files by last handling, and remain new files, for `build` directory
+
+```
+'@lila/clean-cache'
+// or
+['@lila/clean-cache', {dir, cacheFileName}]
+```
+
+- `dir`: `type: string` directory to handle(relative to cwd)
+- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
+
+### `@lila/save-cache`: save files handling record, for `build` directory
+
+```
+'@lila/save-cache'
+// or
+['@lila/save-cache', {dir, cacheFileName}]
+```
+
+- `dir`: `type: string` directory to handle(relative to cwd)
+- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.

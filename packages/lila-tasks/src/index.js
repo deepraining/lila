@@ -10,14 +10,12 @@ import {
   sync,
   syncDir,
   syncBuild,
-  cleanCache,
-  saveCache,
   syncHtml,
   syncSourceMap,
   remoteShell,
 } from './sync';
 import { delDev, delBuild, delDir } from './del';
-import { shell } from './misc';
+import { shell, cleanCache, saveCache } from './misc';
 
 export default lila => {
   const { registerTask } = lila;
@@ -32,8 +30,6 @@ export default lila => {
   registerTask('@lila/sync', sync);
   registerTask('@lila/sync-dir', syncDir);
   registerTask('@lila/sync-build', syncBuild);
-  registerTask('@lila/clean-cache', cleanCache);
-  registerTask('@lila/save-cache', saveCache);
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-sourcemap', syncSourceMap);
   registerTask('@lila/remote-shell', remoteShell);
@@ -43,4 +39,6 @@ export default lila => {
   registerTask('@lila/del-dir', delDir);
 
   registerTask('@lila/shell', shell);
+  registerTask('@lila/clean-cache', cleanCache);
+  registerTask('@lila/save-cache', saveCache);
 };
