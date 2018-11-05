@@ -61,6 +61,7 @@ export const syncDir = ({ args, gulp, lila }) => () => {
 
   if (!server) throw new Error('server info not configured');
   if (!remotePath) throw new Error('remotePath not configured');
+  if (!dirs) throw new Error('dirs not configured');
 
   const src = (Array.isArray(dirs) ? dirs : [dirs]).map(
     dir => `${cwd}/${dir}/**/*`
@@ -72,7 +73,7 @@ export const syncDir = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync build directory to remote server
+ * sync build directory to remote server(relative to cwd)
  *
  * @example
  *
@@ -89,7 +90,7 @@ export const syncBuild = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [buildDir, cwd] = getSettings(['build', 'cwd']);
 
-  const { server, remotePath, sourceMap = !1 } = (args && args[0]) || {};
+  const { server, remotePath, sourceMap = !0 } = (args && args[0]) || {};
 
   if (!server) throw new Error('server info not configured');
   if (!remotePath) throw new Error('remotePath not configured');
@@ -103,7 +104,7 @@ export const syncBuild = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync html files to remote server
+ * sync html files to remote server(relative to build)
  *
  * @example
  *
@@ -134,7 +135,7 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync sourcemap files to remote server
+ * sync sourcemap files to remote server(relative to build)
  *
  * @example
  *

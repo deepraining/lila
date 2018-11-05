@@ -24,70 +24,84 @@ module.exports = lila => {
 
 ## built-in tasks
 
-### `@lila/correct-html`: correct html path
-
-By default, a `index.html` will be generated under `build` directory, and this task is to modify its path, `build/index.html -> build/entry/name.html`.
+### `@lila/replace`: replace file content
 
 ```
-'@lila/correct-html'
-// or
-['@lila/correct-html', {source, target}]
+['@lila/replace', {file, replace: [{target, replacement}]}]
 ```
 
-- `source`: `type: string` `default: index.html` source html file.
-- `target`: `type: string` `default: ${entry}.html` target html file.
-
-### `@lila/replace-html`: replace html content
-
-```
-['@lila/replace-html', {file, replace: [{target, replacement}]}]
-```
-
-- `file`: `type: string` `default: ${entry}.html` html file to handle.
+- `file`: `type: string` file to handle.
 - `replace`: `type: []` options to replace.
   - `target`: `type: string|RegExp` target to be replaced.
   - `replacement`: `type: string` string to replace.
 
-### `@lila/insert-html`: insert html content
+### `@lila/insert`: insert file content
 
 ```
-['@lila/insert-html', {file, start, end}]
+['@lila/insert', {file, start, end}]
 ```
 
-- `file`: `type: string` `default: ${entry}.html` html file to handle.
+- `file`: `type: string` file to handle.
 - `start`: `type: string` content to prepend.
 - `end`: `type: string` content to append.
 
-### `@lila/convert-html`: convert html extension
+### `@lila/convert`: convert file extension
 
 ```
-['@lila/convert-html', {file, ext}]
+['@lila/convert', {file, ext}]
 ```
 
-- `file`: `type: string` `default: ${entry}.html` html file to handle.
+- `file`: `type: string` file to handle.
 - `ext`: `type: string` extension name, like `php, jsp`.
 
-### `@lila/backup-html`: backup html file
+### `@lila/backup`: backup file
 
-Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
+Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 
 ```
-'@lila/backup-html'
-// or
-['@lila/backup-html', {suffix, ext}]
+['@lila/backup', {file, suffix}]
 ```
 
+- `file`: `type: string` file to handle.
 - `suffix`: `type: string` `default: (new Date()).getTime()` `index.html -> index.${suffix}.html`.
-- `ext`: `type: string` `default: html` html file extension.
 
-### `@lila/rename-html`: rename html path
+### `@lila/move`: move file or directory
 
 ```
-['@lila/rename-html', {entry, ext}]
+['@lila/move', {source, target}]
 ```
 
-- `entry`: `type: string` new entry to rename to.
-- `ext`: `type: string` `default: html` html file extension.
+- `source`: `type: string` source file or directory
+- `target`: `type: string` target file or directory
+
+### `@lila/copy`: copy file or directory
+
+```
+['@lila/copy', {source, target}]
+```
+
+- `source`: `type: string` source file or directory
+- `target`: `type: string` target file or directory
+
+### `@lila/del`: delete files or directories
+
+```
+['@lila/del', file]
+['@lila/del', dir]
+['@lila/del', [file1, dir2, dir3, ...]]
+```
+
+### `@lila/del-dev`: delete dev directory
+
+```
+'@lila/del-dev'
+```
+
+### `@lila/del-build`: delete build directory
+
+```
+'@lila/del-build'
+```
 
 ### `@lila/sync`: sync files to remote server
 
@@ -109,7 +123,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `remotePath`: `type: string` remote server path to upload to.
 - `dirs`: `type: string/array` directories to sync.
 
-### `@lila/sync-build`: sync build directory to remote server
+### `@lila/sync-build`: sync build directory to remote server(relative to cwd)
 
 ```
 ['@lila/sync-build', {server, remotePath, sourceMap}]
@@ -117,9 +131,9 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
-- `sourceMap`: `type: bool` `default: false` whether to upload sourcemap files.
+- `sourceMap`: `type: bool` `default: true` whether to upload sourcemap files.
 
-### `@lila/sync-html`: sync html files to remote server
+### `@lila/sync-html`: sync html files to remote server(relative to build)
 
 ```
 ['@lila/sync-html', {server, remotePath, ext}]
@@ -129,7 +143,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `remotePath`: `type: string` remote server path to upload to.
 - `ext`: `type: string` `default: html` html file extension.
 
-### `@lila/sync-sourcemap`: sync sourcemap files to remote server
+### `@lila/sync-sourcemap`: sync sourcemap files to remote server(relative to build)
 
 ```
 ['@lila/sync-sourcemap', {server, remotePath}]
@@ -147,43 +161,6 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `scripts`: `type: string/array` shell scripts to execute on remote server.
 - `log`: `type: string` `default: remote-shell.log` log file.
-
-### `@lila/del-dev`: delete dev directory
-
-```
-'@lila/del-dev'
-```
-
-### `@lila/del-build`: delete build directory
-
-```
-'@lila/del-build'
-```
-
-### `@lila/del-dir`: delete directories(relative to cwd)
-
-```
-['@lila/del-dir', dir]
-['@lila/del-dir', [dir1, dir2, dir3, ...]]
-```
-
-### `@lila/copy-dir`: copy directory(relative to cwd)
-
-```
-['@lila/copy-dir', {source, target}]
-```
-
-- `source`: `type: string` source directory
-- `target`: `type: string` target directory
-
-### `@lila/move-dir`: move directory(relative to cwd)
-
-```
-['@lila/move-dir', {source, target}]
-```
-
-- `source`: `type: string` source directory
-- `target`: `type: string` target directory
 
 ### `@lila/shell`: execute shell scripts
 

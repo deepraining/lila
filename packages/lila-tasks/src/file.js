@@ -1,7 +1,5 @@
-import path from 'path';
 import fse from 'fs-extra';
 
-const { join } = path;
 const { moveSync, readFileSync, outputFileSync, copySync } = fse;
 
 /**
@@ -142,36 +140,6 @@ export const backup = ({ args, lila }) => cb => {
   const index = file.slice(0, file.lastIndexOf('.'));
 
   copySync(file, `${file.slice(0, index)}.${suffix}${file.slice(index)}`);
-
-  return cb();
-};
-
-/**
- * todo: move file
- *
- * @example
- *
- * ```
- * ['@lila/move', {source, target}]
- * ```
- *
- * @param entry
- * @param args
- * @param lila
- * @returns {function(*)}
- */
-export const renameHtml = ({ entry, args, lila }) => cb => {
-  const { getSetting } = lila;
-  const buildDir = getSetting('build');
-
-  const { entry: newEntry = '', ext = 'html' } = (args && args[0]) || {};
-
-  if (!newEntry) return cb();
-
-  moveSync(
-    join(buildDir, `${entry}.${ext}`),
-    join(buildDir, `${newEntry}.${ext}`)
-  );
 
   return cb();
 };
