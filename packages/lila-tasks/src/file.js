@@ -10,7 +10,7 @@ const { moveSync, readFileSync, outputFileSync, copySync } = fse;
  * @example
  *
  * ```
- * ['@lila/replace', {file, replace: [{target, replacement}], relative}]
+ * ['@lila/replace', {file, replace: [{target, replacement}]}]
  * ```
  *
  * @param args
@@ -18,18 +18,23 @@ const { moveSync, readFileSync, outputFileSync, copySync } = fse;
  * @returns {function(*)}
  */
 export const replace = ({ args, lila }) => cb => {
-  const { getSetting } = lila;
-  const buildDir = getSetting('build');
+  const { warn } = lila;
+  const { file, replace: replacing } = (args && args[0]) || {};
 
-  const { file, replace: replacing, relative = buildDir } =
-    (args && args[0]) || {};
+  if (!file) {
+    warn('task skipped: file not configured');
+    return cb();
+  }
+  if (!replacing) {
+    warn('task skipped: replace not configured');
+    return cb();
+  }
+  if (!Array.isArray(replacing)) {
+    warn('task skipped: replace should be an array');
+    return cb();
+  }
 
-  if (!file) throw new Error('file not configured');
-  if (!replacing) throw new Error('replace not configured');
-  if (!Array.isArray(replacing)) throw new Error('replace should be an array');
-
-  const filePath = join(relative, file);
-  let content = readFileSync(filePath, 'utf8');
+  let content = readFileSync(file, 'utf8');
 
   replacing.forEach(item => {
     const { target, replacement } = item;
@@ -37,7 +42,7 @@ export const replace = ({ args, lila }) => cb => {
     content = content.replace(target, replacement);
   });
 
-  outputFileSync(filePath, content);
+  outputFileSync(file, content);
 
   return cb();
 };
@@ -48,7 +53,7 @@ export const replace = ({ args, lila }) => cb => {
  * @example
  *
  * ```
- * ['@lila/insert', {file, start, end, relative}]
+ * ['@lila/insert', {file, start, end}]
  * ```
  *
  * @param args
@@ -56,89 +61,98 @@ export const replace = ({ args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const insert = ({ args, lila }) => cb => {
-  const { getSetting } = lila;
-  const buildDir = getSetting('build');
+  const { warn } = lila;
+  const { file, start, end } = (args && args[0]) || {};
 
-  const { file, start, end, relative = buildDir } = (args && args[0]) || {};
+  if (!file) {
+    warn('task skipped: file not configured');
+    return cb();
+  }
+  if (!start && !end) {
+    warn('task skipped: both start and end are empty');
+    return cb();
+  }
 
-  if (!start && !end) return cb();
-
-  const filePath = join(relative, file);
-  let content = readFileSync(filePath, 'utf8');
+  let content = readFileSync(file, 'utf8');
 
   if (start) content = start + content;
   if (end) content += end;
 
-  outputFileSync(filePath, content);
+  outputFileSync(file, content);
 
   return cb();
 };
 
 /**
- * convert html extension
+ * convert file extension
  *
  * @example
  *
  * ```
- * ['@lila/convert-html', {file, ext}]
+ * ['@lila/convert', {file, ext}]
  * ```
  *
- * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const convertHtml = ({ entry, args, lila }) => cb => {
-  const { getSetting } = lila;
-  const buildDir = getSetting('build');
+export const convert = ({ args, lila }) => cb => {
+  const { warn } = lila;
 
-  const { file = `${entry}.html`, ext = '' } = (args && args[0]) || {};
+  const { file, ext } = (args && args[0]) || {};
 
-  if (!ext) return cb();
+  if (!file) {
+    warn('task skipped: file not configured');
+    return cb();
+  }
+  if (!ext) {
+    warn('task skipped: ext not configured');
+    return cb();
+  }
 
-  const filePath = join(buildDir, file);
-
-  moveSync(filePath, filePath.slice(-4) + ext);
+  const fullExt = ext.slice(0, 1) === '.' ? ext : `.${ext}`;
+  moveSync(file, file.slice(0, file.lastIndexOf('.')) + fullExt);
 
   return cb();
 };
 
 /**
- * backup html
+ * backup file
  *
  * @example
  *
  * ```
- * ['@lila/backup-html', {suffix, ext}]
+ * ['@lila/backup', {file, suffix}]
  * ```
  *
- * @param entry
  * @param args
  * @param lila
  * @returns {function(*)}
  */
-export const backupHtml = ({ entry, args, lila }) => cb => {
-  const { getSetting } = lila;
-  const buildDir = getSetting('build');
+export const backup = ({ args, lila }) => cb => {
+  const { warn } = lila;
 
-  const { suffix = new Date().getTime(), ext = 'html' } =
-    (args && args[0]) || {};
+  const { file, suffix = new Date().getTime() } = (args && args[0]) || {};
 
-  copySync(
-    join(buildDir, `${entry}.${ext}`),
-    join(buildDir, `${entry}.${suffix}.${ext}`)
-  );
+  if (!file) {
+    warn('task skipped: file not configured');
+    return cb();
+  }
+
+  const index = file.slice(0, file.lastIndexOf('.'));
+
+  copySync(file, `${file.slice(0, index)}.${suffix}${file.slice(index)}`);
 
   return cb();
 };
 
 /**
- * rename html path
+ * todo: move file
  *
  * @example
  *
  * ```
- * ['@lila/rename-html', {entry, ext}]
+ * ['@lila/move', {source, target}]
  * ```
  *
  * @param entry
