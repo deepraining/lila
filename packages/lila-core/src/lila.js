@@ -23,3 +23,18 @@ export { default as runTasks } from './run-tasks';
 export { addCmdOption, getCmdOptions } from './cmd-options';
 
 export { makeArgv } from './util';
+
+export {
+  log,
+  info,
+  warn,
+  error,
+  plainLog,
+  plainInfo,
+  plainWarn,
+  plainError,
+  colorLog,
+  colorInfo,
+  colorWarn,
+  colorError,
+} from './logger';

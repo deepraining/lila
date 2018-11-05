@@ -35,7 +35,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ```
 
 - `source`: `type: string` `default: index.html` source html file.
-- `target`: `type: string|function` `default: ${entry}.html` target html file. It can be a function, `entry => target`.
+- `target`: `type: string` `default: ${entry}.html` target html file.
 
 ### `@lila/replace-html`: replace html content
 
@@ -43,7 +43,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/replace-html', {file, replace: [{target, replacement}]}]
 ```
 
-- `file`: `type: string|function` `default: ${entry}.html` html file to handle. It can be a function, `entry => file`.
+- `file`: `type: string` `default: ${entry}.html` html file to handle.
 - `replace`: `type: []` options to replace.
   - `target`: `type: string|RegExp` target to be replaced.
   - `replacement`: `type: string` string to replace.
@@ -54,7 +54,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/insert-html', {file, start, end}]
 ```
 
-- `file`: `type: string|function` `default: ${entry}.html` html file to handle. It can be a function, `entry => file`.
+- `file`: `type: string` `default: ${entry}.html` html file to handle.
 - `start`: `type: string` content to prepend.
 - `end`: `type: string` content to append.
 
@@ -64,7 +64,7 @@ By default, a `index.html` will be generated under `build` directory, and this t
 ['@lila/convert-html', {file, ext}]
 ```
 
-- `file`: `type: string|function` `default: ${entry}.html` html file to handle. It can be a function, `entry => file`.
+- `file`: `type: string` `default: ${entry}.html` html file to handle.
 - `ext`: `type: string` extension name, like `php, jsp`.
 
 ### `@lila/backup-html`: backup html file
@@ -86,7 +86,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ['@lila/rename-html', {entry, ext}]
 ```
 
-- `entry`: `type: string|function` new entry to rename to. It can be a function, `entry => newEntry`.
+- `entry`: `type: string` new entry to rename to.
 - `ext`: `type: string` `default: html` html file extension.
 
 ### `@lila/sync`: sync files to remote server
@@ -146,7 +146,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `scripts`: `type: string/array` shell scripts to execute on remote server.
-- `log`: `type: string/function` `default: remote-shell.log` log file. It can be a function, `({entry, argv, cmd}) => fileName`.
+- `log`: `type: string` `default: remote-shell.log` log file.
 
 ### `@lila/del-dev`: delete dev directory
 
@@ -202,7 +202,7 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 
 - `dir`: `type: string` directory to handle(relative to cwd)
-- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
+- `cacheFileName`: `type: string` `default: cache` file name to record cache.
 
 ### `@lila/save-cache`: save files handling record, for `build` directory
 
@@ -213,4 +213,4 @@ Copy html file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html
 ```
 
 - `dir`: `type: string` directory to handle(relative to cwd)
-- `cacheFileName`: `type: string|function` `default: cache` file name to record cache. It can be a function, `({entry, argv, cmd}) => fileName`.
+- `cacheFileName`: `type: string` `default: cache` file name to record cache.

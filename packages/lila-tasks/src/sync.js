@@ -173,15 +173,12 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
  * ['@lila/remote-shell', {server, scripts, log}]
  * ```
  *
- * @param entry
- * @param argv
  * @param args
  * @param gulp
- * @param cmd
  * @param lila
  * @returns {function()}
  */
-export const remoteShell = ({ entry, argv, args, gulp, cmd, lila }) => () => {
+export const remoteShell = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
   const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
 
@@ -190,11 +187,7 @@ export const remoteShell = ({ entry, argv, args, gulp, cmd, lila }) => () => {
   if (!server) throw new Error('server info not configured');
   if (!scripts) throw new Error('scripts not configured');
 
-  const filePath = typeof log === 'function' ? log({ entry, argv, cmd }) : log;
-
   const connect = new SSH(server);
 
-  return connect
-    .shell(scripts, { filePath })
-    .pipe(gulp.dest(`${cwd}/${tmpDir}`));
+  return connect.shell(scripts, { log }).pipe(gulp.dest(`${cwd}/${tmpDir}`));
 };

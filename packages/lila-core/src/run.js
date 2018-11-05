@@ -1,6 +1,5 @@
 import gulp from 'gulp';
-import { red } from 'chalk';
-import { log, error } from '../../../util/logger';
+import { log, error } from './logger';
 
 // format error thrown by gulp
 const formatError = e => {
@@ -31,8 +30,8 @@ gulp.on('stop', e => {
 // task error
 gulp.on('error', e => {
   const { name } = e;
-  error(red(`error task ${name}`));
-  error(red(formatError(e)));
+  error(`error task ${name}`);
+  error(formatError(e));
 });
 
 export default (taskName, successCB, errorCB) => {
@@ -43,7 +42,7 @@ export default (taskName, successCB, errorCB) => {
       } else if (successCB) successCB();
     });
   } catch (err) {
-    error(red(err));
+    error(err);
     if (errorCB) errorCB(err);
   }
 };

@@ -1,11 +1,7 @@
 import webpack from 'webpack';
-import chalk from 'chalk';
-import { error, warn } from '../../../util/logger';
-
-const { red, yellow } = chalk;
 
 export default ({ entry, args, argv, cmd, config, lila }) => cb => {
-  const { getSetting } = lila;
+  const { getSetting, error, warn } = lila;
   const webpackConfigGenerator = getSetting('webpackConfigGenerator');
 
   if (!webpackConfigGenerator)
@@ -27,9 +23,9 @@ export default ({ entry, args, argv, cmd, config, lila }) => cb => {
 
   webpack(webpackConfig, (err, stats) => {
     if (err) {
-      error(red(err.stack || err));
+      error(err.stack || err);
       if (err.details) {
-        error(red(err.details));
+        error(err.details);
       }
       process.exit(1);
     }
@@ -38,14 +34,14 @@ export default ({ entry, args, argv, cmd, config, lila }) => cb => {
 
     if (stats.hasErrors()) {
       info.errors.forEach(e => {
-        error(red(e));
+        error(e);
       });
       process.exit(1);
     }
 
     if (stats.hasWarnings()) {
       info.warnings.forEach(warning => {
-        warn(yellow(warning));
+        warn(warning);
       });
     }
 

@@ -256,6 +256,46 @@ commander
 
 - `@param/keepUnknown`: `type: bool` `default: false` whether to keep unknown args which stored by the key `_`, see [minimist](https://github.com/substack/minimist)
 
+### `lila.log`: `console.log`
+
+### `lila.info`: `console.info` with `blue` of [chalk](https://github.com/chalk/chalk)
+
+### `lila.warn`: `console.warn` with `yellow` of [chalk](https://github.com/chalk/chalk)
+
+### `lila.error`: `console.error` with `red` of [chalk](https://github.com/chalk/chalk)
+
+### `lila.plainLog`: `console.log`
+
+### `lila.plainInfo`: `console.info`
+
+### `lila.plainWarn`: `console.warn`
+
+### `lila.plainError`: `console.error`
+
+### `lila.colorLog`: `console.log` with color of [chalk](https://github.com/chalk/chalk)
+
+```
+lila.colorLog(color, ...args);
+```
+
+### `lila.info`: `console.info` with color of [chalk](https://github.com/chalk/chalk)
+
+```
+lila.colorInfo(color, ...args);
+```
+
+### `lila.warn`: `console.warn` with color of [chalk](https://github.com/chalk/chalk)
+
+```
+lila.colorWarn(color, ...args);
+```
+
+### `lila.error`: `console.error` with color of [chalk](https://github.com/chalk/chalk)
+
+```
+lila.colorError(color, ...args);
+```
+
 ## built-in settings
 
 - `src`: `type: string` `default: src` source directory name.

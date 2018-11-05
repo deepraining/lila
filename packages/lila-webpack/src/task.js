@@ -25,7 +25,7 @@ export default ({ entry, args, argv, cmd, config, lila }) => cb => {
   if (!Array.isArray(webpackConfig)) {
     // single config
 
-    run(webpackConfig, () => {
+    run(lila, webpackConfig, () => {
       cb();
     });
   } else {

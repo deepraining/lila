@@ -1,13 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import rd from 'rd';
-import chalk from 'chalk';
 import child from 'child_process';
 import md5 from 'crypto-md5';
 import fse from 'fs-extra';
-import { log, error } from '../../../util/logger';
 
-const { red } = chalk;
 const { spawn } = child;
 const { existsSync, readFileSync, writeFileSync } = fs;
 const { join, relative } = path;
@@ -24,9 +21,11 @@ const { removeSync } = fse;
  * ```
  *
  * @param args
+ * @param lila
  * @returns {Function}
  */
-export const shell = ({ args }) => cb => {
+export const shell = ({ args, lila }) => cb => {
+  const { log, error } = lila;
   const { command, args: shellArgs, options } = (args && args[0]) || {};
 
   if (!command) throw new Error('command not configured');
@@ -38,7 +37,7 @@ export const shell = ({ args }) => cb => {
   });
 
   pro.stderr.on('data', data => {
-    error(red(data));
+    error(data);
   });
 
   pro.on('close', code => {
@@ -56,14 +55,11 @@ export const shell = ({ args }) => cb => {
  * ['@lila/clean-cache', {dir, cacheFileName}]
  * ```
  *
- * @param entry
  * @param args
- * @param argv
- * @param cmd
  * @param lila
  * @returns {function(*)}
  */
-export const cleanCache = ({ entry, args, argv, cmd, lila }) => cb => {
+export const cleanCache = ({ args, lila }) => cb => {
   const { dir, cacheFileName = 'cache' } = (args && args[0]) || {};
 
   if (!dir) return cb();
@@ -72,11 +68,7 @@ export const cleanCache = ({ entry, args, argv, cmd, lila }) => cb => {
   const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
   const dirPath = join(cwd, dir);
 
-  const cacheFile = `${cwd}/${tmpDir}/${
-    typeof cacheFileName === 'function'
-      ? cacheFileName({ entry, argv, cmd })
-      : cacheFileName
-  }.json`;
+  const cacheFile = `${cwd}/${tmpDir}/${cacheFileName}.json`;
   const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
 
   eachFileFilterSync(dirPath, file => {
@@ -99,14 +91,11 @@ export const cleanCache = ({ entry, args, argv, cmd, lila }) => cb => {
  * ['@lila/save-cache', {dir, cacheFileName}]
  * ```
  *
- * @param entry
  * @param args
- * @param argv
- * @param cmd
  * @param lila
  * @returns {function(*)}
  */
-export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
+export const saveCache = ({ args, lila }) => cb => {
   const { dir, cacheFileName = 'cache' } = (args && args[0]) || {};
 
   if (!dir) return cb();
@@ -115,11 +104,7 @@ export const saveCache = ({ entry, args, argv, cmd, lila }) => cb => {
   const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
   const dirPath = join(cwd, dir);
 
-  const cacheFile = `${cwd}/${tmpDir}/${
-    typeof cacheFileName === 'function'
-      ? cacheFileName({ entry, argv, cmd })
-      : cacheFileName
-  }.json`;
+  const cacheFile = `${cwd}/${tmpDir}/${cacheFileName}.json`;
   const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
 
   eachFileFilterSync(dirPath, file => {
