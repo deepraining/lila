@@ -12,8 +12,8 @@ export default (lila, webpack, { entry, config }, key, value) => {
     'build',
     'tmp',
   ]);
-  const realSrcDir = join(cwd, srcDir);
-  const realBuildDir = join(cwd, buildDir);
+  const srcPath = join(cwd, srcDir);
+  const buildPath = join(cwd, buildDir);
 
   const {
     babelImport = [],
@@ -37,7 +37,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
   return {
     entry: Array.isArray(value) ? value : [value],
     output: {
-      path: join(realBuildDir, 'dll'),
+      path: join(buildPath, 'dll'),
       filename: '[chunkhash].js',
       hashDigestLength: 32,
       library: 'vendor_[chunkhash]',
@@ -56,7 +56,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
       ],
     },
     resolve: {
-      modules: [realSrcDir, 'node_modules'],
+      modules: [srcPath, 'node_modules'],
       alias,
     },
     optimization: {

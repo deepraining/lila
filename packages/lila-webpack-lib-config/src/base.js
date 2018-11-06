@@ -14,7 +14,7 @@ const { join } = path;
 export default (lila, webpack, { cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir] = getSettings(['cwd', 'src']);
-  const realSrcDir = join(cwd, srcDir);
+  const srcPath = join(cwd, srcDir);
 
   const { ProvidePlugin, DefinePlugin } = webpack;
 
@@ -56,7 +56,7 @@ export default (lila, webpack, { cmd, config }) => {
       ],
     },
     resolve: {
-      modules: [realSrcDir, 'node_modules'],
+      modules: [srcPath, 'node_modules'],
       alias,
     },
     optimization: {

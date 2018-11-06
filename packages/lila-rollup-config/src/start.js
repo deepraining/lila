@@ -7,7 +7,7 @@ const { join } = path;
 export default (lila, rollup, { entry, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, devDir] = getSettings(['cwd', 'dev']);
-  const realDevDir = join(cwd, devDir);
+  const devPath = join(cwd, devDir);
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
@@ -21,7 +21,7 @@ export default (lila, rollup, { entry, cmd, config }) => {
   return {
     input: `${cwd}/${entry}/index.js`,
     output: {
-      file: `${realDevDir}/index.js`,
+      file: `${devPath}/index.js`,
       format: 'cjs',
       sourcemap: !0,
     },

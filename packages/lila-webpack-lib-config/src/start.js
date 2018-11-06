@@ -8,7 +8,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   const { HotModuleReplacementPlugin } = webpack;
   const { getSettings } = lila;
   const [cwd, devDir] = getSettings(['cwd', 'dev']);
-  const realDevDir = join(cwd, devDir);
+  const devPath = join(cwd, devDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 
@@ -25,7 +25,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
       `${cwd}/${entry}/index.js`,
     ],
     output: {
-      path: realDevDir,
+      path: devPath,
       filename: 'index.js',
       publicPath: `/${devDir}/`,
     },

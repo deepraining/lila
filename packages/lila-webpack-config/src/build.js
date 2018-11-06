@@ -17,8 +17,8 @@ export default (lila, webpack, { entry, cmd, config }) => {
     'build',
     'tmp',
   ]);
-  const realSrcDir = join(cwd, srcDir);
-  const realBuildDir = join(cwd, buildDir);
+  const srcPath = join(cwd, srcDir);
+  const buildPath = join(cwd, buildDir);
 
   const { staticServer = '', minCss = !0, splitJs = {} } = config;
 
@@ -42,7 +42,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     }),
     // insert split chunk js to html
     new HtmlWebpackIncludeAssetsPlugin({
-      assets: [{ path: 'dll', glob: '*.js', globPath: `${realBuildDir}/dll/` }],
+      assets: [{ path: 'dll', glob: '*.js', globPath: `${buildPath}/dll/` }],
       append: false,
     })
   );
@@ -59,9 +59,9 @@ export default (lila, webpack, { entry, cmd, config }) => {
   if (dllPlugins.length) baseConfig.plugins.push(...dllPlugins);
 
   const buildConfig = {
-    entry: `${realSrcDir}/${entry}/index.js`,
+    entry: `${srcPath}/${entry}/index.js`,
     output: {
-      path: realBuildDir,
+      path: buildPath,
       filename: '[chunkhash].js',
       hashDigestLength: 32,
       publicPath: `${staticServer}/${buildDir}/`,

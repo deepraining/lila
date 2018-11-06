@@ -11,15 +11,15 @@ export default (lila, webpack, { entry, cmd, config }) => {
     'tmp',
     'analyze',
   ]);
-  const realSrcDir = join(cwd, srcDir);
-  const realAnalyzeDir = join(cwd, tmpDir, analyzeDir);
+  const srcPath = join(cwd, srcDir);
+  const analyzePath = join(cwd, tmpDir, analyzeDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 
   return {
-    entry: `${realSrcDir}/${entry}/index.js`,
+    entry: `${srcPath}/${entry}/index.js`,
     output: {
-      path: realAnalyzeDir,
+      path: analyzePath,
       filename: 'index.js',
     },
     ...baseConfig,

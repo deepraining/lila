@@ -8,8 +8,8 @@ const { join } = path;
 export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir, buildDir] = getSettings(['cwd', 'src', 'build']);
-  const realSrcDir = join(cwd, srcDir);
-  const realBuildDir = join(cwd, buildDir);
+  const srcPath = join(cwd, srcDir);
+  const buildPath = join(cwd, buildDir);
 
   const { BannerPlugin } = webpack;
 
@@ -45,10 +45,10 @@ export default (lila, webpack, { entry, cmd, config }) => {
   return {
     entry:
       entry === 'index'
-        ? `${realSrcDir}/index.js`
-        : `${realSrcDir}/${entry}/index.js`,
+        ? `${srcPath}/index.js`
+        : `${srcPath}/${entry}/index.js`,
     output: {
-      path: realBuildDir,
+      path: buildPath,
       filename: `${filename}.js`,
       library,
       libraryTarget,

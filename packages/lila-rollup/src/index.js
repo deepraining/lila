@@ -15,7 +15,7 @@ export default lila => {
   } = lila;
   const [cwd, srcDir, getEntries] = getSettings(['cwd', 'src', 'getEntries']);
 
-  const realSrcDir = join(cwd, srcDir);
+  const srcPath = join(cwd, srcDir);
 
   // add start command
   addCommand(commander => {
@@ -48,7 +48,7 @@ export default lila => {
       const realEntries = entries.length ? entries : ['index'];
 
       runTasks({
-        entries: getEntries ? getEntries(realEntries, realSrcDir) : realEntries,
+        entries: getEntries ? getEntries(realEntries, srcPath) : realEntries,
         argv: makeArgv(options),
         cmd: 'build',
       });

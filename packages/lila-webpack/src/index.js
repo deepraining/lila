@@ -22,7 +22,7 @@ export default lila => {
     'getEntries',
     'servePath',
   ]);
-  const realSrcDir = join(cwd, srcDir);
+  const srcPath = join(cwd, srcDir);
 
   // add dev command
   addCommand(commander => {
@@ -55,7 +55,7 @@ export default lila => {
       const entries = [entry, ...extraEntries];
       runTasks({
         entries: getEntries
-          ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
+          ? getAllEntries({ entries, getEntries, srcPath })
           : entries,
         argv: makeArgv(options),
         cmd: 'build',
@@ -77,7 +77,7 @@ export default lila => {
       const entries = [entry, ...extraEntries];
       runTasks({
         entries: getEntries
-          ? getAllEntries({ entries, getEntries, srcPath: realSrcDir })
+          ? getAllEntries({ entries, getEntries, srcPath })
           : entries,
         argv: makeArgv(options),
         cmd: 'sync',

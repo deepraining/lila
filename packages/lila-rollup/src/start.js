@@ -16,7 +16,7 @@ export default ({ entry, argv, lila }) => {
     'rollupConfigGenerator',
   ]);
 
-  const realDevDir = join(cwd, devDir);
+  const devPath = join(cwd, devDir);
 
   if (!rollupConfigGenerator)
     throw new Error('rollupConfigGenerator not configured');
@@ -54,7 +54,7 @@ export default ({ entry, argv, lila }) => {
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
   if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
 
-  const watcher = chokidar.watch(realDevDir);
+  const watcher = chokidar.watch(devPath);
   watcher.on('change', () => {
     run(rollupConfig, rollupConfig.output).then(() => {
       browserSync.reload();

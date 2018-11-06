@@ -9,7 +9,7 @@ const { join } = path;
 export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
   const [cwd, srcDir] = getSettings(['cwd', 'src']);
-  const realSrcDir = join(cwd, srcDir);
+  const srcPath = join(cwd, srcDir);
 
   const { ProvidePlugin, DefinePlugin } = webpack;
 
@@ -39,7 +39,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
       new ProvidePlugin(provide),
       new DefinePlugin(define),
       new HtmlWebpackPlugin({
-        template: `${realSrcDir}/${entry}/index.html`,
+        template: `${srcPath}/${entry}/index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),
     ],
@@ -59,7 +59,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
       ],
     },
     resolve: {
-      modules: [realSrcDir, 'node_modules'],
+      modules: [srcPath, 'node_modules'],
       alias,
     },
     optimization: {
