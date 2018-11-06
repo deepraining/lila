@@ -135,12 +135,12 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync sourcemap files to remote server(relative to build)
+ * sync source-map files to remote server(relative to build)
  *
  * @example
  *
  * ```
- * ['@lila/sync-sourcemap', {server, remotePath}]
+ * ['@lila/sync-source-map', {server, remotePath}]
  * ```
  *
  * @param args

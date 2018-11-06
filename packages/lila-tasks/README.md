@@ -131,7 +131,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
-- `sourceMap`: `type: bool` `default: true` whether to upload sourcemap files.
+- `sourceMap`: `type: bool` `default: true` whether to upload source-map files.
 
 ### `@lila/sync-html`: sync html files to remote server(relative to build)
 
@@ -143,10 +143,10 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `remotePath`: `type: string` remote server path to upload to.
 - `ext`: `type: string` `default: html` html file extension.
 
-### `@lila/sync-sourcemap`: sync sourcemap files to remote server(relative to build)
+### `@lila/sync-source-map`: sync source-map files to remote server(relative to build)
 
 ```
-['@lila/sync-sourcemap', {server, remotePath}]
+['@lila/sync-source-map', {server, remotePath}]
 ```
 
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).

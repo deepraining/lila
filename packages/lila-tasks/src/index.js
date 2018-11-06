@@ -28,7 +28,7 @@ export default lila => {
   registerTask('@lila/sync-dir', syncDir);
   registerTask('@lila/sync-build', syncBuild);
   registerTask('@lila/sync-html', syncHtml);
-  registerTask('@lila/sync-sourcemap', syncSourceMap);
+  registerTask('@lila/sync-source-map', syncSourceMap);
   registerTask('@lila/remote-shell', remoteShell);
 
   registerTask('@lila/shell', shell);
