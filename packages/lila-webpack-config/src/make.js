@@ -39,6 +39,8 @@ export const styleLoaders = (lila, webpack, { config }, isBuild = !1) => {
 
     rules.push(cssLoader(options), lessLoader(options), sassLoader(options));
   }
+
+  return rules;
 };
 
 // placeholder

@@ -1,7 +1,8 @@
 import webpack from 'webpack';
+import run from './run';
 
 export default ({ entry, args, argv, cmd, config, lila }) => cb => {
-  const { getSetting, error, warn } = lila;
+  const { getSetting } = lila;
   const webpackConfigGenerator = getSetting('webpackConfigGenerator');
 
   if (!webpackConfigGenerator)
@@ -21,30 +22,26 @@ export default ({ entry, args, argv, cmd, config, lila }) => cb => {
     lila,
   });
 
-  webpack(webpackConfig, (err, stats) => {
-    if (err) {
-      error(err.stack || err);
-      if (err.details) {
-        error(err.details);
-      }
-      process.exit(1);
-    }
+  if (!Array.isArray(webpackConfig)) {
+    // single config
 
-    const info = stats.toJson();
+    run(lila, webpackConfig, () => {
+      cb();
+    });
+  } else {
+    // multiple
 
-    if (stats.hasErrors()) {
-      info.errors.forEach(e => {
-        error(e);
+    let index = 0;
+    // go on
+    const goon = () => {
+      run(webpackConfig[index], () => {
+        index += 1;
+
+        if (index >= webpackConfig.length) cb();
+        else goon();
       });
-      process.exit(1);
-    }
+    };
 
-    if (stats.hasWarnings()) {
-      info.warnings.forEach(warning => {
-        warn(warning);
-      });
-    }
-
-    cb();
-  });
+    goon();
+  }
 };

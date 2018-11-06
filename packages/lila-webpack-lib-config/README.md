@@ -61,11 +61,9 @@ module.exports = lila => {
 - `cmd: start`: `type: cheap-module-eval-source-map`
 - `cmd: build`: `type: module-source-map`
 
-### `filename`: `type: string` `default: index` library file name
+### `filename`: `type: string` `default: empty string` library file name
 
 ### `library`: `type: string` `default: Index` library exported global name, see [output-library](https://webpack.js.org/configuration/output/#output-library)
-
-### `libraryTarget`: ` type: string,``default: umd ` see [output-librarytarget](https://webpack.js.org/configuration/output/#output-librarytarget)
 
 ### `externals`: see [externals](https://webpack.js.org/configuration/externals/#externals)
 

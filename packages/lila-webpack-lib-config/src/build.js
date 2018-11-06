@@ -15,9 +15,8 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   const {
     minCss = !0,
-    filename = 'index',
+    filename = '',
     library = 'Index',
-    libraryTarget = 'umd',
     banner = '',
     externals,
   } = config;
@@ -42,19 +41,35 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   if (banner) baseConfig.plugins.push(new BannerPlugin(banner));
 
-  return {
+  return [
+    {
+      path: buildPath,
+      filename: `${filename ? `${filename}.` : ''}cjs.js`,
+      library,
+      libraryTarget: 'commonjs2',
+      publicPath: '',
+    },
+    {
+      path: buildPath,
+      filename: `${filename ? `${filename}.` : ''}amd.js`,
+      library,
+      libraryTarget: 'amd',
+      publicPath: '',
+    },
+    {
+      path: buildPath,
+      filename: `${filename ? `${filename}.` : ''}umd.js`,
+      library,
+      libraryTarget: 'umd',
+      publicPath: '',
+    },
+  ].map(output => ({
     entry:
       entry === 'index'
         ? `${srcPath}/index.js`
         : `${srcPath}/${entry}/index.js`,
-    output: {
-      path: buildPath,
-      filename: `${filename}.js`,
-      library,
-      libraryTarget,
-      publicPath: '',
-    },
+    output,
     externals,
     ...baseConfig,
-  };
+  }));
 };
