@@ -40,3 +40,9 @@ local
   }
 }
 ```
+
+## options
+
+- `-V, --version`: output the version number
+- `--core`: custom lila-core path
+- `-h, --help`: output usage information

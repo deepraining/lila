@@ -37,7 +37,8 @@
   ],
   "scripts": {},
   "dependencies": {
-    "commander": "^2.18.0"
+    "commander": "^2.18.0",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {},
   "engines": {
