@@ -1,10 +1,11 @@
 module.exports = {
   root: true,
-  extends: ['airbnb-base', 'prettier'],
+  extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'import', 'node', 'jest'],
   env: {
     node: true,
     es6: true,
+    browser: true,
     jest: true,
   },
   parserOptions: {
