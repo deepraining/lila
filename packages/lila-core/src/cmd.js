@@ -3,7 +3,7 @@ import { makeArgv } from './util';
 import { getCmdOptions } from './cmd-options';
 
 export const rootOption = commander => {
-  commander.option('--root', 'custom root path');
+  commander.option('--root [root]', 'custom root path');
 };
 
 export const run = commander => {

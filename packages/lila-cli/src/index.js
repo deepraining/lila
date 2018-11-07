@@ -7,6 +7,9 @@ import pkg from '../package.json';
 const argv = minimist(process.argv.slice(2));
 const { join } = path;
 
+// in the first place
+commander.option('--core [core]', 'custom lila-core path');
+
 let corePkg;
 let core;
 
@@ -51,8 +54,8 @@ if (core) {
 }
 
 // version
-commander
-  .version(pkg.version + (corePkg ? ` (lila-core ${corePkg.version})` : ''))
-  .option('--core', 'custom lila-core path');
+commander.version(
+  pkg.version + (corePkg ? ` (lila-core ${corePkg.version})` : '')
+);
 
 commander.parse(process.argv);

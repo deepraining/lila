@@ -7,7 +7,10 @@ import create from './create';
 commander
   .version(pkg.version)
   .arguments('<project-directory>')
-  .option('-i, --install', 'create application with installing dependencies')
+  .option(
+    '-i, --install [install]',
+    'create application with installing dependencies'
+  )
   .action((dir, { install }) => {
     create(dir, install);
   });
