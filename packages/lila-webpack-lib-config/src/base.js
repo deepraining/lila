@@ -57,6 +57,7 @@ export default (lila, webpack, { cmd, config }) => {
     },
     resolve: {
       modules: [srcPath, 'node_modules'],
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
       alias,
     },
     optimization: {

@@ -32,7 +32,7 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `type: []` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: `type: []/{}` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
 ### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
 

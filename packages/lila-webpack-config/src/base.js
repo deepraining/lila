@@ -60,6 +60,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     },
     resolve: {
       modules: [srcPath, 'node_modules'],
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
       alias,
     },
     optimization: {
