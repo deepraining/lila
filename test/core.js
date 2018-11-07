@@ -1,5 +1,5 @@
 const { join } = require('path');
 
 module.exports = {
-  path: join(__dirname, '../../lila-core'),
+  path: join(__dirname, '../packages/lila-core'),
 };
