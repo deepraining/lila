@@ -103,6 +103,12 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 '@lila/del-build'
 ```
 
+### `@lila/del-tmp`: delete tmp directory
+
+```
+'@lila/del-tmp'
+```
+
 ### `@lila/sync`: sync files to remote server
 
 ```

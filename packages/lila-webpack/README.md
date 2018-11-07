@@ -82,7 +82,7 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 dir => entries;
 ```
 
-### `servePath`: get serve js file path for command `serve`
+### `servePath`: get serve js file path for command `serve`(relative to `root`)
 
 ```
 (entry, srcDir) => path

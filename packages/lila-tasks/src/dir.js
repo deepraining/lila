@@ -110,9 +110,9 @@ export const delTask = ({ args, lila }) => cb => {
  */
 export const delDev = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [devDir] = getSettings(['dev']);
+  const [root, devDir] = getSettings(['root', 'dev']);
 
-  return del([devDir]);
+  return del([`${root}/${devDir}`]);
 };
 
 /**
@@ -129,7 +129,26 @@ export const delDev = ({ lila }) => () => {
  */
 export const delBuild = ({ lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir] = getSettings(['build']);
+  const [root, buildDir] = getSettings(['root', 'build']);
 
-  return del([buildDir]);
+  return del([`${root}/${buildDir}`]);
+};
+
+/**
+ * delete tmp directory
+ *
+ * @example
+ *
+ * ```
+ * '@lila/del-tmp'
+ * ```
+ *
+ * @param lila
+ * @returns {function()}
+ */
+export const delTmp = ({ lila }) => () => {
+  const { getSettings } = lila;
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+
+  return del([`${root}/${tmpDir}`]);
 };

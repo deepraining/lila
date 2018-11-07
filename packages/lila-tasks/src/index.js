@@ -1,5 +1,5 @@
 import { replace, insert, convert, backup } from './file';
-import { move, copy, delTask, delDev, delBuild } from './dir';
+import { move, copy, delTask, delDev, delBuild, delTmp } from './dir';
 import {
   sync,
   syncDir,
@@ -23,6 +23,7 @@ export default lila => {
   registerTask('@lila/del', delTask);
   registerTask('@lila/del-dev', delDev);
   registerTask('@lila/del-build', delBuild);
+  registerTask('@lila/del-tmp', delTmp);
 
   registerTask('@lila/sync', sync);
   registerTask('@lila/sync-dir', syncDir);
