@@ -28,7 +28,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('dev <entry>')
-      .description('start a local server to develop an entry');
+      .description('start a local server to develop an entry')
+      .allowUnknownOption();
 
     getCmdOptions('dev').forEach(value => {
       command.option(...value);
@@ -45,7 +46,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('build <entry> [extraEntries...]')
-      .description('pack source codes to production bundles');
+      .description('pack source codes to production bundles')
+      .allowUnknownOption();
 
     getCmdOptions('build').forEach(value => {
       command.option(...value);
@@ -67,7 +69,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('sync <entry> [extraEntries...]')
-      .description('make production bundles, then sync to remote servers');
+      .description('make production bundles, then sync to remote servers')
+      .allowUnknownOption();
 
     getCmdOptions('sync').forEach(value => {
       command.option(...value);
@@ -91,7 +94,8 @@ export default lila => {
       .command('start <entry>')
       .description(
         'make production bundles, then start a local server to preview'
-      );
+      )
+      .allowUnknownOption();
 
     getCmdOptions('start').forEach(value => {
       command.option(...value);
@@ -116,7 +120,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('analyze <entry>')
-      .description('visualize size of webpack output files');
+      .description('visualize size of webpack output files')
+      .allowUnknownOption();
 
     getCmdOptions('analyze').forEach(value => {
       command.option(...value);
@@ -135,7 +140,8 @@ export default lila => {
       .command('serve <entry>')
       .description(
         'simulate a backend environment to start a local server to develop an entry'
-      );
+      )
+      .allowUnknownOption();
 
     getCmdOptions('serve').forEach(value => {
       command.option(...value);

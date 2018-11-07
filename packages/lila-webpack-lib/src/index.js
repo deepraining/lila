@@ -21,7 +21,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('start <entry>')
-      .description('start a local server to develop an entry');
+      .description('start a local server to develop an entry')
+      .allowUnknownOption();
 
     getCmdOptions('start').forEach(value => {
       command.option(...value);
@@ -38,7 +39,8 @@ export default lila => {
   addCommand(commander => {
     const command = commander
       .command('build [entries...]')
-      .description('pack source codes to distribution bundles');
+      .description('pack source codes to distribution bundles')
+      .allowUnknownOption();
 
     getCmdOptions('build').forEach(value => {
       command.option(...value);
