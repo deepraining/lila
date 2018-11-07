@@ -16,13 +16,13 @@ export default lila => {
     getSettings,
     getCmdOptions,
   } = lila;
-  const [cwd, srcDir, getEntries, servePath] = getSettings([
-    'cwd',
+  const [root, srcDir, getEntries, servePath] = getSettings([
+    'root',
     'src',
     'getEntries',
     'servePath',
   ]);
-  const srcPath = join(cwd, srcDir);
+  const srcPath = join(root, srcDir);
 
   // add dev command
   addCommand(commander => {

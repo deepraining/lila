@@ -13,9 +13,9 @@ export default lila => {
     getSettings,
     getCmdOptions,
   } = lila;
-  const [cwd, srcDir, getEntries] = getSettings(['cwd', 'src', 'getEntries']);
+  const [root, srcDir, getEntries] = getSettings(['root', 'src', 'getEntries']);
 
-  const srcPath = join(cwd, srcDir);
+  const srcPath = join(root, srcDir);
 
   // add start command
   addCommand(commander => {

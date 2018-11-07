@@ -6,14 +6,14 @@ const { join } = path;
 export default (lila, webpack, { entry, config }, key, value) => {
   const { DllPlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, srcDir, buildDir, tmpDir] = getSettings([
-    'cwd',
+  const [root, srcDir, buildDir, tmpDir] = getSettings([
+    'root',
     'src',
     'build',
     'tmp',
   ]);
-  const srcPath = join(cwd, srcDir);
-  const buildPath = join(cwd, buildDir);
+  const srcPath = join(root, srcDir);
+  const buildPath = join(root, buildDir);
 
   const {
     babelImport = [],
@@ -30,7 +30,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
   const plugins = [
     new DllPlugin({
       name: 'vendor_[chunkhash]',
-      path: join(cwd, tmpDir, `dll/${entry}/${key}.json`),
+      path: join(root, tmpDir, `dll/${entry}/${key}.json`),
     }),
   ];
 

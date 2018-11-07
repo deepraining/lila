@@ -65,10 +65,10 @@ export const cleanCache = ({ args, lila }) => cb => {
   if (!dir) return cb();
 
   const { getSettings } = lila;
-  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
-  const dirPath = join(cwd, dir);
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+  const dirPath = join(root, dir);
 
-  const cacheFile = `${cwd}/${tmpDir}/${cacheFileName}.json`;
+  const cacheFile = `${root}/${tmpDir}/${cacheFileName}.json`;
   const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
 
   eachFileFilterSync(dirPath, file => {
@@ -101,10 +101,10 @@ export const saveCache = ({ args, lila }) => cb => {
   if (!dir) return cb();
 
   const { getSettings } = lila;
-  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
-  const dirPath = join(cwd, dir);
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+  const dirPath = join(root, dir);
 
-  const cacheFile = `${cwd}/${tmpDir}/${cacheFileName}.json`;
+  const cacheFile = `${root}/${tmpDir}/${cacheFileName}.json`;
   const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
 
   eachFileFilterSync(dirPath, file => {

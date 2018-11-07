@@ -5,14 +5,14 @@ const { join } = path;
 
 export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
-  const [cwd, srcDir, tmpDir, analyzeDir = 'analyze'] = getSettings([
-    'cwd',
+  const [root, srcDir, tmpDir, analyzeDir = 'analyze'] = getSettings([
+    'root',
     'src',
     'tmp',
     'analyze',
   ]);
-  const srcPath = join(cwd, srcDir);
-  const analyzePath = join(cwd, tmpDir, analyzeDir);
+  const srcPath = join(root, srcDir);
+  const analyzePath = join(root, tmpDir, analyzeDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 

@@ -7,22 +7,22 @@ const { join } = path;
 export default (lila, webpack, { entry, cmd, config }) => {
   const { HotModuleReplacementPlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, devDir] = getSettings(['cwd', 'dev']);
-  const devPath = join(cwd, devDir);
+  const [root, devDir] = getSettings(['root', 'dev']);
+  const devPath = join(root, devDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 
   baseConfig.plugins.unshift(new HotModuleReplacementPlugin());
   baseConfig.plugins.push(
     new HtmlWebpackPlugin({
-      template: `${cwd}/${entry}/index.html`,
+      template: `${root}/${entry}/index.html`,
     })
   );
 
   return {
     entry: [
       'webpack-hot-middleware/client?reload=true',
-      `${cwd}/${entry}/index.js`,
+      `${root}/${entry}/index.js`,
     ],
     output: {
       path: devPath,

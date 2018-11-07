@@ -6,20 +6,20 @@ const { join } = path;
 
 export default (lila, rollup, { entry, cmd, config }) => {
   const { getSettings } = lila;
-  const [cwd, devDir] = getSettings(['cwd', 'dev']);
-  const devPath = join(cwd, devDir);
+  const [root, devDir] = getSettings(['root', 'dev']);
+  const devPath = join(root, devDir);
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
   baseConfig.plugins.push(
     html({
-      template: `${cwd}/${entry}/index.html`,
+      template: `${root}/${entry}/index.html`,
       filename: 'index.html',
     })
   );
 
   return {
-    input: `${cwd}/${entry}/index.js`,
+    input: `${root}/${entry}/index.js`,
     output: {
       file: `${devPath}/index.js`,
       format: 'cjs',

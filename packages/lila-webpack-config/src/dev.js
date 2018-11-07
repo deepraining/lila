@@ -6,9 +6,9 @@ const { join } = path;
 export default (lila, webpack, { entry, cmd, config }) => {
   const { HotModuleReplacementPlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, srcDir, devDir] = getSettings(['cwd', 'src', 'dev']);
-  const srcPath = join(cwd, srcDir);
-  const devPath = join(cwd, devDir);
+  const [root, srcDir, devDir] = getSettings(['root', 'src', 'dev']);
+  const srcPath = join(root, srcDir);
+  const devPath = join(root, devDir);
 
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 

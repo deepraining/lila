@@ -19,7 +19,7 @@ const { join } = path;
  */
 export const sync = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [cwd] = getSettings(['cwd']);
+  const [root] = getSettings(['root']);
 
   const { src, server, remotePath } = (args && args[0]) || {};
 
@@ -30,7 +30,7 @@ export const sync = ({ args, gulp, lila }) => () => {
   const connect = new SSH(server);
 
   let globs = src;
-  let options = { base: cwd };
+  let options = { base: root };
 
   if (Array.isArray(src) && typeof src[1] === 'object') {
     [globs, options] = src;
@@ -40,7 +40,7 @@ export const sync = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync directories to remote server(relative to cwd)
+ * sync directories to remote server(relative to root)
  *
  * @example
  *
@@ -55,7 +55,7 @@ export const sync = ({ args, gulp, lila }) => () => {
  */
 export const syncDir = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [cwd] = getSettings(['cwd']);
+  const [root] = getSettings(['root']);
 
   const { server, remotePath, dirs } = (args && args[0]) || {};
 
@@ -64,16 +64,16 @@ export const syncDir = ({ args, gulp, lila }) => () => {
   if (!dirs) throw new Error('dirs not configured');
 
   const src = (Array.isArray(dirs) ? dirs : [dirs]).map(
-    dir => `${cwd}/${dir}/**/*`
+    dir => `${root}/${dir}/**/*`
   );
 
   const connect = new SSH(server);
 
-  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
+  return gulp.src(src, { base: root }).pipe(connect.dest(remotePath));
 };
 
 /**
- * sync build directory to remote server(relative to cwd)
+ * sync build directory to remote server(relative to root)
  *
  * @example
  *
@@ -88,19 +88,19 @@ export const syncDir = ({ args, gulp, lila }) => () => {
  */
 export const syncBuild = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, cwd] = getSettings(['build', 'cwd']);
+  const [buildDir, root] = getSettings(['build', 'root']);
 
   const { server, remotePath, sourceMap = !0 } = (args && args[0]) || {};
 
   if (!server) throw new Error('server info not configured');
   if (!remotePath) throw new Error('remotePath not configured');
 
-  const src = [`${cwd}/${buildDir}/**/*`];
-  if (!sourceMap) src.push(`!${cwd}/${buildDir}/**/*.map`);
+  const src = [`${root}/${buildDir}/**/*`];
+  if (!sourceMap) src.push(`!${root}/${buildDir}/**/*.map`);
 
   const connect = new SSH(server);
 
-  return gulp.src(src, { base: cwd }).pipe(connect.dest(remotePath));
+  return gulp.src(src, { base: root }).pipe(connect.dest(remotePath));
 };
 
 /**
@@ -119,8 +119,8 @@ export const syncBuild = ({ args, gulp, lila }) => () => {
  */
 export const syncHtml = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, cwd] = getSettings(['build', 'cwd']);
-  const buildPath = join(cwd, buildDir);
+  const [buildDir, root] = getSettings(['build', 'root']);
+  const buildPath = join(root, buildDir);
 
   const { server, remotePath, ext = 'html' } = (args && args[0]) || {};
 
@@ -150,8 +150,8 @@ export const syncHtml = ({ args, gulp, lila }) => () => {
  */
 export const syncSourceMap = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [buildDir, cwd] = getSettings(['build', 'cwd']);
-  const buildPath = join(cwd, buildDir);
+  const [buildDir, root] = getSettings(['build', 'root']);
+  const buildPath = join(root, buildDir);
 
   const { server, remotePath } = (args && args[0]) || {};
 
@@ -181,7 +181,7 @@ export const syncSourceMap = ({ args, gulp, lila }) => () => {
  */
 export const remoteShell = ({ args, gulp, lila }) => () => {
   const { getSettings } = lila;
-  const [cwd, tmpDir] = getSettings(['cwd', 'tmp']);
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
 
   const { server, scripts, log = 'remote-shell.log' } = (args && args[0]) || {};
 
@@ -190,5 +190,5 @@ export const remoteShell = ({ args, gulp, lila }) => () => {
 
   const connect = new SSH(server);
 
-  return connect.shell(scripts, { log }).pipe(gulp.dest(`${cwd}/${tmpDir}`));
+  return connect.shell(scripts, { log }).pipe(gulp.dest(`${root}/${tmpDir}`));
 };

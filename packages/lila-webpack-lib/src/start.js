@@ -8,8 +8,8 @@ import { defaultDevMiddleware } from './defaults';
 
 export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, devDir, webpackConfigGenerator] = getSettings([
-    'cwd',
+  const [root, devDir, webpackConfigGenerator] = getSettings([
+    'root',
     'dev',
     'webpackConfigGenerator',
   ]);
@@ -44,7 +44,7 @@ export default ({ entry, argv, lila }) => {
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
 
-  browserSyncConfig.server.baseDir = cwd;
+  browserSyncConfig.server.baseDir = root;
   browserSyncConfig.port = port;
   browserSyncConfig.startPath = `/${devDir}/index.html`;
 
@@ -52,7 +52,7 @@ export default ({ entry, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
 
   devMiddlewareConfig.stats = 'errors-only';
   devMiddlewareConfig.publicPath = `/${devDir}/`;

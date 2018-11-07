@@ -113,7 +113,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 
-### `@lila/sync-dir`: sync directories to remote server(relative to cwd)
+### `@lila/sync-dir`: sync directories to remote server(relative to root)
 
 ```
 ['@lila/sync-dir', {server, remotePath, dirs}]
@@ -123,7 +123,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `remotePath`: `type: string` remote server path to upload to.
 - `dirs`: `type: string/array` directories to sync.
 
-### `@lila/sync-build`: sync build directory to remote server(relative to cwd)
+### `@lila/sync-build`: sync build directory to remote server(relative to root)
 
 ```
 ['@lila/sync-build', {server, remotePath, sourceMap}]
@@ -178,7 +178,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/clean-cache', {dir, cacheFileName}]
 ```
 
-- `dir`: `type: string` directory to handle(relative to cwd)
+- `dir`: `type: string` directory to handle(relative to root)
 - `cacheFileName`: `type: string` `default: cache` file name to record cache.
 
 ### `@lila/save-cache`: save files handling record, for `build` directory
@@ -189,5 +189,5 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/save-cache', {dir, cacheFileName}]
 ```
 
-- `dir`: `type: string` directory to handle(relative to cwd)
+- `dir`: `type: string` directory to handle(relative to root)
 - `cacheFileName`: `type: string` `default: cache` file name to record cache.

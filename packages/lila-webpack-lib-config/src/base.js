@@ -13,8 +13,8 @@ const { join } = path;
 
 export default (lila, webpack, { cmd, config }) => {
   const { getSettings } = lila;
-  const [cwd, srcDir] = getSettings(['cwd', 'src']);
-  const srcPath = join(cwd, srcDir);
+  const [root, srcDir] = getSettings(['root', 'src']);
+  const srcPath = join(root, srcDir);
 
   const { ProvidePlugin, DefinePlugin } = webpack;
 

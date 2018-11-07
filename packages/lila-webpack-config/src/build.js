@@ -11,14 +11,14 @@ const { join } = path;
 export default (lila, webpack, { entry, cmd, config }) => {
   const { DllReferencePlugin } = webpack;
   const { getSettings } = lila;
-  const [cwd, srcDir, buildDir, tmpDir] = getSettings([
-    'cwd',
+  const [root, srcDir, buildDir, tmpDir] = getSettings([
+    'root',
     'src',
     'build',
     'tmp',
   ]);
-  const srcPath = join(cwd, srcDir);
-  const buildPath = join(cwd, buildDir);
+  const srcPath = join(root, srcDir);
+  const buildPath = join(root, buildDir);
 
   const { staticServer = '', minCss = !0, splitJs = {} } = config;
 
@@ -28,7 +28,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     dllConfigs.push(dll(lila, webpack, { entry, cmd, config }, key, value));
     dllPlugins.push(
       new DllReferencePlugin({
-        manifest: join(cwd, tmpDir, `dll/${entry}/${key}.json`),
+        manifest: join(root, tmpDir, `dll/${entry}/${key}.json`),
       })
     );
   });

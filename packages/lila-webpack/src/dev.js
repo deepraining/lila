@@ -9,8 +9,8 @@ import { defaultDevMiddleware } from './defaults';
 
 export default ({ entry, argv, lila, serve, servePath }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, srcDir, devDir, webpackConfigGenerator] = getSettings([
-    'cwd',
+  const [root, srcDir, devDir, webpackConfigGenerator] = getSettings([
+    'root',
     'src',
     'dev',
     'webpackConfigGenerator',
@@ -46,7 +46,7 @@ export default ({ entry, argv, lila, serve, servePath }) => {
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
 
-  browserSyncConfig.server.baseDir = cwd;
+  browserSyncConfig.server.baseDir = root;
   browserSyncConfig.port = port;
   browserSyncConfig.startPath = serve ? '/serve' : `/${devDir}/index.html`;
 
@@ -54,11 +54,11 @@ export default ({ entry, argv, lila, serve, servePath }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
   if (serve)
     browserSyncConfig.middleware.unshift(
       makeServe({
-        root: cwd,
+        root,
         devDir,
         servePath: servePath(entry, srcDir),
       })

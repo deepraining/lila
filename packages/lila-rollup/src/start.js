@@ -10,13 +10,13 @@ const { join } = path;
 
 export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
-  const [cwd, devDir, rollupConfigGenerator] = getSettings([
-    'cwd',
+  const [root, devDir, rollupConfigGenerator] = getSettings([
+    'root',
     'dev',
     'rollupConfigGenerator',
   ]);
 
-  const devPath = join(cwd, devDir);
+  const devPath = join(root, devDir);
 
   if (!rollupConfigGenerator)
     throw new Error('rollupConfigGenerator not configured');
@@ -44,7 +44,7 @@ export default ({ entry, argv, lila }) => {
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
 
-  browserSyncConfig.server.baseDir = cwd;
+  browserSyncConfig.server.baseDir = root;
   browserSyncConfig.port = port;
   browserSyncConfig.startPath = `/${devDir}/index.html`;
 
@@ -52,7 +52,7 @@ export default ({ entry, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(cwd));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
 
   const watcher = chokidar.watch(devPath);
   watcher.on('change', () => {
