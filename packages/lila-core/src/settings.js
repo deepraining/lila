@@ -1,13 +1,13 @@
 import forEach from 'lodash/forEach';
 
-import { cwd } from './app';
+import { root } from './app';
 
 const settings = {
   src: 'src',
   dev: 'dev',
   build: 'build',
   tmp: '.lila',
-  cwd,
+  root,
 };
 
 export default settings;
@@ -18,7 +18,7 @@ export default settings;
  * @param value
  */
 export const setSetting = (name, value) => {
-  if (name === 'cwd') return;
+  if (name === 'root') return;
   settings[name] = value;
 };
 
@@ -28,7 +28,7 @@ export const setSetting = (name, value) => {
  */
 export const setSettings = collection => {
   forEach(collection, (value, key) => {
-    if (key === 'cwd') return;
+    if (key === 'root') return;
     settings[key] = value;
   });
 };

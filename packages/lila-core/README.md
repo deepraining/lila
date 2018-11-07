@@ -302,7 +302,7 @@ lila.colorError(color, ...args);
 - `dev`: `type: string` `default: dev` development directory name.
 - `build`: `type: string` `default: build` build directory name.
 - `tmp`: `type: string` `default: .lila` tmp directory of project.
-- `cwd`: `process.cwd()` `read only` current working directory.
+- `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
 
 ## built-in commands
 
@@ -311,6 +311,10 @@ lila.colorError(color, ...args);
 ```
 lila run entry1 entry2 entry3 ...
 ```
+
+## extended cli options
+
+- `--root`: custom root path
 
 ## node packages
 

@@ -2,6 +2,10 @@ import runTasks from './run-tasks';
 import { makeArgv } from './util';
 import { getCmdOptions } from './cmd-options';
 
+export const rootOption = commander => {
+  commander.option('--root', 'custom root path');
+};
+
 export const run = commander => {
   const cmdOptions = getCmdOptions('run');
 

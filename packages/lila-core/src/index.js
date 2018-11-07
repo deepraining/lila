@@ -2,12 +2,13 @@ import app from './app';
 import * as lila from './lila';
 import { registerConfigGenerator } from './make-config';
 import { addCommand } from './commands';
-import { run } from './cmd';
+import { rootOption, run } from './cmd';
 import entry from './entry';
 
 app.lila = lila;
 
 addCommand(run);
+addCommand(rootOption);
 
 // below code should be executed at last
 const configGenerator = entry(lila);
