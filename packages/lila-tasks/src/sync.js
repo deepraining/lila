@@ -36,11 +36,13 @@ export const sync = ({ args, gulp, lila }) => () => {
     [globs, options] = src;
   }
 
+  globs = (Array.isArray(globs) ? globs : [globs]).map(g => `${root}/${g}`);
+
   return gulp.src(globs, options).pipe(connect.dest(remotePath));
 };
 
 /**
- * sync directories to remote server(relative to root)
+ * sync directories to remote server(relative to `root`)
  *
  * @example
  *
@@ -73,7 +75,7 @@ export const syncDir = ({ args, gulp, lila }) => () => {
 };
 
 /**
- * sync build directory to remote server(relative to root)
+ * sync build directory to remote server(relative to `root`)
  *
  * @example
  *
@@ -190,5 +192,7 @@ export const remoteShell = ({ args, gulp, lila }) => () => {
 
   const connect = new SSH(server);
 
-  return connect.shell(scripts, { log }).pipe(gulp.dest(`${root}/${tmpDir}`));
+  return connect
+    .shell(scripts, { filePath: log })
+    .pipe(gulp.dest(`${root}/${tmpDir}`));
 };

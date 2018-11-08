@@ -1,3 +1,19 @@
+const fs = require('fs');
+
+const { existsSync } = fs;
+
+const serverPath = `${__dirname}/server.js`;
+const sshConfig = existsSync(serverPath)
+  ? require(serverPath) // eslint-disable-line
+  : { host: '', username: '', password: '' };
+
+const server = {
+  ignoreErrors: true,
+  sshConfig,
+};
+
+const remotePath = '/home/senntyou/space/www/lila/';
+
 const getTasks = entry => {
   if (entry === 'file') {
     const file = 'target/index.html';
@@ -58,6 +74,47 @@ const getTasks = entry => {
       ['@lila/clean-cache', { dir: 'build' }],
       ['@lila/save-cache', { dir: 'build' }],
     ];
+  }
+
+  if (entry === 'sync') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/sync', { src: 'build/**/*', server, remotePath }],
+    ];
+  }
+
+  if (entry === 'sync-dir') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/sync-dir', { dirs: 'build', server, remotePath }],
+    ];
+  }
+
+  if (entry === 'sync-build') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/sync-build', { server, remotePath }],
+      ['@lila/sync-build', { server, remotePath, sourceMap: !1 }],
+    ];
+  }
+
+  if (entry === 'sync-html') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/sync-html', { server, remotePath }],
+      ['@lila/sync-html', { server, remotePath, ext: 'php' }],
+    ];
+  }
+
+  if (entry === 'sync-source-map') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/sync-source-map', { server, remotePath }],
+    ];
+  }
+
+  if (entry === 'remote-shell') {
+    return [['@lila/remote-shell', { server, scripts: 'ls ~/space/www/lila' }]];
   }
 
   return [];
