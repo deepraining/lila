@@ -24,7 +24,17 @@ module.exports = lila => {
 
 ## built-in tasks
 
-### `@lila/replace`: replace file content
+### `@lila/make`: create a file(relative to `root`)
+
+```
+['@lila/make', {file, content, force}]}]
+```
+
+- `file`: `type: string` file to handle.
+- `content`: `type: string` file content.
+- `force`: `type: bool` `default: false` whether to override if file already existed.
+
+### `@lila/replace`: replace file content(relative to `root`)
 
 ```
 ['@lila/replace', {file, replace: [{target, replacement}]}]
@@ -35,7 +45,7 @@ module.exports = lila => {
   - `target`: `type: string|RegExp` target to be replaced.
   - `replacement`: `type: string` string to replace.
 
-### `@lila/insert`: insert file content
+### `@lila/insert`: insert file content(relative to `root`)
 
 ```
 ['@lila/insert', {file, start, end}]
@@ -45,7 +55,7 @@ module.exports = lila => {
 - `start`: `type: string` content to prepend.
 - `end`: `type: string` content to append.
 
-### `@lila/convert`: convert file extension
+### `@lila/convert`: convert file extension(relative to `root`)
 
 ```
 ['@lila/convert', {file, ext}]
@@ -54,7 +64,7 @@ module.exports = lila => {
 - `file`: `type: string` file to handle.
 - `ext`: `type: string` extension name, like `php, jsp`.
 
-### `@lila/backup`: backup file
+### `@lila/backup`: backup file(relative to `root`)
 
 Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 

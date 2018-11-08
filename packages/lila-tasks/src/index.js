@@ -1,4 +1,4 @@
-import { replace, insert, convert, backup } from './file';
+import { make, replace, insert, convert, backup } from './file';
 import { move, copy, delTask, delDev, delBuild, delTmp } from './dir';
 import {
   sync,
@@ -13,6 +13,7 @@ import { shell, cleanCache, saveCache } from './misc';
 export default lila => {
   const { registerTask } = lila;
 
+  registerTask('@lila/make', make);
   registerTask('@lila/replace', replace);
   registerTask('@lila/insert', insert);
   registerTask('@lila/convert', convert);
