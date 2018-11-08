@@ -1,15 +1,19 @@
+import fs from 'fs';
+import path from 'path';
 import del from 'del';
 import fse from 'fs-extra';
 
+const { existsSync } = fs;
+const { join } = path;
 const { copySync, moveSync } = fse;
 
 /**
- * move file or directory
+ * move file or directory(relative to `root`)
  *
  * @example
  *
  * ```
- * ['@lila/move', {source, target}]
+ * ['@lila/move', {source, target, force}]
  * ```
  *
  * @param args
@@ -17,9 +21,9 @@ const { copySync, moveSync } = fse;
  * @returns {function(*)}
  */
 export const move = ({ args, lila }) => cb => {
-  const { warn } = lila;
+  const { warn, getSettings } = lila;
 
-  const { source, target } = (args && args[0]) || {};
+  const { source, target, force = !1 } = (args && args[0]) || {};
 
   if (!source) {
     warn('task skipped: source not configured');
@@ -31,18 +35,32 @@ export const move = ({ args, lila }) => cb => {
     return cb();
   }
 
-  moveSync(source, target);
+  const [root] = getSettings(['root']);
+  const sourcePath = join(root, source);
+  const targetPath = join(root, target);
+
+  if (!existsSync(sourcePath)) {
+    warn('task skipped: source not exist');
+    return cb();
+  }
+
+  if (existsSync(targetPath) && !force) {
+    warn('task skipped: target existed');
+    return cb();
+  }
+
+  moveSync(sourcePath, targetPath);
 
   return cb();
 };
 
 /**
- * copy file or directory
+ * copy file or directory(relative to `root`)
  *
  * @example
  *
  * ```
- * ['@lila/copy', {source, target}]
+ * ['@lila/copy', {source, target, force}]
  * ```
  *
  * @param args
@@ -50,9 +68,9 @@ export const move = ({ args, lila }) => cb => {
  * @returns {function(*)}
  */
 export const copy = ({ args, lila }) => cb => {
-  const { warn } = lila;
+  const { warn, getSettings } = lila;
 
-  const { source, target } = (args && args[0]) || {};
+  const { source, target, force = !1 } = (args && args[0]) || {};
 
   if (!source) {
     warn('task skipped: source not configured');
@@ -64,7 +82,21 @@ export const copy = ({ args, lila }) => cb => {
     return cb();
   }
 
-  copySync(source, target);
+  const [root] = getSettings(['root']);
+  const sourcePath = join(root, source);
+  const targetPath = join(root, target);
+
+  if (!existsSync(sourcePath)) {
+    warn('task skipped: source not exist');
+    return cb();
+  }
+
+  if (existsSync(targetPath) && !force) {
+    warn('task skipped: target existed');
+    return cb();
+  }
+
+  copySync(sourcePath, targetPath);
 
   return cb();
 };
@@ -84,7 +116,8 @@ export const copy = ({ args, lila }) => cb => {
  * @returns {function()}
  */
 export const delTask = ({ args, lila }) => cb => {
-  const { warn } = lila;
+  const { warn, getSettings } = lila;
+  const [root] = getSettings(['root']);
 
   const dirs = args && args[0];
 
@@ -93,7 +126,9 @@ export const delTask = ({ args, lila }) => cb => {
     return cb();
   }
 
-  return del(dirs);
+  return del(
+    (Array.isArray(dirs) ? dirs : [dirs]).map(dir => `${root}/${dir}`)
+  );
 };
 
 /**

@@ -75,23 +75,25 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `file`: `type: string` file to handle.
 - `suffix`: `type: string` `default: (new Date()).getTime()` `index.html -> index.${suffix}.html`.
 
-### `@lila/move`: move file or directory
+### `@lila/move`: move file or directory(relative to `root`)
 
 ```
-['@lila/move', {source, target}]
-```
-
-- `source`: `type: string` source file or directory
-- `target`: `type: string` target file or directory
-
-### `@lila/copy`: copy file or directory
-
-```
-['@lila/copy', {source, target}]
+['@lila/move', {source, target, force}]
 ```
 
 - `source`: `type: string` source file or directory
 - `target`: `type: string` target file or directory
+- `force`: `type: bool` `default: false` whether to override if target already existed.
+
+### `@lila/copy`: copy file or directory(relative to `root`)
+
+```
+['@lila/copy', {source, target, force}]
+```
+
+- `source`: `type: string` source file or directory
+- `target`: `type: string` target file or directory
+- `force`: `type: bool` `default: false` whether to override if target already existed.
 
 ### `@lila/del`: delete files or directories
 

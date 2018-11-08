@@ -1,7 +1,9 @@
+import fs from 'fs';
 import path from 'path';
 import fse from 'fs-extra';
 
-const { join, existSync } = path;
+const { existsSync } = fs;
+const { join } = path;
 const { moveSync, readFileSync, outputFileSync, copySync } = fse;
 
 /**
@@ -29,7 +31,7 @@ export const make = ({ args, lila }) => cb => {
   const [root] = getSettings(['root']);
   const filePath = join(root, file);
 
-  if (existSync(filePath) && !force) {
+  if (existsSync(filePath) && !force) {
     warn('task skipped: file existed');
     return cb();
   }
@@ -72,7 +74,7 @@ export const replace = ({ args, lila }) => cb => {
   const [root] = getSettings(['root']);
   const filePath = join(root, file);
 
-  if (!existSync(filePath)) {
+  if (!existsSync(filePath)) {
     warn('task skipped: file not exist');
     return cb();
   }
@@ -119,7 +121,7 @@ export const insert = ({ args, lila }) => cb => {
   const [root] = getSettings(['root']);
   const filePath = join(root, file);
 
-  if (!existSync(filePath)) {
+  if (!existsSync(filePath)) {
     warn('task skipped: file not exist');
     return cb();
   }
@@ -164,7 +166,7 @@ export const convert = ({ args, lila }) => cb => {
   const [root] = getSettings(['root']);
   const filePath = join(root, file);
 
-  if (!existSync(filePath)) {
+  if (!existsSync(filePath)) {
     warn('task skipped: file not exist');
     return cb();
   }
@@ -201,12 +203,12 @@ export const backup = ({ args, lila }) => cb => {
   const [root] = getSettings(['root']);
   const filePath = join(root, file);
 
-  if (!existSync(filePath)) {
+  if (!existsSync(filePath)) {
     warn('task skipped: file not exist');
     return cb();
   }
 
-  const index = filePath.slice(0, filePath.lastIndexOf('.'));
+  const index = filePath.lastIndexOf('.');
 
   copySync(
     filePath,

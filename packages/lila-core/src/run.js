@@ -35,9 +35,9 @@ gulp.on('error', e => {
   process.exitCode = 1;
 });
 
-export default (taskName, successCB, errorCB) => {
+export default (tasks, successCB, errorCB) => {
   try {
-    gulp.series(taskName)(err => {
+    gulp.series(...(Array.isArray(tasks) ? tasks : [tasks]))(err => {
       if (err) {
         if (errorCB) errorCB(err);
       } else if (successCB) successCB();

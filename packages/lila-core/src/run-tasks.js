@@ -49,10 +49,8 @@ export default ({ entries, argv, cmd }, successCB, errorCB) => {
   });
 
   if (runTasks.length) {
-    const cmdTaskName = `cmd:${cmd}`;
-    gulp.task(cmdTaskName, gulp.series(...runTasks));
     run(
-      cmdTaskName,
+      runTasks,
       () => {
         if (successCB) successCB();
       },

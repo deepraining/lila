@@ -68,7 +68,6 @@ describe('run through child_process', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      expect(msg).toContain('cmd:run ...');
       expect(msg).toContain('test:log ...');
       expect(msg).toContain('test:log:2 ...');
       expect(msg).toContain('test2:log ...');
