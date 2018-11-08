@@ -45,6 +45,21 @@ const getTasks = entry => {
     ];
   }
 
+  if (entry === 'shell') {
+    return [
+      ['@lila/shell', { command: 'mkdir', args: [`${__dirname}/shell`] }],
+      ['@lila/shell', { command: 'touch', args: [`${__dirname}/shell/.keep`] }],
+    ];
+  }
+
+  if (entry === 'cache') {
+    return [
+      ['@lila/copy', { source: 'build-bak', target: 'build' }],
+      ['@lila/clean-cache', { dir: 'build' }],
+      ['@lila/save-cache', { dir: 'build' }],
+    ];
+  }
+
   return [];
 };
 

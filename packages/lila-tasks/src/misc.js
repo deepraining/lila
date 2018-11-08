@@ -6,10 +6,10 @@ import md5 from 'crypto-md5';
 import fse from 'fs-extra';
 
 const { spawn } = child;
-const { existsSync, readFileSync, writeFileSync } = fs;
+const { existsSync, readFileSync } = fs;
 const { join, relative } = path;
 const { eachFileFilterSync } = rd;
-const { removeSync } = fse;
+const { removeSync, outputFileSync } = fse;
 
 /**
  * execute shell scripts
@@ -114,7 +114,7 @@ export const saveCache = ({ args, lila }) => cb => {
     json[key] = md5(content, 'hex');
   });
 
-  writeFileSync(cacheFile, JSON.stringify(json));
+  outputFileSync(cacheFile, JSON.stringify(json));
 
   return cb();
 };
