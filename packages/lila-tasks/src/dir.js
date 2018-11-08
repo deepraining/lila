@@ -102,7 +102,7 @@ export const copy = ({ args, lila }) => cb => {
 };
 
 /**
- * delete files or directories
+ * delete files or directories(relative to `root`)
  *
  * @example
  *

@@ -95,7 +95,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `target`: `type: string` target file or directory
 - `force`: `type: bool` `default: false` whether to override if target already existed.
 
-### `@lila/del`: delete files or directories
+### `@lila/del`: delete files or directories(relative to `root`)
 
 ```
 ['@lila/del', file]

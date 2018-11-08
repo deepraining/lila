@@ -26,6 +26,25 @@ const getTasks = entry => {
     ];
   }
 
+  if (entry === 'dir') {
+    return [
+      ['@lila/make', { file: 'dev/.keep' }],
+      ['@lila/make', { file: 'build/.keep' }],
+      ['@lila/make', { file: '.lila/.keep' }],
+      ['@lila/copy', { source: 'dev', target: 'ddev' }],
+      ['@lila/move', { source: 'ddev/.keep', target: 'bbuild/.keep' }],
+    ];
+  }
+
+  if (entry === 'del') {
+    return [
+      '@lila/del-dev',
+      '@lila/del-build',
+      '@lila/del-tmp',
+      ['@lila/del', ['ddev', 'bbuild']],
+    ];
+  }
+
   return [];
 };
 
