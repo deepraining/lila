@@ -19,7 +19,9 @@
     "build:webpack-lib-config": "npm run build -- --name webpack-lib-config",
     "build:rollup": "npm run build -- --name rollup",
     "build:rollup-config": "npm run build -- --name rollup-config",
-    "build:all": "npm run build -- --name all"
+    "build:all": "npm run build -- --name all",
+    "test": "jest packages/*/test",
+    "test:core": "jest packages/lila-core/test/child.test.js"
   },
   "devDependencies": {
     "eslint": "^5.6.1",

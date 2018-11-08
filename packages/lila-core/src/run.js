@@ -32,6 +32,7 @@ gulp.on('error', e => {
   const { name } = e;
   error(`error task ${name}`);
   error(formatError(e));
+  process.exitCode = 1;
 });
 
 export default (taskName, successCB, errorCB) => {
