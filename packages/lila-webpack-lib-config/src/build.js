@@ -26,7 +26,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   baseConfig.plugins.push(
     // css standalone
     new MiniCssExtractPlugin({
-      filename: `${filename}.css`,
+      filename: `${filename || 'css'}.css`,
     })
   );
 

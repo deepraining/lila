@@ -3,20 +3,16 @@ const webpackPlugin = require('../../../lila-webpack-lib/lib');
 const webpackConfigPlugin = require('../../../lila-webpack-lib-config/lib');
 
 module.exports = lila => {
+  const { setSetting } = lila;
+
+  setSetting('build', 'lib');
+
   tasksPlugin(lila);
   webpackPlugin(lila);
   webpackConfigPlugin(lila);
 
-  return ({ entry }) => ({
-    tasks: [
-      '@lila/webpack',
-      [
-        '@lila/move',
-        { source: 'build/index.html', target: `build/${entry}.html` },
-      ],
-    ],
-    cssModules: !0,
-    cssModulesExclude: [/node_modules/, /src\/test/],
+  return () => ({
+    tasks: [['@lila/del', 'lib'], '@lila/webpack'],
     flow: !0,
     // flowRuntime: !0,
     alias: {
@@ -28,9 +24,9 @@ module.exports = lila => {
     },
     // minCss: !1,
     // minJs: !1,
-    // banner: '/* hello */',
+    // banner: 'hello',
     // filename: 'hi',
     // library: 'Demo',
-    // externals: {}
+    externals: ['react', 'react-dom'],
   });
 };

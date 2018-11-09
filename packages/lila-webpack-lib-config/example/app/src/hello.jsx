@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import styles from './hello.less';
+import './hello.less';
 
 export default class extends Component {
   render() {
     return (
-      <button type="button" className={styles.btn}>
+      <button type="button" className='jsx-btn'>
         Hello,
         {' '}
         {this.props.name}
