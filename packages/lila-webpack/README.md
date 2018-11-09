@@ -30,6 +30,12 @@ module.exports = lila => {
 lila dev entry
 ```
 
+### `serve`: simulate a backend environment to start a local server to develop an entry
+
+```
+lila serve entry
+```
+
 ### `build`: pack source codes to production bundles
 
 ```
@@ -52,12 +58,6 @@ lila start entry
 
 ```
 lila analyze entry
-```
-
-### `serve`: simulate a backend environment to start a local server to develop an entry
-
-```
-lila serve entry
 ```
 
 ## extended tasks

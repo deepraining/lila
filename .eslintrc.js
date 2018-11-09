@@ -1,7 +1,8 @@
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   extends: ['airbnb', 'prettier'],
-  plugins: ['prettier', 'import', 'node', 'jest'],
+  plugins: ['prettier', 'import', 'node', 'jest', 'flowtype'],
   env: {
     node: true,
     es6: true,

@@ -4,10 +4,10 @@ import styles from './hello.less';
 export default class extends Component {
   render() {
     return (
-      <button type="button">
-        Hello, 
+      <button type="button" className={styles.btn}>
+        Hello,
         {' '}
-        <span className={styles.btn}>{this.props.name}</span>
+        {this.props.name}
       </button>
     );
   }

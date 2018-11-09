@@ -16,7 +16,7 @@ export const babelLoader = ({
       '@babel/preset-env',
       '@babel/preset-react',
       ...babelPresets,
-      ...(flow ? ['flow'] : []),
+      ...(flow ? ['@babel/preset-flow'] : []),
     ],
     plugins: [
       '@babel/plugin-transform-react-jsx',

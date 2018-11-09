@@ -101,6 +101,13 @@ module.exports = lila => {
 
 ### `splitJs`: `type: {}` `default: {}` split one bundle js to many pieces
 
+```
+{
+  lib1: ['react', 'react-dom'],
+  lib2: ['jquery'],
+}
+```
+
 ### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
 - `cmd: dev, serve`: `type: cheap-module-eval-source-map`

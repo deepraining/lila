@@ -42,6 +42,28 @@ export default lila => {
     });
   });
 
+  // add serve command
+  addCommand(commander => {
+    const command = commander
+      .command('serve <entry>')
+      .description(
+        'simulate a backend environment to start a local server to develop an entry'
+      )
+      .allowUnknownOption();
+
+    getCmdOptions('serve').forEach(value => {
+      command.option(...value);
+    });
+
+    command.action((entry, options) => {
+      const argv = makeArgv(options);
+
+      if (!servePath) throw new Error("setting [servePath] hasn't been set");
+
+      dev({ entry, argv, lila, serve: !0, servePath });
+    });
+  });
+
   // add build command
   addCommand(commander => {
     const command = commander
@@ -131,28 +153,6 @@ export default lila => {
       const argv = makeArgv(options);
 
       analyze({ entry, argv, lila });
-    });
-  });
-
-  // add serve command
-  addCommand(commander => {
-    const command = commander
-      .command('serve <entry>')
-      .description(
-        'simulate a backend environment to start a local server to develop an entry'
-      )
-      .allowUnknownOption();
-
-    getCmdOptions('serve').forEach(value => {
-      command.option(...value);
-    });
-
-    command.action((entry, options) => {
-      const argv = makeArgv(options);
-
-      if (!servePath) throw new Error("setting [servePath] hasn't been set");
-
-      dev({ entry, argv, lila, serve: !0, servePath });
     });
   });
 

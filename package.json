@@ -24,9 +24,11 @@
     "test:tasks": "jest packages/lila-tasks/test/test.js"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.23.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
