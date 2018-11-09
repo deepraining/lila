@@ -34,7 +34,7 @@ export default ({ entry, args, argv, cmd, config, lila }) => cb => {
     let index = 0;
     // go on
     const goon = () => {
-      run(webpackConfig[index], () => {
+      run(lila, webpackConfig[index], () => {
         index += 1;
 
         if (index >= webpackConfig.length) cb();

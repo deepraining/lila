@@ -16,12 +16,7 @@ export default lila => {
     getSettings,
     getCmdOptions,
   } = lila;
-  const [root, srcDir, getEntries, servePath] = getSettings([
-    'root',
-    'src',
-    'getEntries',
-    'servePath',
-  ]);
+  const [root, srcDir] = getSettings(['root', 'src']);
   const srcPath = join(root, srcDir);
 
   // add dev command
@@ -56,6 +51,8 @@ export default lila => {
     });
 
     command.action((entry, options) => {
+      // servePath should load here
+      const [servePath] = getSettings(['servePath']);
       const argv = makeArgv(options);
 
       if (!servePath) throw new Error("setting [servePath] hasn't been set");
@@ -76,6 +73,8 @@ export default lila => {
     });
 
     command.action((entry, extraEntries, options) => {
+      // getEntries should load here
+      const [getEntries] = getSettings(['getEntries']);
       const entries = [entry, ...extraEntries];
       runTasks({
         entries: getEntries
@@ -99,6 +98,8 @@ export default lila => {
     });
 
     command.action((entry, extraEntries, options) => {
+      // getEntries should load here
+      const [getEntries] = getSettings(['getEntries']);
       const entries = [entry, ...extraEntries];
       runTasks({
         entries: getEntries
