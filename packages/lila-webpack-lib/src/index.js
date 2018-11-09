@@ -13,7 +13,7 @@ export default lila => {
     getSettings,
     getCmdOptions,
   } = lila;
-  const [root, srcDir, getEntries] = getSettings(['root', 'src', 'getEntries']);
+  const [root, srcDir] = getSettings(['root', 'src']);
 
   const srcPath = join(root, srcDir);
 
@@ -47,6 +47,7 @@ export default lila => {
     });
 
     command.action((entries, options) => {
+      const [getEntries] = getSettings(['getEntries']);
       const realEntries = entries.length ? entries : ['index'];
 
       runTasks({
