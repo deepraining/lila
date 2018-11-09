@@ -88,6 +88,16 @@ dir => entries;
 (entry, srcDir) => path
 ```
 
+serve js file:
+
+```
+module.exports = (content, req) => newContent;
+```
+
+- `content`: html file content
+- `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
+- `newContent`: new html content
+
 ## extended configs
 
 ### `forceGet`: `type: bool` `default: true` force all ajax methods as `get`

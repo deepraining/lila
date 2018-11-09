@@ -1,16 +1,9 @@
-import $ from 'jquery';
-
 console.log('test');
-console.log(hello.hi); // eslint-disable-line
+// console.log(hello.hi); // eslint-disable-line
 
-$.get('/src/mock/?key1=value1&key2=value2', {}, res => {
+fetch('/src/mock/?key1=value1&key2=value2').then(res => {
   console.log("get['/src/mock']", res);
 });
-$.post(
-  '/src/mock.json',
-  {},
-  res => {
-    console.log("post['/src/mock.json']", res);
-  },
-  'json'
-);
+fetch('/src/mock.json', { method: 'post' }).then(res => {
+  console.log("post['/src/mock.json']", res);
+});
