@@ -41,23 +41,25 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   if (banner) baseConfig.plugins.push(new BannerPlugin(banner));
 
+  const outputPath = entry === 'index' ? buildPath : join(buildPath, entry);
+
   return [
     {
-      path: buildPath,
+      path: outputPath,
       filename: `${filename ? `${filename}.` : ''}cjs.js`,
       library,
       libraryTarget: 'commonjs2',
       publicPath: '',
     },
     {
-      path: buildPath,
+      path: outputPath,
       filename: `${filename ? `${filename}.` : ''}amd.js`,
       library,
       libraryTarget: 'amd',
       publicPath: '',
     },
     {
-      path: buildPath,
+      path: outputPath,
       filename: `${filename ? `${filename}.` : ''}umd.js`,
       library,
       libraryTarget: 'umd',

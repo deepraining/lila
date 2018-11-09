@@ -5,6 +5,7 @@ const webpackConfigPlugin = require('../../../lila-webpack-lib-config/lib');
 module.exports = lila => {
   const { setSetting } = lila;
 
+  setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);
@@ -12,7 +13,10 @@ module.exports = lila => {
   webpackConfigPlugin(lila);
 
   return () => ({
-    tasks: [['@lila/del', 'lib'], '@lila/webpack'],
+    tasks: [
+      // ['@lila/del', 'lib'],
+      '@lila/webpack',
+    ],
     flow: !0,
     // flowRuntime: !0,
     alias: {
