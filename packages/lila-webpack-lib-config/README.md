@@ -58,8 +58,8 @@ module.exports = lila => {
 
 ### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
-- `cmd: start`: `type: cheap-module-eval-source-map`
-- `cmd: build`: `type: module-source-map`
+- `cmd: start`: `cheap-module-eval-source-map`
+- `cmd: build`: `module-source-map`
 
 ### `filename`: `type: string` `default: empty string` library file name
 
@@ -78,6 +78,8 @@ A entry has a standalone directory, also called workspace.
 ### for `build` command
 
 For `build` command, an entry has at least a `index.js` file.
+
+If entry is not provided, `index` will be used as default.
 
 If entry is `index`, its workspace is `src`:
 
