@@ -7,3 +7,9 @@ Command line tool to create a lila application.
 ```
 npm install -g create-lila-app
 ```
+
+## use
+
+```
+create-lila-app <project-directory>
+```
