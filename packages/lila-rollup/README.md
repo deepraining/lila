@@ -91,6 +91,8 @@ Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ..
 
 ### `browserSync`: `type: {}` `default: {}` [browser-sync](https://github.com/BrowserSync/browser-sync) config
 
+### `watch`: `globs/[globs, options]` `default: 'src'` [chokidar](https://github.com/paulmillr/chokidar) watching files' changes for `start` command(globs relative to `root`)
+
 ## node packages
 
 - [rollup](https://github.com/rollup/rollup): 0.66

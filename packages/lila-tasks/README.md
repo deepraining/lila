@@ -127,7 +127,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/sync', {src, server, remotePath}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)(globs relative to `root`)
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 

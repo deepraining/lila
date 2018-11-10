@@ -1,12 +1,9 @@
-import path from 'path';
 import rollup from 'rollup';
 import chokidar from 'chokidar';
 import browserSync from 'browser-sync';
 
 import run from './run';
 import { makeMock, forceGet as forceGetMiddleware } from '../../../util/index';
-
-const { join } = path;
 
 export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
@@ -15,8 +12,6 @@ export default ({ entry, argv, lila }) => {
     'dev',
     'rollupConfigGenerator',
   ]);
-
-  const devPath = join(root, devDir);
 
   if (!rollupConfigGenerator)
     throw new Error('rollupConfigGenerator not configured');
@@ -40,6 +35,7 @@ export default ({ entry, argv, lila }) => {
     mock = true,
     port = 8090,
     browserSync: browserSyncConfig = {},
+    watch = 'src',
   } = config;
 
   if (!browserSyncConfig.server) browserSyncConfig.server = {};
@@ -54,7 +50,16 @@ export default ({ entry, argv, lila }) => {
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
   if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
 
-  const watcher = chokidar.watch(devPath);
+  let globs = watch;
+  let options;
+
+  if (Array.isArray(watch) && typeof watch[1] === 'object') {
+    [globs, options] = watch;
+  }
+
+  globs = (Array.isArray(globs) ? globs : [globs]).map(g => `${root}/${g}`);
+
+  const watcher = chokidar.watch(globs, options);
   watcher.on('change', () => {
     run(rollupConfig, rollupConfig.output).then(() => {
       browserSync.reload();
