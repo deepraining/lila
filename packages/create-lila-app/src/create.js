@@ -1,21 +1,26 @@
 import fs from 'fs';
 import path from 'path';
+import cp from 'child_process';
 import shell from 'shelljs';
 import fse from 'fs-extra';
-import { missingGit } from '../util/error';
-import copyExtra from './copy-extra';
 import { error, info, log } from '../../../util/logger';
 
 const { join } = path;
 const { existsSync } = fs;
 const { which, exec } = shell;
-const { copySync } = fse;
+const { readFileSync, outputFileSync } = fse;
+const { spawn } = cp;
 
-export default (dir, install) => {
-  if (!which('git')) missingGit();
+export default ({ dir, type }) => {
+  if (!which('git')) {
+    error(`
+  error: missing git
+    `);
+    process.exit(1);
+  }
 
   const cwd = process.cwd();
-  const source = join(__dirname, '../boilerplate');
+  const source = join(__dirname, '../files');
   const target = join(cwd, dir);
 
   if (existsSync(target)) {
@@ -25,9 +30,33 @@ export default (dir, install) => {
     process.exit(1);
   }
 
-  copySync(source, target);
-  copyExtra(target, 'package.json', dir);
-  copyExtra(target, 'README.md', dir);
+  const copy = ({ file, replace = !1, srcFile }) => {
+    const sourceFile = join(source, srcFile || `_${file}`);
+    const targetFile = join(target, file);
+
+    let content = readFileSync(sourceFile, 'utf8');
+
+    if (replace) content = content.replace('[project-name]', dir);
+
+    outputFileSync(targetFile, content);
+  };
+
+  copy({ file: '.editorconfig' });
+  copy({ file: '.eslintignore' });
+  copy({ file: '.eslintrc.js' });
+  copy({ file: '.gitignore' });
+  copy({ file: '.npmrc' });
+  copy({ file: '.prettierignore' });
+  copy({ file: '.prettierrc.js' });
+  copy({ file: '.stylelintignore' });
+  copy({ file: '.stylelintrc.js' });
+  copy({ file: 'CHANGELOG.md' });
+  copy({ file: 'jest.config.js' });
+  copy({ file: 'package.json', replace: !0 });
+  copy({ file: 'README.md', replace: !0 });
+
+  copy({ file: 'lila.js', srcFile: `lila-${type}.js` });
+
   process.chdir(target);
 
   log(`
@@ -40,13 +69,6 @@ export default (dir, install) => {
     process.exit(1);
   }
 
-  if (!install) {
-    info(`
-  ${dir} created  
-    `);
-    return;
-  }
-
   let npm = 'npm';
   if (which('cnpm')) npm = 'cnpm';
 
@@ -54,14 +76,29 @@ export default (dir, install) => {
   ${npm} install ...
   `);
 
-  if (exec(`${npm} install`).code !== 0) {
-    error(`
-  error: ${npm} install  
-    `);
-    process.exit(1);
-  }
+  const child = spawn(npm, ['install'], { stdio: 'inherit' });
 
-  info(`
+  child.on('close', code => {
+    if (code !== 0) process.exit(1);
+
+    const lilaPkg = ['lila-cli', 'lila-core', 'lila-tasks'];
+
+    if (type === 'webpack') lilaPkg.push('lila-webpack', 'lila-webpack-config');
+    else if (type === 'webpack-lib')
+      lilaPkg.push('lila-webpack-lib', 'lila-webpack-lib-config');
+    else if (type === 'rollup')
+      lilaPkg.push('lila-rollup', 'lila-rollup-config');
+
+    const child2 = spawn(npm, ['install', '--save-dev', ...lilaPkg], {
+      stdio: 'inherit',
+    });
+
+    child2.on('close', code2 => {
+      if (code2 !== 0) process.exit(1);
+
+      info(`
   ${dir} created  
-  `);
+      `);
+    });
+  });
 };
