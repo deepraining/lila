@@ -4,10 +4,10 @@
   "license": "MIT",
   "scripts": {
     "precommit": "npm run lint-staged",
-    "prettier": "prettier --write ./**/*.{js,json,md}",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write \"./**/*.{js,jsx,css,less,scss,sass,md,json}\"",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
-    "lint-staged": "lint-staged",
     "build": "rollup -c",
     "build:cli": "npm run build -- --name cli",
     "build:create": "npm run build -- --name create",
