@@ -13,6 +13,8 @@ export default (lila, rollup, { entry, cmd, config }) => {
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
+  const outputPath = entry === 'index' ? buildPath : join(buildPath, entry);
+
   return {
     input:
       entry === 'index'
@@ -20,25 +22,25 @@ export default (lila, rollup, { entry, cmd, config }) => {
         : `${srcPath}/${entry}/index.js`,
     output: [
       {
-        file: `${buildPath}/${filename ? `${filename}.` : ''}cjs.js`,
+        file: `${outputPath}/${filename ? `${filename}.` : ''}cjs.js`,
         format: 'cjs',
         banner,
         sourcemap: !0,
       },
       {
-        file: `${buildPath}/${filename ? `${filename}.` : ''}m.js`,
+        file: `${outputPath}/${filename ? `${filename}.` : ''}m.js`,
         format: 'esm',
         banner,
         sourcemap: !0,
       },
       {
-        file: `${buildPath}/${filename ? `${filename}.` : ''}amd.js`,
+        file: `${outputPath}/${filename ? `${filename}.` : ''}amd.js`,
         format: 'amd',
         banner,
         sourcemap: !0,
       },
       {
-        file: `${buildPath}/${filename ? `${filename}.` : ''}umd.js`,
+        file: `${outputPath}/${filename ? `${filename}.` : ''}umd.js`,
         format: 'umd',
         banner,
         name,

@@ -5,7 +5,7 @@ const rollupConfigPlugin = require('../../../lila-rollup-config/lib');
 module.exports = lila => {
   const { setSetting } = lila;
 
-  // setSetting('src', 'components');
+  setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);
@@ -13,7 +13,10 @@ module.exports = lila => {
   rollupConfigPlugin(lila);
 
   return ({ cmd }) => ({
-    tasks: [['@lila/del', 'lib'], '@lila/rollup'],
+    tasks: [
+      // ['@lila/del', 'lib'],
+      '@lila/rollup',
+    ],
     flow: !0,
     flowRuntime: cmd === 'start',
     // minCss: !1,
