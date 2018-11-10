@@ -15,8 +15,10 @@ export default (lila, rollup, { cmd, config }) => {
     babelPresets = [],
     babelPlugins = [],
     alias = {},
-    inject = {},
-    nodeResolve = !1,
+    inject = {
+      include: ['**/*.js', '**/*.jsx'],
+      exclude: 'node_modules/**',
+    },
     flow = !1,
     flowRuntime = !1,
     minJs = !0,
@@ -27,10 +29,7 @@ export default (lila, rollup, { cmd, config }) => {
 
   return {
     plugins: [
-      aliasPlugin(alias),
-      ...(nodeResolve ? [resolve()] : []),
-      json(),
-      commonjs(),
+      // babel should be in the first
       babel({
         exclude: babelExclude,
         presets: [
@@ -51,6 +50,10 @@ export default (lila, rollup, { cmd, config }) => {
             : []),
         ],
       }),
+      aliasPlugin(alias),
+      ...(isBuild ? [] : [resolve()]),
+      json(),
+      commonjs(),
       injectPlugin(inject),
       globals(),
       postcss({ extract: !0, minimize: isBuild && minCss }),

@@ -9,7 +9,7 @@ export default (lila, rollup, { entry, cmd, config }) => {
   const srcPath = join(root, srcDir);
   const buildPath = join(root, buildDir);
 
-  const { filename = '', name = 'Index', banner } = config;
+  const { filename = '', name = 'Index', banner, external, globals } = config;
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
@@ -42,9 +42,11 @@ export default (lila, rollup, { entry, cmd, config }) => {
         format: 'umd',
         banner,
         name,
+        globals,
         sourcemap: !0,
       },
     ],
+    external,
     ...baseConfig,
   };
 };

@@ -42,9 +42,14 @@ module.exports = lila => {
 
 ### `alias`: `type: {}` `default: {}` [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
 
-### `inject`: `type: {}` `default: {}` [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config
+### `inject`: `type: {}` [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config, default
 
-### `nodeResolve`: `type: bool` `default: false` whether to use [rollup-plugin-node-resolve](https://github.com/rollup/rollup-plugin-node-resolve)
+```
+{
+  include: ['**/*.js', '**/*.jsx'],
+  exclude: 'node_modules/**',
+}
+```
 
 ### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
 
@@ -58,6 +63,10 @@ module.exports = lila => {
 
 ### `name`: `type: string` `default: Index` [rollup](https://rollupjs.org/guide/en) output name
 
+### `exterbal`: `type: *` rollup `external` config
+
+### `globals`: `type: {}` rollup `globals` config
+
 ### `plugins`: `type: []` `default: []` extra rollup plugins
 
 ## files of an entry
@@ -67,6 +76,8 @@ A entry has a standalone directory, also called workspace.
 ### for `build` command
 
 For `build` command, an entry has at least a `index.js` file.
+
+If entry is not provided, `index` will be used as default.
 
 If entry is `index`, its workspace is `src`:
 
