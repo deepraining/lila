@@ -3,7 +3,13 @@
   "packages": ["packages/*"],
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md", "*.json", "*.txt", "test/**", "package.json"]
+      "ignoreChanges": [
+        "*.md",
+        "*.json",
+        "*.txt",
+        "test/**",
+        "package.json"
+      ]
     }
   },
   "npmClient": "cnpm",

@@ -1,5 +1,6 @@
 package.json
 _package.json
+lerna.json
 /lib
 /build
 packages/*/node_modules

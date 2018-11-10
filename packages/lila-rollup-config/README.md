@@ -1,6 +1,6 @@
 # lila-rollup-config
 
-Lila rollup config.
+Config generator for lila rollup plugin.
 
 ## install
 
@@ -23,6 +23,8 @@ module.exports = lila => {
 ```
 
 ## extended settings
+
+### `rollupConfigGenerator`: see [rollupConfigGenerator](./src/index.js#L8)
 
 ### `getEntries`: see [getEntries](./src/settings.js#L6)
 

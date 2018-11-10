@@ -21,13 +21,7 @@ npm install lila-cli --save-dev
 global
 
 ```
-# version
-lila -V
-lila --version
-
-# help
-lila -h
-lila --help
+lila <cmd> [options]
 ```
 
 local
@@ -36,7 +30,7 @@ local
 # package.json
 {
   "scripts": {
-    "help": "lila --help"
+    "run": "lila run"
   }
 }
 ```
@@ -44,5 +38,5 @@ local
 ## options
 
 - `-V, --version`: output the version number
-- `--core`: custom lila-core path
+- `--core`: custom `lila-core` path
 - `-h, --help`: output usage information

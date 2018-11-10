@@ -1,6 +1,6 @@
 # lila-rollup
 
-Lila rollup plugin.
+Lila rollup plugin for building a library.
 
 ## install
 

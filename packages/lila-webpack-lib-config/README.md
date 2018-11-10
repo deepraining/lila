@@ -1,6 +1,6 @@
 # lila-webpack-lib-config
 
-Lila webpack config for building a library.
+Config generator for lila webpack-lib plugin.
 
 ## install
 
@@ -23,6 +23,8 @@ module.exports = lila => {
 ```
 
 ## extended settings
+
+### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L8)
 
 ### `getEntries`: see [getEntries](./src/settings.js#L6)
 

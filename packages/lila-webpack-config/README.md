@@ -1,6 +1,6 @@
 # lila-webpack-config
 
-Lila webpack config.
+Config generator for lila webpack plugin.
 
 ## install
 
@@ -24,11 +24,13 @@ module.exports = lila => {
 
 ## extended settings
 
-### `analyze`: `type: string` `default: analyze` temporary directory for command `analyze`
+### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L9)
 
 ### `getEntries`: see [getEntries](./src/settings.js#L11)
 
 ### `servePath`: see [servePath](./src/settings.js#L26)
+
+### `analyze`: `type: string` `default: analyze` temporary directory for command `analyze`
 
 ## extended configs
 
