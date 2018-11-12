@@ -8,10 +8,13 @@
         "*.json",
         "*.txt",
         "test/**",
+        "example/**",
         "package.json"
       ]
+    },
+    "bootstrap": {
+      "npmClient": "cnpm"
     }
   },
-  "npmClient": "cnpm",
   "npmClientArgs": ["--no-package-lock"]
 }
