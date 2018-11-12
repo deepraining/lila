@@ -81,7 +81,7 @@ export default ({ dir, type }) => {
   child.on('close', code => {
     if (code !== 0) process.exit(1);
 
-    const lilaPkg = ['lila-cli', 'lila-core', 'lila-tasks'];
+    const lilaPkg = ['lila-bin', 'lila-core', 'lila-tasks'];
 
     if (type === 'webpack') lilaPkg.push('lila-webpack', 'lila-webpack-config');
     else if (type === 'webpack-lib')

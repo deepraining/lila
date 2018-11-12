@@ -312,7 +312,7 @@ lila.colorError(color, ...args);
 lila run entry1 entry2 entry3 ...
 ```
 
-## extended cli options
+## extended command line options
 
 - `--root`: custom root path
 

@@ -9,7 +9,7 @@
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
     "build": "rollup -c",
-    "build:cli": "npm run build -- --name cli",
+    "build:bin": "npm run build -- --name bin",
     "build:create": "npm run build -- --name create",
     "build:core": "npm run build -- --name core",
     "build:tasks": "npm run build -- --name tasks",

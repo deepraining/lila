@@ -17,5 +17,5 @@ module.exports = cmd => {
 
   process.argv = argv;
 
-  require('../packages/lila-cli/lib'); // eslint-disable-line
+  require('../packages/lila-bin/lib'); // eslint-disable-line
 };

@@ -1,4 +1,4 @@
-# lila-cli
+# lila-bin
 
 Lila command line.
 
@@ -7,13 +7,13 @@ Lila command line.
 global
 
 ```
-npm install lila-cli -g
+npm install lila-bin -g
 ```
 
 local
 
 ```
-npm install lila-cli --save-dev
+npm install lila-bin --save-dev
 ```
 
 ## use

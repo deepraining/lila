@@ -5,7 +5,7 @@ Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://g
 ## packages
 
 - [create-lila-app](./packages/create-lila-app): create a lila application
-- [lila-cli](./packages/lila-cli): lila command line
+- [lila-bin](./packages/lila-bin): lila command line
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
 - [lila-webpack](./packages/lila-webpack): webpack plugin for lila
@@ -21,7 +21,7 @@ You can install [create-lila-app](./packages/create-lila-app) to create a lila a
 
 However, you can customize your own project:
 
-1. Install [lila-cli](./packages/lila-cli). If installed globally, you can run lila commands directly in terminal, and if installed locally, you can run lila commands directly by `npm run`.
+1. Install [lila-bin](./packages/lila-bin). If installed globally, you can run lila commands directly in terminal, and if installed locally, you can run lila commands directly by `npm run`.
 2. Install [lila-core](./packages/lila-core) and [lila-tasks](./packages/lila-tasks) locally. You should not import `lila-core` directly, like `import lila from 'lila-core'` or `const lila = require('lila-core')`, but `module.exports = lila => { ... }` in `lila.js` or plugin.
 3. Choose appropriate plugins.
    - If build a project, it's recommended to choose [lila-webpack](./packages/lila-webpack) and [lila-webpack-config](./packages/lila-webpack-config).
