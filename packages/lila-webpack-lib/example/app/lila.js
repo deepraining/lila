@@ -24,7 +24,7 @@ module.exports = lila => {
         filename: 'index.js',
         publicPath: `/${dir}/`,
       },
-      devtool: isDev ? 'cheap-module-eval-source-map' : 'module-source-map',
+      devtool: isDev ? 'eval-source-map' : 'source-map',
       mode: isDev ? 'development' : 'production',
     };
   });

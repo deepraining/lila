@@ -112,8 +112,8 @@ module.exports = lila => {
 
 ### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
-- `cmd: dev, serve`: `cheap-module-eval-source-map`
-- `cmd: build, sync, start, analyze`: `module-source-map`
+- `cmd: dev, serve`: `eval-source-map`
+- `cmd: build, sync, start`: `source-map`
 
 ### `rules`: `type: []` `default: []` extra webpack rules
 

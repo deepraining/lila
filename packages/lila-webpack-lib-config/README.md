@@ -60,8 +60,8 @@ module.exports = lila => {
 
 ### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
 
-- `cmd: start`: `cheap-module-eval-source-map`
-- `cmd: build`: `module-source-map`
+- `cmd: start`: `eval-source-map`
+- `cmd: build`: `source-map`
 
 ### `filename`: `type: string` `default: empty string` library file name
 

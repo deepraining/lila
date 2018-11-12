@@ -66,11 +66,9 @@ export default (lila, webpack, { entry, cmd, config }) => {
     optimization: {
       minimize: isBuild && minJs,
     },
-    // cheap-source-map options don't work with uglifyjs-webpack-plugin
     devtool: noDevtool
       ? undefined
-      : devtool ||
-        (development ? 'cheap-module-eval-source-map' : 'module-source-map'),
+      : devtool || (development ? 'eval-source-map' : 'source-map'),
     // production mode provide uglifyjs-webpack-plugin by default
     mode: development ? 'development' : 'production',
   };

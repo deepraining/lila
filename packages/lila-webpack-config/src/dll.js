@@ -62,7 +62,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
     optimization: {
       minimize: minJs,
     },
-    devtool: devtool || 'module-source-map',
+    devtool: devtool || 'source-map',
     mode: 'production',
   };
 };
