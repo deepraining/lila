@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "lila webpack plugin",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -41,7 +41,6 @@
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.2"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=8.0.0"
   }

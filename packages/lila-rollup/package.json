@@ -1,6 +1,6 @@
 {
   "name": "lila-rollup",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "lila rollup plugin for building a library",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -37,7 +37,6 @@
     "chokidar": "^2.0.4",
     "rollup": "^0.66.6"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=8.0.0"
   }

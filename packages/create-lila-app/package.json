@@ -1,6 +1,6 @@
 {
   "name": "create-lila-app",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "command line tool to create a lila application",
   "main": "lib/index.js",
   "bin": {
@@ -43,7 +43,6 @@
     "inquirer": "^6.2.0",
     "shelljs": "^0.8.2"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=8.0.0"
   }

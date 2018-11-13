@@ -1,6 +1,8 @@
 {
-  "version": "0.5.0",
-  "packages": ["packages/*"],
+  "version": "0.5.1",
+  "packages": [
+    "packages/*"
+  ],
   "command": {
     "publish": {
       "ignoreChanges": [
@@ -16,5 +18,7 @@
       "npmClient": "cnpm"
     }
   },
-  "npmClientArgs": ["--no-package-lock"]
+  "npmClientArgs": [
+    "--no-package-lock"
+  ]
 }
