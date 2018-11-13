@@ -2,7 +2,7 @@ import path from 'path';
 import minimist from 'minimist';
 import commander from 'commander';
 
-import pkg from '../package.json';
+const pkg = require('../package.json');
 
 const argv = minimist(process.argv.slice(2));
 const { join } = path;
@@ -10,13 +10,12 @@ const { join } = path;
 // in the first place
 commander.option('--core [core]', 'custom lila-core path');
 
+let corePath;
 let corePkg;
 let core;
 
-if (argv.core) {
-  corePkg = require(join(argv.core, 'package.json')); // eslint-disable-line
-  core = require(join(argv.core, corePkg.main)); // eslint-disable-line
-} else {
+if (argv.core) corePath = argv.core;
+else {
   try {
     /**
      * resolved core file path
@@ -29,17 +28,21 @@ if (argv.core) {
      *
      * @type {String}
      */
-    const resolvedCore = require.resolve('lila-core');
-    const corePath = join(
+    const resolvedCore = require.resolve('lila-core', {
+      paths: [process.cwd()],
+    });
+    corePath = join(
       resolvedCore.split('node_modules')[0],
       'node_modules/lila-core'
     );
-
-    corePkg = require(join(corePath, 'package.json')); // eslint-disable-line
-    core = require(join(argv.core, corePkg.main)); // eslint-disable-line
   } catch (e) {
     // eslint-disable no-empty
   }
+}
+
+if (corePath) {
+  corePkg = require(join(corePath, 'package.json')); // eslint-disable-line
+  core = require(join(corePath, corePkg.main)); // eslint-disable-line
 }
 
 if (core) {

@@ -1,8 +1,9 @@
 import commander from 'commander';
 import inquirer from 'inquirer';
 
-import pkg from '../package.json';
 import create from './create';
+
+const pkg = require('../package.json');
 
 // version
 commander
