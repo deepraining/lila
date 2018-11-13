@@ -32,46 +32,84 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `type: []/{}` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
+`type: []/{}` `default: []`
 
-### `babelPresets`: `type: []` `default: []` extra babel presets
+### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `babelPlugins`: `type: []` `default: []` extra babel plugins
+`type: []` `default: [/node_modules/]`
 
-### `extensions`: `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']` [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
+### `babelPresets`: extra babel presets
 
-### `provide`: `type: {}` `default: {}` [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
+`type: []` `default: []`
 
-### `define`: `type: {}` `default: {}` [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
+### `babelPlugins`: extra babel plugins
 
-### `banner`: `type: string` default empty string, [BannerPlugin](https://webpack.js.org/plugins/banner-plugin/) config
+`type: []` `default: []`
 
-### `alias`: `type: {}` `default: {}` [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+### `extensions`: [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
-### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
+`type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
-### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+### `provide`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
 
-### `minJs`: `type: bool` `default: true` whether minify js
+`type: {}` `default: {}`
 
-### `minCss`: `type: bool` `default: true` whether minify css
+### `define`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
 
-### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
+`type: {}` `default: {}`
+
+### `banner`: [BannerPlugin](https://webpack.js.org/plugins/banner-plugin/) config
+
+`type: string` `default: empty string`
+
+### `alias`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+
+`type: {}` `default: {}`
+
+### `flow`: whether to use [flow](https://github.com/facebook/flow)
+
+`type: bool` `default: false`
+
+### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+
+`type: bool` `default: false`
+
+### `minJs`: whether minify js
+
+`type: bool` `default: true`
+
+### `minCss`: whether minify css
+
+`type: bool` `default: true`
+
+### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config
+
+`type: string`
+
+`default:`
 
 - `cmd: start`: `eval-source-map`
 - `cmd: build`: `source-map`
 
-### `filename`: `type: string` `default: empty string` library file name
+### `filename`: library file name
 
-### `library`: `type: string` `default: Index` library exported global name, see [output-library](https://webpack.js.org/configuration/output/#output-library)
+`type: string` `default: empty string`
+
+### `library`: library exported global name, see [output-library](https://webpack.js.org/configuration/output/#output-library)
+
+`type: string` `default: Index`
 
 ### `externals`: see [externals](https://webpack.js.org/configuration/externals/#externals)
 
-### `rules`: `type: []` `default: []` extra webpack rules
+### `rules`: extra webpack rules
 
-### `plugins`: `type: []` `default: []` extra webpack plugins
+`type: []` `default: []`
+
+### `plugins`: extra webpack plugins
+
+`type: []` `default: []`
 
 ## files of an entry
 

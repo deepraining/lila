@@ -30,37 +30,69 @@ module.exports = lila => {
 
 ### `servePath`: see [servePath](./src/settings.js#L26)
 
-### `analyze`: `type: string` `default: analyze` temporary directory for command `analyze`
+### `analyze`: temporary directory for command `analyze`
+
+`type: string` `default: analyze`
 
 ## extended configs
 
-### `babelImport`: `type: []/{}` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
+`type: []/{}` `default: []`
 
-### `babelPresets`: `type: []` `default: []` extra babel presets
+### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `babelPlugins`: `type: []` `default: []` extra babel plugins
+`type: []` `default: [/node_modules/]`
 
-### `extensions`: `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']` [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
+### `babelPresets`: extra babel presets
 
-### `provide`: `type: {}` `default: {}` [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
+`type: []` `default: []`
 
-### `define`: `type: {}` `default: {}` [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
+### `babelPlugins`: extra babel plugins
 
-### `alias`: `type: {}` `default: {}` [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+`type: []` `default: []`
 
-### `cssModules`: `type: bool` `default: false` whether to use [css-modules](https://github.com/css-modules/css-modules)
+### `extensions`: [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
-### `cssModulesName`: `type: string` [css-loader#localidentname](https://github.com/webpack-contrib/css-loader#localidentname)
+`type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
-### `cssModulesExclude`: `type: []` `default: [/node_modules/]` [css-loader](https://github.com/webpack-contrib/css-loader) `css-modules` exclude
+### `provide`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
 
-### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
+`type: {}` `default: {}`
 
-### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+### `define`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
 
-### `browsers`: `type: []` [autoprefixer](https://github.com/postcss/autoprefixer#browsers) browsers, default:
+`type: {}` `default: {}`
+
+### `alias`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
+
+`type: {}` `default: {}`
+
+### `cssModules`: whether to use [css-modules](https://github.com/css-modules/css-modules)
+
+`type: bool` `default: false`
+
+### `cssModulesName`: [css-loader#localidentname](https://github.com/webpack-contrib/css-loader#localidentname)
+
+`type: string`
+
+### `cssModulesExclude`: [css-loader](https://github.com/webpack-contrib/css-loader) `css-modules` exclude
+
+`type: []` `default: [/node_modules/]`
+
+### `flow`: whether to use [flow](https://github.com/facebook/flow)
+
+`type: bool` `default: false`
+
+### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+
+`type: bool` `default: false`
+
+### `browsers`: [autoprefixer](https://github.com/postcss/autoprefixer#browsers) browsers
+
+`type: []`
+
+`default:`
 
 ```
 [
@@ -72,16 +104,24 @@ module.exports = lila => {
 ]
 ```
 
-### `staticServer`: `type: string` a static server to place bundle resources to, default empty string
+### `staticServer`: a static server to place bundle resources to
+
+`type: string` `default: empty string`
 
 - `/dir`: a directory
 - `http://www.static.com`: a standalone static server
 - `https://www.static.com/dir`: a sub directory of a standalone static server
 - `//www.static.com/dir/sub_dir`: another sub directory of a standalone static server
 
-### `minHtml`: `type: bool` `default: true` whether minify html
+### `minHtml`: whether minify html
 
-### `minHtmlOptions`: `type: {}` [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config, default:
+`type: bool` `default: true`
+
+### `minHtmlOptions`: [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config
+
+`type: {}`
+
+`default:`
 
 ```
 {
@@ -97,11 +137,17 @@ module.exports = lila => {
 }
 ```
 
-### `minCss`: `type: bool` `default: true` whether minify css
+### `minCss`: whether minify css
 
-### `minJs`: `type: bool` `default: true` whether minify js
+`type: bool` `default: true`
 
-### `splitJs`: `type: {}` `default: {}` split one bundle js to many pieces
+### `minJs`: whether minify js
+
+`type: bool` `default: true`
+
+### `splitJs`: split one bundle js to many pieces
+
+`type: {}` `default: {}`
 
 ```
 {
@@ -110,14 +156,22 @@ module.exports = lila => {
 }
 ```
 
-### `devtool`: `type: string` [devtool](https://webpack.js.org/configuration/devtool/) config, default:
+### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config
+
+`type: string`
+
+`default:`
 
 - `cmd: dev, serve`: `eval-source-map`
 - `cmd: build, sync, start`: `source-map`
 
-### `rules`: `type: []` `default: []` extra webpack rules
+### `rules`: extra webpack rules
 
-### `plugins`: `type: []` `default: []` extra webpack plugins
+`type: []` `default: []`
+
+### `plugins`: extra webpack plugins
+
+`type: []` `default: []`
 
 ## files of an entry
 

@@ -34,7 +34,7 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "lint-staged": {
-    "**/*.js": [
+    "**/*.{js,jsx}": [
       "eslint --fix",
       "prettier --write",
       "git add"

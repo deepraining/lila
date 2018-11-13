@@ -62,11 +62,15 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 
 ## extended configs
 
-### `forceGet`: `type: bool` `default: true` force all ajax methods as `get`
+### `forceGet`: force all ajax methods as `get`
+
+`type: bool` `default: true`
 
 Normally, only `get` method can access static file, and `post, put, delete ...` will cause `404`.
 
-### `mock`: `type: bool` `default: true` use js files to generate mock data
+### `mock`: use js files to generate mock data
+
+`type: bool` `default: true`
 
 In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
 
@@ -87,13 +91,21 @@ module.exports = (req, res) => {
 
 Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ...`.
 
-### `port`: `type: number` `default: 8090` local server port
+### `port`: local server port
 
-### `browserSync`: `type: {}` `default: {}` [browser-sync](https://github.com/BrowserSync/browser-sync) config
+`type: number` `default: 8090`
 
-### `devMiddleware`: `type: {}` `default: { watchOptions: { ignored: /node_modules/ } }` [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config
+### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) config
 
-### `hotMiddleware`: `type: {}` `default: {}` [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config
+`type: {}` `default: {}`
+
+### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config
+
+`type: {}` `default: { watchOptions: { ignored: /node_modules/ } }`
+
+### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config
+
+`type: {}` `default: {}`
 
 ## node packages
 

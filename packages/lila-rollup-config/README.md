@@ -32,19 +32,35 @@ module.exports = lila => {
 
 ## extended configs
 
-### `babelImport`: `type: []/{}` `default: []` [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
+### `babelImport`: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
-### `babelExclude`: `type: []` `default: [/node_modules/]` [babel-loader](https://github.com/babel/babel-loader) exclude
+`type: []/{}` `default: []`
 
-### `babelPresets`: `type: []` `default: []` extra babel presets
+### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
-### `babelPlugins`: `type: []` `default: []` extra babel plugins
+`type: []` `default: [/node_modules/]`
 
-### `banner`: `type: string` `default: empty string` [rollup](https://rollupjs.org/guide/en) output banner
+### `babelPresets`: extra babel presets
 
-### `alias`: `type: {}` `default: {}` [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
+`type: []` `default: []`
 
-### `inject`: `type: {}` [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config, default
+### `babelPlugins`: extra babel plugins
+
+`type: []` `default: []`
+
+### `banner`: [rollup](https://rollupjs.org/guide/en) output banner
+
+`type: string` `default: empty string`
+
+### `alias`: [rollup-plugin-alias](https://github.com/rollup/rollup-plugin-alias) config
+
+`type: {}` `default: {}`
+
+### `inject`: [rollup-plugin-inject](https://github.com/rollup/rollup-plugin-inject) config
+
+`type: {}`
+
+`default:`
 
 ```
 {
@@ -53,23 +69,41 @@ module.exports = lila => {
 }
 ```
 
-### `flow`: `type: bool` `default: false` whether to use [flow](https://github.com/facebook/flow)
+### `flow`: whether to use [flow](https://github.com/facebook/flow)
 
-### `flowRuntime`: `type: bool` `default: false` whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
+`type: bool` `default: false`
 
-### `minJs`: `type: bool` `default: true` whether minify js
+### `flowRuntime`: whether to use [flow-runtime](https://github.com/codemix/flow-runtime/tree/master/packages/flow-runtime)
 
-### `minCss`: `type: bool` `default: true` whether minify css
+`type: bool` `default: false`
 
-### `filename`: `type: string` `default: empty string` library file name
+### `minJs`: whether minify js
 
-### `name`: `type: string` `default: Index` [rollup](https://rollupjs.org/guide/en) output name
+`type: bool` `default: true`
 
-### `exterbal`: `type: *` rollup `external` config
+### `minCss`: whether minify css
 
-### `globals`: `type: {}` rollup `globals` config
+`type: bool` `default: true`
 
-### `plugins`: `type: []` `default: []` extra rollup plugins
+### `filename`: library file name
+
+`type: string` `default: empty string`
+
+### `name`: [rollup](https://rollupjs.org/guide/en) output name
+
+`type: string` `default: Index`
+
+### `exterbal`: rollup `external` config
+
+`type: *`
+
+### `globals`: rollup `globals` config
+
+`type: {}`
+
+### `plugins`: extra rollup plugins
+
+`type: []` `default: []`
 
 ## files of an entry
 
