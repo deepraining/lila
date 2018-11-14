@@ -1,5 +1,6 @@
 import path from 'path';
 import base from './base';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -17,7 +18,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   return {
     entry: [
       'webpack-hot-middleware/client?reload=true',
-      `${srcPath}/${entry}/index.js`,
+      `${srcPath}/${entry === defaultEntry ? '' : `${entry}/`}index.js`,
     ],
     output: {
       path: devPath,

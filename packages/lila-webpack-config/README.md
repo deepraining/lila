@@ -26,13 +26,9 @@ module.exports = lila => {
 
 ### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L9)
 
-### `getEntries`: see [getEntries](./src/settings.js#L11)
+### `getEntries`: see [getEntries](./src/settings.js#L12)
 
-### `servePath`: see [servePath](./src/settings.js#L26)
-
-```
-(entry, srcDir) => `${srcDir}/${entry}/serve.js`;
-```
+### `servePath`: a `serve.js` file under its workspace, see [servePath](./src/settings.js#L27)
 
 ### `analyze`: temporary directory for command `analyze`
 
@@ -180,6 +176,20 @@ module.exports = lila => {
 ## files of an entry
 
 A entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
+
+If `entry` is not provided, `@lila/index` will be used as default.
+
+If entry is `@lila/index`, its workspace is `src`:
+
+```
+|-- src/
+    |-- index.html
+    |-- index.js
+
+    |-- other files and directories
+```
+
+Others(entry is `home/about`), its workspace is `src/home/about`:
 
 ```
 |-- src/

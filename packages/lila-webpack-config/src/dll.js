@@ -1,5 +1,6 @@
 import path from 'path';
 import { babelLoader } from './rules';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -30,7 +31,11 @@ export default (lila, webpack, { entry, config }, key, value) => {
   const plugins = [
     new DllPlugin({
       name: 'vendor_[chunkhash]',
-      path: join(root, tmpDir, `dll/${entry}/${key}.json`),
+      path: join(
+        root,
+        tmpDir,
+        `dll/${entry === defaultEntry ? '' : `${entry}/`}${key}.json`
+      ),
     }),
   ];
 

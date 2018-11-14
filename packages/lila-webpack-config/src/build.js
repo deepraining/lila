@@ -5,6 +5,7 @@ import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import HtmlWebpackIncludeAssetsPlugin from 'html-webpack-include-assets-plugin';
 import dll from './dll';
 import base from './base';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -28,7 +29,11 @@ export default (lila, webpack, { entry, cmd, config }) => {
     dllConfigs.push(dll(lila, webpack, { entry, cmd, config }, key, value));
     dllPlugins.push(
       new DllReferencePlugin({
-        manifest: join(root, tmpDir, `dll/${entry}/${key}.json`),
+        manifest: join(
+          root,
+          tmpDir,
+          `dll/${entry === defaultEntry ? '' : `${entry}/`}${key}.json`
+        ),
       })
     );
   });
@@ -59,7 +64,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   if (dllPlugins.length) baseConfig.plugins.push(...dllPlugins);
 
   const buildConfig = {
-    entry: `${srcPath}/${entry === 'index' ? '' : `${entry}/`}index.js`,
+    entry: `${srcPath}/${entry === defaultEntry ? '' : `${entry}/`}index.js`,
     output: {
       path: buildPath,
       filename: '[chunkhash].js',

@@ -80,7 +80,7 @@ export default lila => {
 
       runTasks({
         entries: getEntries
-          ? getAllEntries({ realEntries, getEntries, srcPath })
+          ? getAllEntries({ entries: realEntries, getEntries, srcPath })
           : realEntries,
         argv: makeArgv(options),
         cmd: 'build',
@@ -106,7 +106,7 @@ export default lila => {
 
       runTasks({
         entries: getEntries
-          ? getAllEntries({ realEntries, getEntries, srcPath })
+          ? getAllEntries({ entries: realEntries, getEntries, srcPath })
           : realEntries,
         argv: makeArgv(options),
         cmd: 'sync',

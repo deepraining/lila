@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
 import { babelLoader, htmlLoader, urlLoader } from './rules';
 import { styleLoaders } from './make';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -40,7 +41,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
       new DefinePlugin(define),
       new HtmlWebpackPlugin({
         template: `${srcPath}/${
-          entry === 'index' ? '' : `${entry}/`
+          entry === defaultEntry ? '' : `${entry}/`
         }index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),

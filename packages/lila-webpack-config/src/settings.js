@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import rd from 'rd';
 import { correctSlash } from '../../../util/index';
+import { defaultEntry } from '../../../util/constants';
 
 const { existsSync } = fs;
 const { relative } = path;
@@ -23,4 +24,5 @@ export const getEntries = dir => {
 };
 
 // get js file path for command serve
-export const servePath = (entry, srcDir) => `${srcDir}/${entry}/serve.js`;
+export const servePath = (entry, srcDir) =>
+  `${srcDir}/${entry === defaultEntry ? '' : `${entry}/`}serve.js`;
