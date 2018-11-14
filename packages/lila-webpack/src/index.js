@@ -4,6 +4,7 @@ import start from './start';
 import analyze from './analyze';
 import task from './task';
 import { getAllEntries } from './util';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -22,7 +23,7 @@ export default lila => {
   // add dev command
   addCommand(commander => {
     const command = commander
-      .command('dev <entry>')
+      .command('dev [entry]')
       .description('start a local server to develop an entry')
       .allowUnknownOption();
 
@@ -30,7 +31,7 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, options) => {
+    command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
 
       dev({ entry, argv, lila });
@@ -40,7 +41,7 @@ export default lila => {
   // add serve command
   addCommand(commander => {
     const command = commander
-      .command('serve <entry>')
+      .command('serve [entry]')
       .description(
         'simulate a backend environment to start a local server to develop an entry'
       )
@@ -50,7 +51,7 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, options) => {
+    command.action((entry = defaultEntry, options) => {
       // servePath should load here
       const [servePath] = getSettings(['servePath']);
       const argv = makeArgv(options);
@@ -64,7 +65,7 @@ export default lila => {
   // add build command
   addCommand(commander => {
     const command = commander
-      .command('build <entry> [extraEntries...]')
+      .command('build [entries...]')
       .description('pack source codes to production bundles')
       .allowUnknownOption();
 
@@ -72,14 +73,15 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, extraEntries, options) => {
+    command.action((entries, options) => {
       // getEntries should load here
       const [getEntries] = getSettings(['getEntries']);
-      const entries = [entry, ...extraEntries];
+      const realEntries = entries.length ? entries : [defaultEntry];
+
       runTasks({
         entries: getEntries
-          ? getAllEntries({ entries, getEntries, srcPath })
-          : entries,
+          ? getAllEntries({ realEntries, getEntries, srcPath })
+          : realEntries,
         argv: makeArgv(options),
         cmd: 'build',
       });
@@ -89,7 +91,7 @@ export default lila => {
   // add sync command
   addCommand(commander => {
     const command = commander
-      .command('sync <entry> [extraEntries...]')
+      .command('sync [entries...]')
       .description('make production bundles, then sync to remote servers')
       .allowUnknownOption();
 
@@ -97,14 +99,15 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, extraEntries, options) => {
+    command.action((entries, options) => {
       // getEntries should load here
       const [getEntries] = getSettings(['getEntries']);
-      const entries = [entry, ...extraEntries];
+      const realEntries = entries.length ? entries : [defaultEntry];
+
       runTasks({
         entries: getEntries
-          ? getAllEntries({ entries, getEntries, srcPath })
-          : entries,
+          ? getAllEntries({ realEntries, getEntries, srcPath })
+          : realEntries,
         argv: makeArgv(options),
         cmd: 'sync',
       });
@@ -114,7 +117,7 @@ export default lila => {
   // add start command
   addCommand(commander => {
     const command = commander
-      .command('start <entry>')
+      .command('start [entry]')
       .description(
         'make production bundles, then start a local server to preview'
       )
@@ -124,7 +127,7 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, options) => {
+    command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
       runTasks(
         {
@@ -142,7 +145,7 @@ export default lila => {
   // add analyze command
   addCommand(commander => {
     const command = commander
-      .command('analyze <entry>')
+      .command('analyze [entry]')
       .description('visualize size of webpack output files')
       .allowUnknownOption();
 
@@ -150,7 +153,7 @@ export default lila => {
       command.option(...value);
     });
 
-    command.action((entry, options) => {
+    command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
 
       analyze({ entry, argv, lila });

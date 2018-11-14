@@ -1,5 +1,6 @@
 import path from 'path';
 import base from './base';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -13,11 +14,12 @@ export default (lila, rollup, { entry, cmd, config }) => {
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
-  const outputPath = entry === 'index' ? buildPath : join(buildPath, entry);
+  const outputPath =
+    entry === defaultEntry ? buildPath : join(buildPath, entry);
 
   return {
     input:
-      entry === 'index'
+      entry === defaultEntry
         ? `${srcPath}/index.js`
         : `${srcPath}/${entry}/index.js`,
     output: [

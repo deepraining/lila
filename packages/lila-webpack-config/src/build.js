@@ -59,7 +59,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   if (dllPlugins.length) baseConfig.plugins.push(...dllPlugins);
 
   const buildConfig = {
-    entry: `${srcPath}/${entry}/index.js`,
+    entry: `${srcPath}/${entry === 'index' ? '' : `${entry}/`}index.js`,
     output: {
       path: buildPath,
       filename: '[chunkhash].js',

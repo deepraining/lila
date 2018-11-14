@@ -39,7 +39,9 @@ export default (lila, webpack, { entry, cmd, config }) => {
       new ProvidePlugin(provide),
       new DefinePlugin(define),
       new HtmlWebpackPlugin({
-        template: `${srcPath}/${entry}/index.html`,
+        template: `${srcPath}/${
+          entry === 'index' ? '' : `${entry}/`
+        }index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),
     ],

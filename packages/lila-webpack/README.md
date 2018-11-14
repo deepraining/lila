@@ -30,11 +30,15 @@ module.exports = lila => {
 lila dev entry
 ```
 
+If `entry` is not provided, `@lila/index` will be used as default.
+
 ### `serve`: simulate a backend environment to start a local server to develop an entry
 
 ```
 lila serve entry
 ```
+
+If `entry` is not provided, `@lila/index` will be used as default.
 
 ### `build`: pack source codes to production bundles
 
@@ -42,11 +46,15 @@ lila serve entry
 lila build entry1 entry2 entry3 ...
 ```
 
+If `entry` is not provided, `@lila/index` will be used as default.
+
 ### `sync`: make production bundles, then sync to remote servers
 
 ```
 lila sync entry1 entry2 entry3 ...
 ```
+
+If `entry` is not provided, `@lila/index` will be used as default.
 
 ### `start`: make production bundles, then start a local server to preview
 
@@ -54,11 +62,15 @@ lila sync entry1 entry2 entry3 ...
 lila start entry
 ```
 
+If `entry` is not provided, `@lila/index` will be used as default.
+
 ### `analyze`: visualize size of webpack output files
 
 ```
 lila analyze entry
 ```
+
+If `entry` is not provided, `@lila/index` will be used as default.
 
 ## extended tasks
 

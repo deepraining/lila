@@ -36,7 +36,7 @@ lila start entry
 lila build entry1 entry2 entry3 ...
 ```
 
-If you run `lila build` directly, `index` entry will be added, `lila build index`.
+If `entry` is not provided, `@lila/index` will be used as default.
 
 ## extended tasks
 

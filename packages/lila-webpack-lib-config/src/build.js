@@ -2,6 +2,7 @@ import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import base from './base';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -41,7 +42,8 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   if (banner) baseConfig.plugins.push(new BannerPlugin(banner));
 
-  const outputPath = entry === 'index' ? buildPath : join(buildPath, entry);
+  const outputPath =
+    entry === defaultEntry ? buildPath : join(buildPath, entry);
 
   return [
     {
@@ -67,7 +69,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     },
   ].map(output => ({
     entry:
-      entry === 'index'
+      entry === defaultEntry
         ? `${srcPath}/index.js`
         : `${srcPath}/${entry}/index.js`,
     output,

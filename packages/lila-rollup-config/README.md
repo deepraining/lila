@@ -113,9 +113,9 @@ A entry has a standalone directory, also called workspace.
 
 For `build` command, an entry has at least a `index.js` file.
 
-If entry is not provided, `index` will be used as default.
+If `entry` is not provided, `@lila/index` will be used as default.
 
-If entry is `index`, its workspace is `src`:
+If entry is `@lila/index`, its workspace is `src`:
 
 ```
 |-- src/

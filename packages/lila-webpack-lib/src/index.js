@@ -1,6 +1,7 @@
 import path from 'path';
 import start from './start';
 import task from './task';
+import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
@@ -48,7 +49,7 @@ export default lila => {
 
     command.action((entries, options) => {
       const [getEntries] = getSettings(['getEntries']);
-      const realEntries = entries.length ? entries : ['index'];
+      const realEntries = entries.length ? entries : [defaultEntry];
 
       runTasks({
         entries: getEntries ? getEntries(realEntries, srcPath) : realEntries,
