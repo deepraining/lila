@@ -1,6 +1,7 @@
 import runTasks from './run-tasks';
 import { makeArgv } from './util';
 import { getCmdOptions } from './cmd-options';
+import { defaultEntry } from '../../../util/constants';
 
 export const rootOption = commander => {
   commander.option('--root [root]', 'custom root path');
@@ -10,7 +11,7 @@ export const run = commander => {
   const cmdOptions = getCmdOptions('run');
 
   const cmd = commander
-    .command('run <entry> [extraEntries...]')
+    .command('run [entries...]')
     .description('run tasks')
     .allowUnknownOption();
 
@@ -19,9 +20,11 @@ export const run = commander => {
       cmd.option(...option);
     });
 
-  cmd.action((entry, extraEntries, options) => {
+  cmd.action((entries, options) => {
+    const realEntries = entries.length ? entries : [defaultEntry];
+
     runTasks({
-      entries: [entry, ...extraEntries],
+      entries: realEntries,
       argv: makeArgv(options),
       cmd: 'run',
     });

@@ -244,10 +244,10 @@ import lila from 'lila-core';
 const = {makeArgv} = lila;
 
 commander
-  .command('build <entry> [extraEntries...]')
+  .command('build [entries...]')
   .description('pack source codes to production bundles')
   .option('-e, --env [env]', 'Specify server enviroment.')
-  .action((entry, extraEntries, options) => {
+  .action((entries, options) => {
 
     // make a wrapped `process.argv`
     const argv = makeArgv(options, keepUnknown);
@@ -311,6 +311,8 @@ lila.colorError(color, ...args);
 ```
 lila run entry1 entry2 entry3 ...
 ```
+
+If `entry` is not provided, `@lila/index` will be used as default.
 
 ## extended command line options
 

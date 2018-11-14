@@ -44,7 +44,7 @@ describe('run through child_process', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      expect(msg).toContain('<entry> [extraEntries...]');
+      expect(msg).toContain('[entries...]');
       expect(msg).toContain('run tasks');
       expect(msg).toContain('--aa');
       expect(msg).toContain('--bb');

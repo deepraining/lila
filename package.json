@@ -21,7 +21,7 @@
     "build:rollup-config": "npm run build -- --name rollup-config",
     "build:all": "npm run build -- --name all",
     "test": "jest packages/*/test",
-    "test:tasks": "jest packages/lila-tasks/test/test.js"
+    "test:core": "jest packages/lila-core/test"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
