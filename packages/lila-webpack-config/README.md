@@ -30,6 +30,10 @@ module.exports = lila => {
 
 ### `servePath`: see [servePath](./src/settings.js#L26)
 
+```
+(entry, srcDir) => `${srcDir}/${entry}/serve.js`;
+```
+
 ### `analyze`: temporary directory for command `analyze`
 
 `type: string` `default: analyze`

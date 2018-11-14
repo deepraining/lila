@@ -256,41 +256,41 @@ commander
 
 - `@param/keepUnknown`: `type: bool` `default: false` whether to keep unknown args which stored by the key `_`, see [minimist](https://github.com/substack/minimist)
 
-### `lila.log`: `console.log`
+### `lila.log`: console.log
 
-### `lila.info`: `console.info` with `blue` of [chalk](https://github.com/chalk/chalk)
+### `lila.info`: console.info with `blue` color of [chalk](https://github.com/chalk/chalk)
 
-### `lila.warn`: `console.warn` with `yellow` of [chalk](https://github.com/chalk/chalk)
+### `lila.warn`: console.warn with `yellow` color of [chalk](https://github.com/chalk/chalk)
 
-### `lila.error`: `console.error` with `red` of [chalk](https://github.com/chalk/chalk)
+### `lila.error`: console.error with `red` color of [chalk](https://github.com/chalk/chalk)
 
-### `lila.plainLog`: `console.log`
+### `lila.plainLog`: console.log
 
-### `lila.plainInfo`: `console.info`
+### `lila.plainInfo`: console.info
 
-### `lila.plainWarn`: `console.warn`
+### `lila.plainWarn`: console.warn
 
-### `lila.plainError`: `console.error`
+### `lila.plainError`: console.error
 
-### `lila.colorLog`: `console.log` with color of [chalk](https://github.com/chalk/chalk)
+### `lila.colorLog`: console.log with custom color of [chalk](https://github.com/chalk/chalk)
 
 ```
 lila.colorLog(color, ...args);
 ```
 
-### `lila.info`: `console.info` with color of [chalk](https://github.com/chalk/chalk)
+### `lila.colorInfo`: console.info with custom color of [chalk](https://github.com/chalk/chalk)
 
 ```
 lila.colorInfo(color, ...args);
 ```
 
-### `lila.warn`: `console.warn` with color of [chalk](https://github.com/chalk/chalk)
+### `lila.colorWarn`: console.warn with custom color of [chalk](https://github.com/chalk/chalk)
 
 ```
 lila.colorWarn(color, ...args);
 ```
 
-### `lila.error`: `console.error` with color of [chalk](https://github.com/chalk/chalk)
+### `lila.colorError`: console.error with custom color of [chalk](https://github.com/chalk/chalk)
 
 ```
 lila.colorError(color, ...args);

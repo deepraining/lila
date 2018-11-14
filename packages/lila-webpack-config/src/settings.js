@@ -22,5 +22,5 @@ export const getEntries = dir => {
   return entries;
 };
 
-// get js file path for command server
+// get js file path for command serve
 export const servePath = (entry, srcDir) => `${srcDir}/${entry}/serve.js`;
