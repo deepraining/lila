@@ -81,24 +81,36 @@ export const forceGet = (req, res, next) => {
  * @returns {function(*=, *=, *)}
  */
 export const makeMock = root => (req, res, next) => {
-  // path/to/index/?key1=value1
+  // `/path/to/file/?key1=value1`
   let url = req.url.split('?')[0];
 
   if (url.slice(-1) === '/') url = url.slice(0, -1);
 
-  // Don't have `.`
-  if (
-    url
-      .split('/')
-      .slice(-1)[0]
-      .indexOf('.') < 0
-  ) {
+  const urls = url.split('/');
+
+  // no `.`
+  if (urls[urls.length - 1].indexOf('.') < 0) {
+    // first try `/path/to/file.js`
     const filePath = join(root, `${url}.js`);
     if (existsSync(filePath)) {
       // Disable cache.
       if (require.cache[filePath]) delete require.cache[filePath];
       require(filePath)(req, res); // eslint-disable-line
       return;
+    }
+
+    // first try `path/to.js` `{file}`
+    const parentFilePath = join(root, `${urls.slice(0, -1).join('/')}.js`);
+    if (existsSync(parentFilePath)) {
+      // Disable cache.
+      if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
+      const exp = require(parentFilePath); // eslint-disable-line
+      const fn = exp[urls[urls.length - 1]];
+
+      if (typeof fn === 'function') {
+        fn(req, res);
+        return;
+      }
     }
   }
 

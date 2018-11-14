@@ -7,3 +7,6 @@ fetch('/src/mock/?key1=value1&key2=value2').then(res => {
 fetch('/src/mock.json', { method: 'post' }).then(res => {
   console.log("post['/src/mock.json']", res);
 });
+fetch('/src/api/index', { method: 'post' }).then(res => {
+  console.log("post['/src/api/index']", res);
+});

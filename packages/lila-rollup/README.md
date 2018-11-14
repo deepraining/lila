@@ -74,22 +74,27 @@ Normally, only `get` method can access static file, and `post, put, delete ...` 
 
 In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
 
-```
-# directory structure
-|-- src/home/mock/
-    |-- file1.js
-    |-- file2.js
-    |-- ...
+`url`: `/src/api/user/profile/?id=1`
 
-# file1.js, file2.js, ...
+First try `/src/api/user/profile.js`:
+
+```
 module.exports = (req, res) => {
   // do everything you want
 };
 ```
 
-`req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name `file1, file2, ...` should not contain `.` character.
+Second try `/src/api/user.js`:
 
-Now, you can access them through `/src/home/mock/file1, /src/home/mock/file2, ...`.
+```
+module.exports = {
+  profile: (req, res) => {
+    // do everything you want
+  }
+};
+```
+
+`req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
 
 ### `port`: local server port
 
