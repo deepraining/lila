@@ -74,44 +74,61 @@ export const forceGet = (req, res, next) => {
   next();
 };
 
+const tryMock = ({ root, url, req, res }) => {
+  // url: `/one/two/three`
+  const urls = url.split('/');
+
+  // has `.`
+  if (urls[urls.length - 1].indexOf('.') > -1) return !1;
+
+  // first try `/one/two/three.js`
+  const filePath = join(root, `${url}.js`);
+  if (existsSync(filePath)) {
+    // disable cache
+    if (require.cache[filePath]) delete require.cache[filePath];
+
+    const fn = require(filePath); // eslint-disable-line
+    if (typeof fn === 'function') {
+      fn(req, res);
+      return !0;
+    }
+  }
+
+  // second try `/one/two.js` `{three}`
+  const parentFilePath = join(root, `${urls.slice(0, -1).join('/')}.js`);
+  if (existsSync(parentFilePath)) {
+    // disable cache
+    if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
+
+    const exp = require(parentFilePath); // eslint-disable-line
+    const fn = exp[urls[urls.length - 1]];
+
+    if (typeof fn === 'function') {
+      fn(req, res);
+      return !0;
+    }
+  }
+
+  return !1;
+};
+
 /**
  * api mock
  *
  * @param root
+ * @param mockRoot
  * @returns {function(*=, *=, *)}
  */
-export const makeMock = root => (req, res, next) => {
-  // `/path/to/file/?key1=value1`
+export const makeMock = (root, mockRoot = '') => (req, res, next) => {
+  // `/one/two/three/?key1=value1`
   let url = req.url.split('?')[0];
 
   if (url.slice(-1) === '/') url = url.slice(0, -1);
 
-  const urls = url.split('/');
-
-  // no `.`
-  if (urls[urls.length - 1].indexOf('.') < 0) {
-    // first try `/path/to/file.js`
-    const filePath = join(root, `${url}.js`);
-    if (existsSync(filePath)) {
-      // Disable cache.
-      if (require.cache[filePath]) delete require.cache[filePath];
-      require(filePath)(req, res); // eslint-disable-line
-      return;
-    }
-
-    // first try `path/to.js` `{file}`
-    const parentFilePath = join(root, `${urls.slice(0, -1).join('/')}.js`);
-    if (existsSync(parentFilePath)) {
-      // Disable cache.
-      if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
-      const exp = require(parentFilePath); // eslint-disable-line
-      const fn = exp[urls[urls.length - 1]];
-
-      if (typeof fn === 'function') {
-        fn(req, res);
-        return;
-      }
-    }
+  if (tryMock({ root, url, req, res })) return;
+  if (mockRoot) {
+    url = join(mockRoot, url);
+    if (tryMock({ root, url, req, res })) return;
   }
 
   next();

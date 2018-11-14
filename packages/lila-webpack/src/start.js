@@ -1,5 +1,6 @@
 import browserSync from 'browser-sync';
 import { makeMock, forceGet as forceGetMiddleware } from '../../../util/index';
+import { defaultEntry } from '../../../util/constants';
 
 export default ({ entry, argv, lila }) => {
   const { getSettings, makeConfig } = lila;
@@ -10,6 +11,7 @@ export default ({ entry, argv, lila }) => {
   const {
     forceGet = true,
     mock = true,
+    mockRoot = `/src${entry === defaultEntry ? '' : `/${entry}`}`,
     port = 8090,
     browserSync: browserSyncConfig = {},
   } = config;
@@ -24,7 +26,7 @@ export default ({ entry, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(root, mockRoot));
 
   browserSync.init(browserSyncConfig);
 };

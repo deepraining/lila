@@ -33,6 +33,7 @@ export default ({ entry, argv, lila }) => {
   const {
     forceGet = true,
     mock = true,
+    mockRoot = `/${entry}`,
     port = 8090,
     browserSync: browserSyncConfig = {},
     watch = 'src',
@@ -48,7 +49,7 @@ export default ({ entry, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(root));
+  if (mock) browserSyncConfig.middleware.unshift(makeMock(root, mockRoot));
 
   let globs = watch;
   let options;

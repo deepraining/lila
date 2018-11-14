@@ -96,6 +96,17 @@ module.exports = {
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
 
+### `mockRoot`: mock root url prefix(relative to `root`)
+
+`type: string` `default: /${entry}`
+
+If `mockRoot` is `/src/api`, when access to `/user/profile?id=1`, lila will try:
+
+1. `/user/profile.js`: `module.exports = (req, res) => { ... }`
+2. `/user.js`: `module.exports = { profile: (req, res) => { ... } }`
+3. `/src/api/user/profile.js`: `module.exports = (req, res) => { ... }`
+4. `/src/api/user.js`: `module.exports = { profile: (req, res) => { ... } }`
+
 ### `port`: local server port
 
 `type: number` `default: 8090`

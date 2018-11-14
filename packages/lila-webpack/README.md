@@ -124,7 +124,7 @@ Normally, only `get` method can access static file, and `post, put, delete ...` 
 
 In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
 
-`url`: `/src/api/user/profile/?id=1`
+`url`: `/src/api/user/profile?id=1`
 
 First try `/src/api/user/profile.js`:
 
@@ -145,6 +145,22 @@ module.exports = {
 ```
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
+
+### `mockRoot`: mock root url prefix(relative to `root`)
+
+`type: string`
+
+`default:`
+
+- `entry` is `@lila/index`: `/src`
+- `entry` is others: `/src/${entry}`
+
+If `mockRoot` is `/src/api`, when access to `/user/profile?id=1`, lila will try:
+
+1. `/user/profile.js`: `module.exports = (req, res) => { ... }`
+2. `/user.js`: `module.exports = { profile: (req, res) => { ... } }`
+3. `/src/api/user/profile.js`: `module.exports = (req, res) => { ... }`
+4. `/src/api/user.js`: `module.exports = { profile: (req, res) => { ... } }`
 
 ### `port`: local server port
 
