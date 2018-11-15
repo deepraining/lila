@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.5.2 [2018-11-15]
+
+- Update many features.
+- Version wrong of `lila-bin, create-lila-app`.
+- Fix bug of `lila-bin`.
+
+## 0.5.0 [2018-11-13]
+
+- Multiple packages.
+- Rewrite core.
+
+## 0.4.2 [2018-09-10]
+
+- Remove `add` command.
+- Add `flow, flowRuntime` config options.
+
 ## 0.4.1 [2018-08-01]
 
 - Remove `upgrade` command.
@@ -11,9 +27,9 @@
 
 ## 0.4.0 [2018-07-26]
 
-- Remove `archive,arc,clean,revert` all server-side commands. 
+- Remove `archive,arc,clean,revert` all server-side commands.
 - Remove `ana` command.
-- Fix bug of `eslint,stylelint,prettier` supporting `test/index,test-2/*` multi mode module. 
+- Fix bug of `eslint,stylelint,prettier` supporting `test/index,test-2/*` multi mode module.
 
 ## 0.3.2 [2018-07-10]
 

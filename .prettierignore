@@ -1,2 +1,3 @@
-examples
 package.json
+_package.json
+lerna.json

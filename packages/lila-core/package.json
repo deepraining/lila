@@ -1,0 +1,44 @@
+{
+  "name": "lila-core",
+  "version": "0.5.2",
+  "description": "lila core",
+  "main": "lib/index.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-core",
+  "keywords": [
+    "web",
+    "frontend",
+    "build",
+    "tool",
+    "teamwork",
+    "automatic",
+    "babel",
+    "webpack",
+    "rollup",
+    "parcel",
+    "gulp",
+    "browser-sync"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "gulp": "^4.0.0",
+    "lodash": "^4.17.11",
+    "minimist": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

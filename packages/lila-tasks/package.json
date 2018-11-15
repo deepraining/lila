@@ -1,0 +1,46 @@
+{
+  "name": "lila-tasks",
+  "version": "0.5.1",
+  "description": "lila built-in tasks",
+  "main": "lib/index.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-tasks",
+  "keywords": [
+    "web",
+    "frontend",
+    "build",
+    "tool",
+    "teamwork",
+    "automatic",
+    "babel",
+    "webpack",
+    "rollup",
+    "parcel",
+    "gulp",
+    "browser-sync"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "crypto-md5": "^1.0.0",
+    "del": "^3.0.0",
+    "fs-extra": "^7.0.0",
+    "gulp-ssh": "^0.7.0",
+    "lodash": "^4.17.11",
+    "rd": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

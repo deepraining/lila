@@ -1,0 +1,55 @@
+{
+  "name": "[project-name]",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A lila project.",
+  "scripts": {
+    "precommit": "npm run lint-staged",
+    "lint-staged": "lint-staged",
+    "prettier": "prettier --write \"./**/*.{js,jsx,css,less,scss,sass,md,json}\"",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "stylelint": "stylelint \"./**/*.{css,less,scss,sass}\"",
+    "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass}\" --fix",
+    "test": "jest test"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.23.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-prettier": "^2.7.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.0.1",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.3.0",
+    "prettier": "^1.14.3",
+    "stylelint": "^9.6.0",
+    "stylelint-config-prettier": "^4.0.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{css,less,scss,sass}": [
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{md,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
