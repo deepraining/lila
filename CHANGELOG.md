@@ -1,7 +1,8 @@
 # Changelog
 
-## 0.5.2 [2018-11-13]
+## 0.5.2 [2018-11-15]
 
+- Update many features.
 - Version wrong of `lila-bin, create-lila-app`.
 - Fix bug of `lila-bin`.
 
