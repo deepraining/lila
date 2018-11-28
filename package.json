@@ -1,6 +1,6 @@
 {
   "name": "lila",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "main": "index.js",
   "bin": "bin/lila.js",
   "description": "An automatic building tool of web frontend, for teamwork.",
@@ -59,7 +59,7 @@
     "glob": "7.1.2",
     "gulp": "4.0.0",
     "gulp-append-prepend": "1.0.4",
-    "gulp-cli": "git://github.com/senntyou/gulp-cli.git#6f9e0ef",
+    "gulp-cli": "^2.0.1",
     "gulp-csso": "3.0.1",
     "gulp-htmlmin": "4.0.0",
     "gulp-rename": "1.2.2",

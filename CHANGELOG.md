@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.3 [2018-11-28]
+
+- `gulp@2.0.1` to replace `gulp@git://github.com/senntyou/gulp-cli.git#6f9e0ef`
+
 ## 0.4.2 [2018-10-15]
 
 - Remove `add` command.

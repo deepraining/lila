@@ -5,7 +5,6 @@ module.exports = {
   },
   resolveModules: [
     '../modules',
-    '../../../../modules-2'
   ],
   directoriesToSync: {
     images: 'images',
