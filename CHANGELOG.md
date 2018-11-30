@@ -1,5 +1,7 @@
 # Changelog
 
+## 0.5.3 [2018-12-01]
+
 ## 0.5.2 [2018-11-15]
 
 - Update many features.

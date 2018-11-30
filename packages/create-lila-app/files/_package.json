@@ -7,8 +7,8 @@
     "precommit": "npm run lint-staged",
     "lint-staged": "lint-staged",
     "prettier": "prettier --write \"./**/*.{js,jsx,css,less,scss,sass,md,json}\"",
-    "eslint": "eslint .",
-    "eslint:fix": "eslint . --fix",
+    "eslint": "eslint \"./**/*.{js,jsx}\"",
+    "eslint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
     "stylelint": "stylelint \"./**/*.{css,less,scss,sass}\"",
     "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass}\" --fix",
     "test": "jest test"

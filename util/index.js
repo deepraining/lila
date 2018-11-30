@@ -77,9 +77,7 @@ export const forceGet = (req, res, next) => {
 const tryMock = ({ root, url, req, res }) => {
   // url: `/one/two/three`
   const urls = url.split('/');
-
-  // has `.`
-  if (urls[urls.length - 1].indexOf('.') > -1) return !1;
+  const lastName = urls[urls.length - 1];
 
   // first try `/one/two/three.js`
   const filePath = join(root, `${url}.js`);
@@ -92,6 +90,11 @@ const tryMock = ({ root, url, req, res }) => {
       fn(req, res);
       return !0;
     }
+    if (fn) {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=UTF-8' });
+      res.end(JSON.stringify(fn));
+      return !0;
+    }
   }
 
   // second try `/one/two.js` `{three}`
@@ -101,10 +104,15 @@ const tryMock = ({ root, url, req, res }) => {
     if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
 
     const exp = require(parentFilePath); // eslint-disable-line
-    const fn = exp[urls[urls.length - 1]];
+    const fn = exp[lastName];
 
     if (typeof fn === 'function') {
       fn(req, res);
+      return !0;
+    }
+    if (fn) {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=UTF-8' });
+      res.end(JSON.stringify(fn));
       return !0;
     }
   }
@@ -115,20 +123,56 @@ const tryMock = ({ root, url, req, res }) => {
 /**
  * api mock
  *
- * @param root
+ * @param lila
+ * @param entry
  * @param mockRoot
  * @returns {function(*=, *=, *)}
  */
-export const makeMock = (root, mockRoot = '') => (req, res, next) => {
+export const makeMock = ({ lila, entry, mockRoot }) => (req, res, next) => {
+  const { getSettings } = lila;
+  const [root, srcDir] = getSettings(['root', 'src']);
+
   // `/one/two/three/?key1=value1`
   let url = req.url.split('?')[0];
 
   if (url.slice(-1) === '/') url = url.slice(0, -1);
 
-  if (tryMock({ root, url, req, res })) return;
-  if (mockRoot) {
-    url = join(mockRoot, url);
+  // url: `/one/two/three`
+  const urls = url.split('/');
+  const lastName = urls[urls.length - 1];
+
+  // if have '.', will be treated as a static file
+  if (lastName.indexOf('.') < 0) {
+    const extraRoots = [];
+    if (mockRoot) {
+      if (typeof mockRoot === 'string') extraRoots.push(mockRoot);
+      else if (Array.isArray(mockRoot)) extraRoots.push(...mockRoot);
+      else if (typeof mockRoot === 'function') {
+        const result = mockRoot(entry, lila);
+
+        if (typeof result === 'string') extraRoots.push(result);
+        else if (Array.isArray(result)) extraRoots.push(...result);
+      }
+
+      if (extraRoots.length) {
+        for (let i = 0, il = extraRoots.length; i < il; i += 1) {
+          if (tryMock({ root, url: join(extraRoots[i], url), req, res }))
+            return;
+        }
+      }
+    }
+
+    // ${root}/url.js
     if (tryMock({ root, url, req, res })) return;
+    // ${root}/${srcDir}/url.js
+    if (tryMock({ root, url: join(srcDir, url), req, res })) return;
+    // ${root}/${srcDir}/mock/url.js
+    if (tryMock({ root, url: join(srcDir, 'mock', url), req, res })) return;
+    // ${root}/${srcDir}/${entry}/url.js
+    if (tryMock({ root, url: join(srcDir, entry, url), req, res })) return;
+    // ${root}/${srcDir}/${entry}/mock/url.js
+    if (tryMock({ root, url: join(srcDir, entry, 'mock', url), req, res }))
+      return;
   }
 
   next();

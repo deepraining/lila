@@ -129,38 +129,72 @@ In most occasions, you can use `json` files to provide mock data, but when we wa
 First try `/src/api/user/profile.js`:
 
 ```
+// export a function
 module.exports = (req, res) => {
   // do everything you want
+};
+
+// or export an object
+module.exports = {
+  success: true,
+  message: 'ok',
+  data: { ... },
 };
 ```
 
 Second try `/src/api/user.js`:
 
 ```
+// export a function
 module.exports = {
   profile: (req, res) => {
     // do everything you want
+  }
+};
+
+// or export an object
+module.exports = {
+  profile: {
+    success: true,
+    message: 'ok',
+    data: { ... },
   }
 };
 ```
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
 
-### `mockRoot`: mock root url prefix(relative to `root`)
+### `mockRoot`: extra mock root url prefix(relative to `root`)
 
-`type: string`
+`type: string/function`
 
-`default:`
+When use mock data, maybe you don't like url to be that long, such as use `/src/one/page/mock/list` to access `/src/one/page/mock/list.js` file.
 
-- `entry` is `@lila/index`: `/src`
-- `entry` is others: `/src/${entry}`
+Lila internally provide a convenient way to do that.
 
-If `mockRoot` is `/src/api`, when access to `/user/profile?id=1`, lila will try:
+If `url` try to get a mock data from `/src/one/page/mock/list.js` file, lila will try urls in sequences as follows:
 
-1. `/user/profile.js`: `module.exports = (req, res) => { ... }`
-2. `/user.js`: `module.exports = { profile: (req, res) => { ... } }`
-3. `/src/api/user/profile.js`: `module.exports = (req, res) => { ... }`
-4. `/src/api/user.js`: `module.exports = { profile: (req, res) => { ... } }`
+1. `url`: try itself `/src/one/page/mock/list`
+2. `/${srcDir}/url`: try under src directory `/one/page/mock/list`
+3. `/${srcDir}/${mock}/url`: try `mock` prefix src directory
+4. `/${srcDir}/${entry}/url`: try under entry's workspace `/mock/list`
+5. `/${srcDir}/${entry}/${mock}/url`: try `mock` prefix under entry's workspace `/list`
+
+If you want more convenient ways, you can add your own ways by `mockRoot`.
+
+```
+// a string
+mockRoot: '/some/directory'
+
+// strings
+mockRoot: ['/first/directory', '/second/directory']
+
+// return a string
+mockRoot: (entry, lila) => '/some/directory';
+
+// return strings
+mockRoot: (entry, lila) => ['/first/directory', '/second/directory']
+```
 
 ### `port`: local server port
 
