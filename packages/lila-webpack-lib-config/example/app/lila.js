@@ -5,7 +5,7 @@ const webpackConfigPlugin = require('../../../lila-webpack-lib-config/lib');
 module.exports = lila => {
   const { setSetting } = lila;
 
-  setSetting('src', 'components');
+  // setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);
@@ -31,6 +31,6 @@ module.exports = lila => {
     // banner: 'hello',
     // filename: 'hi',
     // library: 'Demo',
-    externals: ['react', 'react-dom'],
+    externals: ['react', 'react-dom', 'vue'],
   });
 };

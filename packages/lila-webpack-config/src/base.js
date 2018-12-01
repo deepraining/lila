@@ -1,7 +1,8 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
-import { babelLoader, htmlLoader, urlLoader } from './rules';
+import { babelLoader, htmlLoader, urlLoader, vueLoader } from './rules';
 import { styleLoaders } from './make';
 import { defaultEntry } from '../../../util/constants';
 
@@ -45,6 +46,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
         }index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),
+      new VueLoaderPlugin(),
     ],
     module: {
       rules: [
@@ -58,12 +60,13 @@ export default (lila, webpack, { entry, cmd, config }) => {
         }),
         urlLoader({ extensions }),
         htmlLoader(),
+        vueLoader(),
         ...styleLoaders(lila, webpack, { entry, cmd, config }, isBuild),
       ],
     },
     resolve: {
       modules: [srcPath, 'node_modules'],
-      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.vue'],
       alias,
     },
     optimization: {

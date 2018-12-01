@@ -17,7 +17,7 @@ module.exports = lila => {
       ],
     ],
     cssModules: !0,
-    cssModulesExclude: [/node_modules/, /src\/test/],
+    cssModulesExclude: [/node_modules/, /src\/test/, /src\/vue/],
     flow: !0,
     // flowRuntime: !0,
     alias: {

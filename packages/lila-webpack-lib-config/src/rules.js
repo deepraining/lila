@@ -49,6 +49,11 @@ export const htmlLoader = () => ({
   },
 });
 
+export const vueLoader = () => ({
+  loader: 'vue-loader',
+  test: /\.vue$/,
+});
+
 export const cssLoader = isBuild => ({
   test: /\.css$/,
   use: [

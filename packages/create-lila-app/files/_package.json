@@ -6,11 +6,13 @@
   "scripts": {
     "precommit": "npm run lint-staged",
     "lint-staged": "lint-staged",
-    "prettier": "prettier --write \"./**/*.{js,jsx,css,less,scss,sass,md,json}\"",
+    "prettier": "prettier --write \"./**/*.{js,jsx,vue,css,less,scss,sass,html,md,json}\"",
     "eslint": "eslint \"./**/*.{js,jsx}\"",
     "eslint:fix": "eslint \"./**/*.{js,jsx}\" --fix",
-    "stylelint": "stylelint \"./**/*.{css,less,scss,sass}\"",
-    "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass}\" --fix",
+    "eslint:vue": "eslint \"./**/*.vue\" -c .eslintrc.vue.js",
+    "eslint:vue:fix": "eslint \"./**/*.vue\" -c .eslintrc.vue.js --fix",
+    "stylelint": "stylelint \"./**/*.{css,less,scss,sass,vue}\"",
+    "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass,vue}\" --fix",
     "test": "jest test"
   },
   "devDependencies": {
@@ -25,6 +27,7 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.7.0",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-vue": "^4.7.1",
     "husky": "^1.0.1",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
@@ -39,12 +42,18 @@
       "prettier --write",
       "git add"
     ],
+    "**/*.vue": [
+      "eslint -c .eslintrc.vue.js --fix",
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ],
     "**/*.{css,less,scss,sass}": [
       "stylelint --fix",
       "prettier --write",
       "git add"
     ],
-    "**/*.{md,json}": [
+    "**/*.{html,md,json}": [
       "prettier --write",
       "git add"
     ]

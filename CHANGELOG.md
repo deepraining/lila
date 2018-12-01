@@ -2,6 +2,9 @@
 
 ## 0.5.3 [2018-12-01]
 
+- Add `vue` support.
+- Enhance mock functionality and modify `mockRoot` config option.
+
 ## 0.5.2 [2018-11-15]
 
 - Update many features.

@@ -44,6 +44,7 @@ export default ({ dir, type }) => {
   copy({ file: '.editorconfig' });
   copy({ file: '.eslintignore' });
   copy({ file: '.eslintrc.js' });
+  copy({ file: '.eslintrc.vue.js' });
   copy({ file: '.gitignore' });
   copy({ file: '.npmrc' });
   copy({ file: '.prettierignore' });
