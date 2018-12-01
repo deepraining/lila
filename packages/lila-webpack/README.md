@@ -129,12 +129,12 @@ In most occasions, you can use `json` files to provide mock data, but when we wa
 First try `/src/api/user/profile.js`:
 
 ```
-// export a function
+// export a function, an object, a string
 module.exports = (req, res) => {
   // do everything you want
 };
 
-// or export an object
+// or export an object, a string(not function)
 module.exports = {
   success: true,
   message: 'ok',
@@ -152,7 +152,7 @@ module.exports = {
   }
 };
 
-// or export an object
+// or export an object, a string(not function)
 module.exports = {
   profile: {
     success: true,
@@ -175,10 +175,11 @@ Lila internally provide a convenient way to do that.
 If `url` try to get a mock data from `/src/one/page/mock/list.js` file, lila will try urls in sequences as follows:
 
 1. `url`: try itself `/src/one/page/mock/list`
-2. `/${srcDir}/url`: try under src directory `/one/page/mock/list`
-3. `/${srcDir}/${mock}/url`: try `mock` prefix src directory
-4. `/${srcDir}/${entry}/url`: try under entry's workspace `/mock/list`
-5. `/${srcDir}/${entry}/${mock}/url`: try `mock` prefix under entry's workspace `/list`
+2. `/mock/url`: try `mock` prefix
+3. `/${srcDir}/url`: try under src directory, you can use `/one/page/mock/list`
+4. `/${srcDir}/mock/url`: try `mock` prefix src directory
+5. `/${srcDir}/${entry}/url`: try under entry's workspace, you can use `/mock/list`
+6. `/${srcDir}/${entry}/mock/url`: try `mock` prefix under entry's workspace, you can use `/list`
 
 If you want more convenient ways, you can add your own ways by `mockRoot`.
 

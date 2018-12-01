@@ -34,7 +34,7 @@ export default ({ entry, argv, lila }) => {
   const {
     forceGet = true,
     mock = true,
-    mockRoot = `/${entry}`,
+    mockRoot,
     port = 8090,
     browserSync: browserSyncConfig = {},
     devMiddleware: devMiddlewareConfig = defaultDevMiddleware,
@@ -53,7 +53,10 @@ export default ({ entry, argv, lila }) => {
 
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
-  if (mock) browserSyncConfig.middleware.unshift(makeMock(root, mockRoot));
+  if (mock)
+    browserSyncConfig.middleware.unshift(
+      makeMock({ lila, entry, mockRoot, isLib: !0 })
+    );
 
   devMiddlewareConfig.stats = 'errors-only';
   devMiddlewareConfig.publicPath = `/${devDir}/`;

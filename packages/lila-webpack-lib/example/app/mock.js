@@ -1,7 +1,9 @@
 module.exports = {
-  index: (req, res) => {
+  str: 'str',
+  obj: { obj: 1 },
+  func: (req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=UTF-8' });
 
-    res.end('index');
+    res.end('func');
   },
 };

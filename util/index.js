@@ -126,9 +126,14 @@ const tryMock = ({ root, url, req, res }) => {
  * @param lila
  * @param entry
  * @param mockRoot
+ * @param isLib
  * @returns {function(*=, *=, *)}
  */
-export const makeMock = ({ lila, entry, mockRoot }) => (req, res, next) => {
+export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
+  req,
+  res,
+  next
+) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
 
@@ -156,7 +161,14 @@ export const makeMock = ({ lila, entry, mockRoot }) => (req, res, next) => {
 
       if (extraRoots.length) {
         for (let i = 0, il = extraRoots.length; i < il; i += 1) {
-          if (tryMock({ root, url: join(extraRoots[i], url), req, res }))
+          if (
+            tryMock({
+              root,
+              url: correctSlash(join(extraRoots[i], url)),
+              req,
+              res,
+            })
+          )
             return;
         }
       }
@@ -164,15 +176,49 @@ export const makeMock = ({ lila, entry, mockRoot }) => (req, res, next) => {
 
     // ${root}/url.js
     if (tryMock({ root, url, req, res })) return;
-    // ${root}/${srcDir}/url.js
-    if (tryMock({ root, url: join(srcDir, url), req, res })) return;
-    // ${root}/${srcDir}/mock/url.js
-    if (tryMock({ root, url: join(srcDir, 'mock', url), req, res })) return;
-    // ${root}/${srcDir}/${entry}/url.js
-    if (tryMock({ root, url: join(srcDir, entry, url), req, res })) return;
-    // ${root}/${srcDir}/${entry}/mock/url.js
-    if (tryMock({ root, url: join(srcDir, entry, 'mock', url), req, res }))
+    // ${root}/mock/url.js
+    if (tryMock({ root, url: correctSlash(join('mock', url)), req, res }))
       return;
+
+    if (isLib) {
+      // ${root}/${entry}/url.js
+      if (tryMock({ root, url: correctSlash(join(entry, url)), req, res }))
+        return;
+      // ${root}/${entry}/mock/url.js
+      if (
+        tryMock({ root, url: correctSlash(join(entry, 'mock', url)), req, res })
+      )
+        return;
+    } else {
+      // ${root}/${srcDir}/url.js
+      if (tryMock({ root, url: correctSlash(join(srcDir, url)), req, res }))
+        return;
+      // ${root}/${srcDir}/mock/url.js
+      if (
+        tryMock({
+          root,
+          url: correctSlash(join(srcDir, 'mock', url)),
+          req,
+          res,
+        })
+      )
+        return;
+      // ${root}/${srcDir}/${entry}/url.js
+      if (
+        tryMock({ root, url: correctSlash(join(srcDir, entry, url)), req, res })
+      )
+        return;
+      // ${root}/${srcDir}/${entry}/mock/url.js
+      if (
+        tryMock({
+          root,
+          url: correctSlash(join(srcDir, entry, 'mock', url)),
+          req,
+          res,
+        })
+      )
+        return;
+    }
   }
 
   next();
