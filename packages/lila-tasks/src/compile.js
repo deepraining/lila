@@ -9,7 +9,7 @@ import sass from 'gulp-sass';
  * @example
  *
  * ```
- * ['@lila/compile-js', {src, dest, options, modules, transformRuntime}]
+ * ['@lila/compile-js', {src, dest, options, modules, transformRuntime, sourceMap}]
  * ```
  *
  * @param args
@@ -17,8 +17,14 @@ import sass from 'gulp-sass';
  * @returns {function()}
  */
 export const compileJs = ({ args, gulp }) => () => {
-  const { src, dest, options = {}, modules = !1, transformRuntime = !0 } =
-    (args && args[0]) || {};
+  const {
+    src,
+    dest,
+    options = {},
+    modules = !1,
+    transformRuntime = !0,
+    sourceMap = !1,
+  } = (args && args[0]) || {};
 
   if (!src) throw new Error('src not configured');
   if (!dest) throw new Error('dest not configured');
@@ -46,11 +52,17 @@ export const compileJs = ({ args, gulp }) => () => {
     ...(transformRuntime ? ['@babel/plugin-transform-runtime'] : [])
   );
 
+  if (sourceMap)
+    return gulp
+      .src(globs, srcOptions)
+      .pipe(sourcemaps.init())
+      .pipe(babel(babelOptions))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(dest));
+
   return gulp
     .src(globs, srcOptions)
-    .pipe(sourcemaps.init())
     .pipe(babel(babelOptions))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dest));
 };
 
@@ -60,7 +72,7 @@ export const compileJs = ({ args, gulp }) => () => {
  * @example
  *
  * ```
- * ['@lila/compile-less', {src, dest, options}]
+ * ['@lila/compile-less', {src, dest, options, sourceMap}]
  * ```
  *
  * @param args
@@ -68,7 +80,7 @@ export const compileJs = ({ args, gulp }) => () => {
  * @returns {function()}
  */
 export const compileLess = ({ args, gulp }) => () => {
-  const { src, dest, options = {} } = (args && args[0]) || {};
+  const { src, dest, options = {}, sourceMap = !1 } = (args && args[0]) || {};
 
   if (!src) throw new Error('src not configured');
   if (!dest) throw new Error('dest not configured');
@@ -80,11 +92,17 @@ export const compileLess = ({ args, gulp }) => () => {
     [globs, srcOptions] = src;
   }
 
+  if (sourceMap)
+    return gulp
+      .src(globs, srcOptions)
+      .pipe(sourcemaps.init())
+      .pipe(less(options))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(dest));
+
   return gulp
     .src(globs, srcOptions)
-    .pipe(sourcemaps.init())
     .pipe(less(options))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dest));
 };
 
@@ -94,7 +112,7 @@ export const compileLess = ({ args, gulp }) => () => {
  * @example
  *
  * ```
- * ['@lila/compile-scss', {src, dest, options}]
+ * ['@lila/compile-scss', {src, dest, options, sourceMap}]
  * ```
  *
  * @param args
@@ -102,7 +120,7 @@ export const compileLess = ({ args, gulp }) => () => {
  * @returns {function()}
  */
 export const compileScss = ({ args, gulp }) => () => {
-  const { src, dest, options = {} } = (args && args[0]) || {};
+  const { src, dest, options = {}, sourceMap = !1 } = (args && args[0]) || {};
 
   if (!src) throw new Error('src not configured');
   if (!dest) throw new Error('dest not configured');
@@ -114,10 +132,16 @@ export const compileScss = ({ args, gulp }) => () => {
     [globs, srcOptions] = src;
   }
 
+  if (sourceMap)
+    return gulp
+      .src(globs, srcOptions)
+      .pipe(sourcemaps.init())
+      .pipe(sass(options))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(dest));
+
   return gulp
     .src(globs, srcOptions)
-    .pipe(sourcemaps.init())
     .pipe(sass(options))
-    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dest));
 };

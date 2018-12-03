@@ -183,7 +183,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ### `@lila/compile-js`: compile es6 to es5
 
 ```
-['@lila/compile-js', {src, dest, options, modules, transformRuntime}]
+['@lila/compile-js', {src, dest, options, modules, transformRuntime, sourceMap}]
 ```
 
 - `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
@@ -191,26 +191,29 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `options`: `type: {}` extra [babel](https://babeljs.io) options
 - `modules`: `type: bool/string` `default: false` [babel-preset-env#modules](https://babeljs.io/docs/en/babel-preset-env#modules)
 - `transformRuntime`: `type: bool` `default: true` whether use [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+- `sourceMap`: `type: bool` `default: false` whether generate sourcemaps
 
 ### `@lila/compile-less`: compile less to css
 
 ```
-['@lila/compile-less', {src, dest, options}]
+['@lila/compile-less', {src, dest, options, sourceMap}]
 ```
 
 - `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
 - `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
 - `options`: `type: {}` `default: {}` [gulp-less](https://github.com/gulp-community/gulp-less) options
+- `sourceMap`: `type: bool` `default: false` whether generate sourcemaps
 
 ### `@lila/compile-scss`: compile scss to css
 
 ```
-['@lila/compile-scss', {src, dest, options}]
+['@lila/compile-scss', {src, dest, options, sourceMap}]
 ```
 
 - `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
 - `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
 - `options`: `type: {}` `default: {}` [gulp-sass](https://github.com/dlmanning/gulp-sass) options
+- `sourceMap`: `type: bool` `default: false` whether generate sourcemaps
 
 ### `@lila/shell`: execute shell scripts
 
