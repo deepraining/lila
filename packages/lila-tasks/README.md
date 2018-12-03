@@ -180,6 +180,38 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `scripts`: `type: string/array` shell scripts to execute on remote server.
 - `log`: `type: string` `default: remote-shell.log` log file.
 
+### `@lila/compile-js`: compile es6 to es5
+
+```
+['@lila/compile-js', {src, dest, options, modules, transformRuntime}]
+```
+
+- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `options`: `type: {}` extra [babel](https://babeljs.io) options
+- `modules`: `type: bool/string` `default: false` [babel-preset-env#modules](https://babeljs.io/docs/en/babel-preset-env#modules)
+- `transformRuntime`: `type: bool` `default: true` whether use [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
+
+### `@lila/compile-less`: compile less to css
+
+```
+['@lila/compile-less', {src, dest, options}]
+```
+
+- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `options`: `type: {}` `default: {}` [gulp-less](https://github.com/gulp-community/gulp-less) options
+
+### `@lila/compile-scss`: compile scss to css
+
+```
+['@lila/compile-scss', {src, dest, options}]
+```
+
+- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
+- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `options`: `type: {}` `default: {}` [gulp-sass](https://github.com/dlmanning/gulp-sass) options
+
 ### `@lila/shell`: execute shell scripts
 
 ```

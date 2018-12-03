@@ -181,6 +181,8 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
       return;
 
     if (isLib) {
+      // for start command, entry is always relative to root.
+
       // ${root}/${entry}/url.js
       if (tryMock({ root, url: correctSlash(join(entry, url)), req, res }))
         return;
