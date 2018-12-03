@@ -26,7 +26,7 @@ However, you can customize your own project:
 3. Choose appropriate plugins.
    - If build a project, it's recommended to choose [lila-webpack](./packages/lila-webpack) and [lila-webpack-config](./packages/lila-webpack-config).
    - If build a library, it's recommended to choose [lila-rollup](./packages/lila-rollup) and [lila-rollup-config](./packages/lila-rollup-config). Alternatively, you can also choose [lila-webpack-lib](./packages/lila-webpack-lib) and [lila-webpack-lib-config](./packages/lila-webpack-lib-config).
-4. Configure entry file `lila.js`.
+4. Configure init file `lila.js`.
 
 ## base directory structure
 

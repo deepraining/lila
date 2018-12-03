@@ -10,6 +10,8 @@ const { root: customRoot = '' } = argv;
 
 export const root = isAbsolute(customRoot) ? customRoot : join(cwd, customRoot);
 
+export const initFile = argv.init || 'lila.js';
+
 export default {
   lila: undefined,
 };

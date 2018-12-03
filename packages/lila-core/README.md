@@ -18,9 +18,9 @@ import lila from 'lila-core';
 const lila = require('lila-core');
 ```
 
-## entry file
+## init file
 
-Lila requires an entry file called `lila.js` in project root directory.
+Lila requires an init file called `lila.js` in project root directory.
 
 ```
 const webpackPlugin = require('lila-webpack');
@@ -317,6 +317,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 ## extended command line options
 
 - `--root`: custom root path
+- `--init`: custom init file, default `lila.js`
 
 ## node packages
 

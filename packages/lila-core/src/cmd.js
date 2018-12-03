@@ -5,6 +5,7 @@ import { defaultEntry } from '../../../util/constants';
 
 export const rootOption = commander => {
   commander.option('--root [root]', 'custom root path');
+  commander.option('--init [init]', 'custom init file');
 };
 
 export const run = commander => {
