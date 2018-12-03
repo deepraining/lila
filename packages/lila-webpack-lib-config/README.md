@@ -36,6 +36,34 @@ module.exports = lila => {
 
 `type: []/{}` `default: []`
 
+`example:`
+
+```
+{ "libraryName": "antd" }
+=>
+["import", { "libraryName": "antd" }]
+
+
+[[{ "libraryName": "antd"}, "ant"]]
+=>
+["import", { "libraryName": "antd"}, "ant"],
+
+
+[{ "libraryName": "antd"}, { "libraryName": "antd-mobile"}]
+=>
+["import", { "libraryName": "antd"}]
+["import", { "libraryName": "antd-mobile"}]
+
+
+[
+  [{ "libraryName": "antd"}, "ant"],
+  [{ "libraryName": "antd-mobile"}, "antd-mobile"]
+]
+=>
+["import", { "libraryName": "antd"}, "ant"]
+["import", { "libraryName": "antd-mobile"}, "antd-mobile"]
+```
+
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
 `type: []` `default: [/node_modules/]`

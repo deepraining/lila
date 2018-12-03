@@ -42,7 +42,7 @@ export default (lila, rollup, { cmd, config }) => {
           '@babel/plugin-transform-react-jsx',
           '@babel/plugin-syntax-dynamic-import',
           ...(Array.isArray(babelImport) ? babelImport : [babelImport]).map(
-            i => ['import', i]
+            i => ['import', ...(Array.isArray(i) ? i : [i])]
           ),
           ...babelPlugins,
           ...(flowRuntime

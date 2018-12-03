@@ -23,7 +23,7 @@ export const babelLoader = ({
       '@babel/plugin-syntax-dynamic-import',
       ...(Array.isArray(babelImport) ? babelImport : [babelImport]).map(i => [
         'import',
-        i,
+        ...(Array.isArray(i) ? i : [i]),
       ]),
       ...babelPlugins,
       ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
