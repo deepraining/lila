@@ -68,6 +68,38 @@ module.exports = lila => {
 ["import", { "libraryName": "antd-mobile"}, "antd-mobile"]
 ```
 
+### `babelComponent`: [babel-plugin-component](https://github.com/ElementUI/babel-plugin-component) config
+
+`type: []/{}` `default: []`
+
+`example:`
+
+```
+{ "libraryName": "element-ui", "styleLibraryName": "theme-chalk" }
+=>
+["component", { "libraryName": "element-ui", "styleLibraryName": "theme-chalk" }]
+
+
+[[{ "libraryName": "element-ui" }, "element-ui"]]
+=>
+["component", { "libraryName": "element-ui"}, "element-ui"],
+
+
+[{ "libraryName": "element-ui"}, { "libraryName": "test-module"}]
+=>
+["component", { "libraryName": "element-ui"}]
+["component", { "libraryName": "test-module"}]
+
+
+[
+  [{ "libraryName": "element-ui"}, "element-ui"],
+  [{ "libraryName": "test-module"}, "test-module"]
+]
+=>
+["component", { "libraryName": "element-ui"}, "element-ui"]
+["component", { "libraryName": "test-module"}, "test-module"]
+```
+
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
 `type: []` `default: [/node_modules/]`

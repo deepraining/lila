@@ -18,6 +18,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
 
   const {
     babelImport = [],
+    babelComponent = [],
     babelExclude = [/node_modules/],
     babelPresets = [],
     babelPlugins = [],
@@ -52,6 +53,7 @@ export default (lila, webpack, { entry, config }, key, value) => {
       rules: [
         babelLoader({
           babelImport,
+          babelComponent,
           babelExclude,
           babelPresets,
           babelPlugins,

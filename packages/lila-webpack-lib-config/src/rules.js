@@ -2,6 +2,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export const babelLoader = ({
   babelImport,
+  babelComponent,
   babelExclude,
   babelPresets,
   babelPlugins,
@@ -24,6 +25,10 @@ export const babelLoader = ({
         'import',
         ...(Array.isArray(i) ? i : [i]),
       ]),
+      ...(Array.isArray(babelComponent)
+        ? babelComponent
+        : [babelComponent]
+      ).map(i => ['component', ...(Array.isArray(i) ? i : [i])]),
       ...babelPlugins,
       ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
     ],

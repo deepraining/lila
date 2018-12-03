@@ -11,6 +11,7 @@ import uglify from 'rollup-plugin-uglify';
 export default (lila, rollup, { cmd, config }) => {
   const {
     babelImport = [],
+    babelComponent = [],
     babelExclude = [/node_modules/],
     babelPresets = [],
     babelPlugins = [],
@@ -44,6 +45,10 @@ export default (lila, rollup, { cmd, config }) => {
           ...(Array.isArray(babelImport) ? babelImport : [babelImport]).map(
             i => ['import', ...(Array.isArray(i) ? i : [i])]
           ),
+          ...(Array.isArray(babelComponent)
+            ? babelComponent
+            : [babelComponent]
+          ).map(i => ['component', ...(Array.isArray(i) ? i : [i])]),
           ...babelPlugins,
           ...(flowRuntime
             ? [['flow-runtime', { assert: !0, annotate: !0 }]]
