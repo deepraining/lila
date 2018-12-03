@@ -6,7 +6,12 @@ const { join } = path;
 
 export default (lila, rollup, { entry, cmd, config }) => {
   const { getSettings } = lila;
-  const [root, srcDir, buildDir] = getSettings(['root', 'src', 'build']);
+  const [root, srcDir, buildDir, packages = !1] = getSettings([
+    'root',
+    'src',
+    'build',
+    'packages',
+  ]);
   const srcPath = join(root, srcDir);
   const buildPath = join(root, buildDir);
 
@@ -14,14 +19,20 @@ export default (lila, rollup, { entry, cmd, config }) => {
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
 
-  const outputPath =
-    entry === defaultEntry ? buildPath : join(buildPath, entry);
+  let entryPath =
+    entry === defaultEntry
+      ? `${srcPath}/index.js`
+      : `${srcPath}/${entry}/index.js`;
+  let outputPath = entry === defaultEntry ? buildPath : join(buildPath, entry);
+
+  if (packages) {
+    const packagesDir = typeof packages === 'string' ? packages : 'packages';
+    entryPath = join(root, packagesDir, entry, srcDir, 'index.js');
+    outputPath = join(root, packagesDir, entry, buildDir);
+  }
 
   return {
-    input:
-      entry === defaultEntry
-        ? `${srcPath}/index.js`
-        : `${srcPath}/${entry}/index.js`,
+    input: entryPath,
     output: [
       {
         file: `${outputPath}/${filename ? `${filename}.` : ''}cjs.js`,

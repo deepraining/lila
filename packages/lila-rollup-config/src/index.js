@@ -1,9 +1,10 @@
 import start from './start';
 import build from './build';
-import { getEntries } from './settings';
+import { makeGetEntries } from './settings';
 
 export default lila => {
-  const { setSetting } = lila;
+  const { setSetting, getSettings } = lila;
+  const [packages = !1] = getSettings(['packages']);
 
   setSetting('rollupConfigGenerator', rollup => ({ entry, cmd, config }) => {
     let rollupConfig = {};
@@ -21,5 +22,5 @@ export default lila => {
     return rollupConfig;
   });
 
-  setSetting('getEntries', getEntries);
+  setSetting('getEntries', makeGetEntries(packages));
 };

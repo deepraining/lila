@@ -26,9 +26,30 @@ module.exports = lila => {
 
 ### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L8)
 
-### `getEntries`: see [getEntries](./src/settings.js#L6)
+### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
-`all, *` means all entries under `src`.
+`all, *` means all entries under `src`(`packages` if is packages mode) directory.
+
+### `packages`: whether use packages mode
+
+`type: bool/string` `default: false`
+
+If you want packages mode(see [lerna](https://github.com/lerna/lerna)), you can configure `lila.setSetting('packages', true)`.
+
+If so, building structure will be as follows:
+
+```
+|-- / root
+    |-- packages/ packages directory
+        |-- pkg1/ package 1
+            |-- src/
+            |-- build/
+        |-- pkg2/ package 2
+            |-- src/
+            |-- build/
+```
+
+If you want to customize packages' directory, , you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
 
 ## extended configs
 

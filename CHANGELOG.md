@@ -2,6 +2,7 @@
 
 ## 0.5.3 [2018-12-01]
 
+- Add packages mode support(see [lerna](https://github.com/lerna/lerna)).
 - Add `vue` support.
 - Enhance mock functionality and modify `mockRoot` config option.
 

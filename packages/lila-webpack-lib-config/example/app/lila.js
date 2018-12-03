@@ -5,6 +5,7 @@ const webpackConfigPlugin = require('../../../lila-webpack-lib-config/lib');
 module.exports = lila => {
   const { setSetting } = lila;
 
+  // setSetting('packages', 'pkgs');
   // setSetting('src', 'components');
   setSetting('build', 'lib');
 

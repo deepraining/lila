@@ -5,7 +5,8 @@ const rollupConfigPlugin = require('../../../lila-rollup-config/lib');
 module.exports = lila => {
   const { setSetting } = lila;
 
-  setSetting('src', 'components');
+  setSetting('packages', 'pkgs');
+  // setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);

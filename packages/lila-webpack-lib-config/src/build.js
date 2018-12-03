@@ -8,7 +8,12 @@ const { join } = path;
 
 export default (lila, webpack, { entry, cmd, config }) => {
   const { getSettings } = lila;
-  const [root, srcDir, buildDir] = getSettings(['root', 'src', 'build']);
+  const [root, srcDir, buildDir, packages = !1] = getSettings([
+    'root',
+    'src',
+    'build',
+    'packages',
+  ]);
   const srcPath = join(root, srcDir);
   const buildPath = join(root, buildDir);
 
@@ -42,8 +47,17 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   if (banner) baseConfig.plugins.push(new BannerPlugin(banner));
 
-  const outputPath =
-    entry === defaultEntry ? buildPath : join(buildPath, entry);
+  let entryPath =
+    entry === defaultEntry
+      ? `${srcPath}/index.js`
+      : `${srcPath}/${entry}/index.js`;
+  let outputPath = entry === defaultEntry ? buildPath : join(buildPath, entry);
+
+  if (packages) {
+    const packagesDir = typeof packages === 'string' ? packages : 'packages';
+    entryPath = join(root, packagesDir, entry, srcDir, 'index.js');
+    outputPath = join(root, packagesDir, entry, buildDir);
+  }
 
   return [
     {
@@ -68,10 +82,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
       publicPath: '',
     },
   ].map(output => ({
-    entry:
-      entry === defaultEntry
-        ? `${srcPath}/index.js`
-        : `${srcPath}/${entry}/index.js`,
+    entry: entryPath,
     output,
     externals,
     ...baseConfig,

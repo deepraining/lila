@@ -57,7 +57,7 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 ### `getEntries`: get all entries with imported entries, when you want to use `*, all` special mark
 
 ```
-(entries, srcPath) => allEntries;
+(entries, root, srcDir) => allEntries;
 ```
 
 ## extended configs
