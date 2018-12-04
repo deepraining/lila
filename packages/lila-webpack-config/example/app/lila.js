@@ -18,6 +18,11 @@ export default lila => {
     ],
     cssModules: !0,
     cssModulesExclude: [/node_modules/, /src\/test/, /src\/vue/],
+    babelImport: { libraryName: 'antd', style: 'css' },
+    babelComponent: {
+      libraryName: 'element-ui',
+      styleLibraryName: 'theme-chalk',
+    },
     flow: !0,
     // flowRuntime: !0,
     alias: {
