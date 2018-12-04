@@ -3,6 +3,7 @@ import path from 'path';
 
 import { root, initFile } from './app';
 import { warn } from './logger';
+import { tryDefault } from '../../../util/index';
 
 const { join } = path;
 const { existsSync } = fs;
@@ -10,7 +11,8 @@ const { existsSync } = fs;
 const initPath = join(root, initFile);
 const initPathExists = existsSync(initPath);
 
-const init = initPathExists ? require(initPath) : () => () => ({}); // eslint-disable-line
+// eslint-disable-next-line
+const init = tryDefault(initPathExists ? require(initPath) : () => () => ({}));
 
 if (!initPathExists) {
   warn(`

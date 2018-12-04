@@ -1,4 +1,4 @@
-module.exports = lila => {
+export default lila => {
   const { registerTask, addCmdOption, addCommand } = lila;
 
   registerTask('log', ({ entry, args }) => cb => {

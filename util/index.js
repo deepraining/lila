@@ -64,6 +64,14 @@ export const isDir = dir => {
 export const correctSlash = str => str.replace(/(\\\\|\\)/g, '/');
 
 /**
+ * try obj.default, for babel transform
+ *
+ * @param obj
+ * @returns {string|boolean|*}
+ */
+export const tryDefault = obj => obj.default || obj;
+
+/**
  * Treat all request methods as `GET` method.
  * @param req
  * @param res
@@ -85,7 +93,7 @@ const tryMock = ({ root, url, req, res }) => {
     // disable cache
     if (require.cache[filePath]) delete require.cache[filePath];
 
-    const fn = require(filePath); // eslint-disable-line
+    const fn = tryDefault(require(filePath)); // eslint-disable-line
     if (typeof fn === 'function') {
       fn(req, res);
       return !0;
@@ -103,7 +111,7 @@ const tryMock = ({ root, url, req, res }) => {
     // disable cache
     if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
 
-    const exp = require(parentFilePath); // eslint-disable-line
+    const exp = tryDefault(require(parentFilePath)); // eslint-disable-line
     const fn = exp[lastName];
 
     if (typeof fn === 'function') {

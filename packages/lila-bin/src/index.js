@@ -2,6 +2,7 @@ import path from 'path';
 import minimist from 'minimist';
 import commander from 'commander';
 
+// this should be dynamically imported, for lerna will modify package.json
 const pkg = require('../package.json');
 
 const argv = minimist(process.argv.slice(2));

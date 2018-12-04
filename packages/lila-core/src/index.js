@@ -1,3 +1,4 @@
+import './register';
 import app, { initFile } from './app';
 import * as lila from './lila';
 import { registerConfigGenerator } from './make-config';
