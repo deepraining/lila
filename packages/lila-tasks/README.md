@@ -13,9 +13,9 @@ npm install --save-dev lila-tasks
 In `lila.js`:
 
 ```
-const tasksPlugin = require('lila-tasks');
+import tasksPlugin from 'lila-tasks';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
 
   ...

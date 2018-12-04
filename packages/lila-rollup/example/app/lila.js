@@ -1,6 +1,6 @@
-const rollupPlugin = require('../../lib');
+import rollupPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   const { setSetting } = lila;
 
   setSetting('rollupConfigGenerator', () => options => {

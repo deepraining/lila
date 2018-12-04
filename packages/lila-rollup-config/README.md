@@ -13,9 +13,9 @@ npm install --save-dev lila-rollup-config
 In `lila.js`:
 
 ```
-const rollupConfigPlugin = require('lila-rollup-config');
+import rollupConfigPlugin from 'lila-rollup-config';
 
-module.exports = lila => {
+export default lila => {
   rollupConfigPlugin(lila);
 
   ...

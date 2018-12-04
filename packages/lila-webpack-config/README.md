@@ -13,9 +13,9 @@ npm install --save-dev lila-webpack-config
 In `lila.js`:
 
 ```
-const webpackConfigPlugin = require('lila-webpack-config');
+import webpackConfigPlugin from 'lila-webpack-config';
 
-module.exports = lila => {
+export default lila => {
   webpackConfigPlugin(lila);
 
   ...

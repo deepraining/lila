@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const { existsSync } = fs;
 
@@ -159,7 +159,7 @@ const getTasks = entry => {
   return [];
 };
 
-module.exports = lila => {
+export default lila => {
   require('../../lib')(lila); // eslint-disable-line
 
   return ({ entry }) => ({

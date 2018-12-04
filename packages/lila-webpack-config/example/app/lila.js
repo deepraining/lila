@@ -1,8 +1,8 @@
-const tasksPlugin = require('../../../lila-tasks/lib');
-const webpackPlugin = require('../../../lila-webpack/lib');
-const webpackConfigPlugin = require('../../../lila-webpack-config/lib');
+import tasksPlugin from '../../../lila-tasks/lib';
+import webpackPlugin from '../../../lila-webpack/lib';
+import webpackConfigPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
   webpackPlugin(lila);
   webpackConfigPlugin(lila);

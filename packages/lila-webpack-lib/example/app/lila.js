@@ -1,6 +1,6 @@
-const webpackPlugin = require('../../lib');
+import webpackPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   const { setSetting } = lila;
 
   setSetting('webpackConfigGenerator', () => options => {

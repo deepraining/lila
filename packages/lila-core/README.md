@@ -23,11 +23,11 @@ const lila = require('lila-core');
 Lila requires an init file called `lila.js` in project root directory.
 
 ```
-const webpackPlugin = require('lila-webpack');
-const webpackConfigPlugin = require('lila-webpack-config');
+import webpackPlugin from 'lila-webpack';
+import webpackConfigPlugin from 'lila-webpack-config';
 
 // should export a function
-module.exports = lila => {
+export default lila => {
 
   // do some initialize actions
 

@@ -13,9 +13,9 @@ npm install --save-dev lila-webpack
 In `lila.js`:
 
 ```
-const webpackPlugin = require('lila-webpack');
+import webpackPlugin from 'lila-webpack';
 
-module.exports = lila => {
+export default lila => {
   webpackPlugin(lila);
 
   ...
@@ -103,7 +103,7 @@ dir => entries;
 serve js file:
 
 ```
-module.exports = (content, req) => newContent;
+export default (content, req) => newContent;
 ```
 
 - `content`: html file content
@@ -130,12 +130,12 @@ First try `/src/api/user/profile.js`:
 
 ```
 // export a function, an object, a string
-module.exports = (req, res) => {
+export default (req, res) => {
   // do everything you want
 };
 
 // or export an object, a string(not function)
-module.exports = {
+export default {
   success: true,
   message: 'ok',
   data: { ... },
@@ -146,20 +146,16 @@ Second try `/src/api/user.js`:
 
 ```
 // export a function
-module.exports = {
-  profile: (req, res) => {
-    // do everything you want
-  }
+export const profile = (req, res) => {
+  // do everything you want
 };
 
 // or export an object, a string(not function)
-module.exports = {
-  profile: {
-    success: true,
-    message: 'ok',
-    data: { ... },
-  }
-};
+export const profile = {
+  success: true,
+  message: 'ok',
+  data: { ... },
+}
 ```
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
