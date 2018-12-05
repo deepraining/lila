@@ -1,6 +1,6 @@
 {
   "name": "lila-tasks",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "description": "lila built-in tasks",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -48,9 +48,9 @@
     "gulp-less": "^4.0.1",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
-    "node-sass": "^4.10.0",
     "gulp-ssh": "^0.7.0",
     "lodash": "^4.17.11",
+    "node-sass": "^4.10.0",
     "rd": "^2.0.1"
   },
   "engines": {

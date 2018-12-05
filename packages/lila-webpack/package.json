@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "lila webpack plugin",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
