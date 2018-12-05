@@ -5,7 +5,7 @@ import rollupConfigPlugin from '../../lib';
 export default lila => {
   const { setSetting } = lila;
 
-  setSetting('packages', 'pkgs');
+  // setSetting('packages', 'pkgs');
   // setSetting('src', 'components');
   setSetting('build', 'lib');
 

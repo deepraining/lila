@@ -1,4 +1,5 @@
 import path from 'path';
+import progress from 'rollup-plugin-progress';
 import base from './base';
 import { defaultEntry } from '../../../util/constants';
 
@@ -18,6 +19,8 @@ export default (lila, rollup, { entry, cmd, config }) => {
   const { filename = '', name = 'Index', banner, external, globals } = config;
 
   const baseConfig = base(lila, rollup, { entry, cmd, config });
+
+  baseConfig.plugins.push(progress());
 
   let entryPath =
     entry === defaultEntry

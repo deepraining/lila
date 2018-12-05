@@ -1,6 +1,8 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import WebpackBar from 'webpackbar';
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import base from './base';
 import { defaultEntry } from '../../../util/constants';
 
@@ -30,6 +32,8 @@ export default (lila, webpack, { entry, cmd, config }) => {
   const baseConfig = base(lila, webpack, { entry, cmd, config });
 
   baseConfig.plugins.push(
+    new WebpackBar(),
+    new SpeedMeasurePlugin(),
     // css standalone
     new MiniCssExtractPlugin({
       filename: `${filename || 'css'}.css`,
