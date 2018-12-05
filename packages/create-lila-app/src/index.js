@@ -3,6 +3,7 @@ import inquirer from 'inquirer';
 
 import create from './create';
 
+// this should be dynamically imported, for lerna will modify package.json
 const pkg = require('../package.json');
 
 // version

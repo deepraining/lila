@@ -14,7 +14,7 @@ describe('run through child_process', () => {
   jest.setTimeout(60000);
 
   test('run entry[file]', done => {
-    const child = spawn('node', [`${__dirname}/file.js`]);
+    const child = spawn('node', [`${__dirname}/file.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);
@@ -30,7 +30,7 @@ describe('run through child_process', () => {
   });
 
   test('run entry[dir]', done => {
-    const child = spawn('node', [`${__dirname}/dir.js`]);
+    const child = spawn('node', [`${__dirname}/dir.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);
@@ -43,7 +43,7 @@ describe('run through child_process', () => {
   });
 
   test('run entry[shell]', done => {
-    const child = spawn('node', [`${__dirname}/shell.js`]);
+    const child = spawn('node', [`${__dirname}/shell.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);
@@ -55,7 +55,7 @@ describe('run through child_process', () => {
   test('run entry[cache]', done => {
     removeSync(`${appPath}/build`);
 
-    const child = spawn('node', [`${__dirname}/cache.js`]);
+    const child = spawn('node', [`${__dirname}/cache.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);
@@ -65,7 +65,7 @@ describe('run through child_process', () => {
   });
 
   test('run entry[cache]', done => {
-    const child = spawn('node', [`${__dirname}/cache.js`]);
+    const child = spawn('node', [`${__dirname}/cache.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);
@@ -76,7 +76,7 @@ describe('run through child_process', () => {
   });
 
   test('run entry[del]', done => {
-    const child = spawn('node', [`${__dirname}/del.js`]);
+    const child = spawn('node', [`${__dirname}/del.js`], { cwd: __dirname });
 
     child.on('close', code => {
       expect(code).toBe(0);

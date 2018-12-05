@@ -1,8 +1,8 @@
-const tasksPlugin = require('../../../lila-tasks/lib');
-const webpackPlugin = require('../../../lila-webpack/lib');
-const webpackConfigPlugin = require('../../../lila-webpack-config/lib');
+import tasksPlugin from '../../../lila-tasks/lib';
+import webpackPlugin from '../../../lila-webpack/lib';
+import webpackConfigPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
   webpackPlugin(lila);
   webpackConfigPlugin(lila);
@@ -17,7 +17,12 @@ module.exports = lila => {
       ],
     ],
     cssModules: !0,
-    cssModulesExclude: [/node_modules/, /src\/test/],
+    cssModulesExclude: [/node_modules/, /src\/test/, /src\/vue/],
+    babelImport: { libraryName: 'antd', style: 'css' },
+    babelComponent: {
+      libraryName: 'element-ui',
+      styleLibraryName: 'theme-chalk',
+    },
     flow: !0,
     // flowRuntime: !0,
     alias: {

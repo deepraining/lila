@@ -1,15 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.css';
+// import 'antd/lib/style/index.css';
 import './css.css';
 import './less.less';
 import './scss.scss';
 
+import Vue from 'vue';
+
 import base from 'base'; // eslint-disable-line
 import common from 'common'; // eslint-disable-line
+import App from '../vue/App.vue';
 import '../jsx/render';
 import './flow';
 
 base();
 common();
+
+Vue.config.productionTip = false;
+
+new Vue({
+  render: h => h(App),
+}).$mount('#example-2');
 
 console.log('test');
 // console.log(hello.hi); // eslint-disable-line

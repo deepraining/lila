@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
-const tasksPlugin = require('lila-tasks');
-const webpackPlugin = require('lila-webpack-lib');
-const webpackConfigPlugin = require('lila-webpack-lib-config');
+import tasksPlugin from 'lila-tasks';
+import webpackPlugin from 'lila-webpack-lib';
+import webpackConfigPlugin from 'lila-webpack-lib-config';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
   webpackPlugin(lila);
   webpackConfigPlugin(lila);

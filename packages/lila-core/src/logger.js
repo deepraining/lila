@@ -5,40 +5,85 @@ const makeArgs = (args, color) =>
   args.map(arg => (typeof arg === 'string' ? chalk[color](arg) : arg));
 
 export const log = (...args) => {
+  if (!args.length) return;
+
+  const [first, ...lastArgs] = args;
+
+  // plain log
+  if (first === false) {
+    console.log(...lastArgs);
+    return;
+  }
+
+  // custom color
+  if (typeof first === 'string' && chalk[first]) {
+    console.log(...makeArgs(lastArgs, first));
+    return;
+  }
+
+  // default color
   console.log(...args);
 };
+
 export const info = (...args) => {
-  console.info(...makeArgs(args, 'blue'));
+  if (!args.length) return;
+
+  const [first, ...lastArgs] = args;
+
+  // plain info
+  if (first === false) {
+    console.info(...lastArgs);
+    return;
+  }
+
+  // custom color
+  if (typeof first === 'string' && chalk[first]) {
+    console.info(...makeArgs(lastArgs, first));
+    return;
+  }
+
+  // default color
+  console.info(...makeArgs(args, 'blueBright'));
 };
+
 export const warn = (...args) => {
-  console.warn(...makeArgs(args, 'yellow'));
+  if (!args.length) return;
+
+  const [first, ...lastArgs] = args;
+
+  // plain warn
+  if (first === false) {
+    console.warn(...lastArgs);
+    return;
+  }
+
+  // custom color
+  if (typeof first === 'string' && chalk[first]) {
+    console.warn(...makeArgs(lastArgs, first));
+    return;
+  }
+
+  // default color
+  console.warn(...makeArgs(args, 'yellowBright'));
 };
+
 export const error = (...args) => {
-  console.error(...makeArgs(args, 'red'));
-};
+  if (!args.length) return;
 
-export const plainLog = (...args) => {
-  console.log(...args);
-};
-export const plainInfo = (...args) => {
-  console.info(...args);
-};
-export const plainWarn = (...args) => {
-  console.warn(...args);
-};
-export const plainError = (...args) => {
-  console.error(...args);
-};
+  const [first, ...lastArgs] = args;
 
-export const colorLog = (color, ...args) => {
-  console.log(...makeArgs(args, color));
-};
-export const colorInfo = (color, ...args) => {
-  console.info(...makeArgs(args, color));
-};
-export const colorWarn = (color, ...args) => {
-  console.warn(...makeArgs(args, color));
-};
-export const colorError = (color, ...args) => {
-  console.error(...makeArgs(args, color));
+  // plain error
+  if (first === false) {
+    console.error(...lastArgs);
+    return;
+  }
+
+  // custom color
+  if (typeof first === 'string' && chalk[first]) {
+    console.error(...makeArgs(lastArgs, first));
+    return;
+  }
+
+  // default color
+  console.error(...makeArgs(args, 'redBright'));
 };

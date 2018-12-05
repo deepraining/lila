@@ -22,11 +22,11 @@ You can install [create-lila-app](./packages/create-lila-app) to create a lila a
 However, you can customize your own project:
 
 1. Install [lila-bin](./packages/lila-bin). If installed globally, you can run lila commands directly in terminal, and if installed locally, you can run lila commands directly by `npm run`.
-2. Install [lila-core](./packages/lila-core) and [lila-tasks](./packages/lila-tasks) locally. You should not import `lila-core` directly, like `import lila from 'lila-core'` or `const lila = require('lila-core')`, but `module.exports = lila => { ... }` in `lila.js` or plugin.
+2. Install [lila-core](./packages/lila-core) and [lila-tasks](./packages/lila-tasks) locally. You should not import `lila-core` directly, like `import lila from 'lila-core'`, but `export default lila => { ... }` in `lila.js` or plugin.
 3. Choose appropriate plugins.
    - If build a project, it's recommended to choose [lila-webpack](./packages/lila-webpack) and [lila-webpack-config](./packages/lila-webpack-config).
    - If build a library, it's recommended to choose [lila-rollup](./packages/lila-rollup) and [lila-rollup-config](./packages/lila-rollup-config). Alternatively, you can also choose [lila-webpack-lib](./packages/lila-webpack-lib) and [lila-webpack-lib-config](./packages/lila-webpack-lib-config).
-4. Configure entry file `lila.js`.
+4. Configure init file `lila.js`.
 
 ## base directory structure
 
@@ -46,7 +46,7 @@ If you want custom names, you can modify them by `lila.setSettings({src, dev, bu
 ## how to write plugins
 
 ```
-module.exports = lila => {
+export default lila => {
   // do everything you want with lila api
 };
 ```
@@ -56,9 +56,9 @@ module.exports = lila => {
 In `lila.js`:
 
 ```
-const plugin = require('your-lila-plugin');
+import plugin from 'your-lila-plugin';
 
-module.exports = lila => {
+export default lila => {
   plugin(lila);
 
   ...

@@ -1,1 +1,1 @@
-module.exports = content => content.replace(/{{hello}}/, 'hi');
+export default content => content.replace(/{{hello}}/, 'hi');

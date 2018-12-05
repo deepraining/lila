@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
-const tasksPlugin = require('lila-tasks');
-const rollupPlugin = require('lila-rollup');
-const rollupConfigPlugin = require('lila-rollup-config');
+import tasksPlugin from 'lila-tasks';
+import rollupPlugin from 'lila-rollup';
+import rollupConfigPlugin from 'lila-rollup-config';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
   rollupPlugin(lila);
   rollupConfigPlugin(lila);

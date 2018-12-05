@@ -5,7 +5,7 @@ describe('run through child_process', () => {
   jest.setTimeout(60000);
 
   test('-h', done => {
-    const child = spawn('node', [`${__dirname}/help.js`]);
+    const child = spawn('node', [`${__dirname}/help.js`], { cwd: __dirname });
 
     let msg = '';
 
@@ -30,7 +30,9 @@ describe('run through child_process', () => {
   });
 
   test('run -h', done => {
-    const child = spawn('node', [`${__dirname}/run-help.js`]);
+    const child = spawn('node', [`${__dirname}/run-help.js`], {
+      cwd: __dirname,
+    });
 
     let msg = '';
 
@@ -54,7 +56,7 @@ describe('run through child_process', () => {
   });
 
   test('run test test2', done => {
-    const child = spawn('node', [`${__dirname}/run.js`]);
+    const child = spawn('node', [`${__dirname}/run.js`], { cwd: __dirname });
 
     let msg = '';
 
@@ -95,7 +97,7 @@ describe('run through child_process', () => {
   });
 
   test('demo', done => {
-    const child = spawn('node', [`${__dirname}/demo.js`]);
+    const child = spawn('node', [`${__dirname}/demo.js`], { cwd: __dirname });
 
     let msg = '';
 

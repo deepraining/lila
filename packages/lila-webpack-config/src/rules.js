@@ -3,6 +3,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export const babelLoader = ({
   babelImport,
+  babelComponent,
   babelExclude,
   babelPresets,
   babelPlugins,
@@ -23,8 +24,12 @@ export const babelLoader = ({
       '@babel/plugin-syntax-dynamic-import',
       ...(Array.isArray(babelImport) ? babelImport : [babelImport]).map(i => [
         'import',
-        i,
+        ...(Array.isArray(i) ? i : [i]),
       ]),
+      ...(Array.isArray(babelComponent)
+        ? babelComponent
+        : [babelComponent]
+      ).map(i => ['component', ...(Array.isArray(i) ? i : [i])]),
       ...babelPlugins,
       ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
     ],
@@ -48,6 +53,11 @@ export const htmlLoader = () => ({
     attrs: ['img:src', 'link:href'],
     interpolate: 'require',
   },
+});
+
+export const vueLoader = () => ({
+  loader: 'vue-loader',
+  test: /\.vue$/,
 });
 
 export const cssLoader = ({

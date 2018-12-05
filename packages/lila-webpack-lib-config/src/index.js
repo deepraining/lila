@@ -1,9 +1,10 @@
 import start from './start';
 import build from './build';
-import { getEntries } from './settings';
+import { makeGetEntries } from './settings';
 
 export default lila => {
-  const { setSetting } = lila;
+  const { setSetting, getSettings } = lila;
+  const [packages = !1] = getSettings(['packages']);
 
   setSetting('webpackConfigGenerator', webpack => ({ entry, cmd, config }) => {
     let webpackConfig = {};
@@ -23,5 +24,5 @@ export default lila => {
     return webpackConfig;
   });
 
-  setSetting('getEntries', getEntries);
+  setSetting('getEntries', makeGetEntries(packages));
 };

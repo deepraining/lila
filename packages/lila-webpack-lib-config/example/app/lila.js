@@ -1,11 +1,12 @@
-const tasksPlugin = require('../../../lila-tasks/lib');
-const webpackPlugin = require('../../../lila-webpack-lib/lib');
-const webpackConfigPlugin = require('../../../lila-webpack-lib-config/lib');
+import tasksPlugin from '../../../lila-tasks/lib';
+import webpackPlugin from '../../../lila-webpack-lib/lib';
+import webpackConfigPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   const { setSetting } = lila;
 
-  setSetting('src', 'components');
+  // setSetting('packages', 'pkgs');
+  // setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);
@@ -31,6 +32,6 @@ module.exports = lila => {
     // banner: 'hello',
     // filename: 'hi',
     // library: 'Demo',
-    externals: ['react', 'react-dom'],
+    externals: ['react', 'react-dom', 'vue'],
   });
 };

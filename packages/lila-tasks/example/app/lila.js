@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const { existsSync } = fs;
 
@@ -117,10 +117,49 @@ const getTasks = entry => {
     return [['@lila/remote-shell', { server, scripts: 'ls ~/space/www/lila' }]];
   }
 
+  if (entry === 'compile-js') {
+    return [
+      [
+        '@lila/compile-js',
+        { src: 'compile/**/*.{js,jsx}', dest: 'compile-es' },
+      ],
+      [
+        '@lila/compile-js',
+        { src: 'compile/**/*.{js,jsx}', dest: 'compile-cjs', modules: 'cjs' },
+      ],
+      [
+        '@lila/compile-js',
+        { src: 'compile/**/*.{js,jsx}', dest: 'compile-amd', modules: 'amd' },
+      ],
+      [
+        '@lila/compile-js',
+        { src: 'compile/**/*.{js,jsx}', dest: 'compile-umd', modules: 'umd' },
+      ],
+    ];
+  }
+
+  if (entry === 'compile-less') {
+    return [
+      [
+        '@lila/compile-less',
+        { src: 'compile/**/*.less', dest: 'compile-less' },
+      ],
+    ];
+  }
+
+  if (entry === 'compile-scss') {
+    return [
+      [
+        '@lila/compile-scss',
+        { src: 'compile/**/*.{scss,sass}', dest: 'compile-scss' },
+      ],
+    ];
+  }
+
   return [];
 };
 
-module.exports = lila => {
+export default lila => {
   require('../../lib')(lila); // eslint-disable-line
 
   return ({ entry }) => ({

@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import fse from 'fs-extra';
 import trimEnd from 'lodash/trimEnd';
+import { tryDefault } from '../../../util/index';
 
 const { join } = path;
 const { existsSync } = fs;
@@ -32,7 +33,7 @@ export const makeServe = ({ root, devDir, servePath }) => (req, res, next) => {
     // Disable cache.
     if (require.cache[filePath]) delete require.cache[filePath];
 
-    const serve = require(filePath); // eslint-disable-line
+    const serve = tryDefault(require(filePath)); // eslint-disable-line
 
     const newContent = serve(content, req);
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });

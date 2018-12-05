@@ -1,5 +1,8 @@
 import gulp from 'gulp';
+import chalk from 'chalk';
 import { log, error } from './logger';
+
+const { bold } = chalk;
 
 // format error thrown by gulp
 const formatError = e => {
@@ -18,19 +21,20 @@ const formatError = e => {
 // task start
 gulp.on('start', e => {
   const { name } = e;
-  log(`starting task ${name} ...`);
+  log('greenBright', `\nstarting task ${bold(name)} ...\n`);
 });
 
 // task finish
 gulp.on('stop', e => {
   const { name } = e;
-  log(`finished task ${name}`);
+  log('greenBright', `\nfinished task ${bold(name)}\n`);
+  log('greenBright', '=================================================== ok');
 });
 
 // task error
 gulp.on('error', e => {
   const { name } = e;
-  error(`error task ${name}`);
+  error(`\nerror task ${bold(name)}\n`);
   error(formatError(e));
   process.exitCode = 1;
 });

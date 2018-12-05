@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
-const tasksPlugin = require('lila-tasks');
+import tasksPlugin from 'lila-tasks';
 
-module.exports = lila => {
+export default lila => {
   tasksPlugin(lila);
 
   return () => ({

@@ -1,5 +1,18 @@
-module.exports = lila => {
+export default lila => {
   const { registerTask, addCmdOption, addCommand } = lila;
+
+  // lila.log('default log');
+  // lila.log('green', 'green log');
+  // lila.log(false, 'plain log');
+  // lila.info('default info');
+  // lila.info('blue', 'blue info');
+  // lila.info(false, 'plain info');
+  // lila.warn('default warn');
+  // lila.warn('yellow', 'yellow warn');
+  // lila.warn(false, 'plain warn');
+  // lila.error('default error');
+  // lila.error('red', 'red error');
+  // lila.error(false, 'plain error');
 
   registerTask('log', ({ entry, args }) => cb => {
     console.log(`entry: ${entry}`);

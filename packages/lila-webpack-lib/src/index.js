@@ -1,9 +1,6 @@
-import path from 'path';
 import start from './start';
 import task from './task';
 import { defaultEntry } from '../../../util/constants';
-
-const { join } = path;
 
 export default lila => {
   const {
@@ -15,8 +12,6 @@ export default lila => {
     getCmdOptions,
   } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
-
-  const srcPath = join(root, srcDir);
 
   // add start command
   addCommand(commander => {
@@ -52,7 +47,9 @@ export default lila => {
       const realEntries = entries.length ? entries : [defaultEntry];
 
       runTasks({
-        entries: getEntries ? getEntries(realEntries, srcPath) : realEntries,
+        entries: getEntries
+          ? getEntries(realEntries, root, srcDir)
+          : realEntries,
         argv: makeArgv(options),
         cmd: 'build',
       });

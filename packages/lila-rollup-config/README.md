@@ -13,9 +13,9 @@ npm install --save-dev lila-rollup-config
 In `lila.js`:
 
 ```
-const rollupConfigPlugin = require('lila-rollup-config');
+import rollupConfigPlugin from 'lila-rollup-config';
 
-module.exports = lila => {
+export default lila => {
   rollupConfigPlugin(lila);
 
   ...
@@ -26,15 +26,96 @@ module.exports = lila => {
 
 ### `rollupConfigGenerator`: see [rollupConfigGenerator](./src/index.js#L8)
 
-### `getEntries`: see [getEntries](./src/settings.js#L6)
+### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
-`all, *` means all entries under `src`.
+`all, *` means all entries under `src`(`packages` if is packages mode) directory.
+
+### `packages`: whether use packages mode
+
+`type: bool/string` `default: false`
+
+If you want packages mode(see [lerna](https://github.com/lerna/lerna)), you can configure `lila.setSetting('packages', true)`.
+
+If so, building structure will be as follows:
+
+```
+|-- / root
+    |-- packages/ packages directory
+        |-- pkg1/ package 1
+            |-- src/
+            |-- build/
+        |-- pkg2/ package 2
+            |-- src/
+            |-- build/
+```
+
+If you want to customize packages' directory, , you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
 
 ## extended configs
 
 ### `babelImport`: [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) config
 
 `type: []/{}` `default: []`
+
+`example:`
+
+```
+{ "libraryName": "antd" }
+=>
+["import", { "libraryName": "antd" }]
+
+
+[[{ "libraryName": "antd"}, "ant"]]
+=>
+["import", { "libraryName": "antd"}, "ant"],
+
+
+[{ "libraryName": "antd"}, { "libraryName": "antd-mobile"}]
+=>
+["import", { "libraryName": "antd"}]
+["import", { "libraryName": "antd-mobile"}]
+
+
+[
+  [{ "libraryName": "antd"}, "ant"],
+  [{ "libraryName": "antd-mobile"}, "antd-mobile"]
+]
+=>
+["import", { "libraryName": "antd"}, "ant"]
+["import", { "libraryName": "antd-mobile"}, "antd-mobile"]
+```
+
+### `babelComponent`: [babel-plugin-component](https://github.com/ElementUI/babel-plugin-component) config
+
+`type: []/{}` `default: []`
+
+`example:`
+
+```
+{ "libraryName": "element-ui", "styleLibraryName": "theme-chalk" }
+=>
+["component", { "libraryName": "element-ui", "styleLibraryName": "theme-chalk" }]
+
+
+[[{ "libraryName": "element-ui" }, "element-ui"]]
+=>
+["component", { "libraryName": "element-ui"}, "element-ui"],
+
+
+[{ "libraryName": "element-ui"}, { "libraryName": "test-module"}]
+=>
+["component", { "libraryName": "element-ui"}]
+["component", { "libraryName": "test-module"}]
+
+
+[
+  [{ "libraryName": "element-ui"}, "element-ui"],
+  [{ "libraryName": "test-module"}, "test-module"]
+]
+=>
+["component", { "libraryName": "element-ui"}, "element-ui"]
+["component", { "libraryName": "test-module"}, "test-module"]
+```
 
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 

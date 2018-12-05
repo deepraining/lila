@@ -1,11 +1,12 @@
-const tasksPlugin = require('../../../lila-tasks/lib');
-const rollupPlugin = require('../../../lila-rollup/lib');
-const rollupConfigPlugin = require('../../../lila-rollup-config/lib');
+import tasksPlugin from '../../../lila-tasks/lib';
+import rollupPlugin from '../../../lila-rollup/lib';
+import rollupConfigPlugin from '../../lib';
 
-module.exports = lila => {
+export default lila => {
   const { setSetting } = lila;
 
-  setSetting('src', 'components');
+  // setSetting('packages', 'pkgs');
+  // setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);

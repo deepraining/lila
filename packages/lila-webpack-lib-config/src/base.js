@@ -1,4 +1,5 @@
 import path from 'path';
+import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions } from './defaults';
 import {
   babelLoader,
@@ -7,6 +8,7 @@ import {
   lessLoader,
   sassLoader,
   urlLoader,
+  vueLoader,
 } from './rules';
 
 const { join } = path;
@@ -20,6 +22,7 @@ export default (lila, webpack, { cmd, config }) => {
 
   const {
     babelImport = [],
+    babelComponent = [],
     babelExclude = [/node_modules/],
     babelPresets = [],
     babelPlugins = [],
@@ -37,11 +40,16 @@ export default (lila, webpack, { cmd, config }) => {
   const development = cmd === 'start';
 
   return {
-    plugins: [new ProvidePlugin(provide), new DefinePlugin(define)],
+    plugins: [
+      new ProvidePlugin(provide),
+      new DefinePlugin(define),
+      new VueLoaderPlugin(),
+    ],
     module: {
       rules: [
         babelLoader({
           babelImport,
+          babelComponent,
           babelExclude,
           babelPresets,
           babelPlugins,
@@ -50,6 +58,7 @@ export default (lila, webpack, { cmd, config }) => {
         }),
         urlLoader({ extensions }),
         htmlLoader(),
+        vueLoader(),
         cssLoader(isBuild),
         lessLoader(isBuild),
         sassLoader(isBuild),

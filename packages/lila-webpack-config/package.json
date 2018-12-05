@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-config",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "config generator for lila webpack plugin",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -41,8 +41,9 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.4",
+    "babel-plugin-component": "^1.1.1",
     "babel-plugin-flow-runtime": "^0.17.0",
-    "babel-plugin-import": "^1.9.1",
+    "babel-plugin-import": "^1.11.0",
     "css-loader": "^1.0.0",
     "file-loader": "^2.0.0",
     "flow-runtime": "^0.17.0",
@@ -58,9 +59,13 @@
     "postcss-loader": "^3.0.0",
     "rd": "^2.0.1",
     "sass-loader": "^7.1.0",
+    "speed-measure-webpack-plugin": "^1.2.3",
     "style-loader": "^0.23.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
-    "url-loader": "^1.1.1"
+    "url-loader": "^1.1.1",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.17",
+    "webpackbar": "^3.1.3"
   },
   "devDependencies": {
     "webpack": "^4.20.2",

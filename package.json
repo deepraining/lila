@@ -20,6 +20,7 @@
     "build:rollup": "npm run build -- --name rollup",
     "build:rollup-config": "npm run build -- --name rollup-config",
     "build:all": "npm run build -- --name all",
+    "clean": "rimraf packages/*/lib",
     "test": "jest packages/*/test",
     "test:core": "jest packages/lila-core/test"
   },
@@ -43,6 +44,7 @@
     "minimist": "^1.2.0",
     "prettier": "^1.14.3",
     "rd": "^2.0.1",
+    "rimraf": "^2.6.2",
     "rollup": "^0.66.2",
     "rollup-plugin-json": "^3.1.0"
   },
