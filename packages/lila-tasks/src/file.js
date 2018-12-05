@@ -32,7 +32,7 @@ export const make = ({ args, lila }) => cb => {
   const filePath = join(root, file);
 
   if (existsSync(filePath) && !force) {
-    warn('task skipped: file existed');
+    warn(`task skipped: file ${file} existed`);
     return cb();
   }
 
@@ -75,7 +75,7 @@ export const replace = ({ args, lila }) => cb => {
   const filePath = join(root, file);
 
   if (!existsSync(filePath)) {
-    warn('task skipped: file not exist');
+    warn(`task skipped: file ${file} not existed`);
     return cb();
   }
 
@@ -122,7 +122,7 @@ export const insert = ({ args, lila }) => cb => {
   const filePath = join(root, file);
 
   if (!existsSync(filePath)) {
-    warn('task skipped: file not exist');
+    warn(`task skipped: file ${file} not existed`);
     return cb();
   }
 
@@ -167,7 +167,7 @@ export const convert = ({ args, lila }) => cb => {
   const filePath = join(root, file);
 
   if (!existsSync(filePath)) {
-    warn('task skipped: file not exist');
+    warn(`task skipped: file ${file} not existed`);
     return cb();
   }
 
@@ -204,7 +204,7 @@ export const backup = ({ args, lila }) => cb => {
   const filePath = join(root, file);
 
   if (!existsSync(filePath)) {
-    warn('task skipped: file not exist');
+    warn(`task skipped: file ${file} not existed`);
     return cb();
   }
 

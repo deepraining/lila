@@ -40,16 +40,16 @@ export const move = ({ args, lila }) => cb => {
   const targetPath = join(root, target);
 
   if (!existsSync(sourcePath)) {
-    warn('task skipped: source not exist');
+    warn(`task skipped: source ${source} not exist`);
     return cb();
   }
 
   if (existsSync(targetPath) && !force) {
-    warn('task skipped: target existed');
+    warn(`task skipped: target ${target} existed`);
     return cb();
   }
 
-  moveSync(sourcePath, targetPath);
+  moveSync(sourcePath, targetPath, { overwrite: !0 });
 
   return cb();
 };
@@ -87,16 +87,16 @@ export const copy = ({ args, lila }) => cb => {
   const targetPath = join(root, target);
 
   if (!existsSync(sourcePath)) {
-    warn('task skipped: source not exist');
+    warn(`task skipped: source ${source} not exist`);
     return cb();
   }
 
   if (existsSync(targetPath) && !force) {
-    warn('task skipped: target existed');
+    warn(`task skipped: target ${target} existed`);
     return cb();
   }
 
-  copySync(sourcePath, targetPath);
+  copySync(sourcePath, targetPath, { overwrite: !0 });
 
   return cb();
 };
