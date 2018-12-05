@@ -256,45 +256,45 @@ commander
 
 - `@param/keepUnknown`: `type: bool` `default: false` whether to keep unknown args which stored by the key `_`, see [minimist](https://github.com/substack/minimist)
 
-### `lila.log`: console.log
-
-### `lila.info`: console.info with `blue` color of [chalk](https://github.com/chalk/chalk)
-
-### `lila.warn`: console.warn with `yellow` color of [chalk](https://github.com/chalk/chalk)
-
-### `lila.error`: console.error with `red` color of [chalk](https://github.com/chalk/chalk)
-
-### `lila.plainLog`: console.log
-
-### `lila.plainInfo`: console.info
-
-### `lila.plainWarn`: console.warn
-
-### `lila.plainError`: console.error
-
-### `lila.colorLog`: console.log with custom color of [chalk](https://github.com/chalk/chalk)
+### `lila.log`:
 
 ```
-lila.colorLog(color, ...args);
+lila.log(...args)            =>   console.log(...args)
+lila.log(color, ...args)     =>   console.log(...chalk.color(args))
+lila.log(false, ...args)     =>   console.log(...args)
 ```
 
-### `lila.colorInfo`: console.info with custom color of [chalk](https://github.com/chalk/chalk)
+See [chalk](https://github.com/chalk/chalk).
+
+### `lila.info`:
 
 ```
-lila.colorInfo(color, ...args);
+lila.info(...args)           =>   console.info(...chalk.blueBright(args))
+lila.info(color, ...args)    =>   console.info(...chalk.color(args))
+lila.info(false, ...args)    =>   console.info(...args)
 ```
 
-### `lila.colorWarn`: console.warn with custom color of [chalk](https://github.com/chalk/chalk)
+See [chalk](https://github.com/chalk/chalk).
+
+### `lila.warn`:
 
 ```
-lila.colorWarn(color, ...args);
+lila.warn(...args)           =>   console.warn(...chalk.yellowBright(args))
+lila.warn(color, ...args)    =>   console.warn(...chalk.color(args))
+lila.warn(false, ...args)    =>   console.warn(...args)
 ```
 
-### `lila.colorError`: console.error with custom color of [chalk](https://github.com/chalk/chalk)
+See [chalk](https://github.com/chalk/chalk).
+
+### `lila.error`:
 
 ```
-lila.colorError(color, ...args);
+lila.error(...args)          =>   console.error(...chalk.redBright(args))
+lila.error(color, ...args)   =>   console.error(...chalk.color(args))
+lila.error(false, ...args)   =>   console.error(...args)
 ```
+
+See [chalk](https://github.com/chalk/chalk).
 
 ## built-in settings
 
