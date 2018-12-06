@@ -1,7 +1,7 @@
 import dev from './dev';
 import analyze from './analyze';
 import build from './build';
-import { getEntries, servePath } from './settings';
+import { makeGetEntries, servePath } from './settings';
 
 export default lila => {
   const { setSetting } = lila;
@@ -26,6 +26,6 @@ export default lila => {
     return webpackConfig;
   });
 
-  setSetting('getEntries', getEntries);
+  setSetting('getEntries', makeGetEntries(lila));
   setSetting('servePath', servePath);
 };
