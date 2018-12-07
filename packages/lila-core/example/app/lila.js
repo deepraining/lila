@@ -14,6 +14,21 @@ export default lila => {
   // lila.error('red', 'red error');
   // lila.error(false, 'plain error');
 
+  lila.setSetting('beforeTasks', args => {
+    lila.info('\n  tasks are about to start\n');
+    lila.log(`args: ${Object.keys(args).join(',')}\n`);
+  });
+
+  lila.setSetting('afterTasks', args => {
+    lila.success('\n  tasks finished\n');
+    lila.log(`args: ${Object.keys(args).join(',')}\n`);
+  });
+
+  lila.setSetting('errorTasks', args => {
+    lila.error('\n  error occurred\n');
+    lila.log(`args: ${Object.keys(args).join(',')}\n`);
+  });
+
   registerTask('log', ({ entry, args }) => cb => {
     console.log(`entry: ${entry}`);
     args.forEach(arg => {

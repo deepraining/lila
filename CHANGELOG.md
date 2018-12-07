@@ -2,6 +2,8 @@
 
 ## 0.5.4 [2018-12-06]
 
+- Add `lila.success` api.
+- Add `beforeTasks, afterTasks, errorTasks` settings.
 - Add `excludeEntries` setting.
 - Fix bug of `sub/*` not work.
 

@@ -50,7 +50,7 @@ export default lila => {
 ```
 {
   ...,
-  tasks: [ ... ], // tasks run by `lila.runTasks`
+  tasks: [ ... ],            // tasks run by `lila.runTasks`
 }
 ```
 
@@ -296,6 +296,16 @@ lila.error(false, ...args)   =>   console.error(...args)
 
 See [chalk](https://github.com/chalk/chalk).
 
+### `lila.success`:
+
+```
+lila.success(...args)        =>   console.log(...chalk.greenBright(args))
+lila.success(color, ...args) =>   console.log(...chalk.color(args))
+lila.success(false, ...args) =>   console.log(...args)
+```
+
+See [chalk](https://github.com/chalk/chalk).
+
 ## built-in settings
 
 - `src`: `type: string` `default: src` source directory name.
@@ -303,6 +313,34 @@ See [chalk](https://github.com/chalk/chalk).
 - `build`: `type: string` `default: build` build directory name.
 - `tmp`: `type: string` `default: .lila` tmp directory of project.
 - `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
+
+Extended settings:
+
+#### `beforeTasks`: before run tasks
+
+```
+({entries, argv, cmd, lila, gulp}) => { ... }
+```
+
+- `entries`: `type: []` all entries
+- `argv`: `type: {}` wrapped `process.argv`
+- `cmd`: `type: string` command name
+- `lila`: `type: {}` `lila-core` reference
+- `gulp`: `type: {}` [gulp#4](https://github.com/gulpjs/gulp/tree/4.0) reference
+
+#### `afterTasks`: after run tasks
+
+```
+({entries, argv, cmd, lila, gulp}) => { ... }
+```
+
+#### `errorTasks`: error occurred when run tasks
+
+```
+({entries, argv, cmd, lila, gulp, error}) => { ... }
+```
+
+- `error`: error object
 
 ## built-in commands
 

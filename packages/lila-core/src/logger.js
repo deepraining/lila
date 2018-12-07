@@ -87,3 +87,24 @@ export const error = (...args) => {
   // default color
   console.error(...makeArgs(args, 'redBright'));
 };
+
+export const success = (...args) => {
+  if (!args.length) return;
+
+  const [first, ...lastArgs] = args;
+
+  // plain log
+  if (first === false) {
+    console.log(...lastArgs);
+    return;
+  }
+
+  // custom color
+  if (typeof first === 'string' && chalk[first]) {
+    console.log(...makeArgs(lastArgs, first));
+    return;
+  }
+
+  // default color
+  console.log(...makeArgs(args, 'greenBright'));
+};
