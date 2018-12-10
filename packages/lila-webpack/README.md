@@ -91,7 +91,7 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 ### `getEntries`: get all entries under a dir
 
 ```
-dir => entries;
+(dirPath, srcPath, root) => entries
 ```
 
 ### `servePath`: get serve js file path for command `serve`(relative to `root`)

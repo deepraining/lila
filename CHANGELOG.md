@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.4 [2018-12-06]
+
+- Add `lila.success` api.
+- Add `beforeTasks, afterTasks, errorTasks` settings.
+- Add `excludeEntries` setting.
+- Fix bug of `sub/*` not work.
+
 ## 0.5.3 [2018-12-01]
 
 - Add `compile-js, compile-less, compile-scss` tasks.

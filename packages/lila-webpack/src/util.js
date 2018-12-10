@@ -51,18 +51,23 @@ export const makeServe = ({ root, devDir, servePath }) => (req, res, next) => {
  * @param entries
  * @param getEntries
  * @param srcPath
+ * @param root
  * @returns {Array}
  */
-export const getAllEntries = ({ entries, getEntries, srcPath }) => {
+export const getAllEntries = ({ entries, getEntries, srcPath, root }) => {
   const allEntries = [];
 
   entries.forEach(entry => {
     if (entry === '*' || entry === 'all')
-      allEntries.push(...(getEntries(srcPath) || []));
+      allEntries.push(...(getEntries(srcPath, srcPath) || []));
     else if (entry.slice(-2) === '/*')
-      allEntries.push(...(getEntries(join(srcPath, entry.slice(0, -2))) || []));
+      allEntries.push(
+        ...(getEntries(join(srcPath, entry.slice(0, -2)), srcPath, root) || [])
+      );
     else if (entry.slice(-4) === '/all')
-      allEntries.push(...(getEntries(join(srcPath, entry.slice(0, -4))) || []));
+      allEntries.push(
+        ...(getEntries(join(srcPath, entry.slice(0, -4)), srcPath, root) || [])
+      );
     else allEntries.push(entry);
   });
 

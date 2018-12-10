@@ -9,16 +9,56 @@ const { relative } = path;
 const { readDirFilterSync } = rd;
 
 // get all entries under a dir
-export const getEntries = dir => {
+export const makeGetEntries = lila => (dirPath, srcPath) => {
+  const { getSetting } = lila;
+  const excludeEntries = getSetting('excludeEntries');
+
   const entries = [];
-  readDirFilterSync(dir, dirPath => {
-    const htmlFile = `${dirPath}/index.html`;
-    const jsFile = `${dirPath}/index.js`;
+  readDirFilterSync(dirPath, subDirPath => {
+    const htmlFile = `${subDirPath}/index.html`;
+    const jsFile = `${subDirPath}/index.js`;
 
     // Both `index.html` and `index.js` existing, means this directory is an entry's workspace.
-    if (existsSync(htmlFile) && existsSync(jsFile)) {
-      entries.push(correctSlash(relative(dir, dirPath)));
+    if (!existsSync(htmlFile) || !existsSync(jsFile)) return;
+
+    const entry = correctSlash(relative(srcPath, subDirPath));
+
+    if (!excludeEntries) {
+      entries.push(entry);
+      return;
     }
+
+    const excludeType = typeof excludeEntries;
+
+    // function
+    if (excludeType === 'function') {
+      if (excludeEntries(entry)) return;
+    }
+    // string
+    else if (excludeType === 'string') {
+      if (entry === excludeEntries) return;
+    }
+    // RegExp
+    else if (excludeEntries instanceof RegExp) {
+      if (excludeEntries.test(entry)) return;
+    }
+    // array
+    else if (Array.isArray(excludeEntries)) {
+      for (let i = 0, il = excludeEntries.length; i < il; i += 1) {
+        const excludeEntry = excludeEntries[i];
+
+        // string
+        if (typeof excludeEntry === 'string') {
+          if (entry === excludeEntry) return;
+        }
+        // RegExp
+        else if (excludeEntry instanceof RegExp) {
+          if (excludeEntry.test(entry)) return;
+        }
+      }
+    }
+
+    entries.push(entry);
   });
   return entries;
 };

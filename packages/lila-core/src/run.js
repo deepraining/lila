@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import chalk from 'chalk';
-import { log, error } from './logger';
+import { success, error } from './logger';
 
 const { bold } = chalk;
 
@@ -21,14 +21,14 @@ const formatError = e => {
 // task start
 gulp.on('start', e => {
   const { name } = e;
-  log('greenBright', `\nstarting task ${bold(name)} ...\n`);
+  success(`\nstarting task ${bold(name)} ...\n`);
 });
 
 // task finish
 gulp.on('stop', e => {
   const { name } = e;
-  log('greenBright', `\nfinished task ${bold(name)}\n`);
-  log('greenBright', '=================================================== ok');
+  success(`\nfinished task ${bold(name)}\n`);
+  success('=================================================== ok');
 });
 
 // task error

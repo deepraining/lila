@@ -7,6 +7,8 @@ export default lila => {
   webpackPlugin(lila);
   webpackConfigPlugin(lila);
 
+  lila.setSetting('excludeEntries', [/\/exclude$/i]);
+
   return ({ entry }) => ({
     // devMiddleware: { writeToDisk: !0, watchOptions: { ignored: /node_modules/ } },
     tasks: [

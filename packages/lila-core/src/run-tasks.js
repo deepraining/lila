@@ -5,7 +5,12 @@ import run from './run';
 
 export default ({ entries, argv, cmd }, successCB, errorCB) => {
   const { lila } = app;
-  const { makeConfig } = lila;
+  const { makeConfig, getSettings } = lila;
+  const [beforeTasks, afterTasks, errorTasks] = getSettings([
+    'beforeTasks',
+    'afterTasks',
+    'errorTasks',
+  ]);
 
   const runTasks = [];
 
@@ -49,12 +54,21 @@ export default ({ entries, argv, cmd }, successCB, errorCB) => {
   });
 
   if (runTasks.length) {
+    if (typeof beforeTasks === 'function')
+      beforeTasks({ entries, argv, cmd, lila, gulp });
+
     run(
       runTasks,
       () => {
+        if (typeof afterTasks === 'function')
+          afterTasks({ entries, argv, cmd, lila, gulp });
+
         if (successCB) successCB();
       },
       err => {
+        if (typeof errorTasks === 'function')
+          errorTasks({ entries, argv, cmd, lila, gulp, error: err });
+
         if (errorCB) errorCB(err);
       }
     );

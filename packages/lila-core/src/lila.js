@@ -24,4 +24,4 @@ export { addCmdOption, getCmdOptions } from './cmd-options';
 
 export { makeArgv } from './util';
 
-export { log, info, warn, error } from './logger';
+export { log, info, warn, error, success } from './logger';
