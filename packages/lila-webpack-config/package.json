@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-config",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "config generator for lila webpack plugin",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
