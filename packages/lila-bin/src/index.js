@@ -11,6 +11,8 @@ const { join } = path;
 // in the first place
 commander.option('--core [core]', 'custom lila-core path');
 
+const cwd = process.cwd();
+
 let corePath;
 let corePkg;
 let core;
@@ -30,7 +32,10 @@ else {
      * @type {String}
      */
     const resolvedCore = require.resolve('lila-core', {
-      paths: [process.cwd()],
+      /**
+       * windows only find lila-core under cwd/node_modules, not cwd
+       */
+      paths: [cwd, join(cwd, 'node_modules')],
     });
     corePath = join(
       resolvedCore.split('node_modules')[0],
