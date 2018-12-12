@@ -12,6 +12,13 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2017,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
+  },
   overrides: [
     {
       files: ['test/**/*.js'],
