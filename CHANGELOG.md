@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.6 [2018-12-13]
+
+- Fix bug of `/` can get mock data.
+
 ## 0.5.5 [2018-12-11]
 
 - Add `lila.init.js`(`lila.js`), for windows.

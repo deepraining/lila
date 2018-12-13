@@ -155,7 +155,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
   const lastName = urls[urls.length - 1];
 
   // if have '.', will be treated as a static file
-  if (lastName.indexOf('.') < 0) {
+  if (url && lastName.indexOf('.') < 0) {
     const extraRoots = [];
     if (mockRoot) {
       if (typeof mockRoot === 'string') extraRoots.push(mockRoot);
