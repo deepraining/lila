@@ -11,4 +11,11 @@ module.exports = {
     parser: 'babel-eslint',
     ecmaVersion: 2017,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
+  },
 };
