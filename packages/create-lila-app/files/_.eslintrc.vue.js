@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   extends: ['plugin:vue/recommended', 'prettier'],
-  plugins: ['vue', 'prettier'],
+  plugins: ['vue', 'import', 'prettier'],
   env: {
     node: true,
     es6: true,
