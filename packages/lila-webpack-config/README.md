@@ -222,17 +222,6 @@ excludeEntries: entry => true
 
 `type: bool` `default: true`
 
-### `splitJs`: split one bundle js to many pieces
-
-`type: {}` `default: {}`
-
-```
-{
-  lib1: ['react', 'react-dom'],
-  lib2: ['jquery'],
-}
-```
-
 ### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config
 
 `type: string`

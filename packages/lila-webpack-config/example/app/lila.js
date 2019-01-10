@@ -39,12 +39,5 @@ export default lila => {
     // minHtmlOptions: {},
     // minCss: !1,
     // minJs: !1,
-    // splitJs: {
-    //   lib: ['react', 'react-dom'],
-    // },
-    // splitJs: {
-    //   lib1: ['react'],
-    //   lib2: ['react-dom'],
-    // },
   });
 };
