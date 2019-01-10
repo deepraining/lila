@@ -231,15 +231,6 @@ excludeEntries: entry => true
 - `cmd: dev, serve`: `eval-source-map`
 - `cmd: build, sync, start`: `source-map`
 
-### `extra`: extra webpack config options
-
-`type: {}/function` `default: {}`
-
-```
-extra: { ... }
-extra: webpack => ({ ... })
-```
-
 ### `rules`: extra webpack rules
 
 `type: []` `default: []`
@@ -251,6 +242,15 @@ extra: webpack => ({ ... })
 ### `splitChunks`: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) config
 
 `type: {}` `default: {chunks: 'all'}`
+
+### `extra`: extra webpack config options
+
+`type: {}/function` `default: {}`
+
+```
+extra: { ... }
+extra: webpack => ({ ... })
+```
 
 ## files of an entry
 

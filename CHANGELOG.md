@@ -2,6 +2,7 @@
 
 ## 0.5.6 [2018-12-13]
 
+- `lila-webpack-lib-config` add `extra` config option.
 - `lila-webpack-config` add `splitChunks, extra` config options.
 - `lila-webpack-config` remove `splitJs` config option.
 - Fix bug of `/` can get mock data.

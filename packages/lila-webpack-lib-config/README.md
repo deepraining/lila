@@ -192,6 +192,15 @@ If you want to customize packages' directory, , you can configure `lila.setSetti
 
 `type: []` `default: []`
 
+### `extra`: extra webpack config options
+
+`type: {}/function` `default: {}`
+
+```
+extra: { ... }
+extra: webpack => ({ ... })
+```
+
 ## files of an entry
 
 A entry has a standalone directory, also called workspace.
