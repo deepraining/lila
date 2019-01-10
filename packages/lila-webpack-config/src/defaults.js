@@ -30,3 +30,5 @@ export const defaultBrowsers = [
   'Firefox >= 20',
   'iOS 7',
 ];
+
+export const defaultSplitChunks = { chunks: 'all' };

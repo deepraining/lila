@@ -231,6 +231,15 @@ excludeEntries: entry => true
 - `cmd: dev, serve`: `eval-source-map`
 - `cmd: build, sync, start`: `source-map`
 
+### `extra`: extra webpack config options
+
+`type: {}/function` `default: {}`
+
+```
+extra: { ... }
+extra: webpack => ({ ... })
+```
+
 ### `rules`: extra webpack rules
 
 `type: []` `default: []`
@@ -238,6 +247,10 @@ excludeEntries: entry => true
 ### `plugins`: extra webpack plugins
 
 `type: []` `default: []`
+
+### `splitChunks`: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) config
+
+`type: {}` `default: {chunks: 'all'}`
 
 ## files of an entry
 
@@ -249,22 +262,22 @@ If entry is `@lila/index`, its workspace is `src`:
 
 ```
 |-- src/
-    |-- index.html
-    |-- index.js
+  |-- index.html
+  |-- index.js
 
-    |-- other files and directories
+  |-- other files and directories
 ```
 
 Others(entry is `home/about`), its workspace is `src/home/about`:
 
 ```
 |-- src/
-    |-- home/
-        |-- about/
-            |-- index.html
-            |-- index.js
+  |-- home/
+    |-- about/
+      |-- index.html
+      |-- index.js
 
-            |-- other files and directories
+      |-- other files and directories
 ```
 
 It's recommended to place all files of an entry to its workspace.

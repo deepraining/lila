@@ -32,9 +32,9 @@ However, you can customize your own project:
 
 ```
 |-- /
-    |-- src/
-    |-- dev/
-    |-- build/
+  |-- src/
+  |-- dev/
+  |-- build/
 ```
 
 - `src`: where to place source codes, like `html, css, less, js, ts, ...`
