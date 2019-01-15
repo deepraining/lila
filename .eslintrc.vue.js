@@ -1,15 +1,14 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
-  extends: ['airbnb-base', 'prettier'],
-  plugins: ['prettier', 'import', 'node', 'jest', 'flowtype'],
+  extends: ['plugin:vue/recommended', 'prettier'],
+  plugins: ['vue', 'import', 'node', 'prettier'],
   env: {
     node: true,
     es6: true,
     browser: true,
-    jest: true,
   },
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 2017,
   },
   settings: {
@@ -19,12 +18,4 @@ module.exports = {
       },
     },
   },
-  overrides: [
-    {
-      files: ['test/**/*.js'],
-      env: {
-        'jest/globals': true,
-      },
-    },
-  ],
 };
