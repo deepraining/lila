@@ -1,9 +1,8 @@
-import './style/css.css';
-import './style/less.less';
-import './style/scss.scss';
+import print from './flow';
 
-import './render.jsx';
-import './flow';
+print('hello');
+print(1);
 
 console.log('test');
-// console.log(hello.hi); // eslint-disable-line
+
+export default {};

@@ -6,27 +6,20 @@ export default lila => {
   const { setSetting } = lila;
 
   // setSetting('packages', 'pkgs');
-  // setSetting('src', 'components');
+  setSetting('src', 'components');
   setSetting('build', 'lib');
 
   tasksPlugin(lila);
   rollupPlugin(lila);
   rollupConfigPlugin(lila);
 
-  return ({ cmd }) => ({
+  return () => ({
     tasks: [
       // ['@lila/del', 'lib'],
       '@lila/rollup',
     ],
-    flow: !0,
-    flowRuntime: cmd === 'start',
-    // minCss: !1,
-    // minJs: !1,
-    // banner: '/* hello */',
-    // filename: 'hi',
-    // name: 'Demo',
-    external: ['react', 'react-dom'],
-    globals: { react: 'react', 'react-dom': 'react-dom' },
-    watch: ['src', 'demo'],
+    banner: '/* hello */',
+    filename: 'hi',
+    name: 'Demo',
   });
 };

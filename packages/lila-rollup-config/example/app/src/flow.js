@@ -1,8 +1,5 @@
 // @flow
 
-const print = (num: number) => {
+export default (num: number) => {
   console.log(num + num);
 };
-
-print('haha');
-print(1);

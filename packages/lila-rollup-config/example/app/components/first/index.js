@@ -1,3 +1,3 @@
-import './index.scss';
-
 console.log('first');
+
+export default {};
