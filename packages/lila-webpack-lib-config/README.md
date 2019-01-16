@@ -102,19 +102,19 @@ If you want to customize packages' directory, , you can configure `lila.setSetti
 ["component", { "libraryName": "element-ui"}, "element-ui"],
 
 
-[{ "libraryName": "element-ui"}, { "libraryName": "test-module"}]
+[{ "libraryName": "element-ui"}, { "libraryName": "mint-ui"}]
 =>
 ["component", { "libraryName": "element-ui"}]
-["component", { "libraryName": "test-module"}]
+["component", { "libraryName": "mint-ui"}]
 
 
 [
   [{ "libraryName": "element-ui"}, "element-ui"],
-  [{ "libraryName": "test-module"}, "test-module"]
+  [{ "libraryName": "mint-ui"}, "mint-ui"]
 ]
 =>
 ["component", { "libraryName": "element-ui"}, "element-ui"]
-["component", { "libraryName": "test-module"}, "test-module"]
+["component", { "libraryName": "mint-ui"}, "mint-ui"]
 ```
 
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
