@@ -42,15 +42,11 @@ export const compileJs = ({ args, gulp }) => () => {
 
   babelOptions.presets.unshift(
     ['@babel/preset-env', { modules }],
-    '@babel/preset-react',
     '@babel/preset-flow'
   );
 
-  babelOptions.plugins.unshift(
-    '@babel/plugin-transform-react-jsx',
-    '@babel/plugin-syntax-dynamic-import',
-    ...(transformRuntime ? ['@babel/plugin-transform-runtime'] : [])
-  );
+  if (transformRuntime)
+    babelOptions.plugins.unshift('@babel/plugin-transform-runtime');
 
   if (sourceMap)
     return gulp
