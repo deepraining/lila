@@ -7,11 +7,9 @@
     "publish": {
       "ignoreChanges": [
         "*.md",
-        "*.json",
         "*.txt",
         "test/**",
-        "example/**",
-        "package.json"
+        "example/**"
       ]
     },
     "bootstrap": {
