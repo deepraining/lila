@@ -355,7 +355,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 ## extended command line options
 
 - `--root`: custom root path
-- `--init`: custom init file, default `lila.js`
+- `--init`: custom init file, default `lila.js`(`lila.init.js` in windows)
 
 ## node packages
 
