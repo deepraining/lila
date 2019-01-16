@@ -20,24 +20,23 @@ commander
           choices: [
             {
               name:
-                'base: universal structure to work with webpack, rollup, next.js, ...',
+                'base: universal structure to work with webpack, rollup, ...',
               value: 'base',
               short: 'base',
             },
             {
-              name: 'webpack: ready-made structure to webpack application',
+              name: 'webpack: ready-made structure for webpack application',
               value: 'webpack',
               short: 'webpack',
             },
             {
               name:
-                'webpack-lib: ready-made structure to webpack library application',
+                'webpack-lib: ready-made structure for webpack library project',
               value: 'webpack-lib',
               short: 'webpack-lib',
             },
             {
-              name:
-                'rollup: ready-made structure to rollup library application',
+              name: 'rollup: ready-made structure for rollup library project',
               value: 'rollup',
               short: 'rollup',
             },
