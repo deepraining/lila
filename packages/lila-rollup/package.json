@@ -1,6 +1,6 @@
 {
   "name": "lila-rollup",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "lila rollup plugin for building a library",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
