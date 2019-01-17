@@ -1,3 +1,7 @@
+import print from '../.tmp/print';
+
+print();
+
 console.log('test');
 // console.log(hello.hi); // eslint-disable-line
 

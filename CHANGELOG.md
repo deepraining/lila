@@ -2,6 +2,7 @@
 
 ## 0.5.6 [2018-12-13]
 
+- `lila-webpack` add `beforeCommand` config option.
 - `lila-rollup-config` remove `alias, inject, ...` config options.
 - `lila-rollup` remove `start` command.
 - `lila-webpack-lib-config` add `extra` config option.

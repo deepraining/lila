@@ -1,4 +1,7 @@
+import fse from 'fs-extra';
 import webpackPlugin from '../../lib';
+
+const { outputFileSync } = fse;
 
 export default lila => {
   const { setSetting } = lila;
@@ -47,6 +50,17 @@ export default lila => {
 
     ['test']
   );
+
+  setSetting('beforeCommand', ({ cmd }) => {
+    console.log(`\ncmd: ${cmd}\n`);
+
+    outputFileSync(
+      `${__dirname}/.tmp/print.js`,
+      `
+      export default () => {console.log('cmd: ${cmd}')};
+    `
+    );
+  });
 
   webpackPlugin(lila);
 
