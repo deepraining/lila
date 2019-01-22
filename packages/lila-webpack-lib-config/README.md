@@ -40,13 +40,13 @@ If so, building structure will be as follows:
 
 ```
 |-- / root
-    |-- packages/ packages directory
-        |-- pkg1/ package 1
-            |-- src/
-            |-- build/
-        |-- pkg2/ package 2
-            |-- src/
-            |-- build/
+  |-- packages/ packages directory
+    |-- pkg1/ package 1
+      |-- src/
+      |-- build/
+    |-- pkg2/ package 2
+      |-- src/
+      |-- build/
 ```
 
 If you want to customize packages' directory, , you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
@@ -102,19 +102,19 @@ If you want to customize packages' directory, , you can configure `lila.setSetti
 ["component", { "libraryName": "element-ui"}, "element-ui"],
 
 
-[{ "libraryName": "element-ui"}, { "libraryName": "test-module"}]
+[{ "libraryName": "element-ui"}, { "libraryName": "mint-ui"}]
 =>
 ["component", { "libraryName": "element-ui"}]
-["component", { "libraryName": "test-module"}]
+["component", { "libraryName": "mint-ui"}]
 
 
 [
   [{ "libraryName": "element-ui"}, "element-ui"],
-  [{ "libraryName": "test-module"}, "test-module"]
+  [{ "libraryName": "mint-ui"}, "mint-ui"]
 ]
 =>
 ["component", { "libraryName": "element-ui"}, "element-ui"]
-["component", { "libraryName": "test-module"}, "test-module"]
+["component", { "libraryName": "mint-ui"}, "mint-ui"]
 ```
 
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
@@ -192,6 +192,15 @@ If you want to customize packages' directory, , you can configure `lila.setSetti
 
 `type: []` `default: []`
 
+### `extra`: extra webpack config options
+
+`type: {}/function` `default: {}`
+
+```
+extra: { ... }
+extra: webpack => ({ ... })
+```
+
 ## files of an entry
 
 A entry has a standalone directory, also called workspace.
@@ -206,19 +215,19 @@ If entry is `@lila/index`, its workspace is `src`:
 
 ```
 |-- src/
-    |-- index.js
+  |-- index.js
 
-    |-- other files and directories
+  |-- other files and directories
 ```
 
 Others(entry is `main`), its workspace is `src/main`:
 
 ```
 |-- src/
-    |-- main/
-        |-- index.js
+  |-- main/
+    |-- index.js
 
-        |-- other files and directories
+    |-- other files and directories
 ```
 
 ### for `start` command
@@ -230,10 +239,10 @@ If entry is `example`, its workspace is `example`:
 ```
 |-- src/
 |-- example/
-    |-- index.html
-    |-- index.js
+  |-- index.html
+  |-- index.js
 
-    |-- other files and directories
+  |-- other files and directories
 ```
 
 ## built-in rules

@@ -1,6 +1,6 @@
 {
   "name": "lila-rollup-config",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "config generator for lila rollup plugin",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -33,30 +33,13 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-react-jsx": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-plugin-component": "^1.1.1",
-    "babel-plugin-flow-runtime": "^0.17.0",
-    "babel-plugin-import": "^1.11.0",
-    "flow-runtime": "^0.17.0",
-    "less": "^3.8.1",
     "lodash": "^4.17.11",
-    "node-sass": "^4.9.3",
-    "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-fill-html": "^1.1.0",
-    "rollup-plugin-inject": "^2.2.0",
+    "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-node-globals": "^1.4.0",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-progress": "^0.4.0",
-    "rollup-plugin-uglify": "^3.0.0"
+    "rollup-plugin-progress": "^1.0.0"
   },
   "engines": {
     "node": ">=8.0.0"

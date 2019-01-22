@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.6 [2018-12-13]
+
+- `lila-webpack` add `beforeCommand` config option.
+- `lila-rollup-config` remove `alias, inject, ...` config options.
+- `lila-rollup` remove `start` command.
+- `lila-webpack-lib-config` add `extra` config option.
+- `lila-webpack-config` add `splitChunks, extra` config options.
+- `lila-webpack-config` remove `splitJs` config option.
+- Fix bug of `/` can get mock data.
+
 ## 0.5.5 [2018-12-11]
 
 - Add `lila.init.js`(`lila.js`), for windows.

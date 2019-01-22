@@ -20,11 +20,17 @@ export default lila => {
     ],
     cssModules: !0,
     cssModulesExclude: [/node_modules/, /src\/test/, /src\/vue/],
-    babelImport: { libraryName: 'antd', style: 'css' },
-    babelComponent: {
-      libraryName: 'element-ui',
-      styleLibraryName: 'theme-chalk',
-    },
+    babelImport: [
+      [{ libraryName: 'antd', style: 'css' }, 'ant'],
+      [{ libraryName: 'antd-mobile', style: 'css' }, 'ant-mobile'],
+    ],
+    babelComponent: [
+      [
+        { libraryName: 'element-ui', styleLibraryName: 'theme-chalk' },
+        'element-ui',
+      ],
+      [{ libraryName: 'mint-ui', style: true }, 'mint-ui'],
+    ],
     flow: !0,
     // flowRuntime: !0,
     alias: {
@@ -39,12 +45,5 @@ export default lila => {
     // minHtmlOptions: {},
     // minCss: !1,
     // minJs: !1,
-    // splitJs: {
-    //   lib: ['react', 'react-dom'],
-    // },
-    // splitJs: {
-    //   lib1: ['react'],
-    //   lib2: ['react-dom'],
-    // },
   });
 };

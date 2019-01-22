@@ -102,19 +102,19 @@ excludeEntries: entry => true
 ["component", { "libraryName": "element-ui"}, "element-ui"],
 
 
-[{ "libraryName": "element-ui"}, { "libraryName": "test-module"}]
+[{ "libraryName": "element-ui"}, { "libraryName": "mint-ui"}]
 =>
 ["component", { "libraryName": "element-ui"}]
-["component", { "libraryName": "test-module"}]
+["component", { "libraryName": "mint-ui"}]
 
 
 [
   [{ "libraryName": "element-ui"}, "element-ui"],
-  [{ "libraryName": "test-module"}, "test-module"]
+  [{ "libraryName": "mint-ui"}, "mint-ui"]
 ]
 =>
 ["component", { "libraryName": "element-ui"}, "element-ui"]
-["component", { "libraryName": "test-module"}, "test-module"]
+["component", { "libraryName": "mint-ui"}, "mint-ui"]
 ```
 
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
@@ -222,17 +222,6 @@ excludeEntries: entry => true
 
 `type: bool` `default: true`
 
-### `splitJs`: split one bundle js to many pieces
-
-`type: {}` `default: {}`
-
-```
-{
-  lib1: ['react', 'react-dom'],
-  lib2: ['jquery'],
-}
-```
-
 ### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config
 
 `type: string`
@@ -250,6 +239,19 @@ excludeEntries: entry => true
 
 `type: []` `default: []`
 
+### `splitChunks`: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) config
+
+`type: {}` `default: {chunks: 'all'}`
+
+### `extra`: extra webpack config options
+
+`type: {}/function` `default: {}`
+
+```
+extra: { ... }
+extra: webpack => ({ ... })
+```
+
 ## files of an entry
 
 A entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
@@ -260,22 +262,22 @@ If entry is `@lila/index`, its workspace is `src`:
 
 ```
 |-- src/
-    |-- index.html
-    |-- index.js
+  |-- index.html
+  |-- index.js
 
-    |-- other files and directories
+  |-- other files and directories
 ```
 
 Others(entry is `home/about`), its workspace is `src/home/about`:
 
 ```
 |-- src/
-    |-- home/
-        |-- about/
-            |-- index.html
-            |-- index.js
+  |-- home/
+    |-- about/
+      |-- index.html
+      |-- index.js
 
-            |-- other files and directories
+      |-- other files and directories
 ```
 
 It's recommended to place all files of an entry to its workspace.

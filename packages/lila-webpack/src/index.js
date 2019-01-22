@@ -17,7 +17,11 @@ export default lila => {
     getSettings,
     getCmdOptions,
   } = lila;
-  const [root, srcDir] = getSettings(['root', 'src']);
+  const [root, srcDir, beforeCommand] = getSettings([
+    'root',
+    'src',
+    'beforeCommand',
+  ]);
   const srcPath = join(root, srcDir);
 
   // add dev command
@@ -33,6 +37,9 @@ export default lila => {
 
     command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
+
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'dev', argv, lila });
 
       dev({ entry, argv, lila });
     });
@@ -58,6 +65,9 @@ export default lila => {
 
       if (!servePath) throw new Error("setting [servePath] hasn't been set");
 
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'serve', argv, lila });
+
       dev({ entry, argv, lila, serve: !0, servePath });
     });
   });
@@ -77,12 +87,16 @@ export default lila => {
       // getEntries should load here
       const [getEntries] = getSettings(['getEntries']);
       const realEntries = entries.length ? entries : [defaultEntry];
+      const argv = makeArgv(options);
+
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'build', argv, lila });
 
       runTasks({
         entries: getEntries
           ? getAllEntries({ entries: realEntries, getEntries, srcPath, root })
           : realEntries,
-        argv: makeArgv(options),
+        argv,
         cmd: 'build',
       });
     });
@@ -103,12 +117,16 @@ export default lila => {
       // getEntries should load here
       const [getEntries] = getSettings(['getEntries']);
       const realEntries = entries.length ? entries : [defaultEntry];
+      const argv = makeArgv(options);
+
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'sync', argv, lila });
 
       runTasks({
         entries: getEntries
           ? getAllEntries({ entries: realEntries, getEntries, srcPath, root })
           : realEntries,
-        argv: makeArgv(options),
+        argv,
         cmd: 'sync',
       });
     });
@@ -129,6 +147,10 @@ export default lila => {
 
     command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
+
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'start', argv, lila });
+
       runTasks(
         {
           entries: [entry],
@@ -155,6 +177,9 @@ export default lila => {
 
     command.action((entry = defaultEntry, options) => {
       const argv = makeArgv(options);
+
+      if (typeof beforeCommand === 'function')
+        beforeCommand({ cmd: 'analyze', argv, lila });
 
       analyze({ entry, argv, lila });
     });

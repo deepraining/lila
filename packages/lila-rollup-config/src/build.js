@@ -1,11 +1,12 @@
 import path from 'path';
+import babel from 'rollup-plugin-babel';
+import json from 'rollup-plugin-json';
 import progress from 'rollup-plugin-progress';
-import base from './base';
 import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default (lila, rollup, { entry, cmd, config }) => {
+export default (lila, rollup, { entry, config }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir, packages = !1] = getSettings([
     'root',
@@ -16,11 +17,13 @@ export default (lila, rollup, { entry, cmd, config }) => {
   const srcPath = join(root, srcDir);
   const buildPath = join(root, buildDir);
 
-  const { filename = '', name = 'Index', banner, external, globals } = config;
-
-  const baseConfig = base(lila, rollup, { entry, cmd, config });
-
-  baseConfig.plugins.push(progress());
+  const {
+    filename = '',
+    name = 'Index',
+    banner,
+    babelPresets = [],
+    babelPlugins = [],
+  } = config;
 
   let entryPath =
     entry === defaultEntry
@@ -60,11 +63,17 @@ export default (lila, rollup, { entry, cmd, config }) => {
         format: 'umd',
         banner,
         name,
-        globals,
         sourcemap: !0,
       },
     ],
-    external,
-    ...baseConfig,
+    plugins: [
+      json(),
+      babel({
+        exclude: /node_modules/,
+        presets: ['@babel/preset-env', '@babel/preset-flow', ...babelPresets],
+        plugins: babelPlugins,
+      }),
+      progress(),
+    ],
   };
 };

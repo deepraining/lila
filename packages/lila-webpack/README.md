@@ -110,6 +110,17 @@ export default (content, req) => newContent;
 - `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
 - `newContent`: new html content
 
+### `beforeCommand`: pre handling before each command starting
+
+```
+({cmd, argv, lila}) => { ... }
+```
+
+If you want to make some pre handling, you can do it here, like:
+
+- use [chokidar](https://github.com/paulmillr/chokidar) to watch files' changes, and generate js files dynamically
+- do some initializations or print some messages
+
 ## extended configs
 
 ### `forceGet`: force all ajax methods as `get`

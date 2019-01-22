@@ -119,21 +119,18 @@ const getTasks = entry => {
 
   if (entry === 'compile-js') {
     return [
+      ['@lila/compile-js', { src: 'compile/**/*.js', dest: 'compile-es' }],
       [
         '@lila/compile-js',
-        { src: 'compile/**/*.{js,jsx}', dest: 'compile-es' },
+        { src: 'compile/**/*.js', dest: 'compile-cjs', modules: 'cjs' },
       ],
       [
         '@lila/compile-js',
-        { src: 'compile/**/*.{js,jsx}', dest: 'compile-cjs', modules: 'cjs' },
+        { src: 'compile/**/*.js', dest: 'compile-amd', modules: 'amd' },
       ],
       [
         '@lila/compile-js',
-        { src: 'compile/**/*.{js,jsx}', dest: 'compile-amd', modules: 'amd' },
-      ],
-      [
-        '@lila/compile-js',
-        { src: 'compile/**/*.{js,jsx}', dest: 'compile-umd', modules: 'umd' },
+        { src: 'compile/**/*.js', dest: 'compile-umd', modules: 'umd' },
       ],
     ];
   }

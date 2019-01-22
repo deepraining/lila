@@ -1,4 +1,3 @@
-import start from './start';
 import task from './task';
 import { defaultEntry } from '../../../util/constants';
 
@@ -12,24 +11,6 @@ export default lila => {
     getCmdOptions,
   } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
-
-  // add start command
-  addCommand(commander => {
-    const command = commander
-      .command('start <entry>')
-      .description('start a local server to develop an entry')
-      .allowUnknownOption();
-
-    getCmdOptions('start').forEach(value => {
-      command.option(...value);
-    });
-
-    command.action((entry, options) => {
-      const argv = makeArgv(options);
-
-      start({ entry, argv, lila });
-    });
-  });
 
   // add build command
   addCommand(commander => {

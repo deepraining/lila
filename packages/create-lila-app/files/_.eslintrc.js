@@ -1,7 +1,7 @@
 module.exports = {
   root: true,
   parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier', 'import', 'node', 'jest', 'flowtype'],
   env: {
     node: true,
@@ -11,6 +11,13 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: 2017,
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.vue'],
+      },
+    },
   },
   overrides: [
     {

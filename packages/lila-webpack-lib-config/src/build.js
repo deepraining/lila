@@ -36,7 +36,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     new SpeedMeasurePlugin(),
     // css standalone
     new MiniCssExtractPlugin({
-      filename: `${filename || 'css'}.css`,
+      filename: `${filename || 'style'}.css`,
     })
   );
 

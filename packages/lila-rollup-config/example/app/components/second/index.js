@@ -1,3 +1,3 @@
-import './index.scss';
-
 console.log('second');
+
+export default {};

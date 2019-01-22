@@ -1,4 +1,3 @@
-import start from './start';
 import build from './build';
 import { makeGetEntries } from './settings';
 
@@ -9,8 +8,6 @@ export default lila => {
   setSetting('rollupConfigGenerator', rollup => ({ entry, cmd, config }) => {
     let rollupConfig = {};
 
-    if (cmd === 'start')
-      rollupConfig = start(lila, rollup, { entry, cmd, config });
     if (cmd === 'build')
       rollupConfig = build(lila, rollup, { entry, cmd, config });
 

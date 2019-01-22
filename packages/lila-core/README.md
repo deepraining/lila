@@ -116,7 +116,7 @@ lila.registerTask(name, generator);
 
 #### `generator`: task generator
 
-Generate a gulp task callback. See [gulptaskname-fn](https://github.com/gulpjs/gulp/blob/4.0/docs/API.md#gulptaskname-fn).
+Generate a gulp task callback. See [taskFunction](https://gulpjs.com/docs/en/api/task#signature).
 
 ```
 ({ entry, args, argv, cmd, config, lila, gulp }) => gulp-task-callback;
@@ -128,7 +128,7 @@ Generate a gulp task callback. See [gulptaskname-fn](https://github.com/gulpjs/g
 - `@param/options.cmd`: `type: string` command name
 - `@param/options.config`: `type: {}` config of current entry
 - `@param/options.lila`: `type: {}` `lila-core` reference
-- `@param/options.gulp`: `type: {}` [gulp#4](https://github.com/gulpjs/gulp/tree/4.0) reference
+- `@param/options.gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) reference
 
 ### `lila.unregisterTask`: unregister a task generator
 
@@ -326,7 +326,7 @@ Extended settings:
 - `argv`: `type: {}` wrapped `process.argv`
 - `cmd`: `type: string` command name
 - `lila`: `type: {}` `lila-core` reference
-- `gulp`: `type: {}` [gulp#4](https://github.com/gulpjs/gulp/tree/4.0) reference
+- `gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) reference
 
 #### `afterTasks`: after run tasks
 
@@ -355,7 +355,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 ## extended command line options
 
 - `--root`: custom root path
-- `--init`: custom init file, default `lila.js`
+- `--init`: custom init file, default `lila.js`(`lila.init.js` in windows)
 
 ## node packages
 

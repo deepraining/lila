@@ -1,3 +1,4 @@
+import merge from 'webpack-merge';
 import start from './start';
 import build from './build';
 import { makeGetEntries } from './settings';
@@ -7,6 +8,10 @@ export default lila => {
   const [packages = !1] = getSettings(['packages']);
 
   setSetting('webpackConfigGenerator', webpack => ({ entry, cmd, config }) => {
+    const { extra } = config;
+    const extraWebpackConfig =
+      typeof extra === 'function' ? extra(webpack) : extra;
+
     let webpackConfig = {};
 
     if (cmd === 'start')
@@ -21,7 +26,9 @@ export default lila => {
     if (plugins.length && webpackConfig.plugins)
       webpackConfig.plugins.push(...plugins);
 
-    return webpackConfig;
+    return extraWebpackConfig
+      ? merge(webpackConfig, extraWebpackConfig)
+      : webpackConfig;
   });
 
   setSetting('getEntries', makeGetEntries(packages));

@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-lib",
-  "version": "0.5.3",
+  "version": "0.5.6",
   "description": "lila webpack plugin for building a library",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -33,15 +33,15 @@
   ],
   "scripts": {},
   "dependencies": {
-    "browser-sync": "^2.24.7",
-    "fs-extra": "^7.0.0",
+    "browser-sync": "^2.26.3",
+    "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
-    "webpack": "^4.20.2",
-    "webpack-dev-middleware": "^3.4.0",
-    "webpack-hot-middleware": "^2.24.2"
+    "webpack": "^4.28.4",
+    "webpack-dev-middleware": "^3.5.0",
+    "webpack-hot-middleware": "^2.24.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.2.2",
     "@babel/plugin-transform-modules-commonjs": "^7.2.0"
   },
   "engines": {

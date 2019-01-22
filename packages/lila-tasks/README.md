@@ -127,7 +127,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/sync', {src, server, remotePath}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)(globs relative to `root`)
+- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)(globs relative to `root`)
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 
@@ -186,8 +186,8 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/compile-js', {src, dest, options, modules, transformRuntime, sourceMap}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
-- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)
+- `dest`: `type: string` [gulp.dest](https://gulpjs.com/docs/en/api/dest)
 - `options`: `type: {}` extra [babel](https://babeljs.io) options
 - `modules`: `type: bool/string` `default: false` [babel-preset-env#modules](https://babeljs.io/docs/en/babel-preset-env#modules)
 - `transformRuntime`: `type: bool` `default: true` whether use [@babel/plugin-transform-runtime](https://babeljs.io/docs/en/babel-plugin-transform-runtime)
@@ -199,8 +199,8 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/compile-less', {src, dest, options, sourceMap}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
-- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)
+- `dest`: `type: string` [gulp.dest](https://gulpjs.com/docs/en/api/dest)
 - `options`: `type: {}` `default: {}` [gulp-less](https://github.com/gulp-community/gulp-less) options
 - `sourceMap`: `type: bool` `default: false` whether generate sourcemaps
 
@@ -210,8 +210,8 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/compile-scss', {src, dest, options, sourceMap}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://github.com/gulpjs/gulp/blob/v4.0.0/docs/API.md#gulpsrcglobs-options)
-- `dest`: `type: string` [gulp.dest](https://github.com/gulpjs/gulp/blob/master/docs/api/dest.md)
+- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)
+- `dest`: `type: string` [gulp.dest](https://gulpjs.com/docs/en/api/dest)
 - `options`: `type: {}` `default: {}` [gulp-sass](https://github.com/dlmanning/gulp-sass) options
 - `sourceMap`: `type: bool` `default: false` whether generate sourcemaps
 
