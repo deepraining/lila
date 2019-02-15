@@ -4,29 +4,110 @@ Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://g
 
 ## packages
 
-- [create-lila-app](./packages/create-lila-app): create a lila application
-- [lila-bin](./packages/lila-bin): lila command line
+- [create-lila-app](./packages/create-lila-app): tool to create a lila application
+- [lila-bin](./packages/lila-bin): lila command line tool
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
-- [lila-webpack](./packages/lila-webpack): webpack plugin for lila
-- [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for webpack plugin
-- [lila-webpack-lib](./packages/lila-webpack-lib): webpack plugin for building a library
-- [lila-webpack-lib-config](./packages/lila-webpack-lib-config): built-in webpack config generator for webpack-lib plugin
-- [lila-rollup](./packages/lila-rollup): rollup plugin for building a library
-- [lila-rollup-config](./packages/lila-rollup-config): built-in rollup config generator for rollup plugin
+- [lila-webpack](./packages/lila-webpack): wrapped base webpack plugin
+- [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for `lila-webpack`
+- [lila-webpack-lib](./packages/lila-webpack-lib): wrapped base webpack plugin for building a library
+- [lila-webpack-lib-config](./packages/lila-webpack-lib-config): built-in webpack config generator for `lila-webpack-lib`
+- [lila-rollup](./packages/lila-rollup): wrapped base rollup plugin for building a library
+- [lila-rollup-config](./packages/lila-rollup-config): built-in rollup config generator for `lila-rollup`
 
 ## setup
 
-You can install [create-lila-app](./packages/create-lila-app) to create a lila application.
+It's strongly recommended to install [create-lila-app](./packages/create-lila-app) to create a lila application.
 
-However, you can customize your own project:
+```
+npm i -g create-lila-app
 
-1. Install [lila-bin](./packages/lila-bin). If installed globally, you can run lila commands directly in terminal, and if installed locally, you can run lila commands directly by `npm run`.
-2. Install [lila-core](./packages/lila-core) and [lila-tasks](./packages/lila-tasks) locally. You should not import `lila-core` directly, like `import lila from 'lila-core'`, but `export default lila => { ... }` in `lila.js`(`lila.init.js` in windows) or plugin.
-3. Choose appropriate plugins.
-   - If build a project, it's recommended to choose [lila-webpack](./packages/lila-webpack) and [lila-webpack-config](./packages/lila-webpack-config).
-   - If build a library, it's recommended to choose [lila-rollup](./packages/lila-rollup) and [lila-rollup-config](./packages/lila-rollup-config). Alternatively, you can also choose [lila-webpack-lib](./packages/lila-webpack-lib) and [lila-webpack-lib-config](./packages/lila-webpack-lib-config).
-4. Configure init file `lila.js`(`lila.init.js` in windows).
+create-lila-app <project-directory>
+```
+
+However, you can also customize your own project:
+
+#### 1. install lila-bin
+
+```
+npm install lila-bin -g                # global
+
+npm install lila-bin --save-dev        # local
+```
+
+If installed globally, you can run lila commands directly in terminal, like:
+
+```
+lila run
+```
+
+and if installed locally, you can run lila commands by [npm-scripts](https://docs.npmjs.com/misc/scripts):
+
+```
+# package.json
+
+"scripts": {
+  "run": "lila run"
+}
+```
+
+#### 2. install lila-core and lila-tasks
+
+```
+npm install lila-core lila-tasks --save-dev
+```
+
+#### 3. choose appropriate plugins
+
+If build a project, it's recommended to choose [lila-webpack](./packages/lila-webpack) and [lila-webpack-config](./packages/lila-webpack-config).
+
+```
+npm install lila-webpack lila-webpack-config --save-dev
+```
+
+If build a library, it's recommended to choose [lila-webpack-lib](./packages/lila-webpack-lib) and [lila-webpack-lib-config](./packages/lila-webpack-lib-config).
+
+```
+npm install lila-webpack-lib lila-webpack-lib-config --save-dev
+```
+
+If build a pure javascript library, it's recommended to choose [lila-rollup](./packages/lila-rollup) and [lila-rollup-config](./packages/lila-rollup-config).
+
+```
+npm install lila-rollup lila-webpack-rollup --save-dev
+```
+
+#### 4. configure init file
+
+Configure init file `lila.js`(`lila.init.js` in windows).
+
+```
+// lila-core should not be imported directly
+
+import tasksPlugin from 'lila-tasks';
+import webpackPlugin from 'lila-webpack';
+import webpackConfigPlugin from 'lila-webpack-config';
+
+// here should export a function
+export default lila => {
+
+  // do some init actions
+
+  tasksPlugin(lila);
+  webpackPlugin(lila);
+  webpackConfigPlugin(lila);
+
+  // here return a config generator
+  return ({ entry, argv, cmd }) => {
+
+    // make a config according to `entry, argv, cmd`
+    const config = { ... }
+
+    // return a config object
+    return config;
+  };
+}
+```
 
 ## base directory structure
 

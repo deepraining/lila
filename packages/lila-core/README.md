@@ -357,6 +357,10 @@ If `entry` is not provided, `@lila/index` will be used as default.
 - `--root`: custom root path
 - `--init`: custom init file, default `lila.js`(`lila.init.js` in windows)
 
+## note
+
+You should not import `lila-core` directly, like `import lila from 'lila-core'`, but `export default lila => { ... }` in `lila.js`(`lila.init.js` in windows) or plugin.
+
 ## node packages
 
 - [gulp](https://github.com/gulpjs/gulp): 4.x
