@@ -1,4 +1,4 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack-lib';
 import webpackConfigPlugin from 'lila-webpack-lib-config';

@@ -41,6 +41,35 @@ export default ({ dir, type }) => {
     outputFileSync(targetFile, content);
   };
 
+  const copyPkg = () => {
+    const sourceFile = join(source, `_package.json`);
+    const targetFile = join(target, 'package.json');
+
+    let content = readFileSync(sourceFile, 'utf8');
+
+    content = content.replace('[project-name]', dir);
+
+    if (type === 'webpack-lib' || type === 'rollup') {
+      content = content.replace(
+        '"placeholder": "placeholder",',
+        `"main": "build/cjs.js",
+  "module": "build/m.js",
+  "umd:main": "build/umd.js",
+  "amd:main": "build/amd.js",
+  "files": [
+    "build"
+  ],`
+      );
+    } else {
+      content = content.replace(
+        '"placeholder": "placeholder",',
+        '"private": true,'
+      );
+    }
+
+    outputFileSync(targetFile, content);
+  };
+
   copy({ file: '.editorconfig' });
   copy({ file: '.eslintignore' });
   copy({ file: '.eslintrc.js' });
@@ -54,8 +83,10 @@ export default ({ dir, type }) => {
   copy({ file: '.stylelintrc.js' });
   copy({ file: 'CHANGELOG.md' });
   copy({ file: 'jest.config.js' });
-  copy({ file: 'package.json', replace: !0 });
+  // copy({ file: 'package.json', replace: !0 });
   copy({ file: 'README.md', replace: !0 });
+
+  copyPkg();
 
   copy({ file: 'lila.js', srcFile: `lila-${type}.js` });
 
