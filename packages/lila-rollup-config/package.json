@@ -1,7 +1,7 @@
 {
   "name": "lila-rollup-config",
   "version": "0.5.6",
-  "description": "config generator for lila rollup plugin",
+  "description": "built-in rollup config generator for lila-rollup",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
   "homepage": "https://github.com/senntyou/lila",
@@ -12,17 +12,13 @@
   "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-rollup-config",
   "keywords": [
     "web",
-    "frontend",
     "build",
     "tool",
     "teamwork",
-    "automatic",
     "babel",
     "webpack",
     "rollup",
-    "parcel",
-    "gulp",
-    "browser-sync"
+    "gulp"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"

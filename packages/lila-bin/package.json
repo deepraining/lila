@@ -1,7 +1,7 @@
 {
   "name": "lila-bin",
   "version": "0.5.6",
-  "description": "lila command line",
+  "description": "lila command line tool",
   "main": "lib/index.js",
   "bin": {
     "lila": "./bin/lila.js"
@@ -15,17 +15,13 @@
   "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-bin",
   "keywords": [
     "web",
-    "frontend",
     "build",
     "tool",
     "teamwork",
-    "automatic",
     "babel",
     "webpack",
     "rollup",
-    "parcel",
-    "gulp",
-    "browser-sync"
+    "gulp"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"

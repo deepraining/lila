@@ -1,6 +1,6 @@
 # create-lila-app
 
-Command line tool to create a lila application.
+Tool to create a lila application.
 
 ## install
 

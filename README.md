@@ -8,11 +8,11 @@ Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://g
 - [lila-bin](./packages/lila-bin): lila command line tool
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
-- [lila-webpack](./packages/lila-webpack): wrapped base webpack plugin
+- [lila-webpack](./packages/lila-webpack): wrapped webpack plugin
 - [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for `lila-webpack`
-- [lila-webpack-lib](./packages/lila-webpack-lib): wrapped base webpack plugin for building a library
+- [lila-webpack-lib](./packages/lila-webpack-lib): wrapped webpack plugin for building a library
 - [lila-webpack-lib-config](./packages/lila-webpack-lib-config): built-in webpack config generator for `lila-webpack-lib`
-- [lila-rollup](./packages/lila-rollup): wrapped base rollup plugin for building a library
+- [lila-rollup](./packages/lila-rollup): wrapped rollup plugin for building a library
 - [lila-rollup-config](./packages/lila-rollup-config): built-in rollup config generator for `lila-rollup`
 
 ## setup
@@ -74,7 +74,7 @@ npm install lila-webpack-lib lila-webpack-lib-config --save-dev
 If build a pure javascript library, it's recommended to choose [lila-rollup](./packages/lila-rollup) and [lila-rollup-config](./packages/lila-rollup-config).
 
 ```
-npm install lila-rollup lila-webpack-rollup --save-dev
+npm install lila-rollup lila-rollup-config --save-dev
 ```
 
 #### 4. configure init file
@@ -112,17 +112,24 @@ export default lila => {
 ## base directory structure
 
 ```
-|-- /
-  |-- src/
-  |-- dev/
-  |-- build/
+- src/
+- dev/
+- build/
 ```
 
-- `src`: where to place source codes, like `html, css, less, js, ts, ...`
-- `dev`: a temporary directory generated while developing
-- `build`: where production bundles will be placed
+- `src`: where to place source codes, like `html, css, less, scss, js, ts, ...`
+- `dev`: a temporary directory, generated while developing
+- `build`: where to generate production bundles
 
-If you want custom names, you can modify them by `lila.setSettings({src, dev, build})`.
+If you want custom names, you can modify them by:
+
+```
+lila.setSettings({
+  src: yourSrcDir,
+  dev: yourDevDir,
+  build: yourBuildDir,
+})
+```
 
 ## how to write plugins
 
