@@ -1,6 +1,6 @@
 # lila-webpack
 
-Lila webpack plugin.
+Wrapped webpack plugin.
 
 ## install
 
@@ -39,6 +39,8 @@ lila serve entry
 ```
 
 If `entry` is not provided, `@lila/index` will be used as default.
+
+Need `servePath` setting to work with.
 
 ### `build`: pack source codes to production bundles
 
@@ -80,13 +82,15 @@ If `entry` is not provided, `@lila/index` will be used as default.
 '@lila/webpack'
 ```
 
-## extended settings
+## settings need to be extended
 
 ### `webpackConfigGenerator`: generate webpack config
 
 ```
 webpack => ({entry, args, argv, cmd, config, lila}) => config
 ```
+
+## settings can to be extended
 
 ### `getEntries`: get all entries under a dir
 
@@ -100,7 +104,7 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 (entry, srcDir) => path
 ```
 
-serve js file:
+#### serve js file
 
 ```
 export default (content, req) => newContent;
@@ -181,12 +185,12 @@ Lila internally provide a convenient way to do that.
 
 If `url` try to get a mock data from `/src/one/page/mock/list.js` file, lila will try urls in sequences as follows:
 
-1. `url`: try itself `/src/one/page/mock/list`
-2. `/mock/url`: try `mock` prefix
-3. `/${srcDir}/url`: try under src directory, you can use `/one/page/mock/list`
-4. `/${srcDir}/mock/url`: try `mock` prefix src directory
-5. `/${srcDir}/${entry}/url`: try under entry's workspace, you can use `/mock/list`
-6. `/${srcDir}/${entry}/mock/url`: try `mock` prefix under entry's workspace, you can use `/list`
+1. `${url}`: try itself `/src/one/page/mock/list`
+2. `/mock/${url}`: try `mock` prefix
+3. `/${srcDir}/${url}`: try under src directory, you can use `/one/page/mock/list`
+4. `/${srcDir}/mock/${url}`: try `mock` prefix src directory
+5. `/${srcDir}/${entry}/${url}`: try under entry's workspace, you can use `/mock/list`
+6. `/${srcDir}/${entry}/mock/${url}`: try `mock` prefix under entry's workspace, you can use `/list`
 
 If you want more convenient ways, you can add your own ways by `mockRoot`.
 

@@ -1,6 +1,6 @@
 # lila-webpack-config
 
-Config generator for lila webpack plugin.
+Built-in webpack config generator for `lila-webpack`.
 
 ## install
 
@@ -254,30 +254,30 @@ extra: webpack => ({ ... })
 
 ## files of an entry
 
-A entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
+An entry has a standalone directory(`src/home/about/` if entry `home/about`), also called workspace, and at least a `index.html` file and a `index.js` file under the workspace.
 
 If `entry` is not provided, `@lila/index` will be used as default.
 
 If entry is `@lila/index`, its workspace is `src`:
 
 ```
-|-- src/
-  |-- index.html
-  |-- index.js
+- src/
+  - index.html
+  - index.js
 
-  |-- other files and directories
+  - other files and directories
 ```
 
 Others(entry is `home/about`), its workspace is `src/home/about`:
 
 ```
-|-- src/
-  |-- home/
-    |-- about/
-      |-- index.html
-      |-- index.js
+- src/
+  - home/
+    - about/
+      - index.html
+      - index.js
 
-      |-- other files and directories
+      - other files and directories
 ```
 
 It's recommended to place all files of an entry to its workspace.
@@ -290,3 +290,9 @@ It's recommended to place all files of an entry to its workspace.
 - [css-loader](https://github.com/webpack-contrib/css-loader)
 - [less-loader](https://github.com/webpack-contrib/less-loader)
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
+
+## file extensions
+
+- `.js`: pure javascript code
+- `.jsx`: React component code
+- `.vue`: Vue component code

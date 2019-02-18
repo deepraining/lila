@@ -1,6 +1,6 @@
 # lila-rollup-config
 
-Config generator for lila rollup plugin.
+Built-in rollup config generator for `lila-rollup`.
 
 ## install
 
@@ -28,28 +28,28 @@ export default lila => {
 
 ### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
-`all, *` means all entries under `src`(`packages` if is packages mode) directory.
+`all, *` means all entries under `src`(`packages` if packages mode) directory.
 
-### `packages`: whether use packages mode
+### `packages`: whether to use packages mode
 
 `type: bool/string` `default: false`
 
-If you want packages mode(see [lerna](https://github.com/lerna/lerna)), you can configure `lila.setSetting('packages', true)`.
+If you want to use packages mode(see [lerna](https://github.com/lerna/lerna)), you can configure `lila.setSetting('packages', true)`.
 
-If so, building structure will be as follows:
+If so, directory structure will be as follows:
 
 ```
-|-- / root
-  |-- packages/ packages directory
-    |-- pkg1/ package 1
-      |-- src/
-      |-- build/
-    |-- pkg2/ package 2
-      |-- src/
-      |-- build/
+/ root
+  - packages/                # packages directory
+    - pkg1/                  # package 1
+      - src/
+      - build/
+    - pkg2/                  # package 2
+      - src/
+      - build/
 ```
 
-If you want to customize packages' directory, , you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
+If you want to customize packages' directory, you can configure it by `lila.setSetting('packages', 'yourCustomDirectory')`.
 
 ## extended configs
 
@@ -79,7 +79,7 @@ If you want to customize packages' directory, , you can configure `lila.setSetti
 
 ## files of an entry
 
-A entry has a standalone directory, also called workspace.
+An entry has a standalone directory, also called workspace.
 
 ### for `build` command
 
@@ -90,18 +90,18 @@ If `entry` is not provided, `@lila/index` will be used as default.
 If entry is `@lila/index`, its workspace is `src`:
 
 ```
-|-- src/
-  |-- index.js
+- src/
+  - index.js
 
-  |-- other files and directories
+  - other files and directories
 ```
 
-Others(entry is `main`), its workspace is `src/main`:
+Others(if entry is `main`), its workspace is `src/main`:
 
 ```
-|-- src/
-  |-- main/
-    |-- index.js
+- src/
+  - main/
+    - index.js
 
-    |-- other files and directories
+    - other files and directories
 ```

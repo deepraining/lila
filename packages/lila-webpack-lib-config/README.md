@@ -1,6 +1,6 @@
 # lila-webpack-lib-config
 
-Config generator for lila webpack-lib plugin.
+Built-in webpack config generator for `lila-webpack-lib`.
 
 ## install
 
@@ -39,17 +39,17 @@ If you want packages mode(see [lerna](https://github.com/lerna/lerna)), you can 
 If so, building structure will be as follows:
 
 ```
-|-- / root
-  |-- packages/ packages directory
-    |-- pkg1/ package 1
-      |-- src/
-      |-- build/
-    |-- pkg2/ package 2
-      |-- src/
-      |-- build/
+- / root
+  - packages/ packages directory
+    - pkg1/ package 1
+      - src/
+      - build/
+    - pkg2/ package 2
+      - src/
+      - build/
 ```
 
-If you want to customize packages' directory, , you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
+If you want to customize packages' directory, you can configure `lila.setSetting('packages', 'yourCustomDirectory')`.
 
 ## extended configs
 
@@ -203,7 +203,7 @@ extra: webpack => ({ ... })
 
 ## files of an entry
 
-A entry has a standalone directory, also called workspace.
+An entry has a standalone directory, also called workspace.
 
 ### for `build` command
 
@@ -214,20 +214,20 @@ If `entry` is not provided, `@lila/index` will be used as default.
 If entry is `@lila/index`, its workspace is `src`:
 
 ```
-|-- src/
-  |-- index.js
+- src/
+  - index.js
 
-  |-- other files and directories
+  - other files and directories
 ```
 
-Others(entry is `main`), its workspace is `src/main`:
+Others(if entry is `main`), its workspace is `src/main`:
 
 ```
-|-- src/
-  |-- main/
-    |-- index.js
+- src/
+  - main/
+    - index.js
 
-    |-- other files and directories
+    - other files and directories
 ```
 
 ### for `start` command
@@ -237,12 +237,12 @@ For `start` command, an entry has at least a `index.html` file and a `index.js` 
 If entry is `example`, its workspace is `example`:
 
 ```
-|-- src/
-|-- example/
-  |-- index.html
-  |-- index.js
+- src/
+- example/
+  - index.html
+  - index.js
 
-  |-- other files and directories
+  - other files and directories
 ```
 
 ## built-in rules
@@ -253,3 +253,9 @@ If entry is `example`, its workspace is `example`:
 - [css-loader](https://github.com/webpack-contrib/css-loader)
 - [less-loader](https://github.com/webpack-contrib/less-loader)
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
+
+## file extensions
+
+- `.js`: pure javascript code
+- `.jsx`: React component code
+- `.vue`: Vue component code

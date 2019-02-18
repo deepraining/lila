@@ -1,6 +1,6 @@
 # lila-webpack-lib
 
-Lila webpack plugin for building a library.
+Wrapped webpack plugin for building a library.
 
 ## install
 
@@ -46,13 +46,15 @@ If `entry` is not provided, `@lila/index` will be used as default.
 '@lila/webpack'
 ```
 
-## extended settings
+## settings need to be extended
 
 ### `webpackConfigGenerator`: generate webpack config
 
 ```
 webpack => ({entry, args, argv, cmd, config, lila}) => config
 ```
+
+## settings can to be extended
 
 ### `getEntries`: get all entries with imported entries, when you want to use `*, all` special mark
 
@@ -120,10 +122,10 @@ Lila internally provide a convenient way to do that.
 
 If `url` try to get a mock data from `/one/page/mock/list.js` file, lila will try urls in sequences as follows:
 
-1. `url`: try itself `/one/page/mock/list`
-2. `/mock/url`: try `mock` prefix
-3. `/${entry}/url`: try under entry's workspace, you can use `/mock/list`
-4. `/${entry}/mock/url`: try `mock` prefix under entry's workspace, you can use `/list`
+1. `${url}`: try itself `/one/page/mock/list`
+2. `/mock/${url}`: try `mock` prefix
+3. `/${entry}/${url}`: try under entry's workspace, you can use `/mock/list`
+4. `/${entry}/mock/${url}`: try `mock` prefix under entry's workspace, you can use `/list`
 
 If you want more convenient ways, you can add your own ways by `mockRoot`.
 
