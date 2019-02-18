@@ -1,6 +1,6 @@
 # lila-rollup
 
-Lila rollup plugin for building a library.
+Wrapped rollup plugin for building a library.
 
 ## install
 
@@ -40,7 +40,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 '@lila/rollup'
 ```
 
-## extended settings
+## settings need to be extended
 
 ### `rollupConfigGenerator`: generate rollup config
 
@@ -48,12 +48,14 @@ If `entry` is not provided, `@lila/index` will be used as default.
 rollup => ({entry, args, argv, cmd, config, lila}) => config
 ```
 
+## settings can to be extended
+
 ### `getEntries`: get all entries with imported entries, when you want to use `*, all` special mark
 
 ```
 (entries, root, srcDir) => allEntries;
 ```
 
-## node packages
+## npm packages
 
 - [rollup](https://github.com/rollup/rollup): 1.1.0

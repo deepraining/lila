@@ -1,6 +1,6 @@
 # lila-core
 
-Lila core.
+Lila core library.
 
 ## install
 
@@ -20,26 +20,31 @@ const lila = require('lila-core');
 
 ## init file
 
-Lila requires an init file called `lila.js` in project root directory.
+Lila requires an init file called `lila.js`(`lila.init.js` in windows) in project root directory.
 
 ```
+// lila-core should not be imported directly
+
+import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack';
 import webpackConfigPlugin from 'lila-webpack-config';
 
-// should export a function
+// here should export a function
 export default lila => {
 
-  // do some initialize actions
+  // do some init actions
 
+  tasksPlugin(lila);
   webpackPlugin(lila);
   webpackConfigPlugin(lila);
 
-  // return a config generator
+  // here return a config generator
   return ({ entry, argv, cmd }) => {
 
     // make a config according to `entry, argv, cmd`
     const config = { ... }
 
+    // return a config object
     return config;
   };
 }
@@ -77,7 +82,15 @@ lila.setSetting(name, value);
 lila.setSettings(value);
 ```
 
-- `@param/value`: `type: {}` `key-value` map of settings
+- `@param/value`: `type: {}` `key-value` pairs of settings
+
+```
+lila.setSettings({
+  name1: value1,
+  name2: value2,
+  ...
+});
+```
 
 ### `lila.getSetting`: get a setting value
 
@@ -97,13 +110,17 @@ const values = lila.getSettings(names);
 - `@param/names`: `type: string[]` setting names
 - `@return`: `type: *[]` setting values
 
+```
+const [value1, value2, ...] = lila.getSettings([name1, name2, ...]);
+```
+
 ### `lila.getAllSettings`: get all settings
 
 ```
 const settings = lila.getAllSettings();
 ```
 
-- `@return`: `type: {}` `key-value` map of all settings
+- `@return`: `type: {}` `key-value` pairs of all settings
 
 ### `lila.registerTask`: register a task generator
 
@@ -122,13 +139,22 @@ Generate a gulp task callback. See [taskFunction](https://gulpjs.com/docs/en/api
 ({ entry, args, argv, cmd, config, lila, gulp }) => gulp-task-callback;
 ```
 
-- `@param/options.entry`: `type: string` handling entry
-- `@param/options.args`: `type: *[]` arguments from config
+- `@param/options.entry`: `type: string` current handling entry
+- `@param/options.args`: `type: *[]` arguments from config, `['taskName', arg0, arg1, ...]`
 - `@param/options.argv`: `type: {}` wrapped `process.argv`
-- `@param/options.cmd`: `type: string` command name
+- `@param/options.cmd`: `type: string` command name, like `run, dev, build, ...`
 - `@param/options.config`: `type: {}` config of current entry
 - `@param/options.lila`: `type: {}` `lila-core` reference
 - `@param/options.gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) reference
+- `gulp-task-callback`: see [taskFunction](https://gulpjs.com/docs/en/api/task#signature)
+
+```
+lila.registerTask('log', ({ entry }) => cb => {
+  console.log(`entry: ${entry}`);
+
+  cb();
+});
+```
 
 ### `lila.unregisterTask`: unregister a task generator
 
@@ -156,13 +182,17 @@ const generators = lila.getTasks(names);
 - `@param/names`: `type: string[]` task names
 - `@return`: `type: function[]` task generators
 
+```
+const [generator1, generator2, ...] = lila.getTasks([name1, name2, ...]);
+```
+
 ### `lila.getAllTasks`: get all task generators
 
 ```
 const tasks = lila.getAllTasks();
 ```
 
-- `@return`: `type: {}` `name-generator` map of all tasks
+- `@return`: `type: {}` `name-generator` pairs of all tasks
 
 ### `lila.addCommand`: add a command
 
@@ -180,6 +210,16 @@ commander => { ... }
 
 - `@param/commander`: `type: {}` see [commander.js](https://github.com/tj/commander.js)
 
+```
+commander => {
+  commander
+  .command('log')
+  .action(function () {
+    console.log('log succeded');
+  });
+}
+```
+
 ### `lila.getCommands`: get added command initializers
 
 ```
@@ -188,7 +228,7 @@ const initializers = lila.getCommands();
 
 - `@return`: `type: function[]` added command initializers
 
-### `lila.makeConfig`: make project config
+### `lila.makeConfig`: get config of an entry
 
 ```
 const config = lila.makeConfig({ entry, argv, cmd });
@@ -204,25 +244,26 @@ const config = lila.makeConfig({ entry, argv, cmd });
 lila.runTasks({ entries, argv, cmd }, success, error);
 ```
 
-- `@param/options.entry`: `type: string` handling entry
+- `@param/options.entries`: `type: string[]` entries to build
 - `@param/options.argv`: `type: {}` wrapped `process.argv`
 - `@param/options.cmd`: `type: string` command name
 - `@param/success`: `type: function` success callback, `() => { ... }`
 - `@param/error`: `type: function` error callback, `err => { ... }`
 
-### `lila.addCmdOption`: add option for command
+### `lila.addCmdOption`: add an option to a command
 
 ```
 lila.addCmdOption(name, ...option);
-
-// example
-lila.addCmdOption('run', '-e, --env', 'specify server environment');
 ```
 
 - `name`: command name
 - `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
 
-### `lila.getCmdOptions`: get options for command
+```
+lila.addCmdOption('run', '-e, --env', 'specify server environment');
+```
+
+### `lila.getCmdOptions`: get options of a command
 
 ```
 const options = lila.getCmdOptions(name);
@@ -241,7 +282,7 @@ options.forEach(option => {
 import commander from 'commander';
 import lila from 'lila-core';
 
-const = {makeArgv} = lila;
+const { makeArgv } = lila;
 
 commander
   .command('build [entries...]')
@@ -314,7 +355,7 @@ See [chalk](https://github.com/chalk/chalk).
 - `tmp`: `type: string` `default: .lila` tmp directory of project.
 - `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
 
-Extended settings:
+### extensible settings:
 
 #### `beforeTasks`: before run tasks
 
@@ -352,11 +393,31 @@ lila run entry1 entry2 entry3 ...
 
 If `entry` is not provided, `@lila/index` will be used as default.
 
+```
+lila run                     # the real entry is @lila/index
+```
+
 ## extended command line options
 
 - `--root`: custom root path
 - `--init`: custom init file, default `lila.js`(`lila.init.js` in windows)
 
-## node packages
+## note
+
+You should not import `lila-core` directly, like:
+
+```
+import lila from 'lila-core'
+```
+
+but use it in `lila.js`(`lila.init.js` in windows) or plugins:
+
+```
+export default lila => {
+  // do with lila
+}
+```
+
+## npm packages
 
 - [gulp](https://github.com/gulpjs/gulp): 4.x

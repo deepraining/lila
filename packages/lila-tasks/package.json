@@ -12,17 +12,13 @@
   "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-tasks",
   "keywords": [
     "web",
-    "frontend",
     "build",
     "tool",
     "teamwork",
-    "automatic",
     "babel",
     "webpack",
     "rollup",
-    "parcel",
-    "gulp",
-    "browser-sync"
+    "gulp"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"
