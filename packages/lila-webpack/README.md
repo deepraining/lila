@@ -230,6 +230,6 @@ mockRoot: (entry, lila) => ['/first/directory', '/second/directory']
 - `home/*` or `home/all`: all entries under `home` directory
 - `*` or `all`: all entries of project
 
-## node packages
+## npm packages
 
 - [webpack](https://github.com/webpack/webpack): 4.x

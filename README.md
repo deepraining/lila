@@ -38,7 +38,7 @@ npm install lila-bin --save-dev        # local
 If installed globally, you can run lila commands directly in terminal, like:
 
 ```
-lila run
+lila <cmd> [options]
 ```
 
 and if installed locally, you can run lila commands by [npm-scripts](https://docs.npmjs.com/misc/scripts):
@@ -47,7 +47,7 @@ and if installed locally, you can run lila commands by [npm-scripts](https://doc
 # package.json
 
 "scripts": {
-  "run": "lila run"
+  "run": "lila <cmd> [options]"
 }
 ```
 

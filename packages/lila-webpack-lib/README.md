@@ -157,6 +157,6 @@ mockRoot: (entry, lila) => ['/first/directory', '/second/directory']
 
 `type: {}` `default: {}`
 
-## node packages
+## npm packages
 
 - [webpack](https://github.com/webpack/webpack): 4.x

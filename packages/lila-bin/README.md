@@ -1,6 +1,6 @@
 # lila-bin
 
-Lila command line.
+Lila command line tool.
 
 ## install
 
@@ -30,7 +30,7 @@ local
 # package.json
 {
   "scripts": {
-    "run": "lila run"
+    "run": "lila <cmd> [options]"
   }
 }
 ```
@@ -38,5 +38,5 @@ local
 ## options
 
 - `-V, --version`: output the version number
-- `--core`: custom `lila-core` path
 - `-h, --help`: output usage information
+- `--core`: custom `lila-core` path

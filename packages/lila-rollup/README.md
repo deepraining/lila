@@ -54,6 +54,6 @@ rollup => ({entry, args, argv, cmd, config, lila}) => config
 (entries, root, srcDir) => allEntries;
 ```
 
-## node packages
+## npm packages
 
 - [rollup](https://github.com/rollup/rollup): 1.1.0
