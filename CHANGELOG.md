@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 [2019-02-20]
+
+- `lila-webpack` start command's data mocking functionality will cache node modules.
+
 ## 0.5.6 [2018-12-13]
 
 - `lila-webpack` add `beforeCommand` config option.
