@@ -1,4 +1,4 @@
-export const baseType = 'base';
+export const universalType = 'universal';
 
 export const normalType = 'normal';
 export const reactType = 'react';

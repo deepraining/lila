@@ -13,10 +13,12 @@ npm install --save-dev lila-webpack-lib-config
 In `lila.js`:
 
 ```
+import webpackPlugin from 'lila-webpack-lib';
 import webpackConfigPlugin, {forReact, forVue} from 'lila-webpack-lib-config';
 
 export default lila => {
-  webpackConfigPlugin(lila);    // for pure js project
+  webpackPlugin(lila);
+  webpackConfigPlugin(lila);    // for normal project
   // forReact(lila);            // for react project
   // forVue(lila);              // for vue project
 

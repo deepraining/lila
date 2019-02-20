@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 
 import create from './create';
 import {
-  baseType,
+  universalType,
   normalType,
   reactType,
   vueType,
@@ -28,11 +28,12 @@ commander
           type: 'list',
           name: 'type',
           message: 'Which type do you want to choose?',
+          pageSize: 100,
           choices: [
             {
-              name: `${baseType}: universal environment to build with webpack, rollup, ...`,
-              value: baseType,
-              short: baseType,
+              name: `${universalType}: universal environment to build with webpack, rollup, ...`,
+              value: universalType,
+              short: universalType,
             },
             {
               name: `${normalType}: ready-made environment to build normal application by webpack`,
