@@ -1,7 +1,7 @@
 import { cssLoader, lessLoader, sassLoader } from './rules';
 import { defaultBrowsers } from './defaults';
 
-export const styleLoaders = (lila, webpack, { config }, isBuild = !1) => {
+export const styleLoaders = ({ config, isBuild = !1 }) => {
   const {
     cssModules = !1,
     cssModulesName,

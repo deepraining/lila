@@ -8,7 +8,7 @@ import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default (lila, webpack, { entry, cmd, config }) => {
+export default ({ lila, webpack, entry, cmd, config }) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
   const srcPath = join(root, srcDir);
@@ -63,7 +63,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
         urlLoader({ extensions }),
         htmlLoader(),
         vueLoader(),
-        ...styleLoaders(lila, webpack, { entry, cmd, config }, isBuild),
+        ...styleLoaders({ lila, webpack, entry, cmd, config, isBuild }),
       ],
     },
     resolve: {

@@ -9,7 +9,7 @@ import { defaultSplitChunks } from './defaults';
 
 const { join } = path;
 
-export default (lila, webpack, { entry, cmd, config }) => {
+export default ({ lila, webpack, entry, cmd, config }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir] = getSettings(['root', 'src', 'build']);
   const srcPath = join(root, srcDir);
@@ -21,7 +21,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
     splitChunks = defaultSplitChunks,
   } = config;
 
-  const baseConfig = base(lila, webpack, { entry, cmd, config });
+  const baseConfig = base({ lila, webpack, entry, cmd, config });
 
   baseConfig.plugins.push(
     new WebpackBar(),

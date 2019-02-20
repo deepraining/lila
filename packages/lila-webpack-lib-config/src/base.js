@@ -13,7 +13,7 @@ import {
 
 const { join } = path;
 
-export default (lila, webpack, { cmd, config }) => {
+export default ({ lila, webpack, cmd, config }) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
   const srcPath = join(root, srcDir);

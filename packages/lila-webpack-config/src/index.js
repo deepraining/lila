@@ -15,11 +15,11 @@ export default lila => {
     let webpackConfig = {};
 
     if (cmd === 'dev' || cmd === 'serve')
-      webpackConfig = dev(lila, webpack, { entry, cmd, config });
+      webpackConfig = dev({ lila, webpack, entry, cmd, config });
     if (cmd === 'analyze')
-      webpackConfig = analyze(lila, webpack, { entry, cmd, config });
+      webpackConfig = analyze({ lila, webpack, entry, cmd, config });
     if (cmd === 'build' || cmd === 'sync' || cmd === 'start')
-      webpackConfig = build(lila, webpack, { entry, cmd, config });
+      webpackConfig = build({ lila, webpack, entry, cmd, config });
 
     const { rules = [], plugins = [] } = config;
 

@@ -6,7 +6,7 @@ import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default (lila, webpack, { entry, cmd, config }) => {
+export default ({ lila, webpack, entry, cmd, config }) => {
   const { getSettings } = lila;
   const [root, srcDir, tmpDir, analyzeDir = 'analyze'] = getSettings([
     'root',
@@ -17,7 +17,7 @@ export default (lila, webpack, { entry, cmd, config }) => {
   const srcPath = join(root, srcDir);
   const analyzePath = join(root, tmpDir, analyzeDir);
 
-  const baseConfig = base(lila, webpack, { entry, cmd, config });
+  const baseConfig = base({ lila, webpack, entry, cmd, config });
 
   baseConfig.plugins.push(new WebpackBar(), new SpeedMeasurePlugin());
 

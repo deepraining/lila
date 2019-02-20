@@ -15,9 +15,9 @@ export default lila => {
     let webpackConfig = {};
 
     if (cmd === 'start')
-      webpackConfig = start(lila, webpack, { entry, cmd, config });
+      webpackConfig = start({ lila, webpack, entry, cmd, config });
     if (cmd === 'build')
-      webpackConfig = build(lila, webpack, { entry, cmd, config });
+      webpackConfig = build({ lila, webpack, entry, cmd, config });
 
     const { rules = [], plugins = [] } = config;
 

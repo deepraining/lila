@@ -6,7 +6,7 @@ import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default (lila, rollup, { entry, config }) => {
+export default ({ lila, entry, config }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir, packages = !1] = getSettings([
     'root',
