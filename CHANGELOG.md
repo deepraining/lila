@@ -2,6 +2,7 @@
 
 ## 0.6.0 [2019-02-20]
 
+- Split `lila-webpack-config` into `base`, `for React`, `for Vue`, `for React + Vue`
 - `lila-webpack` start command's data mocking functionality will cache node modules.
 
 ## 0.5.6 [2018-12-13]

@@ -3,8 +3,9 @@ import dev from './dev';
 import analyze from './analyze';
 import build from './build';
 import { makeGetEntries, servePath } from './settings';
+import { baseType, reactType, vueType, reactVueType } from './data';
 
-export default lila => {
+const make = makeType => lila => {
   const { setSetting } = lila;
 
   setSetting('webpackConfigGenerator', webpack => ({ entry, cmd, config }) => {
@@ -15,11 +16,11 @@ export default lila => {
     let webpackConfig = {};
 
     if (cmd === 'dev' || cmd === 'serve')
-      webpackConfig = dev({ lila, webpack, entry, cmd, config });
+      webpackConfig = dev({ lila, webpack, entry, cmd, config, makeType });
     if (cmd === 'analyze')
-      webpackConfig = analyze({ lila, webpack, entry, cmd, config });
+      webpackConfig = analyze({ lila, webpack, entry, cmd, config, makeType });
     if (cmd === 'build' || cmd === 'sync' || cmd === 'start')
-      webpackConfig = build({ lila, webpack, entry, cmd, config });
+      webpackConfig = build({ lila, webpack, entry, cmd, config, makeType });
 
     const { rules = [], plugins = [] } = config;
 
@@ -36,3 +37,9 @@ export default lila => {
   setSetting('getEntries', makeGetEntries(lila));
   setSetting('servePath', servePath);
 };
+
+export default make(baseType);
+
+export const forReact = make(reactType);
+export const forVue = make(vueType);
+export const forReactVue = make(reactVueType);
