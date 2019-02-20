@@ -16,7 +16,7 @@ In `lila.js`:
 import webpackConfigPlugin, {forReact, forVue, forReactVue} from 'lila-webpack-config';
 
 export default lila => {
-  webpackConfigPlugin(lila); // for pure js project
+  webpackConfigPlugin(lila);    // for pure js project
   // forReact(lila);            // for react project
   // forVue(lila);              // for vue project
   // forReactVue(lila);         // for react + vue project
