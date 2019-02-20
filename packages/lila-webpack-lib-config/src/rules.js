@@ -1,6 +1,7 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { baseType, reactType } from './data';
 
-export const babelLoader = ({
+const baseBabelLoader = ({
   babelImport,
   babelComponent,
   babelExclude,
@@ -8,18 +9,21 @@ export const babelLoader = ({
   babelPlugins,
   flow,
   flowRuntime,
+  test,
+  presets,
+  plugins,
 }) => ({
   loader: 'babel-loader',
-  test: /\.(js|jsx)$/,
+  test,
   options: {
     presets: [
       '@babel/preset-env',
-      '@babel/preset-react',
-      ...babelPresets,
+      ...presets,
       ...(flow ? ['@babel/preset-flow'] : []),
+      ...babelPresets,
     ],
     plugins: [
-      '@babel/plugin-transform-react-jsx',
+      ...plugins,
       '@babel/plugin-syntax-dynamic-import',
       ...(Array.isArray(babelImport) ? babelImport : [babelImport]).map(i => [
         'import',
@@ -29,11 +33,82 @@ export const babelLoader = ({
         ? babelComponent
         : [babelComponent]
       ).map(i => ['component', ...(Array.isArray(i) ? i : [i])]),
-      ...babelPlugins,
       ...(flowRuntime ? [['flow-runtime', { assert: !0, annotate: !0 }]] : []),
+      ...babelPlugins,
     ],
   },
   exclude: babelExclude,
+});
+
+export const babelLoader = ({
+  makeType,
+  babelImport,
+  babelComponent,
+  babelExclude,
+  babelPresets,
+  babelPlugins,
+  flow,
+  flowRuntime,
+}) => {
+  const rules = [];
+
+  if (makeType === baseType || makeType === reactType) {
+    // base, react: only handle pure js code in .js file
+    rules.push(
+      baseBabelLoader({
+        babelImport,
+        babelComponent,
+        babelExclude,
+        babelPresets,
+        babelPlugins,
+        flow,
+        flowRuntime,
+        test: /\.js$/,
+        presets: [],
+        plugins: [],
+      })
+    );
+  } else {
+    rules.push(
+      baseBabelLoader({
+        // vue: also handle jsx code in .js file
+        babelImport,
+        babelComponent,
+        babelExclude,
+        babelPresets,
+        babelPlugins,
+        flow,
+        flowRuntime,
+        test: /\.js$/,
+        presets: [],
+        plugins: ['transform-vue-jsx'],
+      })
+    );
+  }
+
+  if (makeType === reactType) {
+    rules.push(
+      baseBabelLoader({
+        babelImport,
+        babelComponent,
+        babelExclude,
+        babelPresets,
+        babelPlugins,
+        flow,
+        flowRuntime,
+        test: /\.jsx$/,
+        presets: ['@babel/preset-react'],
+        plugins: ['@babel/plugin-transform-react-jsx'],
+      })
+    );
+  }
+
+  return rules;
+};
+
+export const vueLoader = () => ({
+  loader: 'vue-loader',
+  test: /\.vue$/,
 });
 
 export const urlLoader = ({ extensions }) => ({
@@ -52,11 +127,6 @@ export const htmlLoader = () => ({
     attrs: ['img:src', 'link:href'],
     interpolate: 'require',
   },
-});
-
-export const vueLoader = () => ({
-  loader: 'vue-loader',
-  test: /\.vue$/,
 });
 
 export const cssLoader = isBuild => ({

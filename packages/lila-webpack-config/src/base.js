@@ -2,7 +2,7 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
-import { babelLoader, htmlLoader, urlLoader } from './rules';
+import { babelLoader, vueLoader, htmlLoader, urlLoader } from './rules';
 import { styleLoaders } from './make';
 import { defaultEntry } from '../../../util/constants';
 
@@ -61,6 +61,7 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
           flow,
           flowRuntime,
         }),
+        vueLoader(),
         urlLoader({ extensions }),
         htmlLoader(),
         ...styleLoaders({ lila, webpack, entry, cmd, config, isBuild }),

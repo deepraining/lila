@@ -3,17 +3,17 @@ import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions } from './defaults';
 import {
   babelLoader,
+  vueLoader,
   cssLoader,
   htmlLoader,
   lessLoader,
   sassLoader,
   urlLoader,
-  vueLoader,
 } from './rules';
 
 const { join } = path;
 
-export default ({ lila, webpack, cmd, config }) => {
+export default ({ lila, webpack, cmd, config, makeType }) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
   const srcPath = join(root, srcDir);
@@ -47,7 +47,8 @@ export default ({ lila, webpack, cmd, config }) => {
     ],
     module: {
       rules: [
-        babelLoader({
+        ...babelLoader({
+          makeType,
           babelImport,
           babelComponent,
           babelExclude,
@@ -56,9 +57,9 @@ export default ({ lila, webpack, cmd, config }) => {
           flow,
           flowRuntime,
         }),
+        vueLoader(),
         urlLoader({ extensions }),
         htmlLoader(),
-        vueLoader(),
         cssLoader(isBuild),
         lessLoader(isBuild),
         sassLoader(isBuild),
@@ -66,7 +67,7 @@ export default ({ lila, webpack, cmd, config }) => {
     },
     resolve: {
       modules: [srcPath, 'node_modules'],
-      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.vue'],
       alias,
     },
     optimization: {

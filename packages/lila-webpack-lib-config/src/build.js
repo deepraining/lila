@@ -8,7 +8,7 @@ import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default ({ lila, webpack, entry, cmd, config }) => {
+export default ({ lila, webpack, entry, cmd, config, makeType }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir, packages = !1] = getSettings([
     'root',
@@ -29,7 +29,7 @@ export default ({ lila, webpack, entry, cmd, config }) => {
     externals,
   } = config;
 
-  const baseConfig = base({ lila, webpack, entry, cmd, config });
+  const baseConfig = base({ lila, webpack, entry, cmd, config, makeType });
 
   baseConfig.plugins.push(
     new WebpackBar(),
