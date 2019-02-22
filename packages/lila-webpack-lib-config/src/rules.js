@@ -96,7 +96,7 @@ export const babelLoader = ({
       baseBabelLoader({
         babelImport,
         babelComponent,
-        babelExclude,
+        // babelExclude, // jsx should not exclude
         babelPresets,
         babelPlugins,
         flow,
