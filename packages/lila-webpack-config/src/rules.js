@@ -1,6 +1,11 @@
 import autoprefixer from 'autoprefixer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { baseType, reactType, reactVueType } from './data';
+import { baseType, reactType, vueType, reactVueType } from './data';
+
+const vueLoader = () => ({
+  loader: 'vue-loader',
+  test: /\.vue$/,
+});
 
 const baseBabelLoader = ({
   babelImport,
@@ -96,7 +101,7 @@ export const babelLoader = ({
       baseBabelLoader({
         babelImport,
         babelComponent,
-        babelExclude,
+        // babelExclude, // jsx should not exclude
         babelPresets,
         babelPlugins,
         flow,
@@ -108,13 +113,12 @@ export const babelLoader = ({
     );
   }
 
+  if (makeType === vueType || makeType === reactVueType) {
+    rules.push(vueLoader());
+  }
+
   return rules;
 };
-
-export const vueLoader = () => ({
-  loader: 'vue-loader',
-  test: /\.vue$/,
-});
 
 export const urlLoader = ({ extensions }) => ({
   loader: 'url-loader',

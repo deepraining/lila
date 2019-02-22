@@ -3,13 +3,13 @@ import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions } from './defaults';
 import {
   babelLoader,
-  vueLoader,
   cssLoader,
   htmlLoader,
   lessLoader,
   sassLoader,
   urlLoader,
 } from './rules';
+import { vueType } from './data';
 
 const { join } = path;
 
@@ -43,7 +43,7 @@ export default ({ lila, webpack, cmd, config, makeType }) => {
     plugins: [
       new ProvidePlugin(provide),
       new DefinePlugin(define),
-      new VueLoaderPlugin(),
+      ...(makeType === vueType ? [new VueLoaderPlugin()] : []),
     ],
     module: {
       rules: [
@@ -57,7 +57,6 @@ export default ({ lila, webpack, cmd, config, makeType }) => {
           flow,
           flowRuntime,
         }),
-        vueLoader(),
         urlLoader({ extensions }),
         htmlLoader(),
         cssLoader(isBuild),

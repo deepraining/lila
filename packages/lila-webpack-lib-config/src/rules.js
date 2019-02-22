@@ -1,5 +1,10 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { baseType, reactType } from './data';
+import { baseType, reactType, vueType } from './data';
+
+const vueLoader = () => ({
+  loader: 'vue-loader',
+  test: /\.vue$/,
+});
 
 const baseBabelLoader = ({
   babelImport,
@@ -103,13 +108,12 @@ export const babelLoader = ({
     );
   }
 
+  if (makeType === vueType) {
+    rules.push(vueLoader());
+  }
+
   return rules;
 };
-
-export const vueLoader = () => ({
-  loader: 'vue-loader',
-  test: /\.vue$/,
-});
 
 export const urlLoader = ({ extensions }) => ({
   loader: 'url-loader',
