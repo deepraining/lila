@@ -1,6 +1,7 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import base from './base';
+import { defaultExt } from './defaults';
 
 const { join } = path;
 
@@ -19,10 +20,12 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
     })
   );
 
+  const { ext = defaultExt } = config;
+
   return {
     entry: [
       'webpack-hot-middleware/client?reload=true',
-      `${root}/${entry}/index.js`,
+      `${root}/${entry}/index.${ext}`,
     ],
     output: {
       path: devPath,

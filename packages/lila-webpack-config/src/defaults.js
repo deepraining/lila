@@ -32,3 +32,5 @@ export const defaultBrowsers = [
 ];
 
 export const defaultSplitChunks = { chunks: 'all' };
+
+export const defaultExt = 'js';

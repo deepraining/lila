@@ -5,6 +5,7 @@ import WebpackBar from 'webpackbar';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import base from './base';
 import { defaultEntry } from '../../../util/constants';
+import { defaultExt } from './defaults';
 
 const { join } = path;
 
@@ -27,6 +28,7 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
     library = 'Index',
     banner = '',
     externals,
+    ext = defaultExt,
   } = config;
 
   const baseConfig = base({ lila, webpack, entry, cmd, config, makeType });
@@ -53,13 +55,13 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
 
   let entryPath =
     entry === defaultEntry
-      ? `${srcPath}/index.js`
-      : `${srcPath}/${entry}/index.js`;
+      ? `${srcPath}/index.${ext}`
+      : `${srcPath}/${entry}/index.${ext}`;
   let outputPath = entry === defaultEntry ? buildPath : join(buildPath, entry);
 
   if (packages) {
     const packagesDir = typeof packages === 'string' ? packages : 'packages';
-    entryPath = join(root, packagesDir, entry, srcDir, 'index.js');
+    entryPath = join(root, packagesDir, entry, srcDir, `index.${ext}`);
     outputPath = join(root, packagesDir, entry, buildDir);
   }
 

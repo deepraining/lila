@@ -26,13 +26,15 @@ export default lila => {
 };
 ```
 
-## extended settings
+## implemented settings of lila-webpack-lib
 
 ### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L8)
 
 ### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
 `all, *` means all entries under `src`(`packages` if is packages mode) directory.
+
+## extended settings
 
 ### `packages`: whether use packages mode
 
@@ -203,6 +205,15 @@ If you want to customize packages' directory, you can configure `lila.setSetting
 ```
 extra: { ... }
 extra: webpack => ({ ... })
+```
+
+### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+
+`type: string` `default: js`
+
+```
+- src/
+  - index.${ext}
 ```
 
 ## files of an entry

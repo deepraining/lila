@@ -24,13 +24,15 @@ export default lila => {
 };
 ```
 
-## extended settings
+## implemented settings of lila-rollup
 
 ### `rollupConfigGenerator`: see [rollupConfigGenerator](./src/index.js#L8)
 
 ### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
 `all, *` means all entries under `src`(`packages` if packages mode) directory.
+
+## extended settings
 
 ### `packages`: whether to use packages mode
 
@@ -78,6 +80,15 @@ If you want to customize packages' directory, you can configure it by `lila.setS
 ### `plugins`: extra rollup plugins
 
 `type: []` `default: []`
+
+### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+
+`type: string` `default: js`
+
+```
+- src/
+  - index.${ext}
+```
 
 ## files of an entry
 

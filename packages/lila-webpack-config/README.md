@@ -27,13 +27,15 @@ export default lila => {
 };
 ```
 
-## extended settings
+## implemented settings of lila-webpack
 
 ### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L9)
 
 ### `getEntries`: see [getEntries](./src/settings.js#L12)
 
 ### `servePath`: a `serve.js` file under its workspace, see [servePath](./src/settings.js#L27)
+
+## extended settings
 
 ### `analyze`: temporary directory for command `analyze`
 
@@ -55,6 +57,10 @@ excludeEntries: ['home/exclude', /\/test$/, /\/ui$/]
 // if return true, entry will be excluded
 excludeEntries: entry => true
 ```
+
+### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, ts, tsx, vue`
+
+`type: string` `default: js`
 
 ## extended configs
 
@@ -255,6 +261,18 @@ excludeEntries: entry => true
 ```
 extra: { ... }
 extra: webpack => ({ ... })
+```
+
+### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+
+`type: string` `default: js`
+
+```
+- src/
+  - home/
+    - about/
+      - index.html
+      - index.${ext}
 ```
 
 ## files of an entry

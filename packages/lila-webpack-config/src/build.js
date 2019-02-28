@@ -5,7 +5,7 @@ import WebpackBar from 'webpackbar';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import base from './base';
 import { defaultEntry } from '../../../util/constants';
-import { defaultSplitChunks } from './defaults';
+import { defaultExt, defaultSplitChunks } from './defaults';
 
 const { join } = path;
 
@@ -19,6 +19,7 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
     staticServer = '',
     minCss = !0,
     splitChunks = defaultSplitChunks,
+    ext = defaultExt,
   } = config;
 
   const baseConfig = base({ lila, webpack, entry, cmd, config, makeType });
@@ -44,7 +45,9 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
     );
 
   return {
-    entry: `${srcPath}/${entry === defaultEntry ? '' : `${entry}/`}index.js`,
+    entry: `${srcPath}/${
+      entry === defaultEntry ? '' : `${entry}/`
+    }index.${ext}`,
     output: {
       path: buildPath,
       filename: '[chunkhash].js',

@@ -2,6 +2,7 @@
 
 ## 0.6.0 [2019-02-20]
 
+- `lila-webpack-config, lila-webpack-lib-config, lila-rollup-config` add `ext` config option.
 - `create-lila-app` types: `base, normal, react, vue, react-vue, normal-lib, react-lib, vue-lib, rollup`
 - Split `lila-webpack-lib-config` into `base`, `for React`, `for Vue`
 - Split `lila-webpack-config` into `base`, `for React`, `for Vue`, `for React + Vue`
