@@ -81,7 +81,7 @@ If you want to customize packages' directory, you can configure it by `lila.setS
 
 `type: []` `default: []`
 
-### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+### `ext`: entry script file extension, like `js, jsx, vue`
 
 `type: string` `default: js`
 

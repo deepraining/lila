@@ -58,7 +58,7 @@ excludeEntries: ['home/exclude', /\/test$/, /\/ui$/]
 excludeEntries: entry => true
 ```
 
-### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, ts, tsx, vue`
+### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, vue`
 
 `type: string` `default: js`
 
@@ -263,7 +263,7 @@ extra: { ... }
 extra: webpack => ({ ... })
 ```
 
-### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+### `ext`: entry script file extension, like `js, jsx, vue`
 
 `type: string` `default: js`
 

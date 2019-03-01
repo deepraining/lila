@@ -207,7 +207,7 @@ extra: { ... }
 extra: webpack => ({ ... })
 ```
 
-### `ext`: entry script file extension, like `js, jsx, ts, tsx, vue`
+### `ext`: entry script file extension, like `js, jsx, vue`
 
 `type: string` `default: js`
 
