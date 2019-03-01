@@ -2,11 +2,13 @@
   <div id="app">
     <img alt="Vue logo" src="../images/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Jsx />
   </div>
 </template>
 
 <script>
-import HelloWorld from './HelloWorld.vue';
+import HelloWorld from './HelloWorld';
+import Jsx from './Jsx';
 
 // console.log(haha.hehe);
 
@@ -14,6 +16,7 @@ export default {
   name: 'App',
   components: {
     HelloWorld,
+    Jsx,
   },
 };
 </script>

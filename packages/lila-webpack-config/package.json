@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-config",
-  "version": "0.5.6",
+  "version": "0.6.0",
   "description": "built-in webpack config generator for lila-webpack",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
@@ -40,6 +40,8 @@
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-flow-runtime": "^0.18.0",
     "babel-plugin-import": "^1.11.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-vue-jsx": "^3.7.0",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
     "flow-runtime": "^0.17.0",

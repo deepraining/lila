@@ -82,7 +82,17 @@ export const forceGet = (req, res, next) => {
   next();
 };
 
-const tryMock = ({ root, url, req, res }) => {
+/**
+ * try mock file
+ *
+ * @param root Root directory
+ * @param url
+ * @param req
+ * @param res
+ * @param cache Whether cache node modules
+ * @returns {boolean}
+ */
+const tryMock = ({ root, url, req, res, cache }) => {
   // url: `/one/two/three`
   const urls = url.split('/');
   const lastName = urls[urls.length - 1];
@@ -91,7 +101,7 @@ const tryMock = ({ root, url, req, res }) => {
   const filePath = join(root, `${url}.js`);
   if (existsSync(filePath)) {
     // disable cache
-    if (require.cache[filePath]) delete require.cache[filePath];
+    if (!cache && require.cache[filePath]) delete require.cache[filePath];
 
     const fn = tryDefault(require(filePath)); // eslint-disable-line
     if (typeof fn === 'function') {
@@ -109,7 +119,8 @@ const tryMock = ({ root, url, req, res }) => {
   const parentFilePath = join(root, `${urls.slice(0, -1).join('/')}.js`);
   if (existsSync(parentFilePath)) {
     // disable cache
-    if (require.cache[parentFilePath]) delete require.cache[parentFilePath];
+    if (!cache && require.cache[parentFilePath])
+      delete require.cache[parentFilePath];
 
     const exp = tryDefault(require(parentFilePath)); // eslint-disable-line
     const fn = exp[lastName];
@@ -133,11 +144,12 @@ const tryMock = ({ root, url, req, res }) => {
  *
  * @param lila
  * @param entry
- * @param mockRoot
- * @param isLib
+ * @param mockRoot Extra mock root directories
+ * @param isLib For library or application
+ * @param cache Whether cache node modules
  * @returns {function(*=, *=, *)}
  */
-export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
+export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
   req,
   res,
   next
@@ -175,6 +187,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
               url: correctSlash(join(extraRoots[i], url)),
               req,
               res,
+              cache,
             })
           )
             return;
@@ -183,25 +196,37 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
     }
 
     // ${root}/url.js
-    if (tryMock({ root, url, req, res })) return;
+    if (tryMock({ root, url, req, res, cache })) return;
     // ${root}/mock/url.js
-    if (tryMock({ root, url: correctSlash(join('mock', url)), req, res }))
+    if (
+      tryMock({ root, url: correctSlash(join('mock', url)), req, res, cache })
+    )
       return;
 
     if (isLib) {
       // for start command, entry is always relative to root.
 
       // ${root}/${entry}/url.js
-      if (tryMock({ root, url: correctSlash(join(entry, url)), req, res }))
+      if (
+        tryMock({ root, url: correctSlash(join(entry, url)), req, res, cache })
+      )
         return;
       // ${root}/${entry}/mock/url.js
       if (
-        tryMock({ root, url: correctSlash(join(entry, 'mock', url)), req, res })
+        tryMock({
+          root,
+          url: correctSlash(join(entry, 'mock', url)),
+          req,
+          res,
+          cache,
+        })
       )
         return;
     } else {
       // ${root}/${srcDir}/url.js
-      if (tryMock({ root, url: correctSlash(join(srcDir, url)), req, res }))
+      if (
+        tryMock({ root, url: correctSlash(join(srcDir, url)), req, res, cache })
+      )
         return;
       // ${root}/${srcDir}/mock/url.js
       if (
@@ -210,12 +235,19 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
           url: correctSlash(join(srcDir, 'mock', url)),
           req,
           res,
+          cache,
         })
       )
         return;
       // ${root}/${srcDir}/${entry}/url.js
       if (
-        tryMock({ root, url: correctSlash(join(srcDir, entry, url)), req, res })
+        tryMock({
+          root,
+          url: correctSlash(join(srcDir, entry, url)),
+          req,
+          res,
+          cache,
+        })
       )
         return;
       // ${root}/${srcDir}/${entry}/mock/url.js
@@ -225,6 +257,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1 }) => (
           url: correctSlash(join(srcDir, entry, 'mock', url)),
           req,
           res,
+          cache,
         })
       )
         return;

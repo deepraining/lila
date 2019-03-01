@@ -3,6 +3,7 @@ import path from 'path';
 import rd from 'rd';
 import { correctSlash } from '../../../util/index';
 import { defaultEntry } from '../../../util/constants';
+import { defaultExt } from './defaults';
 
 const { existsSync } = fs;
 const { relative } = path;
@@ -10,15 +11,18 @@ const { readDirFilterSync } = rd;
 
 // get all entries under a dir
 export const makeGetEntries = lila => (dirPath, srcPath) => {
-  const { getSetting } = lila;
-  const excludeEntries = getSetting('excludeEntries');
+  const { getSettings } = lila;
+  const [excludeEntries, extToSearch = defaultExt] = getSettings([
+    'excludeEntries',
+    'extToSearch',
+  ]);
 
   const entries = [];
   readDirFilterSync(dirPath, subDirPath => {
     const htmlFile = `${subDirPath}/index.html`;
-    const jsFile = `${subDirPath}/index.js`;
+    const jsFile = `${subDirPath}/index.${extToSearch}`;
 
-    // Both `index.html` and `index.js` existing, means this directory is an entry's workspace.
+    // Both `index.html` and `index.${extToSearch}` existing, means this directory is an entry's workspace.
     if (!existsSync(htmlFile) || !existsSync(jsFile)) return;
 
     const entry = correctSlash(relative(srcPath, subDirPath));

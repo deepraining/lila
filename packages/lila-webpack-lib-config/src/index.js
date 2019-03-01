@@ -2,8 +2,9 @@ import merge from 'webpack-merge';
 import start from './start';
 import build from './build';
 import { makeGetEntries } from './settings';
+import { baseType, reactType, vueType } from './data';
 
-export default lila => {
+const make = makeType => lila => {
   const { setSetting, getSettings } = lila;
   const [packages = !1] = getSettings(['packages']);
 
@@ -15,9 +16,9 @@ export default lila => {
     let webpackConfig = {};
 
     if (cmd === 'start')
-      webpackConfig = start(lila, webpack, { entry, cmd, config });
+      webpackConfig = start({ lila, webpack, entry, cmd, config, makeType });
     if (cmd === 'build')
-      webpackConfig = build(lila, webpack, { entry, cmd, config });
+      webpackConfig = build({ lila, webpack, entry, cmd, config, makeType });
 
     const { rules = [], plugins = [] } = config;
 
@@ -33,3 +34,8 @@ export default lila => {
 
   setSetting('getEntries', makeGetEntries(packages));
 };
+
+export default make(baseType);
+
+export const forReact = make(reactType);
+export const forVue = make(vueType);

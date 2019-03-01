@@ -26,7 +26,9 @@ export default ({ entry, argv, lila }) => {
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
   if (mock)
-    browserSyncConfig.middleware.unshift(makeMock({ lila, entry, mockRoot }));
+    browserSyncConfig.middleware.unshift(
+      makeMock({ lila, entry, mockRoot, cache: !0 })
+    );
 
   browserSync.init(browserSyncConfig);
 };

@@ -13,22 +13,28 @@ npm install --save-dev lila-webpack-lib-config
 In `lila.js`:
 
 ```
-import webpackConfigPlugin from 'lila-webpack-lib-config';
+import webpackPlugin from 'lila-webpack-lib';
+import webpackConfigPlugin, {forReact, forVue} from 'lila-webpack-lib-config';
 
 export default lila => {
-  webpackConfigPlugin(lila);
+  webpackPlugin(lila);
+  webpackConfigPlugin(lila);    // for normal project
+  // forReact(lila);            // for react project
+  // forVue(lila);              // for vue project
 
   ...
 };
 ```
 
-## extended settings
+## implemented settings of lila-webpack-lib
 
 ### `webpackConfigGenerator`: see [webpackConfigGenerator](./src/index.js#L8)
 
 ### `getEntries`: see [makeGetEntries](./src/settings.js#L8)
 
 `all, *` means all entries under `src`(`packages` if is packages mode) directory.
+
+## extended settings
 
 ### `packages`: whether use packages mode
 
@@ -199,6 +205,15 @@ If you want to customize packages' directory, you can configure `lila.setSetting
 ```
 extra: { ... }
 extra: webpack => ({ ... })
+```
+
+### `ext`: entry script file extension, like `js, jsx, vue`
+
+`type: string` `default: js`
+
+```
+- src/
+  - index.${ext}
 ```
 
 ## files of an entry

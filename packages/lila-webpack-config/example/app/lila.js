@@ -1,11 +1,13 @@
 import tasksPlugin from '../../../lila-tasks/lib';
 import webpackPlugin from '../../../lila-webpack/lib';
-import webpackConfigPlugin from '../../lib';
+// import webpackConfigPlugin from '../../lib';
+import { forReactVue } from '../../lib';
 
 export default lila => {
   tasksPlugin(lila);
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  // webpackConfigPlugin(lila);
+  forReactVue(lila);
 
   lila.setSetting('excludeEntries', [/\/exclude$/i]);
 

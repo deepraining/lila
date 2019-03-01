@@ -6,7 +6,7 @@ import { defaultEntry } from '../../../util/constants';
 
 const { join } = path;
 
-export default (lila, rollup, { entry, config }) => {
+export default ({ lila, entry, config }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir, packages = !1] = getSettings([
     'root',
@@ -23,17 +23,18 @@ export default (lila, rollup, { entry, config }) => {
     banner,
     babelPresets = [],
     babelPlugins = [],
+    ext = 'js',
   } = config;
 
   let entryPath =
     entry === defaultEntry
-      ? `${srcPath}/index.js`
-      : `${srcPath}/${entry}/index.js`;
+      ? `${srcPath}/index.${ext}`
+      : `${srcPath}/${entry}/index.${ext}`;
   let outputPath = entry === defaultEntry ? buildPath : join(buildPath, entry);
 
   if (packages) {
     const packagesDir = typeof packages === 'string' ? packages : 'packages';
-    entryPath = join(root, packagesDir, entry, srcDir, 'index.js');
+    entryPath = join(root, packagesDir, entry, srcDir, `index.${ext}`);
     outputPath = join(root, packagesDir, entry, buildDir);
   }
 

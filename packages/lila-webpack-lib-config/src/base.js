@@ -8,12 +8,12 @@ import {
   lessLoader,
   sassLoader,
   urlLoader,
-  vueLoader,
 } from './rules';
+import { vueType } from './data';
 
 const { join } = path;
 
-export default (lila, webpack, { cmd, config }) => {
+export default ({ lila, webpack, cmd, config, makeType }) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
   const srcPath = join(root, srcDir);
@@ -43,11 +43,12 @@ export default (lila, webpack, { cmd, config }) => {
     plugins: [
       new ProvidePlugin(provide),
       new DefinePlugin(define),
-      new VueLoaderPlugin(),
+      ...(makeType === vueType ? [new VueLoaderPlugin()] : []),
     ],
     module: {
       rules: [
-        babelLoader({
+        ...babelLoader({
+          makeType,
           babelImport,
           babelComponent,
           babelExclude,
@@ -58,7 +59,6 @@ export default (lila, webpack, { cmd, config }) => {
         }),
         urlLoader({ extensions }),
         htmlLoader(),
-        vueLoader(),
         cssLoader(isBuild),
         lessLoader(isBuild),
         sassLoader(isBuild),
@@ -66,7 +66,7 @@ export default (lila, webpack, { cmd, config }) => {
     },
     resolve: {
       modules: [srcPath, 'node_modules'],
-      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx'],
+      extensions: ['.wasm', '.mjs', '.js', '.json', '.jsx', '.vue'],
       alias,
     },
     optimization: {

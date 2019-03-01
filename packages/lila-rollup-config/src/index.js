@@ -9,7 +9,7 @@ export default lila => {
     let rollupConfig = {};
 
     if (cmd === 'build')
-      rollupConfig = build(lila, rollup, { entry, cmd, config });
+      rollupConfig = build({ lila, rollup, entry, cmd, config });
 
     const { plugins = [] } = config;
 

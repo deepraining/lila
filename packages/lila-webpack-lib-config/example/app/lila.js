@@ -1,6 +1,7 @@
 import tasksPlugin from '../../../lila-tasks/lib';
 import webpackPlugin from '../../../lila-webpack-lib/lib';
-import webpackConfigPlugin from '../../lib';
+// import webpackConfigPlugin from '../../lib';
+import { forReact } from '../../lib';
 
 export default lila => {
   const { setSetting } = lila;
@@ -11,7 +12,8 @@ export default lila => {
 
   tasksPlugin(lila);
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  // webpackConfigPlugin(lila);
+  forReact(lila);
 
   return () => ({
     tasks: [
@@ -32,6 +34,6 @@ export default lila => {
     // banner: 'hello',
     // filename: 'hi',
     // library: 'Demo',
-    externals: ['react', 'react-dom', 'vue'],
+    externals: ['react', 'react-dom'],
   });
 };

@@ -1,3 +1,6 @@
 package.json
 _package.json
 lerna.json
+node_modules
+lib
+build

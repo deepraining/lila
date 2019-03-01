@@ -4,6 +4,16 @@ import cp from 'child_process';
 import shell from 'shelljs';
 import fse from 'fs-extra';
 import { error, info, log } from '../../../util/logger';
+import {
+  normalType,
+  reactType,
+  vueType,
+  reactVueType,
+  normalLibType,
+  reactLibType,
+  vueLibType,
+  rollupType,
+} from './data';
 
 const { join } = path;
 const { existsSync } = fs;
@@ -41,6 +51,40 @@ export default ({ dir, type }) => {
     outputFileSync(targetFile, content);
   };
 
+  const copyPkg = () => {
+    const sourceFile = join(source, `_package.json`);
+    const targetFile = join(target, 'package.json');
+
+    let content = readFileSync(sourceFile, 'utf8');
+
+    content = content.replace('[project-name]', dir);
+
+    if (
+      type === normalLibType ||
+      type === reactLibType ||
+      type === vueLibType ||
+      type === rollupType
+    ) {
+      content = content.replace(
+        '"placeholder": "placeholder",',
+        `"main": "build/cjs.js",
+  "module": "build/m.js",
+  "umd:main": "build/umd.js",
+  "amd:main": "build/amd.js",
+  "files": [
+    "build"
+  ],`
+      );
+    } else {
+      content = content.replace(
+        '"placeholder": "placeholder",',
+        '"private": true,'
+      );
+    }
+
+    outputFileSync(targetFile, content);
+  };
+
   copy({ file: '.editorconfig' });
   copy({ file: '.eslintignore' });
   copy({ file: '.eslintrc.js' });
@@ -54,8 +98,10 @@ export default ({ dir, type }) => {
   copy({ file: '.stylelintrc.js' });
   copy({ file: 'CHANGELOG.md' });
   copy({ file: 'jest.config.js' });
-  copy({ file: 'package.json', replace: !0 });
+  // copy({ file: 'package.json', replace: !0 });
   copy({ file: 'README.md', replace: !0 });
+
+  copyPkg();
 
   copy({ file: 'lila.js', srcFile: `lila-${type}.js` });
 
@@ -85,10 +131,20 @@ export default ({ dir, type }) => {
 
     const lilaPkg = ['lila-bin', 'lila-core', 'lila-tasks'];
 
-    if (type === 'webpack') lilaPkg.push('lila-webpack', 'lila-webpack-config');
-    else if (type === 'webpack-lib')
+    if (
+      type === normalType ||
+      type === reactType ||
+      type === vueType ||
+      type === reactVueType
+    )
+      lilaPkg.push('lila-webpack', 'lila-webpack-config');
+    else if (
+      type === normalLibType ||
+      type === reactLibType ||
+      type === vueLibType
+    )
       lilaPkg.push('lila-webpack-lib', 'lila-webpack-lib-config');
-    else if (type === 'rollup')
+    else if (type === rollupType)
       lilaPkg.push('lila-rollup', 'lila-rollup-config');
 
     const child2 = spawn(npm, ['install', '--save-dev', ...lilaPkg], {

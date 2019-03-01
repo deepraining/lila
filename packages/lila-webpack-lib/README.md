@@ -46,7 +46,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 '@lila/webpack'
 ```
 
-## settings need to be extended
+## settings need to be implemented
 
 ### `webpackConfigGenerator`: generate webpack config
 
@@ -54,7 +54,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 webpack => ({entry, args, argv, cmd, config, lila}) => config
 ```
 
-## settings can to be extended
+## settings can be implemented
 
 ### `getEntries`: get all entries with imported entries, when you want to use `*, all` special mark
 

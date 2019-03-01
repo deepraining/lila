@@ -1,8 +1,8 @@
 {
   "name": "[project-name]",
-  "private": true,
   "version": "0.0.1",
   "description": "A lila project.",
+  "placeholder": "placeholder",
   "scripts": {
     "precommit": "npm run lint-staged",
     "lint-staged": "lint-staged",

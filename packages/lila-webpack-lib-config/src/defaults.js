@@ -11,5 +11,4 @@ export const defaultExtensions = [
   'woff2',
 ];
 
-// placeholder
-export default {};
+export const defaultExt = 'js';

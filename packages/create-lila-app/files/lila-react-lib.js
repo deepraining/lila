@@ -1,12 +1,12 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
 import tasksPlugin from 'lila-tasks';
 import webpackPlugin from 'lila-webpack-lib';
-import webpackConfigPlugin from 'lila-webpack-lib-config';
+import { forReact } from 'lila-webpack-lib-config';
 
 export default lila => {
   tasksPlugin(lila);
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  forReact(lila);
 
   return () => ({
     tasks: ['@lila/webpack'],

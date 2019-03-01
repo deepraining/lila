@@ -5,10 +5,11 @@ import WebpackBar from 'webpackbar';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import base from './base';
 import { defaultEntry } from '../../../util/constants';
+import { defaultExt } from './defaults';
 
 const { join } = path;
 
-export default (lila, webpack, { entry, cmd, config }) => {
+export default ({ lila, webpack, entry, cmd, config, makeType }) => {
   const { getSettings } = lila;
   const [root, srcDir, buildDir, packages = !1] = getSettings([
     'root',
@@ -27,9 +28,10 @@ export default (lila, webpack, { entry, cmd, config }) => {
     library = 'Index',
     banner = '',
     externals,
+    ext = defaultExt,
   } = config;
 
-  const baseConfig = base(lila, webpack, { entry, cmd, config });
+  const baseConfig = base({ lila, webpack, entry, cmd, config, makeType });
 
   baseConfig.plugins.push(
     new WebpackBar(),
@@ -53,13 +55,13 @@ export default (lila, webpack, { entry, cmd, config }) => {
 
   let entryPath =
     entry === defaultEntry
-      ? `${srcPath}/index.js`
-      : `${srcPath}/${entry}/index.js`;
+      ? `${srcPath}/index.${ext}`
+      : `${srcPath}/${entry}/index.${ext}`;
   let outputPath = entry === defaultEntry ? buildPath : join(buildPath, entry);
 
   if (packages) {
     const packagesDir = typeof packages === 'string' ? packages : 'packages';
-    entryPath = join(root, packagesDir, entry, srcDir, 'index.js');
+    entryPath = join(root, packagesDir, entry, srcDir, `index.${ext}`);
     outputPath = join(root, packagesDir, entry, buildDir);
   }
 

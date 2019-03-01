@@ -18,7 +18,6 @@ export default {
 
 <style scoped>
 .hello {
-  background-image: url('../images/hello.png');
-  background-repeat: no-repeat;
+  color: green;
 }
 </style>
