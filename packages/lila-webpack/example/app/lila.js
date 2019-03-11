@@ -5,13 +5,17 @@ import webpackPlugin from '../../lib';
 const { outputFileSync } = fse;
 
 export default lila => {
-  const { setSetting } = lila;
+  const { setSetting, getSettings } = lila;
+
+  const [defaultEntry] = getSettings(['defaultEntry']);
+
+  lila.setSetting('excludeEntries', [/\/exclude$/i]);
 
   setSetting('webpackConfigGenerator', () => options => {
-    const { cmd } = options;
+    const { cmd, entry } = options;
 
     // console.log('webpackConfigGenerator/webpack', webpack);
-    // console.log('webpackConfigGenerator/entry', options.entry);
+    console.log('webpackConfigGenerator/entry', options.entry);
     // console.log('webpackConfigGenerator/args', options.args);
     // console.log('webpackConfigGenerator/argv', options.argv);
     // console.log('webpackConfigGenerator/cmd', options.cmd);
@@ -26,7 +30,9 @@ export default lila => {
     else if (isAnalyze) dir = 'analyze';
 
     return {
-      entry: [`${__dirname}/src/index.js`],
+      entry: [
+        `${__dirname}/src${entry === defaultEntry ? '' : `/${entry}`}/index.js`,
+      ],
       output: {
         path: `${__dirname}/${dir}/`,
         filename: 'index.js',
@@ -37,20 +43,22 @@ export default lila => {
     };
   });
 
-  setSetting(
-    'servePath',
-    (entry, srcDir) =>
-      // console.log(`servePath/entry: ${entry}`);
-      // console.log(`servePath/srcDir: ${srcDir}`);
+  // setSetting(
+  //   'servePath',
+  //   (entry, srcDir) =>
+  //     // console.log(`servePath/entry: ${entry}`);
+  //     // console.log(`servePath/srcDir: ${srcDir}`);
+  //
+  //     `${srcDir}/serve.js`
+  // );
 
-      `${srcDir}/serve.js`
-  );
+  // setSetting('getEntries', () =>
+  //   // console.log(`getEntries/dir: ${dir}`);
+  //
+  //   ['test']
+  // );
 
-  setSetting('getEntries', () =>
-    // console.log(`getEntries/dir: ${dir}`);
-
-    ['test']
-  );
+  // setSetting('extToSearch', 'jsx');
 
   setSetting('beforeCommand', ({ cmd }) => {
     console.log(`\ncmd: ${cmd}\n`);
