@@ -26,8 +26,7 @@ Lila requires an init file called `lila.js`(`lila.init.js` in windows) in projec
 // lila-core should not be imported directly
 
 import tasksPlugin from 'lila-tasks';
-import webpackPlugin from 'lila-webpack';
-import webpackConfigPlugin from 'lila-webpack-config';
+import otherPlugin from 'lila-other-plugin';
 
 // here should export a function
 export default lila => {
@@ -35,8 +34,7 @@ export default lila => {
   // do some init actions
 
   tasksPlugin(lila);
-  webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  otherPlugin(lila);
 
   // here return a config generator
   return ({ entry, argv, cmd }) => {
