@@ -3,7 +3,7 @@ import path from 'path';
 
 import { root, argv } from './app';
 import { warn } from './logger';
-import { tryDefault } from '../../../util/index';
+import { tryDefault } from './util';
 
 const { join } = path;
 const { existsSync } = fs;

@@ -1,6 +1,7 @@
 import forEach from 'lodash/forEach';
 
 import { root } from './app';
+import { defaultEntry } from './constants';
 
 const settings = {
   src: 'src',
@@ -8,7 +9,10 @@ const settings = {
   build: 'build',
   tmp: '.lila',
   root,
+  defaultEntry,
 };
+
+const readOnlyNames = ['root', 'defaultEntry'];
 
 export default settings;
 
@@ -18,7 +22,7 @@ export default settings;
  * @param value
  */
 export const setSetting = (name, value) => {
-  if (name === 'root') return;
+  if (readOnlyNames.indexOf(name) > -1) return;
   settings[name] = value;
 };
 
@@ -28,7 +32,7 @@ export const setSetting = (name, value) => {
  */
 export const setSettings = collection => {
   forEach(collection, (value, key) => {
-    if (key === 'root') return;
+    if (readOnlyNames.indexOf(key) > -1) return;
     settings[key] = value;
   });
 };

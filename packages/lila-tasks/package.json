@@ -29,22 +29,15 @@
   ],
   "scripts": {},
   "dependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-flow": "^7.0.0",
     "crypto-md5": "^1.0.0",
     "del": "^3.0.0",
     "fs-extra": "^7.0.1",
-    "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-less": "^4.0.1",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4",
     "gulp-ssh": "^0.7.0",
     "lodash": "^4.17.11",
-    "node-sass": "^4.11.0",
     "rd": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0"
   },
   "engines": {
     "node": ">=8.0.0"

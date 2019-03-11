@@ -352,6 +352,7 @@ See [chalk](https://github.com/chalk/chalk).
 - `build`: `type: string` `default: build` build directory name.
 - `tmp`: `type: string` `default: .lila` tmp directory of project.
 - `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
+- `defaultEntry`: `type: string` `default: @lila/index` `read only` default entry, if you do not provide an entry in cli.
 
 ### extensible settings:
 

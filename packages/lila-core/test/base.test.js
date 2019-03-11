@@ -24,7 +24,7 @@ describe('no lila.js', () => {
     // all
     const all = getAllSettings();
     const keys = Object.keys(all);
-    expect(keys.length).toBe(5);
+    expect(keys.length).toBe(6);
   });
 
   test('set setting or settings', () => {
@@ -33,7 +33,7 @@ describe('no lila.js', () => {
     // new
     setSetting('hello', 'hi');
     expect(getSetting('hello')).toBe('hi');
-    expect(Object.keys(getAllSettings()).length).toBe(6);
+    expect(Object.keys(getAllSettings()).length).toBe(7);
 
     // multiple
     const root = getSetting('root');

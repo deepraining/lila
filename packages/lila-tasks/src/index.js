@@ -8,7 +8,6 @@ import {
   syncSourceMap,
   remoteShell,
 } from './sync';
-import { compileJs, compileLess, compileScss } from './compile';
 import { shell, cleanCache, saveCache } from './misc';
 
 export default lila => {
@@ -33,10 +32,6 @@ export default lila => {
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-source-map', syncSourceMap);
   registerTask('@lila/remote-shell', remoteShell);
-
-  registerTask('@lila/compile-js', compileJs);
-  registerTask('@lila/compile-less', compileLess);
-  registerTask('@lila/compile-scss', compileScss);
 
   registerTask('@lila/shell', shell);
   registerTask('@lila/clean-cache', cleanCache);
