@@ -31,6 +31,7 @@
     "browser-sync": "^2.26.3",
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.11",
+    "rd": "^2.0.1",
     "webpack": "^4.28.4",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-dev-middleware": "^3.5.0",

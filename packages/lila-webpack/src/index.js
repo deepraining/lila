@@ -3,7 +3,7 @@ import dev from './dev';
 import start from './start';
 import analyze from './analyze';
 import task from './task';
-import { getAllEntries } from './util';
+import { getAllEntries, makeGetEntries, makeServePath } from './util';
 
 const { join } = path;
 
@@ -23,6 +23,9 @@ export default lila => {
     'beforeCommand',
   ]);
   const srcPath = join(root, srcDir);
+
+  const defaultGetEntries = makeGetEntries(lila);
+  const defaultServePath = makeServePath(lila);
 
   // add dev command
   addCommand(commander => {
@@ -60,10 +63,8 @@ export default lila => {
 
     command.action((entry = defaultEntry, options) => {
       // servePath should load here
-      const [servePath] = getSettings(['servePath']);
+      const [servePath = defaultServePath] = getSettings(['servePath']);
       const argv = makeArgv(options);
-
-      if (!servePath) throw new Error("setting [servePath] hasn't been set");
 
       if (typeof beforeCommand === 'function')
         beforeCommand({ cmd: 'serve', argv, lila });
@@ -85,7 +86,7 @@ export default lila => {
 
     command.action((entries, options) => {
       // getEntries should load here
-      const [getEntries] = getSettings(['getEntries']);
+      const [getEntries = defaultGetEntries] = getSettings(['getEntries']);
       const realEntries = entries.length ? entries : [defaultEntry];
       const argv = makeArgv(options);
 
@@ -93,9 +94,12 @@ export default lila => {
         beforeCommand({ cmd: 'build', argv, lila });
 
       runTasks({
-        entries: getEntries
-          ? getAllEntries({ entries: realEntries, getEntries, srcPath, root })
-          : realEntries,
+        entries: getAllEntries({
+          entries: realEntries,
+          getEntries,
+          srcPath,
+          root,
+        }),
         argv,
         cmd: 'build',
       });
@@ -115,7 +119,7 @@ export default lila => {
 
     command.action((entries, options) => {
       // getEntries should load here
-      const [getEntries] = getSettings(['getEntries']);
+      const [getEntries = defaultGetEntries] = getSettings(['getEntries']);
       const realEntries = entries.length ? entries : [defaultEntry];
       const argv = makeArgv(options);
 
@@ -123,9 +127,12 @@ export default lila => {
         beforeCommand({ cmd: 'sync', argv, lila });
 
       runTasks({
-        entries: getEntries
-          ? getAllEntries({ entries: realEntries, getEntries, srcPath, root })
-          : realEntries,
+        entries: getAllEntries({
+          entries: realEntries,
+          getEntries,
+          srcPath,
+          root,
+        }),
         argv,
         cmd: 'sync',
       });

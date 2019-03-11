@@ -2,11 +2,14 @@ import path from 'path';
 import fs from 'fs';
 import fse from 'fs-extra';
 import trimEnd from 'lodash/trimEnd';
+import rd from 'rd';
 import { tryDefault, correctSlash } from '../../../util/index';
+import { defaultExt } from './defaults';
 
-const { join } = path;
+const { join, relative } = path;
 const { existsSync } = fs;
 const { readFileSync } = fse;
+const { readDirFilterSync } = rd;
 
 /**
  * Treat all request methods as `GET` method.
@@ -268,4 +271,70 @@ export const getAllEntries = ({ entries, getEntries, srcPath, root }) => {
   });
 
   return allEntries;
+};
+
+// get all entries under a dir
+export const makeGetEntries = lila => (dirPath, srcPath) => {
+  const { getSettings } = lila;
+  const [excludeEntries, extToSearch = defaultExt] = getSettings([
+    'excludeEntries',
+    'extToSearch',
+  ]);
+
+  const entries = [];
+  readDirFilterSync(dirPath, subDirPath => {
+    const htmlFile = `${subDirPath}/index.html`;
+    const jsFile = `${subDirPath}/index.${extToSearch}`;
+
+    // Both `index.html` and `index.${extToSearch}` existing, means this directory is an entry's workspace.
+    if (!existsSync(htmlFile) || !existsSync(jsFile)) return;
+
+    const entry = correctSlash(relative(srcPath, subDirPath));
+
+    if (!excludeEntries) {
+      entries.push(entry);
+      return;
+    }
+
+    const excludeType = typeof excludeEntries;
+
+    // function
+    if (excludeType === 'function') {
+      if (excludeEntries(entry)) return;
+    }
+    // string
+    else if (excludeType === 'string') {
+      if (entry === excludeEntries) return;
+    }
+    // RegExp
+    else if (excludeEntries instanceof RegExp) {
+      if (excludeEntries.test(entry)) return;
+    }
+    // array
+    else if (Array.isArray(excludeEntries)) {
+      for (let i = 0, il = excludeEntries.length; i < il; i += 1) {
+        const excludeEntry = excludeEntries[i];
+
+        // string
+        if (typeof excludeEntry === 'string') {
+          if (entry === excludeEntry) return;
+        }
+        // RegExp
+        else if (excludeEntry instanceof RegExp) {
+          if (excludeEntry.test(entry)) return;
+        }
+      }
+    }
+
+    entries.push(entry);
+  });
+  return entries;
+};
+
+// get js file path for command serve
+export const makeServePath = lila => {
+  const defaultEntry = lila.getSetting('defaultEntry');
+
+  return (entry, srcDir) =>
+    `${srcDir}/${entry === defaultEntry ? '' : `${entry}/`}serve.js`;
 };

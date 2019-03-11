@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 [2019-03-11]
+## 0.7.1 [2019-03-11]
 
 - Add `lila-webpack` plugin.
 

@@ -7,6 +7,7 @@ Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://g
 - [lila-bin](./packages/lila-bin): lila command line tool
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
+- [lila-webpack](./packages/lila-webpack): wrapped webpack plugin
 
 ## setup
 
