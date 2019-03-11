@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0 [2019-03-11]
+
+- Add `lila-webpack` plugin.
+
 ## 0.7.0 [2019-03-11]
 
 - Remove `lila-webpack, lila-webpack-config, create-lila-app`.

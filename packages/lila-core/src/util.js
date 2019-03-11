@@ -21,10 +21,4 @@ export const makeArgv = (options, keepUnknown) => {
   return { ...allArgv, ...argv };
 };
 
-/**
- * try obj.default, for babel transform
- *
- * @param obj
- * @returns {string|boolean|*}
- */
-export const tryDefault = obj => obj.default || obj;
+export default {};

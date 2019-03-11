@@ -60,3 +60,11 @@ export const isDir = dir => {
  * @returns {string}
  */
 export const correctSlash = str => str.replace(/(\\\\|\\)/g, '/');
+
+/**
+ * try obj.default, for babel transform
+ *
+ * @param obj
+ * @returns {string|boolean|*}
+ */
+export const tryDefault = obj => obj.default || obj;
