@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.0 [2019-03-11]
+
+- Remove `lila-webpack-lib, lila-webpack-lib-config, lila-rollup, lila-rollup-config`.
+
 ## 0.6.0 [2019-02-20]
 
 - `lila-webpack-config, lila-webpack-lib-config, lila-rollup-config` add `ext` config option.
