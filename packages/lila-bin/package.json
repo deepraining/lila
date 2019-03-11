@@ -19,9 +19,8 @@
     "tool",
     "teamwork",
     "babel",
-    "webpack",
-    "rollup",
-    "gulp"
+    "gulp",
+    "cli"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"

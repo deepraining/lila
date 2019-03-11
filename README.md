@@ -1,6 +1,6 @@
 # lila
 
-Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://github.com/gulpjs/gulp), [webpack](https://github.com/webpack/webpack), [rollup](https://github.com/rollup/rollup), etc.
+Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://github.com/gulpjs/gulp), [commander.js](https://github.com/tj/commander.js).
 
 ## packages
 
@@ -78,7 +78,7 @@ export default lila => {
 - build/
 ```
 
-- `src`: where to place source codes, like `html, css, less, scss, js, ts, ...`
+- `src`: where to place source codes, like `html, css, less, scss, js, ts, vue, ...`
 - `dev`: a temporary directory, generated while developing
 - `build`: where to generate production bundles
 
