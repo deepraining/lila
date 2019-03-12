@@ -104,6 +104,27 @@ webpack => ({entry, args, argv, cmd, config, lila}) => config
 (entry, srcDir) => path
 ```
 
+### `excludeEntries`: when use a special mode to build entries, such as `home/*`, sometimes you may not want to build some entries under `home`(`home/test, home/ui`, just for local development), you can exclude them here.
+
+`type: string/RegExp/[string]/[RegExp]/function`
+
+`example:`
+
+```
+excludeEntries: 'home/test'                 // exclude home/test entry
+excludeEntries: /\/test$/                   // exclude */test entries
+
+// exclude home/exclude, */test, */ui entries
+excludeEntries: ['home/exclude', /\/test$/, /\/ui$/]
+
+// if return true, entry will be excluded
+excludeEntries: entry => true
+```
+
+### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, ts, tsx`
+
+`type: string` `default: js`
+
 #### serve js file
 
 ```

@@ -7,15 +7,13 @@ module.exports = lila => {
     console.log('');
     Object.keys(configOptions).forEach(key => {
       console.log(`configOptions.${key}: ${typeof configOptions[key]}`);
-      console.log(
-        `configOptions.${key}: ${JSON.stringify(configOptions[key])}`
-      );
+      console.log(`configOptions.${key}: ${configOptions[key]}`);
     });
 
     console.log('');
     Object.keys(taskOptions).forEach(key => {
       console.log(`taskOptions.${key}: ${typeof taskOptions[key]}`);
-      console.log(`taskOptions.${key}: ${JSON.stringify(taskOptions[key])}`);
+      console.log(`taskOptions.${key}: ${taskOptions[key]}`);
     });
     console.log('');
 

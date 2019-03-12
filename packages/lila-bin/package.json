@@ -1,6 +1,6 @@
 {
   "name": "lila-bin",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "lila command line tool",
   "main": "lib/index.js",
   "bin": {
@@ -19,9 +19,8 @@
     "tool",
     "teamwork",
     "babel",
-    "webpack",
-    "rollup",
-    "gulp"
+    "gulp",
+    "cli"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"

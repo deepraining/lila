@@ -70,25 +70,21 @@ describe('run through child_process', () => {
 
     child.on('close', code => {
       expect(code).toBe(0);
-      expect(msg).toContain('test:log ...');
-      expect(msg).toContain('test:log:2 ...');
-      expect(msg).toContain('test2:log ...');
-      expect(msg).toContain('test2:log:2 ...');
 
       expect(msg).toContain('configOptions.entry: string');
-      expect(msg).toContain('configOptions.entry: "test"');
-      expect(msg).toContain('configOptions.entry: "test2"');
+      expect(msg).toContain('configOptions.entry: test');
+      expect(msg).toContain('configOptions.entry: test2');
       expect(msg).toContain('configOptions.argv: object');
       expect(msg).toContain('configOptions.cmd: string');
-      expect(msg).toContain('configOptions.cmd: "run"');
+      expect(msg).toContain('configOptions.cmd: run');
 
       expect(msg).toContain('taskOptions.entry: string');
-      expect(msg).toContain('taskOptions.entry: "test"');
-      expect(msg).toContain('taskOptions.entry: "test2"');
+      expect(msg).toContain('taskOptions.entry: test');
+      expect(msg).toContain('taskOptions.entry: test2');
       expect(msg).toContain('taskOptions.args: object');
       expect(msg).toContain('taskOptions.argv: object');
       expect(msg).toContain('taskOptions.cmd: string');
-      expect(msg).toContain('taskOptions.cmd: "run"');
+      expect(msg).toContain('taskOptions.cmd: run');
       expect(msg).toContain('taskOptions.config: object');
       expect(msg).toContain('taskOptions.lila: object');
       expect(msg).toContain('taskOptions.gulp: object');

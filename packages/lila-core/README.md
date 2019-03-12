@@ -26,8 +26,7 @@ Lila requires an init file called `lila.js`(`lila.init.js` in windows) in projec
 // lila-core should not be imported directly
 
 import tasksPlugin from 'lila-tasks';
-import webpackPlugin from 'lila-webpack';
-import webpackConfigPlugin from 'lila-webpack-config';
+import otherPlugin from 'lila-other-plugin';
 
 // here should export a function
 export default lila => {
@@ -35,8 +34,7 @@ export default lila => {
   // do some init actions
 
   tasksPlugin(lila);
-  webpackPlugin(lila);
-  webpackConfigPlugin(lila);
+  otherPlugin(lila);
 
   // here return a config generator
   return ({ entry, argv, cmd }) => {
@@ -354,6 +352,7 @@ See [chalk](https://github.com/chalk/chalk).
 - `build`: `type: string` `default: build` build directory name.
 - `tmp`: `type: string` `default: .lila` tmp directory of project.
 - `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
+- `defaultEntry`: `type: string` `default: @lila/index` `read only` default entry, if you do not provide an entry in cli.
 
 ### extensible settings:
 

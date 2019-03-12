@@ -9,9 +9,7 @@ const { name } = argv;
 const names =
   name === 'all'
     ? readdirSync('packages')
-    : name
-        .split(',')
-        .map(n => (n === 'create' ? 'create-lila-app' : `lila-${n}`));
+    : name.split(',').map(n => `lila-${n}`);
 
 export default names.map(n => ({
   input: `packages/${n}/src/index.js`,
