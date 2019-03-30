@@ -8,8 +8,18 @@ Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://g
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
 - [lila-webpack](./packages/lila-webpack): wrapped webpack plugin
+- [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for lila-webpack
+- [create-lila-app](./packages/create-lila-app): tool to create a lila application
 
 ## setup
+
+It's recommended to use [create-lila-app](./packages/create-lila-app) to create a lila application, or use ready-made templates:
+
+- [react-app-starter](https://github.com/senntyou/react-app-starter): A boilerplate for creating a React application, using Webpack and Storybook.
+- [react-ts-app-starter](https://github.com/senntyou/react-ts-app-starter): A boilerplate for creating a React application, using TypeScript, Webpack and Storybook.
+- [vue-app-starter](https://github.com/senntyou/vue-app-starter): A boilerplate for creating a Vue application, using Webpack and Storybook.
+
+However, you can also customize it as you like, just follow these steps:
 
 #### 1. install lila-bin
 

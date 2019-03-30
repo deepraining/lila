@@ -1,0 +1,44 @@
+{
+  "name": "create-lila-app",
+  "version": "0.7.2",
+  "description": "tool to create a lila application",
+  "main": "lib/index.js",
+  "bin": {
+    "create-lila-app": "./bin/create-lila-app.js"
+  },
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/create-lila-app",
+  "keywords": [
+    "web",
+    "build",
+    "tool",
+    "teamwork",
+    "babel",
+    "gulp",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "bin",
+    "lib",
+    "files"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "commander": "^2.19.0",
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.1",
+    "shelljs": "^0.8.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
