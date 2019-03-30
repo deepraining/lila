@@ -1,7 +1,8 @@
 {
-  "name": "lila",
+  "name": "[project-name]",
+  "version": "0.1.0",
+  "description": "A lila project.",
   "private": true,
-  "license": "MIT",
   "scripts": {
     "precommit": "npm run lint-staged",
     "lint-staged": "lint-staged",
@@ -10,21 +11,14 @@
     "eslint:fix": "eslint \"./**/*.js\" --fix",
     "stylelint": "stylelint \"./**/*.{css,less,scss,sass}\"",
     "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass}\" --fix",
-    "build": "rollup -c",
-    "build:create": "npm run build -- --name create",
-    "build:bin": "npm run build -- --name bin",
-    "build:core": "npm run build -- --name core",
-    "build:tasks": "npm run build -- --name tasks",
-    "build:webpack": "npm run build -- --name webpack",
-    "build:webpack-config": "npm run build -- --name webpack-config",
-    "build:all": "npm run build -- --name all",
-    "clean": "rimraf packages/*/lib",
-    "pretest": "npm run build:all",
-    "test": "jest packages/*/test",
-    "test:core": "jest packages/lila-core/test"
+    "flow": "flow",
+    "flow:check": "flow check",
+    "test": "jest",
+    "test-watch": "jest --watch --notify",
+    "test-cover": "jest --coverage",
+    "coverage": "npm run test-cover && opn coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -34,35 +28,24 @@
     "eslint-plugin-jest": "^22.1.3",
     "eslint-plugin-node": "^8.0.1",
     "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.94.0",
     "husky": "^1.3.1",
-    "jest": "^24.3.1",
-    "lerna": "^3.10.5",
+    "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
-    "minimist": "^1.2.0",
+    "opn-cli": "^4.0.0",
     "prettier": "^1.15.3",
-    "rd": "^2.0.1",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.1.0",
-    "rollup-plugin-json": "^3.1.0",
     "stylelint": "^9.9.0",
     "stylelint-config-prettier": "^4.0.0",
     "stylelint-config-standard": "^18.2.0"
   },
   "lint-staged": {
-    "**/*.js": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ],
+    "**/*.js": ["eslint --fix", "prettier --write", "git add"],
     "**/*.{css,less,scss,sass}": [
       "stylelint --fix",
       "prettier --write",
       "git add"
     ],
-    "**/*.{html,md,json}": [
-      "prettier --write",
-      "git add"
-    ]
+    "**/*.{html,md,json}": ["prettier --write", "git add"]
   },
   "engines": {
     "node": ">=8.0.0"
