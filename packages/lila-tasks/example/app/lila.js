@@ -79,7 +79,8 @@ const getTasks = entry => {
   if (entry === 'sync') {
     return [
       ['@lila/copy', { source: 'build-bak', target: 'build' }],
-      ['@lila/sync', { src: 'build/**/*', server, remotePath }],
+      ['@lila/sync', { src: 'build/**/*', server, remotePath, cache: !0 }],
+      '@lila/sync-save-cache',
     ];
   }
 
