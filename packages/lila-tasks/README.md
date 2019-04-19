@@ -121,15 +121,25 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 '@lila/del-tmp'
 ```
 
-### `@lila/sync`: sync files to remote server(relative to `root`)
+### `@lila/sync`: sync files to remote server
 
 ```
 ['@lila/sync', {src, server, remotePath}]
 ```
 
-- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)(globs relative to `root`)
+- `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
+- `cache`: `type: boolean` `default: false` whether to cache files.
+- `cacheFileName`: `type: string` `default: cache` file name to record cache.
+
+### `@lila/sync-save-cache`: save files handling record after `@lila/sync` task
+
+```
+['@lila/save-cache', {cacheFileName}]
+```
+
+- `cacheFileName`: `type: string` `default: cache` file name to record cache.
 
 ### `@lila/sync-dir`: sync directories to remote server(relative to `root`)
 
@@ -188,7 +198,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 
 - `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
 
-### `@lila/clean-cache`: remove handled files by last handling, and remain new files, for `build` directory
+### `@lila/clean-cache`: remove handled files by last handling, and remain new files, mainly for `build` directory
 
 ```
 '@lila/clean-cache'
@@ -199,7 +209,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `dir`: `type: string` directory to handle(relative to `root`)
 - `cacheFileName`: `type: string` `default: cache` file name to record cache.
 
-### `@lila/save-cache`: save files handling record, for `build` directory
+### `@lila/save-cache`: save files handling record, mainly for `build` directory
 
 ```
 '@lila/save-cache'

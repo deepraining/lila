@@ -1,7 +1,16 @@
+import fs from 'fs';
 import path from 'path';
 import SSH from 'gulp-ssh';
+import glob from 'glob';
+import md5 from 'crypto-md5';
+import fse from 'fs-extra';
+import { isFile } from '../../../util/index';
 
-const { join } = path;
+const { join, relative } = path;
+const { existsSync, readFileSync } = fs;
+const { outputFileSync } = fse;
+
+let cacheJson;
 
 /**
  * sync files to remote server
@@ -9,7 +18,7 @@ const { join } = path;
  * @example
  *
  * ```
- * ['@lila/sync', {src, server, remotePath}]
+ * ['@lila/sync', {src, server, remotePath, cache, cacheFileName}]
  * ```
  *
  * @param args
@@ -17,11 +26,11 @@ const { join } = path;
  * @param lila
  * @returns {function()}
  */
-export const sync = ({ args, gulp, lila }) => () => {
+export const sync = ({ args, gulp, lila }) => cb => {
   const { getSettings } = lila;
-  const [root] = getSettings(['root']);
-
-  const { src, server, remotePath } = (args && args[0]) || {};
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+  const { src, server, remotePath, cache = !1, cacheFileName = 'cache' } =
+    (args && args[0]) || {};
 
   if (!src) throw new Error('src not configured');
   if (!server) throw new Error('server info not configured');
@@ -30,15 +39,65 @@ export const sync = ({ args, gulp, lila }) => () => {
   const connect = new SSH(server);
 
   let globs = src;
-  let options = { base: root };
+  let options = {};
 
   if (Array.isArray(src) && typeof src[1] === 'object') {
     [globs, options] = src;
   }
 
-  globs = (Array.isArray(globs) ? globs : [globs]).map(g => `${root}/${g}`);
+  if (!cache) return gulp.src(globs, options).pipe(connect.dest(remotePath));
 
-  return gulp.src(globs, options).pipe(connect.dest(remotePath));
+  const cacheFile = `${root}/${tmpDir}/${cacheFileName}.json`;
+  const json = existsSync(cacheFile) ? require(cacheFile) : {}; // eslint-disable-line
+  const files = glob.sync(globs, options);
+  const changedFiles = [];
+
+  files.forEach(file => {
+    if (!isFile(file)) return;
+
+    const key = relative(root, file);
+    const content = readFileSync(file);
+    const hash = md5(content, 'hex');
+
+    if (json[key] !== hash) {
+      json[key] = hash;
+      changedFiles.push(file);
+    }
+  });
+
+  if (!changedFiles.length) return cb();
+
+  cacheJson = json;
+
+  return gulp.src(changedFiles, options).pipe(connect.dest(remotePath));
+};
+
+/**
+ * save files handling record after `@lila/sync` task
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/sync-save-cache', {cacheFileName}]
+ * ```
+ *
+ * @param args
+ * @param lila
+ * @returns {function(*)}
+ */
+export const syncSaveCache = ({ args, lila }) => cb => {
+  if (!cacheJson) return cb();
+
+  const { cacheFileName = 'cache' } = (args && args[0]) || {};
+
+  const { getSettings } = lila;
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+
+  const cacheFile = `${root}/${tmpDir}/${cacheFileName}.json`;
+
+  outputFileSync(cacheFile, JSON.stringify(cacheJson));
+
+  return cb();
 };
 
 /**

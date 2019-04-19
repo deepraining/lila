@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.7.3 [2019-04-19]
+
+- `lila-tasks` add `@lila/sync-save-cache` task.
+- `@lila/sync` add `cache, cacheFileName` options.
+
 ## 0.7.2 [2019-03-30]
 
 - Add `create-lila-app` plugin.

@@ -2,6 +2,7 @@ import { make, replace, insert, convert, backup } from './file';
 import { move, copy, delTask, delDev, delBuild, delTmp } from './dir';
 import {
   sync,
+  syncSaveCache,
   syncDir,
   syncBuild,
   syncHtml,
@@ -27,6 +28,7 @@ export default lila => {
   registerTask('@lila/del-tmp', delTmp);
 
   registerTask('@lila/sync', sync);
+  registerTask('@lila/sync-save-cache', syncSaveCache);
   registerTask('@lila/sync-dir', syncDir);
   registerTask('@lila/sync-build', syncBuild);
   registerTask('@lila/sync-html', syncHtml);
