@@ -110,13 +110,11 @@ export default ({ dir, type }) => {
   child.on('close', code => {
     if (code !== 0) process.exit(1);
 
-    const lilaPkg = [
-      'lila-bin',
-      'lila-core',
-      'lila-tasks',
-      'lila-webpack',
-      'lila-webpack-config',
-    ];
+    const lilaPkg = ['lila-bin', 'lila-core', 'lila-tasks'];
+
+    if (type !== universalType) {
+      lilaPkg.push('lila-webpack', 'lila-webpack-config');
+    }
 
     const child2 = spawn(npm, ['install', '--save-dev', ...lilaPkg], {
       stdio: 'inherit',
