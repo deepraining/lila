@@ -20,7 +20,7 @@ module.exports = {
     'react/prefer-stateless-function': 'off',
   },
   parserOptions: {
-    ecmaVersion: 2017,
+    ecmaVersion: 2018,
   },
   settings: {
     'import/resolver': {
