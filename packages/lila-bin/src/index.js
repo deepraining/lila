@@ -42,7 +42,11 @@ else {
       'node_modules/lila-core'
     );
   } catch (e) {
-    // eslint-disable no-empty
+    // has commands (every command need local lila-core)
+    if (argv._.length) {
+      console.log('error: local lila-core package not found');
+      process.exit(1);
+    }
   }
 }
 
