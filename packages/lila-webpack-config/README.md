@@ -193,6 +193,14 @@ extra: webpack => ({ ... })
 
 `type: []` `default: []`
 
+### `rebuildWebpackConfig`: rebuild webpack config when you want more handling of webpack config
+
+`type: function`
+
+```
+({ webpackConfig, lila, webpack, entry, cmd, config, argv }) => newWebpackConfig;
+```
+
 ## files of an entry
 
 An entry has a standalone directory(`src/home/about/` if entry is `home/about`), also called workspace, and has at least a `index.html` file and a `index.js` file under the workspace.

@@ -7,31 +7,53 @@ import { baseType, reactType, vueType } from './data';
 const make = makeType => lila => {
   const { setSetting } = lila;
 
-  setSetting('webpackConfigGenerator', webpack => ({ entry, cmd, config }) => {
-    const { extra } = config;
-    const extraWebpackConfig =
-      typeof extra === 'function' ? extra(webpack) : extra;
+  setSetting(
+    'webpackConfigGenerator',
+    webpack => ({ entry, cmd, config, argv }) => {
+      const { extra, rebuildWebpackConfig } = config;
+      const extraWebpackConfig =
+        typeof extra === 'function' ? extra(webpack) : extra;
 
-    let webpackConfig = {};
+      let webpackConfig = {};
 
-    if (cmd === 'dev' || cmd === 'serve')
-      webpackConfig = dev({ lila, webpack, entry, cmd, config, makeType });
-    if (cmd === 'analyze')
-      webpackConfig = analyze({ lila, webpack, entry, cmd, config, makeType });
-    if (cmd === 'build' || cmd === 'sync' || cmd === 'start')
-      webpackConfig = build({ lila, webpack, entry, cmd, config, makeType });
+      if (cmd === 'dev' || cmd === 'serve')
+        webpackConfig = dev({ lila, webpack, entry, cmd, config, makeType });
+      if (cmd === 'analyze')
+        webpackConfig = analyze({
+          lila,
+          webpack,
+          entry,
+          cmd,
+          config,
+          makeType,
+        });
+      if (cmd === 'build' || cmd === 'sync' || cmd === 'start')
+        webpackConfig = build({ lila, webpack, entry, cmd, config, makeType });
 
-    const { rules = [], plugins = [] } = config;
+      const { rules = [], plugins = [] } = config;
 
-    if (rules.length && webpackConfig.module && webpackConfig.module.rules)
-      webpackConfig.module.rules.push(...rules);
-    if (plugins.length && webpackConfig.plugins)
-      webpackConfig.plugins.push(...plugins);
+      if (rules.length && webpackConfig.module && webpackConfig.module.rules)
+        webpackConfig.module.rules.push(...rules);
+      if (plugins.length && webpackConfig.plugins)
+        webpackConfig.plugins.push(...plugins);
 
-    return extraWebpackConfig
-      ? merge(webpackConfig, extraWebpackConfig)
-      : webpackConfig;
-  });
+      const finalWebpackConfig = extraWebpackConfig
+        ? merge(webpackConfig, extraWebpackConfig)
+        : webpackConfig;
+
+      return rebuildWebpackConfig
+        ? rebuildWebpackConfig({
+            webpackConfig: finalWebpackConfig,
+            lila,
+            webpack,
+            entry,
+            cmd,
+            config,
+            argv,
+          })
+        : finalWebpackConfig;
+    }
+  );
 };
 
 export default make(baseType);

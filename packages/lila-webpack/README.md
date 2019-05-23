@@ -87,7 +87,7 @@ If `entry` is not provided, `@lila/index` will be used as default.
 ### `webpackConfigGenerator`: generate webpack config
 
 ```
-webpack => ({entry, args, argv, cmd, config, lila}) => config
+webpack => ({entry, argv, cmd, config, lila}) => config
 ```
 
 ## settings can be implemented

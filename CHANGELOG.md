@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.5 [2019-05-23]
+
+- `lila-webpack-config` add `rebuildWebpackConfig`.
+
 ## 0.7.3 [2019-04-19]
 
 - `lila-tasks` add `@lila/sync-save-cache` task.
