@@ -24,5 +24,9 @@ export default lila => {
       __DEFINE__: JSON.stringify('define'),
     },
     staticServer: 'https://www.google.com/lila',
+    rebuildWebpackConfig({ webpackConfig }) {
+      console.log('rebuildWebpackConfig');
+      return webpackConfig;
+    },
   });
 };
