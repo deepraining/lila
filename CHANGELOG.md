@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.6
+
+- Fix bug of `@lila/shell` `subprocess.stderr` being null.
+
 ## 0.7.5 [2019-05-23]
 
 - `lila-webpack-config` add `rebuildWebpackConfig`.
