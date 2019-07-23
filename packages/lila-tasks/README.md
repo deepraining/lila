@@ -200,7 +200,7 @@ export default lila => {
 
 - `command, args, options`: 查看 [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
 
-### `@lila/clean-cache`: 移除上次操作过的文件，保留未操作过的文本，主要用于记录 `build` 目录
+### `@lila/clean-cache`: 移除上次操作过的文件，保留未操作过的文件，主要用于记录 `build` 目录
 
 ```
 '@lila/clean-cache'

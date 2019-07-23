@@ -106,6 +106,16 @@ webpack => ({entry, argv, cmd, config, lila}) => config
 (entry, srcDir) => path
 ```
 
+#### serve js file
+
+```
+export default (content, req) => newContent;
+```
+
+- `content`: html file content
+- `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
+- `newContent`: new html content
+
 ### `excludeEntries`: when use a special mode to build entries, such as `home/*`, sometimes you may not want to build some entries under `home`(`home/test, home/ui`, just for local development), you can exclude them here.
 
 `type: string/RegExp/[string]/[RegExp]/function`
@@ -126,16 +136,6 @@ excludeEntries: entry => true
 ### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, ts, tsx`
 
 `type: string` `default: js`
-
-#### serve js file
-
-```
-export default (content, req) => newContent;
-```
-
-- `content`: html file content
-- `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
-- `newContent`: new html content
 
 ### `beforeCommand`: pre handling before each command starting
 

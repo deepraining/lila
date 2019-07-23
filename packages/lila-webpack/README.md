@@ -106,6 +106,16 @@ webpack => ({entry, argv, cmd, config, lila}) => config
 (entry, srcDir) => path
 ```
 
+#### serve js 文件
+
+```
+export default (content, req) => newContent;
+```
+
+- `content`: html 文件内容
+- `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
+- `newContent`: 新的 html 内容
+
 ### `excludeEntries`: 当使用特殊标志构建多个 entry 时, 如 `home/*`, 有时候并不需要构建某些 `home` 下的 entry(`home/test, home/ui`, 仅作本地开发), 可以在这里排除.
 
 `type: string/RegExp/[string]/[RegExp]/function`
@@ -123,19 +133,9 @@ excludeEntries: ['home/exclude', /\/test$/, /\/ui$/]
 excludeEntries: entry => true
 ```
 
-### `extToSearch`: 当要获取某个目录下所有的 entry 时，使用什么扩展名索 entry 入口脚本文件, 如 `js, jsx, ts, tsx`
+### `extToSearch`: 当要获取某个目录下所有的 entry 时，使用什么扩展名搜索 entry 入口脚本文件, 如 `js, jsx, ts, tsx`
 
 `type: string` `default: js`
-
-#### serve js file
-
-```
-export default (content, req) => newContent;
-```
-
-- `content`: html 文件内容
-- `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
-- `newContent`: 新的 html 内容
 
 ### `beforeCommand`: 在每个命令运行之前运行的钩子
 
@@ -154,7 +154,7 @@ export default (content, req) => newContent;
 
 `type: bool` `default: true`
 
-一般而言, 只有 `get` 方法 可以访问静态文件爱你, 而 `post, put, delete ...` 会导致 `404`.
+一般而言, 只有 `get` 方法 可以访问静态文件, 而 `post, put, delete ...` 会导致 `404`.
 
 ### `mock`: 使用 js 文件生成模拟数据
 
@@ -202,7 +202,7 @@ export const profile = {
 
 `type: string/function`
 
-当使用模拟数据时, 如果你不喜欢那么长的 `url`, 比如使用 `/src/one/page/mock/list` 访问 `/src/one/page/mock/list.js` 文件.
+当使用模拟数据时, 肯呢个你不喜欢那么长的 `url`, 比如使用 `/src/one/page/mock/list` 访问 `/src/one/page/mock/list.js` 文件.
 
 Lila 内置了一个便利的方式.
 
