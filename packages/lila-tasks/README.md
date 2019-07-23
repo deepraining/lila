@@ -1,16 +1,18 @@
 # lila-tasks
 
-Lila built-in tasks.
+[English Documentation](./README.en.md)
 
-## install
+lila 内置的 tasks
+
+## 安装
 
 ```
 npm install --save-dev lila-tasks
 ```
 
-## use
+## 使用
 
-In `lila.js`:
+在 `lila.js` 中:
 
 ```
 import tasksPlugin from 'lila-tasks';
@@ -22,80 +24,80 @@ export default lila => {
 };
 ```
 
-## built-in tasks
+## 内置任务
 
-### `@lila/make`: create a file(relative to `root`)
+### `@lila/make`: 创建文件(相对于 `root`)
 
 ```
 ['@lila/make', {file, content, force}]}]
 ```
 
-- `file`: `type: string` file to handle.
-- `content`: `type: string` file content.
-- `force`: `type: bool` `default: false` whether to override if file already existed.
+- `file`: `type: string` 要操作的文件.
+- `content`: `type: string` 文件内容.
+- `force`: `type: bool` `default: false` 如果文件已存在，是否覆盖.
 
-### `@lila/replace`: replace file content(relative to `root`)
+### `@lila/replace`: 替换文件内容(相对于 `root`)
 
 ```
 ['@lila/replace', {file, replace: [{target, replacement}]}]
 ```
 
-- `file`: `type: string` file to handle.
-- `replace`: `type: []` options to replace.
-  - `target`: `type: string|RegExp` target to be replaced.
-  - `replacement`: `type: string` string to replace.
+- `file`: `type: string` 要操作的文件.
+- `replace`: `type: []` 替换选项.
+  - `target`: `type: string|RegExp` 需要被替换的文本.
+  - `replacement`: `type: string` 替换的文本.
 
-### `@lila/insert`: insert file content(relative to `root`)
+### `@lila/insert`: 插入文件内容(相对于 `root`)
 
 ```
 ['@lila/insert', {file, start, end}]
 ```
 
-- `file`: `type: string` file to handle.
-- `start`: `type: string` content to prepend.
-- `end`: `type: string` content to append.
+- `file`: `type: string` 要操作的文件.
+- `start`: `type: string` 插入在文件最前面的内容.
+- `end`: `type: string` 插入在文件最后面的内容.
 
-### `@lila/convert`: convert file extension(relative to `root`)
+### `@lila/convert`: 更改文件的扩展名(相对于 `root`)
 
 ```
 ['@lila/convert', {file, ext}]
 ```
 
-- `file`: `type: string` file to handle.
-- `ext`: `type: string` extension name, like `php, jsp`.
+- `file`: `type: string` 要操作的文件.
+- `ext`: `type: string` 扩展名, 如 `php, jsp`.
 
-### `@lila/backup`: backup file(relative to `root`)
+### `@lila/backup`: 备份文件(相对于 `root`)
 
-Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
+复制文件并添加后缀, `index.html -> index.2000-01-02-03-04-05.html`.
 
 ```
 ['@lila/backup', {file, suffix}]
 ```
 
-- `file`: `type: string` file to handle.
+- `file`: `type: string` 要操作的文件.
 - `suffix`: `type: string` `default: (new Date()).getTime()` `index.html -> index.${suffix}.html`.
 
-### `@lila/move`: move file or directory(relative to `root`)
+### `@lila/move`: 移动文件或目录(相对于 `root`)
 
 ```
 ['@lila/move', {source, target, force}]
 ```
 
-- `source`: `type: string` source file or directory
-- `target`: `type: string` target file or directory
-- `force`: `type: bool` `default: false` whether to override if target already existed.
+- `source`: `type: string` 源文件或目录
+- `target`: `type: string` 目标文件或目录
+- `force`: `type: bool` `default: false` 如果目录已存在，是否覆盖
 
-### `@lila/copy`: copy file or directory(relative to `root`)
+### `@lila/copy`: 复制文件或目录(相对于 `root`)
 
 ```
 ['@lila/copy', {source, target, force}]
 ```
 
-- `source`: `type: string` source file or directory
-- `target`: `type: string` target file or directory
-- `force`: `type: bool` `default: false` whether to override if target already existed.
+- `source`: `type: string` 源文件或目录
+- `target`: `type: string` 目标文件或目录
+- `force`: `type: bool` `default: false` 如果目录已存在，是否覆盖
 
-### `@lila/del`: delete files or directories(relative to `root`)
+### `@lila/del`: 删除文件或目录(相对于 `root`)
 
 ```
 ['@lila/del', file]
@@ -103,102 +105,102 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/del', [file1, dir2, dir3, ...]]
 ```
 
-### `@lila/del-dev`: delete dev directory
+### `@lila/del-dev`: 删除 dev 目录
 
 ```
 '@lila/del-dev'
 ```
 
-### `@lila/del-build`: delete build directory
+### `@lila/del-build`: 删除 build 目录
 
 ```
 '@lila/del-build'
 ```
 
-### `@lila/del-tmp`: delete tmp directory
+### `@lila/del-tmp`: 删除 tmp 目录
 
 ```
 '@lila/del-tmp'
 ```
 
-### `@lila/sync`: sync files to remote server
+### `@lila/sync`: 同步文件到远程服务器
 
 ```
 ['@lila/sync', {src, server, remotePath}]
 ```
 
 - `src`: `globs/[globs, options]` [gulp.src](https://gulpjs.com/docs/en/api/src)
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `remotePath`: `type: string` remote server path to upload to.
-- `cache`: `type: boolean` `default: false` whether to cache files.
-- `cacheFileName`: `type: string` `default: cache` file name to record cache.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` 要上传的远程服务器路径.
+- `cache`: `type: boolean` `default: false` 是否缓存已上传的文件.
+- `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.
 
-### `@lila/sync-save-cache`: save files handling record after `@lila/sync` task
+### `@lila/sync-save-cache`: 运行 `@lila/sync` 任务后保存操作文件的记录
 
 ```
 ['@lila/save-cache', {cacheFileName}]
 ```
 
-- `cacheFileName`: `type: string` `default: cache` file name to record cache.
+- `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.
 
-### `@lila/sync-dir`: sync directories to remote server(relative to `root`)
+### `@lila/sync-dir`: 同步目录到远程服务器(相对于 `root`)
 
 ```
 ['@lila/sync-dir', {server, remotePath, dirs}]
 ```
 
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `remotePath`: `type: string` remote server path to upload to.
-- `dirs`: `type: string/array` directories to sync.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` 要上传的远程服务器路径.
+- `dirs`: `type: string/array` 要上传的目录.
 
-### `@lila/sync-build`: sync build directory to remote server(relative to `root`)
+### `@lila/sync-build`: 同步 build 目录到远程服务器(相对于 `root`)
 
 ```
 ['@lila/sync-build', {server, remotePath, sourceMap}]
 ```
 
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `remotePath`: `type: string` remote server path to upload to.
-- `sourceMap`: `type: bool` `default: true` whether to upload source-map files.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` 要上传的远程服务器路径.
+- `sourceMap`: `type: bool` `default: true` 是否上传 source-map 文件.
 
-### `@lila/sync-html`: sync html files to remote server(relative to build)
+### `@lila/sync-html`: 同步 html 文件到远程服务器(相对于 build)
 
 ```
 ['@lila/sync-html', {server, remotePath, ext}]
 ```
 
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `remotePath`: `type: string` remote server path to upload to.
-- `ext`: `type: string` `default: html` html file extension.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` 要上传的远程服务器路径.
+- `ext`: `type: string` `default: html` html 文件扩展名.
 
-### `@lila/sync-source-map`: sync source-map files to remote server(relative to build)
+### `@lila/sync-source-map`: 同步 source-map 文件到远程服务器(相对于 build)
 
 ```
 ['@lila/sync-source-map', {server, remotePath}]
 ```
 
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `remotePath`: `type: string` remote server path to upload to.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `remotePath`: `type: string` 要上传的远程服务器路径.
 
-### `@lila/remote-shell`: execute shell scripts on remote server
+### `@lila/remote-shell`: 在远程服务器执行 shell 脚本
 
 ```
 ['@lila/remote-shell', {server, scripts, log}]
 ```
 
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `scripts`: `type: string/array` shell scripts to execute on remote server.
-- `log`: `type: string` `default: remote-shell.log` log file.
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
+- `scripts`: `type: string/array` 需要在远程服务器执行的 shell 脚本.
+- `log`: `type: string` `default: remote-shell.log` 日志文件.
 
-### `@lila/shell`: execute shell scripts
+### `@lila/shell`: 执行 shell 脚本
 
 ```
 ['@lila/shell', {command, args, options}]
 ```
 
-- `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+- `command, args, options`: 查看 [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
 
-### `@lila/clean-cache`: remove handled files by last handling, and remain new files, mainly for `build` directory
+### `@lila/clean-cache`: 移除上次操作过的文件，保留未操作过的文本，主要用于记录 `build` 目录
 
 ```
 '@lila/clean-cache'
@@ -206,10 +208,10 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/clean-cache', {dir, cacheFileName}]
 ```
 
-- `dir`: `type: string` directory to handle(relative to `root`)
-- `cacheFileName`: `type: string` `default: cache` file name to record cache.
+- `dir`: `type: string` 待操作的目录(相对于 `root`)
+- `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.
 
-### `@lila/save-cache`: save files handling record, mainly for `build` directory
+### `@lila/save-cache`: 保存文件到操作记录中, 主要用于记录 `build` 目录
 
 ```
 '@lila/save-cache'
@@ -217,5 +219,5 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ['@lila/save-cache', {dir, cacheFileName}]
 ```
 
-- `dir`: `type: string` directory to handle(relative to `root`)
-- `cacheFileName`: `type: string` `default: cache` file name to record cache.
+- `dir`: `type: string` 待操作的目录(相对于 `root`)
+- `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.

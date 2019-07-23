@@ -1,16 +1,18 @@
 # lila-webpack
 
-Wrapped webpack plugin.
+[English Documentation](./README.en.md)
 
-## install
+封装的 webpack 插件
+
+## 安装
 
 ```
 npm install --save-dev lila-webpack
 ```
 
-## use
+## 使用
 
-In `lila.js`:
+在 `lila.js` 中:
 
 ```
 import webpackPlugin from 'lila-webpack';
@@ -22,106 +24,106 @@ export default lila => {
 };
 ```
 
-## extended commands
+## 扩展的命令
 
-### `dev`: start a local server to develop an entry
+### `dev`: 开启一个本地服务器开发一个 entry
 
 ```
 lila dev entry
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-### `serve`: simulate a backend environment to start a local server to develop an entry
+### `serve`: 模拟一个后端环境，开启一个本地服务器开发一个 entry
 
 ```
 lila serve entry
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-Need `servePath` setting to work with.
+需要配置 `servePath` 配置项.
 
-### `build`: pack source codes to production bundles
+### `build`: 打包源代码
 
 ```
 lila build entry1 entry2 entry3 ...
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-### `sync`: make production bundles, then sync to remote servers
+### `sync`: 打包源代码, 并同步到服务器
 
 ```
 lila sync entry1 entry2 entry3 ...
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-### `start`: make production bundles, then start a local server to preview
+### `start`: 打包源代码, 并开启一个本地服务器预览
 
 ```
 lila start entry
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-### `analyze`: visualize size of webpack output files
+### `analyze`: 查看当前 entry 的各个模块文件的大小
 
 ```
 lila analyze entry
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-## extended tasks
+## 扩展的任务
 
-### `@lila/webpack`: run webpack
+### `@lila/webpack`: 运行 webpack
 
 ```
 '@lila/webpack'
 ```
 
-## settings need to be implemented
+## 需要实现的配置项
 
-### `webpackConfigGenerator`: generate webpack config
+### `webpackConfigGenerator`: 生成 webpack 配置
 
 ```
 webpack => ({entry, argv, cmd, config, lila}) => config
 ```
 
-## settings can be implemented
+## 可以实现的配置项
 
-### `getEntries`: get all entries under a dir
+### `getEntries`: 获取一个目录下的所有 entry
 
 ```
 (dirPath, srcPath, root) => entries
 ```
 
-### `servePath`: get serve js file path for command `serve`(relative to `root`)
+### `servePath`: 获取 serve js 文件路径给 `serve` 命令用(相对于 `root`)
 
 ```
 (entry, srcDir) => path
 ```
 
-### `excludeEntries`: when use a special mode to build entries, such as `home/*`, sometimes you may not want to build some entries under `home`(`home/test, home/ui`, just for local development), you can exclude them here.
+### `excludeEntries`: 当使用特殊标志构建多个 entry 时, 如 `home/*`, 有时候并不需要构建某些 `home` 下的 entry(`home/test, home/ui`, 仅作本地开发), 可以在这里排除.
 
 `type: string/RegExp/[string]/[RegExp]/function`
 
 `example:`
 
 ```
-excludeEntries: 'home/test'                 // exclude home/test entry
-excludeEntries: /\/test$/                   // exclude */test entries
+excludeEntries: 'home/test'                 // 排除 home/test entry
+excludeEntries: /\/test$/                   // 排除 */test entries
 
-// exclude home/exclude, */test, */ui entries
+// 排除 home/exclude, */test, */ui entries
 excludeEntries: ['home/exclude', /\/test$/, /\/ui$/]
 
-// if return true, entry will be excluded
+// 如果返回 true, entry 将会被排除
 excludeEntries: entry => true
 ```
 
-### `extToSearch`: entry script file extension to search when get all entries under a dir, like `js, jsx, ts, tsx`
+### `extToSearch`: 当要获取某个目录下所有的 entry 时，使用什么扩展名索 entry 入口脚本文件, 如 `js, jsx, ts, tsx`
 
 `type: string` `default: js`
 
@@ -131,46 +133,46 @@ excludeEntries: entry => true
 export default (content, req) => newContent;
 ```
 
-- `content`: html file content
+- `content`: html 文件内容
 - `req`: [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html)
-- `newContent`: new html content
+- `newContent`: 新的 html 内容
 
-### `beforeCommand`: pre handling before each command starting
+### `beforeCommand`: 在每个命令运行之前运行的钩子
 
 ```
 ({cmd, argv, lila}) => { ... }
 ```
 
-If you want to make some pre handling, you can do it here, like:
+如果你需要做一些预操作，可以在这里添加，如：
 
-- use [chokidar](https://github.com/paulmillr/chokidar) to watch files' changes, and generate js files dynamically
-- do some initializations or print some messages
+- 使用 [chokidar](https://github.com/paulmillr/chokidar) 监听文件变动, 然后动态生成 js 文件
+- 做一些初始化操作或打印一些信息
 
-## extended configs
+## 扩展的配置
 
-### `forceGet`: force all ajax methods as `get`
-
-`type: bool` `default: true`
-
-Normally, only `get` method can access static file, and `post, put, delete ...` will cause `404`.
-
-### `mock`: use js files to generate mock data
+### `forceGet`: 强制所有的 ajax 请求方法为 `get`
 
 `type: bool` `default: true`
 
-In most occasions, you can use `json` files to provide mock data, but when we want dynamic data, `json` files won't work.
+一般而言, 只有 `get` 方法 可以访问静态文件爱你, 而 `post, put, delete ...` 会导致 `404`.
+
+### `mock`: 使用 js 文件生成模拟数据
+
+`type: bool` `default: true`
+
+在大多数情况下, 可以使用 `json` 文件提供模拟数据的功能, 但 `json` 文件不能提供动态的数据.
 
 `url`: `/src/api/user/profile?id=1`
 
-First try `/src/api/user/profile.js`:
+首先尝试 `/src/api/user/profile.js`:
 
 ```
-// export a function, an object, a string
+// 导出一个函数
 export default (req, res) => {
-  // do everything you want
+  // 做任何事情
 };
 
-// or export an object, a string(not function)
+// 或者导出一个对象，一个字符串
 export default {
   success: true,
   message: 'ok',
@@ -178,15 +180,15 @@ export default {
 };
 ```
 
-Second try `/src/api/user.js`:
+第二尝试 `/src/api/user.js`:
 
 ```
-// export a function
+// 导出一个函数
 export const profile = (req, res) => {
-  // do everything you want
+  // 做任何事情
 };
 
-// or export an object, a string(not function)
+// 或者导出一个对象，一个字符串
 export const profile = {
   success: true,
   message: 'ok',
@@ -194,66 +196,66 @@ export const profile = {
 }
 ```
 
-`req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
+`req, res` 参考 [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), 并且文件名不能包含 `.` 点符号, 否则会被当作静态文件处理.
 
-### `mockRoot`: extra mock root url prefix(relative to `root`)
+### `mockRoot`: 其他的 mock root url 前缀(相对于 `root`)
 
 `type: string/function`
 
-When use mock data, maybe you don't like url to be that long, such as use `/src/one/page/mock/list` to access `/src/one/page/mock/list.js` file.
+当使用模拟数据时, 如果你不喜欢那么长的 `url`, 比如使用 `/src/one/page/mock/list` 访问 `/src/one/page/mock/list.js` 文件.
 
-Lila internally provide a convenient way to do that.
+Lila 内置了一个便利的方式.
 
-If `url` try to get a mock data from `/src/one/page/mock/list.js` file, lila will try urls in sequences as follows:
+如果 `url` 尝试从 `/src/one/page/mock/list.js` 文件访问模拟数据, lila 会按照下面的顺序尝试访问 `url`:
 
-1. `${url}`: try itself `/src/one/page/mock/list`
-2. `/mock/${url}`: try `mock` prefix
-3. `/${srcDir}/${url}`: try under src directory, you can use `/one/page/mock/list`
-4. `/${srcDir}/mock/${url}`: try `mock` prefix src directory
-5. `/${srcDir}/${entry}/${url}`: try under entry's workspace, you can use `/mock/list`
-6. `/${srcDir}/${entry}/mock/${url}`: try `mock` prefix under entry's workspace, you can use `/list`
+1. `${url}`: 全地址：`/src/one/page/mock/list`
+2. `/mock/${url}`: 加一个 `mock` 前缀
+3. `/${srcDir}/${url}`: 尝试以 `src` 目录为基地址进行访问：`/one/page/mock/list`
+4. `/${srcDir}/mock/${url}`: 尝试以 `src` 目录为基地址，并加一个 `mock` 前缀
+5. `/${srcDir}/${entry}/${url}`: 尝试以 entry 的工作空间基地址进行访问：`/mock/list`
+6. `/${srcDir}/${entry}/mock/${url}`: 尝试以 entry 的工作空间基地址，并加一个 `mock` 前缀：`/list`
 
-If you want more convenient ways, you can add your own ways by `mockRoot`.
+如果你想要更多的便利方式，可以配置 `mockRoot`
 
 ```
-// a string
+// 一个字符串
 mockRoot: '/some/directory'
 
-// strings
+// 多个字符串
 mockRoot: ['/first/directory', '/second/directory']
 
-// return a string
+// 返回一个字符串
 mockRoot: (entry, lila) => '/some/directory';
 
-// return strings
+// 返回多个字符串
 mockRoot: (entry, lila) => ['/first/directory', '/second/directory']
 ```
 
-### `port`: local server port
+### `port`: 本地开发服务器端口
 
 `type: number` `default: 8090`
 
-### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) config
+### `browserSync`: [browser-sync](https://github.com/BrowserSync/browser-sync) 配置
 
 `type: {}` `default: {}`
 
-### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) config
+### `devMiddleware`: [webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware) 配置
 
 `type: {}` `default: { watchOptions: { ignored: /node_modules/ } }`
 
-### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) config
+### `hotMiddleware`: [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware) 配置
 
 `type: {}` `default: {}`
 
-### `bundleAnalyzer`: [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) config
+### `bundleAnalyzer`: [webpack-bundle-analyzer](https://github.com/webpack-contrib/webpack-bundle-analyzer) 配置
 
 `type: {}` `default: { analyzerPort: 8190 }`
 
-## entry specification
+## entry 规范
 
-- `home/about`: a single entry
-- `home/*` or `home/all`: all entries under `home` directory
-- `*` or `all`: all entries of project
+- `home/about`: 单个 entry
+- `home/*` 或 `home/all`: `home` 目录下的所有 entries
+- `*` 或 `all`: 项目的所有 entries
 
 ## npm packages
 
