@@ -63,7 +63,12 @@ export default lila => {
 ### 任务
 
 ```
-['task1', ['task2'], ['task3', arg0, arg1, ...], ...]
+[
+  'task1',
+  ['task2'],
+  ['task3', arg0, arg1, ...],
+  ...
+]
 ```
 
 ## api
@@ -115,7 +120,7 @@ const values = lila.getSettings(names);
 const [value1, value2, ...] = lila.getSettings([name1, name2, ...]);
 ```
 
-### `lila.getAllSettings`: 获取所有配置值
+### `lila.getAllSettings`: 获取所有配置项
 
 ```
 const settings = lila.getAllSettings();
@@ -174,7 +179,7 @@ const generator = lila.getTask(name);
 - `@param/name`: `type: string` 任务名
 - `@return`: `type: function` 任务生成器
 
-### `lila.getTasks`: get multiple task generators
+### `lila.getTasks`: 获取多个任务生成器
 
 ```
 const generators = lila.getTasks(names);
@@ -401,7 +406,7 @@ lila run                     # 实际 entry 是 @lila/index
 
 ## 扩展的命令行配置
 
-- `--root`: 自定义 root path
+- `--root`: 自定义根路径
 - `--init`: 自定义初始化文件, 默认是 `lila.js`(Windows 中 `lila.init.js`)
 
 ## 注意事项

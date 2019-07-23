@@ -62,7 +62,12 @@ export default lila => {
 ### tasks
 
 ```
-['task1', ['task2'], ['task3', arg0, arg1, ...], ...]
+[
+  'task1',
+  ['task2'],
+  ['task3', arg0, arg1, ...],
+  ...
+]
 ```
 
 ## api
