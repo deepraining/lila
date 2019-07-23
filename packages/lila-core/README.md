@@ -1,14 +1,16 @@
 # lila-core
 
-Lila core library.
+[English Documentation](./README.en.md)
 
-## install
+lila 核心包
+
+## 安装
 
 ```
 npm install --save-dev lila-core
 ```
 
-## use
+## 使用
 
 ```
 // es6
@@ -18,46 +20,47 @@ import lila from 'lila-core';
 const lila = require('lila-core');
 ```
 
-## init file
+## 初始化文件
 
-Lila requires an init file called `lila.js`(`lila.init.js` in Windows) in project root directory.
+Lila 需要有一个在项目根目录下名为 `lila.js`(Windows 中 `lila.init.js`) 的初始化文件.
 
 ```
-// lila-core should not be imported directly
+// lila-core 不能直接导入
 
 import tasksPlugin from 'lila-tasks';
 import otherPlugin from 'lila-other-plugin';
 
-// here should export a function
+// 这里需要导出一个函数
+// 这里的 lia 对象就是 lila-core 包，你可以使用 lila-core 的所有 api
 export default lila => {
 
-  // do some init actions
+  // 做一些初始化操作
 
   tasksPlugin(lila);
   otherPlugin(lila);
 
-  // here return a config generator
+  // 这里需要返回一个配置生成器
   return ({ entry, argv, cmd }) => {
 
-    // make a config according to `entry, argv, cmd`
+    // 根据 `entry, argv, cmd` 生成配置
     const config = { ... }
 
-    // return a config object
+    // 返回配置对象
     return config;
   };
 }
 ```
 
-## config
+## 配置
 
 ```
 {
   ...,
-  tasks: [ ... ],            // tasks run by `lila.runTasks`
+  tasks: [ ... ],            // 通过 `lila.runTasks` 运行的 tasks
 }
 ```
 
-### tasks
+### 任务
 
 ```
 ['task1', ['task2'], ['task3', arg0, arg1, ...], ...]
@@ -65,22 +68,22 @@ export default lila => {
 
 ## api
 
-### `lila.setSetting`: set a setting
+### `lila.setSetting`: 设置一个配置值
 
 ```
 lila.setSetting(name, value);
 ```
 
-- `@param/name`: `type: string` setting name
-- `@param/value`: `type: *` setting value
+- `@param/name`: `type: string` 名称
+- `@param/value`: `type: *` 值
 
-### `lila.setSettings`: set multiple settings
+### `lila.setSettings`: 设置多个配置值
 
 ```
 lila.setSettings(value);
 ```
 
-- `@param/value`: `type: {}` `key-value` pairs of settings
+- `@param/value`: `type: {}` 配置 `键-值` 对
 
 ```
 lila.setSettings({
@@ -90,61 +93,61 @@ lila.setSettings({
 });
 ```
 
-### `lila.getSetting`: get a setting value
+### `lila.getSetting`: 获取一个配置值
 
 ```
 const value = lila.getSetting(name);
 ```
 
-- `@param/name`: `type: string` setting name
-- `@return`: `type: *` setting value
+- `@param/name`: `type: string` 名称
+- `@return`: `type: *` 值
 
-### `lila.getSettings`: get multiple setting values
+### `lila.getSettings`: 获取多个配置值
 
 ```
 const values = lila.getSettings(names);
 ```
 
-- `@param/names`: `type: string[]` setting names
-- `@return`: `type: *[]` setting values
+- `@param/names`: `type: string[]` 名称
+- `@return`: `type: *[]` 值
 
 ```
 const [value1, value2, ...] = lila.getSettings([name1, name2, ...]);
 ```
 
-### `lila.getAllSettings`: get all settings
+### `lila.getAllSettings`: 获取所有配置值
 
 ```
 const settings = lila.getAllSettings();
 ```
 
-- `@return`: `type: {}` `key-value` pairs of all settings
+- `@return`: `type: {}` 所有配置的配置 `键-值` 对
 
-### `lila.registerTask`: register a task generator
+### `lila.registerTask`: 注册一个任务生成器
 
 ```
 lila.registerTask(name, generator);
 ```
 
-- `@param/name`: `type: string` task name
-- `@param/generator`: `type: function` task generator
+- `@param/name`: `type: string` 任务名
+- `@param/generator`: `type: function` 任务生成器
 
-#### `generator`: task generator
+#### `generator`: 任务生成器
 
-Generate a gulp task callback. See [taskFunction](https://gulpjs.com/docs/en/api/task#signature).
+用于生成一个 gulp task callback. 查看 [taskFunction](https://gulpjs.com/docs/en/api/task#signature).
 
 ```
 ({ entry, args, argv, cmd, config, lila, gulp }) => gulp-task-callback;
 ```
 
-- `@param/options.entry`: `type: string` current handling entry
-- `@param/options.args`: `type: *[]` arguments from config, `['taskName', arg0, arg1, ...]`
-- `@param/options.argv`: `type: {}` wrapped `process.argv`
-- `@param/options.cmd`: `type: string` command name, like `run, dev, build, ...`
-- `@param/options.config`: `type: {}` config of current entry
-- `@param/options.lila`: `type: {}` `lila-core` reference
-- `@param/options.gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) reference
-- `gulp-task-callback`: see [taskFunction](https://gulpjs.com/docs/en/api/task#signature)
+- `@param/options.entry`: `type: string` 当前处理 entry
+- `@param/options.args`: `type: *[]` 来自初始化配置的参数, `['taskName', arg0, arg1, ...]`
+- `@param/options.argv`: `type: {}` 封装 `process.argv`
+- `@param/options.cmd`: `type: string` 命令名, 如 `run, dev, build, ...`
+- `@param/options.config`: `type: {}` 当前 entry 的配置
+- `@param/options.lila`: `type: {}` `lila-core` 引用
+- `@param/options.gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) 引用
+- `gulp-task-callback`: 查看 [taskFunction](https://gulpjs.com/docs/en/api/task#signature)
 
 ```
 lila.registerTask('log', ({ entry }) => cb => {
@@ -154,22 +157,22 @@ lila.registerTask('log', ({ entry }) => cb => {
 });
 ```
 
-### `lila.unregisterTask`: unregister a task generator
+### `lila.unregisterTask`: 删除已注册的任务生成器
 
 ```
 lila.unregisterTask(name);
 ```
 
-- `@param/name`: `type: string` task name
+- `@param/name`: `type: string` 任务名
 
-### `lila.getTask`: get a task generator
+### `lila.getTask`: 获取任务生成器
 
 ```
 const generator = lila.getTask(name);
 ```
 
-- `@param/name`: `type: string` task name
-- `@return`: `type: function` task generator
+- `@param/name`: `type: string` 任务名
+- `@return`: `type: function` 任务生成器
 
 ### `lila.getTasks`: get multiple task generators
 
@@ -177,36 +180,36 @@ const generator = lila.getTask(name);
 const generators = lila.getTasks(names);
 ```
 
-- `@param/names`: `type: string[]` task names
-- `@return`: `type: function[]` task generators
+- `@param/names`: `type: string[]` 任务名
+- `@return`: `type: function[]` 任务生成器
 
 ```
 const [generator1, generator2, ...] = lila.getTasks([name1, name2, ...]);
 ```
 
-### `lila.getAllTasks`: get all task generators
+### `lila.getAllTasks`: 获取所有任务生成器
 
 ```
 const tasks = lila.getAllTasks();
 ```
 
-- `@return`: `type: {}` `name-generator` pairs of all tasks
+- `@return`: `type: {}` 所有任务的 `name-generator` 对
 
-### `lila.addCommand`: add a command
+### `lila.addCommand`: 添加一个命令
 
 ```
 lila.addCommand(initializer);
 ```
 
-- `@param/initializer`: `type: function` command initializer
+- `@param/initializer`: `type: function` 命令初始化函数
 
-#### `initializer`: command initializer
+#### `initializer`: 命令初始化函数
 
 ```
 commander => { ... }
 ```
 
-- `@param/commander`: `type: {}` see [commander.js](https://github.com/tj/commander.js)
+- `@param/commander`: `type: {}` 查看 [commander.js](https://github.com/tj/commander.js)
 
 ```
 commander => {
@@ -218,50 +221,50 @@ commander => {
 }
 ```
 
-### `lila.getCommands`: get added command initializers
+### `lila.getCommands`: 获取已添加的命令初始化函数
 
 ```
 const initializers = lila.getCommands();
 ```
 
-- `@return`: `type: function[]` added command initializers
+- `@return`: `type: function[]` 已添加的命令初始化函数
 
-### `lila.makeConfig`: get config of an entry
+### `lila.makeConfig`: 获取一个 entry 的配置
 
 ```
 const config = lila.makeConfig({ entry, argv, cmd });
 ```
 
-- `@param/options.entry`: `type: string` handling entry
-- `@param/options.argv`: `type: {}` wrapped `process.argv`
-- `@param/options.cmd`: `type: string` command name
+- `@param/options.entry`: `type: string` 操作的 entry
+- `@param/options.argv`: `type: {}` 封装 `process.argv`
+- `@param/options.cmd`: `type: string` 命令名
 
-### `lila.runTasks`: run tasks
+### `lila.runTasks`: 运行任务
 
 ```
 lila.runTasks({ entries, argv, cmd }, success, error);
 ```
 
-- `@param/options.entries`: `type: string[]` entries to build
-- `@param/options.argv`: `type: {}` wrapped `process.argv`
-- `@param/options.cmd`: `type: string` command name
-- `@param/success`: `type: function` success callback, `() => { ... }`
-- `@param/error`: `type: function` error callback, `err => { ... }`
+- `@param/options.entries`: `type: string[]` 需要构建的 entries
+- `@param/options.argv`: `type: {}` 封装 `process.argv`
+- `@param/options.cmd`: `type: string` 命令名
+- `@param/success`: `type: function` 成功的回调函数, `() => { ... }`
+- `@param/error`: `type: function` 出错的回调函数, `err => { ... }`
 
-### `lila.addCmdOption`: add an option to a command
+### `lila.addCmdOption`: 添加一个 command option
 
 ```
 lila.addCmdOption(name, ...option);
 ```
 
-- `name`: command name
-- `option`: see [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
+- `name`: 命令名
+- `option`: 查看 [commander.js#command-specific-options](https://github.com/tj/commander.js#command-specific-options)
 
 ```
-lila.addCmdOption('run', '-e, --env', 'specify server environment');
+lila.addCmdOption('run', '-e, --env', '指定服务器环境');
 ```
 
-### `lila.getCmdOptions`: get options of a command
+### `lila.getCmdOptions`: 获取一个 command option
 
 ```
 const options = lila.getCmdOptions(name);
@@ -274,7 +277,7 @@ options.forEach(option => {
 
 - `name`: command name
 
-### `lila.makeArgv`: make a wrapped `process.argv`
+### `lila.makeArgv`: 创建一个封装的 `process.argv`
 
 ```
 import commander from 'commander';
@@ -284,16 +287,16 @@ const { makeArgv } = lila;
 
 commander
   .command('build [entries...]')
-  .description('pack source codes to production bundles')
-  .option('-e, --env [env]', 'Specify server enviroment.')
+  .description('构建源代码')
+  .option('-e, --env [env]', '指定服务器环境')
   .action((entries, options) => {
 
-    // make a wrapped `process.argv`
+    // 创建一个封装的 `process.argv`
     const argv = makeArgv(options, keepUnknown);
   });
 ```
 
-- `@param/keepUnknown`: `type: bool` `default: false` whether to keep unknown args which stored by the key `_`, see [minimist](https://github.com/substack/minimist)
+- `@param/keepUnknown`: `type: bool` `default: false` 是否保留自己未定义的参数，查看 [minimist](https://github.com/substack/minimist)
 
 ### `lila.log`:
 
@@ -303,7 +306,7 @@ lila.log(color, ...args)     =>   console.log(...chalk.color(args))
 lila.log(false, ...args)     =>   console.log(...args)
 ```
 
-See [chalk](https://github.com/chalk/chalk).
+查看 [chalk](https://github.com/chalk/chalk).
 
 ### `lila.info`:
 
@@ -313,7 +316,7 @@ lila.info(color, ...args)    =>   console.info(...chalk.color(args))
 lila.info(false, ...args)    =>   console.info(...args)
 ```
 
-See [chalk](https://github.com/chalk/chalk).
+查看 [chalk](https://github.com/chalk/chalk).
 
 ### `lila.warn`:
 
@@ -323,7 +326,7 @@ lila.warn(color, ...args)    =>   console.warn(...chalk.color(args))
 lila.warn(false, ...args)    =>   console.warn(...args)
 ```
 
-See [chalk](https://github.com/chalk/chalk).
+查看 [chalk](https://github.com/chalk/chalk).
 
 ### `lila.error`:
 
@@ -333,7 +336,7 @@ lila.error(color, ...args)   =>   console.error(...chalk.color(args))
 lila.error(false, ...args)   =>   console.error(...args)
 ```
 
-See [chalk](https://github.com/chalk/chalk).
+查看 [chalk](https://github.com/chalk/chalk).
 
 ### `lila.success`:
 
@@ -343,38 +346,38 @@ lila.success(color, ...args) =>   console.log(...chalk.color(args))
 lila.success(false, ...args) =>   console.log(...args)
 ```
 
-See [chalk](https://github.com/chalk/chalk).
+查看 [chalk](https://github.com/chalk/chalk).
 
-## built-in settings
+## 内置的配置
 
-- `src`: `type: string` `default: src` source directory name.
-- `dev`: `type: string` `default: dev` development directory name.
-- `build`: `type: string` `default: build` build directory name.
-- `tmp`: `type: string` `default: .lila` tmp directory of project.
-- `root`: `type: string` `default: process.cwd()` `read only` root directory, and you can customize it by `--root` through command line.
-- `defaultEntry`: `type: string` `default: @lila/index` `read only` default entry, if you do not provide an entry in cli.
+- `src`: `type: string` `default: src` 源代码目录名
+- `dev`: `type: string` `default: dev` 本地开发目录名
+- `build`: `type: string` `default: build` 构建代码生成地的目录名
+- `tmp`: `type: string` `default: .lila` 临时目录名
+- `root`: `type: string` `default: process.cwd()` `read only` 根目录, 也可以通过命令行使用 `--root` 参数自定义.
+- `defaultEntry`: `type: string` `default: @lila/index` `read only` 默认 entry, 如果在命令行不提供 entry 的话.
 
-### extensible settings:
+### 扩展配置:
 
-#### `beforeTasks`: before run tasks
-
-```
-({entries, argv, cmd, lila, gulp}) => { ... }
-```
-
-- `entries`: `type: []` all entries
-- `argv`: `type: {}` wrapped `process.argv`
-- `cmd`: `type: string` command name
-- `lila`: `type: {}` `lila-core` reference
-- `gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) reference
-
-#### `afterTasks`: after run tasks
+#### `beforeTasks`: 在运行任务之前运行的钩子
 
 ```
 ({entries, argv, cmd, lila, gulp}) => { ... }
 ```
 
-#### `errorTasks`: error occurred when run tasks
+- `entries`: `type: []` 所有的 entries
+- `argv`: `type: {}` 封装 `process.argv`
+- `cmd`: `type: string` 命令名
+- `lila`: `type: {}` `lila-core` 引用
+- `gulp`: `type: {}` [gulp](https://github.com/gulpjs/gulp) 引用
+
+#### `afterTasks`: 在运行任务之后运行的钩子
+
+```
+({entries, argv, cmd, lila, gulp}) => { ... }
+```
+
+#### `errorTasks`: 运行任务出错的钩子
 
 ```
 ({entries, argv, cmd, lila, gulp, error}) => { ... }
@@ -382,38 +385,38 @@ See [chalk](https://github.com/chalk/chalk).
 
 - `error`: error object
 
-## built-in commands
+## 内置命令
 
-### `run`: run tasks
+### `run`: 运行任务
 
 ```
 lila run entry1 entry2 entry3 ...
 ```
 
-If `entry` is not provided, `@lila/index` will be used as default.
+如果没有提供 `entry`, 使用 `@lila/index` 作为默认 entry.
 
 ```
-lila run                     # the real entry is @lila/index
+lila run                     # 实际 entry 是 @lila/index
 ```
 
-## extended command line options
+## 扩展的命令行配置
 
-- `--root`: custom root path
-- `--init`: custom init file, default `lila.js`(`lila.init.js` in Windows)
+- `--root`: 自定义 root path
+- `--init`: 自定义初始化文件, 默认是 `lila.js`(Windows 中 `lila.init.js`)
 
-## note
+## 注意事项
 
-You should not import `lila-core` directly, like:
+不能直接导入 `lila-core`, 如:
 
 ```
 import lila from 'lila-core'
 ```
 
-but use it in `lila.js`(`lila.init.js` in Windows) or plugins:
+而是通过 `lila.js`(Windows 中 `lila.init.js`) 或插件使用:
 
 ```
 export default lila => {
-  // do with lila
+  // 使用 lila
 }
 ```
 

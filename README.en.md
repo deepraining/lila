@@ -64,6 +64,7 @@ import tasksPlugin from 'lila-tasks';
 import otherPlugin from 'lila-other-plugin';
 
 // here should export a function
+// here lila object is lila-core package, and you can use all lila-core's api
 export default lila => {
 
   // do some init actions
@@ -109,7 +110,7 @@ lila.setSettings({
 
 ```
 export default lila => {
-  // do everything you want with lila api
+  // here lila object is lila-core package, and you can do everything you want with lila api
 };
 ```
 

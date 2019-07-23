@@ -1,30 +1,32 @@
 # lila-bin
 
-Lila command line tool.
+[English Documentation](./README.en.md)
 
-## install
+lila 命令行工具
 
-global
+## 安装
+
+全局
 
 ```
 npm install lila-bin -g
 ```
 
-local
+本地
 
 ```
 npm install lila-bin --save-dev
 ```
 
-## use
+## 使用
 
-global
+全局
 
 ```
 lila <cmd> [options]
 ```
 
-local
+本地
 
 ```
 # package.json
@@ -35,8 +37,8 @@ local
 }
 ```
 
-## options
+## 选项
 
-- `-V, --version`: output the version number
-- `-h, --help`: output usage information
-- `--core`: custom `lila-core` path
+- `-V, --version`: 打印版本号
+- `-h, --help`: 打印帮助信息
+- `--core`: 自定义 `lila-core` 包路径

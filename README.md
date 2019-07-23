@@ -11,7 +11,7 @@
 - [lila-tasks](./packages/lila-tasks): lila 内置的 tasks
 - [lila-webpack](./packages/lila-webpack): 封装的 webpack 插件
 - [lila-webpack-config](./packages/lila-webpack-config): 内置的 webpack config generator for lila-webpack
-- [create-lila-app](./packages/create-lila-app): 快捷创建 lila 应用的工具
+- [create-lila-app](./packages/create-lila-app): 快速创建 lila 应用的工具
 
 ## 搭建应用
 
@@ -64,6 +64,7 @@ import tasksPlugin from 'lila-tasks';
 import otherPlugin from 'lila-other-plugin';
 
 // 这里需要导出一个函数
+// 这里的 lia 对象就是 lila-core 包，你可以使用 lila-core 的所有 api
 export default lila => {
 
   // 做一些初始化操作
@@ -109,7 +110,7 @@ lila.setSettings({
 
 ```
 export default lila => {
-  // 这里就可以使用 lila 对象做任何事情
+  // 这里的 lia 对象就是 lila-core 包，这里就可以使用 lila 对象做任何事情
 };
 ```
 
