@@ -32,13 +32,17 @@ export const shell = ({ args, lila }) => cb => {
 
   const pro = spawn(command, shellArgs, options);
 
-  pro.stdout.on('data', data => {
-    log(data);
-  });
+  if (pro.stdout) {
+    pro.stdout.on('data', data => {
+      log(data);
+    });
+  }
 
-  pro.stderr.on('data', data => {
-    error(data);
-  });
+  if (pro.stderr) {
+    pro.stderr.on('data', data => {
+      error(data);
+    });
+  }
 
   pro.on('close', code => {
     if (code < 1) cb();
