@@ -47,7 +47,7 @@
 
 ## 0.5.5 [2018-12-11]
 
-- Add `lila.init.js`(`lila.js`), for windows.
+- Add `lila.init.js`(`lila.js`), for Windows.
 
 ## 0.5.4 [2018-12-06]
 

@@ -1,41 +1,43 @@
 # lila
 
-Extensible, multiple entries supporting, tasks based wrapper of [gulp](https://github.com/gulpjs/gulp), [commander.js](https://github.com/tj/commander.js).
+[English Documentation](./README.en.md)
+
+一个可扩展的、基于 [gulp](https://github.com/gulpjs/gulp) 的流式构建工具，支持多入口模式。
 
 ## packages
 
-- [lila-bin](./packages/lila-bin): lila command line tool
-- [lila-core](./packages/lila-core): lila core library
-- [lila-tasks](./packages/lila-tasks): lila built-in tasks
-- [lila-webpack](./packages/lila-webpack): wrapped webpack plugin
-- [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for lila-webpack
-- [create-lila-app](./packages/create-lila-app): tool to create a lila application
+- [lila-bin](./packages/lila-bin): lila 命令行工具
+- [lila-core](./packages/lila-core): lila 核心包
+- [lila-tasks](./packages/lila-tasks): lila 内置的 tasks
+- [lila-webpack](./packages/lila-webpack): 封装的 webpack 插件
+- [lila-webpack-config](./packages/lila-webpack-config): 内置的 webpack config generator for lila-webpack
+- [create-lila-app](./packages/create-lila-app): 快捷创建 lila 应用的工具
 
-## setup
+## 搭建应用
 
-It's recommended to use [create-lila-app](./packages/create-lila-app) to create a lila application, or use ready-made templates:
+推荐使用 [create-lila-app](./packages/create-lila-app) 创建 lila 应用，或者选择已有模板：
 
-- [react-app-starter](https://github.com/senntyou/react-app-starter): A boilerplate for creating a React application, using Webpack and Storybook.
-- [react-ts-app-starter](https://github.com/senntyou/react-ts-app-starter): A boilerplate for creating a React application, using TypeScript, Webpack and Storybook.
-- [vue-app-starter](https://github.com/senntyou/vue-app-starter): A boilerplate for creating a Vue application, using Webpack and Storybook.
+- [react-app-starter](https://github.com/senntyou/react-app-starter): 一个创建 React 应用的模板，使用 Webpack 与 Storybook 开发构建.
+- [react-ts-app-starter](https://github.com/senntyou/react-ts-app-starter): 一个创建 React 应用的模板，使用 TypeScript、Webpack 与 Storybook 开发构建.
+- [vue-app-starter](https://github.com/senntyou/vue-app-starter): 一个创建 Vue 应用的模板，使用 Webpack 与 Storybook 开发构建.
 
-However, you can also customize it as you like, just follow these steps:
+然而，你也可以自定义搭建方式：
 
-#### 1. install lila-bin
+#### 1. 安装 lila-bin
 
 ```
-npm install lila-bin -g                # global
+npm install lila-bin -g                # 全局
 
-npm install lila-bin --save-dev        # local
+npm install lila-bin --save-dev        # 本地
 ```
 
-If installed globally, you can run lila commands directly in terminal, like:
+如果全局安装，可以直接在命令行运行：
 
 ```
 lila <cmd> [options]
 ```
 
-and if installed locally, you can run lila commands by [npm-scripts](https://docs.npmjs.com/misc/scripts):
+如果本地安装，可以使用 [npm-scripts](https://docs.npmjs.com/misc/scripts) 运行命令：
 
 ```
 # package.json
@@ -45,43 +47,43 @@ and if installed locally, you can run lila commands by [npm-scripts](https://doc
 }
 ```
 
-#### 2. install lila-core and lila-tasks
+#### 2. 安装 lila-core 与 lila-tasks
 
 ```
 npm install lila-core lila-tasks --save-dev
 ```
 
-#### 3. configure init file
+#### 3. 配置初始化文件
 
-Configure init file `lila.js`(`lila.init.js` in windows).
+配置初始化文件 `lila.js`(Windows 下可以使用 `lila.init.js`).
 
 ```
-// lila-core should not be imported directly
+// lila-core 不能直接导入
 
 import tasksPlugin from 'lila-tasks';
 import otherPlugin from 'lila-other-plugin';
 
-// here should export a function
+// 这里需要导出一个函数
 export default lila => {
 
-  // do some init actions
+  // 做一些初始化操作
 
   tasksPlugin(lila);
   otherPlugin(lila);
 
-  // here return a config generator
+  // 这里需要返回一个配置生成器
   return ({ entry, argv, cmd }) => {
 
-    // make a config according to `entry, argv, cmd`
+    // 根据 `entry, argv, cmd` 生成配置
     const config = { ... }
 
-    // return a config object
+    // 返回配置对象
     return config;
   };
 }
 ```
 
-## base directory structure
+## 基本目录结构
 
 ```
 - src/
@@ -89,11 +91,11 @@ export default lila => {
 - build/
 ```
 
-- `src`: where to place source codes, like `html, css, less, scss, js, ts, vue, ...`
-- `dev`: a temporary directory, generated while developing
-- `build`: where to generate production bundles
+- `src`: 放置源代码的地方, 如 `html, css, less, scss, js, ts, vue, ...`
+- `dev`: 临时目录, 由本地开发时生成
+- `build`: 生成构建文件的地方
 
-If you want custom names, you can modify them by:
+如果需要使用自定义名字，可以这样修改：
 
 ```
 lila.setSettings({
@@ -103,17 +105,17 @@ lila.setSettings({
 })
 ```
 
-## how to write plugins
+## 怎样写插件
 
 ```
 export default lila => {
-  // do everything you want with lila api
+  // 这里就可以使用 lila 对象做任何事情
 };
 ```
 
-## how to load plugins
+## 怎样加载插件
 
-In `lila.js`(`lila.init.js` in windows):
+在 `lila.js`(Windows 中 `lila.init.js`) 文件中:
 
 ```
 import plugin from 'your-lila-plugin';
@@ -125,7 +127,7 @@ export default lila => {
 };
 ```
 
-## trouble shooting
+## 常见问题
 
-- In windows, you have to use `lila.init.js` instead, and `lila.js` will not work.
-- In windows, you must run `lila` command under the same directory with `node_modules`.
+- 在 Windows 中, 初始化文件应该使用 `lila.init.js`, 而 `lila.js` 会出现问题.
+- 在 Windows 中, 运行 `lila` 命令时必须与 `node_modules` 目录在同一级.

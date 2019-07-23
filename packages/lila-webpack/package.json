@@ -17,7 +17,9 @@
     "teamwork",
     "babel",
     "gulp",
-    "cli"
+    "cli",
+    "task",
+    "stream"
   ],
   "bugs": {
     "url": "https://github.com/senntyou/lila/issues"
