@@ -23,9 +23,9 @@ import webpackConfigPlugin, {
 
 export default lila => {
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);           // for normal project
-  // reactWebpackConfigPlugin(lila);   // for react project
-  // vueWebpackConfigPlugin(lila);     // for vue project
+  webpackConfigPlugin(lila);           // 通用项目
+  // reactWebpackConfigPlugin(lila);   // React 组件项目
+  // vueWebpackConfigPlugin(lila);     // Vue 组件项目
 
   ...
 };
@@ -43,12 +43,12 @@ export default lila => {
 
 Lila 内部提供了下面的 presets:
 
-1. for `.{js,vue}` files:
+1. 针对 `.{js,vue}` 文件:
 
 - `@babel/preset-env`
 - `@babel/preset-flow`
 
-2. for `.jsx` files:
+2. 针对 `.jsx` 文件:
 
 - `@babel/preset-env`
 - `@babel/preset-flow`
@@ -60,20 +60,20 @@ Lila 内部提供了下面的 presets:
 
 Lila 内部提供了下面的 plugins:
 
-1. for `.js` files:
+1. 针对 `.js` 文件:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
 - `@babel/plugin-transform-runtime`
 
-2. for `.jsx` files:
+2. 针对 `.jsx` 文件:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
 - `@babel/plugin-transform-runtime`
 - `@babel/plugin-transform-react-jsx`
 
-3. for `.vue` files:
+3. 针对 `.vue` 文件:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
@@ -129,9 +129,9 @@ Lila 内部提供了下面的 plugins:
 `type: string` `default: empty string`
 
 - `/dir`: 一个目录
-- `http://www.static.com`: 单独的静态服务器
-- `https://www.static.com/dir`: 单独的静态服务器的一个子目录
-- `//www.static.com/dir/sub_dir`: 单独的静态服务器的二级子目录
+- `http://www.static.com`: 单独的静态资源服务器
+- `https://www.static.com/dir`: 单独的静态资源服务器的一个子目录
+- `//www.static.com/dir/sub_dir`: 单独的静态资源服务器的二级子目录
 
 ### `minHtml`: 是否压缩 html
 
