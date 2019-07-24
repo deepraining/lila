@@ -1,18 +1,18 @@
 # lila-webpack-config
 
-[English Documentation](./README.en.md)
+[中文文档](./README.md)
 
-内置的 webpack 配置生成器 for `lila-webpack`.
+Built-in webpack config generator for `lila-webpack`.
 
-## 安装
+## install
 
 ```
 npm install --save-dev lila-webpack-config
 ```
 
-## 使用
+## use
 
-在 `lila.js` 中:
+In `lila.js`:
 
 ```
 import webpackPlugin from 'lila-webpack';
@@ -23,80 +23,80 @@ import webpackConfigPlugin, {
 
 export default lila => {
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);           // 通用项目
-  // reactWebpackConfigPlugin(lila);   // React 组件项目
-  // vueWebpackConfigPlugin(lila);     // Vue 组件项目
+  webpackConfigPlugin(lila);           // for normal project
+  // reactWebpackConfigPlugin(lila);   // for react project
+  // vueWebpackConfigPlugin(lila);     // for vue project
 
   ...
 };
 ```
 
-## 扩展的配置
+## extended configs
 
 ### `babelExclude`: [babel-loader](https://github.com/babel/babel-loader) exclude
 
 `type: []` `default: [/node_modules/]`
 
-### `babelPresets`: 其他的 babel presets
+### `babelPresets`: extra babel presets
 
 `type: []` `default: []`
 
-Lila 内部提供了下面的 presets:
+Lila provided following presets internally:
 
-1. 针对 `.{js,vue}` 文件:
+1. for `.{js,vue}` files:
 
 - `@babel/preset-env`
 - `@babel/preset-flow`
 
-2. 针对 `.jsx` 文件:
+2. for `.jsx` files:
 
 - `@babel/preset-env`
 - `@babel/preset-flow`
 - `@babel/preset-react`
 
-### `babelPlugins`: 其他的 babel plugins
+### `babelPlugins`: extra babel plugins
 
 `type: []` `default: []`
 
-Lila 内部提供了下面的 plugins:
+Lila provided following plugins internally:
 
-1. 针对 `.js` 文件:
+1. for `.js` files:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
 - `@babel/plugin-transform-runtime`
 
-2. 针对 `.jsx` 文件:
+2. for `.jsx` files:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
 - `@babel/plugin-transform-runtime`
 - `@babel/plugin-transform-react-jsx`
 
-3. 针对 `.vue` 文件:
+3. for `.vue` files:
 
 - `@babel/plugin-syntax-dynamic-import`
 - `@babel/plugin-proposal-class-properties`
 - `@babel/plugin-transform-runtime`
 - `babel-plugin-transform-vue-jsx`
 
-### `extensions`: [url-loader](https://github.com/webpack-contrib/url-loader) 静态文件扩展名
+### `extensions`: [url-loader](https://github.com/webpack-contrib/url-loader) file extensions
 
 `type: []` `default: ['jpg', 'jpeg', 'png', 'gif', 'ico', 'svg', 'eot', 'ttf', 'woff', 'woff2']`
 
-### `provide`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) 配置
+### `provide`: [ProvidePlugin](https://webpack.js.org/plugins/provide-plugin/) config
 
 `type: {}` `default: {}`
 
-### `define`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) 配置
+### `define`: [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) config
 
 `type: {}` `default: {}`
 
-### `alias`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) 配置
+### `alias`: [resolve-alias](https://webpack.js.org/configuration/resolve/#resolve-alias) config
 
 `type: {}` `default: {}`
 
-### `cssModules`: 是否使用 [css-modules](https://github.com/css-modules/css-modules)
+### `cssModules`: whether to use [css-modules](https://github.com/css-modules/css-modules)
 
 `type: bool` `default: false`
 
@@ -124,20 +124,20 @@ Lila 内部提供了下面的 plugins:
 ]
 ```
 
-### `staticServer`: 存放静态文件的服务器 url 地址
+### `staticServer`: a static server to place bundle resources to
 
 `type: string` `default: empty string`
 
-- `/dir`: 一个目录
-- `http://www.static.com`: 单独的静态资源服务器
-- `https://www.static.com/dir`: 单独的静态资源服务器的一个子目录
-- `//www.static.com/dir/sub_dir`: 单独的静态资源服务器的二级子目录
+- `/dir`: a directory
+- `http://www.static.com`: a standalone static server
+- `https://www.static.com/dir`: a sub directory of a standalone static server
+- `//www.static.com/dir/sub_dir`: another sub directory of a standalone static server
 
-### `minHtml`: 是否压缩 html
+### `minHtml`: whether minify html
 
 `type: bool` `default: true`
 
-### `minHtmlOptions`: [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) 配置
+### `minHtmlOptions`: [html-minifier](https://github.com/kangax/html-minifier#options-quick-reference) config
 
 `type: {}`
 
@@ -157,15 +157,15 @@ Lila 内部提供了下面的 plugins:
 }
 ```
 
-### `minCss`: 是否压缩 css
+### `minCss`: whether minify css
 
 `type: bool` `default: true`
 
-### `minJs`: 是否压缩 js
+### `minJs`: whether minify js
 
 `type: bool` `default: true`
 
-### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) 配置
+### `devtool`: [devtool](https://webpack.js.org/configuration/devtool/) config
 
 `type: string`
 
@@ -174,11 +174,11 @@ Lila 内部提供了下面的 plugins:
 - `cmd: dev, serve`: `eval-source-map`
 - `cmd: build, sync, start`: `source-map`
 
-### `splitChunks`: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) 配置
+### `splitChunks`: [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/) config
 
 `type: {}` `default: {chunks: 'all'}`
 
-### `extra`: 其他的 webpack 配置项
+### `extra`: extra webpack config options
 
 `type: {}/function` `default: {}`
 
@@ -187,15 +187,15 @@ extra: { ... }
 extra: webpack => ({ ... })
 ```
 
-### `rules`: 其他的 webpack rules
+### `rules`: extra webpack rules
 
 `type: []` `default: []`
 
-### `plugins`: 其他的 webpack plugins
+### `plugins`: extra webpack plugins
 
 `type: []` `default: []`
 
-### `rebuildWebpackConfig`: 对最终生成的 webpack 配置进行重构
+### `rebuildWebpackConfig`: rebuild webpack config when you want more handling of webpack config
 
 `type: function`
 
@@ -203,23 +203,23 @@ extra: webpack => ({ ... })
 ({ webpackConfig, lila, webpack, entry, cmd, config, argv }) => newWebpackConfig;
 ```
 
-## 一个 entry 所包含的文件
+## files of an entry
 
-每个 entry 都有一个单独的目录(目录为 `src/home/about/` 如果 entry 是 `home/about`), 也叫做工作空间, 在这个工作空间中至少有一个 `index.html` 文件和一个 `index.js` 文件.
+An entry has a standalone directory(`src/home/about/` if entry is `home/about`), also called workspace, and has at least a `index.html` file and a `index.js` file under the workspace.
 
-如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
+If `entry` is not provided, `@lila/index` will be used as default.
 
-如果 entry 是 `@lila/index`, 则它的工作空间就是 `src`:
+If entry is `@lila/index`, its workspace is `src`:
 
 ```
 - src/
   - index.html
   - index.js
 
-  - 其他文件与目录
+  - other files and directories
 ```
 
-其他的话(比如 entry 是 `home/about`), 则它的工作空间是 `src/home/about`:
+Others(entry is `home/about`), its workspace is `src/home/about`:
 
 ```
 - src/
@@ -228,12 +228,12 @@ extra: webpack => ({ ... })
       - index.html
       - index.js
 
-      - 其他文件与目录
+      - other files and directories
 ```
 
-推荐把一个 entry 所有的文件和目录都放到这个工作空间下
+It's recommended to place all files of an entry to its workspace.
 
-## 内置的 rules
+## built-in rules
 
 - [babel-loader](https://github.com/babel/babel-loader)
 - [url-loader](https://github.com/webpack-contrib/url-loader)
@@ -243,8 +243,8 @@ extra: webpack => ({ ... })
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
 - [vue-loader](https://github.com/vuejs/vue-loader)
 
-## 文件扩展名
+## file extensions
 
-- `.js`: 纯 JavaScript 代码
-- `.jsx`: React 组件代码
-- `.vue`: Vue 组件代码
+- `.js`: pure JavaScript code
+- `.jsx`: React component code
+- `.vue`: Vue component code

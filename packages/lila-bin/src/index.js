@@ -33,7 +33,7 @@ else {
      */
     const resolvedCore = require.resolve('lila-core', {
       /**
-       * windows only find lila-core under cwd/node_modules, not cwd
+       * Windows only find lila-core under cwd/node_modules, not cwd
        */
       paths: [cwd, join(cwd, 'node_modules')],
     });

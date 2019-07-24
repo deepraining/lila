@@ -1,16 +1,16 @@
 # create-lila-app
 
-[English Documentation](./README.en.md)
+[中文文档](./README.md)
 
-快速创建 lila 应用的工具
+Tool to create a lila application.
 
-## 安装
+## install
 
 ```
 npm install -g create-lila-app
 ```
 
-## 使用
+## use
 
 ```
 create-lila-app <project-directory>
