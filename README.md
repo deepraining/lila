@@ -10,7 +10,7 @@
 - [lila-core](./packages/lila-core): lila 核心包
 - [lila-tasks](./packages/lila-tasks): lila 内置的 tasks
 - [lila-webpack](./packages/lila-webpack): 封装的 webpack 插件
-- [lila-webpack-config](./packages/lila-webpack-config): 内置的 webpack config generator for lila-webpack
+- [lila-webpack-config](./packages/lila-webpack-config): 内置的 webpack 配置生成器 for lila-webpack
 - [create-lila-app](./packages/create-lila-app): 快速创建 lila 应用的工具
 
 ## 搭建应用
