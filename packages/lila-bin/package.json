@@ -1,0 +1,43 @@
+{
+  "name": "lila-bin",
+  "version": "0.7.7",
+  "description": "lila command line tool",
+  "main": "lib/index.js",
+  "bin": {
+    "lila": "./bin/lila.js"
+  },
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-bin",
+  "keywords": [
+    "web",
+    "build",
+    "tool",
+    "teamwork",
+    "babel",
+    "gulp",
+    "cli",
+    "task",
+    "stream"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "commander": "^2.19.0",
+    "minimist": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

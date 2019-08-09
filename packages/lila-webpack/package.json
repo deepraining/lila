@@ -1,0 +1,49 @@
+{
+  "name": "lila-webpack",
+  "version": "0.7.1",
+  "description": "wrapped webpack plugin",
+  "main": "lib/index.js",
+  "author": "senntyou <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/senntyou/lila",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-webpack",
+  "keywords": [
+    "web",
+    "build",
+    "tool",
+    "teamwork",
+    "babel",
+    "gulp",
+    "cli",
+    "task",
+    "stream"
+  ],
+  "bugs": {
+    "url": "https://github.com/senntyou/lila/issues"
+  },
+  "readmeFilename": "README.md",
+  "files": [
+    "lib"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "browser-sync": "^2.26.3",
+    "fs-extra": "^7.0.1",
+    "lodash": "^4.17.11",
+    "rd": "^2.0.1",
+    "webpack": "^4.28.4",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-dev-middleware": "^3.5.0",
+    "webpack-hot-middleware": "^2.24.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}

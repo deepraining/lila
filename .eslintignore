@@ -1,1 +1,4 @@
-examples
+node_modules
+lib
+build
+packages/lila-webpack-config/example/app

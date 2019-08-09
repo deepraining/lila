@@ -1,0 +1,19 @@
+{
+  "version": "0.7.7",
+  "packages": ["packages/*"],
+  "command": {
+    "publish": {
+      "ignoreChanges": [
+        "*.md",
+        "*.txt",
+        "test/**",
+        "example/**",
+        "package.json"
+      ]
+    },
+    "bootstrap": {
+      "npmClient": "cnpm"
+    }
+  },
+  "npmClientArgs": ["--no-package-lock"]
+}

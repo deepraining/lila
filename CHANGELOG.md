@@ -1,70 +1,79 @@
 # Changelog
 
-## 0.3.2 [2018-07-10]
+## 0.7.7 [2019-08-09]
 
-- Fix bugs `*` module for `prettier, eslint, stylelint` commands on `linux, mac`.
+- `lila-webpack-config` add `forReactVue` type.
 
-## 0.3.1 [2018-07-09]
+## 0.7.6 [2019-07-23]
 
-- Add `upgrade` command.
-- Add `esLint, styleLint, prettier` option.
-- Add `prettierOptions` option.
-- Add `prettier` command.
-- Add `styleLintOptions, styleLintFix` option.
-- Add `stylelint` command.
-- Add `esLintOptions, esLintFix` option.
-- Add `eslint` command.
-- Add `mock` config option and `js` mock files support.
-- Use `cssModules` to replace `enableCssModules`.
-- `moduleOptions` add multiple modules `test-1/*,test-2/name` support.
-- Add `cssModulesName` config option.
+- Fix bug of `@lila/shell` `subprocess.stderr` being null.
 
-## 0.3.0 [2018-06-13]
+## 0.7.5 [2019-05-23]
 
-- Rewrite core code.
-- Rewrite documents.
-- Remove `ignoreNodeModules, network, analyzerPort, browsers` config option.
-- Add `webpack, rules, plugins, hotModuleReplacement, htmlWebpack, bundleAnalyzer, builtinRules, babelLoaderPresets, babelLoaderPlugins, babelLoaderExclude, onlyWebpack, minJsOptions, minCssOptions, minHtmlOptions, servers, beforeFormatConfig, webpackDev, webpackHot, writeFile, moduleOptions` config option.
-- Use `babelLoaderExclude` to replace `ignoreNodeModules`.
-- Use `servers` to replace `network`.
-- Use `bundleAnalyzer` to replace `analyzerPort`.
-- Use `moduleOptions` to replace `config.js` of each module's custom config.
+- `lila-webpack-config` add `rebuildWebpackConfig`.
 
-## 0.2.2
+## 0.7.3 [2019-04-19]
 
-- Add `commandOptions` option.
-- Add `define` option.
-- Add `cssModulesExclude` config option(default is `[/node_modules/]`).
-- Add `autoprefixer` support & `browsers` option.
+- `lila-tasks` add `@lila/sync-save-cache` task.
+- `@lila/sync` add `cache, cacheFileName` options.
 
-## 0.2.1
+## 0.7.2 [2019-03-30]
 
-- Modify `resolveModules` sequence.
-- Announcing that the css module must be defined before js module in `resolveModules, outResolveAlias`.
-- Use `transform-react-jsx` by `require("babel-plugin-transform-react-jsx")`.
-- Add `import` config option.
-- Add `friendly-errors-webpack-plugin`.
-- Add `enableCssModules` config option and [css modules](https://github.com/css-modules/css-modules) support.
+- Add `create-lila-app` plugin.
+- Add `lila-webpack-config` plugin.
 
-## 0.2.0
+## 0.7.1 [2019-03-11]
 
-- Add `all` special module.
-- Remove `cssAbsolutePathPrefix, htmlAbsolutePathPrefix, htmlAbsoluteSuffixes` config option.
-- Add `staticServerUrl` config option.
-- Add `require.ensure(), import()` support.
-- Add `resolveModules` config option.
-- Add `local, localOptions` config option.
-- Add `out, outResolveAlias` config option.
+- Add `lila-webpack` plugin.
 
-## 0.1.5
+## 0.7.0 [2019-03-11]
 
-- Add `delete dev` for analyze command.
+- Remove `lila-webpack, lila-webpack-config, create-lila-app`.
+- Remove `lila-webpack-lib, lila-webpack-lib-config, lila-rollup, lila-rollup-config`.
 
-## 0.1.4
+## 0.6.0 [2019-02-20]
 
-- Add `analyze, ana` cmd.
-- Add `analyzerPort` config option.
+- `lila-webpack-config, lila-webpack-lib-config, lila-rollup-config` add `ext` config option.
+- `create-lila-app` types: `base, normal, react, vue, react-vue, normal-lib, react-lib, vue-lib, rollup`
+- Split `lila-webpack-lib-config` into `base`, `for React`, `for Vue`
+- Split `lila-webpack-config` into `base`, `for React`, `for Vue`, `for React + Vue`
+- `lila-webpack` start command's data mocking functionality will cache node modules.
 
-## 0.1.3
+## 0.5.6 [2018-12-13]
 
-- Add `treatAllMethodsAsGet, browserSync` config option.
+- `lila-webpack` add `beforeCommand` config option.
+- `lila-rollup-config` remove `alias, inject, ...` config options.
+- `lila-rollup` remove `start` command.
+- `lila-webpack-lib-config` add `extra` config option.
+- `lila-webpack-config` add `splitChunks, extra` config options.
+- `lila-webpack-config` remove `splitJs` config option.
+- Fix bug of `/` can get mock data.
+
+## 0.5.5 [2018-12-11]
+
+- Add `lila.init.js`(`lila.js`), for Windows.
+
+## 0.5.4 [2018-12-06]
+
+- Add `lila.success` api.
+- Add `beforeTasks, afterTasks, errorTasks` settings.
+- Add `excludeEntries` setting.
+- Fix bug of `sub/*` not work.
+
+## 0.5.3 [2018-12-01]
+
+- Add `compile-js, compile-less, compile-scss` tasks.
+- Add packages mode support(see [lerna](https://github.com/lerna/lerna)).
+- Add `vue` support.
+- Enhance mock functionality and modify `mockRoot` config option.
+
+## 0.5.2 [2018-11-15]
+
+- Update many features.
+- Version wrong of `lila-bin, create-lila-app`.
+- Fix bug of `lila-bin`.
+
+## 0.5.0 [2018-11-13]
+
+- Multiple packages.
+- Rewrite core.
