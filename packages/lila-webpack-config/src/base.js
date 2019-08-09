@@ -4,7 +4,7 @@ import VueLoaderPlugin from 'vue-loader/lib/plugin';
 import { defaultExtensions, defaultMinHtmlOptions } from './defaults';
 import { babelLoader, htmlLoader, urlLoader } from './rules';
 import { styleLoaders } from './make';
-import { vueType } from './data';
+import { reactVueType, vueType } from './data';
 
 const { join } = path;
 
@@ -47,7 +47,9 @@ export default ({ lila, webpack, entry, cmd, config, makeType }) => {
         }index.html`,
         minify: isBuild && minHtml ? minHtmlOptions : false,
       }),
-      ...(makeType === vueType ? [new VueLoaderPlugin()] : []),
+      ...(makeType === vueType || makeType === reactVueType
+        ? [new VueLoaderPlugin()]
+        : []),
     ],
     module: {
       rules: [

@@ -19,13 +19,15 @@ import webpackPlugin from 'lila-webpack';
 import webpackConfigPlugin, {
   forReact as reactWebpackConfigPlugin,
   forVue as vueWebpackConfigPlugin,
+  forReactVue as reactVueWebpackConfigPlugin,
 } from 'lila-webpack-config';
 
 export default lila => {
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);           // 通用项目
-  // reactWebpackConfigPlugin(lila);   // React 组件项目
-  // vueWebpackConfigPlugin(lila);     // Vue 组件项目
+  webpackConfigPlugin(lila);                // 通用项目
+  // reactWebpackConfigPlugin(lila);        // React 组件项目
+  // vueWebpackConfigPlugin(lila);          // Vue 组件项目
+  // reactVueWebpackConfigPlugin(lila);     // React + Vue 组件项目
 
   ...
 };

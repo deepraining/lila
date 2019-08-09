@@ -19,13 +19,15 @@ import webpackPlugin from 'lila-webpack';
 import webpackConfigPlugin, {
   forReact as reactWebpackConfigPlugin,
   forVue as vueWebpackConfigPlugin,
+  forReactVue as reactVueWebpackConfigPlugin,
 } from 'lila-webpack-config';
 
 export default lila => {
   webpackPlugin(lila);
-  webpackConfigPlugin(lila);           // for normal project
-  // reactWebpackConfigPlugin(lila);   // for react project
-  // vueWebpackConfigPlugin(lila);     // for vue project
+  webpackConfigPlugin(lila);                // for normal project
+  // reactWebpackConfigPlugin(lila);        // for react project
+  // vueWebpackConfigPlugin(lila);          // for vue project
+  // reactVueWebpackConfigPlugin(lila);     // React + Vue project
 
   ...
 };

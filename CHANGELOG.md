@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.7.6
+## 0.7.7 [2019-08-09]
+
+- `lila-webpack-config` add `forReactVue` type.
+
+## 0.7.6 [2019-07-23]
 
 - Fix bug of `@lila/shell` `subprocess.stderr` being null.
 

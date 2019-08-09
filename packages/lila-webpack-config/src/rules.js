@@ -1,6 +1,6 @@
 import autoprefixer from 'autoprefixer';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { baseType, reactType, vueType } from './data';
+import { baseType, reactType, vueType, reactVueType } from './data';
 
 const vueLoader = () => ({
   loader: 'vue-loader',
@@ -43,7 +43,11 @@ export const babelLoader = ({
 }) => {
   const rules = [];
 
-  if (makeType === baseType || makeType === reactType) {
+  if (
+    makeType === baseType ||
+    makeType === reactType ||
+    makeType === reactVueType
+  ) {
     // base, react, react + vue: only handle pure js code in .js file
     rules.push(
       baseBabelLoader({
@@ -69,7 +73,7 @@ export const babelLoader = ({
     );
   }
 
-  if (makeType === reactType) {
+  if (makeType === reactType || makeType === reactVueType) {
     rules.push(
       baseBabelLoader({
         // babelExclude, // jsx should not exclude
@@ -82,7 +86,7 @@ export const babelLoader = ({
     );
   }
 
-  if (makeType === vueType) {
+  if (makeType === vueType || makeType === reactVueType) {
     rules.push(vueLoader());
   }
 

@@ -2,7 +2,7 @@ import merge from 'webpack-merge';
 import dev from './dev';
 import analyze from './analyze';
 import build from './build';
-import { baseType, reactType, vueType } from './data';
+import { baseType, reactType, vueType, reactVueType } from './data';
 
 const make = makeType => lila => {
   const { setSetting } = lila;
@@ -60,3 +60,4 @@ export default make(baseType);
 
 export const forReact = make(reactType);
 export const forVue = make(vueType);
+export const forReactVue = make(reactVueType);
