@@ -1,6 +1,6 @@
 {
   "name": "lila-core",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "lila core library",
   "main": "lib/index.js",
   "author": "senntyou <jiangjinbelief@163.com>",
