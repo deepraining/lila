@@ -55,7 +55,7 @@ npm install lila-core lila-tasks --save-dev
 
 #### 3. configure init file
 
-Configure init file `lila.js`(`lila.init.js` in Windows).
+Configure init file `lila.init.js`.
 
 ```
 // lila-core should not be imported directly
@@ -116,7 +116,7 @@ export default lila => {
 
 ## how to load plugins
 
-In `lila.js`(`lila.init.js` in Windows):
+In `lila.init.js`:
 
 ```
 import plugin from 'your-lila-plugin';
@@ -130,5 +130,4 @@ export default lila => {
 
 ## trouble shooting
 
-- In Windows, you have to use `lila.init.js` instead, and `lila.js` will not work.
 - In Windows, you must run `lila` command under the same directory with `node_modules`.

@@ -22,7 +22,7 @@ const lila = require('lila-core');
 
 ## init file
 
-Lila requires an init file called `lila.js`(`lila.init.js` in Windows) in project root directory.
+Lila requires an init file called `lila.init.js` in project root directory.
 
 ```
 // lila-core should not be imported directly
@@ -406,7 +406,7 @@ lila run                     # the real entry is @lila/index
 ## extended command line options
 
 - `--root`: custom root path
-- `--init`: custom init file, default `lila.js`(`lila.init.js` in Windows)
+- `--init`: custom init file, default `lila.init.js`
 
 ## note
 
@@ -416,7 +416,7 @@ You should not import `lila-core` directly, like:
 import lila from 'lila-core'
 ```
 
-but use it in `lila.js`(`lila.init.js` in Windows) or plugins:
+but use it in `lila.init.js` or plugins:
 
 ```
 export default lila => {

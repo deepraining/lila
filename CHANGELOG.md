@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.0 [2019-09-16]
+
+- `lila.js` to `lila.init.js`
+
 ## 0.7.7 [2019-08-09]
 
 - `lila-webpack-config` add `forReactVue` type.

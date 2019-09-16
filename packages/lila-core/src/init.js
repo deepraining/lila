@@ -8,10 +8,7 @@ import { tryDefault } from '../../../util/index';
 const { join } = path;
 const { existsSync } = fs;
 
-let initFile;
-if (argv.init) initFile = argv.init;
-else if (existsSync(join(root, 'lila.init.js'))) initFile = 'lila.init.js';
-else initFile = 'lila.js';
+const initFile = argv.init || 'lila.init.js';
 
 const initPath = join(root, initFile);
 const initPathExists = existsSync(initPath);
@@ -21,14 +18,14 @@ const init = tryDefault(initPathExists ? require(initPath) : () => () => ({}));
 
 if (!initPathExists) {
   warn(`
-missing ${initFile} file: ${initPath}
-use default instead: () => () => ({})
+Missing ${initFile} file: ${initPath}
+Use default instead: () => () => ({})
   `);
 }
 
 if (typeof init !== 'function')
   throw new Error(`${initFile} should export a function`);
 
-export const initFileName = initFile;
+export { initFile };
 
 export default init;

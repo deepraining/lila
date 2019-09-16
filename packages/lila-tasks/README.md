@@ -12,7 +12,7 @@ npm install --save-dev lila-tasks
 
 ## 使用
 
-在 `lila.js` 中:
+在 `lila.init.js` 中:
 
 ```
 import tasksPlugin from 'lila-tasks';

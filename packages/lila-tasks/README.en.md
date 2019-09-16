@@ -12,7 +12,7 @@ npm install --save-dev lila-tasks
 
 ## use
 
-In `lila.js`:
+In `lila.init.js`:
 
 ```
 import tasksPlugin from 'lila-tasks';

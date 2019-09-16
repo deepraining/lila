@@ -12,7 +12,7 @@ npm install --save-dev lila-webpack-config
 
 ## use
 
-In `lila.js`:
+In `lila.init.js`:
 
 ```
 import webpackPlugin from 'lila-webpack';

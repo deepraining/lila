@@ -1,6 +1,6 @@
 let lila;
 
-describe('no lila.js', () => {
+describe('no lila.init.js', () => {
   beforeAll(() => {
     if (process.argv.slice(-2)[0] === '--root')
       process.argv = process.argv.slice(0, -2);

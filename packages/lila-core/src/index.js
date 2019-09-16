@@ -4,7 +4,7 @@ import * as lila from './lila';
 import { registerConfigGenerator } from './make-config';
 import { addCommand } from './commands';
 import { rootOption, run } from './cmd';
-import init, { initFileName } from './init';
+import init, { initFile } from './init';
 
 app.lila = lila;
 
@@ -16,7 +16,7 @@ const configGenerator = init(lila);
 
 if (typeof configGenerator !== 'function')
   throw new Error(
-    `${initFileName} exported function should return another function`
+    `${initFile} exported function should return another function`
   );
 
 registerConfigGenerator(configGenerator);
