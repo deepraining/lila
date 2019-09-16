@@ -55,7 +55,7 @@ npm install lila-core lila-tasks --save-dev
 
 #### 3. 配置初始化文件
 
-配置初始化文件 `lila.js`(Windows 下可以使用 `lila.init.js`).
+配置初始化文件 `lila.init.js`.
 
 ```
 // lila-core 不能直接导入
@@ -116,7 +116,7 @@ export default lila => {
 
 ## 怎样加载插件
 
-在 `lila.js`(Windows 中 `lila.init.js`) 文件中:
+在 `lila.init.js` 文件中:
 
 ```
 import plugin from 'your-lila-plugin';
@@ -130,5 +130,4 @@ export default lila => {
 
 ## 常见问题
 
-- 在 Windows 中, 初始化文件应该使用 `lila.init.js`, 而 `lila.js` 会出现问题.
 - 在 Windows 中, 运行 `lila` 命令时必须与 `node_modules` 目录在同一级.

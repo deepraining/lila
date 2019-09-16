@@ -12,7 +12,7 @@ npm install --save-dev lila-webpack-config
 
 ## 使用
 
-在 `lila.js` 中:
+在 `lila.init.js` 中:
 
 ```
 import webpackPlugin from 'lila-webpack';

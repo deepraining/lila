@@ -82,7 +82,7 @@ export default ({ dir, type }) => {
 
   copyEslintConfig();
 
-  copy({ file: 'lila.js', srcFile: `lila-${type}.js` });
+  copy({ file: 'lila.init.js', srcFile: `lila-${type}.js` });
 
   copyPkg();
 

@@ -22,7 +22,7 @@ const lila = require('lila-core');
 
 ## 初始化文件
 
-Lila 需要有一个在项目根目录下名为 `lila.js`(Windows 中 `lila.init.js`) 的初始化文件.
+Lila 需要有一个在项目根目录下名为 `lila.init.js` 的初始化文件.
 
 ```
 // lila-core 不能直接导入
@@ -407,7 +407,7 @@ lila run                     # 实际 entry 是 @lila/index
 ## 扩展的命令行配置
 
 - `--root`: 自定义根路径
-- `--init`: 自定义初始化文件, 默认是 `lila.js`(Windows 中 `lila.init.js`)
+- `--init`: 自定义初始化文件, 默认是 `lila.init.js`
 
 ## 注意事项
 
@@ -417,7 +417,7 @@ lila run                     # 实际 entry 是 @lila/index
 import lila from 'lila-core'
 ```
 
-而是通过 `lila.js`(Windows 中 `lila.init.js`) 或插件使用:
+而是通过 `lila.init.js` 或插件使用:
 
 ```
 export default lila => {
