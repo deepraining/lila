@@ -9,6 +9,9 @@ console.log('test');
 fetch('/src/mock.json', { method: 'post' }).then(res => {
   console.log("post['/src/mock.json']", res);
 });
+fetch('/api').then(res => {
+  console.log("get['/api']", res);
+});
 fetch('/api/index', { method: 'post' }).then(res => {
   console.log("post['/api/index']", res);
 });

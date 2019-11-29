@@ -43,7 +43,8 @@ const tryMock = ({ root, url, req, res, cache }) => {
     // disable cache
     if (!cache && require.cache[filePath]) delete require.cache[filePath];
 
-    const fn = tryDefault(require(filePath)); // eslint-disable-line
+    const m = require(filePath); // eslint-disable-line
+    const fn = m ? m.default : undefined;
     if (typeof fn === 'function') {
       fn(req, res);
       return !0;
@@ -62,8 +63,8 @@ const tryMock = ({ root, url, req, res, cache }) => {
     if (!cache && require.cache[parentFilePath])
       delete require.cache[parentFilePath];
 
-    const exp = tryDefault(require(parentFilePath)); // eslint-disable-line
-    const fn = exp[lastName];
+    const m = require(parentFilePath); // eslint-disable-line
+    const fn = m ? m[lastName] : undefined;
 
     if (typeof fn === 'function') {
       fn(req, res);

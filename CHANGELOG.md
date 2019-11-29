@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.1 [2019-11-29]
+
+- In mock data files, `export default` and `export const` can be in the same file.
+
 ## 0.8.0 [2019-09-16]
 
 - `lila.js` to `lila.init.js`

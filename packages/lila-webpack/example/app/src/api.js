@@ -4,3 +4,5 @@ export const index = (req, res) => {
 
   res.end('index');
 };
+
+export default { default: 1 };
