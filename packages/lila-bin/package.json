@@ -1,6 +1,6 @@
 {
   "name": "lila-bin",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "lila command line tool",
   "main": "lib/index.js",
   "bin": {
