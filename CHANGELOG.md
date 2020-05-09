@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.2 [2020-05-09]
+
+- Support dynamic url when use mock data.
+
 ## 0.8.1 [2019-11-29]
 
 - In mock data files, `export default` and `export const` can be in the same file.

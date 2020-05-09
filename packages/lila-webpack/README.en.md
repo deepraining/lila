@@ -198,6 +198,16 @@ export const profile = {
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
 
+#### Support dynamic url
+
+`since: v0.8.2`
+
+If you need dynamic url, like `/article/{{articleId}}/comment/{{commentId}}`(`/article/1234/comment/5678`), you can use `$d` to replace dynamic ones.
+
+For example, you can make `/article/$d/comment/$d.js` to proxy all urls.
+
+Only starts with number(0-9), will be treated as dynamic url. So, `/article/abc` and `/article/a123` are not dynamic urls.
+
 ### `mockRoot`: extra mock root url prefix(relative to `root`)
 
 `type: string/function`

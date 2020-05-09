@@ -23,7 +23,7 @@ export const forceGet = (req, res, next) => {
 };
 
 /**
- * try mock file
+ * try mock file internal function
  *
  * @param root Root directory
  * @param url
@@ -32,7 +32,7 @@ export const forceGet = (req, res, next) => {
  * @param cache Whether cache node modules
  * @returns {boolean}
  */
-const tryMock = ({ root, url, req, res, cache }) => {
+const tryMockInternal = ({ root, url, req, res, cache }) => {
   // url: `/one/two/three`
   const urls = url.split('/');
   const lastName = urls[urls.length - 1];
@@ -75,6 +75,42 @@ const tryMock = ({ root, url, req, res, cache }) => {
       res.end(JSON.stringify(fn));
       return !0;
     }
+  }
+
+  return !1;
+};
+
+const digitRegExp = /^\d$/;
+const digitMark = '$d';
+
+/**
+ * try mock file
+ *
+ * @param root Root directory
+ * @param url
+ * @param req
+ * @param res
+ * @param cache Whether cache node modules
+ * @returns {boolean}
+ */
+const tryMock = ({ root, url, req, res, cache }) => {
+  // try url directly
+  if (tryMockInternal({ root, url, req, res, cache })) return !0;
+
+  // check if have dynamic url
+  const urls = url.split('/');
+  let hasDynamic = !1;
+  const newUrls = urls.map(s => {
+    if (digitRegExp.test(s.slice(0, 1))) {
+      hasDynamic = !0;
+      return digitMark;
+    }
+    return s;
+  });
+
+  if (hasDynamic) {
+    const newUrl = newUrls.join('/');
+    if (tryMockInternal({ root, url: newUrl, req, res, cache })) return !0;
   }
 
   return !1;

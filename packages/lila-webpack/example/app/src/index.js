@@ -24,3 +24,12 @@ fetch('/obj').then(res => {
 fetch('/func').then(res => {
   console.log("get['/func']", res);
 });
+fetch('/func').then(res => {
+  console.log("get['/func']", res);
+});
+fetch('/info/123').then(res => {
+  console.log("get['/info/123']", res);
+});
+fetch('/article/123/detail/456').then(res => {
+  console.log("get['/article/123/detail/456']", res);
+});
