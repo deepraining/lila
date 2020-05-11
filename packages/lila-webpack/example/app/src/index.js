@@ -6,6 +6,9 @@ print();
 console.log('test');
 // console.log(hello.hi); // eslint-disable-line
 
+fetch('/src/mock.json').then(res => {
+  console.log("get['/src/mock.json']", res);
+});
 fetch('/src/mock.json', { method: 'post' }).then(res => {
   console.log("post['/src/mock.json']", res);
 });
@@ -32,4 +35,7 @@ fetch('/info/123').then(res => {
 });
 fetch('/article/123/detail/456').then(res => {
   console.log("get['/article/123/detail/456']", res);
+});
+fetch('/article/123/detail/456', { method: 'put' }).then(res => {
+  console.log("put['/article/123/detail/456']", res);
 });

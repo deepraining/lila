@@ -152,7 +152,7 @@ If you want to make some pre handling, you can do it here, like:
 
 ### `forceGet`: force all ajax methods as `get`
 
-`type: bool` `default: true`
+`type: bool` `default: false`
 
 Normally, only `get` method can access static file, and `post, put, delete ...` will cause `404`.
 

@@ -33,7 +33,7 @@ export default ({ entry, argv, lila, serve, servePath }) => {
   });
 
   const {
-    forceGet = true,
+    forceGet = false,
     mock = true,
     mockRoot,
     port = 8090,

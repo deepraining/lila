@@ -8,7 +8,7 @@ export default ({ entry, argv, lila }) => {
   const config = makeConfig({ entry, cmd: 'start', argv });
 
   const {
-    forceGet = true,
+    forceGet = false,
     mock = true,
     mockRoot,
     port = 8090,

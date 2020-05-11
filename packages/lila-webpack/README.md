@@ -152,7 +152,7 @@ excludeEntries: entry => true
 
 ### `forceGet`: 强制所有的 ajax 请求方法为 `get`
 
-`type: bool` `default: true`
+`type: bool` `default: false`
 
 一般而言, 只有 `get` 方法 可以访问静态文件, 而 `post, put, delete ...` 会导致 `404`.
 

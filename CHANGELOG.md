@@ -3,6 +3,7 @@
 ## 0.8.2 [2020-05-09]
 
 - Support dynamic url when use mock data.
+- `forceGet` default `false`.
 
 ## 0.8.1 [2019-11-29]
 
