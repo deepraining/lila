@@ -24,7 +24,7 @@ function run(){
     if [ -d $f ]; then
       if [[ -f "${f}/index.html" && -f "${f}/index.js" ]]; then
         entry=${f:$rootLength+1}
-        size=`du -sk $f | awk '{print $1}'`
+        size=`du -sb $f | awk '{print $1}'`
 
         entriesRecord="${entriesRecord}${entry}:${size}\n"
       fi
