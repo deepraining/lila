@@ -35,7 +35,7 @@ function run(){
   if [ ! -d $CACHE_DIR ]; then
     mkdir $CACHE_DIR
   fi
-  echo $entriesRecord > $recordFile
+  printf $entriesRecord > $recordFile
 }
 
 run $ROOT_DIR

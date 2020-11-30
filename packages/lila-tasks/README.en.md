@@ -138,7 +138,7 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 ### `@lila/sync-save-cache`: save files handling record after `@lila/sync` task
 
 ```
-['@lila/save-cache', {cacheFileName}]
+['@lila/sync-save-cache', {cacheFileName}]
 ```
 
 - `cacheFileName`: `type: string` `default: cache` file name to record cache.

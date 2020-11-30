@@ -138,7 +138,7 @@ export default lila => {
 ### `@lila/sync-save-cache`: 运行 `@lila/sync` 任务后保存操作文件的记录
 
 ```
-['@lila/save-cache', {cacheFileName}]
+['@lila/sync-save-cache', {cacheFileName}]
 ```
 
 - `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.
