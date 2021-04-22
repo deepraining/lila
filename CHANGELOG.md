@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.8.3 [2021-04-22]
+
+- Fix error in `lila serve` command.
+
 ## 0.8.2 [2020-05-09]
 
 - Support dynamic url when use mock data.

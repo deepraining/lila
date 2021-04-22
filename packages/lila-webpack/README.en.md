@@ -106,6 +106,11 @@ webpack => ({entry, argv, cmd, config, lila}) => config
 (entry, srcDir) => path
 ```
 
+Note:
+
+1. to enable this feature, you need to set `devMiddleware.writeToDisk` to `true` in config file
+2. `html` file may be generated after browser opening the dev page, so the first time you may see an error page, and then reload the page can be ok.
+
 #### serve js file
 
 ```

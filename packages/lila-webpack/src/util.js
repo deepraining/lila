@@ -261,8 +261,15 @@ export const makeServe = ({ root, devDir, servePath }) => (req, res, next) => {
     const htmlFilePath = join(root, `${devDir}/index.html`);
 
     if (!existsSync(filePath)) throw new Error(`file not found ${filePath}`);
-    if (!existsSync(htmlFilePath))
-      throw new Error(`file not found ${htmlFilePath}`);
+    if (!existsSync(htmlFilePath)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(`
+Can't show this page currently, you can: <br/>
+1. reload this page<br/>
+2. if step 1 is failed, check whether set <em style="color: blue">devMiddleware.writeToDisk</em> to <em style="color: blue">true</em> in <em style="color: blue">lila.init.js</em>
+`);
+      return;
+    }
 
     const content = readFileSync(htmlFilePath, 'utf8');
 

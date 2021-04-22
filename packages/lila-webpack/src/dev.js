@@ -23,11 +23,11 @@ export default ({ entry, argv, lila, serve, servePath }) => {
   if (typeof makeWebpackConfig !== 'function')
     throw new Error('webpackConfigGenerator should return a function');
 
-  const config = makeConfig({ entry, cmd: 'dev', argv });
+  const config = makeConfig({ entry, cmd: serve ? 'serve' : 'dev', argv });
   const webpackConfig = makeWebpackConfig({
     entry,
     argv,
-    cmd: 'dev',
+    cmd: serve ? 'serve' : 'dev',
     config,
     lila,
   });

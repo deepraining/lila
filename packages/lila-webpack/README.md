@@ -42,7 +42,7 @@ lila serve entry
 
 如果 `entry` 未提供, 将使用 `@lila/index` 为默认 entry.
 
-需要配置 `servePath` 配置项.
+需要设置 `servePath` 设置项.
 
 ### `build`: 打包源代码
 
@@ -84,7 +84,7 @@ lila analyze entry
 '@lila/webpack'
 ```
 
-## 需要实现的配置项
+## 需要实现的设置项
 
 ### `webpackConfigGenerator`: 生成 webpack 配置
 
@@ -92,7 +92,7 @@ lila analyze entry
 webpack => ({entry, argv, cmd, config, lila}) => config
 ```
 
-## 可以实现的配置项
+## 可以实现的设置项
 
 ### `getEntries`: 获取一个目录下的所有 entry
 
@@ -105,6 +105,11 @@ webpack => ({entry, argv, cmd, config, lila}) => config
 ```
 (entry, srcDir) => path
 ```
+
+注意：
+
+1. 启用此功能需将配置 `devMiddleware.writeToDisk` 设置为 `true`
+2. 由于 `html` 文件是延后生成的，所以浏览器第一次打开可能会看不到页面，重新加载页面就正常了
 
 #### serve js 文件
 
