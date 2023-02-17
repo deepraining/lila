@@ -34,13 +34,13 @@ export const shell = ({ args, lila }) => cb => {
 
   if (pro.stdout) {
     pro.stdout.on('data', data => {
-      log(data);
+      log(typeof data === 'string' ? data : data.toString());
     });
   }
 
   if (pro.stderr) {
     pro.stderr.on('data', data => {
-      error(data);
+      error(typeof data === 'string' ? data : data.toString());
     });
   }
 
