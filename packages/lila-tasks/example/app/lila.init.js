@@ -115,7 +115,15 @@ const getTasks = entry => {
   }
 
   if (entry === 'remote-shell') {
-    return [['@lila/remote-shell', { server, scripts: 'ls ~/space/www/lila' }]];
+    return [['@lila/remote-shell', { server, scripts: 'ls ~' }]];
+  }
+
+  if (entry === 'remote-exec') {
+    return [['@lila/remote-exec', { server, scripts: 'ls ~' }]];
+  }
+
+  if (entry === 'ssh-exec') {
+    return [['@lila/ssh-exec', { server: server.sshConfig, script: 'ls ~' }]];
   }
 
   if (entry === 'compile-js') {

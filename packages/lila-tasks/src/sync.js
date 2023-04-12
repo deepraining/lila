@@ -4,6 +4,7 @@ import SSH from 'gulp-ssh';
 import glob from 'glob';
 import md5 from 'crypto-md5';
 import fse from 'fs-extra';
+import { Client as SSHClient } from 'ssh2';
 import { isFile } from '../../../util/index';
 
 const { join, relative } = path;
@@ -254,4 +255,76 @@ export const remoteShell = ({ args, gulp, lila }) => () => {
   return connect
     .shell(scripts, { filePath: log })
     .pipe(gulp.dest(`${root}/${tmpDir}`));
+};
+
+/**
+ * execute scripts on remote server
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/remote-exec', {server, scripts, log}]
+ * ```
+ *
+ * @param args
+ * @param gulp
+ * @param lila
+ * @returns {function()}
+ */
+export const remoteExec = ({ args, gulp, lila }) => () => {
+  const { getSettings } = lila;
+  const [root, tmpDir] = getSettings(['root', 'tmp']);
+
+  const { server, scripts, log = 'remote-exec.log' } = (args && args[0]) || {};
+
+  if (!server) throw new Error('server info not configured');
+  if (!scripts) throw new Error('scripts not configured');
+
+  const connect = new SSH(server);
+
+  return connect
+    .exec(scripts, { filePath: log })
+    .pipe(gulp.dest(`${root}/${tmpDir}`));
+};
+
+/**
+ * execute script through ssh2
+ *
+ * @example
+ *
+ * ```
+ * ['@lila/ssh-exec', {server, script}]
+ * ```
+ *
+ * @param args
+ * @param lila
+ * @returns {function()}
+ */
+export const sshExec = ({ args, lila }) => cb => {
+  const { log, error } = lila;
+  const { server, script } = (args && args[0]) || {};
+
+  if (!server) throw new Error('server info not configured');
+  if (!script) throw new Error('script not configured');
+
+  const conn = new SSHClient();
+  conn
+    .on('ready', () => {
+      conn.exec(script, (err, stream) => {
+        if (err) throw err;
+        stream
+          .on('close', code => {
+            conn.end();
+            if (code < 1) cb();
+            else process.exit(1);
+          })
+          .on('data', data => {
+            log(typeof data === 'string' ? data : data.toString());
+          })
+          .stderr.on('data', data => {
+            error(typeof data === 'string' ? data : data.toString());
+          });
+      });
+    })
+    .connect(server);
 };

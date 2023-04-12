@@ -182,24 +182,6 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 - `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` remote server path to upload to.
 
-### `@lila/remote-shell`: execute shell scripts on remote server
-
-```
-['@lila/remote-shell', {server, scripts, log}]
-```
-
-- `server`: `type: {}` server config, see [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `scripts`: `type: string/array` shell scripts to execute on remote server.
-- `log`: `type: string` `default: remote-shell.log` log file.
-
-### `@lila/shell`: execute shell scripts
-
-```
-['@lila/shell', {command, args, options}]
-```
-
-- `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
-
 ### `@lila/clean-cache`: remove handled files by last handling, and remain new files, mainly for `build` directory
 
 ```
@@ -221,3 +203,46 @@ Copy file to a suffixed name, `index.html -> index.2000-01-02-03-04-05.html`.
 
 - `dir`: `type: string` directory to handle(relative to `root`)
 - `cacheFileName`: `type: string` `default: cache` file name to record cache.
+
+### `@lila/shell`: execute shell scripts
+
+```
+['@lila/shell', {command, args, options}]
+```
+
+- `command, args, options`: see [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+
+### `@lila/ssh-exec`: execute commands on remote server
+
+Available version >= v1.0.1
+
+```
+['@lila/ssh-exec', {server, script}]
+```
+
+- `server`: `type: {}` server config, see [ssh2 connect](https://github.com/mscdex/ssh2#client-methods).
+- `script`: `type: string` commands to execute on remote server. Use `&&` to concat multiple commands.
+
+### `@lila/remote-exec`: execute commands on remote server
+
+Available version >= v1.0.1
+
+```
+['@lila/remote-exec', {server, scripts, log}]
+```
+
+- `server`: `type: {}` server config, see [gulp-ssh exec](https://github.com/teambition/gulp-ssh#gulpsshexeccommands-options).
+- `scripts`: `type: string/array` commands to execute on remote server.
+- `log`: `type: string` `default: remote-exec.log` log file.
+
+### `@lila/remote-shell`: execute shell scripts on remote server
+
+**_!!!Some commands will hang the connection, causing the connection not to finish. Please use `@lila/ssh-exec` or `@lila/remote-exec` instead._**
+
+```
+['@lila/remote-shell', {server, scripts, log}]
+```
+
+- `server`: `type: {}` server config, see [gulp-ssh shell](https://github.com/teambition/gulp-ssh#gulpsshshellcommands-options).
+- `scripts`: `type: string/array` shell scripts to execute on remote server.
+- `log`: `type: string` `default: remote-shell.log` log file.

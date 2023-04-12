@@ -182,24 +182,6 @@ export default lila => {
 - `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
 - `remotePath`: `type: string` 要上传的远程服务器路径.
 
-### `@lila/remote-shell`: 在远程服务器执行 shell 脚本
-
-```
-['@lila/remote-shell', {server, scripts, log}]
-```
-
-- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh](https://github.com/teambition/gulp-ssh).
-- `scripts`: `type: string/array` 需要在远程服务器执行的 shell 脚本.
-- `log`: `type: string` `default: remote-shell.log` 日志文件.
-
-### `@lila/shell`: 执行 shell 脚本
-
-```
-['@lila/shell', {command, args, options}]
-```
-
-- `command, args, options`: 查看 [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
-
 ### `@lila/clean-cache`: 移除上次操作过的文件，保留未操作过的文件，主要用于记录 `build` 目录
 
 ```
@@ -221,3 +203,46 @@ export default lila => {
 
 - `dir`: `type: string` 待操作的目录(相对于 `root`)
 - `cacheFileName`: `type: string` `default: cache` 缓存记录生成的文件名.
+
+### `@lila/shell`: 执行 shell 脚本
+
+```
+['@lila/shell', {command, args, options}]
+```
+
+- `command, args, options`: 查看 [child_process spawn](https://nodejs.org/dist/latest-v10.x/docs/api/child_process.html#child_process_child_process_spawn_command_args_options)
+
+### `@lila/ssh-exec`: 在远程服务器执行命令
+
+可用版本 >= v1.0.1
+
+```
+['@lila/ssh-exec', {server, script}]
+```
+
+- `server`: `type: {}` 服务器配置, 查看 [ssh2 connect](https://github.com/mscdex/ssh2#client-methods).
+- `script`: `type: string` 需要在远程服务器执行的命令，多个命令可使用 `&&` 连接.
+
+### `@lila/remote-exec`: 在远程服务器执行命令
+
+可用版本 >= v1.0.1
+
+```
+['@lila/remote-exec', {server, scripts, log}]
+```
+
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh exec](https://github.com/teambition/gulp-ssh#gulpsshexeccommands-options).
+- `scripts`: `type: string/array` 需要在远程服务器执行的命令.
+- `log`: `type: string` `default: remote-exec.log` 日志文件.
+
+### `@lila/remote-shell`: 在远程服务器执行 shell 脚本
+
+**_!!!某些命令可能会导致连接挂起不结束，请使用`@lila/ssh-exec`或`@lila/remote-exec`代替_**
+
+```
+['@lila/remote-shell', {server, scripts, log}]
+```
+
+- `server`: `type: {}` 服务器配置, 查看 [gulp-ssh shell](https://github.com/teambition/gulp-ssh#gulpsshshellcommands-options).
+- `scripts`: `type: string/array` 需要在远程服务器执行的 shell 脚本.
+- `log`: `type: string` `default: remote-shell.log` 日志文件.

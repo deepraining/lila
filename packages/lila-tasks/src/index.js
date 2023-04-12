@@ -8,6 +8,8 @@ import {
   syncHtml,
   syncSourceMap,
   remoteShell,
+  remoteExec,
+  sshExec,
 } from './sync';
 import { shell, cleanCache, saveCache } from './misc';
 
@@ -34,6 +36,8 @@ export default lila => {
   registerTask('@lila/sync-html', syncHtml);
   registerTask('@lila/sync-source-map', syncSourceMap);
   registerTask('@lila/remote-shell', remoteShell);
+  registerTask('@lila/remote-exec', remoteExec);
+  registerTask('@lila/ssh-exec', sshExec);
 
   registerTask('@lila/shell', shell);
   registerTask('@lila/clean-cache', cleanCache);
