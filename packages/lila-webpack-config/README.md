@@ -182,6 +182,8 @@ Lila 内部提供了下面的 plugins:
 
 ### `sassResources`: [sass-resources-loader](https://github.com/shakacode/sass-resources-loader#resources) 配置的 `resources`
 
+可用版本 >= v1.0.2
+
 `type: string/array`
 
 ### `extra`: 其他的 webpack 配置项

@@ -182,6 +182,8 @@ Lila provided following plugins internally:
 
 ### `sassResources`: [sass-resources-loader](https://github.com/shakacode/sass-resources-loader#resources) `resources` option
 
+Available version >= v1.0.2
+
 `type: string/array`
 
 ### `extra`: extra webpack config options
