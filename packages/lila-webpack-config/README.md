@@ -180,6 +180,10 @@ Lila 内部提供了下面的 plugins:
 
 `type: {}` `default: {chunks: 'all'}`
 
+### `sassResources`: [sass-resources-loader](https://github.com/shakacode/sass-resources-loader#resources) 配置的 `resources`
+
+`type: string/array`
+
 ### `extra`: 其他的 webpack 配置项
 
 `type: {}/function` `default: {}`
@@ -243,6 +247,7 @@ extra: webpack => ({ ... })
 - [css-loader](https://github.com/webpack-contrib/css-loader)
 - [less-loader](https://github.com/webpack-contrib/less-loader)
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
+- [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
 - [vue-loader](https://github.com/vuejs/vue-loader)
 
 ## 文件扩展名

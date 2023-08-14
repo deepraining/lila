@@ -179,27 +179,40 @@ export const sassLoader = ({
   exclude,
   browsers,
   isBuild,
-}) => ({
-  test: /\.scss$/,
-  use: [
-    {
-      loader: isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
-    },
-    {
-      loader: 'css-loader',
-      options: {
-        modules: cssModules && exclude,
-        localIdentName: cssModulesName,
+  sassResources,
+}) => {
+  const loaders = {
+    test: /\.scss$/,
+    use: [
+      {
+        loader: isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
       },
-    },
-    {
-      loader: 'postcss-loader',
-      options: { plugins: [autoprefixer({ browsers })] },
-    },
-    {
-      loader: 'sass-loader',
-    },
-  ],
-  exclude: cssModules && exclude ? cssModulesExclude : undefined,
-  include: cssModules && !exclude ? cssModulesExclude : undefined,
-});
+      {
+        loader: 'css-loader',
+        options: {
+          modules: cssModules && exclude,
+          localIdentName: cssModulesName,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: { plugins: [autoprefixer({ browsers })] },
+      },
+      {
+        loader: 'sass-loader',
+      },
+    ],
+    exclude: cssModules && exclude ? cssModulesExclude : undefined,
+    include: cssModules && !exclude ? cssModulesExclude : undefined,
+  };
+
+  if (sassResources) {
+    loaders.use.push({
+      loader: 'sass-resources-loader',
+      options: {
+        resources: sassResources,
+      },
+    });
+  }
+  return loaders;
+};

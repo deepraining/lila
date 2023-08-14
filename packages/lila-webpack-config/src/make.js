@@ -7,6 +7,7 @@ export const styleLoaders = ({ config, isBuild = !1 }) => {
     cssModulesName,
     cssModulesExclude = [/node_modules/],
     browsers = defaultBrowsers,
+    sassResources,
   } = config;
   const rules = [];
 
@@ -17,6 +18,7 @@ export const styleLoaders = ({ config, isBuild = !1 }) => {
       cssModulesExclude,
       browsers,
       isBuild,
+      sassResources,
     };
     const excludeOptions = { ...options, exclude: !0 };
     const includeOptions = { ...options, exclude: !1 };
@@ -35,6 +37,7 @@ export const styleLoaders = ({ config, isBuild = !1 }) => {
       cssModulesExclude,
       browsers,
       isBuild,
+      sassResources,
     };
 
     rules.push(cssLoader(options), lessLoader(options), sassLoader(options));

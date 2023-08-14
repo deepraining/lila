@@ -1,3 +1,4 @@
+import path from 'path';
 import tasksPlugin from '../../../lila-tasks/lib';
 import webpackPlugin from '../../../lila-webpack/lib';
 import webpackConfigPlugin from '../../lib';
@@ -28,5 +29,6 @@ export default lila => {
       console.log('rebuildWebpackConfig');
       return webpackConfig;
     },
+    sassResources: [path.resolve(__dirname, 'src/test/func.scss')],
   });
 };

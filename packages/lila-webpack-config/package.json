@@ -56,6 +56,7 @@
     "rd": "^2.0.1",
     "sass": "^1.58.2",
     "sass-loader": "^7.1.0",
+    "sass-resources-loader": "^2.1.0",
     "speed-measure-webpack-plugin": "^1.2.5",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",

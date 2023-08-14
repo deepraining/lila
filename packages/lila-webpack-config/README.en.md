@@ -180,6 +180,10 @@ Lila provided following plugins internally:
 
 `type: {}` `default: {chunks: 'all'}`
 
+### `sassResources`: [sass-resources-loader](https://github.com/shakacode/sass-resources-loader#resources) `resources` option
+
+`type: string/array`
+
 ### `extra`: extra webpack config options
 
 `type: {}/function` `default: {}`
@@ -243,6 +247,7 @@ It's recommended to place all files of an entry to its workspace.
 - [css-loader](https://github.com/webpack-contrib/css-loader)
 - [less-loader](https://github.com/webpack-contrib/less-loader)
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
+- [sass-resources-loader](https://github.com/shakacode/sass-resources-loader)
 - [vue-loader](https://github.com/vuejs/vue-loader)
 
 ## file extensions
