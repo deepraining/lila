@@ -12,7 +12,7 @@ const server = {
   sshConfig,
 };
 
-const remotePath = '/home/senntyou/space/www/lila/';
+const remotePath = '/home/deepraining/space/www/lila/';
 
 const getTasks = entry => {
   if (entry === 'file') {

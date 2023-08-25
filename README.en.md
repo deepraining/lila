@@ -17,9 +17,9 @@ An extensible streaming build tool of [gulp](https://github.com/gulpjs/gulp), su
 
 It's recommended to use [create-lila-app](./packages/create-lila-app) to create a lila application, or use ready-made templates:
 
-- [react-app-starter](https://github.com/senntyou/react-app-starter): A boilerplate for creating a React application, using Webpack and Storybook.
-- [react-ts-app-starter](https://github.com/senntyou/react-ts-app-starter): A boilerplate for creating a React application, using TypeScript, Webpack and Storybook.
-- [vue-app-starter](https://github.com/senntyou/vue-app-starter): A boilerplate for creating a Vue application, using Webpack and Storybook.
+- [react-app-starter](https://github.com/deepraining/react-app-starter): A boilerplate for creating a React application, using Webpack and Storybook.
+- [react-ts-app-starter](https://github.com/deepraining/react-ts-app-starter): A boilerplate for creating a React application, using TypeScript, Webpack and Storybook.
+- [vue-app-starter](https://github.com/deepraining/vue-app-starter): A boilerplate for creating a Vue application, using Webpack and Storybook.
 
 However, you can also customize it as you like, just follow these steps:
 

@@ -17,9 +17,9 @@
 
 推荐使用 [create-lila-app](./packages/create-lila-app) 创建 lila 应用，或者选择已有模板：
 
-- [react-app-starter](https://github.com/senntyou/react-app-starter): 一个创建 React 应用的模板，使用 Webpack 与 Storybook 开发构建.
-- [react-ts-app-starter](https://github.com/senntyou/react-ts-app-starter): 一个创建 React 应用的模板，使用 TypeScript、Webpack 与 Storybook 开发构建.
-- [vue-app-starter](https://github.com/senntyou/vue-app-starter): 一个创建 Vue 应用的模板，使用 Webpack 与 Storybook 开发构建.
+- [react-app-starter](https://github.com/deepraining/react-app-starter): 一个创建 React 应用的模板，使用 Webpack 与 Storybook 开发构建.
+- [react-ts-app-starter](https://github.com/deepraining/react-ts-app-starter): 一个创建 React 应用的模板，使用 TypeScript、Webpack 与 Storybook 开发构建.
+- [vue-app-starter](https://github.com/deepraining/vue-app-starter): 一个创建 Vue 应用的模板，使用 Webpack 与 Storybook 开发构建.
 
 然而，你也可以自定义搭建方式：
 

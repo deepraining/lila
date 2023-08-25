@@ -1,3 +1,3 @@
 # [project-name]
 
-A [lila](https://github.com/senntyou/lila) project.
+A [lila](https://github.com/deepraining/lila) project.

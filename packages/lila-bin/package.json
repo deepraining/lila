@@ -6,13 +6,13 @@
   "bin": {
     "lila": "./bin/lila.js"
   },
-  "author": "senntyou <jiangjinbelief@163.com>",
-  "homepage": "https://github.com/senntyou/lila",
+  "author": "deepraining <jiangjinbelief@163.com>",
+  "homepage": "https://github.com/deepraining/lila",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/senntyou/lila/tree/master/packages/lila-bin",
+  "repository": "https://github.com/deepraining/lila/tree/master/packages/lila-bin",
   "keywords": [
     "web",
     "build",
@@ -25,7 +25,7 @@
     "stream"
   ],
   "bugs": {
-    "url": "https://github.com/senntyou/lila/issues"
+    "url": "https://github.com/deepraining/lila/issues"
   },
   "readmeFilename": "README.md",
   "files": [
