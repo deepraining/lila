@@ -1,6 +1,6 @@
 {
   "name": "lila-tasks",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "lila built-in tasks",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
