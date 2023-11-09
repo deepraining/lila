@@ -76,5 +76,7 @@ export default lila => {
   return () => ({
     // devMiddleware: { writeToDisk: !0, watchOptions: { ignored: /node_modules/ } },
     tasks: ['@lila/webpack'],
+    // mockDynamicReplacement: 'sss',
+    // mockDynamicReplacement: '',
   });
 };

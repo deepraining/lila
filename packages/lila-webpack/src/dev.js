@@ -36,6 +36,7 @@ export default ({ entry, argv, lila, serve, servePath }) => {
     forceGet = false,
     mock = true,
     mockRoot,
+    mockDynamicReplacement = '$d',
     port = 8090,
     browserSync: browserSyncConfig = {},
     devMiddleware: devMiddlewareConfig = defaultDevMiddleware,
@@ -55,7 +56,9 @@ export default ({ entry, argv, lila, serve, servePath }) => {
   // This must be in the first place.
   if (forceGet) browserSyncConfig.middleware.unshift(forceGetMiddleware);
   if (mock)
-    browserSyncConfig.middleware.unshift(makeMock({ lila, entry, mockRoot }));
+    browserSyncConfig.middleware.unshift(
+      makeMock({ lila, entry, mockRoot, mockDynamicReplacement })
+    );
   if (serve)
     browserSyncConfig.middleware.unshift(
       makeServe({

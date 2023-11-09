@@ -81,7 +81,6 @@ const tryMockInternal = ({ root, url, req, res, cache }) => {
 };
 
 const digitRegExp = /^\d$/;
-const digitMark = '$d';
 
 /**
  * try mock file
@@ -91,22 +90,25 @@ const digitMark = '$d';
  * @param req
  * @param res
  * @param cache Whether cache node modules
+ * @param mockDynamicReplacement To replace dynamic part
  * @returns {boolean}
  */
-const tryMock = ({ root, url, req, res, cache }) => {
+const tryMock = ({ root, url, req, res, cache, mockDynamicReplacement }) => {
   // try url directly
   if (tryMockInternal({ root, url, req, res, cache })) return !0;
 
   // check if have dynamic url
   const urls = url.split('/');
   let hasDynamic = !1;
-  const newUrls = urls.map(s => {
-    if (digitRegExp.test(s.slice(0, 1))) {
-      hasDynamic = !0;
-      return digitMark;
-    }
-    return s;
-  });
+  const newUrls = urls
+    .map(s => {
+      if (digitRegExp.test(s.slice(0, 1))) {
+        hasDynamic = !0;
+        return mockDynamicReplacement;
+      }
+      return s;
+    })
+    .filter(i => !!i);
 
   if (hasDynamic) {
     const newUrl = newUrls.join('/');
@@ -124,13 +126,17 @@ const tryMock = ({ root, url, req, res, cache }) => {
  * @param mockRoot Extra mock root directories
  * @param isLib For library or application
  * @param cache Whether cache node modules
+ * @param mockDynamicReplacement To replace dynamic part
  * @returns {function(*=, *=, *)}
  */
-export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
-  req,
-  res,
-  next
-) => {
+export const makeMock = ({
+  lila,
+  entry,
+  mockRoot,
+  isLib = !1,
+  cache = !1,
+  mockDynamicReplacement,
+}) => (req, res, next) => {
   const { getSettings } = lila;
   const [root, srcDir] = getSettings(['root', 'src']);
 
@@ -165,6 +171,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
               req,
               res,
               cache,
+              mockDynamicReplacement,
             })
           )
             return;
@@ -173,10 +180,17 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
     }
 
     // ${root}/url.js
-    if (tryMock({ root, url, req, res, cache })) return;
+    if (tryMock({ root, url, req, res, cache, mockDynamicReplacement })) return;
     // ${root}/mock/url.js
     if (
-      tryMock({ root, url: correctSlash(join('mock', url)), req, res, cache })
+      tryMock({
+        root,
+        url: correctSlash(join('mock', url)),
+        req,
+        res,
+        cache,
+        mockDynamicReplacement,
+      })
     )
       return;
 
@@ -185,7 +199,14 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
 
       // ${root}/${entry}/url.js
       if (
-        tryMock({ root, url: correctSlash(join(entry, url)), req, res, cache })
+        tryMock({
+          root,
+          url: correctSlash(join(entry, url)),
+          req,
+          res,
+          cache,
+          mockDynamicReplacement,
+        })
       )
         return;
       // ${root}/${entry}/mock/url.js
@@ -196,13 +217,21 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
           req,
           res,
           cache,
+          mockDynamicReplacement,
         })
       )
         return;
     } else {
       // ${root}/${srcDir}/url.js
       if (
-        tryMock({ root, url: correctSlash(join(srcDir, url)), req, res, cache })
+        tryMock({
+          root,
+          url: correctSlash(join(srcDir, url)),
+          req,
+          res,
+          cache,
+          mockDynamicReplacement,
+        })
       )
         return;
       // ${root}/${srcDir}/mock/url.js
@@ -213,6 +242,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
           req,
           res,
           cache,
+          mockDynamicReplacement,
         })
       )
         return;
@@ -224,6 +254,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
           req,
           res,
           cache,
+          mockDynamicReplacement,
         })
       )
         return;
@@ -235,6 +266,7 @@ export const makeMock = ({ lila, entry, mockRoot, isLib = !1, cache = !1 }) => (
           req,
           res,
           cache,
+          mockDynamicReplacement,
         })
       )
         return;

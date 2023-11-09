@@ -203,11 +203,13 @@ export const profile = {
 
 `req, res` refers to [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), and file name should not contain `.` character, or it will be treated as a static file.
 
-#### Support dynamic url
+### `mockDynamicReplacement`: Replace dynamic url
 
-`since: v0.8.2`
+`since: v1.0.3` `default: $d`
 
 If you need dynamic url, like `/article/{{articleId}}/comment/{{commentId}}`(`/article/1234/comment/5678`), you can use `$d` to replace dynamic ones.
+
+If you configured `mockDynamicReplacement: false/''`, thus the dynamic part will be removed, the former url will try to access `/article/comment.js` file.
 
 For example, you can make `/article/$d/comment/$d.js` to proxy all urls.
 

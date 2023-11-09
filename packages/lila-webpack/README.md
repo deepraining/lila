@@ -203,13 +203,15 @@ export const profile = {
 
 `req, res` 参考 [Node Http](https://nodejs.org/dist/latest-v8.x/docs/api/http.html), 并且文件名不能包含 `.` 点符号, 否则会被当作静态文件处理.
 
-#### 支持动态 url
+### `mockDynamicReplacement`: 动态 url 替换
 
-`since: v0.8.2`
+`since: v1.0.3` `default: $d`
 
 如果你需要动态 URL，比如 `/article/{{articleId}}/comment/{{commentId}}`(`/article/1234/comment/5678`)，你可以使用 `$d` 代替动态的部分。
 
 比如，你可以用 `/article/$d/comment/$d.js` 代理所有的 url.
+
+如果配置 `mockDynamicReplacement: false/''`，那么动态部分会直接去掉，上面的动态 URL 就变成了访问 `/article/comment.js` 文件了
 
 只有以数字(0-9)开头，才会被当做动态 url，`/article/abc` 与 `/article/a123` 都不是动态 url。
 
@@ -217,7 +219,7 @@ export const profile = {
 
 `type: string/function`
 
-当使用模拟数据时, 肯呢个你不喜欢那么长的 `url`, 比如使用 `/src/one/page/mock/list` 访问 `/src/one/page/mock/list.js` 文件.
+当使用模拟数据时, 可能你不喜欢那么长的 `url`, 比如使用 `/src/one/page/mock/list` 访问 `/src/one/page/mock/list.js` 文件.
 
 Lila 内置了一个便利的方式.
 
