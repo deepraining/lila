@@ -4,7 +4,7 @@ import cp from 'child_process';
 import shell from 'shelljs';
 import fse from 'fs-extra';
 import { error, info, log } from './logger';
-import { baseType, universalType, reactType, vueType } from './data';
+import { baseType, vueType } from './data';
 
 const { join } = path;
 const { existsSync } = fs;
@@ -26,7 +26,7 @@ export default ({ dir, type }) => {
 
   if (existsSync(target)) {
     error(`
-  error: ${dir} existed  
+  error: ${dir} existed
     `);
     process.exit(1);
   }
@@ -43,10 +43,8 @@ export default ({ dir, type }) => {
   };
 
   const copyEslintConfig = () => {
-    if (type === universalType || type === baseType) {
+    if (type === baseType) {
       copy({ file: '.eslintrc.js', srcFile: 'base.eslintrc.js' });
-    } else if (type === reactType) {
-      copy({ file: '.eslintrc.js', srcFile: 'react-app.eslintrc.js' });
     } else if (type === vueType) {
       copy({ file: '.eslintrc.js', srcFile: 'vue-app.eslintrc.js' });
       copy({ file: '.eslintrc.vue.js', srcFile: 'vue-app.eslintrc.vue.js' });
@@ -54,14 +52,8 @@ export default ({ dir, type }) => {
   };
 
   const copyPkg = () => {
-    if (type === universalType || type === baseType) {
+    if (type === baseType) {
       copy({ file: 'package.json', srcFile: 'base.package.json', replace: !0 });
-    } else if (type === reactType) {
-      copy({
-        file: 'package.json',
-        srcFile: 'react.package.json',
-        replace: !0,
-      });
     } else if (type === vueType) {
       copy({ file: 'package.json', srcFile: 'vue.package.json', replace: !0 });
     }
@@ -93,7 +85,7 @@ export default ({ dir, type }) => {
   `);
   if (exec('git init').code !== 0) {
     error(`
-  error: git init  
+  error: git init
     `);
     process.exit(1);
   }
@@ -112,8 +104,8 @@ export default ({ dir, type }) => {
 
     const lilaPkg = ['lila-bin', 'lila-core', 'lila-tasks'];
 
-    if (type !== universalType) {
-      lilaPkg.push('lila-webpack', 'lila-webpack-config');
+    if (type === vueType) {
+      lilaPkg.push('lila-webpack', 'lila-webpack-vue');
     }
 
     const child2 = spawn(npm, ['install', '--save-dev', ...lilaPkg], {
@@ -124,7 +116,7 @@ export default ({ dir, type }) => {
       if (code2 !== 0) process.exit(1);
 
       info(`
-  ${dir} created  
+  ${dir} created
       `);
     });
   });

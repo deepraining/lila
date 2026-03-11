@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import del from 'del';
+import {deleteAsync as del} from 'del';
 import fse from 'fs-extra';
 
 const { existsSync } = fs;

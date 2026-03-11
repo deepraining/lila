@@ -2,7 +2,7 @@ import commander from 'commander';
 import inquirer from 'inquirer';
 
 import create from './create';
-import { universalType, baseType, reactType, vueType } from './data';
+import { baseType, vueType } from './data';
 
 // this should be dynamically imported, for lerna will modify package.json
 const pkg = require('../package.json');
@@ -21,19 +21,9 @@ commander
           pageSize: 100,
           choices: [
             {
-              name: `${universalType}: universal environment to build with webpack, rollup, ...`,
-              value: universalType,
-              short: universalType,
-            },
-            {
-              name: `${baseType}: ready-made environment to build base application by webpack`,
+              name: `${baseType}: base environment to build`,
               value: baseType,
               short: baseType,
-            },
-            {
-              name: `${reactType}: ready-made environment to build React application by webpack`,
-              value: reactType,
-              short: reactType,
             },
             {
               name: `${vueType}: ready-made environment to build Vue application by webpack`,

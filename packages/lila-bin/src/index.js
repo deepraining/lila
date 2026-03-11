@@ -1,6 +1,6 @@
 import path from 'path';
 import minimist from 'minimist';
-import commander from 'commander';
+import {program as commander} from 'commander';
 
 // this should be dynamically imported, for lerna will modify package.json
 const pkg = require('../package.json');

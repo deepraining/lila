@@ -4,7 +4,6 @@ import hotMiddleware from 'webpack-hot-middleware';
 import browserSync from 'browser-sync';
 
 import { makeMock, forceGet as forceGetMiddleware, makeServe } from './util';
-import { defaultDevMiddleware } from './defaults';
 
 export default ({ entry, argv, lila, serve, servePath }) => {
   const { getSettings, makeConfig } = lila;
@@ -39,7 +38,7 @@ export default ({ entry, argv, lila, serve, servePath }) => {
     mockDynamicReplacement = '$d',
     port = 8090,
     browserSync: browserSyncConfig = {},
-    devMiddleware: devMiddlewareConfig = defaultDevMiddleware,
+    devMiddleware: devMiddlewareConfig = {},
     hotMiddleware: hotMiddlewareConfig = {},
   } = config;
 

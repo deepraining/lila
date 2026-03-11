@@ -13,7 +13,7 @@ const names =
         .split(',')
         .map(n => (n === 'create' ? 'create-lila-app' : `lila-${n}`));
 
-export default names.map(n => ({
+export default names.filter(i => !i.startsWith('.')).map(n => ({
   input: `packages/${n}/src/index.js`,
   output: {
     file: `packages/${n}/lib/index.js`,

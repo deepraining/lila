@@ -21,26 +21,26 @@
     "coverage": "npm run test-cover && opn coverage/lcov-report/index.html"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.4.0",
-    "eslint-plugin-flowtype": "^3.2.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.1.3",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-vue": "^5.2.2",
-    "flow-bin": "^0.94.0",
-    "husky": "^1.3.1",
-    "jest": "^23.6.0",
-    "lint-staged": "^8.1.0",
-    "opn-cli": "^4.0.0",
-    "prettier": "^1.15.3",
-    "stylelint": "^9.9.0",
-    "stylelint-config-prettier": "^4.0.0",
-    "stylelint-config-standard": "^18.2.0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^10.0.3",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-flowtype": "^8.0.3",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^29.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-plugin-vue": "^10.8.0",
+    "flow-bin": "^0.304.0",
+    "husky": "^9.1.7",
+    "jest": "^30.3.0",
+    "lint-staged": "^16.3.3",
+    "opn-cli": "^5.0.0",
+    "prettier": "^3.8.1",
+    "stylelint": "^17.4.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^40.0.0"
   },
   "lint-staged": {
     "**/*.js": ["eslint --fix", "prettier --write", "git add"],
@@ -58,6 +58,6 @@
     "**/*.{html,md,json}": ["prettier --write", "git add"]
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": "<23.0.0"
   }
 }

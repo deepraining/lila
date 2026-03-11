@@ -10,7 +10,7 @@ An extensible streaming build tool of [gulp](https://github.com/gulpjs/gulp), su
 - [lila-core](./packages/lila-core): lila core library
 - [lila-tasks](./packages/lila-tasks): lila built-in tasks
 - [lila-webpack](./packages/lila-webpack): wrapped webpack plugin
-- [lila-webpack-config](./packages/lila-webpack-config): built-in webpack config generator for lila-webpack
+- [lila-webpack-vue](./packages/lila-webpack-vue): built-in webpack config generator for vue
 - [create-lila-app](./packages/create-lila-app): tool to create a lila application
 
 ## setup

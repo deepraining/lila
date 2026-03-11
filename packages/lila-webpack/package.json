@@ -30,20 +30,20 @@
   ],
   "scripts": {},
   "dependencies": {
-    "browser-sync": "^2.26.3",
-    "fs-extra": "^7.0.1",
-    "lodash": "^4.17.11",
+    "browser-sync": "^3.0.4",
+    "fs-extra": "^11.3.4",
+    "lodash": "^4.17.23",
     "rd": "^2.0.1",
-    "webpack": "^4.28.4",
-    "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-dev-middleware": "^3.5.0",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack": "^5.105.4",
+    "webpack-bundle-analyzer": "^5.2.0",
+    "webpack-dev-middleware": "^7.4.5",
+    "webpack-hot-middleware": "^2.26.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.2.0"
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.28.6"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": "<23.0.0"
   }
 }
