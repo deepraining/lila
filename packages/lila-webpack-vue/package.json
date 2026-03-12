@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-vue",
-  "version": "2.0.1",
+  "version": "2.0.0",
   "description": "built-in webpack config generator for vue",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
