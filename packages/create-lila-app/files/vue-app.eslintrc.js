@@ -3,11 +3,9 @@ module.exports = {
   parser: 'babel-eslint',
   extends: [
     'airbnb-base',
-    'plugin:flowtype/recommended',
     'prettier',
-    'prettier/flowtype',
   ],
-  plugins: ['import', 'node', 'prettier', 'jest', 'flowtype'],
+  plugins: ['import', 'node', 'prettier', 'jest'],
   env: {
     node: true,
     es6: true,

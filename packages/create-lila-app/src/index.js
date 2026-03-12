@@ -1,4 +1,4 @@
-import commander from 'commander';
+import {program as commander} from 'commander';
 import inquirer from 'inquirer';
 
 import create from './create';
@@ -12,7 +12,7 @@ commander
   .version(pkg.version)
   .arguments('<project-directory>')
   .action(dir => {
-    inquirer
+    inquirer.default
       .prompt([
         {
           type: 'list',

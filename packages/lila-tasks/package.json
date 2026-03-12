@@ -1,6 +1,6 @@
 {
   "name": "lila-tasks",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "lila built-in tasks",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
@@ -26,7 +26,8 @@
   },
   "readmeFilename": "README.md",
   "files": [
-    "lib"
+    "lib",
+    "node-libs"
   ],
   "scripts": {},
   "dependencies": {
@@ -39,10 +40,16 @@
     "rd": "^2.0.1",
     "ssh2": "^1.17.0"
   },
+  "overrides": {
+    "ssh2-streams": "./node-libs/ssh2-streams"
+  },
+  "resolutions": {
+    "ssh2-streams": "./node-libs/ssh2-streams"
+  },
   "devDependencies": {
     "gulp": "^5.0.1"
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

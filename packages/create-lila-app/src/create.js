@@ -61,7 +61,6 @@ export default ({ dir, type }) => {
 
   copy({ file: '.editorconfig' });
   copy({ file: '.eslintignore' });
-  copy({ file: '.flowconfig' });
   copy({ file: '.gitignore' });
   copy({ file: '.npmrc' });
   copy({ file: '.prettierignore' });

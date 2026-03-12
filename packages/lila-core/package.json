@@ -1,6 +1,6 @@
 {
   "name": "lila-core",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "lila core library",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
@@ -39,6 +39,6 @@
     "minimist": "^1.2.8"
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

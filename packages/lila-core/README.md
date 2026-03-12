@@ -285,7 +285,7 @@ options.forEach(option => {
 ### `lila.makeArgv`: 创建一个封装的 `process.argv`
 
 ```
-import commander from 'commander';
+import {program as commander} from 'commander';
 import lila from 'lila-core';
 
 const { makeArgv } = lila;

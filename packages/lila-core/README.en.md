@@ -284,7 +284,7 @@ options.forEach(option => {
 ### `lila.makeArgv`: make a wrapped `process.argv`
 
 ```
-import commander from 'commander';
+import {program as commander} from 'commander';
 import lila from 'lila-core';
 
 const { makeArgv } = lila;

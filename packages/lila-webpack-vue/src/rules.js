@@ -19,7 +19,6 @@ const baseBabelLoader = ({
   options: {
     presets: [
       '@babel/preset-env',
-      '@babel/preset-flow',
       ...presets,
       ...babelPresets,
     ],

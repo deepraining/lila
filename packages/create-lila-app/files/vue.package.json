@@ -13,8 +13,6 @@
     "eslint-vue:fix": "eslint \"./**/*.vue\" -c .eslintrc.vue.js --fix",
     "stylelint": "stylelint \"./**/*.{css,less,scss,sass,vue}\"",
     "stylelint:fix": "stylelint \"./**/*.{css,less,scss,sass,vue}\" --fix",
-    "flow": "flow",
-    "flow:check": "flow check",
     "test": "jest",
     "test-watch": "jest --watch --notify",
     "test-cover": "jest --coverage",
@@ -26,13 +24,11 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jest": "^29.15.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.5.5",
     "eslint-plugin-vue": "^10.8.0",
-    "flow-bin": "^0.304.0",
     "husky": "^9.1.7",
     "jest": "^30.3.0",
     "lint-staged": "^16.3.3",
@@ -58,6 +54,6 @@
     "**/*.{html,md,json}": ["prettier --write", "git add"]
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

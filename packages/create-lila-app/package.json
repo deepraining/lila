@@ -1,6 +1,6 @@
 {
   "name": "create-lila-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "tool to create a lila application",
   "main": "lib/index.js",
   "bin": {
@@ -37,10 +37,10 @@
   "dependencies": {
     "commander": "^14.0.3",
     "fs-extra": "^11.3.4",
-    "inquirer": "^13.3.0",
+    "inquirer": "^11.1.0",
     "shelljs": "^0.10.0"
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

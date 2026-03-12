@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack-vue",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "built-in webpack config generator for vue",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
@@ -35,7 +35,6 @@
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
-    "@babel/preset-flow": "^7.27.1",
     "@babel/runtime": "^7.28.6",
     "@vue/compiler-sfc": "^3.5.30",
     "autoprefixer": "^10.4.27",
@@ -68,6 +67,6 @@
     "webpack-hot-middleware": "^2.26.1"
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

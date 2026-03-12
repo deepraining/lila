@@ -9,7 +9,7 @@ export default lila => {
   webpackConfigPlugin(lila);
 
   return ({ entry }) => ({
-    devMiddleware: { writeToDisk: !0 },
+    // devMiddleware: { writeToDisk: !0 },
     tasks: [
       '@lila/webpack',
       [

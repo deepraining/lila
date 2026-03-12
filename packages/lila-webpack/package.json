@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "wrapped webpack plugin",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",
@@ -44,6 +44,6 @@
     "@babel/plugin-transform-modules-commonjs": "^7.28.6"
   },
   "engines": {
-    "node": "<23.0.0"
+    "node": ">=23.0.0"
   }
 }

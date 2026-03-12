@@ -4,11 +4,9 @@ module.exports = {
   extends: [
     'plugin:vue/recommended',
     'airbnb-base',
-    'plugin:flowtype/recommended',
     'prettier',
-    'prettier/flowtype',
   ],
-  plugins: ['vue', 'import', 'node', 'prettier', 'flowtype'],
+  plugins: ['vue', 'import', 'node', 'prettier'],
   env: {
     node: true,
     es6: true,

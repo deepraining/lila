@@ -4,7 +4,6 @@ import './scss.scss';
 
 import base from 'base'; // eslint-disable-line
 import common from 'common'; // eslint-disable-line
-import './flow';
 
 base();
 common();

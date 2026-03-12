@@ -41,7 +41,6 @@ Lila 内部提供了下面的 presets:
 1. 针对 `.{js,vue}` 文件:
 
 - `@babel/preset-env`
-- `@babel/preset-flow`
 
 ### `babelPlugins`: 其他的 babel plugins
 
