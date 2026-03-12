@@ -20,6 +20,7 @@
     "build:all": "npm run build -- --name all",
     "clean": "rimraf packages/*/lib",
     "pretest": "npm run build:all",
+    "publish": "npm run build:all && lerna publish",
     "test": "jest packages/*/test",
     "test:core": "jest packages/lila-core/test"
   },
