@@ -1,6 +1,6 @@
 {
   "name": "lila-webpack",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "wrapped webpack plugin",
   "main": "lib/index.js",
   "author": "deepraining <jiangjinbelief@163.com>",

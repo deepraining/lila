@@ -1,15 +1,9 @@
 {
-  "version": "2.0.0",
+  "version": "2.0.1",
   "packages": ["packages/*"],
   "command": {
     "publish": {
-      "ignoreChanges": [
-        "*.md",
-        "*.txt",
-        "test/**",
-        "example/**",
-        "package.json"
-      ]
+      "ignoreChanges": ["*.md", "*.txt", "test/**", "example/**", "package.json"]
     },
     "bootstrap": {
       "npmClient": "cnpm"
