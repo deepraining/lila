@@ -128,6 +128,20 @@ export default lila => {
 };
 ```
 
-## trouble shooting
+## Troubleshooting
 
-- In Windows, you must run `lila` command under the same directory with `node_modules`.
+#### 1. In Windows, you must run `lila` command under the same directory with `node_modules`.
+
+#### 2. Error `TypeError: isDate is not a function` Occurs When Running on Higher Versions of Node.js
+
+`util.isDate` has been removed in newer Node.js releases, so a patch must be applied to the `util` module. Add the code snippet below at the **very top** of the configuration file `lila.init.js`:
+
+```javascript
+import util from 'util';
+
+if (typeof util.isDate !== 'function') {
+  util.isDate = function(value) {
+    return value instanceof Date;
+  };
+}
+```

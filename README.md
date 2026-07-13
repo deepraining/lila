@@ -130,4 +130,18 @@ export default lila => {
 
 ## 常见问题
 
-- 在 Windows 中, 运行 `lila` 命令时必须与 `node_modules` 目录在同一级.
+#### 1、在 Windows 中, 运行 `lila` 命令时必须与 `node_modules` 目录在同一级.
+
+#### 2、高版本 nodejs 运行出现错误 `TypeError: isDate is not a function`
+
+因`util.isDate`在高版本的 nodejs 中被移除，需要给`util`模块打上补丁。在`lila.init.js`配置文件的**_最开头_**添加以下内容：
+
+```
+import util from 'util';
+
+if (typeof util.isDate !== 'function') {
+  util.isDate = function(value) {
+    return value instanceof Date;
+  };
+}
+```
