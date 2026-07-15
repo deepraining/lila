@@ -5,7 +5,7 @@
   "registry": "https://registry.npmjs.org/",
   "command": {
     "publish": {
-      "ignoreChanges": ["*.md", "*.txt", "test/**", "example/**", "package.json"]
+      "ignoreChanges": ["*.md", "*.txt", "test/**", "example/**"]
     },
     "bootstrap": {
       "npmClient": "cnpm"
