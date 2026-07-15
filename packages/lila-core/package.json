@@ -34,7 +34,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.28.6",
     "@babel/register": "^7.28.6",
     "chalk": "^4.1.2",
-    "gulp": "^5.0.1",
+    "gulp": "4.0.2",
     "lodash": "^4.17.23",
     "minimist": "^1.2.8"
   },

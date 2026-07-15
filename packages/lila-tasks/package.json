@@ -40,7 +40,7 @@
     "ssh2": "^1.17.0"
   },
   "devDependencies": {
-    "gulp": "^5.0.1"
+    "gulp": "4.0.2"
   },
   "engines": {
     "node": ">=23.0.0"
